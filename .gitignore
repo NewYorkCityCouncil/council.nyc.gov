@@ -6,6 +6,10 @@
 *.swp
 Thumbs.db
 
+# theme specific
+/wp-content/themes/wp-nycc/node_modules/
+/wp-content/themes/wp-nycc/bower_components/
+
 # wordpress specific
 wp-config.php
 wp-content/uploads/
