@@ -1,0 +1,3 @@
+#postexcerpt .inside p:last-child {
+  display: none;
+}
