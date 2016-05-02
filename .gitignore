@@ -6,6 +6,8 @@
 *.swp
 Thumbs.db
 
+.htaccess
+
 # theme specific
 /wp-content/themes/wp-nycc/node_modules/
 /wp-content/themes/wp-nycc/bower_components/
