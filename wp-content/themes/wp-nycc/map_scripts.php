@@ -50,7 +50,7 @@ $districtNumber = get_option('council_district_number');
             weight: 1,
             opacity: 1,
             color: '#2f56a6',
-            fillOpacity: getColor(feature.properties.number)
+            fillOpacity: getColor(feature.properties.CounDist)
         };
     }
 
@@ -90,7 +90,7 @@ $districtNumber = get_option('council_district_number');
           '</div>'
         );
         <?php if ( $districtNumber ) { ?>
-        if ( <?php echo $districtNumber ?> == layer.feature.properties.number ){
+        if ( <?php echo $districtNumber ?> == layer.feature.properties.CounDist ){
           map.fitBounds(layer.getBounds(),{animate: false});
         }
         <?php } ?>
