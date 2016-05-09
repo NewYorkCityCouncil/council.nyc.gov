@@ -132,8 +132,6 @@
           wp_reset_postdata();
           ?>
 
-          <hr>
-
           <?php the_content(); ?>
 
         </section>
