@@ -15,7 +15,6 @@ function register_nycc_district_options() {
     register_setting( 'district-options-group', 'council_member_party' );
     register_setting( 'district-options-group', 'council_district_borough' );
     register_setting( 'district-options-group', 'council_district_neighborhoods' );
-    register_setting( 'district-options-group', 'council_district_geometry' );
     register_setting( 'district-options-group', 'council_member_short_bio' );
     register_setting( 'district-options-group', 'council_district_contact' );
     register_setting( 'district-options-group', 'council_legislative_contact' );
@@ -108,20 +107,6 @@ function nycc_district_options_page() {
           </tr>
 
         </table>
-
-        <?php if ( is_super_admin() ) { ?>
-        <hr>
-        <table class="form-table">
-
-          <tr valign="top">
-            <th scope="row">District Geometry</th>
-            <td>
-              <textarea name="council_district_geometry" rows="5" cols="50" class="large-text code"><?php echo esc_attr( get_option('council_district_geometry') ); ?></textarea>
-            </td>
-          </tr>
-
-        </table>
-        <?php } ?>
 
         <?php submit_button(); ?>
       </form>
