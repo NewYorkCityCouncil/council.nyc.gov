@@ -355,7 +355,7 @@ $widget-item-margin: rem-calc(5);
   .screen-reader-text {
     @extend .show-for-sr;
   }
-  a {
+  &:not(.widget_text) a {
     font-size: rem-calc(13);
     font-weight: $global-weight-bold;
   }

@@ -5069,7 +5069,7 @@ figure {
 .widget {
   font-size: 0.6875rem;
   margin-bottom: 30px; }
-  .widget a {
+  .widget:not(.widget_text) a {
     font-size: 0.8125rem;
     font-weight: bold; }
   .widget li + li,
