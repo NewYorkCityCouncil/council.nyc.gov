@@ -63,8 +63,11 @@
                 ?>
               </div>
               <div class="columns medium-12">
+                <?php if($post->post_content=="") : ?>
+                <?php else : ?>
                 <hr>
                 <?php the_content(); ?>
+                <?php endif; ?>
               </div>
             </div>
           </div>
