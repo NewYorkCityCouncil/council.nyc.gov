@@ -1266,7 +1266,7 @@ jQuery(document).foundation();
 /*--------------------------------------------------
   Map Toggler
 --------------------------------------------------*/
-jQuery('#map-toggler').click(function () {
+jQuery('.map-toggler').click(function () {
   jQuery('#map-container').toggleClass('short');
   jQuery('.site-header').removeClass('sticky');
   map.invalidateSize(true);
