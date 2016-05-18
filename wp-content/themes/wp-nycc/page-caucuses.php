@@ -17,15 +17,23 @@
         <hr>
 
         <div class="row">
-          <div class="columns medium-7">
+          <div class="columns medium-6">
             <section class="page-content">
               <?php the_content(); ?>
               <?php wp_link_pages(); ?>
             </section>
           </div>
-          <div class="columns medium-5">
+          <div class="columns medium-6">
             <?php
-            $list_caucuses = new WP_Query('post_type=nycc_caucus&orderby=menu_order&order=ASC&posts_per_page=-1');
+            $list_caucuses = new WP_Query(
+              array(
+                'post_type' => 'nycc_caucus',
+                'orderby' => 'menu_order title',
+                'order' => 'ASC',
+                'post_parent' => '0',
+                'posts_per_page' => '-1'
+              )
+            );
             if ( $list_caucuses->have_posts() ) {
               echo '<ul class="text-large">';
 

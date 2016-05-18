@@ -17,14 +17,22 @@
         <hr>
 
         <div class="row">
-          <div class="columns medium-7">
+          <div class="columns medium-6">
 
             <?php the_content(); ?>
 
           </div>
-          <div class="columns medium-5">
+          <div class="columns medium-6">
             <?php
-            $list_committees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=0&posts_per_page=-1');
+            $list_committees = new WP_Query(
+              array(
+                'post_type' => 'nycc_committee',
+                'orderby' => 'menu_order title',
+                'order' => 'ASC',
+                'post_parent' => '0',
+                'posts_per_page' => '-1'
+              )
+            );
             if ( $list_committees->have_posts() ) {
               echo '<ul class="text-large">';
 
@@ -34,7 +42,16 @@
                   ?><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong><?php
 
                   $pub_id = get_the_ID();
-                  $issue = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=' . $pub_id . '&posts_per_page=-1');
+                  $issue = new WP_Query(
+                    array(
+                      'post_type' => 'nycc_committee',
+                      'orderby' => 'menu_order title',
+                      'order' => 'ASC',
+                      'post_parent' => '0',
+                      'post_parent' => $pub_id,
+                      'posts_per_page' => '-1'
+                    )
+                  );
                   if ( $issue->have_posts() ) {
                     echo '<ul class="text-small">';
                       while ( $issue->have_posts() ) : $issue->the_post();
