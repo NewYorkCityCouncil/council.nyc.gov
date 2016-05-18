@@ -702,6 +702,10 @@ $map-height-tall:   rem-calc(400);
   .button {
     margin: 0;
   }
+  td + td,
+  th + th {
+    padding-left: 0;
+  }
 }
 
 .search--hidden-submit {

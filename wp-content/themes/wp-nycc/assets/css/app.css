@@ -5346,6 +5346,10 @@ figure {
 #districts-list .button, #districts-list .social-buttons a, .social-buttons #districts-list a, #districts-list .comment-reply-link {
   margin: 0; }
 
+#districts-list td + td,
+#districts-list th + th {
+  padding-left: 0; }
+
 .search--hidden-submit {
   position: absolute;
   right: 9999px;
