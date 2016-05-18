@@ -590,18 +590,23 @@ $map-height-tall:   rem-calc(400);
   }
 }
 
+.leaflet-left.leaflet-top .leaflet-control {
+  -webkit-transition: margin 0.5s ease-out;
+     -moz-transition: margin 0.5s ease-out;
+          transition: margin 0.5s ease-out;
+}
+.leaflet-right.leaflet-bottom .leaflet-control {
+  -webkit-transition: margin 0.75s;
+     -moz-transition: margin 0.75s;
+          transition: margin 0.75s;
+}
+
 @include breakpoint(xlarge down) {
   .short .leaflet-left.leaflet-top .leaflet-control {
     margin-left: -60px;
-    -webkit-transition: margin 0.5s ease-out;
-       -moz-transition: margin 0.5s ease-out;
-            transition: margin 0.5s ease-out;
   }
   .short .leaflet-right.leaflet-bottom .leaflet-control {
     margin-bottom: -50px;
-    -webkit-transition: margin 0.5s;
-       -moz-transition: margin 0.5s;
-            transition: margin 0.5s;
   }
 
   .leaflet-control-attribution {

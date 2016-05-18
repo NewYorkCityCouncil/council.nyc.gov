@@ -5265,13 +5265,17 @@ figure {
       left: -1rem;
       box-shadow: 0.25rem 0 0 rgba(0, 0, 0, 0.1); } }
 
+.leaflet-left.leaflet-top .leaflet-control {
+  transition: margin 0.5s ease-out; }
+
+.leaflet-right.leaflet-bottom .leaflet-control {
+  transition: margin 0.75s; }
+
 @media screen and (max-width: 89.9375em) {
   .short .leaflet-left.leaflet-top .leaflet-control {
-    margin-left: -60px;
-    transition: margin 0.5s ease-out; }
+    margin-left: -60px; }
   .short .leaflet-right.leaflet-bottom .leaflet-control {
-    margin-bottom: -50px;
-    transition: margin 0.5s; }
+    margin-bottom: -50px; }
   .leaflet-control-attribution {
     border-radius: 3px 0 0 0;
     background-color: #f9f9f9 !important;
