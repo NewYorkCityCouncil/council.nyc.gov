@@ -12,6 +12,8 @@
           <?php if ( has_excerpt( $post->ID ) ) { ?><p class="header-medium subheader sans-serif"><?php echo get_the_excerpt(); ?></p><?php } ?>
         </header>
 
+        <hr>
+
         <div class="row">
           <div class="columns medium-8">
             <?php the_content(); ?>
