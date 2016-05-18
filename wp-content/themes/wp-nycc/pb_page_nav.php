@@ -1,5 +1,7 @@
 <?php
 
+$current_page = get_the_permalink();
+
 $args = array(
   'post_type'  => 'page',
   'orderby'    => 'menu_order',
@@ -14,10 +16,10 @@ $args = array(
 );
 $pb_pages = new WP_Query( $args );
 if ( $pb_pages->have_posts() ) {
-  echo '<ul class="menu simple">';
+  echo '<ul class="menu">';
   while ( $pb_pages->have_posts() ) {
     $pb_pages->the_post();
-    echo '<li><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></li>';
+    ?><li class="<?php if ( $current_page == get_the_permalink() ) { echo 'active'; } ?>"><a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></li><?php
   }
   echo '</ul>';
 }
