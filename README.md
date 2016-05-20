@@ -16,13 +16,11 @@ Only themes and plugins are contained in this package. All WordPress core files 
     * [Styles](docs/ARCHITECTURE.md#styles)
     * [JavaScript](docs/ARCHITECTURE.md#javascript)
     * [Upgrading](docs/ARCHITECTURE.md#upgrading)
-
 * [Homepage](docs/HOMEPAGE.md)
 * [Committees](docs/COMMITTEES.md)
 * [Caucuses](docs/CAUCUSES.md)
 * [Initiatives](docs/INITIATIVES.md)
 * [Reports](docs/REPORTS.md)
-
 * [Districts](docs/DISTRICTS.md)
 * [Budget](docs/BUDGET.md)
 * [Land Use](docs/LAND_USE.md)
