@@ -16,4 +16,4 @@ To add/edit a Committee, go to the main site's WordPress Admin > Committees.
 
 ### Committees List
 
-A regular page using the "Committees List" template will display a list off all Committees. 
+A regular page using the "Committees List" template will display a list off all Committees. The list is nested, with Subcommittees appearing under their parent Committee. 
