@@ -37,7 +37,7 @@ function nycc_initiative_post_type() {
 add_action( 'init', 'nycc_initiative_post_type');
 
 function add_initiative_metaboxes() {
-  add_meta_box('nycc_initiative_meta', 'Meta', 'nycc_initiative_meta', 'nycc_initiative', 'normal', 'default');
+  add_meta_box('nycc_initiative_meta', 'Initiative Link', 'nycc_initiative_meta', 'nycc_initiative', 'normal', 'default');
 }
 add_action( 'add_meta_boxes', 'add_initiative_metaboxes' );
 

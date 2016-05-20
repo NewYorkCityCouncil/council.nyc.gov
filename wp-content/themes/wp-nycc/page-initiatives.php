@@ -16,7 +16,11 @@
 
         <hr>
 
+        <?php if($post->post_content=="") : ?>
+        <?php else : ?>
         <?php the_content(); ?>
+        <hr>
+        <?php endif; ?>
 
         <?php
         $list_initiatives = new WP_Query('post_type=nycc_initiative&orderby=menu_order&order=ASC&posts_per_page=-1');
