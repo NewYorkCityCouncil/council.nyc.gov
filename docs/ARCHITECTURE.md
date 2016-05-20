@@ -14,13 +14,14 @@ There are several themes included in this package. The primary site should use t
 
 The New York City Council website uses [Foundation for Sites](http://foundation.zurb.com/sites/docs/), a responsive and accessible front-end framework. The `wp-nycc` theme is based on [andycochran/wp-foundation-sites](https://github.com/andycochran/wp-foundation-sites), a bare-bones WordPress theme built with Foundation.
 
-### Local Setup (Requires NPM, Bower, Gulp)
+### Local Setup
+
+Making changes to this package requires NPM, Bower, and Gulp.
 
 * `cd wp-nycc/`
 * Run `npm install` to get `node_modules`
 * Run `bower install` to get `bower_components`
 * Run `gulp` to compile the CSS & JavaScript
-
 * Run `gulp watch` to watch for changes to `.sass` and `.js` files
 
 ### Styles
