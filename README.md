@@ -10,6 +10,22 @@ Only themes and plugins are contained in this package. All WordPress core files 
 
 * [Architecture](docs/ARCHITECTURE.md)
 
+**Parent Theme**
+
+* [Homepage](docs/HOMEPAGE.md)
+* [Committees](docs/COMMITTEES.md)
+* [Caucuses](docs/CAUCUSES.md)
+* [Initiatives](docs/INITIATIVES.md)
+* [Reports](docs/REPORTS.md)
+
+**Child Themes**
+
+* [Districts](docs/DISTRICTS.md)
+* [Budget](docs/BUDGET.md)
+* [Land Use](docs/LAND_USE.md)
+* [Legislation](docs/LEGISLATION.md)
+* [Press](docs/PRESS.md)
+
 ## Contributors
 
 Want to add a new feature or update an existing one? The best way to contribute is to submit a pull request on GitHub. Find a bug? Please submit an issue on GitHub. You can also contact us on [Twitter](https://twitter.com/NYCCouncil) and [Facebook](https://www.facebook.com/NYCCouncil/).
