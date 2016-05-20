@@ -8,8 +8,6 @@ Only themes and plugins are contained in this package. All WordPress core files 
 
 ## Documentation
 
-**Package**
-
 * [Architecture](docs/ARCHITECTURE.md)
     * [WordPress Multisite](docs/ARCHITECTURE.md#wordpress-multisite)
     * [Themes](docs/ARCHITECTURE.md#themes)
@@ -19,15 +17,11 @@ Only themes and plugins are contained in this package. All WordPress core files 
     * [JavaScript](docs/ARCHITECTURE.md#javascript)
     * [Upgrading](docs/ARCHITECTURE.md#upgrading)
 
-**Parent Theme**
-
 * [Homepage](docs/HOMEPAGE.md)
 * [Committees](docs/COMMITTEES.md)
 * [Caucuses](docs/CAUCUSES.md)
 * [Initiatives](docs/INITIATIVES.md)
 * [Reports](docs/REPORTS.md)
-
-**Child Themes**
 
 * [Districts](docs/DISTRICTS.md)
 * [Budget](docs/BUDGET.md)
