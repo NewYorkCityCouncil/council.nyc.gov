@@ -12,7 +12,7 @@ Only themes and plugins are contained in this package. All WordPress core files 
     * [WordPress Multisite](docs/ARCHITECTURE.md#wordpress-multisite)
     * [Themes](docs/ARCHITECTURE.md#themes)
     * [Foundation for Sites](docs/ARCHITECTURE.md#foundation-for-sites)
-    * [Local Setup](docs/ARCHITECTURE.md#local-setup-requires-npm-bower-gulp)
+    * [Editing Themes](docs/ARCHITECTURE.md#editing-themes)
     * [Styles](docs/ARCHITECTURE.md#styles)
     * [JavaScript](docs/ARCHITECTURE.md#javascript)
     * [Upgrading](docs/ARCHITECTURE.md#upgrading)
