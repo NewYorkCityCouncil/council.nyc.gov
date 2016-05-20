@@ -7,7 +7,7 @@ function nycc_theme_support() {
   add_post_type_support( 'page', 'excerpt' );
 
   // Add WP Thumbnail Support
-  add_theme_support( 'post-thumbnails', array( 'page', 'nycc_caucus', 'nycc_committee', 'nycc_initiative', 'nycc_report', 'nycc_feature' ) );
+  add_theme_support( 'post-thumbnails', array( 'page', 'nycc_initiative', 'nycc_report', 'nycc_feature' ) );
 
   // Define image sizes
   add_image_size( 'small', 400, 400, false );
