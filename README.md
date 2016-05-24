@@ -16,6 +16,7 @@ Only themes and plugins are contained in this package. All WordPress core files 
     * [Styles](docs/ARCHITECTURE.md#styles)
     * [JavaScript](docs/ARCHITECTURE.md#javascript)
     * [Upgrading](docs/ARCHITECTURE.md#upgrading)
+* [Content Guidelines](docs/CONTENT_GUIDELINES.md)
 * [Homepage](docs/HOMEPAGE.md)
 * [Committees](docs/COMMITTEES.md)
 * [Caucuses](docs/CAUCUSES.md)
