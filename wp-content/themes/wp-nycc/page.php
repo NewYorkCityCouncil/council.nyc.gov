@@ -10,6 +10,7 @@
         <header class="page-header">
           <h1 class="header-xxlarge"><?php the_title(); ?></h1>
           <?php if ( has_excerpt( $post->ID ) ) { ?><p class="header-medium subheader sans-serif"><?php echo get_the_excerpt(); ?></p><?php } ?>
+          <hr>
         </header>
 
         <section class="page-content">
