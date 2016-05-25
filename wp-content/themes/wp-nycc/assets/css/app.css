@@ -5388,6 +5388,7 @@ figure {
   TOC: Table of Contents
 --------------------------------------------------*/
 .table-of-contents-header {
+  margin-top: 1.625rem;
   color: #666; }
 
 .table-of-contents {
