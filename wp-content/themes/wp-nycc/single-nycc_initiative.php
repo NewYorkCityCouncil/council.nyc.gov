@@ -53,7 +53,7 @@
                 <div class="image-header"></div>
               </div>
               <div class="columns medium-6">
-                <p><?php echo get_the_excerpt(); ?></p>
+                <p class="text-large"><?php echo get_the_excerpt(); ?></p>
                 <?php
                 $initiative_link_url = get_post_meta($post->ID, 'initiative_link_url', true);
                 $initiative_link_text = get_post_meta($post->ID, 'initiative_link_text', true);

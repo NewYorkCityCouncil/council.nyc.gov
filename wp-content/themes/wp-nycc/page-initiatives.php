@@ -74,7 +74,7 @@
                   </div>
                   <div class="columns medium-6">
                     <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-                    <p class="text-small"><?php echo get_the_excerpt(); ?></p>
+                    <p><?php echo get_the_excerpt(); ?></p>
                     <?php
                     $initiative_link_url = get_post_meta($post->ID, 'initiative_link_url', true);
                     $initiative_link_text = get_post_meta($post->ID, 'initiative_link_text', true);

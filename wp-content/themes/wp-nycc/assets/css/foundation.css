@@ -2327,7 +2327,7 @@ hr {
   height: 0;
   border-right: 0;
   border-top: 0;
-  border-bottom: 2px solid #e6e6e6;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   border-left: 0;
   margin: 2.5rem auto;
   clear: both; }

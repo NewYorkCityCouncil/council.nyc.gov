@@ -2343,7 +2343,7 @@ hr {
   height: 0;
   border-right: 0;
   border-top: 0;
-  border-bottom: 2px solid #e6e6e6;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   border-left: 0;
   margin: 2.5rem auto;
   clear: both; }
@@ -4948,7 +4948,7 @@ table.hover tr:nth-of-type(even):hover {
   Posts & Pages
 --------------------------------------------------*/
 article.post + .post {
-  border-top: 2px solid #e6e6e6;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
   padding-top: 2rem;
   margin-top: 2rem; }
 
@@ -5060,7 +5060,7 @@ figure {
 
 @media screen and (max-width: 63.9375em) {
   .image-overlay-large .image-overlay-text:last-child {
-    border-bottom: 2px solid #e6e6e6;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     padding-bottom: 2rem; } }
 
 /*--------------------------------------------------

@@ -146,7 +146,7 @@ $anchor-color-hover: scale-color($anchor-color, $lightness: -25%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
-$hr-border: 2px solid $light-gray;
+$hr-border: 2px solid rgba(0,0,0,0.1);
 $hr-margin: rem-calc(40) auto;
 $list-lineheight: $paragraph-lineheight;
 $list-margin-bottom: $paragraph-margin-bottom;
