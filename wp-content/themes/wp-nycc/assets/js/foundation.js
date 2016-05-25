@@ -34,7 +34,9 @@ window.whatInput = function () {
   // can be safely ignored to prevent false keyboard detection
   var ignoreMap = [16, // shift
   17, // control
-  18 // alt
+  18, // alt
+  91, // Windows key / left Apple cmd
+  93 // Windows menu / right Apple cmd
   ];
 
   // mapping of events to input types
@@ -281,7 +283,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
   "use strict";
 
-  var FOUNDATION_VERSION = '6.2.0';
+  var FOUNDATION_VERSION = '6.2.1';
 
   // Global Foundation object
   // This is attached to the window, or used as a module for AMD/Browserify
@@ -839,6 +841,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           top: $eleDims.windowDims.offset.top
         };
         break;
+      case 'left bottom':
+        return {
+          left: $anchorDims.offset.left - ($eleDims.width + hOffset),
+          top: $anchorDims.offset.top + $anchorDims.height
+        };
+        break;
+      case 'right bottom':
+        return {
+          left: $anchorDims.offset.left + $anchorDims.width + hOffset - $eleDims.width,
+          top: $anchorDims.offset.top + $anchorDims.height
+        };
+        break;
       default:
         return {
           left: Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left,
@@ -1056,7 +1070,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     _getCurrentSize: function _getCurrentSize() {
       var matched;
 
-      for (var i in this.queries) {
+      for (var i = 0; i < this.queries.length; i++) {
         var query = this.queries[i];
 
         if (window.matchMedia(query.value).matches) {
@@ -1897,7 +1911,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }
 
   function resizeListener(debounce) {
-    var timer = undefined,
+    var timer = void 0,
         $nodes = $('[data-resize]');
     if ($nodes.length) {
       $(window).off('resize.zf.trigger').on('resize.zf.trigger', function (e) {
@@ -1921,7 +1935,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   }
 
   function scrollListener(debounce) {
-    var timer = undefined,
+    var timer = void 0,
         $nodes = $('[data-scroll]');
     if ($nodes.length) {
       $(window).off('scroll.zf.trigger').on('scroll.zf.trigger', function (e) {
@@ -2083,14 +2097,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_init',
       value: function _init() {
         this.$element.attr('role', 'tablist');
-        this.$tabs = this.$element.children('li');
-        if (this.$tabs.length === 0) {
-          this.$tabs = this.$element.children('[data-accordion-item]');
-        }
-        this.$tabs.each(function (idx, el) {
+        this.$tabs = this.$element.children('li, [data-accordion-item]');
 
+        this.$tabs.each(function (idx, el) {
           var $el = $(el),
-              $content = $el.find('[data-tab-content]'),
+              $content = $el.children('[data-tab-content]'),
               id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
               linkId = el.id || id + '-label';
 
@@ -2101,6 +2112,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             'aria-expanded': false,
             'aria-selected': false
           });
+
           $content.attr({ 'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id });
         });
         var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
@@ -2140,10 +2152,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   _this.toggle($tabContent);
                 },
                 next: function next() {
-                  $elem.next().find('a').focus().trigger('click.zf.accordion');
+                  var $a = $elem.next().find('a').focus();
+                  if (!_this.options.multiExpand) {
+                    $a.trigger('click.zf.accordion');
+                  }
                 },
                 previous: function previous() {
-                  $elem.prev().find('a').focus().trigger('click.zf.accordion');
+                  var $a = $elem.prev().find('a').focus();
+                  if (!_this.options.multiExpand) {
+                    $a.trigger('click.zf.accordion');
+                  }
                 },
                 handled: function handled() {
                   e.preventDefault();
@@ -2186,9 +2204,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'down',
       value: function down($target, firstTime) {
-        var _this = this;
+        var _this2 = this;
+
         if (!this.options.multiExpand && !firstTime) {
-          var $currentActive = this.$element.find('.is-active').children('[data-tab-content]');
+          var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
           if ($currentActive.length) {
             this.up($currentActive);
           }
@@ -2196,19 +2215,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         $target.attr('aria-hidden', false).parent('[data-tab-content]').addBack().parent().addClass('is-active');
 
-        // Foundation.Move(_this.options.slideSpeed, $target, function(){
-        $target.slideDown(_this.options.slideSpeed, function () {
+        $target.slideDown(this.options.slideSpeed, function () {
           /**
            * Fires when the tab is done opening.
            * @event Accordion#down
            */
-          _this.$element.trigger('down.zf.accordion', [$target]);
+          _this2.$element.trigger('down.zf.accordion', [$target]);
         });
-        // });
 
-        // if(!firstTime){
-        //   Foundation._reflow(this.$element.attr('data-accordion'));
-        // }
         $('#' + $target.attr('aria-labelledby')).attr({
           'aria-expanded': true,
           'aria-selected': true
@@ -2417,23 +2431,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           $elements.each(function (i) {
             if ($(this).is($element)) {
-              $prevElement = $elements.eq(Math.max(0, i - 1));
-              $nextElement = $elements.eq(Math.min(i + 1, $elements.length - 1));
+              $prevElement = $elements.eq(Math.max(0, i - 1)).find('a').first();
+              $nextElement = $elements.eq(Math.min(i + 1, $elements.length - 1)).find('a').first();
 
               if ($(this).children('[data-submenu]:visible').length) {
                 // has open sub menu
-                $nextElement = $element.find('li:first-child');
+                $nextElement = $element.find('li:first-child').find('a').first();
               }
               if ($(this).is(':first-child')) {
                 // is first element of sub menu
-                $prevElement = $element.parents('li').first();
+                $prevElement = $element.parents('li').first().find('a').first();
               } else if ($prevElement.children('[data-submenu]:visible').length) {
                 // if previous element has open sub menu
-                $prevElement = $prevElement.find('li:last-child');
+                $prevElement = $prevElement.find('li:last-child').find('a').first();
               }
               if ($(this).is(':last-child')) {
                 // is last element of sub menu
-                $nextElement = $element.parents('li').first().next('li');
+                $nextElement = $element.parents('li').first().next('li').find('a').first();
               }
 
               return;
@@ -2443,7 +2457,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             open: function open() {
               if ($target.is(':hidden')) {
                 _this.down($target);
-                $target.find('li').first().focus();
+                $target.find('li').first().find('a').first().focus();
               }
             },
             close: function close() {
@@ -2453,14 +2467,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               } else if ($element.parent('[data-submenu]').length) {
                 // close currently open sub
                 _this.up($element.parent('[data-submenu]'));
-                $element.parents('li').first().focus();
+                $element.parents('li').first().find('a').first().focus();
               }
             },
             up: function up() {
-              $prevElement.focus();
+              $prevElement.attr('tabindex', -1).focus();
+              e.preventDefault();
             },
             down: function down() {
-              $nextElement.focus();
+              $nextElement.attr('tabindex', -1).focus();
+              e.preventDefault();
             },
             toggle: function toggle() {
               if ($element.children('[data-submenu]').length) {
@@ -2471,7 +2487,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _this.hideAll();
             },
             handled: function handled() {
-              e.preventDefault();
               e.stopImmediatePropagation();
             }
           });
@@ -2682,8 +2697,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'getPositionClass',
       value: function getPositionClass() {
-        var position = this.$element[0].className.match(/\b(top|left|right)\b/g);
-        position = position ? position[0] : '';
+        var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
+        verticalPosition = verticalPosition ? verticalPosition[0] : '';
+        var horizontalPosition = /float-(.+)\s/.exec(this.$anchor[0].className);
+        horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
+        var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
         return position;
       }
 
@@ -2759,7 +2777,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
-        while (!Foundation.Box.ImNotTouchingYou(this.$element) && this.counter) {
+        while (!Foundation.Box.ImNotTouchingYou(this.$element, false, true) && this.counter) {
           this._reposition(position);
           this._setPosition();
         }
@@ -3104,7 +3122,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$tabs = this.$element.children('[role="menuitem"]');
         this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
-        if (this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right' || Foundation.rtl()) {
+        if (this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right' || Foundation.rtl() || this.$element.parents('.top-bar-right').is('*')) {
           this.options.alignment = 'right';
           subs.addClass('opens-left');
         } else {
@@ -3531,25 +3549,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     _createClass(ResponsiveMenu, [{
       key: '_init',
       value: function _init() {
-        var rulesTree = {};
+        // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
+        if (typeof this.rules === 'string') {
+          var rulesTree = {};
 
-        // Parse rules from "classes" in data attribute
-        var rules = this.rules.split(' ');
+          // Parse rules from "classes" pulled from data attribute
+          var rules = this.rules.split(' ');
 
-        // Iterate through every rule found
-        for (var i = 0; i < rules.length; i++) {
-          var rule = rules[i].split('-');
-          var ruleSize = rule.length > 1 ? rule[0] : 'small';
-          var rulePlugin = rule.length > 1 ? rule[1] : rule[0];
+          // Iterate through every rule found
+          for (var i = 0; i < rules.length; i++) {
+            var rule = rules[i].split('-');
+            var ruleSize = rule.length > 1 ? rule[0] : 'small';
+            var rulePlugin = rule.length > 1 ? rule[1] : rule[0];
 
-          if (MenuPlugins[rulePlugin] !== null) {
-            rulesTree[ruleSize] = MenuPlugins[rulePlugin];
+            if (MenuPlugins[rulePlugin] !== null) {
+              rulesTree[ruleSize] = MenuPlugins[rulePlugin];
+            }
           }
+
+          this.rules = rulesTree;
         }
 
-        this.rules = rulesTree;
-
-        if (!$.isEmptyObject(rulesTree)) {
+        if (!$.isEmptyObject(this.rules)) {
           this._checkMediaQueries();
         }
       }
@@ -4278,6 +4299,349 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 }(jQuery);
 'use strict';
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+!function ($) {
+
+  /**
+   * Tabs module.
+   * @module foundation.tabs
+   * @requires foundation.util.keyboard
+   * @requires foundation.util.timerAndImageLoader if tabs contain images
+   */
+
+  var Tabs = function () {
+    /**
+     * Creates a new instance of tabs.
+     * @class
+     * @fires Tabs#init
+     * @param {jQuery} element - jQuery object to make into tabs.
+     * @param {Object} options - Overrides to the default plugin settings.
+     */
+
+    function Tabs(element, options) {
+      _classCallCheck(this, Tabs);
+
+      this.$element = element;
+      this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
+
+      this._init();
+      Foundation.registerPlugin(this, 'Tabs');
+      Foundation.Keyboard.register('Tabs', {
+        'ENTER': 'open',
+        'SPACE': 'open',
+        'ARROW_RIGHT': 'next',
+        'ARROW_UP': 'previous',
+        'ARROW_DOWN': 'next',
+        'ARROW_LEFT': 'previous'
+        // 'TAB': 'next',
+        // 'SHIFT_TAB': 'previous'
+      });
+    }
+
+    /**
+     * Initializes the tabs by showing and focusing (if autoFocus=true) the preset active tab.
+     * @private
+     */
+
+
+    _createClass(Tabs, [{
+      key: '_init',
+      value: function _init() {
+        var _this = this;
+
+        this.$tabTitles = this.$element.find('.' + this.options.linkClass);
+        this.$tabContent = $('[data-tabs-content="' + this.$element[0].id + '"]');
+
+        this.$tabTitles.each(function () {
+          var $elem = $(this),
+              $link = $elem.find('a'),
+              isActive = $elem.hasClass('is-active'),
+              hash = $link[0].hash.slice(1),
+              linkId = $link[0].id ? $link[0].id : hash + '-label',
+              $tabContent = $('#' + hash);
+
+          $elem.attr({ 'role': 'presentation' });
+
+          $link.attr({
+            'role': 'tab',
+            'aria-controls': hash,
+            'aria-selected': isActive,
+            'id': linkId
+          });
+
+          $tabContent.attr({
+            'role': 'tabpanel',
+            'aria-hidden': !isActive,
+            'aria-labelledby': linkId
+          });
+
+          if (isActive && _this.options.autoFocus) {
+            $link.focus();
+          }
+        });
+
+        if (this.options.matchHeight) {
+          var $images = this.$tabContent.find('img');
+
+          if ($images.length) {
+            Foundation.onImagesLoaded($images, this._setHeight.bind(this));
+          } else {
+            this._setHeight();
+          }
+        }
+
+        this._events();
+      }
+
+      /**
+       * Adds event handlers for items within the tabs.
+       * @private
+       */
+
+    }, {
+      key: '_events',
+      value: function _events() {
+        this._addKeyHandler();
+        this._addClickHandler();
+
+        if (this.options.matchHeight) {
+          $(window).on('changed.zf.mediaquery', this._setHeight.bind(this));
+        }
+      }
+
+      /**
+       * Adds click handlers for items within the tabs.
+       * @private
+       */
+
+    }, {
+      key: '_addClickHandler',
+      value: function _addClickHandler() {
+        var _this = this;
+
+        this.$element.off('click.zf.tabs').on('click.zf.tabs', '.' + this.options.linkClass, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if ($(this).hasClass('is-active')) {
+            return;
+          }
+          _this._handleTabChange($(this));
+        });
+      }
+
+      /**
+       * Adds keyboard event handlers for items within the tabs.
+       * @private
+       */
+
+    }, {
+      key: '_addKeyHandler',
+      value: function _addKeyHandler() {
+        var _this = this;
+        var $firstTab = _this.$element.find('li:first-of-type');
+        var $lastTab = _this.$element.find('li:last-of-type');
+
+        this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function (e) {
+          if (e.which === 9) return;
+          e.stopPropagation();
+          e.preventDefault();
+
+          var $element = $(this),
+              $elements = $element.parent('ul').children('li'),
+              $prevElement,
+              $nextElement;
+
+          $elements.each(function (i) {
+            if ($(this).is($element)) {
+              if (_this.options.wrapOnKeys) {
+                $prevElement = i === 0 ? $elements.last() : $elements.eq(i - 1);
+                $nextElement = i === $elements.length - 1 ? $elements.first() : $elements.eq(i + 1);
+              } else {
+                $prevElement = $elements.eq(Math.max(0, i - 1));
+                $nextElement = $elements.eq(Math.min(i + 1, $elements.length - 1));
+              }
+              return;
+            }
+          });
+
+          // handle keyboard event with keyboard util
+          Foundation.Keyboard.handleKey(e, 'Tabs', {
+            open: function open() {
+              $element.find('[role="tab"]').focus();
+              _this._handleTabChange($element);
+            },
+            previous: function previous() {
+              $prevElement.find('[role="tab"]').focus();
+              _this._handleTabChange($prevElement);
+            },
+            next: function next() {
+              $nextElement.find('[role="tab"]').focus();
+              _this._handleTabChange($nextElement);
+            }
+          });
+        });
+      }
+
+      /**
+       * Opens the tab `$targetContent` defined by `$target`.
+       * @param {jQuery} $target - Tab to open.
+       * @fires Tabs#change
+       * @function
+       */
+
+    }, {
+      key: '_handleTabChange',
+      value: function _handleTabChange($target) {
+        var $tabLink = $target.find('[role="tab"]'),
+            hash = $tabLink[0].hash,
+            $targetContent = this.$tabContent.find(hash),
+            $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active').removeClass('is-active').find('[role="tab"]').attr({ 'aria-selected': 'false' });
+
+        $('#' + $oldTab.attr('aria-controls')).removeClass('is-active').attr({ 'aria-hidden': 'true' });
+
+        $target.addClass('is-active');
+
+        $tabLink.attr({ 'aria-selected': 'true' });
+
+        $targetContent.addClass('is-active').attr({ 'aria-hidden': 'false' });
+
+        /**
+         * Fires when the plugin has successfully changed tabs.
+         * @event Tabs#change
+         */
+        this.$element.trigger('change.zf.tabs', [$target]);
+      }
+
+      /**
+       * Public method for selecting a content pane to display.
+       * @param {jQuery | String} elem - jQuery object or string of the id of the pane to display.
+       * @function
+       */
+
+    }, {
+      key: 'selectTab',
+      value: function selectTab(elem) {
+        var idStr;
+
+        if ((typeof elem === 'undefined' ? 'undefined' : _typeof(elem)) === 'object') {
+          idStr = elem[0].id;
+        } else {
+          idStr = elem;
+        }
+
+        if (idStr.indexOf('#') < 0) {
+          idStr = '#' + idStr;
+        }
+
+        var $target = this.$tabTitles.find('[href="' + idStr + '"]').parent('.' + this.options.linkClass);
+
+        this._handleTabChange($target);
+      }
+    }, {
+      key: '_setHeight',
+
+      /**
+       * Sets the height of each panel to the height of the tallest panel.
+       * If enabled in options, gets called on media query change.
+       * If loading content via external source, can be called directly or with _reflow.
+       * @function
+       * @private
+       */
+      value: function _setHeight() {
+        var max = 0;
+        this.$tabContent.find('.' + this.options.panelClass).css('height', '').each(function () {
+          var panel = $(this),
+              isActive = panel.hasClass('is-active');
+
+          if (!isActive) {
+            panel.css({ 'visibility': 'hidden', 'display': 'block' });
+          }
+
+          var temp = this.getBoundingClientRect().height;
+
+          if (!isActive) {
+            panel.css({
+              'visibility': '',
+              'display': ''
+            });
+          }
+
+          max = temp > max ? temp : max;
+        }).css('height', max + 'px');
+      }
+
+      /**
+       * Destroys an instance of an tabs.
+       * @fires Tabs#destroyed
+       */
+
+    }, {
+      key: 'destroy',
+      value: function destroy() {
+        this.$element.find('.' + this.options.linkClass).off('.zf.tabs').hide().end().find('.' + this.options.panelClass).hide();
+
+        if (this.options.matchHeight) {
+          $(window).off('changed.zf.mediaquery');
+        }
+
+        Foundation.unregisterPlugin(this);
+      }
+    }]);
+
+    return Tabs;
+  }();
+
+  Tabs.defaults = {
+    /**
+     * Allows the window to scroll to content of active pane on load if set to true.
+     * @option
+     * @example false
+     */
+    autoFocus: false,
+
+    /**
+     * Allows keyboard input to 'wrap' around the tab links.
+     * @option
+     * @example true
+     */
+    wrapOnKeys: true,
+
+    /**
+     * Allows the tab content panes to match heights if set to true.
+     * @option
+     * @example false
+     */
+    matchHeight: false,
+
+    /**
+     * Class applied to `li`'s in tab link list.
+     * @option
+     * @example 'tabs-title'
+     */
+    linkClass: 'tabs-title',
+
+    /**
+     * Class applied to the content containers.
+     * @option
+     * @example 'tabs-panel'
+     */
+    panelClass: 'tabs-panel'
+  };
+
+  function checkClass($elem) {
+    return $elem.hasClass('is-active');
+  }
+
+  // Window exports
+  Foundation.plugin(Tabs, 'Tabs');
+}(jQuery);
+'use strict';
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4398,13 +4762,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.$element.is(':hidden')) {
           Foundation.Motion.animateIn(this.$element, this.animationIn, function () {
-            this.trigger('on.zf.toggler');
             _this._updateARIA(true);
+            this.trigger('on.zf.toggler');
           });
         } else {
           Foundation.Motion.animateOut(this.$element, this.animationOut, function () {
-            this.trigger('off.zf.toggler');
             _this._updateARIA(false);
+            this.trigger('off.zf.toggler');
           });
         }
       }
