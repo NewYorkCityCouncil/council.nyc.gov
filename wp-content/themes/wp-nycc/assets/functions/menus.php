@@ -20,6 +20,21 @@ if ( ! function_exists ( 'nycc_main_nav' ) ) {
     }
 }
 
+// Display the 404 menu
+if ( ! function_exists ( 'nycc_404_menu' ) ) {
+    function nycc_404_menu() {
+        wp_nav_menu(array(
+            'container' => false,
+            'menu_class' => 'menu simple',
+            'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+            'theme_location' => 'main-nav',
+            'depth' => 1,
+            'fallback_cb' => false,
+            'walker' => new Main_Menu_Walker()
+        ));
+    }
+}
+
 class Main_Menu_Walker extends Walker_Nav_Menu {
     function start_lvl(&$output, $depth = 0, $args = Array() ) {
         $indent = str_repeat("\t", $depth);
