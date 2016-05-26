@@ -4,14 +4,14 @@ function nycc_report_post_type() {
   register_post_type( 'nycc_report',
     array('labels' => array(
       'name' => __('Reports', 'nycc'),
-      'singular_name' => __('Report', 'nycc'),
+      'singular_name' => __('Report Page', 'nycc'),
       'all_items' => __('All Reports', 'nycc'),
-      'add_new' => __('Add New', 'nycc'),
-      'add_new_item' => __('Add New Report', 'nycc'),
+      'add_new' => __('Add New Report Page', 'nycc'),
+      'add_new_item' => __('Add New Report Page', 'nycc'),
       'edit' => __( 'Edit', 'nycc' ),
-      'edit_item' => __('Edit Report', 'nycc'),
-      'new_item' => __('New Report', 'nycc'),
-      'view_item' => __('View Report', 'nycc'),
+      'edit_item' => __('Edit Report Page', 'nycc'),
+      'new_item' => __('New Report Page', 'nycc'),
+      'view_item' => __('View Report Page', 'nycc'),
       'search_items' => __('Search Reports', 'nycc'),
       'not_found' =>  __('Nothing found in the Database.', 'nycc'),
       'not_found_in_trash' => __('Nothing found in Trash', 'nycc')
@@ -78,7 +78,7 @@ function nycc_report_toc() {
   $report_toc_before = get_post_meta($post->ID, 'report_toc_before', true);
   $report_toc_label = get_post_meta($post->ID, 'report_toc_label', true);
   ?>
-  <p><strong>TOC Before</strong> <small>(inserts category)</small></p>
+  <p><strong>TOC Before</strong> <small>(inserts heading)</small></p>
   <input type="text" name="report_toc_before" value="<?php echo esc_attr( $report_toc_before ); ?>" />
   <p><strong>Page Label</strong> <small>(replaces title)</small></p>
   <input type="text" name="report_toc_label" value="<?php echo esc_attr( $report_toc_label ); ?>" />
