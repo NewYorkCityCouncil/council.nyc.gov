@@ -64,7 +64,7 @@
           if ( !$report_toc_label ) {
             $report_toc_label = get_the_title($post->ID);
           }
-          echo '<li>'. $report_toc_label . '</li>';
+          echo '<li class="is-active">'. $report_toc_label . '</li>';
           $report_link_url = get_post_meta($post->ID, 'report_link_url', true);
           $report_link_text = get_post_meta($post->ID, 'report_link_text', true);
         }
@@ -86,7 +86,7 @@
               $report_toc_label = get_the_title($post->ID);
             }
             if ( $post->ID == $current_page ) {
-              echo '<li>'. $report_toc_label . '</li>';
+              echo '<li class="is-active">'. $report_toc_label . '</li>';
             } else {
               echo '<li><a href="'. get_the_permalink() .'">'. $report_toc_label . '</a></li>';
             }
