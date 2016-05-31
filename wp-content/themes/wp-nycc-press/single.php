@@ -7,7 +7,7 @@
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-          <header class="post-header">
+          <header class="press-release-header">
             <h1 class="header-xlarge"><?php the_title(); ?></h1>
             <p class="byline"><?php the_time('F j, Y') ?></p>
           </header>
@@ -17,7 +17,7 @@
           </section>
 
           <footer class="post-footer">
-            <p>Posted in <?php the_category(', ') ?><?php if( has_tag() ) { ?>&nbsp;<span class="meta-separator">|</span> <?php the_tags('Tagged '); } ?></p>
+            <p><?php if( has_tag() ) { the_tags('Tagged '); } ?></p>
           </footer>
 
           <?php if( comments_open() ) { ?>

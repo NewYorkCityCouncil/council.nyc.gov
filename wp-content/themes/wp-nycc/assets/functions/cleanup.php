@@ -64,7 +64,7 @@ function nycc_gallery_style($css) {
 function nycc_excerpt_more($more) {
     global $post;
     // edit here if you like
-    return '<a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __('Read ', 'nycc') . get_the_title($post->ID).'">'. __(' <small>&hellip;&nbsp;read more</small>', 'nycc') .'</a>';
+    return '<a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __('Read ', 'nycc') . get_the_title($post->ID).'">'. __(' <small class="read-more-link">&hellip;&nbsp;read&nbsp;more</small>', 'nycc') .'</a>';
 }
 
 //  Stop WordPress from using the sticky class (which conflicts with Foundation), and style WordPress sticky posts using the .wp-sticky class instead

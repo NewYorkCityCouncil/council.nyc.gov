@@ -3,15 +3,20 @@
   <div class="row">
     <div class="columns medium-8">
 
+      <h1 class="header-xlarge">Press Releases</h1>
+
+      <hr>
+
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-          <header class="post-header">
+          <header class="press-release-header">
             <h2 class="header-large"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+            <p class="byline"><?php the_time('F j, Y') ?></p>
           </header>
 
-          <section class="post-content">
+          <section class="post-content text-small">
             <?php the_excerpt(); ?>
           </section>
 

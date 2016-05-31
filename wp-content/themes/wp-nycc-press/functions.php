@@ -5,7 +5,7 @@ require_once(get_template_directory().'/assets/functions/remove-in-child-theme.p
 
 
 // Press-specific functions
-// require_once(get_stylesheet_directory().'/functions/options.php');        // Options
+require_once(get_stylesheet_directory().'/functions/posts.php');          // Posts
 
 // Hide admin stuff
 function remove_land_use_menus(){
@@ -23,3 +23,9 @@ function remove_land_use_admin_bar_links() {
     $wp_admin_bar->remove_menu('new-user');
 }
 add_action( 'wp_before_admin_bar_render', 'remove_land_use_admin_bar_links' );
+
+// Unregister widgets
+function nycc_unregister_press_widgets() {
+  unregister_widget('WP_Widget_Categories');
+}
+add_action('widgets_init', 'nycc_unregister_press_widgets', 11);
