@@ -16,7 +16,23 @@ Only themes and plugins are contained in this package. All WordPress core files 
     * [Styles](docs/ARCHITECTURE.md#styles)
     * [JavaScript](docs/ARCHITECTURE.md#javascript)
     * [Upgrading](docs/ARCHITECTURE.md#upgrading)
+
 * [Content Guidelines](docs/CONTENT_GUIDELINES.md)
+    * [Voice and style](docsCONTENT_GUIDELINES.md#voice-and-style)
+    * [Acronyms and Abbreviations](docsCONTENT_GUIDELINES.md#acronyms-and-abbreviations)
+    * [Addresses](docsCONTENT_GUIDELINES.md#addresses)
+    * [Capitalization](docsCONTENT_GUIDELINES.md#capitalization)
+    * [Compositions](docsCONTENT_GUIDELINES.md#compositions)
+    * [Contractions](docsCONTENT_GUIDELINES.md#contractions)
+    * [Names](docsCONTENT_GUIDELINES.md#names)
+    * [Numbers](docsCONTENT_GUIDELINES.md#numbers)
+    * [Hyperlinks](docsCONTENT_GUIDELINES.md#hyperlinks)
+    * [Pronouns](docsCONTENT_GUIDELINES.md#pronouns)
+    * [Punctuation](docsCONTENT_GUIDELINES.md#punctuation)
+    * [Words to avoid](docsCONTENT_GUIDELINES.md#words-to-avoid)
+
+**Managing Content**
+
 * [Homepage](docs/HOMEPAGE.md)
 * [Committees](docs/COMMITTEES.md)
 * [Caucuses](docs/CAUCUSES.md)
