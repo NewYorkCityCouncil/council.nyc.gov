@@ -10,6 +10,7 @@ require_once(get_template_directory().'/assets/functions/login.php');           
 require_once(get_template_directory().'/assets/functions/theme-support.php');     // Theme support options
 require_once(get_template_directory().'/assets/functions/comments.php');          // Comments
 require_once(get_template_directory().'/assets/functions/attachments.php');       // Attachments
+require_once(get_template_directory().'/assets/functions/archive-titles.php');    // Archive Titles
 require_once(get_template_directory().'/assets/functions/page-navigation.php');   // Numeric Page Navigation
 
 // Custom Post Types
