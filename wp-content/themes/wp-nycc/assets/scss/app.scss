@@ -14,6 +14,10 @@
 
 .sticky-container {
   z-index: 2;
+  // fix FoUC
+  @include breakpoint(large) {
+    min-height: 5.45rem;
+  }
 }
 
 .site-header {
@@ -207,6 +211,11 @@
     font-size: map-get($button-sizes, small);
     a {
       padding: 0.85em 1em;
+    }
+  }
+  .header-menu & {
+    .current-menu-item {
+      @extend .active;
     }
   }
 }

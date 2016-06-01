@@ -3205,7 +3205,7 @@ select {
       margin: 0 auto 0.25rem; }
   .menu.nested {
     margin-left: 1rem; }
-  .menu .active > a {
+  .menu .active > a, .header-menu .menu .current-menu-item > a {
     color: #fff;
     background: #8a8a8a; }
 
@@ -4784,6 +4784,9 @@ table.hover tr:nth-of-type(even):hover {
 
 .sticky-container {
   z-index: 2; }
+  @media screen and (min-width: 64em) {
+    .sticky-container {
+      min-height: 5.45rem; } }
 
 .site-header {
   width: 100%;

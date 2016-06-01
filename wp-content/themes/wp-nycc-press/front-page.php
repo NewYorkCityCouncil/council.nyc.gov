@@ -3,7 +3,7 @@
   <div class="row">
     <div class="columns medium-8">
 
-      <h1 class="header-xlarge">Press Releases</h1>
+      <h1 class="header-xxlarge">Press Releases</h1>
 
       <hr>
 
