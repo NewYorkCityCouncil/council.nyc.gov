@@ -239,13 +239,11 @@ article.post {
   color: $medium-gray;
 }
 
-.previous-next-links {
+.page-navigation {
+  @extend .text-center;
   border-top: $hr-border;
   padding-top: $global-margin*2;
   margin-top: $global-margin*2;
-  a {
-    @extend .button, .tiny;
-  }
 }
 
 
