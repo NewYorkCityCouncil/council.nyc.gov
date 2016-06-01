@@ -210,8 +210,8 @@ article.page {}
 article.post {
   & + .post {
     border-top: $hr-border;
-    padding-top: $global-margin*2;
-    margin-top: $global-margin*2;
+    padding-top: rem-calc(40);
+    margin-top: rem-calc(40);
   }
 }
 .post-title {
@@ -242,8 +242,8 @@ article.post {
 .page-navigation {
   @extend .text-center;
   border-top: $hr-border;
-  padding-top: $global-margin*2;
-  margin-top: $global-margin*2;
+  padding-top: rem-calc(40);
+  margin-top: rem-calc(40);
 }
 
 

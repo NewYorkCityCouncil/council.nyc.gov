@@ -4952,8 +4952,8 @@ table.hover tr:nth-of-type(even):hover {
 --------------------------------------------------*/
 article.post + .post {
   border-top: 2px solid rgba(0, 0, 0, 0.1);
-  padding-top: 2rem;
-  margin-top: 2rem; }
+  padding-top: 2.5rem;
+  margin-top: 2.5rem; }
 
 .post-title {
   font-size: 1.75rem; }
@@ -4978,8 +4978,8 @@ article.post + .post {
 
 .page-navigation {
   border-top: 2px solid rgba(0, 0, 0, 0.1);
-  padding-top: 2rem;
-  margin-top: 2rem; }
+  padding-top: 2.5rem;
+  margin-top: 2.5rem; }
 
 /*--------------------------------------------------
   Images
