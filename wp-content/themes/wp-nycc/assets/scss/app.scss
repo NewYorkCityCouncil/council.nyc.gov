@@ -190,6 +190,7 @@
 .text-dark-gray { color: $dark-gray; }
 
 .menu + hr {
+  // margin-top: rem-calc(20);
   margin-top: rem-calc(20);
 }
 
@@ -199,6 +200,15 @@
 
 .read-more-link {
   text-transform: uppercase;
+}
+
+.menu {
+  &.small {
+    font-size: map-get($button-sizes, small);
+    a {
+      padding: 0.85em 1em;
+    }
+  }
 }
 
 

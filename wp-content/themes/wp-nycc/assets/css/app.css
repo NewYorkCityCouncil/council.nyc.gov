@@ -4947,6 +4947,11 @@ table.hover tr:nth-of-type(even):hover {
 .read-more-link {
   text-transform: uppercase; }
 
+.menu.small {
+  font-size: 0.75rem; }
+  .menu.small a {
+    padding: 0.85em 1em; }
+
 /*--------------------------------------------------
   Posts & Pages
 --------------------------------------------------*/
