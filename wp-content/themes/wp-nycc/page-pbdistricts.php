@@ -66,7 +66,7 @@
               $borough = get_blog_option($ID,'council_district_borough');
 
               if ( $number ) {
-                $vote_sites = new WP_Query('post_type=nycc_pb_vote_site&posts_per_page=-1');
+                $vote_sites = new WP_Query('post_type=nycc_pb_ballot_item&posts_per_page=-1');
                 if ( $vote_sites->have_posts() ) {
                   ?>
                   <tr>

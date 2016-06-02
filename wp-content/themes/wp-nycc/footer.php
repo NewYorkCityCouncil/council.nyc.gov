@@ -40,7 +40,7 @@
     <?php wp_footer(); ?>
 
     <?php get_template_part( 'map_scripts' ); ?>
-    <?php if ( is_post_type_archive('nycc_pb_vote_site') ) { get_template_part( 'pb-map-scripts' ); } ?>
+    <?php if ( is_post_type_archive('nycc_pb_ballot_item') ) { get_template_part( 'pb-map-scripts' ); } ?>
     <?php if ( is_page_template( 'page-pbdistricts.php' ) ) { get_template_part( 'geolocate-scripts' ); } ?>
 
   </body>

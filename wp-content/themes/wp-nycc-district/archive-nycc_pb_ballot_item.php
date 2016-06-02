@@ -22,7 +22,7 @@
       <div class="row">
         <div class="columns large-6">
 
-          <h3>Where do I vote?</h3>
+          <h3>What's on the ballot?</h3>
 
           <ul class="accordion" data-accordion data-allow-all-closed="true">
             <?php while ( have_posts() ) : the_post(); ?>
@@ -38,10 +38,10 @@
         </div>
         <div class="columns large-6">
 
-          <h3>What's on the ballot?</h3>
+          <h3>Where do I vote?</h3>
 
           <?php
-          $ballot_items = new WP_Query('post_type=nycc_pb_ballot_item&orderby=menu_order&order=ASC&posts_per_page=-1');
+          $ballot_items = new WP_Query('post_type=nycc_pb_vote_site&orderby=menu_order&order=ASC&posts_per_page=-1');
           if ( $ballot_items->have_posts() ) {
             echo '<ul class="accordion" data-accordion data-allow-all-closed="true">';
 

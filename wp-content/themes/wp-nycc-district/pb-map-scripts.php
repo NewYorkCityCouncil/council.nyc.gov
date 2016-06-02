@@ -2,9 +2,11 @@
 
 <script type="text/javascript">
 
+// foo
+
     <?php
-    rewind_posts();
-    if ( have_posts() ) : while ( have_posts() ) : the_post();
+    $ballot_items = new WP_Query('post_type=nycc_pb_vote_site&orderby=menu_order&order=ASC&posts_per_page=-1');
+    if ( $ballot_items->have_posts() ) : while ( $ballot_items->have_posts() ) : $ballot_items->the_post();
 
     $ID = $post->ID;
     $lat = get_post_meta($ID, 'pb_vote_site_lat', true);
@@ -44,6 +46,10 @@
       <?php
     }
 
-    endwhile; endif; ?>
+    endwhile; endif;
+
+    wp_reset_postdata();
+
+    ?>
 
 </script>
