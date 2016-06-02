@@ -85,17 +85,6 @@ function save_nycc_pb_vote_site_meta($post_id, $post) {
 add_action('save_post', 'save_nycc_pb_vote_site_meta', 1, 2);
 
 
-// Redirect single post view back to archive
-function nycc_redirect_nycc_pb_vote_site() {
-    $queried_post_type = get_query_var('post_type');
-    if ( is_single() && 'nycc_pb_vote_site' ==  $queried_post_type ) {
-        wp_redirect( get_post_type_archive_link('nycc_pb_vote_site'), 301 );
-        exit;
-    }
-}
-add_action( 'template_redirect', 'nycc_redirect_nycc_pb_vote_site' );
-
-
 // PB Ballot Items
 function nycc_pb_ballot_item_post_type() {
   register_post_type( 'nycc_pb_ballot_item',
@@ -131,3 +120,60 @@ function nycc_pb_ballot_item_post_type() {
   );
 }
 add_action( 'init', 'nycc_pb_ballot_item_post_type');
+
+function add_pb_ballot_item_metaboxes() {
+  add_meta_box('nycc_pb_ballot_item_meta', 'Ballot Item Meta', 'nycc_pb_ballot_item_meta', 'nycc_pb_ballot_item', 'normal', 'default');
+}
+add_action( 'add_meta_boxes', 'add_pb_ballot_item_metaboxes' );
+
+function nycc_pb_ballot_item_meta() {
+  global $post;
+  echo '<input type="hidden" name="nycc_pb_ballot_item_meta_noncename" id="nycc_pb_ballot_item_meta_noncename" value="' . wp_create_nonce(plugin_basename(__FILE__)) . '" />';
+
+  ?>
+  <table class="form-table">
+
+    <tr valign="top">
+      <th scope="row">Winning Project</th>
+      <td>
+        <select name="pb_ballot_item_winner">
+          <option <?php echo ( get_post_meta($post->ID, 'pb_ballot_item_winner', true) == 'no' )? 'selected':''; ?> value="no">No</option>
+          <option <?php echo ( get_post_meta($post->ID, 'pb_ballot_item_winner', true) == 'yes')? 'selected':''; ?> value="yes">Yes</option>
+        </select>
+      </td>
+    </tr>
+
+  </table>
+<?php
+}
+
+function save_nycc_pb_ballot_item_meta($post_id, $post) {
+  if ( !wp_verify_nonce( $_POST['nycc_pb_ballot_item_meta_noncename'], plugin_basename(__FILE__) )) {
+    return $post->ID;
+  }
+  if ( !current_user_can( 'edit_post', $post->ID ))
+    return $post->ID;
+  $pb_ballot_item_meta['pb_ballot_item_winner'] = $_POST['pb_ballot_item_winner'];
+  foreach ($pb_ballot_item_meta as $key => $value) {
+    if( $post->post_type == 'revision' ) return;
+    $value = implode(',', (array)$value);
+    if(get_post_meta($post->ID, $key, FALSE)) {
+      update_post_meta($post->ID, $key, $value);
+    } else {
+      add_post_meta($post->ID, $key, $value);
+    }
+    if(!$value) delete_post_meta($post->ID, $key);
+  }
+}
+add_action('save_post', 'save_nycc_pb_ballot_item_meta', 1, 2);
+
+
+// Redirect single post view back to archive
+function nycc_redirect_nycc_pb_ballot_item() {
+    $queried_post_type = get_query_var('post_type');
+    if ( is_single() && 'nycc_pb_ballot_item' ==  $queried_post_type ) {
+        wp_redirect( get_post_type_archive_link('nycc_pb_ballot_item'), 301 );
+        exit;
+    }
+}
+add_action( 'template_redirect', 'nycc_redirect_nycc_pb_ballot_item' );
