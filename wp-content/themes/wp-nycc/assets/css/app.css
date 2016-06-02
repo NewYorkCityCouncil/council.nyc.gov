@@ -4958,7 +4958,7 @@ table.hover tr:nth-of-type(even):hover {
 /*--------------------------------------------------
   Posts & Pages
 --------------------------------------------------*/
-article.post + .post {
+article.hentry + .hentry {
   border-top: 2px solid rgba(0, 0, 0, 0.1);
   padding-top: 2.5rem;
   margin-top: 2.5rem; }

@@ -226,8 +226,8 @@
 --------------------------------------------------*/
 article.page {}
 
-article.post {
-  & + .post {
+article.hentry {
+  & + .hentry {
     border-top: $hr-border;
     padding-top: rem-calc(40);
     margin-top: rem-calc(40);

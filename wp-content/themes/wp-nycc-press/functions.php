@@ -7,6 +7,7 @@ require_once(get_template_directory().'/assets/functions/remove-in-child-theme.p
 // Press-specific functions
 require_once(get_stylesheet_directory().'/functions/posts.php');          // Posts
 require_once(get_stylesheet_directory().'/functions/widgets.php');        // Widgets
+require_once(get_stylesheet_directory().'/functions/media.php');          // Media
 
 // Hide admin stuff
 function remove_land_use_menus(){
