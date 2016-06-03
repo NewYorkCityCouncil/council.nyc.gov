@@ -9,7 +9,7 @@ $args = array(
   'meta_query' => array(
     array(
       'key'     => '_wp_page_template',
-      'value'   => array( 'page-pbdistricts.php', 'page-pbsidebar.php' ),
+      'value'   => array( 'page-pbdistricts.php', 'page-pbsidebar.php', 'page-pbfullwidth.php' ),
       'compare' => 'IN',
     ),
   ),

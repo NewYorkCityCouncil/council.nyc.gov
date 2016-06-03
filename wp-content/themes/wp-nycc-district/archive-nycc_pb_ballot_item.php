@@ -23,6 +23,7 @@
         'post_type'  => 'nycc_pb_ballot_item',
         'orderby'    => 'menu_order',
         'order'      => 'ASC',
+        'posts_per_page' => '-1',
         'meta_query' => array(
           array(
             'key'     => 'pb_ballot_item_winner',
@@ -54,6 +55,7 @@
           'post_type'  => 'nycc_pb_ballot_item',
           'orderby'    => 'menu_order',
           'order'      => 'ASC',
+          'posts_per_page' => '-1',
           'meta_query' => array(
             array(
               'key'     => 'pb_ballot_item_winner',
