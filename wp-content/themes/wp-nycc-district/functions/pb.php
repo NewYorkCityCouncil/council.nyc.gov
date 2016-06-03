@@ -30,8 +30,30 @@ function nycc_pb_ballot_item_post_type() {
       'has_archive' => true,
       'capability_type' => 'page',
       'hierarchical' => false,
-      'supports' => array( 'title', 'editor', 'page-attributes')
+      'supports' => array('title', 'editor', 'page-attributes'),
+      'taxonomies' => array('pbtags')
      )
+  );
+  register_taxonomy( 'pbtags',
+    array('nycc_pb_ballot_item'),
+    array('hierarchical' => false,
+      'labels' => array(
+        'name' => __( 'PB Categories', 'nycc' ),
+        'singular_name' => __( 'PB Category', 'nycc' ),
+        'search_items' =>  __( 'Search PB Categories', 'nycc' ),
+        'all_items' => __( 'All PB Categories', 'nycc' ),
+        'edit_item' => __( 'Edit PB Category', 'nycc' ),
+        'update_item' => __( 'Update PB Category', 'nycc' ),
+        'add_new_item' => __( 'Add New PB Category', 'nycc' ),
+        'new_item_name' => __( 'New PB Category Name', 'nycc' ),
+        'parent_item'       => __( 'Parent PB Category' ),
+        'parent_item_colon' => __( 'Parent PB Category:' ),
+        'menu_name'         => __( 'Categories' ),
+      ),
+      'show_admin_column' => true,
+      'show_ui' => true,
+      'query_var' => true
+    )
   );
 }
 add_action( 'init', 'nycc_pb_ballot_item_post_type');

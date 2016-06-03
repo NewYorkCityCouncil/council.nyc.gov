@@ -84,12 +84,22 @@
                   $winners->the_post();
                   ?>
                   <article id="post-<?php the_ID(); ?>" <?php post_class('no-border'); ?>>
+                    <?php
+                    $tags = get_the_terms( get_the_ID(), 'pbtags' );
+                    if ( $tags && ! is_wp_error( $tags ) ) :
+                        foreach ( $tags as $tag ) {
+                          echo '<span class="label float-right">' . $tag->name . '</span>';
+                        }
+                    endif; ?>
                     <h5 class="header-medium"><?php echo get_the_title(); ?></h5>
                     <?php the_content(); ?>
                   </article>
                   <?php
                 }
                 ?>
+                <article class="hentry no-border">
+                  <a class="button small" href="<?php echo get_blogaddress_by_id($ID); ?>pb/">See all projects</a>
+                </article>
                 </div>
               </article>
             <?php

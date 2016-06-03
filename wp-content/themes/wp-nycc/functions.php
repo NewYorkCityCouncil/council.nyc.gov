@@ -36,3 +36,6 @@ function remove_wp_dot_org_menu( $wp_admin_bar ) {
     $wp_admin_bar->remove_node( 'wp-logo' );
 }
 add_action( 'admin_bar_menu', 'remove_wp_dot_org_menu', 999 );
+
+// Gotta register an unused taxonomy so PB tags work with switch_to_blog
+register_taxonomy( 'pbtags', array(''), array('') );
