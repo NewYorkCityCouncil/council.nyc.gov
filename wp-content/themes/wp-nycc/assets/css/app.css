@@ -2802,11 +2802,11 @@ select {
       background-color: #6e6e6e;
       color: #fff; }
   .button.success, .press-release-tags ul li a.success, .social-buttons a.success, .success.comment-reply-link {
-    background-color: #a2dfb6;
-    color: #222; }
+    background-color: #43AC6A;
+    color: #fff; }
     .button.success:hover, .press-release-tags ul li a.success:hover, .social-buttons a.success:hover, .success.comment-reply-link:hover, .button.success:focus, .press-release-tags ul li a.success:focus, .social-buttons a.success:focus, .success.comment-reply-link:focus {
-      background-color: #69cb89;
-      color: #222; }
+      background-color: #368a55;
+      color: #fff; }
   .button.warning, .press-release-tags ul li a.warning, .social-buttons a.warning, .warning.comment-reply-link {
     background-color: #ffae00;
     color: #fff; }
@@ -2840,11 +2840,11 @@ select {
         border-color: #454545;
         color: #454545; }
     .button.hollow.success, .press-release-tags ul li a.hollow.success, .social-buttons a.hollow.success, .hollow.success.comment-reply-link {
-      border: 1px solid #a2dfb6;
-      color: #a2dfb6; }
+      border: 1px solid #43AC6A;
+      color: #43AC6A; }
       .button.hollow.success:hover, .press-release-tags ul li a.hollow.success:hover, .social-buttons a.hollow.success:hover, .hollow.success.comment-reply-link:hover, .button.hollow.success:focus, .press-release-tags ul li a.hollow.success:focus, .social-buttons a.hollow.success:focus, .hollow.success.comment-reply-link:focus {
-        border-color: #318f50;
-        color: #318f50; }
+        border-color: #225635;
+        color: #225635; }
     .button.hollow.warning, .press-release-tags ul li a.hollow.warning, .social-buttons a.hollow.warning, .hollow.warning.comment-reply-link {
       border: 1px solid #ffae00;
       color: #ffae00; }
@@ -2949,8 +2949,8 @@ select {
     background: #8a8a8a;
     color: #fff; }
   .badge.success {
-    background: #a2dfb6;
-    color: #222; }
+    background: #43AC6A;
+    color: #fff; }
   .badge.warning {
     background: #ffae00;
     color: #fff; }
@@ -3043,11 +3043,11 @@ select {
       background-color: #6e6e6e;
       color: #fff; }
   .button-group.success .button, .button-group.success .press-release-tags ul li a, .press-release-tags ul li .button-group.success a, .button-group.success .social-buttons a, .social-buttons .button-group.success a, .button-group.success .comment-reply-link {
-    background-color: #a2dfb6;
-    color: #222; }
+    background-color: #43AC6A;
+    color: #fff; }
     .button-group.success .button:hover, .button-group.success .press-release-tags ul li a:hover, .press-release-tags ul li .button-group.success a:hover, .button-group.success .social-buttons a:hover, .social-buttons .button-group.success a:hover, .button-group.success .comment-reply-link:hover, .button-group.success .button:focus, .button-group.success .press-release-tags ul li a:focus, .press-release-tags ul li .button-group.success a:focus, .button-group.success .social-buttons a:focus, .social-buttons .button-group.success a:focus, .button-group.success .comment-reply-link:focus {
-      background-color: #69cb89;
-      color: #222; }
+      background-color: #368a55;
+      color: #fff; }
   .button-group.warning .button, .button-group.warning .press-release-tags ul li a, .press-release-tags ul li .button-group.warning a, .button-group.warning .social-buttons a, .social-buttons .button-group.warning a, .button-group.warning .comment-reply-link {
     background-color: #ffae00;
     color: #fff; }
@@ -3099,7 +3099,7 @@ select {
   .callout.secondary, .press-release-tags ul li a.callout, .callout.comment-reply-link {
     background-color: #ededed; }
   .callout.success {
-    background-color: #f1faf4; }
+    background-color: #e2f4e8; }
   .callout.warning {
     background-color: #fff3d9; }
   .callout.alert {
@@ -3721,8 +3721,8 @@ select {
     background: #8a8a8a;
     color: #fff; }
   .label.success, .widget_tag_cloud a.success {
-    background: #a2dfb6;
-    color: #222; }
+    background: #43AC6A;
+    color: #fff; }
   .label.warning, .widget_tag_cloud a.warning {
     background: #ffae00;
     color: #fff; }
@@ -4024,7 +4024,7 @@ body {
   .progress.secondary .progress-meter, .press-release-tags ul li a.progress .progress-meter, .progress.comment-reply-link .progress-meter {
     background-color: #8a8a8a; }
   .progress.success .progress-meter {
-    background-color: #a2dfb6; }
+    background-color: #43AC6A; }
   .progress.warning .progress-meter {
     background-color: #ffae00; }
   .progress.alert .progress-meter {

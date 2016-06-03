@@ -2783,11 +2783,11 @@ select {
       background-color: #6e6e6e;
       color: #fff; }
   .button.success {
-    background-color: #a2dfb6;
-    color: #222; }
+    background-color: #43AC6A;
+    color: #fff; }
     .button.success:hover, .button.success:focus {
-      background-color: #69cb89;
-      color: #222; }
+      background-color: #368a55;
+      color: #fff; }
   .button.warning {
     background-color: #ffae00;
     color: #fff; }
@@ -2821,11 +2821,11 @@ select {
         border-color: #454545;
         color: #454545; }
     .button.hollow.success {
-      border: 1px solid #a2dfb6;
-      color: #a2dfb6; }
+      border: 1px solid #43AC6A;
+      color: #43AC6A; }
       .button.hollow.success:hover, .button.hollow.success:focus {
-        border-color: #318f50;
-        color: #318f50; }
+        border-color: #225635;
+        color: #225635; }
     .button.hollow.warning {
       border: 1px solid #ffae00;
       color: #ffae00; }
@@ -2930,8 +2930,8 @@ select {
     background: #8a8a8a;
     color: #fff; }
   .badge.success {
-    background: #a2dfb6;
-    color: #222; }
+    background: #43AC6A;
+    color: #fff; }
   .badge.warning {
     background: #ffae00;
     color: #fff; }
@@ -3024,11 +3024,11 @@ select {
       background-color: #6e6e6e;
       color: #fff; }
   .button-group.success .button {
-    background-color: #a2dfb6;
-    color: #222; }
+    background-color: #43AC6A;
+    color: #fff; }
     .button-group.success .button:hover, .button-group.success .button:focus {
-      background-color: #69cb89;
-      color: #222; }
+      background-color: #368a55;
+      color: #fff; }
   .button-group.warning .button {
     background-color: #ffae00;
     color: #fff; }
@@ -3080,7 +3080,7 @@ select {
   .callout.secondary {
     background-color: #ededed; }
   .callout.success {
-    background-color: #f1faf4; }
+    background-color: #e2f4e8; }
   .callout.warning {
     background-color: #fff3d9; }
   .callout.alert {
@@ -3702,8 +3702,8 @@ select {
     background: #8a8a8a;
     color: #fff; }
   .label.success {
-    background: #a2dfb6;
-    color: #222; }
+    background: #43AC6A;
+    color: #fff; }
   .label.warning {
     background: #ffae00;
     color: #fff; }
@@ -4005,7 +4005,7 @@ body {
   .progress.secondary .progress-meter {
     background-color: #8a8a8a; }
   .progress.success .progress-meter {
-    background-color: #a2dfb6; }
+    background-color: #43AC6A; }
   .progress.warning .progress-meter {
     background-color: #ffae00; }
   .progress.alert .progress-meter {

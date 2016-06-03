@@ -84,13 +84,15 @@
                   $winners->the_post();
                   ?>
                   <article id="post-<?php the_ID(); ?>" <?php post_class('no-border'); ?>>
-                    <?php
-                    $tags = get_the_terms( get_the_ID(), 'pbtags' );
-                    if ( $tags && ! is_wp_error( $tags ) ) :
-                        foreach ( $tags as $tag ) {
-                          echo '<span class="label float-right">' . $tag->name . '</span>';
-                        }
-                    endif; ?>
+                    <span class="float-right no-break">
+                      <?php
+                      $tags = get_the_terms( get_the_ID(), 'pbtags' );
+                      if ( $tags && ! is_wp_error( $tags ) ) :
+                          foreach ( $tags as $tag ) {
+                            echo '<span class="label">' . $tag->name . '</span>';
+                          }
+                      endif; ?><span class="label success"><strong>Funded</strong></span>
+                    </span>
                     <h5 class="header-medium"><?php echo get_the_title(); ?></h5>
                     <?php the_content(); ?>
                   </article>
