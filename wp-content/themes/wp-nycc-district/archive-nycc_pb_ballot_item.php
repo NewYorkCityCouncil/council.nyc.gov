@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-      <?php if ( have_posts() ) : ?>
+    <?php if ( have_posts() ) : ?>
 
       <header class="page-header">
         <h1 class="header-xlarge">Participatory Budgeting in District&nbsp;<?php echo get_option('council_district_number'); ?></h1>
@@ -18,11 +18,73 @@
         <hr>
       </header>
 
+      <?php
+      $args = array(
+        'post_type'  => 'nycc_pb_ballot_item',
+        'orderby'    => 'menu_order',
+        'order'      => 'ASC',
+        'meta_query' => array(
+          array(
+            'key'     => 'pb_ballot_item_winner',
+            'value'   => 'yes',
+            'compare' => 'IN',
+          ),
+        ),
+      );
+      $winners = new WP_Query( $args );
+      if ( $winners->have_posts() ) {
+        $winner_exists = 'yes';
+        echo '<h3 class="header-xlarge">Winning Projects:</h3>';
+        while ( $winners->have_posts() ) {
+          $winners->the_post();
+          ?>
+          <article id="post-<?php the_ID(); ?>" <?php post_class('no-border'); ?>>
+            <h5 class="header-medium"><?php echo get_the_title(); ?></h5>
+            <?php the_content(); ?>
+          </article>
+          <?php
+        }
+        echo '';
+      }
+      wp_reset_postdata();
+
+      if ($winner_exists == 'yes') {
+
+        $args = array(
+          'post_type'  => 'nycc_pb_ballot_item',
+          'orderby'    => 'menu_order',
+          'order'      => 'ASC',
+          'meta_query' => array(
+            array(
+              'key'     => 'pb_ballot_item_winner',
+              'value'   => 'no',
+              'compare' => 'IN',
+            ),
+          ),
+        );
+        $losers = new WP_Query( $args );
+        if ( $losers->have_posts() ) {
+          echo '<hr><h3 class="header-xlarge">The following projects were not funded:</h3>';
+          while ( $losers->have_posts() ) {
+            $losers->the_post();
+            ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class('no-border'); ?>>
+              <h5 class="header-medium"><?php echo get_the_title(); ?></h5>
+              <?php the_content(); ?>
+            </article>
+            <?php
+          }
+          echo '';
+        }
+        wp_reset_postdata();
+
+      } else {
+      ?>
 
       <div class="row">
         <div class="columns large-6">
 
-          <h3>What's on the ballot?</h3>
+          <h3 class="header-large">What's on the ballot?</h3>
 
           <ul class="accordion" data-accordion data-allow-all-closed="true">
             <?php while ( have_posts() ) : the_post(); ?>
@@ -38,7 +100,7 @@
         </div>
         <div class="columns large-6">
 
-          <h3>Where do I vote?</h3>
+          <h3 class="header-large">Where do I vote?</h3>
 
           <?php
           $ballot_items = new WP_Query('post_type=nycc_pb_vote_site&orderby=menu_order&order=ASC&posts_per_page=-1');
@@ -64,6 +126,8 @@
 
         </div>
       </div>
+
+      <?php } ?>
 
     <?php else : ?>
       <h1 class="post-title">Participatory budgeting is not currently happening in District&nbsp;<?php echo get_option('council_district_number'); ?>.</h1>

@@ -231,6 +231,11 @@ article.hentry {
     border-top: $hr-border;
     padding-top: rem-calc(40);
     margin-top: rem-calc(40);
+    &.no-border {
+      border-top: 0;
+      padding-top: $global-margin;
+      margin-top:0;
+    }
   }
 }
 .post-title {

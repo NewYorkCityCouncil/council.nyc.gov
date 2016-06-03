@@ -4962,6 +4962,10 @@ article.hentry + .hentry {
   border-top: 2px solid rgba(0, 0, 0, 0.1);
   padding-top: 2.5rem;
   margin-top: 2.5rem; }
+  article.hentry + .hentry.no-border {
+    border-top: 0;
+    padding-top: 1rem;
+    margin-top: 0; }
 
 .post-title {
   font-size: 1.75rem; }
