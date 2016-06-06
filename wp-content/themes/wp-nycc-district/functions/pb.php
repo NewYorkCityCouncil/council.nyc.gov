@@ -52,7 +52,8 @@ function nycc_pb_ballot_item_post_type() {
       ),
       'show_admin_column' => true,
       'show_ui' => true,
-      'query_var' => true
+      'query_var' => true,
+      'show_in_nav_menus' => false,
     )
   );
 }
