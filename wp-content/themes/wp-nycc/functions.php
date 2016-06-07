@@ -12,6 +12,7 @@ require_once(get_template_directory().'/assets/functions/comments.php');        
 require_once(get_template_directory().'/assets/functions/attachments.php');       // Attachments
 require_once(get_template_directory().'/assets/functions/archive-titles.php');    // Archive Titles
 require_once(get_template_directory().'/assets/functions/page-navigation.php');   // Numeric Page Navigation
+require_once(get_template_directory().'/assets/functions/social-meta.php');       // Facebook & Twitter share meta
 
 // Custom Post Types
 require_once(get_template_directory().'/assets/functions/committees.php');        // Committees custom post type
