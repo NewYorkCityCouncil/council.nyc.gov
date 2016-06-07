@@ -23,7 +23,7 @@ class nycc_district_contact_widget extends WP_Widget {
         if ( $district_contact || $legislative_contact ) {
             echo '<div class="callout">';
             if ( $district_contact ) { ?><h4 class="widget-title">District Office</h4><p class="text-small"><?php echo nl2br( $district_contact ); ?></p><?php }
-            if ( $legislative_contact ) { ?><h4 class="widget-title">Legisaltive Office</h4><p class="text-small"><?php echo nl2br( $legislative_contact ); ?></p><?php }
+            if ( $legislative_contact ) { ?><h4 class="widget-title">Legislative Office</h4><p class="text-small"><?php echo nl2br( $legislative_contact ); ?></p><?php }
             echo '</div>';
         }
         if ( $email ) { ?><a href="mailto:<?php echo $email; ?>" class="button secondary expanded dashicons-before dashicons-email-alt">&nbsp;Email</a><?php }
