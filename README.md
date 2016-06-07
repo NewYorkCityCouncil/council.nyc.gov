@@ -39,6 +39,7 @@ Only themes and plugins are contained in this package. All WordPress core files 
 * [Land Use](docs/LAND_USE.md)
 * [Legislation](docs/LEGISLATION.md)
 * [Press](docs/PRESS.md)
+* [Social Media Share Images](docs/SOCIAL_SHARE_IMAGES.md)
 
 ## Contributors
 
