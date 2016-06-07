@@ -8,11 +8,11 @@
               <p>With your insight, the Council discovers ways to improve the City we all call home. So we're meeting New Yorkers where they are—online and in person. Keep your feedback coming!</p>
               <p>You can reach us via social media, email, paper mail, or at your district office. For issues specific to a neighborhood, it's best to contact the Council Member representing that community</p>
               <ul class="menu simple social-buttons">
-                <li><a href="https://www.facebook.com/NYCCouncil"><img class="inline-icon large" src="http://localhost/~andy/wp-labs/wp-content/uploads/2016/02/social-icon-facebook.png"></a></li>
-                <li><a href="https://twitter.com/NYCCouncil"><img class="inline-icon large" src="http://localhost/~andy/wp-labs/wp-content/uploads/2016/02/social-icon-twitter.png"></a></li>
-                <li><a href="https://vine.co/NYCCouncil"><img class="inline-icon large" src="http://localhost/~andy/wp-labs/wp-content/uploads/2016/02/social-icon-vine.png"></a></li>
-                <li><a href="https://instagram.com/NYCCouncil"><img class="inline-icon large" src="http://localhost/~andy/wp-labs/wp-content/uploads/2016/02/social-icon-instagram.png"></a></li>
-                <li><a href="https://plus.google.com/u/0/104432794073374421060/posts"><img class="inline-icon large" src="http://localhost/~andy/wp-labs/wp-content/uploads/2016/02/social-icon-googleplus.png"></a></li>
+                <li><a href="https://www.facebook.com/NYCCouncil"><img class="inline-icon large" src="<?php echo get_template_directory_uri(); ?>/assets/images/social-icon-facebook.png"></a></li>
+                <li><a href="https://twitter.com/NYCCouncil"><img class="inline-icon large" src="<?php echo get_template_directory_uri(); ?>/assets/images/social-icon-twitter.png"></a></li>
+                <li><a href="https://vine.co/NYCCouncil"><img class="inline-icon large" src="<?php echo get_template_directory_uri(); ?>/assets/images/social-icon-vine.png"></a></li>
+                <li><a href="https://instagram.com/NYCCouncil"><img class="inline-icon large" src="<?php echo get_template_directory_uri(); ?>/assets/images/social-icon-instagram.png"></a></li>
+                <li><a href="https://plus.google.com/u/0/104432794073374421060/posts"><img class="inline-icon large" src="<?php echo get_template_directory_uri(); ?>/assets/images/social-icon-googleplus.png"></a></li>
               </ul>
             </aside>
           </div>
