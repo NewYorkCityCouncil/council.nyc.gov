@@ -3,7 +3,7 @@
 function insert_share_meta_in_head() {
   global $post;
   if ( !has_post_thumbnail() ) {
-    $share_image = get_template_directory() . '/assets/images/social-img-1024x512.jpg';
+    $share_image = get_template_directory_uri() . '/assets/images/social-img-1024x512.jpg';
   }
   else{
     $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
