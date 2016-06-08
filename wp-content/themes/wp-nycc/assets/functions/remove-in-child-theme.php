@@ -60,6 +60,9 @@ function nycc_filter_theme_page_templates( $page_templates, $this, $post ) {
     if ( isset( $page_templates['page-pbsidebar.php'] ) ) {
          unset( $page_templates['page-pbsidebar.php'] );
     }
+    if ( isset( $page_templates['page-pbresults.php'] ) ) {
+         unset( $page_templates['page-pbresults.php'] );
+    }
     if ( isset( $page_templates['page-listdistricts.php'] ) ) {
          unset( $page_templates['page-listdistricts.php'] );
     }
