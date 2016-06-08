@@ -292,6 +292,34 @@ figure {
   margin-bottom: -0.5rem;
 }
 
+.image-grid {
+  @include breakpoint(medium) {
+    margin-right: $paragraph-margin-bottom*-1;
+    .thumbnail {
+      margin-right: $paragraph-margin-bottom;
+    }
+  }
+  .columns:nth-child(odd) {
+    clear: both;
+  }
+  .columns:last-child {
+    @extend .end;
+  }
+  .thumbnail {
+    position: relative;
+  }
+  .caption {
+    color: $white;
+    background-color: rgba(0,0,0,0.5);
+    padding: map-get($grid-column-gutter, small)/3 map-get($grid-column-gutter, small)/2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    line-height: $global-lineheight;
+    font-size: $small-font-size;
+  }
+}
+
 
 /*--------------------------------------------------
   Image Header

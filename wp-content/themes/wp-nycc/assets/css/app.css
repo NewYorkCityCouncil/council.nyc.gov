@@ -1110,7 +1110,7 @@ button {
       padding-right: 1.875rem; } }
   .column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
     float: right; }
-  .column.end:last-child:last-child, .end.columns:last-child:last-child {
+  .column.end:last-child:last-child, .end.columns:last-child:last-child, .image-grid .columns:last-child:last-child {
     float: left; }
 
 .column.row.row, .row.row.columns {
@@ -5011,6 +5011,28 @@ figure {
   vertical-align: middle;
   margin-top: -0.5rem;
   margin-bottom: -0.5rem; }
+
+@media screen and (min-width: 40em) {
+  .image-grid {
+    margin-right: -1rem; }
+    .image-grid .thumbnail {
+      margin-right: 1rem; } }
+
+.image-grid .columns:nth-child(odd) {
+  clear: both; }
+
+.image-grid .thumbnail {
+  position: relative; }
+
+.image-grid .caption {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 6.66667px 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  line-height: 1.5;
+  font-size: 80%; }
 
 /*--------------------------------------------------
   Image Header

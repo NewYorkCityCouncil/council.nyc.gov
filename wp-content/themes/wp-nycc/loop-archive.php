@@ -8,7 +8,9 @@ if ( get_post_type() == 'attachment' ) { ?>
         <?php the_excerpt(); ?>
       </header>
       <section class="post-content columns large-7">
-        <img class="thumbnail" src="<?php echo wp_get_attachment_url() ?>">
+        <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
+          <img class="thumbnail" src="<?php echo wp_get_attachment_url() ?>">
+        </a>
       </section>
     </div>
   </article>
