@@ -50,7 +50,7 @@ gulp.task('foundation-js', function() {
       // './bower_components/foundation-sites/js/foundation.drilldown.js',
       './bower_components/foundation-sites/js/foundation.dropdown.js',
       './bower_components/foundation-sites/js/foundation.dropdownMenu.js',
-      // './bower_components/foundation-sites/js/foundation.equalizer.js',
+      './bower_components/foundation-sites/js/foundation.equalizer.js',
       // './bower_components/foundation-sites/js/foundation.interchange.js',
       // './bower_components/foundation-sites/js/foundation.magellan.js',
       // './bower_components/foundation-sites/js/foundation.offcanvas.js',
