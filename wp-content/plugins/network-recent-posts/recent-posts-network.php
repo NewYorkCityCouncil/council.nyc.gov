@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: Network Recent Posts
+ * Plugin URI: https://github.com/rvega/wordpress-widget-network-recent-posts
  * Description: A widget to display recent posts from all blogs in the network.
  */
 
@@ -72,7 +73,7 @@ class Widget_Recent_Posts_Network extends WP_Widget {
          while ($query->have_posts()) {
             global $post;
             $query->the_post();
-            $found_posts[$post->post_modified] = array(
+            $found_posts[$post->post_date] = array(
                'pid' => get_the_ID(),
                'bid' => $blog['blog_id']
             );
@@ -100,6 +101,8 @@ class Widget_Recent_Posts_Network extends WP_Widget {
                $current_site = get_bloginfo();
                if ( $current_site != 'New York City Council' ) {
                  $site_name = '<strong>' . $current_site . ': </strong>';
+               } else {
+                 $site_name = '<strong>News: </strong>';
                }
                restore_current_blog();
             ?>
