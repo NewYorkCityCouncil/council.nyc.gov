@@ -99,10 +99,8 @@ class Widget_Recent_Posts_Network extends WP_Widget {
                $post = get_post($i['pid']);
                $url = get_site_url() . '/?p=' . $i['pid'];
                $current_site = get_bloginfo();
-               if ( $current_site != 'New York City Council' ) {
-                 $site_name = '<strong>' . $current_site . ': </strong>';
-               } else {
-                 $site_name = '<strong>News: </strong>';
+               if ( $current_site == 'Press' ) {
+                 $site_name = '<strong>Press Release: </strong>';
                }
                restore_current_blog();
             ?>
