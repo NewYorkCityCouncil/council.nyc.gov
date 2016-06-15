@@ -97,10 +97,14 @@ class Widget_Recent_Posts_Network extends WP_Widget {
                switch_to_blog($i['bid']);
                $post = get_post($i['pid']);
                $url = get_site_url() . '/?p=' . $i['pid'];
+               $current_site = get_bloginfo();
+               if ( $current_site != 'New York City Council' ) {
+                 $site_name = '<strong>' . $current_site . ': </strong>';
+               }
                restore_current_blog();
             ?>
                <li>
-                  <a href="<?php echo $url; ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a>
+                  <?php echo $site_name; ?><a href="<?php echo $url; ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a>
                   <?php if ( $show_date ) : ?>
                      <span class="post-date"><?php echo get_the_date(); ?></span>
                   <?php endif; ?>
