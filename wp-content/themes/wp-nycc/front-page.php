@@ -9,8 +9,8 @@
       <?php endwhile; endif; ?>
       <hr>
     </div>
-    <div class="columns">
-      <div class="row small-up-1 medium-up-2 large-up-3 block-grid">
+    <div class="columns medium-8">
+      <div class="row small-up-1 large-up-2 block-grid">
 
       <?php
       $list_features = new WP_Query('post_type=nycc_feature&orderby=menu_order&order=ASC&posts_per_page=-1');
@@ -63,6 +63,9 @@
       ?>
 
       </div>
+    </div>
+    <div class="sidebar columns medium-4">
+      <?php get_sidebar(); ?>
     </div>
   </div>
 
