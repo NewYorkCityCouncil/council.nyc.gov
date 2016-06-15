@@ -9,7 +9,7 @@
       <?php endwhile; endif; ?>
       <hr>
     </div>
-    <div class="columns medium-8">
+    <div class="columns medium-7 large-8">
       <div class="row small-up-1 large-up-2 block-grid">
 
       <?php
@@ -64,7 +64,7 @@
 
       </div>
     </div>
-    <div class="sidebar columns medium-4">
+    <div class="sidebar columns medium-5 large-4">
       <?php get_sidebar(); ?>
     </div>
   </div>
