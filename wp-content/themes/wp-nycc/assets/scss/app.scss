@@ -414,7 +414,7 @@ $image-overlay-padding: map-get($grid-column-gutter, small);
   Widgets
 --------------------------------------------------*/
 // Core WordPress Widgets
-$widget-item-margin: rem-calc(5);
+$widget-item-margin: rem-calc(8);
 .widget {
   font-size: rem-calc(11);
   margin-bottom: map-get($grid-column-gutter, medium);
@@ -521,6 +521,19 @@ $widget-item-margin: rem-calc(5);
         margin: 0 rem-calc(2) rem-calc(2) 0;
       }
     }
+  }
+}
+
+// Network Recent Posts widget
+.widget_recent_entries_network {
+  a[href*="/press/"]:before {
+    @extend .label;
+    margin-right: rem-calc(4);
+    content: 'Press Release';
+    color: $dark-gray;
+    font-weight: $global-weight-normal;
+    font-size: $small-font-size;
+    cursor: pointer;
   }
 }
 

@@ -3707,7 +3707,7 @@ select {
   .flex-video.vimeo {
     padding-top: 0; }
 
-.label, .widget_tag_cloud a {
+.label, .widget_tag_cloud a, .widget_recent_entries_network a[href*="/press/"]:before {
   display: inline-block;
   padding: 0.33333rem 0.5rem;
   font-size: 0.8rem;
@@ -3717,16 +3717,16 @@ select {
   border-radius: 0;
   background: #e6e6e6;
   color: #666; }
-  .label.secondary, .widget_tag_cloud a.secondary, .widget_tag_cloud .press-release-tags ul li a, .press-release-tags ul li .widget_tag_cloud a, .widget_tag_cloud a.comment-reply-link, .press-release-tags ul li a.label, .label.comment-reply-link {
+  .label.secondary, .widget_tag_cloud a.secondary, .widget_tag_cloud .press-release-tags ul li a, .press-release-tags ul li .widget_tag_cloud a, .widget_tag_cloud a.comment-reply-link, .press-release-tags ul li a.label, .press-release-tags ul li .widget_recent_entries_network a[href*="/press/"]:before, .widget_recent_entries_network .press-release-tags ul li a[href*="/press/"]:before, .widget_recent_entries_network a.secondary[href*="/press/"]:before, .widget_recent_entries_network a[href*="/press/"].comment-reply-link:before, .label.comment-reply-link {
     background: #8a8a8a;
     color: #fff; }
-  .label.success, .widget_tag_cloud a.success {
+  .label.success, .widget_tag_cloud a.success, .widget_recent_entries_network a.success[href*="/press/"]:before {
     background: #43AC6A;
     color: #fff; }
-  .label.warning, .widget_tag_cloud a.warning {
+  .label.warning, .widget_tag_cloud a.warning, .widget_recent_entries_network a.warning[href*="/press/"]:before {
     background: #ffae00;
     color: #fff; }
-  .label.alert, .widget_tag_cloud a.alert {
+  .label.alert, .widget_tag_cloud a.alert, .widget_recent_entries_network a.alert[href*="/press/"]:before {
     background: #d05d4e;
     color: #fff; }
 
@@ -5118,7 +5118,7 @@ figure {
     font-weight: bold; }
   .widget li + li,
   .widget li > ul {
-    margin-top: 0.3125rem; }
+    margin-top: 0.5rem; }
 
 .widget-title {
   margin-bottom: 0.5rem; }
@@ -5133,13 +5133,13 @@ figure {
   display: block; }
 
 .widget_rss .rssSummary {
-  margin-bottom: 0.3125rem; }
+  margin-bottom: 0.5rem; }
 
 .widget_tag_cloud {
   font-size: 0; }
   .widget_tag_cloud a {
     cursor: auto;
-    margin: 0 0.3125rem 0.3125rem 0; }
+    margin: 0 0.5rem 0.5rem 0; }
 
 .widget_calendar .calendar_wrap {
   overflow: scroll; }
@@ -5147,7 +5147,7 @@ figure {
     margin-bottom: 0; }
   .widget_calendar .calendar_wrap caption, .widget_calendar .calendar_wrap td, .widget_calendar .calendar_wrap th {
     text-align: center;
-    padding: 0.3125rem 0; }
+    padding: 0.5rem 0; }
   .widget_calendar .calendar_wrap caption {
     background-color: #cacaca; }
 
@@ -5213,11 +5213,19 @@ figure {
       .press-release-tags ul li a {
         margin: 0 0.125rem 0.125rem 0; }
 
+.widget_recent_entries_network a[href*="/press/"]:before {
+  margin-right: 0.25rem;
+  content: 'Press Release';
+  color: #666;
+  font-weight: normal;
+  font-size: 80%;
+  cursor: pointer; }
+
 /*--------------------------------------------------
   Social Media Links
 --------------------------------------------------*/
 .social-buttons {
-  margin-top: 1.3125rem; }
+  margin-top: 1.5rem; }
   .social-buttons a {
     font-size: 1.875rem;
     display: inline-block;
