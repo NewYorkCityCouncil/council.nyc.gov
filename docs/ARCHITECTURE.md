@@ -1,6 +1,6 @@
 # Architecture
 
-Only themes and plugins are contained in this package. All WordPress core files are ignored.
+This package contains the themes and plugins for a WordPress Multisite installation. Only the themes and plugins are included. All WordPress core files are ignored.
 
 ## Required Skills
 
@@ -16,6 +16,10 @@ To work on all aspects of this package, developers will need the following code 
 * [Bower](https://bower.io/)
 * [Gulp](http://gulpjs.com/)
 * [Foundation for Sites](http://foundation.zurb.com/sites.html)
+
+## Local Installation
+
+To run this locally, you will need to clone this repository and manually install WordPress in the same directory. Be careful not to overwrite any files. Note: This package is meant to be used with a WordPress [Network](https://codex.wordpress.org/Create_A_Network).
 
 ## WordPress Multisite
 
