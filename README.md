@@ -4,7 +4,7 @@ This package contains the WordPress themes & plugins for New York City Council's
 
 ## Documentation
 
-* [Architecture](docs/ARCHITECTURE.md)
+* **[Architecture](docs/ARCHITECTURE.md)**
     * [Required Skills](docs/ARCHITECTURE.md#required-skills)
     * [Local Installation](docs/ARCHITECTURE.md#local-installation)
     * [WordPress Multisite](docs/ARCHITECTURE.md#wordpress-multisite)
@@ -14,7 +14,7 @@ This package contains the WordPress themes & plugins for New York City Council's
     * [Styles](docs/ARCHITECTURE.md#styles)
     * [JavaScript](docs/ARCHITECTURE.md#javascript)
     * [Upgrading](docs/ARCHITECTURE.md#upgrading)
-* [Content Guidelines](docs/CONTENT_GUIDELINES.md)
+* **[Content Guidelines](docs/CONTENT_GUIDELINES.md)**
     * [Voice and style](docs/CONTENT_GUIDELINES.md#voice-and-style)
     * [Acronyms and Abbreviations](docs/CONTENT_GUIDELINES.md#acronyms-and-abbreviations)
     * [Addresses](docs/CONTENT_GUIDELINES.md#addresses)
@@ -27,17 +27,17 @@ This package contains the WordPress themes & plugins for New York City Council's
     * [Pronouns](docs/CONTENT_GUIDELINES.md#pronouns)
     * [Punctuation](docs/CONTENT_GUIDELINES.md#punctuation)
     * [Words to avoid](docs/CONTENT_GUIDELINES.md#words-to-avoid)
-* [Homepage](docs/HOMEPAGE.md)
-* [Committees](docs/COMMITTEES.md)
-* [Caucuses](docs/CAUCUSES.md)
-* [Initiatives](docs/INITIATIVES.md)
-* [Reports](docs/REPORTS.md)
-* [Districts](docs/DISTRICTS.md)
-* [Budget](docs/BUDGET.md)
-* [Land Use](docs/LAND_USE.md)
-* [Legislation](docs/LEGISLATION.md)
-* [Press](docs/PRESS.md)
-* [Social Media Share Images](docs/SOCIAL_SHARE_IMAGES.md)
+* **[Homepage](docs/HOMEPAGE.md)**
+* **[Committees](docs/COMMITTEES.md)**
+* **[Caucuses](docs/CAUCUSES.md)**
+* **[Initiatives](docs/INITIATIVES.md)**
+* **[Reports](docs/REPORTS.md)**
+* **[Districts](docs/DISTRICTS.md)**
+* **[Budget](docs/BUDGET.md)**
+* **[Land Use](docs/LAND_USE.md)**
+* **[Legislation](docs/LEGISLATION.md)**
+* **[Press](docs/PRESS.md)**
+* **[Social Media Share Images](docs/SOCIAL_SHARE_IMAGES.md)**
 
 ## Contributors
 
