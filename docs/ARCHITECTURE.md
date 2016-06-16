@@ -2,6 +2,21 @@
 
 Only themes and plugins are contained in this package. All WordPress core files are ignored.
 
+## Required Skills
+
+To work on all aspects of this package, developers will need the following code skills:
+* [WordPress](https://wordpress.org/)
+    * [PHP](http://php.net/)
+    * [MySQL](http://mysql.com/)
+* [Git](https://git-scm.com/)/[GitHub](https://github.com/)
+* [HTML5](https://www.w3.org/TR/html5/)
+* [Sass](http://sass-lang.com/)
+* [jQuery](https://jquery.com/)/JavaScript
+* [NPM](https://www.npmjs.com/)
+* [Bower](https://bower.io/)
+* [Gulp](http://gulpjs.com/)
+* [Foundation for Sites](http://foundation.zurb.com/sites.html)
+
 ## WordPress Multisite
 
 The NYC Council site is a [network](https://codex.wordpress.org/Create_A_Network) of sites. The primary site is for basic Council pages—such as the home page, the About page, and the Initiative page. Each of the 51 Council Districts and each Council Division (Legislation, Budget, Land Use, Press) is its own site.
@@ -15,8 +30,6 @@ There are several themes included in this package. The primary site should use t
 The New York City Council website uses [Foundation for Sites](http://foundation.zurb.com/sites/docs/), a responsive and accessible front-end framework. The `wp-nycc` theme is based on [andycochran/wp-foundation-sites](https://github.com/andycochran/wp-foundation-sites), a bare-bones WordPress theme built with Foundation.
 
 ### Editing Themes
-
-Making changes to this package requires NPM, Bower, and Gulp.
 
 * `cd wp-nycc/`
 * Run `npm install` to get `node_modules`
