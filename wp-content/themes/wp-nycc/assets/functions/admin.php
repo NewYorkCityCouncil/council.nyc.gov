@@ -21,3 +21,8 @@ function nycc_custom_admin_footer() {
     _e('<span id="footer-thankyou"><a href="http://council.nyc.gov/" target="_blank">New York City Council</a></span>', 'nycc');
 }
 add_filter('admin_footer_text', 'nycc_custom_admin_footer');
+
+if ( is_super_admin() ) {
+  // add_filter( 'wp_default_editor', create_function('', 'return "html";') ); // Make text editor default for super admins
+  add_filter( 'user_can_richedit', '__return_false' ); // Disable the visual editor for super admins
+}
