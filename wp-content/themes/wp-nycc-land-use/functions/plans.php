@@ -37,7 +37,7 @@ function nycc_land_use_plan_post_type() {
 add_action( 'init', 'nycc_land_use_plan_post_type');
 
 function add_land_use_plan_metaboxes() {
-  add_meta_box('nycc_land_use_plan_meta', 'Meta', 'nycc_land_use_plan_meta', 'nycc_land_use_plan', 'normal', 'default');
+  add_meta_box('nycc_land_use_plan_meta', 'Event Meta', 'nycc_land_use_plan_meta', 'nycc_land_use_plan', 'normal', 'default');
 }
 add_action( 'add_meta_boxes', 'add_land_use_plan_metaboxes' );
 

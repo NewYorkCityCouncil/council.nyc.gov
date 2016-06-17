@@ -14,6 +14,24 @@ This package contains the WordPress themes & plugins for New York City Council's
     * [Styles](docs/ARCHITECTURE.md#styles)
     * [JavaScript](docs/ARCHITECTURE.md#javascript)
     * [Upgrading](docs/ARCHITECTURE.md#upgrading)
+* **[Homepage](docs/HOMEPAGE.md)**
+* **[Committees](docs/COMMITTEES.md)**
+* **[Caucuses](docs/CAUCUSES.md)**
+* **[Initiatives](docs/INITIATIVES.md)**
+* **[Reports](docs/REPORTS.md)**
+* **[Districts](docs/DISTRICTS.md)**
+    * [District Options](docs/DISTRICTS.md#district-options)
+    * [District Front Page](docs/DISTRICTS.md#district-front-page)
+    * [Participatory Budgeting](docs/DISTRICTS.md#participatory-budgeting)
+* **[Budget](docs/BUDGET.md)**
+* **[Land Use](docs/LAND_USE.md)**
+    * [Plans](docs/LAND_USE.md#plans)
+* **[Legislation](docs/LEGISLATION.md)**
+* **[Press](docs/PRESS.md)**
+    * [Press Releases](docs/PRESS.md#press-releases)
+    * [Image Gallery](docs/PRESS.md#image-gallery)
+* **[The Map](docs/MAP.md)**
+* **[Social Media Share Images](docs/SOCIAL_SHARE_IMAGES.md)**
 * **[Content Guidelines](docs/CONTENT_GUIDELINES.md)**
     * [Voice and style](docs/CONTENT_GUIDELINES.md#voice-and-style)
     * [Acronyms and Abbreviations](docs/CONTENT_GUIDELINES.md#acronyms-and-abbreviations)
@@ -27,17 +45,6 @@ This package contains the WordPress themes & plugins for New York City Council's
     * [Pronouns](docs/CONTENT_GUIDELINES.md#pronouns)
     * [Punctuation](docs/CONTENT_GUIDELINES.md#punctuation)
     * [Words to avoid](docs/CONTENT_GUIDELINES.md#words-to-avoid)
-* **[Homepage](docs/HOMEPAGE.md)**
-* **[Committees](docs/COMMITTEES.md)**
-* **[Caucuses](docs/CAUCUSES.md)**
-* **[Initiatives](docs/INITIATIVES.md)**
-* **[Reports](docs/REPORTS.md)**
-* **[Districts](docs/DISTRICTS.md)**
-* **[Budget](docs/BUDGET.md)**
-* **[Land Use](docs/LAND_USE.md)**
-* **[Legislation](docs/LEGISLATION.md)**
-* **[Press](docs/PRESS.md)**
-* **[Social Media Share Images](docs/SOCIAL_SHARE_IMAGES.md)**
 
 ## Contributors
 
