@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Network Recent Posts
+ * Plugin Name: Recent Network Posts
  * Plugin URI: https://github.com/rvega/wordpress-widget-network-recent-posts
  * Description: A widget to display recent posts from all blogs in the network.
  */
@@ -18,7 +18,7 @@ add_action( 'widgets_init', 'load_network_recent_posts_widget' );
 class Widget_Recent_Posts_Network extends WP_Widget {
    public function __construct() {
       $widget_ops = array('classname' => 'widget_recent_entries_network', 'description' => __( "Your network&#8217;s most recent Posts.") );
-      parent::__construct('recent-posts-network', __('Recent Posts Network'), $widget_ops);
+      parent::__construct('recent-posts-network', __('Recent Network Posts'), $widget_ops);
       $this->alt_option_name = 'widget_recent_entries_network';
 
       add_action( 'save_post', array($this, 'flush_widget_cache') );
@@ -55,6 +55,9 @@ class Widget_Recent_Posts_Network extends WP_Widget {
       $number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
       if ( ! $number )
          $number = 5;
+
+      $included_blogs = explode(",", esc_attr( $instance['included_blogs'] ));
+
       $show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 
       // Find posts in all blogs
@@ -63,20 +66,24 @@ class Widget_Recent_Posts_Network extends WP_Widget {
       foreach ($blog_list as $blog) {
          switch_to_blog($blog['blog_id']);
 
-         $query = new WP_Query( apply_filters( 'widget_posts_args', array(
-            'posts_per_page'      => $number,
-            'no_found_rows'       => true,
-            'post_status'         => 'publish',
-            'ignore_sticky_posts' => true
-         ) ) );
+         if ( in_array($blog['blog_id'], $included_blogs) ) {
 
-         while ($query->have_posts()) {
-            global $post;
-            $query->the_post();
-            $found_posts[$post->post_date] = array(
-               'pid' => get_the_ID(),
-               'bid' => $blog['blog_id']
-            );
+           $query = new WP_Query( apply_filters( 'widget_posts_args', array(
+              'posts_per_page'      => $number,
+              'no_found_rows'       => true,
+              'post_status'         => 'publish',
+              'ignore_sticky_posts' => true
+           ) ) );
+
+           while ($query->have_posts()) {
+              global $post;
+              $query->the_post();
+              $found_posts[$post->post_date] = array(
+                 'pid' => get_the_ID(),
+                 'bid' => $blog['blog_id']
+              );
+           }
+
          }
 
          restore_current_blog();
@@ -127,6 +134,7 @@ class Widget_Recent_Posts_Network extends WP_Widget {
       $instance = $old_instance;
       $instance['title'] = strip_tags($new_instance['title']);
       $instance['number'] = (int) $new_instance['number'];
+      $instance['included_blogs'] = strip_tags($new_instance['included_blogs']);
       $instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
       $this->flush_widget_cache();
 
@@ -142,15 +150,19 @@ class Widget_Recent_Posts_Network extends WP_Widget {
    }
 
    public function form( $instance ) {
-      $title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
-      $number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
-      $show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false; ?>
+      $title          = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+      $number         = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
+      $included_blogs = isset( $instance['included_blogs'] ) ? esc_attr( $instance['included_blogs'] ) : '';
+      $show_date      = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false; ?>
 
       <p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
       <p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
       <input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+
+      <p><label for="<?php echo $this->get_field_id( 'included_blogs' ); ?>"><?php _e( 'Blog IDs to include (comma-separated):' ); ?></label>
+      <input class="widefat" id="<?php echo $this->get_field_id( 'included_blogs' ); ?>" name="<?php echo $this->get_field_name( 'included_blogs' ); ?>" type="text" value="<?php echo $included_blogs; ?>" /></p>
 
       <p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
       <label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label></p>
