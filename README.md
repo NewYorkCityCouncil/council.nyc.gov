@@ -14,6 +14,8 @@ This package contains the WordPress themes & plugins for New York City Council's
     * [Styles](docs/ARCHITECTURE.md#styles)
     * [JavaScript](docs/ARCHITECTURE.md#javascript)
     * [Upgrading](docs/ARCHITECTURE.md#upgrading)
+* **[Pages and Posts](docs/PAGES_AND_POSTS.md)**
+* **[Menus and Widgets](docs/MENUS_AND_WIDGETS.md)**
 * **[Homepage](docs/HOMEPAGE.md)**
 * **[Committees](docs/COMMITTEES.md)**
 * **[Caucuses](docs/CAUCUSES.md)**
@@ -22,6 +24,7 @@ This package contains the WordPress themes & plugins for New York City Council's
 * **[Districts](docs/DISTRICTS.md)**
     * [District Options](docs/DISTRICTS.md#district-options)
     * [District Front Page](docs/DISTRICTS.md#district-front-page)
+    * [District Sidebar](docs/DISTRICTS.md#district-sidebar)
     * [Participatory Budgeting](docs/DISTRICTS.md#participatory-budgeting)
 * **[Budget](docs/BUDGET.md)**
 * **[Land Use](docs/LAND_USE.md)**
@@ -45,6 +48,7 @@ This package contains the WordPress themes & plugins for New York City Council's
     * [Pronouns](docs/CONTENT_GUIDELINES.md#pronouns)
     * [Punctuation](docs/CONTENT_GUIDELINES.md#punctuation)
     * [Words to avoid](docs/CONTENT_GUIDELINES.md#words-to-avoid)
+
 
 ## Contributors
 
