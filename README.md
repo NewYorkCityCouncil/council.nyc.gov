@@ -14,7 +14,12 @@ This package contains the WordPress themes & plugins for New York City Council's
     * [Styles](docs/ARCHITECTURE.md#styles)
     * [JavaScript](docs/ARCHITECTURE.md#javascript)
     * [Upgrading](docs/ARCHITECTURE.md#upgrading)
-* **[Pages and Posts](docs/PAGES_AND_POSTS.md)**
+* **[Content](docs/CONTENT.md)**
+    * [Posts](docs/CONTENT.md#posts)
+    * [Pages](docs/CONTENT.md#pages)
+        * [Page Templates](docs/CONTENT.md#page-templates)
+    * [Markup](docs/CONTENT.md#markup)
+    * [Layout](docs/CONTENT.md#pages)
 * **[Menus and Widgets](docs/MENUS_AND_WIDGETS.md)**
 * **[Homepage](docs/HOMEPAGE.md)**
 * **[Committees](docs/COMMITTEES.md)**

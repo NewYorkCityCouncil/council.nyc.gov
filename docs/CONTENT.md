@@ -32,3 +32,7 @@ Page templates are used to change the layout and function of a page. When editin
 * PB Results - _displays a list of winning PB projects ordered by District_
 * PB Sidebar - _displays the PB Sidebar widgets alongside the page content_
 * Raw HTML, Full-width, No Header - _a blank template for hand-coding a custom layout_
+
+## Markup
+
+## Layout
