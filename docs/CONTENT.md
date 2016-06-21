@@ -1,4 +1,4 @@
-# Pages & Posts
+# Content Organization
 
 When adding content, consider that there are very key differences between Posts and Pages.
 
