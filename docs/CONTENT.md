@@ -45,6 +45,8 @@ Here are some common HTML tags:
 ```
 The `href` is the hyperlink reference known as the URL or address. The `title` is descriptive text that describes or titles the link, required by web standards for accessibility.
 
+To turn a link into a button, add a `button` class—e.g. `<a href="..." class="button">Button text</a>`. [More about buttons](http://foundation.zurb.com/sites/docs/button.html)
+
 #### Image
 ```html
 <img src="..." alt="A description of the image.">
@@ -140,3 +142,18 @@ Content can have a responsive layouts with the [Foundation Grid](http://foundati
   <div class="small-12 large-5 columns"><!-- aside --></div>
 </div>
 ```
+
+## Foundation Components
+
+Components in the [Foundation for Sites](http://foundation.zurb.com/sites/docs/) framework can be used in the content. Here are 
+
+* [Grid](http://foundation.zurb.com/sites/docs/grid.html)
+* [Visibility Classes](http://foundation.zurb.com/sites/docs/visibility.html)
+* [Button](http://foundation.zurb.com/sites/docs/button.html)
+* [Button Group](http://foundation.zurb.com/sites/docs/button-group.html)
+* [Reveal ("modal dialogs" or "pop-up")](http://foundation.zurb.com/sites/docs/reveal.html)
+* [Table](http://foundation.zurb.com/sites/docs/table.html)
+* [Tabs](http://foundation.zurb.com/sites/docs/tabs.html)
+* [Flex Video](http://foundation.zurb.com/sites/docs/flex-video.html)
+* [Label](http://foundation.zurb.com/sites/docs/label.html)
+* [Tooltip](http://foundation.zurb.com/sites/docs/tooltip.html)
