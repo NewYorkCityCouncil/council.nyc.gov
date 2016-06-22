@@ -73,6 +73,6 @@ The layout of the ballot item archive depends on content:
 
 On the primary site, the following page templates are available for displaying PB info aggregated from all Districts:
 
-* PB Districts List - _displays alongside the page content a District lookup widget and a list of Districts that have PB projects_
-* PB Results - _displays page content followed by a list of winning PB projects ordered by District_
-* PB Sidebar - _displays the PB Sidebar widgets alongside the page content_
+* **PB Districts List** - _displays alongside the page content a District lookup widget and a list of Districts that have PB projects_
+* **PB Results** - _displays page content followed by a list of winning PB projects ordered by District_
+* **PB Sidebar** - _displays the PB Sidebar widgets alongside the page content_

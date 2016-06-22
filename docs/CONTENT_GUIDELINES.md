@@ -24,6 +24,10 @@ We want to strengthen the relationship New Yorkers have with City Council throug
 * In reference to specific street names, always spell out and capitalize words like *Boulevard*, *Avenue* and *Street*. For street names that are also numbers, spell out and capitalize *First* through *Ninth* and use figures for *10th* and higher.
 * If a street name includes a cardinal direction, abbreviate *North*, *South*, *East* and *West* only when referring to a specific building (e.g. *326 W. 17th Street*, or *East 34th Street*).
 
+## Phone Numbers
+
+* Phone numbers use hyphens between groups of numbers (e.g. *212-123-4567*). Do not use parentheses around area codes. Area codes and country codes get no special treatment and aren't preceded by a 1 or plus sign.
+
 ## Capitalization
 
 * **Titles** should always be capitalized when they appear before a person’s name.

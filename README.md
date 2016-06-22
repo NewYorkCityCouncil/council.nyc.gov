@@ -48,6 +48,7 @@ This package contains the WordPress themes & plugins for New York City Council's
     * [Voice and style](docs/CONTENT_GUIDELINES.md#voice-and-style)
     * [Acronyms and Abbreviations](docs/CONTENT_GUIDELINES.md#acronyms-and-abbreviations)
     * [Addresses](docs/CONTENT_GUIDELINES.md#addresses)
+    * [Phone Numbers](docs/CONTENT_GUIDELINES.md#phone-numbers)
     * [Capitalization](docs/CONTENT_GUIDELINES.md#capitalization)
     * [Compositions](docs/CONTENT_GUIDELINES.md#compositions)
     * [Contractions](docs/CONTENT_GUIDELINES.md#contractions)
