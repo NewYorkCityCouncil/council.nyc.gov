@@ -45,8 +45,6 @@ Here are some common HTML tags:
 ```
 The `href` is the hyperlink reference known as the URL or address. The `title` is descriptive text that describes or titles the link, required by web standards for accessibility.
 
-To turn a link into a button, add a `button` class—e.g. `<a href="..." class="button">Button text</a>`. [More about buttons](http://foundation.zurb.com/sites/docs/button.html)
-
 #### Image
 ```html
 <img src="..." alt="A description of the image.">
@@ -145,15 +143,14 @@ Content can have a responsive layouts with the [Foundation Grid](http://foundati
 
 ## Foundation Components
 
-Components in the [Foundation for Sites](http://foundation.zurb.com/sites/docs/) framework can be used in the content. Here are 
+Many components in the [Foundation for Sites](http://foundation.zurb.com/sites/docs/) framework can be used in the content. Here are some that may be helpful:
 
-* [Grid](http://foundation.zurb.com/sites/docs/grid.html)
-* [Visibility Classes](http://foundation.zurb.com/sites/docs/visibility.html)
-* [Button](http://foundation.zurb.com/sites/docs/button.html)
-* [Button Group](http://foundation.zurb.com/sites/docs/button-group.html)
-* [Reveal ("modal dialogs" or "pop-up")](http://foundation.zurb.com/sites/docs/reveal.html)
-* [Table](http://foundation.zurb.com/sites/docs/table.html)
-* [Tabs](http://foundation.zurb.com/sites/docs/tabs.html)
-* [Flex Video](http://foundation.zurb.com/sites/docs/flex-video.html)
-* [Label](http://foundation.zurb.com/sites/docs/label.html)
-* [Tooltip](http://foundation.zurb.com/sites/docs/tooltip.html)
+* **[Tooltips](http://foundation.zurb.com/sites/docs/tooltip.html)** - display extended information for a term or action
+* **[Buttons](http://foundation.zurb.com/sites/docs/button.html)** - turn a link into a button
+* **[Visibility Classes](http://foundation.zurb.com/sites/docs/visibility.html)** - show or hide elements based on screen size
+* **[Grid](http://foundation.zurb.com/sites/docs/grid.html)** - responsive layouts
+* **[Callouts](http://foundation.zurb.com/sites/docs/callout.html)** - a box to contain information
+* **[Tables](http://foundation.zurb.com/sites/docs/table.html)** - display tabular data
+* **[Tabs](http://foundation.zurb.com/sites/docs/tabs.html)** - navigate multiple pieces of content in a single container
+* **[Flex Video](http://foundation.zurb.com/sites/docs/flex-video.html)** - ensure the correct aspect ratio of videos on all devices
+* **[Labels](http://foundation.zurb.com/sites/docs/label.html)** - highlight a piece of metadata
