@@ -10,4 +10,4 @@ In the "NYCC Press" theme, WordPress _Posts_ have been renamed _Press Releases_.
 
 ## Image Gallery
 
-By selecting "All Images" in the Page Attributes > Template menu, a page will display a paginated list of all images in the Press Media Library. Page content is optional, and it will only display on the first page if it exists.
+By selecting "All Images" in the Page Attributes > Template menu (in the righthand sidebar), a page will display a paginated list of all images in the Press Media Library. Page content is optional, and it will only display on the first page if it exists.

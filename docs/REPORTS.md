@@ -4,7 +4,7 @@ A report is a collection of pages (one parent and its children) that share a tab
 
 ### Editing a report
 
-To add/edit a report, go to the main site's WordPress Admin > Reports.
+To add/edit a report, go to the primary site's Admin > Reports.
 
 Edit the page content as you would a regular page. The following settings will determine how the report page appears in the table of contents:
 

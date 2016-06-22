@@ -6,7 +6,7 @@ _Note: Super Admins have access to all network sites_
 
 ## Plans
 
-Plans are a custom post type, similar to pages. To add/edit a Plan, go to the Land Use site's WordPress Admin > Plans. Edit the content as you would a regular page. The following settings will determine how the plan displays:
+Plans are a custom post type, similar to pages. To add/edit a Plan, go to the Land Use site's Admin > Plans. Edit the content as you would a regular page. The following settings will determine how the plan displays:
 
 * **Excerpt** *(optional)* - appears as a subheading under the title (excerpts also appear in search results, which default to the first ~55 words of the content if the excerpt is empty)
 * **Attributes**

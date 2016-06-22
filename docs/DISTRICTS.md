@@ -6,7 +6,7 @@ _Note: Super Admins have access to all network sites_
 
 ## District Options
 
-When setting up the WordPress network, a site should be created for each Council District using the `wp-nycc-district` theme. Each District site's admin requires some configuration in Settings > District Options. There you will define the following options:
+When setting up the WordPress network, a site should be created for each Council District using the `wp-nycc-district` theme. Each District site's admin requires some configuration in the District's Admin > Settings > District Options. There you will define the following options:
 
 * District Number - the **unique** District number
 * Council Member
@@ -22,7 +22,7 @@ When setting up the WordPress network, a site should be created for each Council
 
 ## District Front Page
 
-When setting up the District site, a page titled "District [#]" should be created for the front page. Its Featured Image will display next to the map in the District Header. Under Settings > Reading, the front page should be set to display that page. Optionally, another page ("News") can be created to be set as the "Posts page."
+When setting up the District site, a page titled "District [#]" should be created for the front page. Its Featured Image will display next to the map in the District Header. In the District's Admin > Settings > Reading, the front page should be set to display that page. Optionally, another page ("News") can be created to be set as the "Posts page."
 
 The District Front Page template displays the short bio (from District Options), followed by lists of the Committees and Caucuses on which the District's Member sits, then the page content.
 
@@ -31,16 +31,46 @@ The District's sidebar is present on all of the District's pages and posts. The 
 
 ### Menu
 
-The sidebar menu is edited in the District's admin under Appearance > Menus. A menu set to the "Primary Menu" location will appear at the top of the sidebar.
+The sidebar menu is edited in the District's Admin > Appearance > Menus. A menu set to the "Primary Menu" location will appear at the top of the sidebar. If the District is taking part in Participatory Budgeting, add a custom link with the URL set to `/district-[number]/pb/` (the ballot item archive permalink).
 
 ### Widgets
 
-Sidebar widgets are edited in the District's admin under Appearance > Widgets. The "Contact Information" widget gets its info from the District Options.
+Sidebar widgets are edited in the District's Admin > Appearance > Widgets. The "Contact Information" widget gets its info from the District Options.
 
 ## Participatory Budgeting
 
-adding ballot items and categories
-adding vote sites
-adding a district sidebar menu item
-winning projects results
-main site's PB templates (districts, results, sidebar)
+If a District is taking part in Participatory Budgeting, you can add ballot items in the District's Admin > PB Ballot.
+
+### Ballot Items
+
+Ballot items are a custom post type. They're similar to posts, except there is no single ballot item view. Instead, ballot items appear in the ballot item archive at `/district-[number]/pb/`. If you try to go to the permalink of a ballot item, you'll be redirected to the archive.
+
+Edit the content as you would a regular post. The following settings will determine how the ballot item displays:
+
+* **PB Categories** - appears as a label in the top right corner of the ballot item (Note: Categories are a comma-separated list. So if you try to add a category that contains a commas—e.g. "Arts, Culture, & Community"—it will add multiple categories. You have to add the category without the commas, then edit the category in the District's Admin > PB Ballot > Categories. Or avoid using commas—e.g. "Arts/Culture/Communty.")
+* **Order** - order by which the ballot item appears in lists (falls back to reverse chronological published date)
+* **Winning Project** - before voting, leave all items set to "No"; once voting has ended, set the winners to "Yes"
+
+### Vote Sites
+
+Vote sites are a custom post type. They're similar to posts, except there is no single vote site view. Vote sites appear as interactive markers on the District map and—if there are no winning projects—in a list alongside the ballot items.
+
+Edit the content as you would a regular post. The following settings will determine how the vote site displays:
+
+* **Order** - order by which the vote site appears in lists (falls back to reverse chronological published date)
+* **Latitude & Longitude** - position of the map marker (PROTIP: Get the Lat/Lon by searching a place in Google Maps and copying the first two numbers after the `@` in the URL. Don't drag the map or these numbers will change.)
+
+### Ballot Item Archive
+
+The layout of the ballot item archive depends on content:
+
+* **Before Winners Are Announced:** If no winning projects exist (every ballot item "Winning Project" value is set to "No"), the ballot item archive has a two-collumn layout listing the ballot items alongside the vote sites.
+* **After Winners Are Announced:** If one or more winning project exists (a ballot item "Winning Project" value is set to "Yes"), the ballot item archive lists the "Winning Projects" followed by a list of projects that were not funded. Vote sites are no longer listed on the page (but they still appear on the map).
+
+### PB Page Templates
+
+On the primary site, the following page templates are available for displaying PB info aggregated from all Districts:
+
+* PB Districts List - _displays alongside the page content a District lookup widget and a list of Districts that have PB projects_
+* PB Results - _displays page content followed by a list of winning PB projects ordered by District_
+* PB Sidebar - _displays the PB Sidebar widgets alongside the page content_

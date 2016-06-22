@@ -4,7 +4,7 @@ Initiatives are a custom post type, similar to pages.
 
 ### Editing an Initiative
 
-To add/edit an Initiative, go to the main site's WordPress Admin > Initiatives.
+To add/edit an Initiative, go to the primary site's Admin > Initiatives.
 
 * **Content** *(do not use without excerpt)* - if an excerpt exists, the content will appear below the featured image and excerpt; if an excerpt does not exists, the first ~55 words of the content will appear below alongside the featured image
 * **Excerpt** *(required)* - appears alongside the featured image (the excerpt also appears in search results, which defaults to the first ~55 words of the content if the excerpt is empty)
