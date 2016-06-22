@@ -1,4 +1,4 @@
-# Content Organization
+# Content
 
 When adding content, consider that there are very key differences between Posts and Pages.
 
@@ -37,106 +37,99 @@ Page templates are used to change the layout and function of a page. When editin
 
 The WordPress content editor provides a visual and a text view. The visual view shows formatted content. The text view allows you to write raw HTML and have more control over content design and structure. If you choose to write HTML, be careful switching to the visual editor, as it may clobber your work or have undesired results.
 
-The most common HTML tags are:
+Here are some common HTML tags:
 
 #### Link
-
 ```
 <a href="http://example.com/" title="Description of the Link">link text</a>
 ```
-
-The `href` is the hyperlink reference known as the URL or address. The `title` is the descriptive text that describes or titles the link, required by web standards for accessibility.
+The `href` is the hyperlink reference known as the URL or address. The `title` is descriptive text that describes or titles the link, required by web standards for accessibility.
 
 #### Image
-
 ```
-<img src="..." />
+<img src="..." alt="A description of the image.">
 ```
+The `src` is the location of the image. The `alt` is descriptive text that provides a clear alternative for screen reader users, required by web standards for accessibility
 
-#### Headings
-
+#### Heading
 ```
 <h2>Heading Here</h2>
 ```
-
 There are six heading tags: `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, and `<h6>`. The `<h1>` tag is the largest heading and identifies the most important content—typically reserved for the page title and rarely used in content. The `<h6>` tag is the smallest heading and identifies the least important content.
 
-Choose the appropriate heading tag to add hierarchy to your content. **Do not** choose a tag by the way it looks (i.e. its size). To change the visual appearance of a heading, the following classes may be applied to the tag:
-
-* `header-xxlarge` looks like h1
-* `header-xlarge` looks like h2
-* `header-large` looks like h3
-* `header-medium` looks like h4
-* `header-small` looks like h5
-* `header-tiny` looks like h6
+Choose the appropriate heading tag to add hierarchy to your content. **Do not** choose a tag by the way it looks (i.e. its size). To change the visual appearance of a heading, add a class to the tag:
 
 ```
 <h6 class="header-xlarge">Looks like h2</h6>
 ```
+* `header-xxlarge` (looks like h1)
+* `header-xlarge` (looks like h2)
+* `header-large` (looks like h3)
+* `header-medium` (looks like h4)
+* `header-small` (looks like h5)
+* `header-tiny` (looks like h6)
 
 #### Paragraph
-
 ```
-<p>Hi. This is a paragraph.</p>
+<p>This is a paragraph. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
 ```
-
-WordPress automatically adds `<p>` tags...
+Paragraph tags aren't necessary most of the time. WordPress automatically changes double line breaks in the content into HTML paragraphs (<p>...</p>). However, this can sometimes have annoying side affects when writing raw HTML. Automatically-inserted paragraph tags can adversely affect page layouts and Foundation components. To prevent auto-p tags, remove white space or wrap content in `<div>` tags.
 
 #### Bold
-
 ```
 <strong>bold text</strong>
 ```
-
 Don't use `<b>`.
 
 #### Italic
-
 ```
 <em>italic text</em>
 ```
-
 Don't use `<i>`.
 
-#### Lists
+#### Ordered List (Numbered)
 ```
 <ol>
   <li>item text</li>
-  <li>item text</li>
+  <li>more item text</li>
+  <li>another item</li>
 </ol>
 ```
-ordered/numbered
 
+#### Unordered List (Bulleted)
 ```
 <ul>
-  <li>item text</li>
-  <li>item text</li>
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
 </ul>
 ```
-unordered/bulleted
 
 #### Blockquotes
 ```
 <blockquote>
-  <cite>
-  </cite>
+  Participatory budgeting puts power back into the hands of the people.
+  <cite>Speaker Melissa Mark-Viverito</cite>
 </blockquote>
 ```
 
 #### Line Break
-`<br />`
+```
+<br />
+```
 
 #### Horizontal Rule
-`<hr />`
-
-#### Code
-`<pre>` and `<code>`
+```
+<hr />
+```
 
 #### Embedded Content
-
-iframe
-
-_Note: All HTML tags must be closed. If you open a tag you must close it with a closing tag. The only exceptions are self-closing tags: `<img src="..." />`, `<br />`, `<hr />`._
+```
+<div class="flex-video widescreen">
+  <iframe src="..." width="560" height="315" frameborder="0" allowfullscreen></iframe>
+</div>
+```
+You can embed content such as videos and maps in iframes. For these to be responsive and work well on all devices, they must be wrapped in a `<div>` with the `flex-video` class. The `widescreen` class changes the the ratio of the iframe from 4:3 to 16:9. If the `src` of the iframe is YouTube or Vimeo, a container with the appropriate classes is added dynamically.
 
 ## Layout
 
