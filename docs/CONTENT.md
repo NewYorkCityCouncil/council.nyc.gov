@@ -40,26 +40,26 @@ The WordPress content editor provides a visual and a text view. The visual view 
 Here are some common HTML tags:
 
 #### Link
-```
+```html
 <a href="http://example.com/" title="Description of the Link">link text</a>
 ```
 The `href` is the hyperlink reference known as the URL or address. The `title` is descriptive text that describes or titles the link, required by web standards for accessibility.
 
 #### Image
-```
+```html
 <img src="..." alt="A description of the image.">
 ```
 The `src` is the location of the image. The `alt` is descriptive text that provides a clear alternative for screen reader users, required by web standards for accessibility
 
 #### Heading
-```
-<h2>Heading Here</h2>
+```html
+<h2>Heading text</h2>
 ```
 There are six heading tags: `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, and `<h6>`. The `<h1>` tag is the largest heading and identifies the most important content—typically reserved for the page title and rarely used in content. The `<h6>` tag is the smallest heading and identifies the least important content.
 
 Choose the appropriate heading tag to add hierarchy to your content. **Do not** choose a tag by the way it looks (i.e. its size). To change the visual appearance of a heading, add a class to the tag:
 
-```
+```html
 <h6 class="header-xlarge">Looks like h2</h6>
 ```
 * `header-xxlarge` (looks like h1)
@@ -70,25 +70,25 @@ Choose the appropriate heading tag to add hierarchy to your content. **Do not** 
 * `header-tiny` (looks like h6)
 
 #### Paragraph
-```
+```html
 <p>This is a paragraph. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
 ```
-Paragraph tags aren't necessary most of the time. WordPress automatically changes double line breaks in the content into HTML paragraphs (<p>...</p>). However, this can sometimes have annoying side affects when writing raw HTML. Automatically-inserted paragraph tags can adversely affect page layouts and Foundation components. To prevent auto-p tags, remove white space or wrap content in `<div>` tags.
+Paragraph tags aren't necessary most of the time. WordPress automatically changes double line breaks in the content into HTML paragraphs. However, this can sometimes have annoying side affects when writing raw HTML. Automatically-inserted paragraph tags can adversely affect page layouts and Foundation components. To prevent auto-p tags, remove white space or wrap content in `<div>` tags.
 
 #### Bold
-```
+```html
 <strong>bold text</strong>
 ```
 Don't use `<b>`.
 
 #### Italic
-```
+```html
 <em>italic text</em>
 ```
 Don't use `<i>`.
 
 #### Ordered List (Numbered)
-```
+```html
 <ol>
   <li>item text</li>
   <li>more item text</li>
@@ -97,7 +97,7 @@ Don't use `<i>`.
 ```
 
 #### Unordered List (Bulleted)
-```
+```html
 <ul>
   <li>First item</li>
   <li>Second item</li>
@@ -106,7 +106,7 @@ Don't use `<i>`.
 ```
 
 #### Blockquotes
-```
+```html
 <blockquote>
   Participatory budgeting puts power back into the hands of the people.
   <cite>Speaker Melissa Mark-Viverito</cite>
@@ -114,23 +114,29 @@ Don't use `<i>`.
 ```
 
 #### Line Break
-```
+```html
 <br />
 ```
 
 #### Horizontal Rule
-```
+```html
 <hr />
 ```
 
 #### Embedded Content
-```
+```html
 <div class="flex-video widescreen">
   <iframe src="..." width="560" height="315" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
-You can embed content such as videos and maps in iframes. For these to be responsive and work well on all devices, they must be wrapped in a `<div>` with the `flex-video` class. The `widescreen` class changes the the ratio of the iframe from 4:3 to 16:9. If the `src` of the iframe is YouTube or Vimeo, a container with the appropriate classes is added dynamically.
+You can embed content such as videos and maps in iframes. For these to be responsive and work well on all devices, they must be wrapped in a `<div>` tag with the `flex-video` class. The `widescreen` class changes the the ratio of the iframe from 4:3 to 16:9. If the `src` of the iframe is YouTube or Vimeo, a container with the appropriate classes is added dynamically (so you only need to include the iframe tag).
 
 ## Layout
 
-columns
+Content can have a responsive layouts with the [Foundation Grid](http://foundation.zurb.com/sites/docs/grid.html). The following markup will create a one-column layout on small screens (phones) and a two-column layout on large screens:
+```html
+<div class="row">
+  <div class="small-12 large-7 columns"><!-- main content --></div>
+  <div class="small-12 large-5 columns"><!-- aside --></div>
+</div>
+```
