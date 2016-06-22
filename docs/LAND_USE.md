@@ -1,8 +1,6 @@
 # Land Use
 
-The Land Use Division has its own site in the WordPress multisite network. This is so that editors of Land Use content do not have access to the content of other Divisions. This also simplifies the admin so that editors can more easily perform their tasks. The Land Use site uses the "NYCC Land Use" theme (`wp-nycc-land-use`), a child theme of the "New York City Council" theme (`wp-nycc`).
-
-_Note: Super Admins have access to all network sites_
+The Land Use Division has its own site in the WordPress multisite network. This is so that editors of Land Use content do not have access to the content of other Divisions. This also simplifies the admin so that editors can more easily perform their tasks. The Land Use site uses the "NYCC Land Use" theme (`wp-nycc-land-use`), a child theme of the "New York City Council" theme (`wp-nycc`). _Note: Super Admins have access to all network sites._
 
 ## Plans
 

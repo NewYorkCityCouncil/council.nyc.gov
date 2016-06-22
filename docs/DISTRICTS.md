@@ -1,19 +1,19 @@
 # Districts
 
-Each Council District has its own site in the WordPress multisite network. This is so that editors of District content do not have access to the content of other Districts or Divisions. This also simplifies the admin so that editors can more easily perform their tasks. District sites use the "NYCC District" theme (`wp-nycc-district`), a child theme of the "New York City Council" theme (`wp-nycc`).
+Each Council District has its own site in the WordPress multisite network. This is so that editors of District content do not have access to the content of other Districts or Divisions. This also simplifies the admin so that editors can more easily perform their tasks. _Note: Super Admins have access to all network sites._
 
-_Note: Super Admins have access to all network sites_
+When setting up the WordPress network, a site should be created for each Council District using the "NYCC District" theme (`wp-nycc-district`), which is a child theme of the "New York City Council" theme (`wp-nycc`).
 
 ## District Options
 
-When setting up the WordPress network, a site should be created for each Council District using the `wp-nycc-district` theme. Each District site's admin requires some configuration in the District's Admin > Settings > District Options. There you will define the following options:
+Each District site's admin requires some configuration in the District's Admin > Settings > District Options. There you will define the following options:
 
 * District Number - the **unique** District number
 * Council Member
-    * Full Name - first name, last name, and optional middle initial and/or suffix, **do not include titles** (e.g. "Bill S. Preston Esq.")
-    * Short Name - typically last name only, appears in strings such as "Council Member [last name]" (e.g. "Preston")
+    * Full Name - first name, last name, and optional middle initial and/or suffix—e.g. "Bill S. Preston Esq." (**do not include titles**)
+    * Short Name - typically last name only, appears in strings such as "Council Member [last name]"
 * Short Bio - the text that appears at the top of the District front page
-* Thumbnail - the absolute URL to a the Council Member's headshot (preferably uploaded via WordPress Admin > Media )
+* Thumbnail - the absolute URL to a the Council Member's headshot (preferably uploaded via the District's Admin > Media)
 * Party - enter Republican, Democrat, etc.
 * Borough - e.g. "Queens" or "Manhattan, Bronx"
 * Neighborhoods - a list of neighborhoods that fall into the District, used by District list search
@@ -22,9 +22,11 @@ When setting up the WordPress network, a site should be created for each Council
 
 ## District Front Page
 
-When setting up the District site, a page titled "District [#]" should be created for the front page. Its Featured Image will display next to the map in the District Header. In the District's Admin > Settings > Reading, the front page should be set to display that page. Optionally, another page ("News") can be created to be set as the "Posts page."
+The District Front Page displays the short bio (from District Options), followed by lists of the Committees and Caucuses on which the District's Member sits, followed by the page content.
 
-The District Front Page template displays the short bio (from District Options), followed by lists of the Committees and Caucuses on which the District's Member sits, then the page content.
+When setting up the District site, a page titled "District [number]" must be created for the front page. Then, in the District's Admin > Settings > Reading, the "Front page displays" settings should set this page as the "Front page." Optionally, another page ("News") can be created to be set as the "Posts page."
+
+The front page must include a Featured Image, which will display next to the map in the District Header.
 
 ## District Sidebar
 The District's sidebar is present on all of the District's pages and posts. The sidebar is composed of a menu area followed by a widget area.
