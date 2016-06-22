@@ -40,3 +40,17 @@ add_action( 'admin_bar_menu', 'remove_wp_dot_org_menu', 999 );
 
 // Gotta register an unused taxonomy so PB tags work with switch_to_blog
 register_taxonomy( 'pbtags', array(''), array('') );
+
+
+// Filter to remove password protected posts from SQL query
+function exclude_protected($where) {
+    global $wpdb;
+    return $where .= " AND {$wpdb->posts}.post_password = '' ";
+}
+// Apply protected posts filter everywhere except single/page/admin
+function exclude_protected_action($query) {
+    if( !is_single() && !is_page() && !is_admin() ) {
+        add_filter( 'posts_where', 'exclude_protected' );
+    }
+}
+add_action('pre_get_posts', 'exclude_protected_action');

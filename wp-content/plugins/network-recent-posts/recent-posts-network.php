@@ -72,7 +72,8 @@ class Widget_Recent_Posts_Network extends WP_Widget {
               'posts_per_page'      => $number,
               'no_found_rows'       => true,
               'post_status'         => 'publish',
-              'ignore_sticky_posts' => true
+              'ignore_sticky_posts' => true,
+              'has_password'        => false
            ) ) );
 
            while ($query->have_posts()) {
