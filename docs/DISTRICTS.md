@@ -66,8 +66,8 @@ Edit the content as you would a regular post. The following settings will determ
 
 The layout of the ballot item archive depends on content:
 
-* **Before Winners Are Announced:** If no winning projects exist (every ballot item "Winning Project" value is set to "No"), the ballot item archive has a two-collumn layout listing the ballot items alongside the vote sites.
-* **After Winners Are Announced:** If one or more winning project exists (a ballot item "Winning Project" value is set to "Yes"), the ballot item archive lists the "Winning Projects" followed by a list of projects that were not funded. Vote sites are no longer listed on the page (but they still appear on the map).
+* **Before Winners Are Announced:** If no winning projects exist (every ballot item's "Winning Project" value is set to "No"), the archive has a two-collumn layout listing the ballot items alongside the vote sites.
+* **After Winners Are Announced:** If one or more winning project exists (a ballot item "Winning Project" value is set to "Yes"), the archive lists the "Winning Projects" followed by a list of projects that were not funded. Vote sites are no longer listed on the page (although they will appear on the map until they're deleted).
 
 ### PB Page Templates
 

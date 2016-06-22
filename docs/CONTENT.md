@@ -35,10 +35,14 @@ Page templates are used to change the layout and function of a page. When editin
 
 ## Markup
 
-The WordPress content editor provides a Visual and Text view. The text view allows you to write raw HTML.
+The WordPress content editor provides a visual and a text view. The visual view shows formatted content. The text view allows you to write raw HTML. If you choose to write HTML, be careful switching to the visual editor, as it may clobber your work or have undesired results. 
 
 blockquote, br, caption, cite, code, div, em, h1, h2, h3, h4, h5, h6, hr, i, img, ins, kbd, li, map, ol, p, pre, q, s, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var
 
 Here are some basic tips for writing HTML
 
+iframes
+
 ## Layout
+
+columns
