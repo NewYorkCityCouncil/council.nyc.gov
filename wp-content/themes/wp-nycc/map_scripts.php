@@ -1,5 +1,6 @@
 <?php
 
+// Which Council District is currently being viewed?
 $districtNumber = get_option('council_district_number');
 
 ?>
@@ -10,6 +11,7 @@ $districtNumber = get_option('council_district_number');
     var popupData = new Object;
 
     <?php
+    // Define the popup data for each District
     $sites = wp_get_sites();
     foreach ($sites as $site) {
       $ID = $site['blog_id'];
