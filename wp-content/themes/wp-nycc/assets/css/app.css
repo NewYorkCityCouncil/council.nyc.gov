@@ -4516,7 +4516,7 @@ table.hover tr:nth-of-type(even):hover {
 
 .has-tip {
   border-bottom: dotted 1px #666;
-  font-weight: bold;
+  font-weight: normal;
   position: relative;
   display: inline-block;
   cursor: help; }
@@ -4925,6 +4925,9 @@ table.hover tr:nth-of-type(even):hover {
     font-size: 1.3125rem; }
   .text-xxlarge {
     font-size: 1.5rem; } }
+
+.has-tip {
+  color: #2f56a6; }
 
 .no-margin {
   margin: 0; }

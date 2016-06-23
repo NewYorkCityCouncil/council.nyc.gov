@@ -4497,7 +4497,7 @@ table.hover tr:nth-of-type(even):hover {
 
 .has-tip {
   border-bottom: dotted 1px #666;
-  font-weight: bold;
+  font-weight: normal;
   position: relative;
   display: inline-block;
   cursor: help; }

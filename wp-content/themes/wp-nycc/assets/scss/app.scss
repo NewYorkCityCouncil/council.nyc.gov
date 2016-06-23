@@ -181,6 +181,10 @@
   .text-xxlarge { font-size: rem-calc(24); }
 }
 
+.has-tip {
+  color: $anchor-color;
+}
+
 .no-margin {
   margin: 0;
 }
