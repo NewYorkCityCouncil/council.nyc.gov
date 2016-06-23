@@ -1,6 +1,6 @@
 # The Map
 
-Do you know which Council Member/District is yours? Many of our neighbors don't. To address this problem, an interactive map is available on every page/post. This makes it convenient and easy for users to discover their Member/District, no matter which part of the site they are viewing. When a user clicks on the map, a popup gives them information about that District, which is defined in the [District Options](../DISTRICTS.md#district-options).
+Do you know which Council Member/District is yours? Many of our neighbors don't. To address this problem, an interactive map is available on every page/post. This makes it convenient and easy for users to discover their Member/District, no matter which part of the site they are viewing. When a user clicks on the map, a popup gives them information about that District, which is defined in the [District Options](DISTRICTS.md#district-options).
 
 ## Map Scripts
 
