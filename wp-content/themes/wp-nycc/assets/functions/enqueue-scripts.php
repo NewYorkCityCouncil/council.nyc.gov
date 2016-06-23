@@ -6,7 +6,6 @@ function site_scripts() {
   wp_enqueue_script( 'foundation-js', get_template_directory_uri() . '/assets/js/foundation.min.js', array( 'jquery' ), '6.2', true );
 
   // Add JavaScript in the footer
-  wp_enqueue_script( 'districts-data', get_template_directory_uri() . '/assets/js/districts-data.js', array(), '', true );
   wp_enqueue_script( 'site-js', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '', true );
 
   // Register main stylesheet
