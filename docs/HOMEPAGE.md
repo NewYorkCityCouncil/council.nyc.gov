@@ -10,7 +10,3 @@ To add/edit/delete featured homepage content, go to the primary site's Admin > F
 * **URL** - a relative or absolute link to any page on the site, or an absolute link to an external initiative site (for absolute links, don't forget the `http://` or `https://`)
 * **Order** - the order by which Features are listed
 * **Featured Image** - the background image of the link
-
-## The Sidebar
-
-To edit the sidebar widgets, go to the primary site's Admin > Appearance > Widgets.
