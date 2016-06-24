@@ -19,13 +19,13 @@
         <div class="columns large-8">
           <h3 class="header-large">Project spending per district</h3>
           <div class="flex-video widescreen">
-            <iframe src="http://newyorkcitycouncil.github.io/dataviz/pb/spending_per_dist_2016/" frameborder="0" allowfullscreen></iframe>
+            <iframe src="http://newyorkcitycouncil.github.io/datavis/pb/spending_per_dist_2016/" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
         <div class="columns medium-6 medium-pull-3 large-4 large-pull-0">
           <h3 class="header-large medium-text-center large-text-left">Types of projects funded</h3>
           <div class="flex-video widescreen" style="padding-bottom:90%;">
-            <iframe src="http://newyorkcitycouncil.github.io/dataviz/pb/project_types_funded_2016/" frameborder="0" allowfullscreen></iframe>
+            <iframe src="http://newyorkcitycouncil.github.io/datavis/pb/project_types_funded_2016/" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
       </div>
