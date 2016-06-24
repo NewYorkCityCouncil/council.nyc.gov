@@ -1,6 +1,6 @@
 # New York City Council WordPress
 
-This package contains the WordPress themes & plugins for New York City Council's website.
+This package contains the WordPress themes & plugins for [New York City Council's website](http://labs.council.nyc/).
 
 ## Documentation
 
