@@ -903,6 +903,9 @@ $map-height-tall:   rem-calc(400);
     line-height: 1.25;
     background-color: $light-gray;
     color: $dark-gray;
+    &:hover {
+      background-color: $light-gray;
+    }
     &::before {
       content: "\21B1 \3042";
       display: block;
@@ -913,5 +916,11 @@ $map-height-tall:   rem-calc(400);
       display: block;
       padding-right: 0.25em;
     }
+  }
+  .goog-te-combo {
+    margin: 0;
+  }
+  .goog-te-gadget, .goog-te-combo {
+    font-family: $body-font-family;
   }
 }

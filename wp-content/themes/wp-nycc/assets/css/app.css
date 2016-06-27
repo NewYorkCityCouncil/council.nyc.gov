@@ -5485,6 +5485,8 @@ figure {
     line-height: 1.25;
     background-color: #e6e6e6;
     color: #666; }
+    #translation-menu .button:hover, #translation-menu .press-release-tags ul li a:hover, .press-release-tags ul li #translation-menu a:hover, #translation-menu .social-buttons a:hover, .social-buttons #translation-menu a:hover, #translation-menu .comment-reply-link:hover {
+      background-color: #e6e6e6; }
     #translation-menu .button::before, #translation-menu .press-release-tags ul li a::before, .press-release-tags ul li #translation-menu a::before, #translation-menu .social-buttons a::before, .social-buttons #translation-menu a::before, #translation-menu .comment-reply-link::before {
       content: "\21B1 \3042";
       display: block;
@@ -5493,3 +5495,7 @@ figure {
       content: "A \21B2";
       display: block;
       padding-right: 0.25em; }
+  #translation-menu .goog-te-combo {
+    margin: 0; }
+  #translation-menu .goog-te-gadget, #translation-menu .goog-te-combo {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
