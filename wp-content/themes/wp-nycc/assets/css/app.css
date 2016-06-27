@@ -2778,7 +2778,7 @@ select {
   .button:hover, .press-release-tags ul li a:hover, .social-buttons a:hover, .comment-reply-link:hover, .button:focus, .press-release-tags ul li a:focus, .social-buttons a:focus, .comment-reply-link:focus {
     background-color: #28498d;
     color: #fff; }
-  .button.tiny, .press-release-tags ul li a, .social-buttons a.tiny, .social-buttons a.comment-reply-link, .comment-reply-link {
+  .button.tiny, .press-release-tags ul li a, .social-buttons a.tiny, .social-buttons a.comment-reply-link, .comment-reply-link, #translation-menu .button, #translation-menu .press-release-tags ul li a, .press-release-tags ul li #translation-menu a, #translation-menu .social-buttons a, .social-buttons #translation-menu a, #translation-menu .comment-reply-link {
     font-size: 0.6rem; }
   .button.small, .press-release-tags ul li a.small, .social-buttons a.small, .small.comment-reply-link {
     font-size: 0.75rem; }
@@ -3000,7 +3000,7 @@ select {
     font-size: 0.9rem; }
     .button-group .button:not(:last-child), .button-group .press-release-tags ul li a:not(:last-child), .press-release-tags ul li .button-group a:not(:last-child), .button-group .social-buttons a:not(:last-child), .social-buttons .button-group a:not(:last-child), .button-group .comment-reply-link:not(:last-child) {
       margin-right: 1px; }
-  .button-group.tiny .button, .press-release-tags ul li a.button-group .button, .button-group.comment-reply-link .button, .button-group.tiny .press-release-tags ul li a, .press-release-tags ul li .button-group.tiny a, .press-release-tags ul li a.button-group a, .button-group.comment-reply-link .press-release-tags ul li a, .press-release-tags ul li .button-group.comment-reply-link a, .button-group.tiny .social-buttons a, .social-buttons .button-group.tiny a, .button-group.comment-reply-link .social-buttons a, .social-buttons .button-group.comment-reply-link a, .button-group.tiny .comment-reply-link, .press-release-tags ul li a.button-group .comment-reply-link, .button-group.comment-reply-link .comment-reply-link {
+  .button-group.tiny .button, .press-release-tags ul li a.button-group .button, .button-group.comment-reply-link .button, #translation-menu .button-group.button .button, #translation-menu .press-release-tags ul li a.button-group .button, .press-release-tags ul li #translation-menu a.button-group .button, #translation-menu .social-buttons a.button-group .button, .social-buttons #translation-menu a.button-group .button, #translation-menu .button-group.comment-reply-link .button, .button-group.tiny .press-release-tags ul li a, .press-release-tags ul li .button-group.tiny a, .press-release-tags ul li a.button-group a, .button-group.comment-reply-link .press-release-tags ul li a, .press-release-tags ul li .button-group.comment-reply-link a, #translation-menu .button-group.button .press-release-tags ul li a, .press-release-tags ul li #translation-menu .button-group.button a, #translation-menu .press-release-tags ul li a.button-group a, .press-release-tags ul li #translation-menu a.button-group a, #translation-menu .button-group.comment-reply-link .press-release-tags ul li a, .press-release-tags ul li #translation-menu .button-group.comment-reply-link a, .button-group.tiny .social-buttons a, .social-buttons .button-group.tiny a, .button-group.comment-reply-link .social-buttons a, .social-buttons .button-group.comment-reply-link a, #translation-menu .button-group.button .social-buttons a, .social-buttons #translation-menu .button-group.button a, #translation-menu .social-buttons a.button-group a, .social-buttons #translation-menu a.button-group a, #translation-menu .button-group.comment-reply-link .social-buttons a, .social-buttons #translation-menu .button-group.comment-reply-link a, .button-group.tiny .comment-reply-link, .press-release-tags ul li a.button-group .comment-reply-link, .button-group.comment-reply-link .comment-reply-link, #translation-menu .button-group.button .comment-reply-link, #translation-menu .press-release-tags ul li a.button-group .comment-reply-link, .press-release-tags ul li #translation-menu a.button-group .comment-reply-link, #translation-menu .social-buttons a.button-group .comment-reply-link, .social-buttons #translation-menu a.button-group .comment-reply-link, #translation-menu .button-group.comment-reply-link .comment-reply-link {
     font-size: 0.6rem; }
   .button-group.small .button, .button-group.small .press-release-tags ul li a, .press-release-tags ul li .button-group.small a, .button-group.small .social-buttons a, .social-buttons .button-group.small a, .button-group.small .comment-reply-link {
     font-size: 0.75rem; }
@@ -3339,7 +3339,7 @@ select {
   .dropdown-pane.is-open {
     visibility: visible; }
 
-.dropdown-pane.tiny, .press-release-tags ul li a.dropdown-pane, .dropdown-pane.comment-reply-link {
+.dropdown-pane.tiny, .press-release-tags ul li a.dropdown-pane, .dropdown-pane.comment-reply-link, #translation-menu .dropdown-pane.button, #translation-menu .press-release-tags ul li a.dropdown-pane, .press-release-tags ul li #translation-menu a.dropdown-pane, #translation-menu .social-buttons a.dropdown-pane, .social-buttons #translation-menu a.dropdown-pane, #translation-menu .dropdown-pane.comment-reply-link {
   width: 100px; }
 
 .dropdown-pane.small {
@@ -4193,14 +4193,14 @@ body.is-reveal-open {
       width: 600px;
       max-width: 75rem; } }
   @media screen and (min-width: 40em) {
-    .reveal .reveal {
+    .reveal .reveal, .reveal #translation-menu .reveal.button, #translation-menu .reveal .reveal.button, .reveal #translation-menu .press-release-tags ul li a.reveal, #translation-menu .press-release-tags ul li .reveal a.reveal, .reveal .press-release-tags ul li #translation-menu a.reveal, .press-release-tags ul li #translation-menu .reveal a.reveal, .reveal #translation-menu .social-buttons a.reveal, #translation-menu .social-buttons .reveal a.reveal, .reveal .social-buttons #translation-menu a.reveal, .social-buttons #translation-menu .reveal a.reveal, .reveal #translation-menu .reveal.comment-reply-link, #translation-menu .reveal .reveal.comment-reply-link {
       left: auto;
       right: auto;
       margin: 0 auto; } }
   .reveal.collapse {
     padding: 0; }
   @media screen and (min-width: 40em) {
-    .reveal.tiny, .press-release-tags ul li a.reveal, .reveal.comment-reply-link {
+    .reveal.tiny, .press-release-tags ul li a.reveal, .reveal.comment-reply-link, #translation-menu .reveal.button, #translation-menu .press-release-tags ul li a.reveal, .press-release-tags ul li #translation-menu a.reveal, #translation-menu .social-buttons a.reveal, .social-buttons #translation-menu a.reveal, #translation-menu .reveal.comment-reply-link {
       width: 30%;
       max-width: 75rem; } }
   @media screen and (min-width: 40em) {
@@ -4304,16 +4304,16 @@ body.is-reveal-open {
   input:checked + label > .switch-inactive {
     display: none; }
 
-.switch.tiny .switch-paddle, .press-release-tags ul li a.switch .switch-paddle, .switch.comment-reply-link .switch-paddle {
+.switch.tiny .switch-paddle, .press-release-tags ul li a.switch .switch-paddle, .switch.comment-reply-link .switch-paddle, #translation-menu .switch.button .switch-paddle, #translation-menu .press-release-tags ul li a.switch .switch-paddle, .press-release-tags ul li #translation-menu a.switch .switch-paddle, #translation-menu .social-buttons a.switch .switch-paddle, .social-buttons #translation-menu a.switch .switch-paddle, #translation-menu .switch.comment-reply-link .switch-paddle {
   width: 3rem;
   height: 1.5rem;
   font-size: 0.625rem; }
 
-.switch.tiny .switch-paddle::after, .press-release-tags ul li a.switch .switch-paddle::after, .switch.comment-reply-link .switch-paddle::after {
+.switch.tiny .switch-paddle::after, .press-release-tags ul li a.switch .switch-paddle::after, .switch.comment-reply-link .switch-paddle::after, #translation-menu .switch.button .switch-paddle::after, #translation-menu .press-release-tags ul li a.switch .switch-paddle::after, .press-release-tags ul li #translation-menu a.switch .switch-paddle::after, #translation-menu .social-buttons a.switch .switch-paddle::after, .social-buttons #translation-menu a.switch .switch-paddle::after, #translation-menu .switch.comment-reply-link .switch-paddle::after {
   width: 1rem;
   height: 1rem; }
 
-.switch.tiny input:checked ~ .switch-paddle::after, .press-release-tags ul li a.switch input:checked ~ .switch-paddle::after, .switch.comment-reply-link input:checked ~ .switch-paddle::after {
+.switch.tiny input:checked ~ .switch-paddle::after, .press-release-tags ul li a.switch input:checked ~ .switch-paddle::after, .switch.comment-reply-link input:checked ~ .switch-paddle::after, #translation-menu .switch.button input:checked ~ .switch-paddle::after, #translation-menu .press-release-tags ul li a.switch input:checked ~ .switch-paddle::after, .press-release-tags ul li #translation-menu a.switch input:checked ~ .switch-paddle::after, #translation-menu .social-buttons a.switch input:checked ~ .switch-paddle::after, .social-buttons #translation-menu a.switch input:checked ~ .switch-paddle::after, #translation-menu .switch.comment-reply-link input:checked ~ .switch-paddle::after {
   left: 1.75rem; }
 
 .switch.small .switch-paddle {
@@ -5473,3 +5473,23 @@ figure {
       margin: 0; }
     .toc-nav.row ~ .image-header {
       margin-top: -1rem; } }
+
+/*--------------------------------------------------
+  Google Translate Widget
+--------------------------------------------------*/
+#translation-menu {
+  margin-top: -2rem; }
+  #translation-menu .button, #translation-menu .press-release-tags ul li a, .press-release-tags ul li #translation-menu a, #translation-menu .social-buttons a, .social-buttons #translation-menu a, #translation-menu .comment-reply-link {
+    font-weight: bold;
+    padding: 0.5em 0.75em;
+    line-height: 1.25;
+    background-color: #e6e6e6;
+    color: #666; }
+    #translation-menu .button::before, #translation-menu .press-release-tags ul li a::before, .press-release-tags ul li #translation-menu a::before, #translation-menu .social-buttons a::before, .social-buttons #translation-menu a::before, #translation-menu .comment-reply-link::before {
+      content: "\21B1 \3042";
+      display: block;
+      padding-left: 0.25em; }
+    #translation-menu .button::after, #translation-menu .press-release-tags ul li a::after, .press-release-tags ul li #translation-menu a::after, #translation-menu .social-buttons a::after, .social-buttons #translation-menu a::after, #translation-menu .comment-reply-link::after {
+      content: "A \21B2";
+      display: block;
+      padding-right: 0.25em; }

@@ -58,4 +58,16 @@
 
       <div class="site-container">
 
+        <div id="translation-menu" class="row column text-right">
+          <button data-toggle="translation-menu-dropdown" class="button"><span class="show-for-sr">Translate this page</span></button>
+          <div class="dropdown-pane" id="translation-menu-dropdown" data-dropdown data-hover="true" data-hover-pane="true">
+            <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
+            <script type="text/javascript">
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.BOTTOM_RIGHT}, 'google_translate_element');
+              }
+            </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          </div>
+        </div>
+
         <?php get_template_part( 'district_header' ); ?>
