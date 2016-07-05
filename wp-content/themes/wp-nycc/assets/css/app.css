@@ -5478,13 +5478,18 @@ figure {
   Google Translate Widget
 --------------------------------------------------*/
 #translation-menu {
-  margin-top: -2rem; }
+  margin-top: -2rem;
+  position: relative;
+  z-index: 2; }
   #translation-menu .button, #translation-menu .press-release-tags ul li a, .press-release-tags ul li #translation-menu a, #translation-menu .social-buttons a, .social-buttons #translation-menu a, #translation-menu .comment-reply-link {
     font-weight: bold;
-    padding: 0.5em 0.75em;
-    line-height: 1.25;
+    padding: 0.5em 0.625em;
+    line-height: 1.125;
+    height: 2rem;
     background-color: #e6e6e6;
-    color: #666; }
+    color: #666;
+    margin: 0 0.125rem 0 0;
+    box-shadow: 0 0 0 0.125rem rgba(0, 0, 0, 0.1); }
     #translation-menu .button:hover, #translation-menu .press-release-tags ul li a:hover, .press-release-tags ul li #translation-menu a:hover, #translation-menu .social-buttons a:hover, .social-buttons #translation-menu a:hover, #translation-menu .comment-reply-link:hover {
       background-color: #e6e6e6; }
     #translation-menu .button::before, #translation-menu .press-release-tags ul li a::before, .press-release-tags ul li #translation-menu a::before, #translation-menu .social-buttons a::before, .social-buttons #translation-menu a::before, #translation-menu .comment-reply-link::before {
@@ -5495,6 +5500,9 @@ figure {
       content: "A \21B2";
       display: block;
       padding-right: 0.25em; }
+  #translation-menu #translation-menu-dropdown {
+    box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.1);
+    border: 0; }
   #translation-menu .goog-te-combo {
     margin: 0; }
   #translation-menu .goog-te-gadget, #translation-menu .goog-te-combo {

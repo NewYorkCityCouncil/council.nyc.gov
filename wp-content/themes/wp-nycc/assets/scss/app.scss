@@ -896,13 +896,18 @@ $map-height-tall:   rem-calc(400);
 
 #translation-menu {
   margin-top: $global-margin*-2;
+  position: relative;
+  z-index: 2;
   .button {
     @extend .tiny;
     font-weight: $global-weight-bold;
-    padding: 0.5em 0.75em;
-    line-height: 1.25;
+    padding: 0.5em 0.625em;
+    line-height: 1.125;
+    height: $global-margin*2;
     background-color: $light-gray;
     color: $dark-gray;
+    margin: 0 0.125rem 0 0;
+    box-shadow: 0 0 0 0.125rem rgba(0,0,0,0.1);
     &:hover {
       background-color: $light-gray;
     }
@@ -916,6 +921,10 @@ $map-height-tall:   rem-calc(400);
       display: block;
       padding-right: 0.25em;
     }
+  }
+  #translation-menu-dropdown {
+    box-shadow: 0 0.125rem 0 0.125rem rgba(0,0,0,0.1);
+    border: 0;
   }
   .goog-te-combo {
     margin: 0;
