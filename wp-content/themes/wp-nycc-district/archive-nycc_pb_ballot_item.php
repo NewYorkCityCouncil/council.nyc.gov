@@ -5,7 +5,7 @@
       <header class="page-header">
         <h1 class="header-xlarge">Participatory Budgeting in District&nbsp;<?php echo get_option('council_district_number'); ?></h1>
         <p class="header-medium subheader sans-serif">
-          To recieve text alerts about when and where you can vote, text <strong>PBNYC</strong> to&nbsp;<strong>212-676-8384</strong>.
+          To receive text alerts about when and where you can vote, text <strong>PBNYC</strong> to&nbsp;<strong>212-676-8384</strong>.
           <?php
             switch_to_blog(1);
             $pbpage = get_page_by_path( 'pb' );
