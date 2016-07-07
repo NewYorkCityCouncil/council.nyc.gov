@@ -47,7 +47,7 @@
                         ?>
                         <tr>
                           <td class="sort-district"><a class="button small expanded" href="<?php echo get_blogaddress_by_id($ID); ?>"><strong><?php echo $number; ?></strong></a></td>
-                          <td class="sort-member"><a href="<?php echo get_blogaddress_by_id($ID); ?>"><strong><?php echo $name; ?></strong></a></td>
+                          <td class="sort-member"><a data-member-name="<?php echo $name; ?>" href="<?php echo get_blogaddress_by_id($ID); ?>"><strong><?php echo $name; ?></strong></a></td>
                           <td><a href="<?php echo get_blogaddress_by_id($ID); ?>"><img class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
                           <td class="sort-borough"><?php echo $borough; ?></td>
                           <td class="sort-party"><?php echo $party; ?></td>
