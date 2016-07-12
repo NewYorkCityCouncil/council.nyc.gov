@@ -1,40 +1,40 @@
 <?php
 
 // Change pages to job opportunities
-function change_post_menu_label() {
-    global $menu;
-    global $submenu;
-    $menu[20][0] = 'Jobs';
-    $submenu['edit.php?post_type=page'][5][0] = 'Job Opportunities';
-    $submenu['edit.php?post_type=page'][10][0] = 'Add Job Opportunity';
-    $menu[20][6] = 'dashicons-id-alt';
-    echo '';
-}
-add_action( 'admin_menu', 'change_post_menu_label' );
+// function change_post_menu_label() {
+//     global $menu;
+//     global $submenu;
+//     $menu[20][0] = 'Jobs';
+//     $submenu['edit.php?post_type=page'][5][0] = 'Job Opportunities';
+//     $submenu['edit.php?post_type=page'][10][0] = 'Add Job Opportunity';
+//     $menu[20][6] = 'dashicons-id-alt';
+//     echo '';
+// }
+// add_action( 'admin_menu', 'change_post_menu_label' );
 
-function change_post_object_label() {
-    global $wp_post_types;
-    $labels = &$wp_post_types['page']->labels;
-    $labels->name = 'Job Opportunities';
-    $labels->singular_name = 'Job Opportunity';
-    $labels->add_new = 'Add Job Opportunity';
-    $labels->add_new_item = 'Add Job Opportunity';
-    $labels->edit_item = 'Edit Job Opportunity';
-    $labels->new_item = 'Job Opportunity';
-    $labels->view_item = 'View Job Opportunity';
-    $labels->search_items = 'Search Job Opportunities';
-    $labels->not_found = 'No Job Opportunities found';
-    $labels->not_found_in_trash = 'No Job Opportunities found in Trash';
-    $labels->name_admin_bar = 'Job Opportunity';
-}
-add_action( 'init', 'change_post_object_label' );
+// function change_post_object_label() {
+//     global $wp_post_types;
+//     $labels = &$wp_post_types['page']->labels;
+//     $labels->name = 'Job Opportunities';
+//     $labels->singular_name = 'Job Opportunity';
+//     $labels->add_new = 'Add Job Opportunity';
+//     $labels->add_new_item = 'Add Job Opportunity';
+//     $labels->edit_item = 'Edit Job Opportunity';
+//     $labels->new_item = 'Job Opportunity';
+//     $labels->view_item = 'View Job Opportunity';
+//     $labels->search_items = 'Search Job Opportunities';
+//     $labels->not_found = 'No Job Opportunities found';
+//     $labels->not_found_in_trash = 'No Job Opportunities found in Trash';
+//     $labels->name_admin_bar = 'Job Opportunity';
+// }
+// add_action( 'init', 'change_post_object_label' );
 
 
 // Create Job Division taxonomy
 function create_job_division_tax() {
     $labels = array(
-      'name'                       => _x( 'Divisions', 'taxonomy general name' ),
-      'singular_name'              => _x( 'Division', 'taxonomy singular name' ),
+      'name'                       => _x( 'Job Divisions', 'taxonomy general name' ),
+      'singular_name'              => _x( 'Job Division', 'taxonomy singular name' ),
       'search_items'               => __( 'Search Divisions' ),
       'popular_items'              => __( 'Popular Divisions' ),
       'all_items'                  => __( 'All Divisions' ),
@@ -48,7 +48,7 @@ function create_job_division_tax() {
       'add_or_remove_items'        => __( 'Add or remove divisions' ),
       'choose_from_most_used'      => __( 'Choose from the most used divisions' ),
       'not_found'                  => __( 'No divisions found.' ),
-      'menu_name'                  => __( 'Divisions' ),
+      'menu_name'                  => __( 'Job Divisions' ),
     );
     $args = array(
       'hierarchical'          => false,
