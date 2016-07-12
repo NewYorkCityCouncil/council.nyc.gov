@@ -8,6 +8,7 @@ require_once(get_template_directory().'/assets/functions/remove-in-child-theme.p
 require_once(get_stylesheet_directory().'/functions/posts.php');          // Repurpose posts for Job Opportunities
 require_once(get_stylesheet_directory().'/functions/widgets.php');        // Widgets
 require_once(get_stylesheet_directory().'/functions/options.php');        // Options (front page content)
+require_once(get_stylesheet_directory().'/functions/jobs-widget.php');    // Options (front page content)
 
 
 // Hide admin stuff
@@ -15,7 +16,7 @@ function remove_jobs_menus(){
   remove_menu_page( 'edit.php' );
   remove_menu_page( 'edit-comments.php' );
   remove_menu_page( 'plugins.php' );
-  $page = remove_submenu_page( 'themes.php', 'widgets.php' );
+  // $page = remove_submenu_page( 'themes.php', 'widgets.php' );
   $page = remove_submenu_page( 'themes.php', 'nav-menus.php' );
   remove_menu_page( 'tools.php' );
   remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
@@ -29,6 +30,7 @@ function remove_jobs_admin_bar_links() {
     $wp_admin_bar->remove_menu('comments');
     $wp_admin_bar->remove_menu('new-user');
     $wp_admin_bar->remove_menu('new-post');
+    $wp_admin_bar->remove_menu('menus');
 }
 add_action( 'wp_before_admin_bar_render', 'remove_jobs_admin_bar_links' );
 
