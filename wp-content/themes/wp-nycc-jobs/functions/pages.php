@@ -1,6 +1,6 @@
 <?php
 
-// Change posts to job opportunities
+// Change pages to job opportunities
 function change_post_menu_label() {
     global $menu;
     global $submenu;
@@ -82,3 +82,15 @@ function job_division_meta_box( $post ) {
     </label><br>
   <?php }
 }
+
+// Nix the Page Attributes box
+function remove_page_attribute_meta_box() {
+    remove_meta_box('pageparentdiv', 'page', 'normal');
+}
+add_action( 'admin_menu', 'remove_page_attribute_meta_box' );
+
+// Nix the Featured Image box
+function remove_featured_img_box() {
+    remove_meta_box('postimagediv', 'page', 'side');
+}
+add_action( 'do_meta_boxes', 'remove_featured_img_box' );
