@@ -31,6 +31,10 @@ function remove_jobs_admin_bar_links() {
     $wp_admin_bar->remove_menu('new-user');
     $wp_admin_bar->remove_menu('new-post');
     $wp_admin_bar->remove_menu('menus');
+
+    $new_content_node = $wp_admin_bar->get_node('new-content');
+    $new_content_node->href = admin_url() . 'post-new.php?post_type=page';
+    $wp_admin_bar->add_node($new_content_node);
 }
 add_action( 'wp_before_admin_bar_render', 'remove_jobs_admin_bar_links' );
 
