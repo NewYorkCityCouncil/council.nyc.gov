@@ -26,3 +26,16 @@ if ( is_super_admin() ) {
   add_filter( 'wp_default_editor', create_function('', 'return "html";') ); // Make text editor default for super admins
   // add_filter( 'user_can_richedit', '__return_false' ); // Disable the visual editor for super admins
 }
+
+// Disable the Appearance > Customize menu item
+function disable_the_customizer () {
+    global $submenu;
+    unset($submenu['themes.php'][6]);
+}
+add_action('admin_menu', 'disable_the_customizer');
+
+function disable_the_customizer_admin_bar_link() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('customize');
+}
+add_action( 'wp_before_admin_bar_render', 'disable_the_customizer_admin_bar_link' );
