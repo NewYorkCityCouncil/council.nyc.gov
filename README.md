@@ -46,6 +46,7 @@ This package contains the WordPress themes & plugins for [New York City Council'
 * **[Press](docs/PRESS.md)**
     * [Press Releases](docs/PRESS.md#press-releases)
     * [Image Gallery](docs/PRESS.md#image-gallery)
+* **[Jobs](docs/JOBS.md)**
 * **[The Map](docs/MAP.md)**
 * **[Social Media Share Images](docs/SOCIAL_SHARE_IMAGES.md)**
 * **[Content Guidelines](docs/CONTENT_GUIDELINES.md)**
