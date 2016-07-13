@@ -8,14 +8,21 @@
       <hr>
 
       <div class="row">
-        <div class="columns large-7">
+        <div class="columns large-8">
           <p>The page you're looking for appears to have been moved, deleted, or does not exist. If you typed the URL by hand, please double-check what you've entered. </p>
-          <p>Here are some pages you might find helpful: </p>
-          <?php switch_to_blog(1); ?>
-          <?php nycc_404_menu(); ?>
-          <?php restore_current_blog(); ?>
+          <?php
+          switch_to_blog(1);
+          if ( has_nav_menu( '404-nav' ) ) {
+            echo '<p>Here are some pages you might find helpful: </p>';
+            wp_nav_menu( array(
+                'theme_location' => '404-nav',
+                'menu_class' => ''
+              ) );
+          }
+          restore_current_blog();
+          ?>
         </div>
-        <div class="columns large-5">
+        <div class="columns large-4">
         </div>
       </div>
 

@@ -4,6 +4,11 @@
 register_nav_menus( array(
     'main-nav' => 'Main Menu',
 ) );
+if ( is_main_site() ) {
+  register_nav_menus( array(
+      '404-nav' => '404 Menu',
+  ) );
+}
 
 // Display the main menu
 if ( ! function_exists ( 'nycc_main_nav' ) ) {
@@ -14,21 +19,6 @@ if ( ! function_exists ( 'nycc_main_nav' ) ) {
             'items_wrap' => '<ul id="%1$s" class="%2$s" data-responsive-menu="accordion large-dropdown">%3$s</ul>',
             'theme_location' => 'main-nav',
             'depth' => 5,
-            'fallback_cb' => false,
-            'walker' => new Main_Menu_Walker()
-        ));
-    }
-}
-
-// Display the 404 menu
-if ( ! function_exists ( 'nycc_404_menu' ) ) {
-    function nycc_404_menu() {
-        wp_nav_menu(array(
-            'container' => false,
-            'menu_class' => 'menu simple',
-            'items_wrap' => '<ul class="%2$s">%3$s</ul>',
-            'theme_location' => 'main-nav',
-            'depth' => 1,
             'fallback_cb' => false,
             'walker' => new Main_Menu_Walker()
         ));
