@@ -70,13 +70,19 @@ function job_division_meta_box( $post ) {
   $post  = get_post();
   $job_division = wp_get_object_terms( $post->ID, 'job_division', array( 'orderby' => 'term_id', 'order' => 'ASC' ) );
   $name  = '';
-    if ( ! is_wp_error( $job_division ) ) {
-      if ( isset( $job_division[0] ) && isset( $job_division[0]->name ) ) {
-      $name = $job_division[0]->name;
-      }
+  if ( ! is_wp_error( $job_division ) ) {
+    if ( isset( $job_division[0] ) && isset( $job_division[0]->name ) ) {
+    $name = $job_division[0]->name;
     }
+  }
+  ?>
+  <label title="">
+      <input type="radio" name="tax_input[job_division]" value="" <?php checked( $term->name, null ); ?>>
+    <span>N/A <small>(regular page)</small></span>
+  </label><br>
+  <?php
   foreach ( $terms as $term ) { ?>
-    <label title='<?php esc_attr_e( $term->name ); ?>'>
+    <label title="<?php esc_attr_e( $term->name ); ?>">
         <input type="radio" name="tax_input[job_division]" value="<?php esc_attr_e( $term->name ); ?>" <?php checked( $term->name, $name ); ?>>
       <span><?php esc_html_e( $term->name ); ?></span>
     </label><br>
