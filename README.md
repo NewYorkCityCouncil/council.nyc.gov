@@ -4,6 +4,8 @@ This package contains the WordPress themes & plugins for [New York City Council'
 
 ## Documentation
 
+### Writing Code
+
 * **[Architecture](docs/ARCHITECTURE.md)**
     * [Required Skills](docs/ARCHITECTURE.md#required-skills)
     * [Local Installation](docs/ARCHITECTURE.md#local-installation)
@@ -14,6 +16,9 @@ This package contains the WordPress themes & plugins for [New York City Council'
     * [Styles](docs/ARCHITECTURE.md#styles)
     * [JavaScript](docs/ARCHITECTURE.md#javascript)
     * [Upgrading](docs/ARCHITECTURE.md#upgrading)
+
+### Managing Content
+
 * **[Content](docs/CONTENT.md)**
     * [Posts](docs/CONTENT.md#posts)
     * [Pages](docs/CONTENT.md#pages)
@@ -21,12 +26,11 @@ This package contains the WordPress themes & plugins for [New York City Council'
     * [Markup](docs/CONTENT.md#markup)
     * [Layout](docs/CONTENT.md#layout)
     * [Foundation Components](docs/CONTENT.md#foundation-components)
+* **[Homepage](docs/HOMEPAGE.md)**
 * **[Menus and Widgets](docs/MENUS_AND_WIDGETS.md)**
     * [The Top Bar](docs/MENUS_AND_WIDGETS.md#the-top-bar)
     * [The Sidebar](docs/MENUS_AND_WIDGETS.md#the-sidebar)
 * **[Footer](docs/FOOTER.md)**
-* **[Homepage](docs/HOMEPAGE.md)**
-    * [Featured Content](docs/HOMEPAGE.md#featured-content)
 * **[Committees](docs/COMMITTEES.md)**
 * **[Caucuses](docs/CAUCUSES.md)**
 * **[Initiatives](docs/INITIATIVES.md)**
@@ -50,6 +54,9 @@ This package contains the WordPress themes & plugins for [New York City Council'
 * **[Jobs](docs/JOBS.md)**
 * **[The Map](docs/MAP.md)**
 * **[Social Media Share Images](docs/SOCIAL_SHARE_IMAGES.md)**
+
+### Writing Content
+
 * **[Content Guidelines](docs/CONTENT_GUIDELINES.md)**
     * [Voice and style](docs/CONTENT_GUIDELINES.md#voice-and-style)
     * [Acronyms and Abbreviations](docs/CONTENT_GUIDELINES.md#acronyms-and-abbreviations)
@@ -64,7 +71,6 @@ This package contains the WordPress themes & plugins for [New York City Council'
     * [Pronouns](docs/CONTENT_GUIDELINES.md#pronouns)
     * [Punctuation](docs/CONTENT_GUIDELINES.md#punctuation)
     * [Words to avoid](docs/CONTENT_GUIDELINES.md#words-to-avoid)
-
 
 ## Contributors
 
