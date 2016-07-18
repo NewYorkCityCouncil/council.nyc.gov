@@ -15,7 +15,7 @@ require_once(get_template_directory().'/assets/functions/page-navigation.php'); 
 require_once(get_template_directory().'/assets/functions/social-meta.php');       // Facebook & Twitter share meta
 
 if ( is_main_site() ) {
-  require_once(get_template_directory().'/assets/functions/options.php');         // Features custom post type
+  require_once(get_template_directory().'/assets/functions/options.php');         // NYCC Site Options
 }
 
 // Custom Post Types
