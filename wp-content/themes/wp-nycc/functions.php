@@ -14,6 +14,10 @@ require_once(get_template_directory().'/assets/functions/archive-titles.php');  
 require_once(get_template_directory().'/assets/functions/page-navigation.php');   // Numeric Page Navigation
 require_once(get_template_directory().'/assets/functions/social-meta.php');       // Facebook & Twitter share meta
 
+if ( is_main_site() ) {
+  require_once(get_template_directory().'/assets/functions/options.php');         // Features custom post type
+}
+
 // Custom Post Types
 require_once(get_template_directory().'/assets/functions/committees.php');        // Committees custom post type
 require_once(get_template_directory().'/assets/functions/caucuses.php');          // Caucuses custom post type
