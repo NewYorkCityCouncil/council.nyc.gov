@@ -26,7 +26,7 @@ To run this locally, you will need to clone this repository and manually install
 
 ## WordPress Multisite
 
-The NYC Council site is a [network](https://codex.wordpress.org/Create_A_Network) of sites. The primary site is for basic Council pages—such as the home page, the About page, and the Initiative page. Each of the 51 Council Districts and each Council Division (Legislation, Budget, Land Use, Press) is its own site.
+The NYC Council site is a [network](https://codex.wordpress.org/Create_A_Network) of sites. The primary site is for basic Council pages—such as the home page, the About page, and the Initiative page. Each of the 51 Council Districts and each Council Division (Legislation, Budget, Land Use, Press…) is its own site.
 
 ## Themes
 
