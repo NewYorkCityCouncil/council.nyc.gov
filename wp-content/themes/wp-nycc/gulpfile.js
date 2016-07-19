@@ -44,7 +44,7 @@ gulp.task('foundation-js', function() {
       './bower_components/foundation-sites/js/foundation.util.*.js',
 
       // Uncomment the components you need:
-      // './bower_components/foundation-sites/js/foundation.abide.js',
+      './bower_components/foundation-sites/js/foundation.abide.js',
       './bower_components/foundation-sites/js/foundation.accordion.js',
       './bower_components/foundation-sites/js/foundation.accordionMenu.js',
       // './bower_components/foundation-sites/js/foundation.drilldown.js',
