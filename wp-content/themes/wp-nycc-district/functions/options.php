@@ -19,6 +19,7 @@ function register_nycc_district_options() {
     register_setting( 'district-options-group', 'council_district_contact' );
     register_setting( 'district-options-group', 'council_legislative_contact' );
     register_setting( 'district-options-group', 'council_district_email' );
+    register_setting( 'district-options-group', 'council_district_contact_form' );
 }
 
 
@@ -103,6 +104,13 @@ function nycc_district_options_page() {
             <th scope="row">Email Address</th>
             <td>
               <input type="text" name="council_district_email" value="<?php echo esc_attr( get_option('council_district_email') ); ?>" placeholder="example@council.nyc.gov" class="regular-text" />
+            </td>
+          </tr>
+
+          <tr valign="top">
+            <th scope="row">Contact Form</th>
+            <td>
+              <textarea name="council_district_contact_form" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('council_district_contact_form') ); ?></textarea>
             </td>
           </tr>
 
