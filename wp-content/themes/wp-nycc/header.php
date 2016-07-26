@@ -20,6 +20,8 @@
     <script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
 
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
+
     <?php wp_head(); ?>
 
   </head>
