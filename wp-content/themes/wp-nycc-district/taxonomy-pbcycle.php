@@ -84,6 +84,13 @@
           'orderby'    => 'menu_order',
           'order'      => 'ASC',
           'posts_per_page' => '-1',
+          'tax_query' => array(
+            array(
+              'taxonomy' => 'pbcycle',
+              'field'    => 'term_id',
+              'terms'    => $cycleID,
+            ),
+          ),
           'meta_query' => array(
             array(
               'key'     => 'pb_ballot_item_winner',
