@@ -168,6 +168,13 @@
 
       <?php } ?>
 
+      <?php else : ?>
+        <h1 class="post-title">Participatory budgeting is happening in District&nbsp;<?php echo get_option('council_district_number'); ?>.</h1>
+        <?php
+        switch_to_blog(1);
+        echo get_option('pb_placeholder');
+        restore_current_blog();
+        ?>
       <?php endif; ?>
 
       <?php wp_reset_query(); ?>
