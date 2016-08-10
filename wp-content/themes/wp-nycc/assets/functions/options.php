@@ -9,7 +9,6 @@ function nycc_options() {
 
 function register_nycc_options() {
     register_setting( 'nycc-options-group', 'site_footer_content' );
-    register_setting( 'nycc-options-group', 'current_pb_cycle' );
     register_setting( 'nycc-options-group', 'pb_placeholder' );
 }
 
@@ -30,13 +29,6 @@ function nycc_options_page() {
             <th scope="row">Footer Content</th>
             <td>
               <textarea name="site_footer_content" rows="20" cols="50" class="large-text"><?php echo esc_attr( get_option('site_footer_content') ); ?></textarea>
-            </td>
-          </tr>
-
-          <tr valign="top">
-            <th scope="row">Current PB Cycle</th>
-            <td>
-              <input type="number" min="1" step="1" name="current_pb_cycle" value="<?php echo get_option('current_pb_cycle'); ?>" placeholder="1" />
             </td>
           </tr>
 
