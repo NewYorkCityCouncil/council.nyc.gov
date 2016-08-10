@@ -26,12 +26,12 @@ function nycc_pb_ballot_item_post_type() {
       'query_var' => false,
       'menu_position' => 20,
       'menu_icon' => 'dashicons-yes',
-      'rewrite'  => array( 'slug' => 'pb', 'with_front' => false ),
-      'has_archive' => true,
+      'rewrite'  => false,
+      'has_archive' => false,
       'capability_type' => 'page',
       'hierarchical' => false,
       'supports' => array('title', 'editor', 'page-attributes'),
-      'taxonomies' => array('pbtags')
+      'taxonomies' => array('pbtags', 'pbcycle'),
      )
   );
   register_taxonomy( 'pbtags',
@@ -78,6 +78,8 @@ function nycc_pb_ballot_item_post_type() {
       'show_ui' => true,
       'query_var' => true,
       'show_in_nav_menus' => false,
+      'show_tagcloud' => false,
+      'rewrite' => array( 'slug' => 'pb' ),
     )
   );
 }
@@ -131,14 +133,14 @@ add_action('save_post', 'save_nycc_pb_ballot_item_meta', 1, 2);
 
 
 // Redirect single post view back to archive
-function nycc_redirect_nycc_pb_ballot_item() {
-    $queried_post_type = get_query_var('post_type');
-    if ( is_single() && 'nycc_pb_ballot_item' ==  $queried_post_type ) {
-        wp_redirect( get_post_type_archive_link('nycc_pb_ballot_item'), 301 );
-        exit;
-    }
-}
-add_action( 'template_redirect', 'nycc_redirect_nycc_pb_ballot_item' );
+// function nycc_redirect_nycc_pb_ballot_item() {
+//     $queried_post_type = get_query_var('post_type');
+//     if ( is_single() && 'nycc_pb_ballot_item' ==  $queried_post_type ) {
+//         wp_redirect( get_post_type_archive_link('nycc_pb_ballot_item'), 301 );
+//         exit;
+//     }
+// }
+// add_action( 'template_redirect', 'nycc_redirect_nycc_pb_ballot_item' );
 
 
 // PB Vote Sites
