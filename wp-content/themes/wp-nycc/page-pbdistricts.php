@@ -54,6 +54,7 @@
           </thead>
           <tbody class="list">
             <?php
+            $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
             $sites = wp_get_sites();
             foreach ( $sites as $site ) {
 
@@ -66,13 +67,14 @@
               $borough = get_blog_option($ID,'council_district_borough');
 
               if ( $number ) {
-                $vote_sites = new WP_Query('post_type=nycc_pb_ballot_item&posts_per_page=-1');
-                if ( $vote_sites->have_posts() ) {
+                $cycle = term_exists($current_pb_cycle,'pbcycle');
+                if ($cycle !== 0 && $cycle !== null) {
+                  $districtCycleLink = get_blogaddress_by_id($ID) . 'pb/' . $current_pb_cycle . '/';
                   ?>
                   <tr>
-                    <td class="sort-district"><a class="button small expanded" href="<?php echo get_blogaddress_by_id($ID); ?>pb/"><strong><?php echo $number; ?></strong></a></td>
-                    <td class="sort-member"><a href="<?php echo get_blogaddress_by_id($ID); ?>pb/"><strong><?php echo $name; ?></strong></a></td>
-                    <td><a href="<?php echo get_blogaddress_by_id($ID); ?>pb/"><img class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
+                    <td class="sort-district"><a class="button small expanded" href="<?php echo $districtCycleLink ?>"><strong><?php echo $number; ?></strong></a></td>
+                    <td class="sort-member"><a href="<?php echo $districtCycleLink; ?>"><strong><?php echo $name; ?></strong></a></td>
+                    <td><a href="<?php echo $districtCycleLink; ?>"><img class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
                     <td class="sort-borough"><?php echo $borough; ?></td>
                   </tr>
                   <?php

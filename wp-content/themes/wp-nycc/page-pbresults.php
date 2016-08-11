@@ -15,24 +15,10 @@
 
       <?php the_content(); ?>
 
-      <div class="row">
-        <div class="columns large-8">
-          <h3 class="header-large">Project spending per district</h3>
-          <div class="flex-video widescreen">
-            <iframe src="http://newyorkcitycouncil.github.io/datavis/pb/spending_per_dist_2016/" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="columns medium-6 medium-pull-3 large-4 large-pull-0">
-          <h3 class="header-large medium-text-center large-text-left">Types of projects funded</h3>
-          <div class="flex-video widescreen" style="padding-bottom:90%;">
-            <iframe src="http://newyorkcitycouncil.github.io/datavis/pb/project_types_funded_2016/" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-
       <h3 class="header-xxlarge">Winning Projects</h3>
       <br>
       <?php
+      $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
       $sites = wp_get_sites();
       foreach ( $sites as $site ) {
 
@@ -44,12 +30,20 @@
         $thumbnail = get_blog_option($ID,'council_member_thumbnail' );
         $borough = get_blog_option($ID,'council_district_borough');
 
-        if ( $number ) {
+        $cycle = term_exists($current_pb_cycle,'pbcycle');
+        if ( $number && $cycle !== 0 && $cycle !== null ) {
           $args = array(
             'post_type'  => 'nycc_pb_ballot_item',
             'orderby'    => 'menu_order',
             'order'      => 'ASC',
             'posts_per_page' => '-1',
+            'tax_query' => array(
+              array(
+                'taxonomy' => 'pbcycle',
+                'field'    => 'slug',
+                'terms'    => $current_pb_cycle,
+              ),
+            ),
             'meta_query' => array(
               array(
                 'key'     => 'pb_ballot_item_winner',
@@ -65,11 +59,11 @@
               <div class="columns large-4">
                 <div class="media-object">
                   <div class="media-object-section">
-                    <div class="thumbnail"><a href="<?php echo get_blogaddress_by_id($ID); ?>pb/"><img style="max-width:80px;" src= "<?php echo $thumbnail; ?>"></a></div>
+                    <div class="thumbnail"><a href="<?php echo get_blogaddress_by_id($ID); ?>pb/<?php echo $current_pb_cycle;?>/"><img style="max-width:80px;" src= "<?php echo $thumbnail; ?>"></a></div>
                   </div>
                   <div class="media-object-section">
                     <h4 class="header-xlarge">
-                      <a href="<?php echo get_blogaddress_by_id($ID); ?>pb/">
+                      <a href="<?php echo get_blogaddress_by_id($ID); ?>pb/<?php echo $current_pb_cycle;?>/">
                         District <?php echo $number; ?>
                         <br>
                         <small><?php echo $name; ?></small>
@@ -100,7 +94,7 @@
                 }
                 ?>
                 <article class="hentry no-border">
-                  <a class="button small" href="<?php echo get_blogaddress_by_id($ID); ?>pb/">See all projects</a>
+                  <a class="button small" href="<?php echo get_blogaddress_by_id($ID); ?>pb/<?php echo $current_pb_cycle;?>/">See all projects</a>
                 </article>
                 </div>
               </article>
