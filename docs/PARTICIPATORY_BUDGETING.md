@@ -5,14 +5,14 @@ PB content is managed on both the main site (with pages using specific templates
 Content management follows the general PB process:
 
 * **Cycle Kickoff**
-  * When the Districts taking part are announced, a matching PB Cycle taxonomy term (e.g. "6") is created for each of those Districts
-  * On the main site, a page with a specific template displays the Districts that are taking part (those which use the matching term)
+  * When the Districts taking part are announced, a matching PB Cycle taxonomy term (e.g. "6" representing Cycle 6) is created for each of those Districts
+  * On the main site, a page with a specific template displays the Districts that are taking part (those which use the matching term associated with the cycle)
 * **Potential Projects Announced**
-  * Ballot items are added to each of the participating Districts
+  * Ballot items are added on each participating District's site
 * **Voting**
-  * Vote sites are added  to each of the participating Districts
+  * Vote sites are added on each participating District's site
 * **Winners Announced**
-  * Specific ballot items are marked as winning
+  * Specific ballot items are marked as winning on each participating District's site
   * On the main site, a page with a specific template displays the winning projects from each District
 
 ## District Ballot Items
@@ -21,16 +21,16 @@ Add ballot items in the District's Admin > PB Ballot. Ballot items are a custom 
 
 Edit the content as you would a regular post. The following settings will determine how the ballot item displays:
 
-* **PB Categories** - appears as a label in the top right corner of the ballot item. _Note: Categories are a comma-separated list. So if you try to add a category that contains a commas (e.g. "Arts, Culture, & Community") it will add multiple categories. You have to add the category without the commas, then edit the category in the District's Admin > PB Ballot > Categories. Or avoid using commas—e.g. "Arts/Culture/Communty."_
-* **PB Cycle** - a custom taxonomy like tags; terms determines which PB cycle the ballot item is associated with; must be a number (e.g. "6"); if a term exists (whether or not it's associated with any ballot item) it indicates the District is taking part in that particular PB cycle
+* **PB Categories** - appears as a label in the top right corner of the ballot item. _Note: Categories are a comma-separated list. So if you try to add a category that contains commas (e.g. "Arts, Culture, & Community") it will add multiple categories. You have to add the category without the commas, then edit the category in the District's Admin > PB Ballot > Categories. Or avoid using commas—e.g. "Arts/Culture/Communty."_
+* **PB Cycle** - a custom taxonomy like tags; determines which PB cycle the ballot item is associated with; must be a number (e.g. "6")
 * **Order** - order by which the ballot item appears in lists (falls back to reverse chronological published date)
 * **Winning Project** - before voting, leave all items set to "No"; once voting has ended, set the winners to "Yes"
 
 ## District Vote Sites
 
-Add vote sites in the District's Admin > PB Vote Sites. Vote sites are a custom post type similar to posts, except there is no single Vote Sites view. Vote sites appear as interactive markers on the District map and—if there are no winning projects—in a list alongside the ballot items.
+Add vote sites in the District's Admin > PB Vote Sites. Vote sites are a custom post type similar to posts, except there is no single Vote Sites view. Vote sites appear as interactive markers on the District map and—if there are no winning projects—in a list alongside the ballot items. Vote sites are not associated with a specific PB cycle, so they can be reused in future cycles if they remain applicable (or deleted if they're no longer applicable).
 
-Edit the content as you would a regular post. The following settings will determine how the vote site displays:
+Edit the content as you would a regular post. The title of the the vote site should be a location name (e.g. "District Office" or "Carl Schurz Park"). The content should list the vote site's time(s), date(s), and street address (if applicable). The following settings will determine how the vote site displays:
 
 * **Order** - order by which the vote site appears in lists (falls back to reverse chronological published date)
 * **Latitude & Longitude** - position of the map marker (PROTIP: Get the Lat/Lon by searching a place in Google Maps and copying the first two numbers after the `@` in the URL. Don't drag the map or these numbers will change.)
