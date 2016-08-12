@@ -5,24 +5,24 @@
       $args = array_merge( $wp_query->query, array( 'post_type' => 'nycc_pb_ballot_item' ) );
       query_posts( $args );
 
+      $term = $wp_query->get_queried_object();
+      $cycleID = $term->name;
+
       if ( have_posts() ) :
       ?>
 
       <?php if( is_tax() ) {
           global $wp_query;
-          $term = $wp_query->get_queried_object();
-          $cycleID = $term->term_id;
       }  ?>
 
       <header class="page-header">
-        <h1 class="header-xlarge">Participatory Budgeting in District&nbsp;<?php echo get_option('council_district_number'); ?></h1>
+        <h1 class="header-xxlarge">Participatory Budgeting <small>Cycle <?php echo $cycleID; ?></small></h1>
         <p class="header-medium subheader sans-serif">
-          To receive text alerts about when and where you can vote, text <strong>PBNYC</strong> to&nbsp;<strong>212-676-8384</strong>.
           <?php
             switch_to_blog(1);
             $pbpage = get_page_by_path( 'pb' );
             if ( $pbpage ) {
-              echo '<small><a href="' . get_permalink( $pbpage ) . '" class="">Learn more about PBNYC</a>.</small>';
+              echo '<a href="' . get_permalink( $pbpage ) . '" class="">Learn more about PBNYC</a>';
             }
             restore_current_blog();
           ?>
@@ -39,7 +39,7 @@
         'tax_query' => array(
           array(
             'taxonomy' => 'pbcycle',
-            'field'    => 'term_id',
+            'field'    => 'name',
             'terms'    => $cycleID,
           ),
         ),
@@ -87,7 +87,7 @@
           'tax_query' => array(
             array(
               'taxonomy' => 'pbcycle',
-              'field'    => 'term_id',
+              'field'    => 'name',
               'terms'    => $cycleID,
             ),
           ),
@@ -176,7 +176,7 @@
       <?php } ?>
 
       <?php else : ?>
-        <h1 class="post-title">Participatory budgeting is happening in District&nbsp;<?php echo get_option('council_district_number'); ?>.</h1>
+        <h1 class="header-xxlarge">Participatory Budgeting <small>Cycle <?php echo $cycleID; ?></small></h1>
         <?php
         switch_to_blog(1);
         echo get_option('pb_placeholder');
