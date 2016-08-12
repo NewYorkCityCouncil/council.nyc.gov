@@ -22,7 +22,8 @@ $args = array(
     ),
 );
 $pb_pages = new WP_Query( $args );
-if ( $pb_pages->have_posts() ) {
+$the_count = $pb_pages->found_posts;
+if ( ($pb_pages->have_posts()) && ($the_count > 1) ) {
     echo '<ul class="menu small">';
     while ( $pb_pages->have_posts() ) {
         $pb_pages->the_post();
