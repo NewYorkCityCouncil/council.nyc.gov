@@ -67,4 +67,4 @@ A page on the main site using the `page-pbsidebar.php` template will display the
 
 ### PB Page Menus
 
-All PB page templates include a menu for navigating between pages which have identical `current_pb_cycle` values. The order of menu items is set via Page Attributes > Order.
+All PB page templates include a menu for navigating between pages which have identical values for the `pb_cycle_menu` custom field. The order of menu items is set via Page Attributes > Order.

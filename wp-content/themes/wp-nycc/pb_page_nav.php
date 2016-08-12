@@ -1,7 +1,7 @@
 <?php
 
 $current_page = get_the_permalink();
-$current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
+$pb_cycle_menu = get_post_custom_values( 'pb_cycle_menu' )[0];
 
 $args = array(
     'post_type'  => 'page',
@@ -15,8 +15,8 @@ $args = array(
             'compare' => 'IN',
         ),
         array(
-            'key'     => 'current_pb_cycle',
-            'value'   => $current_pb_cycle,
+            'key'     => 'pb_cycle_menu',
+            'value'   => $pb_cycle_menu,
             'compare' => 'IN',
         ),
     ),
