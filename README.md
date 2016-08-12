@@ -39,11 +39,11 @@ This package contains the WordPress themes & plugins for [New York City Council'
     * [District Options](docs/DISTRICTS.md#district-options)
     * [District Front Page](docs/DISTRICTS.md#district-front-page)
     * [District Sidebar](docs/DISTRICTS.md#district-sidebar)
-    * [Participatory Budgeting](docs/DISTRICTS.md#participatory-budgeting)
-        * [Ballot Items](docs/DISTRICTS.md#ballot-items)
-        * [Vote Sites](docs/DISTRICTS.md#vote-sites)
-        * [Ballot Item Archive](docs/DISTRICTS.md#ballot-item-archive)
-        * [PB Page Templates](docs/DISTRICTS.md#pb-page-templates)
+* **[Participatory Budgeting](docs/PARTICIPATORY_BUDGETING.md)**
+    * [District Ballot Items](docs/PARTICIPATORY_BUDGETING.md#district-ballot-items)
+    * [District Vote Sites](docs/PARTICIPATORY_BUDGETING.md#district-vote-sites)
+    * [District PB Cycles](docs/PARTICIPATORY_BUDGETING.md#district-pb-cycles)
+    * [Main Site Page Templates](docs/PARTICIPATORY_BUDGETING.md#main-site-page-templates)
 * **[Budget](docs/BUDGET.md)**
 * **[Land Use](docs/LAND_USE.md)**
     * [Plans](docs/LAND_USE.md#plans)
