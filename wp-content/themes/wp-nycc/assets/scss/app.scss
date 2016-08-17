@@ -42,7 +42,9 @@
 }
 
 .sidebar {
-  padding-top: $global-margin/2;
+  body:not(.home) & {
+    padding-top: rem-calc(10);
+  }
 }
 
 .site-footer {
@@ -898,6 +900,9 @@ $map-height-tall:   rem-calc(400);
   margin-top: $global-margin*-2;
   position: relative;
   z-index: 2;
+  @include breakpoint(medium) {
+    margin-bottom: $global-margin;
+  }
   .button {
     @extend .tiny;
     font-weight: $global-weight-bold;

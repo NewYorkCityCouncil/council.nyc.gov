@@ -4805,8 +4805,8 @@ table.hover tr:nth-of-type(even):hover {
   position: relative;
   z-index: 1; }
 
-.sidebar {
-  padding-top: 0.5rem; }
+body:not(.home) .sidebar {
+  padding-top: 0.625rem; }
 
 .site-footer {
   padding: 3rem 0 4rem;
@@ -5481,6 +5481,9 @@ figure {
   margin-top: -2rem;
   position: relative;
   z-index: 2; }
+  @media screen and (min-width: 40em) {
+    #translation-menu {
+      margin-bottom: 1rem; } }
   #translation-menu .button, #translation-menu .press-release-tags ul li a, .press-release-tags ul li #translation-menu a, #translation-menu .social-buttons a, .social-buttons #translation-menu a, #translation-menu .comment-reply-link {
     font-weight: bold;
     padding: 0.5em 0.625em;
