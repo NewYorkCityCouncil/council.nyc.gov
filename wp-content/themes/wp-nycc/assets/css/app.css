@@ -5043,6 +5043,9 @@ figure {
 .image-header {
   position: relative;
   margin: -2rem 0 2rem 0; }
+  @media screen and (min-width: 40em) {
+    .image-header {
+      margin-top: -3rem; } }
   .image-header::before {
     content: '';
     display: block;

@@ -353,6 +353,9 @@ $image-overlay-padding: map-get($grid-column-gutter, small);
 .image-header {
   position: relative;
   margin: -$global-margin*2 0 $global-margin*2 0;
+  @include breakpoint(medium) {
+    margin-top: -$global-margin*3;
+  }
   &::before {
     content: '';
     display: block;
