@@ -5266,6 +5266,7 @@ figure {
     margin: -2rem 0 2rem; }
     @media screen and (min-width: 40em) {
       #map-container.district {
+        margin-top: -3rem;
         height: 25rem; } }
 
 #map p {
