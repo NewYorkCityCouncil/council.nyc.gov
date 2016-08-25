@@ -45,6 +45,11 @@ function nycc_unregister_default_widgets() {
   unregister_widget('WP_Widget_Tag_Cloud');
   // unregister_widget('WP_Nav_Menu_Widget');
   unregister_widget('Twenty_Eleven_Ephemera_Widget');
-  remove_meta_box('wpe_dify_news_feed', 'dashboard', 'normal'); // WPEngine News Widget
 }
 add_action('widgets_init', 'nycc_unregister_default_widgets', 11);
+
+// Disable WPEngine Widgets
+function nycc_disable_wpe_widgets() {
+  remove_meta_box('wpe_dify_news_feed', 'dashboard', 'normal');
+}
+add_action( 'admin_init', 'nycc_disable_wpe_widgets', 9999 );
