@@ -1,5 +1,8 @@
 <?php get_header(); ?>
 
+  <div class="row">
+    <div class="columns medium-8 large-9 xxlarge-8">
+
       <header>
         <h1 class="header-small"><?php the_archive_title();?></h1>
         <?php the_archive_description('<div class="taxonomy-description">', '</div>');?>

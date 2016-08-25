@@ -26,6 +26,3 @@
     </div>
   </div>
 </div>
-
-<div class="row">
-  <div class="columns medium-8 large-9 xxlarge-8">

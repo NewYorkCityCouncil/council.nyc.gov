@@ -1,5 +1,8 @@
 <?php get_header(); ?>
 
+  <div class="row">
+    <div class="columns medium-8 large-9 xxlarge-8">
+
       <?php
       global $wp_query;
       $args = array_merge( $wp_query->query, array( 'post_type' => 'nycc_pb_ballot_item' ) );

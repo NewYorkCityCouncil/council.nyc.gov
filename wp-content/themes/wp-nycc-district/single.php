@@ -1,5 +1,8 @@
 <?php get_header(); ?>
 
+  <div class="row">
+    <div class="columns medium-8 large-9 xxlarge-8">
+
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
