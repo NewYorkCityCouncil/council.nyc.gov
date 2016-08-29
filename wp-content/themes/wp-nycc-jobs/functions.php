@@ -17,7 +17,6 @@ function remove_jobs_menus(){
   remove_menu_page( 'plugins.php' );
   // $page = remove_submenu_page( 'themes.php', 'widgets.php' );
   $page = remove_submenu_page( 'themes.php', 'nav-menus.php' );
-  remove_menu_page( 'tools.php' );
   remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
 }
 add_action( 'admin_menu', 'remove_jobs_menus' );

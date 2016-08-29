@@ -11,7 +11,6 @@ function remove_land_use_menus(){
   remove_menu_page( 'edit.php' );
   remove_menu_page( 'edit-comments.php' );
   remove_menu_page( 'plugins.php' );
-  remove_menu_page( 'tools.php' );
   remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
 }
 add_action( 'admin_menu', 'remove_land_use_menus' );

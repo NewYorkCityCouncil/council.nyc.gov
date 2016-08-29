@@ -7,6 +7,7 @@ function remove_menus(){
   remove_menu_page( 'edit.php?post_type=nycc_report' );
   remove_menu_page( 'edit.php?post_type=nycc_initiative' );
   remove_menu_page( 'edit.php?post_type=nycc_feature' );
+  remove_menu_page( 'tools.php' );
 }
 add_action( 'admin_menu', 'remove_menus' );
 
