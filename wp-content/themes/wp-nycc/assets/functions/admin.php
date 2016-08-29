@@ -27,22 +27,6 @@ if ( is_super_admin() ) {
   // add_filter( 'user_can_richedit', '__return_false' ); // Disable the visual editor for super admins
 }
 
-// Disable Customizer
-// https://wordpress.org/plugins/customizer-remove-all-parts/installation/
-// ^ The customizer-remove-all-parts plugin will nix "Manage in Customizer" links
-// but it doesn't seem to get the Appearance > Customize menu item
-function disable_the_customizer () {
-    global $submenu;
-    unset($submenu['themes.php'][6]);
-}
-add_action('admin_menu', 'disable_the_customizer');
-
-function disable_the_customizer_admin_bar_link() {
-    global $wp_admin_bar;
-    $wp_admin_bar->remove_menu('customize');
-}
-add_action( 'wp_before_admin_bar_render', 'disable_the_customizer_admin_bar_link' );
-
 // Remove Profile sidebar menu item
 function remove_profile_sidebar_menu_item(){
   remove_menu_page( 'profile.php' );
