@@ -10,3 +10,4 @@ require_once(get_stylesheet_directory().'/functions/contact-info.php');   // Con
 require_once(get_stylesheet_directory().'/functions/pb.php');             // Participatory Budgeting
 require_once(get_stylesheet_directory().'/functions/menus.php');          // Menus
 require_once(get_stylesheet_directory().'/functions/widgets.php');        // Widgets
+require_once(get_stylesheet_directory().'/functions/roles.php');          // Roles
