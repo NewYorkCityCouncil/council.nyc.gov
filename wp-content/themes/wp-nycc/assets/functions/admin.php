@@ -13,7 +13,7 @@ function disable_default_dashboard_widgets() {
 }
 add_action('admin_menu', 'disable_default_dashboard_widgets');
 
-//Remove the "Welcome to WordPress!" panel
+// Remove the "Welcome to WordPress!" panel
 remove_action('welcome_panel', 'wp_welcome_panel');
 
 // Custom Backend Footer
@@ -39,3 +39,10 @@ function disable_the_customizer_admin_bar_link() {
     $wp_admin_bar->remove_menu('customize');
 }
 add_action( 'wp_before_admin_bar_render', 'disable_the_customizer_admin_bar_link' );
+
+// Remove Profile sidebar menu item
+function remove_profile_sidebar_menu_item(){
+  remove_menu_page( 'profile.php' );
+  remove_submenu_page( 'users.php', 'profile.php' );
+}
+add_action( 'admin_menu', 'remove_profile_sidebar_menu_item' );
