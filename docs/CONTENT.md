@@ -33,6 +33,10 @@ Page templates are used to change the layout and function of a page. When editin
 * **PB Sidebar** - _displays the PB Sidebar widgets alongside the page content_
 * **Raw HTML, Full-width, No Header** - _a blank template for hand-coding a custom layout_
 
+## Comments
+
+This package includes a must-use plugin (`wp-content/mu-plugins/disable-comments-mu.php`) which completely disables comments for the entire network. Updates for this plugin may be found at [disable-comments-mu](https://github.com/solarissmoke/disable-comments-mu). 
+
 ## Markup
 
 The WordPress content editor provides a visual and a text view. The visual view shows formatted content. The text view allows you to write raw HTML and have more control over content design and structure. If you choose to write HTML, be careful switching to the visual editor, as it may clobber your work or have undesired results.
