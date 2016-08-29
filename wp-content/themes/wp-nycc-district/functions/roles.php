@@ -7,11 +7,16 @@ function nycc_edit_admin_capabilities() {
 }
 add_action( 'init', 'nycc_edit_admin_capabilities' );
 
-function remove_themes_menu(){
-  // Hide the Appearace menu (Themes)
-  remove_menu_page( 'themes.php' );
-  // Show Menus & Widgets submenus
-  add_menu_page( __('Menus', 'nav-menus'), __('Menus', 'nav-menus'), 'edit_theme_options', 'nav-menus.php', '', 'dashicons-menu', 50 );
-  add_menu_page( __('Widgets', 'widgets'), __('Widgets', 'widgets'), 'edit_theme_options', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 50 );
+
+if( current_user_can('editor') && !current_user_can('administrator') ) {
+
+  function remove_themes_menu(){
+    // Hide the Appearace menu (Themes)
+    remove_menu_page( 'themes.php' );
+    // Show Menus & Widgets submenus
+    add_menu_page( __('Menus', 'nav-menus'), __('Menus', 'nav-menus'), 'edit_theme_options', 'nav-menus.php', '', 'dashicons-menu', 50 );
+    add_menu_page( __('Widgets', 'widgets'), __('Widgets', 'widgets'), 'edit_theme_options', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 50 );
+  }
+  add_action( 'admin_menu', 'remove_themes_menu' );
+
 }
-add_action( 'admin_menu', 'remove_themes_menu' );
