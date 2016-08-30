@@ -18,6 +18,9 @@ if ( is_main_site() ) {
   require_once(get_template_directory().'/assets/functions/options.php');         // NYCC Site Options
 }
 
+// Editor Styles
+add_editor_style( 'assets/css/editor.min.css' );
+
 // Custom Post Types
 require_once(get_template_directory().'/assets/functions/committees.php');        // Committees custom post type
 require_once(get_template_directory().'/assets/functions/caucuses.php');          // Caucuses custom post type
