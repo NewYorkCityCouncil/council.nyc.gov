@@ -8,6 +8,7 @@ require_once(get_template_directory().'/assets/functions/remove-in-child-theme.p
 require_once(get_stylesheet_directory().'/functions/posts.php');          // Posts
 require_once(get_stylesheet_directory().'/functions/widgets.php');        // Widgets
 require_once(get_stylesheet_directory().'/functions/media.php');          // Media
+require_once(get_stylesheet_directory().'/functions/roles.php');          // Roles
 
 // Hide admin stuff
 function remove_press_menus(){
