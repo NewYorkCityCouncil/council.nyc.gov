@@ -1,3 +1,8 @@
+/*--------------------------------------------------
+  This file is called by the WordPress add_editor_style()
+  function. It stlyes the WYSIWYG editor so that its
+  typography matches that of the public view.
+--------------------------------------------------*/
 /**
  * Foundation for Sites by ZURB
  * Version 6.2.1
@@ -2290,6 +2295,11 @@ table.hover tr:nth-of-type(even):hover {
   .table-scroll table {
     width: auto; }
 
+/*--------------------------------------------------
+  The site's public view has a grey background and
+  no margin. Let's make it white and give the editor
+  pane some breathing room.
+--------------------------------------------------*/
 body {
   background: #fff;
   margin: 9px 10px;
