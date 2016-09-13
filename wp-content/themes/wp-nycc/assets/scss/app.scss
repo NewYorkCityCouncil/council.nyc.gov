@@ -226,6 +226,17 @@
   }
 }
 
+legend {
+  font-size: $form-label-font-size;
+}
+
+@each $name, $color in $foundation-palette {
+  .text-color-#{$name} {
+    color: $color;
+  }
+}
+
+
 
 /*--------------------------------------------------
   Posts & Pages

@@ -4958,6 +4958,24 @@ body:not(.home) .sidebar {
   .menu.small a {
     padding: 0.85em 1em; }
 
+legend {
+  font-size: 0.875rem; }
+
+.text-color-primary {
+  color: #2f56a6; }
+
+.text-color-secondary {
+  color: #8a8a8a; }
+
+.text-color-success {
+  color: #43AC6A; }
+
+.text-color-warning {
+  color: #ffae00; }
+
+.text-color-alert {
+  color: #d05d4e; }
+
 /*--------------------------------------------------
   Posts & Pages
 --------------------------------------------------*/
