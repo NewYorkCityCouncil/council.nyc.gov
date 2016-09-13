@@ -23,6 +23,14 @@ jQuery('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').each(function() {
 
 
 /*--------------------------------------------------
+  URL query string to open modals
+--------------------------------------------------*/
+if ( window.location.href.indexOf("?modal=true") > -1 ) {
+  jQuery('#onload-modal').foundation('open');
+}
+
+
+/*--------------------------------------------------
   List.js
 --------------------------------------------------*/
 var options = {
