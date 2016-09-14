@@ -33,10 +33,12 @@ if ( window.location.href.indexOf("?modal=true") > -1 ) {
 /*--------------------------------------------------
   List.js
 --------------------------------------------------*/
-var options = {
-  valueNames: [ 'sort-district', 'sort-member', 'sort-borough', 'sort-party', 'sort-neighborhoods' ]
-};
-var userList = new List('districts-list', options);
+if ( jQuery('#districts-list').length ) {
+  var options = {
+    valueNames: [ 'sort-district', 'sort-member', 'sort-borough', 'sort-party', 'sort-neighborhoods' ]
+  };
+  var userList = new List('districts-list', options);
+}
 
 
 /*--------------------------------------------------
