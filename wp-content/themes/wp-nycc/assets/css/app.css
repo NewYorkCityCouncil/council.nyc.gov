@@ -4792,13 +4792,6 @@ table.hover tr:nth-of-type(even):hover {
   width: 100%;
   z-index: 2; }
 
-.site-title {
-  font-size: 1.5rem;
-  font-weight: bold; }
-
-.site-description {
-  display: block; }
-
 .site-container {
   background-color: #fff;
   padding: 2rem 0 4rem;
@@ -4841,9 +4834,15 @@ body:not(.home) .sidebar {
 .site-logo {
   display: block;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-  font-weight: bold;
-  font-size: 1.125rem;
-  line-height: 2.25rem; }
+  font-weight: normal;
+  font-size: 0.875rem;
+  line-height: 2.25rem;
+  letter-spacing: -0.03rem; }
+  @media screen and (min-width: 40em) {
+    .site-logo {
+      font-size: 1.125rem;
+      font-weight: bold;
+      letter-spacing: 0; } }
   .site-logo a {
     display: inline-block;
     padding: 0.9125rem 1rem;

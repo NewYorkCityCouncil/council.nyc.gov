@@ -25,15 +25,6 @@
   z-index: 2;
 }
 
-.site-title {
-  font-size: rem-calc(24);
-  font-weight: $global-weight-bold;
-}
-
-.site-description {
-  display: block;
-}
-
 .site-container {
   background-color: $white;
   padding: $global-margin*2 0 $global-margin*4;
@@ -88,9 +79,15 @@
 .site-logo {
   display: block;
   font-family: $header-font-family;
-  font-weight: $global-weight-bold;
-  font-size: rem-calc(18);
+  font-weight: $global-weight-normal;
+  font-size: rem-calc(14);
   line-height: rem-calc(36);
+  letter-spacing: -0.03rem;
+  @include breakpoint(medium) {
+    font-size: rem-calc(18);
+    font-weight: $global-weight-bold;
+    letter-spacing: 0;
+  }
   a {
     display: inline-block;
     padding: $menu-item-padding;
