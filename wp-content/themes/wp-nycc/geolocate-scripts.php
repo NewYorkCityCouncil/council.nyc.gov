@@ -79,7 +79,7 @@ $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
                                 );
                             } else {
                                 jQuery('#geolocate-district-result').append(
-                                  '<p class="callout text-small text-center alert ">District&nbsp;' + districtNumber + ' is not participating in PBNYC.</p>'
+                                  '<p class="callout text-small text-center alert ">District&nbsp;' + districtNumber + ' is not participating in PBNYC this year. Contact your Council Member for more information.</p>'
                                 );
                             }
 
