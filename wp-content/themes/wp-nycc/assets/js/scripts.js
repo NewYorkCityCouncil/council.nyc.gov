@@ -1291,6 +1291,33 @@ if (window.location.href.indexOf("?modal=true") > -1) {
 }
 
 /*--------------------------------------------------
+  URL hash to open tab
+  TODO: look for this feature in future Foundation version
+--------------------------------------------------*/
+function tabDeepLink(selector) {
+  jQuery(selector).each(function () {
+    var $tabs = jQuery(this);
+
+    // match page load anchor
+    var anchor = window.location.hash;
+    if (anchor.length && $tabs.find('[href="' + anchor + '"]').length) {
+      $tabs.foundation('selectTab', jQuery(anchor));
+      // don't scroll to anchor
+      jQuery(window).load(function () {
+        jQuery('html, body').animate({ scrollTop: 0 }, 1);
+      });
+    }
+
+    // append the hash on click
+    $tabs.on('change.zf.tabs', function () {
+      var anchor = $tabs.find('.tabs-title.is-active a').attr('href');
+      history.pushState({}, '', anchor);
+    });
+  });
+}
+tabDeepLink('.tabs');
+
+/*--------------------------------------------------
   List.js
 --------------------------------------------------*/
 if (jQuery('#districts-list').length) {
