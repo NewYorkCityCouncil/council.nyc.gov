@@ -1318,6 +1318,15 @@ function tabDeepLink(selector) {
 tabDeepLink('.tabs');
 
 /*--------------------------------------------------
+  When tabs load, refresh their iframes
+--------------------------------------------------*/
+jQuery('.tabs').on('change.zf.tabs', function () {
+  jQuery('.tabs-panel.is-active').find('iframe').prop('src', function () {
+    return jQuery(this).attr('src');
+  });
+});
+
+/*--------------------------------------------------
   List.js
 --------------------------------------------------*/
 if (jQuery('#districts-list').length) {
