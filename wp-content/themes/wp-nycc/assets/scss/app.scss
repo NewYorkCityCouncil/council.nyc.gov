@@ -918,25 +918,16 @@ $map-height-tall:   rem-calc(400);
   .button {
     @extend .tiny;
     font-weight: $global-weight-bold;
-    padding: 0.5em 0.625em;
-    line-height: 1.125;
+    padding: 0 0.625em;
+    line-height: $global-margin*2;
     height: $global-margin*2;
     background-color: $light-gray;
     color: $dark-gray;
     margin: 0 0.125rem 0 0;
     box-shadow: 0 0 0 0.125rem rgba(0,0,0,0.1);
+    border-radius: 0 0 1px 1px;
     &:hover {
       background-color: $light-gray;
-    }
-    &::before {
-      content: "\21B1 \3042";
-      display: block;
-      padding-left: 0.25em;
-    }
-    &::after {
-      content: "A \21B2";
-      display: block;
-      padding-right: 0.25em;
     }
   }
   #translation-menu-dropdown {

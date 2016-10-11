@@ -61,7 +61,7 @@
       <div class="site-container">
 
         <div id="translation-menu" class="row column text-right">
-          <button data-toggle="translation-menu-dropdown" class="button"><span class="show-for-sr">Translate this page</span></button>
+          <button data-toggle="translation-menu-dropdown" class="button dashicons-before dashicons-translation"><span class="show-for-sr">Translate this page</span></button>
           <div class="dropdown-pane" id="translation-menu-dropdown" data-dropdown data-hover="true" data-hover-pane="true">
             <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
             <script type="text/javascript">

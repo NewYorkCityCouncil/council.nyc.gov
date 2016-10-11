@@ -5507,23 +5507,16 @@ figure {
       margin-bottom: 1rem; } }
   #translation-menu .button, #translation-menu .press-release-tags ul li a, .press-release-tags ul li #translation-menu a, #translation-menu .social-buttons a, .social-buttons #translation-menu a, #translation-menu .comment-reply-link {
     font-weight: bold;
-    padding: 0.5em 0.625em;
-    line-height: 1.125;
+    padding: 0 0.625em;
+    line-height: 2rem;
     height: 2rem;
     background-color: #e6e6e6;
     color: #666;
     margin: 0 0.125rem 0 0;
-    box-shadow: 0 0 0 0.125rem rgba(0, 0, 0, 0.1); }
+    box-shadow: 0 0 0 0.125rem rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 1px 1px; }
     #translation-menu .button:hover, #translation-menu .press-release-tags ul li a:hover, .press-release-tags ul li #translation-menu a:hover, #translation-menu .social-buttons a:hover, .social-buttons #translation-menu a:hover, #translation-menu .comment-reply-link:hover {
       background-color: #e6e6e6; }
-    #translation-menu .button::before, #translation-menu .press-release-tags ul li a::before, .press-release-tags ul li #translation-menu a::before, #translation-menu .social-buttons a::before, .social-buttons #translation-menu a::before, #translation-menu .comment-reply-link::before {
-      content: "\21B1 \3042";
-      display: block;
-      padding-left: 0.25em; }
-    #translation-menu .button::after, #translation-menu .press-release-tags ul li a::after, .press-release-tags ul li #translation-menu a::after, #translation-menu .social-buttons a::after, .social-buttons #translation-menu a::after, #translation-menu .comment-reply-link::after {
-      content: "A \21B2";
-      display: block;
-      padding-right: 0.25em; }
   #translation-menu #translation-menu-dropdown {
     box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.1);
     border: 0; }
