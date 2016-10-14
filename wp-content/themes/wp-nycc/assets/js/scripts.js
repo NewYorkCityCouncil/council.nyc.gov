@@ -1351,3 +1351,41 @@ jQuery('#filter-nav a').click(function (e) {
   jQuery('#filter-nav li').removeClass('active');
   jQuery(this).parent('li').addClass('active');
 });
+
+/*--------------------------------------------------
+  Rotate the Google Translate language label
+--------------------------------------------------*/
+jQuery(document).ready(function () {
+  var langButton = jQuery('#translation-menu .button');
+  jQuery('<span class="lang-label" id="lang-label-1">English</span>').appendTo(langButton); // English
+  jQuery('<span class="lang-label" id="lang-label-2">Español</span>').appendTo(langButton).hide(); // Spanish
+  jQuery('<span class="lang-label" id="lang-label-3">বাংলা</span>').appendTo(langButton).hide(); // Bangla
+  jQuery('<span class="lang-label" id="lang-label-4">русский</span>').appendTo(langButton).hide(); // Russian
+  jQuery('<span class="lang-label" id="lang-label-5">中文</span>').appendTo(langButton).hide(); // Chinese
+
+  var swapTime = 1500;
+  function rotateLangLabel() {
+    jQuery('#lang-label-1').delay(swapTime).fadeOut('fast', function () {
+      jQuery('#lang-label-2').fadeIn('slow', function () {
+        jQuery(this).delay(swapTime).fadeOut('fast', function () {
+          jQuery('#lang-label-3').fadeIn('slow', function () {
+            jQuery(this).delay(swapTime).fadeOut('fast', function () {
+              jQuery('#lang-label-4').fadeIn('slow', function () {
+                jQuery(this).delay(swapTime).fadeOut('fast', function () {
+                  jQuery('#lang-label-5').fadeIn('slow', function () {
+                    jQuery(this).delay(swapTime).fadeOut('fast', function () {
+                      jQuery('#lang-label-1').fadeIn('slow', rotateLangLabel);
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  }
+  setTimeout(function () {
+    rotateLangLabel();
+  }, 2000);
+});

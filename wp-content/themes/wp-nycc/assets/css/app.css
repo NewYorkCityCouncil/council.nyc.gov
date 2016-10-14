@@ -5514,9 +5514,16 @@ figure {
     color: #666;
     margin: 0 0.125rem 0 0;
     box-shadow: 0 0 0 0.125rem rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 1px 1px; }
+    border-radius: 0 0 1px 1px;
+    position: relative; }
     #translation-menu .button:hover, #translation-menu .press-release-tags ul li a:hover, .press-release-tags ul li #translation-menu a:hover, #translation-menu .social-buttons a:hover, .social-buttons #translation-menu a:hover, #translation-menu .comment-reply-link:hover {
       background-color: #e6e6e6; }
+  #translation-menu .lang-label {
+    position: absolute;
+    top: 0.125rem;
+    right: 100%;
+    margin-right: 0.75rem;
+    white-space: nowrap; }
   #translation-menu #translation-menu-dropdown {
     box-shadow: 0 0.125rem 0 0.125rem rgba(0, 0, 0, 0.1);
     border: 0; }

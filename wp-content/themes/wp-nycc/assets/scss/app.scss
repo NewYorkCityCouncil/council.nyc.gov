@@ -925,9 +925,17 @@ $map-height-tall:   rem-calc(400);
     margin: 0 0.125rem 0 0;
     box-shadow: 0 0 0 0.125rem rgba(0,0,0,0.1);
     border-radius: 0 0 1px 1px;
+    position: relative;
     &:hover {
       background-color: $light-gray;
     }
+  }
+  .lang-label {
+    position: absolute;
+    top: 0.125rem;
+    right: 100%;
+    margin-right: 0.75rem;
+    white-space: nowrap;
   }
   #translation-menu-dropdown {
     box-shadow: 0 0.125rem 0 0.125rem rgba(0,0,0,0.1);

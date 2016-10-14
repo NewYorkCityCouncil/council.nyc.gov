@@ -94,3 +94,40 @@ jQuery('#filter-nav a').click(function(e){
   jQuery('#filter-nav li').removeClass('active');
   jQuery(this).parent('li').addClass('active');
 });
+
+
+/*--------------------------------------------------
+  Rotate the Google Translate language label
+--------------------------------------------------*/
+jQuery( document ).ready(function() {
+  var langButton = jQuery('#translation-menu .button');
+  jQuery('<span class="lang-label" id="lang-label-1">English</span>').appendTo(langButton); // English
+  jQuery('<span class="lang-label" id="lang-label-2">Español</span>').appendTo(langButton).hide(); // Spanish
+  jQuery('<span class="lang-label" id="lang-label-3">\u09AC\u09BE\u0982\u09B2\u09BE</span>').appendTo(langButton).hide(); // Bangla
+  jQuery('<span class="lang-label" id="lang-label-4">\u0440\u0443\u0441\u0441\u043A\u0438\u0439</span>').appendTo(langButton).hide(); // Russian
+  jQuery('<span class="lang-label" id="lang-label-5">\u4E2D\u6587</span>').appendTo(langButton).hide(); // Chinese
+
+  var swapTime = 1500;
+  function rotateLangLabel(){
+      jQuery('#lang-label-1').delay(swapTime).fadeOut('fast', function(){
+          jQuery('#lang-label-2').fadeIn('slow', function(){
+              jQuery(this).delay(swapTime).fadeOut('fast', function(){
+                  jQuery('#lang-label-3').fadeIn('slow', function(){
+                      jQuery(this).delay(swapTime).fadeOut('fast', function(){
+                          jQuery('#lang-label-4').fadeIn('slow', function(){
+                              jQuery(this).delay(swapTime).fadeOut('fast', function(){
+                                  jQuery('#lang-label-5').fadeIn('slow', function(){
+                                      jQuery(this).delay(swapTime).fadeOut('fast', function(){
+                                          jQuery('#lang-label-1').fadeIn('slow', rotateLangLabel);
+                                      });
+                                  });
+                              });
+                          });
+                      });
+                  });
+              });
+          });
+      });
+  }
+  setTimeout(function(){ rotateLangLabel() }, 2000);
+});
