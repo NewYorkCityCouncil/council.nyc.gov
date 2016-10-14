@@ -18,10 +18,8 @@
           <div class="row">
             <div class="columns large-3 xxlarge-12">
               <?php the_content(); ?>
-              <form action=".">
-                <input type="text" class="search search--no-submit" placeholder="Search the list..." />
-                <input type="submit" class="search--hidden-submit" />
-              </form>
+              <input type="text" class="search search--no-submit" placeholder="Search the list..." />
+              <input type="submit" class="search--hidden-submit" />
             </div>
             <div class="columns large-9 xxlarge-12 scrollable">
               <table class="full-width table--no-border-spacing">
