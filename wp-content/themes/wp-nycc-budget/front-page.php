@@ -15,12 +15,20 @@
   </div>
 
   <div class="row">
-    <div class="columns">
+    <div class="columns large-8">
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
       <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
         <?php the_content(); ?>
       </article>
       <?php endwhile; endif; ?>
+    </div>
+    <div class="columns large-4">
+      <?php if ( is_active_sidebar( 'frontpage-sidebar' ) ) : ?>
+        <?php dynamic_sidebar( 'frontpage-sidebar' ); ?>
+      <?php endif; ?>
+      <?php if ( is_active_sidebar( 'posts-sidebar' ) ) : ?>
+        <?php dynamic_sidebar( 'posts-sidebar' ); ?>
+      <?php endif; ?>
     </div>
   </div>
 
