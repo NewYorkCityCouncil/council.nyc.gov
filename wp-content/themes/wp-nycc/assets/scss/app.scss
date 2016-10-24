@@ -265,12 +265,16 @@ article.hentry {
   body.single & {
     margin-bottom: $global-margin*2;
   }
+  .avatar {
+    @extend .inline-icon.large;
+    width: auto;
+  }
 }
 .post-footer {
   @extend .text-small, .serif;
   font-style: italic;
   color: $dark-gray;
-  margin: $global-margin*2 0 $global-margin*2;
+  margin: $global-margin*3 0 $global-margin*2;
 }
 .meta-separator {
   color: $medium-gray;

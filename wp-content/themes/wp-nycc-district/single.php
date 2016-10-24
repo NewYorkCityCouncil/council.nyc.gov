@@ -9,7 +9,7 @@
 
           <header class="post-header">
             <h1 class="post-title single-title"><?php the_title(); ?></h1>
-            <p class="byline"><img class="inline-icon large" src="<?php echo get_blog_option('','council_member_thumbnail') ?>">&nbsp;&nbsp;Council Member <?php echo get_blog_option('','council_member_short_name') ?>&nbsp;<span class="meta-separator">|</span> <?php the_time('F j, Y') ?></p>
+            <p class="byline"><?php echo get_wp_user_avatar( get_the_author_meta('ID'), 'small' ); ?>&nbsp;&nbsp;<?php the_author(); ?>&nbsp;<span class="meta-separator">|</span> <?php the_time('F j, Y') ?></p>
           </header>
 
           <section class="post-content">

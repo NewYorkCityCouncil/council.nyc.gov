@@ -4999,11 +4999,13 @@ article.hentry + .hentry {
   margin-top: -0.5rem; }
   body.single .byline {
     margin-bottom: 2rem; }
+  .byline .avatar {
+    width: auto; }
 
 .post-footer {
   font-style: italic;
   color: #666;
-  margin: 2rem 0 2rem; }
+  margin: 3rem 0 2rem; }
 
 .meta-separator {
   color: #cacaca; }
@@ -5024,7 +5026,7 @@ figure {
   height: 1em;
   max-width: none;
   vertical-align: middle; }
-  .inline-icon.large, .social-buttons img.large {
+  .inline-icon.large, .byline .avatar, .social-buttons img.large {
     height: 2.25rem; }
 
 .dashicons-before::before {
