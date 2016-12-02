@@ -21,6 +21,5 @@ function remove_budget_admin_bar_links() {
     $wp_admin_bar->remove_menu('updates');
     $wp_admin_bar->remove_menu('comments');
     $wp_admin_bar->remove_menu('new-user');
-    $wp_admin_bar->remove_menu('new-post');
 }
 add_action( 'wp_before_admin_bar_render', 'remove_budget_admin_bar_links' );
