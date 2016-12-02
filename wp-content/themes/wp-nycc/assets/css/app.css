@@ -5351,7 +5351,11 @@ figure {
       right: 100%;
       bottom: 0;
       left: -1rem;
-      box-shadow: 0.25rem 0 0 rgba(0, 0, 0, 0.1); } }
+      box-shadow: 0.25rem 0 0 rgba(0, 0, 0, 0.1); }
+  .district-image-header::before {
+    padding-bottom: 50% !important; }
+  .district-image-header .row {
+    max-width: 75rem !important; } }
 
 .leaflet-left.leaflet-top .leaflet-control {
   transition: margin 0.5s ease-out; }
