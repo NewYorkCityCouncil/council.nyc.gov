@@ -4841,7 +4841,6 @@ body:not(.home) .sidebar {
   @media screen and (min-width: 40em) {
     .site-logo {
       font-size: 1.125rem;
-      font-weight: bold;
       letter-spacing: 0; } }
   .site-logo a {
     display: inline-block;

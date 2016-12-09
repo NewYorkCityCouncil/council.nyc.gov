@@ -85,7 +85,6 @@
   letter-spacing: -0.03rem;
   @include breakpoint(medium) {
     font-size: rem-calc(18);
-    font-weight: $global-weight-bold;
     letter-spacing: 0;
   }
   a {
