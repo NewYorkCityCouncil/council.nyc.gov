@@ -87,6 +87,9 @@
     font-size: rem-calc(18);
     letter-spacing: 0;
   }
+  @include breakpoint(xlarge) {
+    font-size: rem-calc(22);
+  }
   a {
     display: inline-block;
     padding: $menu-item-padding;
