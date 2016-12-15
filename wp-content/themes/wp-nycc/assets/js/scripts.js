@@ -1330,10 +1330,10 @@ function tabDeepLink(selector) {
 tabDeepLink('.tabs');
 
 /*--------------------------------------------------
-  When tabs load, refresh their iframes
+  When tabs load, refresh embedded content
 --------------------------------------------------*/
 jQuery('.tabs').on('change.zf.tabs', function () {
-  jQuery('.tabs-panel.is-active').find('iframe').prop('src', function () {
+  jQuery('.tabs-panel.is-active').find('iframe, embed').prop('src', function () {
     return jQuery(this).attr('src');
   });
 });
