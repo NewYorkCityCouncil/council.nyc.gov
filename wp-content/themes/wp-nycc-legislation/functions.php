@@ -4,7 +4,7 @@
 require_once(get_template_directory().'/assets/functions/remove-in-child-theme.php');
 
 // Legislation-specific functions
-// require_once(get_stylesheet_directory().'/functions/options.php');        // Options
+require_once(get_stylesheet_directory().'/functions/pages.php');
 
 // Hide admin stuff
 function remove_land_use_menus(){

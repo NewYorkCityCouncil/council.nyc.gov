@@ -6,6 +6,7 @@ require_once(get_template_directory().'/assets/functions/remove-in-child-theme.p
 
 // Press-specific functions
 require_once(get_stylesheet_directory().'/functions/posts.php');          // Posts
+require_once(get_stylesheet_directory().'/functions/pages.php');          // Pages
 require_once(get_stylesheet_directory().'/functions/widgets.php');        // Widgets
 require_once(get_stylesheet_directory().'/functions/media.php');          // Media
 require_once(get_stylesheet_directory().'/functions/roles.php');          // Roles

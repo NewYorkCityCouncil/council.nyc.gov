@@ -100,3 +100,16 @@ function remove_featured_img_box() {
     remove_meta_box('postimagediv', 'page', 'side');
 }
 add_action( 'do_meta_boxes', 'remove_featured_img_box' );
+
+
+// Remove page templates
+function nycc_jobs_filter_theme_page_templates( $page_templates, $this, $post ) {
+    $the_theme = wp_get_theme();
+
+    if ( isset( $page_templates['page-sidebar.php'] ) ) {
+         unset( $page_templates['page-sidebar.php'] );
+    }
+
+    return $page_templates;
+}
+add_filter( 'theme_page_templates', 'nycc_jobs_filter_theme_page_templates', 20, 3 );

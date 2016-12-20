@@ -4,6 +4,7 @@
 require_once(get_template_directory().'/assets/functions/remove-in-child-theme.php');
 
 // Land Use-specific functions
+require_once(get_stylesheet_directory().'/functions/pages.php');
 require_once(get_stylesheet_directory().'/functions/widgets.php');
 require_once(get_stylesheet_directory().'/functions/plans.php');
 

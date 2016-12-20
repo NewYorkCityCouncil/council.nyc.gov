@@ -6,6 +6,7 @@ require_once(get_template_directory().'/assets/functions/remove-in-child-theme.p
 
 // District-specific functions
 require_once(get_stylesheet_directory().'/functions/posts.php');          // Posts
+require_once(get_stylesheet_directory().'/functions/pages.php');          // Pages
 require_once(get_stylesheet_directory().'/functions/options.php');        // District Options
 require_once(get_stylesheet_directory().'/functions/contact-info.php');   // Contact Info widget
 require_once(get_stylesheet_directory().'/functions/pb.php');             // Participatory Budgeting
