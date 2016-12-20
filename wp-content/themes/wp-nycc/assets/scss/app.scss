@@ -232,6 +232,18 @@ legend {
 }
 
 
+/*--------------------------------------------------
+  Menus & Button Groups
+--------------------------------------------------*/
+.button-group {
+  &.scrollable {
+    white-space: nowrap;
+    overflow: auto;
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+  }
+}
+
 
 /*--------------------------------------------------
   Posts & Pages
