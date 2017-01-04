@@ -557,7 +557,8 @@ $widget-item-margin: rem-calc(8);
 
 // Network Recent Posts widget
 .widget_recent_entries_network {
-  a[href*="/press/"]:before {
+  a[href*="/press/"]:before,
+  a[href*="/budget/"]:before {
     @extend .label;
     margin-right: rem-calc(4);
     content: 'Press Release';
@@ -565,6 +566,9 @@ $widget-item-margin: rem-calc(8);
     font-weight: $global-weight-normal;
     font-size: $small-font-size;
     cursor: pointer;
+  }
+  a[href*="/budget/"]:before {
+    content: 'Budget';
   }
 }
 

@@ -3707,7 +3707,8 @@ select {
   .flex-video.vimeo {
     padding-top: 0; }
 
-.label, .widget_tag_cloud a, .widget_recent_entries_network a[href*="/press/"]:before {
+.label, .widget_tag_cloud a, .widget_recent_entries_network a[href*="/press/"]:before,
+.widget_recent_entries_network a[href*="/budget/"]:before {
   display: inline-block;
   padding: 0.33333rem 0.5rem;
   font-size: 0.8rem;
@@ -3717,16 +3718,23 @@ select {
   border-radius: 0;
   background: #e6e6e6;
   color: #666; }
-  .label.secondary, .widget_tag_cloud a.secondary, .widget_tag_cloud .press-release-tags ul li a, .press-release-tags ul li .widget_tag_cloud a, .widget_tag_cloud a.comment-reply-link, .press-release-tags ul li a.label, .press-release-tags ul li .widget_recent_entries_network a[href*="/press/"]:before, .widget_recent_entries_network .press-release-tags ul li a[href*="/press/"]:before, .widget_recent_entries_network a.secondary[href*="/press/"]:before, .widget_recent_entries_network a[href*="/press/"].comment-reply-link:before, .label.comment-reply-link {
+  .label.secondary, .widget_tag_cloud a.secondary, .widget_tag_cloud .press-release-tags ul li a, .press-release-tags ul li .widget_tag_cloud a, .widget_tag_cloud a.comment-reply-link, .press-release-tags ul li a.label, .press-release-tags ul li .widget_recent_entries_network a[href*="/press/"]:before, .widget_recent_entries_network .press-release-tags ul li a[href*="/press/"]:before, .press-release-tags ul li
+  .widget_recent_entries_network a[href*="/budget/"]:before,
+  .widget_recent_entries_network .press-release-tags ul li a[href*="/budget/"]:before, .widget_recent_entries_network a.secondary[href*="/press/"]:before, .widget_recent_entries_network a[href*="/press/"].comment-reply-link:before,
+  .widget_recent_entries_network a.secondary[href*="/budget/"]:before,
+  .widget_recent_entries_network a[href*="/budget/"].comment-reply-link:before, .label.comment-reply-link {
     background: #8a8a8a;
     color: #fff; }
-  .label.success, .widget_tag_cloud a.success, .widget_recent_entries_network a.success[href*="/press/"]:before {
+  .label.success, .widget_tag_cloud a.success, .widget_recent_entries_network a.success[href*="/press/"]:before,
+  .widget_recent_entries_network a.success[href*="/budget/"]:before {
     background: #43AC6A;
     color: #fff; }
-  .label.warning, .widget_tag_cloud a.warning, .widget_recent_entries_network a.warning[href*="/press/"]:before {
+  .label.warning, .widget_tag_cloud a.warning, .widget_recent_entries_network a.warning[href*="/press/"]:before,
+  .widget_recent_entries_network a.warning[href*="/budget/"]:before {
     background: #ffae00;
     color: #fff; }
-  .label.alert, .widget_tag_cloud a.alert, .widget_recent_entries_network a.alert[href*="/press/"]:before {
+  .label.alert, .widget_tag_cloud a.alert, .widget_recent_entries_network a.alert[href*="/press/"]:before,
+  .widget_recent_entries_network a.alert[href*="/budget/"]:before {
     background: #d05d4e;
     color: #fff; }
 
@@ -5246,13 +5254,17 @@ figure {
       .press-release-tags ul li a {
         margin: 0 0.125rem 0.125rem 0; }
 
-.widget_recent_entries_network a[href*="/press/"]:before {
+.widget_recent_entries_network a[href*="/press/"]:before,
+.widget_recent_entries_network a[href*="/budget/"]:before {
   margin-right: 0.25rem;
   content: 'Press Release';
   color: #666;
   font-weight: normal;
   font-size: 80%;
   cursor: pointer; }
+
+.widget_recent_entries_network a[href*="/budget/"]:before {
+  content: 'Budget'; }
 
 /*--------------------------------------------------
   Social Media Links
