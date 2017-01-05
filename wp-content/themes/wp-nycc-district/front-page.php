@@ -16,12 +16,6 @@
 
           <p><?php echo get_option('council_member_short_bio'); ?></p>
 
-          <p>Council Member <?php if ( $council_member_short_name ) {
-            echo $council_member_short_name;
-          } else {
-            echo $council_member_name;
-          } ?> serves on the following committees:</p>
-
           <?php
           $cm_number = 'council_member_' . get_option('council_district_number');
 
@@ -29,6 +23,15 @@
 
           $list_committees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=0&posts_per_page=-1');
           if ( $list_committees->have_posts() ) {
+
+            ?>
+            <p>Council Member <?php if ( $council_member_short_name ) {
+              echo $council_member_short_name;
+            } else {
+              echo $council_member_name;
+            } ?> serves on the following committees:</p>
+            <?php
+
             echo '<ul>';
               while ( $list_committees->have_posts() ) {
                 $list_committees->the_post();
