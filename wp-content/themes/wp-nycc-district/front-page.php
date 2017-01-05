@@ -23,15 +23,13 @@
 
           $list_committees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=0&posts_per_page=-1');
           if ( $list_committees->have_posts() ) {
-
-            ?>
-            <p>Council Member <?php if ( $council_member_short_name ) {
+            echo '<p>Council Member ';
+            if ( $council_member_short_name ) {
               echo $council_member_short_name;
             } else {
               echo $council_member_name;
-            } ?> serves on the following committees:</p>
-            <?php
-
+            }
+            echo ' serves on the following committees:</p>';
             echo '<ul>';
               while ( $list_committees->have_posts() ) {
                 $list_committees->the_post();
@@ -108,7 +106,7 @@
             } else {
               echo $council_member_name;
             }
-            echo ' is also a member of the following caucuses:</p>';
+            echo ' is a member of the following caucuses:</p>';
 
             echo '<ul>';
               while ( $list_caucuses->have_posts() ) {
