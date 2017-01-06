@@ -1,4 +1,4 @@
-<article style="margin:0 0 2rem;padding-top:0;border:0;" id="post-<?php the_ID(); ?>" <?php post_class('columns medium-6'); ?>>
+<article style="margin:0 0 2rem;padding-top:0;border:0;" id="post-<?php the_ID(); ?>" <?php post_class('columns large-6'); ?>>
   <?php
   $content = apply_filters('the_content', get_post_field('post_content', $post_id));
   $iframes = get_media_embedded_in_content( $content, 'iframe' );
