@@ -5,5 +5,5 @@
   echo $iframes[0];
   ?>
   <p class="byline" style="margin:-0.5rem 0 0;"><?php the_time('F j, Y') ?></p>
-  <h2 class="header-tiny sans-serif"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+  <h2 class="header-tiny"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 </article>
