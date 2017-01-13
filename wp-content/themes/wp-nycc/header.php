@@ -28,7 +28,7 @@
 
   <body <?php body_class(); ?>>
 
-    <?php if ( wp_get_theme()->get('Name') == 'NYCC District' ) {} else { ?>
+    <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {} else { ?>
     <div id="map-container" class="short">
       <div id="map"></div>
       <button class="map-toggler" id="map-toggler">Expand Map</button>
