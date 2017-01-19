@@ -1,5 +1,7 @@
 <?php
 
+global $post;
+
 // If a Council Member or District page currently being viewed, set a var.
 $theme = wp_get_theme();
 if ( 'NYCC Member' == $theme->name ) {
