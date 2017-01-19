@@ -55,15 +55,46 @@ function nycc_committee_members() {
   ?>
   <table class="form-table">
     <?php
-    $sites = wp_get_sites();
-    foreach ($sites as $site) {
-      $ID = $site['blog_id'];
-      $number = get_blog_option($ID,council_district_number);
-      if ( $number ) {
-        $cm_number = 'council_member_' . $number;
-        ?>
+
+    // Get all the pages that use the District template
+    $args = array(
+      'post_type' => 'page',
+      'post_status' => 'publish',
+      'orderby'    => 'menu_order',
+      'order'      => 'ASC',
+      'posts_per_page' => '-1',
+      'meta_query' => array(
+          array(
+              'key' => '_wp_page_template',
+              'value' => 'page-district.php',
+          )
+      )
+    );
+    $list_districts = new WP_Query( $args );
+
+    // Loop through the District pages
+    if ( $list_districts->have_posts() ) {
+      echo '<ul>';
+        while ( $list_districts->have_posts() ) : $list_districts->the_post();
+
+        // Get the District meta
+        $ID = get_post_meta($post->ID, 'current_member_site', true);
+
+        if ($ID) {
+          // Switch to the current Member's site
+          switch_to_blog($current_member_site);
+
+          // Get the Member's site meta
+          $number = get_blog_option($ID,'council_district_number');
+          $cm_name = get_blog_option($ID,'council_member_name' );
+
+          // Set the variable for the committee's wp_options key
+          $cm_number = 'council_member_' . $number;
+
+          // Add the Member's table row
+          ?>
           <tr valign="top">
-            <th scope="row"><?php echo get_blog_option($ID,council_member_name); ?></th>
+            <th scope="row"><?php echo $cm_name; ?></th>
             <td>
               <select name="<?php echo $cm_number; ?>">
                 <option <?php echo (${'council_member_' . $number} == '')? 'selected':''; ?> value=""> Non-Member</option>
@@ -77,8 +108,18 @@ function nycc_committee_members() {
               </select>
             </td>
           </tr>
-      <?php }
-    } ?>
+          <?php
+
+          restore_current_blog();
+          wp_reset_postdata();
+        }
+
+        endwhile;
+        wp_reset_postdata();
+        echo '</ul>';
+    }
+
+    ?>
   </table>
 <?php
 }

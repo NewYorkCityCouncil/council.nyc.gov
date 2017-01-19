@@ -32,27 +32,64 @@
                 </thead>
                 <tbody class="list">
                   <?php
-                  $sites = wp_get_sites();
-                  foreach ($sites as $site) {
-                      $ID = $site['blog_id'];
-                      $number = get_blog_option($ID,'council_district_number');
-                      $name = get_blog_option($ID,'council_member_name' );
-                      $thumbnail = get_blog_option($ID,'council_member_thumbnail' );
-                      $party = get_blog_option($ID,'council_member_party');
-                      $borough = get_blog_option($ID,'council_district_borough');
-                      $neighborhoods = get_blog_option($ID,'council_district_neighborhoods');
-                      if ( $number ) {
+
+                  // Get all the pages that use the District template
+                  $args = array(
+                    'post_type' => 'page',
+                    'post_status' => 'publish',
+                    'orderby'    => 'menu_order',
+                    'order'      => 'ASC',
+                    'posts_per_page' => '-1',
+                    'meta_query' => array(
+                        array(
+                            'key' => '_wp_page_template',
+                            'value' => 'page-district.php',
+                        )
+                    )
+                  );
+                  $list_districts = new WP_Query( $args );
+
+                  // Loop through the District pages
+                  if ( $list_districts->have_posts() ) {
+                    echo '<ul>';
+                      while ( $list_districts->have_posts() ) : $list_districts->the_post();
+
+                      // Get the District meta
+                      $ID = get_post_meta($post->ID, 'current_member_site', true);
+
+                      if ($ID) {
+                        // Switch to the current Member's site
+                        switch_to_blog($current_member_site);
+
+                        // Get the Member's site meta
+                        $number = get_blog_option($ID,'council_district_number');
+                        $name = get_blog_option($ID,'council_member_name' );
+                        $thumbnail = get_blog_option($ID,'council_member_thumbnail' );
+                        $party = get_blog_option($ID,'council_member_party');
+                        $borough = get_blog_option($ID,'council_district_borough');
+                        $neighborhoods = get_blog_option($ID,'council_district_neighborhoods');
+                        $district_url = esc_url( network_site_url() ) . 'district-' . $number . '/';
+
+                        // Add the Member's table row
                         ?>
                         <tr>
-                          <td class="sort-district"><a class="button small expanded" href="<?php echo get_blogaddress_by_id($ID); ?>"><strong><?php echo $number; ?></strong></a></td>
-                          <td class="sort-member"><a data-member-name="<?php echo $name; ?>" href="<?php echo get_blogaddress_by_id($ID); ?>"><strong><?php echo $name; ?></strong></a></td>
-                          <td><a href="<?php echo get_blogaddress_by_id($ID); ?>"><img class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
+                          <td class="sort-district"><a class="button small expanded" href="<?php echo $district_url; ?>"
+                            ><strong><?php echo $number; ?></strong></a></td>
+                          <td class="sort-member"><a data-member-name="<?php echo $name; ?>" href="<?php echo $district_url; ?>"><strong><?php echo $name; ?></strong></a></td>
+                          <td><a href="<?php echo $district_url; ?>"><img class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
                           <td class="sort-borough"><?php echo $borough; ?></td>
                           <td class="sort-party"><?php echo $party; ?></td>
                           <td class="sort-neighborhoods neighborhoods"><?php echo $neighborhoods; ?></td>
                         </tr>
                         <?php
+
+                        restore_current_blog();
+                        wp_reset_postdata();
                       }
+
+                      endwhile;
+                      wp_reset_postdata();
+                      echo '</ul>';
                   }
                   ?>
                 </tbody>

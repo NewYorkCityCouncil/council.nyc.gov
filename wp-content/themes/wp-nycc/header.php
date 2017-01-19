@@ -72,4 +72,9 @@
           </div>
         </div>
 
-        <?php get_template_part( 'district_header' ); ?>
+        <?php
+        $theme = wp_get_theme();
+        if ( 'NYCC Member' == $theme->name || is_page_template( 'page-district.php' ) && metadata_exists('post', $post->ID, 'current_member_site') ) {
+          get_template_part( 'district_header' );
+        }
+        ?>

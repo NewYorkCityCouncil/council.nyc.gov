@@ -1,7 +1,12 @@
 <?php
 
-// Which Council District is currently being viewed?
-$districtNumber = get_option('council_district_number');
+// If a Council Member or District page currently being viewed, set a var.
+$theme = wp_get_theme();
+if ( 'NYCC Member' == $theme->name ) {
+  $districtNumber = get_option('council_district_number');
+} elseif ( is_page_template( 'page-district.php' ) ) {
+  $districtNumber = $post->menu_order;
+}
 
 ?>
 

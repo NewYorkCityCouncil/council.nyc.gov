@@ -878,6 +878,9 @@ $map-height-tall:   rem-calc(400);
       font-size: rem-calc(45);
     }
   }
+  a {
+    color: inherit;
+  }
 }
 .district-menu {
   @extend .widget_nav_menu;

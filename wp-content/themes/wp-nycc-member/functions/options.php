@@ -15,7 +15,6 @@ function register_nycc_district_options() {
     register_setting( 'district-options-group', 'council_member_party' );
     register_setting( 'district-options-group', 'council_district_borough' );
     register_setting( 'district-options-group', 'council_district_neighborhoods' );
-    register_setting( 'district-options-group', 'council_member_short_bio' );
     register_setting( 'district-options-group', 'council_district_contact' );
     register_setting( 'district-options-group', 'council_legislative_contact' );
     register_setting( 'district-options-group', 'council_district_email' );
@@ -47,13 +46,6 @@ function nycc_district_options_page() {
             <td>
               Full Name: <input type="text" name="council_member_name" value="<?php echo esc_attr( get_option('council_member_name') ); ?>" />&nbsp;&nbsp;
               Short Name: <input type="text" name="council_member_short_name" value="<?php echo esc_attr( get_option('council_member_short_name') ); ?>" />
-            </td>
-          </tr>
-
-          <tr valign="top">
-            <th scope="row">Short Bio</th>
-            <td>
-              <textarea name="council_member_short_bio" rows="3" cols="50" class="large-text"><?php echo esc_attr( get_option('council_member_short_bio') ); ?></textarea>
             </td>
           </tr>
 

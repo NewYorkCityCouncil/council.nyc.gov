@@ -1401,3 +1401,15 @@ jQuery(document).ready(function () {
     rotateLangLabel();
   }, 2000);
 });
+
+/*--------------------------------------------------
+  Load Member sidebars on District pages
+--------------------------------------------------*/
+jQuery(document).ready(function () {
+  var memberSiteURL = jQuery('#district-sidebar').attr('data-membersite');
+  if (typeof memberSiteURL !== 'undefined') {
+    jQuery('#district-sidebar').load(memberSiteURL + ' #district-widgets', function () {
+      jQuery('#district-sidebar .menu-item').removeClass('current-menu-item current-menu-ancestor current-menu-parent');
+    });
+  }
+});

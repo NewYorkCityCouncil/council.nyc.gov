@@ -22,6 +22,7 @@ if ( is_main_site() ) {
 add_editor_style( 'assets/css/editor.min.css' );
 
 // Custom Post Types
+require_once(get_template_directory().'/assets/functions/districts.php');         // Districts custom post type
 require_once(get_template_directory().'/assets/functions/committees.php');        // Committees custom post type
 require_once(get_template_directory().'/assets/functions/caucuses.php');          // Caucuses custom post type
 require_once(get_template_directory().'/assets/functions/initiatives.php');       // Initiatives custom post type

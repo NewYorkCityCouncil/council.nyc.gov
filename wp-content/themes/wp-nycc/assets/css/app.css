@@ -5487,6 +5487,9 @@ figure {
     .image-header.district-image-header .district-member {
       font-size: 2.8125rem; } }
 
+.image-header.district-image-header a {
+  color: inherit; }
+
 /*--------------------------------------------------
   Initiatives
 --------------------------------------------------*/
