@@ -1,12 +1,11 @@
 <?php
 
-global $post;
-
 // If a Council Member or District page currently being viewed, set a var.
 $theme = wp_get_theme();
 if ( 'NYCC Member' == $theme->name ) {
   $districtNumber = get_option('council_district_number');
 } elseif ( is_page_template( 'page-district.php' ) ) {
+  global $post;
   $districtNumber = $post->menu_order;
 }
 
@@ -37,6 +36,8 @@ if ( 'NYCC Member' == $theme->name ) {
     // Loop through the District pages
     if ( $list_districts->have_posts() ) {
       while ( $list_districts->have_posts() ) : $list_districts->the_post();
+
+      global $post;
 
       // Get the District meta
       $ID = get_post_meta($post->ID, 'current_member_site', true);
