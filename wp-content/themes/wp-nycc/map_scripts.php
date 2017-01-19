@@ -4,9 +4,13 @@
 $theme = wp_get_theme();
 if ( 'NYCC Member' == $theme->name ) {
   $districtNumber = get_option('council_district_number');
-} elseif ( is_page_template( 'page-district.php' ) ) {
+}
+if ( is_page_template( 'page-district.php' ) ) {
   $thispost = get_post($id);
   $districtNumber = $thispost->menu_order;
+  ?>
+  <!-- template is "page-district.php" -->
+  <?php
 }
 
 ?>
