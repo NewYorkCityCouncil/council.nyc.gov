@@ -8,9 +8,6 @@ if ( 'NYCC Member' == $theme->name ) {
 if ( is_page_template( 'page-district.php' ) ) {
   $thispost = get_post($id);
   $districtNumber = $thispost->menu_order;
-  ?>
-  <!-- template is "page-district.php" -->
-  <?php
 }
 
 ?>
@@ -110,6 +107,8 @@ if ( is_page_template( 'page-district.php' ) ) {
             fillOpacity: getColor(feature.properties.CounDist)
         };
     }
+
+    // The District number is: <?php echo $districtNumber; ?>
 
     function getColor(n) {
       <?php if ( $districtNumber ) { ?>
