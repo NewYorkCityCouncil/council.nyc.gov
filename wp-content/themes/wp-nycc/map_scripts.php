@@ -10,6 +10,8 @@ if ( is_page_template( 'page-district.php' ) ) {
   $districtNumber = $thispost->menu_order;
 }
 
+?><!-- The District number is: <?php echo $districtNumber; ?> --><?php
+
 ?>
 
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/nyccouncil-districts.js"></script>
@@ -107,6 +109,8 @@ if ( is_page_template( 'page-district.php' ) ) {
             fillOpacity: getColor(feature.properties.CounDist)
         };
     }
+
+    // The District number is: <?php echo $districtNumber; ?>
 
     function getColor(n) {
       <?php if ( $districtNumber ) { ?>
