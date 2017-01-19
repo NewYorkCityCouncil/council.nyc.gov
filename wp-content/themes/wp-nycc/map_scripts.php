@@ -16,19 +16,55 @@ if ( 'NYCC Member' == $theme->name ) {
     var popupData = new Object;
 
     <?php
-    // Define the popup data for each District
-    $sites = wp_get_sites();
-    foreach ($sites as $site) {
-      $ID = $site['blog_id'];
-      $number = get_blog_option($ID,council_district_number);
-      $thumbnail = get_blog_option($ID,council_member_thumbnail);
-      $member = get_blog_option($ID,council_member_name);
-      $link = get_site_url($ID);
-      if ( $number ) { ?>
-        popupData.District<?php echo $number ?> = '<?php echo $thumbnail ?>';
-        popupData.Member<?php echo $number ?> = '<?php echo $member ?>';
-        popupData.URI<?php echo $number ?> = '<?php echo $link ?>';
-      <?php }
+    // Define the popup data for all the pages that use the District template
+    $args = array(
+      'post_type' => 'page',
+      'post_status' => 'publish',
+      'orderby'    => 'menu_order',
+      'order'      => 'ASC',
+      'posts_per_page' => '-1',
+      'meta_query' => array(
+          array(
+              'key' => '_wp_page_template',
+              'value' => 'page-district.php',
+          )
+      )
+    );
+    $list_districts = new WP_Query( $args );
+
+    // Loop through the District pages
+    if ( $list_districts->have_posts() ) {
+      while ( $list_districts->have_posts() ) : $list_districts->the_post();
+
+      // Get the District meta
+      $ID = get_post_meta($post->ID, 'current_member_site', true);
+      $number = $post->menu_order;
+      $link = network_site_url() . 'district-' . $number . '/';
+
+      ?>
+      popupData.URI<?php echo $number ?> = '<?php echo $link ?>';
+      <?php
+
+      if ($ID) {
+        // Switch to the current Member's site
+        switch_to_blog($current_member_site);
+
+        ?>
+        popupData.Thumb<?php echo $number ?> = '<?php echo get_blog_option($ID,'council_member_thumbnail' ) ?>';
+        popupData.Member<?php echo $number ?> = '<?php echo get_blog_option($ID,'council_member_name' ) ?>';
+        <?php
+
+        restore_current_blog();
+        wp_reset_postdata();
+      } else {
+        ?>
+        popupData.Thumb<?php echo $number ?> = '<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png';
+        popupData.Member<?php echo $number ?> = 'Vacant';
+        <?php
+      }
+
+      endwhile;
+      wp_reset_postdata();
     }
     ?>
 
@@ -77,7 +113,7 @@ if ( 'NYCC Member' == $theme->name ) {
 
     function onEachFeature(feature, layer) {
         var CounDist = layer.feature.properties.CounDist,
-            popupThumbnail = popupData["District" + CounDist],
+            popupThumbnail = popupData["Thumb" + CounDist],
             popupMember = popupData["Member" + CounDist],
             popupLink = popupData["URI" + CounDist];
         layer.on({
