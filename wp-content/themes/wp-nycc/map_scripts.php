@@ -108,8 +108,6 @@ if ( is_page_template( 'page-district.php' ) ) {
         };
     }
 
-    // The District number is: <?php echo $districtNumber; ?>
-
     function getColor(n) {
       <?php if ( $districtNumber ) { ?>
         if ( n == <?php echo $districtNumber ?> ) {
