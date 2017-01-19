@@ -5,8 +5,8 @@ $theme = wp_get_theme();
 if ( 'NYCC Member' == $theme->name ) {
   $districtNumber = get_option('council_district_number');
 } elseif ( is_page_template( 'page-district.php' ) ) {
-  global $post;
-  $districtNumber = $post->menu_order;
+  $thispost = get_post($id);
+  $districtNumber = $thispost->menu_order;
 }
 
 ?>
@@ -20,58 +20,58 @@ if ( 'NYCC Member' == $theme->name ) {
 
     switch_to_blog(1);
 
-    // Define the popup data for all the pages that use the District template
-    $args = array(
-      'post_type' => 'page',
-      'post_status' => 'publish',
-      'orderby'    => 'menu_order',
-      'order'      => 'ASC',
-      'posts_per_page' => '-1',
-      'meta_query' => array(
-          array(
-              'key' => '_wp_page_template',
-              'value' => 'page-district.php',
-          )
-      )
-    );
-    $list_districts = new WP_Query( $args );
+      // Define the popup data for all the pages that use the District template
+      $args = array(
+        'post_type' => 'page',
+        'post_status' => 'publish',
+        'orderby'    => 'menu_order',
+        'order'      => 'ASC',
+        'posts_per_page' => '-1',
+        'meta_query' => array(
+            array(
+                'key' => '_wp_page_template',
+                'value' => 'page-district.php',
+            )
+        )
+      );
+      $list_districts = new WP_Query( $args );
 
-    // Loop through the District pages
-    if ( $list_districts->have_posts() ) {
-      while ( $list_districts->have_posts() ) : $list_districts->the_post();
+      // Loop through the District pages
+      if ( $list_districts->have_posts() ) {
+        while ( $list_districts->have_posts() ) : $list_districts->the_post();
 
-      global $post;
+        global $post;
 
-      // Get the District meta
-      $current_member_site = get_post_meta($post->ID, 'current_member_site', true);
-      $number = $post->menu_order;
-      $link = network_site_url() . 'district-' . $number . '/';
-
-      ?>
-      popupData.URI<?php echo $number ?> = '<?php echo $link ?>';
-      <?php
-
-      if ($current_member_site) {
-        // Switch to the current Member's site
-        switch_to_blog($current_member_site);
+        // Get the District meta
+        $current_member_site = get_post_meta($post->ID, 'current_member_site', true);
+        $number = $post->menu_order;
+        $link = network_site_url() . 'district-' . $number . '/';
 
         ?>
-        popupData.Thumb<?php echo $number ?> = '<?php echo get_blog_option($current_member_site,'council_member_thumbnail' ) ?>';
-        popupData.Member<?php echo $number ?> = '<?php echo get_blog_option($current_member_site,'council_member_name' ) ?>';
+        popupData.URI<?php echo $number ?> = '<?php echo $link ?>';
         <?php
 
-        restore_current_blog();
+        if ($current_member_site) {
+          // Switch to the current Member's site
+          switch_to_blog($current_member_site);
+
+          ?>
+          popupData.Thumb<?php echo $number ?> = '<?php echo get_blog_option($current_member_site,'council_member_thumbnail' ) ?>';
+          popupData.Member<?php echo $number ?> = '<?php echo get_blog_option($current_member_site,'council_member_name' ) ?>';
+          <?php
+
+          restore_current_blog();
+          wp_reset_postdata();
+        } else {
+          ?>
+          popupData.Thumb<?php echo $number ?> = '<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png';
+          popupData.Member<?php echo $number ?> = 'Vacant';
+          <?php
+        }
+
+        endwhile;
         wp_reset_postdata();
-      } else {
-        ?>
-        popupData.Thumb<?php echo $number ?> = '<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png';
-        popupData.Member<?php echo $number ?> = 'Vacant';
-        <?php
       }
-
-      endwhile;
-      wp_reset_postdata();
-    }
 
     restore_current_blog();
     wp_reset_postdata();
