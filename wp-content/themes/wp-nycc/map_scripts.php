@@ -17,6 +17,9 @@ if ( 'NYCC Member' == $theme->name ) {
     var popupData = new Object;
 
     <?php
+
+    switch_to_blog(1);
+
     // Define the popup data for all the pages that use the District template
     $args = array(
       'post_type' => 'page',
@@ -40,7 +43,7 @@ if ( 'NYCC Member' == $theme->name ) {
       global $post;
 
       // Get the District meta
-      $ID = get_post_meta($post->ID, 'current_member_site', true);
+      $current_member_site = get_post_meta($post->ID, 'current_member_site', true);
       $number = $post->menu_order;
       $link = network_site_url() . 'district-' . $number . '/';
 
@@ -48,13 +51,13 @@ if ( 'NYCC Member' == $theme->name ) {
       popupData.URI<?php echo $number ?> = '<?php echo $link ?>';
       <?php
 
-      if ($ID) {
+      if ($current_member_site) {
         // Switch to the current Member's site
         switch_to_blog($current_member_site);
 
         ?>
-        popupData.Thumb<?php echo $number ?> = '<?php echo get_blog_option($ID,'council_member_thumbnail' ) ?>';
-        popupData.Member<?php echo $number ?> = '<?php echo get_blog_option($ID,'council_member_name' ) ?>';
+        popupData.Thumb<?php echo $number ?> = '<?php echo get_blog_option($current_member_site,'council_member_thumbnail' ) ?>';
+        popupData.Member<?php echo $number ?> = '<?php echo get_blog_option($current_member_site,'council_member_name' ) ?>';
         <?php
 
         restore_current_blog();
@@ -69,6 +72,10 @@ if ( 'NYCC Member' == $theme->name ) {
       endwhile;
       wp_reset_postdata();
     }
+
+    restore_current_blog();
+    wp_reset_postdata();
+
     ?>
 
     var southWest = L.latLng(40.25, -75.25),
