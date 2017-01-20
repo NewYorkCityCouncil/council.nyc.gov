@@ -35,31 +35,109 @@ if ($current_member_site) {
 
       <section class="page-content">
 
-        <?php echo wpautop($cm_bio); ?>
+        <?php
+        if ($current_member_site) {
+          echo wpautop($cm_bio);
+          ?>
+          <div class="row">
+            <div class="columns large-7">
 
-        <div class="row">
-          <div class="columns large-7">
-
-            <?php
-
-            if ($current_member_site) {
-
-              // List Committees
-              $list_committees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=0&posts_per_page=-1');
-              if ( $list_committees->have_posts() ) {
-                echo '<hr>';
-                echo '<h4 class="header-tiny">Council Member ';
-                if ( $cm_short_name ) {
-                  echo $cm_short_name;
-                } else {
-                  echo $cm_name;
+              <?php
+                // List Committees
+                $list_committees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=0&posts_per_page=-1');
+                if ( $list_committees->have_posts() ) {
+                  echo '<hr>';
+                  echo '<h4 class="header-tiny">Council Member ';
+                  if ( $cm_short_name ) {
+                    echo $cm_short_name;
+                  } else {
+                    echo $cm_name;
+                  }
+                  echo ' serves on the following committees:</h4>';
+                  echo '<ul>';
+                    while ( $list_committees->have_posts() ) {
+                      $list_committees->the_post();
+                      $cm_position = get_post_meta($post->ID, $cm_number, true);
+                      if ( $cm_position != '' ) {
+                        echo '<li>';
+                        ?><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong><?php
+                        if ( $cm_position == 'chair' ):
+                            echo ' <small>(Chair)</small>';
+                        elseif (  $cm_position == 'co_chair'  ):
+                            echo ' <small>(Co-Chair)</small>';
+                        elseif (  $cm_position == 'vice_chair'  ):
+                            echo ' <small>(Vice Chair)</small>';
+                        elseif (  $cm_position == 'vice_co_chair'  ):
+                            echo ' <small>(Vice Co-Chair)</small>';
+                        elseif (  $cm_position == 'secretary'  ):
+                            echo ' <small>(Secretary)</small>';
+                        elseif (  $cm_position == 'treasurer'  ):
+                            echo ' <small>(Treasurer)</small>';
+                        endif;
+                        $pub_id = get_the_ID();
+                        $list_subcommittees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=' . $pub_id . '&posts_per_page=-1');
+                        if ( $list_subcommittees->have_posts() ) {
+                          echo '<ul>';
+                            while ( $list_subcommittees->have_posts() ) : $list_subcommittees->the_post();
+                              $cm_position = get_post_meta($post->ID, $cm_number, true);
+                              if ( $cm_position != '' ) {
+                                echo '<li>';
+                                ?><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong><?php
+                                if ( $cm_position == 'chair' ):
+                                    echo ' <small>(Chair)</small>';
+                                elseif (  $cm_position == 'co_chair'  ):
+                                    echo ' <small>(Co-Chair)</small>';
+                                elseif (  $cm_position == 'vice_chair'  ):
+                                    echo ' <small>(Vice Chair)</small>';
+                                elseif (  $cm_position == 'vice_co_chair'  ):
+                                    echo ' <small>(Vice Co-Chair)</small>';
+                                elseif (  $cm_position == 'secretary'  ):
+                                    echo ' <small>(Secretary)</small>';
+                                elseif (  $cm_position == 'treasurer'  ):
+                                    echo ' <small>(Treasurer)</small>';
+                                endif;
+                                echo '</li>';
+                              }
+                            endwhile;
+                            wp_reset_postdata();
+                            echo '</ul>';
+                        }
+                        echo '</li>';
+                      }
+                    }
+                  echo '</ul>';
                 }
-                echo ' serves on the following committees:</h4>';
-                echo '<ul>';
-                  while ( $list_committees->have_posts() ) {
-                    $list_committees->the_post();
-                    $cm_position = get_post_meta($post->ID, $cm_number, true);
-                    if ( $cm_position != '' ) {
+
+                // List Caucuses
+                $args = array(
+                  'post_type'  => 'nycc_caucus',
+                  'meta_key'   => $cm_number,
+                  'orderby'    => 'menu_order',
+                  'order'      => 'ASC',
+                  'meta_query' => array(
+                    array(
+                      'key'     => $cm_number,
+                      'value'   => array( 'member','chair','co_chair','vice_chair','vice_co_chair','secretary','treasurer' ),
+                      'compare' => 'IN'
+                    ),
+                  ),
+                  'posts_per_page' => '-1'
+                );
+                $list_caucuses = new WP_Query( $args );
+                if ( $list_caucuses->have_posts() ) {
+                  echo '<hr>';
+                  echo '<h4 class="header-tiny">Council Member ';
+                  if ( $cm_short_name ) {
+                    echo $cm_short_name;
+                  } else {
+                    echo $cm_name;
+                  }
+                  echo ' participates in the following caucuses:</h4>';
+
+                  echo '<ul>';
+                    while ( $list_caucuses->have_posts() ) {
+                      $list_caucuses->the_post();
+                      $cm_position = get_post_meta($post->ID, $cm_number, true);
                       echo '<li>';
                       ?><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong><?php
                       if ( $cm_position == 'chair' ):
@@ -75,102 +153,26 @@ if ($current_member_site) {
                       elseif (  $cm_position == 'treasurer'  ):
                           echo ' <small>(Treasurer)</small>';
                       endif;
-                      $pub_id = get_the_ID();
-                      $list_subcommittees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=' . $pub_id . '&posts_per_page=-1');
-                      if ( $list_subcommittees->have_posts() ) {
-                        echo '<ul>';
-                          while ( $list_subcommittees->have_posts() ) : $list_subcommittees->the_post();
-                            $cm_position = get_post_meta($post->ID, $cm_number, true);
-                            if ( $cm_position != '' ) {
-                              echo '<li>';
-                              ?><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong><?php
-                              if ( $cm_position == 'chair' ):
-                                  echo ' <small>(Chair)</small>';
-                              elseif (  $cm_position == 'co_chair'  ):
-                                  echo ' <small>(Co-Chair)</small>';
-                              elseif (  $cm_position == 'vice_chair'  ):
-                                  echo ' <small>(Vice Chair)</small>';
-                              elseif (  $cm_position == 'vice_co_chair'  ):
-                                  echo ' <small>(Vice Co-Chair)</small>';
-                              elseif (  $cm_position == 'secretary'  ):
-                                  echo ' <small>(Secretary)</small>';
-                              elseif (  $cm_position == 'treasurer'  ):
-                                  echo ' <small>(Treasurer)</small>';
-                              endif;
-                              echo '</li>';
-                            }
-                          endwhile;
-                          wp_reset_postdata();
-                          echo '</ul>';
-                      }
                       echo '</li>';
                     }
-                  }
-                echo '</ul>';
-              }
-
-              // List Caucuses
-              $args = array(
-                'post_type'  => 'nycc_caucus',
-                'meta_key'   => $cm_number,
-                'orderby'    => 'menu_order',
-                'order'      => 'ASC',
-                'meta_query' => array(
-                  array(
-                    'key'     => $cm_number,
-                    'value'   => array( 'member','chair','co_chair','vice_chair','vice_co_chair','secretary','treasurer' ),
-                    'compare' => 'IN'
-                  ),
-                ),
-                'posts_per_page' => '-1'
-              );
-              $list_caucuses = new WP_Query( $args );
-              if ( $list_caucuses->have_posts() ) {
-                echo '<hr>';
-                echo '<h4 class="header-tiny">Council Member ';
-                if ( $cm_short_name ) {
-                  echo $cm_short_name;
-                } else {
-                  echo $cm_name;
+                  echo '</ul>';
                 }
-                echo ' participates in the following caucuses:</h4>';
 
-                echo '<ul>';
-                  while ( $list_caucuses->have_posts() ) {
-                    $list_caucuses->the_post();
-                    $cm_position = get_post_meta($post->ID, $cm_number, true);
-                    echo '<li>';
-                    ?><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong><?php
-                    if ( $cm_position == 'chair' ):
-                        echo ' <small>(Chair)</small>';
-                    elseif (  $cm_position == 'co_chair'  ):
-                        echo ' <small>(Co-Chair)</small>';
-                    elseif (  $cm_position == 'vice_chair'  ):
-                        echo ' <small>(Vice Chair)</small>';
-                    elseif (  $cm_position == 'vice_co_chair'  ):
-                        echo ' <small>(Vice Co-Chair)</small>';
-                    elseif (  $cm_position == 'secretary'  ):
-                        echo ' <small>(Secretary)</small>';
-                    elseif (  $cm_position == 'treasurer'  ):
-                        echo ' <small>(Treasurer)</small>';
-                    endif;
-                    echo '</li>';
-                  }
-                echo '</ul>';
-              }
+              ?>
 
-            }
-
-            ?>
+            </div>
+            <div class="columns large-5">
+              <hr>
+              <h4 class="header-tiny">District <?php echo $d_number ?> neighborhoods:</h4>
+              <p class="text-small"><?php echo $neighborhoods; ?></p>
+            </div>
 
           </div>
-          <div class="columns large-5">
-            <hr>
-            <h4 class="header-tiny">District <?php echo $d_number ?> neighborhoods:</h4>
-            <p class="text-small"><?php echo $neighborhoods; ?></p>
-          </div>
-
-        </div>
+        <?php
+        } else {
+          the_content();
+        }
+        ?>
 
       </section>
 
