@@ -8,19 +8,25 @@ function nycc_district_options() {
 }
 
 function register_nycc_district_options() {
-    register_setting( 'district-options-group', 'council_district_number' );
-    register_setting( 'district-options-group', 'council_member_name' );
-    register_setting( 'district-options-group', 'council_member_short_name' );
-    register_setting( 'district-options-group', 'council_member_thumbnail' );
-    register_setting( 'district-options-group', 'council_member_party' );
-    register_setting( 'district-options-group', 'council_district_borough' );
-    register_setting( 'district-options-group', 'council_district_neighborhoods' );
-    register_setting( 'district-options-group', 'council_district_contact' );
-    register_setting( 'district-options-group', 'council_legislative_contact' );
-    register_setting( 'district-options-group', 'council_district_email' );
+    register_setting( 'district-options-group', 'council_district_number', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_member_name', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_member_short_name', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_member_thumbnail', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_member_party', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_district_borough', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_member_short_bio', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_district_neighborhoods', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_district_contact', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_legislative_contact', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_district_email', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_district_contact_form' );
 }
 
+function sanitize_district_options ($input) {
+  global $allowedtags;
+  $input = wp_kses( $input, $allowedtags);
+  return $input;
+}
 
 function nycc_district_options_page() {
     if ( !current_user_can( 'manage_options' ) )  {
@@ -70,6 +76,13 @@ function nycc_district_options_page() {
             <th scope="row">Borough</th>
             <td>
               <input type="text" name="council_district_borough" value="<?php echo esc_attr( get_option('council_district_borough') ); ?>" />
+            </td>
+          </tr>
+
+          <tr valign="top">
+            <th scope="row">Short Bio</th>
+            <td>
+              <textarea name="council_member_short_bio" rows="8" cols="50" class="large-text"><?php echo esc_attr( get_option('council_member_short_bio') ); ?></textarea>
             </td>
           </tr>
 
