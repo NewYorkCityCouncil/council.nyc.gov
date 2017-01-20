@@ -6,16 +6,9 @@ if ( 'NYCC Member' == $theme->name ) {
   $districtNumber = get_option('council_district_number');
 }
 if ( is_page_template( 'page-district.php' ) ) {
-  $thispost = get_post($id);
-  $districtNumber = $thispost->menu_order;
-  echo '<!-- This is District number ' . $districtNumber . ' ($districtNumber) -->';
-
   global $wp_query;
-  $postid = $wp_query->post->ID;
-  $query_districtNumber = $wp_query->post->menu_order;
-  echo '<!-- This is District number ' . $query_districtNumber . ' ($query_districtNumber) -->';
+  $districtNumber = $wp_query->post->menu_order;;
   wp_reset_query();
-
 }
 
 ?>
