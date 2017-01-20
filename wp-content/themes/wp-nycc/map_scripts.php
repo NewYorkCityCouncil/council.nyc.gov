@@ -6,16 +6,8 @@ if ( 'NYCC Member' == $theme->name ) {
   $districtNumber = get_option('council_district_number');
 }
 if ( is_page_template( 'page-district.php' ) ) {
-  // $thispost = get_post($id);
-  // $districtNumber = $thispost->menu_order;
-  $current_member_site = get_post_meta($post->ID, 'current_member_site', true);
-
-  switch_to_blog($current_member_site);
-
-    $districtNumber = get_option('council_district_number');
-
-  restore_current_blog();
-  wp_reset_postdata();
+  $thispost = get_post($id);
+  $districtNumber = $thispost->menu_order;
 }
 
 ?>
