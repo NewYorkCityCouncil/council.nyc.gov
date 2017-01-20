@@ -16,7 +16,7 @@
     if ( is_page_template( 'page-district.php' ) ) {
       $thispost = get_post($id);
       $district_number = $thispost->menu_order;
-      echo '<!-- This is District number ' . $district_number . ' -->';
+      echo '<!-- This is District number ' . $district_number . ' ($district_number) -->';
     }
     ?>
     <?php get_template_part( 'map_scripts' ); ?>

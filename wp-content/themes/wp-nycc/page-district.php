@@ -27,7 +27,7 @@ if ($current_member_site) {
 if ( is_page_template( 'page-district.php' ) ) {
   $thispost = get_post($id);
   $the_district_number = $thispost->menu_order;
-  echo '<!-- This is District number ' . $the_district_number . ' -->';
+  echo '<!-- This is District number ' . $the_district_number . ' ($the_district_number) -->';
 }
 ?>
 <div class="row">

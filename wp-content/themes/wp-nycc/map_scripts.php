@@ -8,7 +8,14 @@ if ( 'NYCC Member' == $theme->name ) {
 if ( is_page_template( 'page-district.php' ) ) {
   $thispost = get_post($id);
   $districtNumber = $thispost->menu_order;
-  echo '<!-- This is District number ' . $districtNumber . ' -->';
+  echo '<!-- This is District number ' . $districtNumber . ' ($districtNumber) -->';
+
+  global $wp_query;
+  $postid = $wp_query->post->ID;
+  $query_districtNumber = $wp_query->post->menu_order;
+  echo '<!-- This is District number ' . $query_districtNumber . ' ($query_districtNumber) -->';
+  wp_reset_query();
+
 }
 
 ?>
