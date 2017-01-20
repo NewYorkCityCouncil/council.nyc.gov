@@ -23,6 +23,13 @@ if ($current_member_site) {
 }
 
 ?>
+<?php
+if ( is_page_template( 'page-district.php' ) ) {
+  $thispost = get_post($id);
+  $the_district_number = $thispost->menu_order;
+  echo '<!-- This is District number ' . $the_district_number . ' -->';
+}
+?>
 <div class="row">
   <div class="columns medium-8 large-9 xxlarge-8">
 

@@ -8,6 +8,7 @@ if ( 'NYCC Member' == $theme->name ) {
 if ( is_page_template( 'page-district.php' ) ) {
   $thispost = get_post($id);
   $districtNumber = $thispost->menu_order;
+  echo '<!-- This is District number ' . $districtNumber . ' -->';
 }
 
 ?>

@@ -12,6 +12,13 @@
 
     <?php wp_footer(); ?>
 
+    <?php
+    if ( is_page_template( 'page-district.php' ) ) {
+      $thispost = get_post($id);
+      $district_number = $thispost->menu_order;
+      echo '<!-- This is District number ' . $district_number . ' -->';
+    }
+    ?>
     <?php get_template_part( 'map_scripts' ); ?>
     <?php if ( is_post_type_archive('nycc_pb_ballot_item') ) { get_template_part( 'pb-map-scripts' ); } ?>
     <?php if ( is_page_template( 'page-pbdistricts.php' ) ) { get_template_part( 'geolocate-scripts' ); } ?>
