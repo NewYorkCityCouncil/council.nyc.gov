@@ -85,6 +85,21 @@
 
                         restore_current_blog();
                         wp_reset_postdata();
+                      } else {
+                        $number = $post->menu_order;
+                        $name = 'Vacant';
+                        $district_url = esc_url( network_site_url() ) . 'district-' . $number . '/';
+                        ?>
+                        <tr>
+                          <td class="sort-district"><a class="button small expanded" href="<?php echo $district_url; ?>"
+                            ><strong><?php echo $number; ?></strong></a></td>
+                          <td class="sort-member"><a data-member-name="<?php echo $name; ?>" href="<?php echo $district_url; ?>"><strong><?php echo $name; ?></strong></a></td>
+                          <td></td>
+                          <td class="sort-borough"></td>
+                          <td class="sort-party"></td>
+                          <td class="sort-neighborhoods neighborhoods"></td>
+                        </tr>
+                        <?php
                       }
 
                       endwhile;
