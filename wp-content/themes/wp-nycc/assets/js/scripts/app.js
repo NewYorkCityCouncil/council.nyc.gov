@@ -155,6 +155,7 @@ jQuery( document ).ready(function() {
   if (typeof memberSiteURL !== 'undefined') {
     jQuery('#district-sidebar').load( memberSiteURL + ' #district-widgets', function() {
       jQuery('#district-sidebar .menu-item').removeClass('current-menu-item current-menu-ancestor current-menu-parent');
+      jQuery('#district-sidebar').foundation();
     });
   }
 });
