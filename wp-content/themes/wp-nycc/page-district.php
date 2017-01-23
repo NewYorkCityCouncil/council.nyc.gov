@@ -37,23 +37,19 @@ if ($current_member_site) {
 
         <?php
         if ($current_member_site) {
-          echo wpautop($cm_bio);
           ?>
           <div class="row">
             <div class="columns large-7">
+              <?php echo wpautop($cm_bio); ?>
+              <hr class="hide-for-large">
+            </div>
+            <div class="columns large-5">
 
               <?php
                 // List Committees
                 $list_committees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=0&posts_per_page=-1');
                 if ( $list_committees->have_posts() ) {
-                  echo '<hr>';
-                  echo '<h4 class="header-tiny">Council Member ';
-                  if ( $cm_short_name ) {
-                    echo $cm_short_name;
-                  } else {
-                    echo $cm_name;
-                  }
-                  echo ' serves on the following committees:</h4>';
+                  echo '<h4 class="header-tiny">Committees</h4>';
                   echo '<ul>';
                     while ( $list_committees->have_posts() ) {
                       $list_committees->the_post();
@@ -106,6 +102,7 @@ if ($current_member_site) {
                       }
                     }
                   echo '</ul>';
+                  echo '<hr>';
                 }
 
                 // List Caucuses
@@ -125,14 +122,7 @@ if ($current_member_site) {
                 );
                 $list_caucuses = new WP_Query( $args );
                 if ( $list_caucuses->have_posts() ) {
-                  echo '<hr>';
-                  echo '<h4 class="header-tiny">Council Member ';
-                  if ( $cm_short_name ) {
-                    echo $cm_short_name;
-                  } else {
-                    echo $cm_name;
-                  }
-                  echo ' participates in the following caucuses:</h4>';
+                  echo '<h4 class="header-tiny">Caucuses</h4>';
 
                   echo '<ul>';
                     while ( $list_caucuses->have_posts() ) {
@@ -156,13 +146,11 @@ if ($current_member_site) {
                       echo '</li>';
                     }
                   echo '</ul>';
+                  echo '<hr>';
                 }
 
               ?>
 
-            </div>
-            <div class="columns large-5">
-              <hr>
               <h4 class="header-tiny">District <?php echo $d_number ?> neighborhoods:</h4>
               <p class="text-small"><?php echo $neighborhoods; ?></p>
             </div>
