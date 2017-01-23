@@ -45,6 +45,10 @@ if ($current_member_site) {
             </div>
             <div class="columns large-5">
 
+              <h4 class="header-tiny">Neighborhoods</h4>
+              <p class="text-small"><?php echo $neighborhoods; ?></p>
+              <hr>
+
               <?php
                 // List Committees
                 $list_committees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=0&posts_per_page=-1');
@@ -146,13 +150,8 @@ if ($current_member_site) {
                       echo '</li>';
                     }
                   echo '</ul>';
-                  echo '<hr>';
                 }
-
               ?>
-
-              <h4 class="header-tiny">District <?php echo $d_number ?> neighborhoods:</h4>
-              <p class="text-small"><?php echo $neighborhoods; ?></p>
             </div>
 
           </div>
