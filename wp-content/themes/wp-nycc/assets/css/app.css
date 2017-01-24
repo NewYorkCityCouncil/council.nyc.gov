@@ -5534,6 +5534,14 @@ figure {
   @media screen and (min-width: 40em) {
     #translation-menu {
       margin-bottom: 1rem; } }
+  @media screen and (min-width: 40em) {
+    #translation-menu.member {
+      max-width: 100% !important;
+      right: 41.66667%; } }
+  @media screen and (min-width: 90em) {
+    #translation-menu.member {
+      max-width: 75rem !important;
+      right: 0; } }
   #translation-menu .button, #translation-menu .press-release-tags ul li a, .press-release-tags ul li #translation-menu a, #translation-menu .social-buttons a, .social-buttons #translation-menu a, #translation-menu .comment-reply-link {
     font-weight: bold;
     padding: 0 0.625em;

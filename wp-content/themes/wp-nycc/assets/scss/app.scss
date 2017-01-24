@@ -945,6 +945,16 @@ $map-height-tall:   rem-calc(400);
   @include breakpoint(medium) {
     margin-bottom: $global-margin;
   }
+  &.member {
+    @include breakpoint(medium) {
+      max-width: 100% !important;
+      right: 41.66667%;
+    }
+    @include breakpoint(xxlarge) {
+      max-width: $global-width !important;
+      right: 0;
+    }
+  }
   .button {
     @extend .tiny;
     font-weight: $global-weight-bold;
