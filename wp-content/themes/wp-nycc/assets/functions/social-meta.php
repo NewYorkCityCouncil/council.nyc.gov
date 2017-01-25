@@ -22,7 +22,7 @@ function insert_share_meta_in_head() {
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:site"        content="@NYCCouncil" />
   <meta name="twitter:creator"     content="@NYCCouncil" />
-  <meta name="twitter:title"       content="#NYCCLabs" />
+  <meta name="twitter:title"       content="<?php the_title(); ?>" />
   <meta name="twitter:description" content="<?php echo get_the_excerpt(); ?>" />
   <meta name="twitter:image"       content="<?php echo $share_image ?>" />
 
