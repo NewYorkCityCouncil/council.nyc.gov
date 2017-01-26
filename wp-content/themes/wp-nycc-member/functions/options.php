@@ -23,8 +23,8 @@ function register_nycc_district_options() {
 }
 
 function sanitize_district_options ($input) {
-  global $allowedtags;
-  $input = wp_kses( $input, $allowedtags);
+  global $allowedposttags;
+  $input = wp_kses( $input, $allowedposttags);
   return $input;
 }
 
