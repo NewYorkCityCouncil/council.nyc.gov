@@ -4,11 +4,6 @@
 register_nav_menus( array(
     'main-nav' => 'Main Menu',
 ) );
-if ( is_main_site() ) {
-  register_nav_menus( array(
-      '404-nav' => '404 Menu',
-  ) );
-}
 
 // Display the main menu
 if ( ! function_exists ( 'nycc_main_nav' ) ) {
