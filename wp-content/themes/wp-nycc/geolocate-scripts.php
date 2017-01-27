@@ -17,8 +17,8 @@ $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
         var myBorough = jQuery('#myBorough').val();
 
         // talk to the NYC Geoclient API
-        var apiKey = 'b06b5faa94200cd3a6ac32cb30fd76a8';
-        var apiId = 'a9596ad7';
+        var apiKey = 'db87f7a57ab963b71d36c179ce32157c';
+        var apiId = 'f208e50a';
         var apiQuery = 'https://api.cityofnewyork.us/geoclient/v1/search.json?input=' + myAddress + ' ' + myBorough + '&app_id=' + apiId + '&app_key=' + apiKey;
 
         var errMessage = '<div class="callout alert text-small text-center">Please enter a valid street address and borough.</div>'
@@ -56,9 +56,12 @@ $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
                                 districtNumber = districtNumber.replace(/^0+/, '');
 
                             jQuery('#geolocate-district-result').append(
-                              '<p class="callout secondary text-small text-center no-margin">' + theRequest + 'is in District&nbsp;' + districtNumber + '.</p>'
+                              '<p class="callout secondary text-small text-center">' + theRequest + 'is in District&nbsp;' + districtNumber + '.</p>'
                             );
 
+                            <?php
+                            if ( is_page_template( 'page-pbdistricts.php' ) ) {
+                            ?>
                             if ( false<?php
                               $sites = wp_get_sites();
                               foreach ( $sites as $site ) {
@@ -82,6 +85,8 @@ $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
                                   '<p class="callout text-small text-center alert ">District&nbsp;' + districtNumber + ' is not participating in PBNYC this year. Contact your Council Member for more information.</p>'
                                 );
                             }
+                            <?php }
+                            ?>
 
                        }
                   }
