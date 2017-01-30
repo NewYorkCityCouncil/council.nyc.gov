@@ -43,8 +43,31 @@ if ( get_post_type() == 'attachment' ) {
     </article>
 
   <?php
-} else { ?>
 
+} elseif ( has_post_format( 'video' )) {
+  $format = get_post_format();
+
+  ?>
+  <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
+    <div class="row">
+      <div class="columns large-7 large-push-5">
+        <h2 class="header-small"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+        <p class="byline"><?php the_time('F j, Y') ?></p>
+      </div>
+      <div class="columns large-5 large-pull-7">
+        <?php
+        $content = apply_filters('the_content', get_post_field('post_content', $post_id));
+        $iframes = get_media_embedded_in_content( $content, 'iframe' );
+        echo $iframes[0];
+        ?>
+      </div>
+    </div>
+  </article>
+<?php
+
+} else {
+
+  ?>
   <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
     <header>
       <h2 class="header-large"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
@@ -54,5 +77,5 @@ if ( get_post_type() == 'attachment' ) {
       <?php the_excerpt(); ?>
     </section>
   </article>
-
-<?php } ?>
+  <?php
+} ?>
