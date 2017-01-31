@@ -13,6 +13,7 @@ require_once(get_template_directory().'/assets/functions/attachments.php');     
 require_once(get_template_directory().'/assets/functions/archive-titles.php');    // Archive Titles
 require_once(get_template_directory().'/assets/functions/page-navigation.php');   // Numeric Page Navigation
 require_once(get_template_directory().'/assets/functions/social-meta.php');       // Facebook & Twitter share meta
+require_once(get_template_directory().'/assets/functions/roles.php');             // Roles & Capabilities
 
 if ( is_main_site() ) {
   require_once(get_template_directory().'/assets/functions/options.php');         // NYCC Site Options
