@@ -9,8 +9,9 @@ function nycc_options() {
 
 function register_nycc_options() {
     register_setting( 'nycc-options-group', 'site_footer_content' );
-    register_setting( 'nycc-options-group', 'pb_placeholder' );
     register_setting( 'nycc-options-group', '404_content' );
+    register_setting( 'nycc-options-group', 'pb_site_id' );
+    register_setting( 'nycc-options-group', 'pb_placeholder' );
 }
 
 
@@ -34,16 +35,23 @@ function nycc_options_page() {
           </tr>
 
           <tr valign="top">
-            <th scope="row">PB Placeholder Markup</th>
+            <th scope="row">404 Page Content</th>
             <td>
-              <textarea name="pb_placeholder" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('pb_placeholder') ); ?></textarea>
+              <textarea name="404_content" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('404_content') ); ?></textarea>
             </td>
           </tr>
 
           <tr valign="top">
-            <th scope="row">404 Page Content</th>
+            <th scope="row">PB Site ID</th>
             <td>
-              <textarea name="404_content" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('404_content') ); ?></textarea>
+              <input type="number" name="pb_site_id" value="<?php echo esc_attr( get_option('pb_site_id') ); ?>" min="1" />
+            </td>
+          </tr>
+
+          <tr valign="top">
+            <th scope="row">PB Placeholder Markup</th>
+            <td>
+              <textarea name="pb_placeholder" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('pb_placeholder') ); ?></textarea>
             </td>
           </tr>
 
