@@ -1,48 +1,25 @@
-<?php /* Template Name: PB Districts List */ ?>
+<?php /* Template Name: District Sidebar */ ?>
 
 <?php get_header(); ?>
 
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
   <div class="row">
-    <div class="columns">
 
+    <div class="columns">
       <header class="page-header">
         <h1 class="header-xxlarge">Participatory Budgeting</h1>
-        <?php get_template_part( 'pb_page_nav' ); ?>
+        <div class="header-menu"><?php nycc_pb_nav(); ?></div>
         <hr>
       </header>
-
     </div>
+
     <div class="columns large-7">
 
       <?php the_content(); ?>
 
     </div>
     <div class="columns large-5">
-
-      <h4>Don't know your district?</h4>
-      <form id="geolocate-district" class="callout secondary">
-        <div class="input-group">
-          <label class="input-group-label" for="myAddress">Address</label>
-          <input class="input-group-field" type="text" name="myAddress" id="myAddress" />
-        </div>
-        <div class="input-group">
-          <label class="input-group-label" for="myBorough">Borough</label>
-          <select class="input-group-field" name="myBorough" id="myBorough">
-            <option></option>
-            <option value="Manhattan">Manhattan</option>
-            <option value="Bronx">Bronx</option>
-            <option value="Brooklyn">Brooklyn</option>
-            <option value="Queens">Queens</option>
-            <option value="Staten Island">Staten Island</option>
-          </select>
-        </div>
-        <input type="submit" value="Find my district" class="button expanded secondary" />
-      </form>
-      <div id="geolocate-district-result"></div>
-
-      <br>
 
       <h4>Is my Council Member participating?</h4>
       <div id="districts-list">
@@ -88,6 +65,29 @@
           </tbody>
         </table>
       </div>
+
+      <br>
+
+      <h4>Don't know your district?</h4>
+      <form id="geolocate-district" class="callout secondary">
+        <div class="input-group">
+          <label class="input-group-label" for="myAddress">Address</label>
+          <input class="input-group-field" type="text" name="myAddress" id="myAddress" />
+        </div>
+        <div class="input-group">
+          <label class="input-group-label" for="myBorough">Borough</label>
+          <select class="input-group-field" name="myBorough" id="myBorough">
+            <option></option>
+            <option value="Manhattan">Manhattan</option>
+            <option value="Bronx">Bronx</option>
+            <option value="Brooklyn">Brooklyn</option>
+            <option value="Queens">Queens</option>
+            <option value="Staten Island">Staten Island</option>
+          </select>
+        </div>
+        <input type="submit" value="Find my district" class="button expanded secondary" />
+      </form>
+      <div id="geolocate-district-result"></div>
 
     </div>
   </div>

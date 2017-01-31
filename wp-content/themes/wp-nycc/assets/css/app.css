@@ -4950,7 +4950,8 @@ table.hover tr:nth-of-type(even):hover {
 .text-dark-gray {
   color: #666; }
 
-.menu + hr {
+.menu + hr,
+.header-menu + hr {
   margin-top: 1.25rem; }
 
 .callout hr {

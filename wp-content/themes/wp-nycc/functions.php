@@ -46,10 +46,6 @@ function remove_wp_dot_org_menu( $wp_admin_bar ) {
 }
 add_action( 'admin_bar_menu', 'remove_wp_dot_org_menu', 999 );
 
-// Gotta register an unused taxonomies so PB works with switch_to_blog()
-register_taxonomy( 'pbtags', array(''), array('') );
-register_taxonomy( 'pbcycle', array(''), array('') );
-
 
 // Filter to remove password protected posts from SQL query
 function exclude_protected($where) {

@@ -14,17 +14,6 @@ if ( ! function_exists ( 'nycc_register_sidebars' ) ) {
                 'after_title' => '</h4>'
             )
         );
-        register_sidebar(
-            array(
-                'id' => 'pbnyc-sidebar',
-                'name' => __( 'PB Sidebar', 'nycc' ),
-                'description' => __( 'Widget Area Alongside PB Pages', 'nycc' ),
-                'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-                'after_widget' => '</aside>',
-                'before_title' => '<h4 class="widget-title">',
-                'after_title' => '</h4>'
-            )
-        );
     }
     add_action( 'widgets_init', 'nycc_register_sidebars' );
 }

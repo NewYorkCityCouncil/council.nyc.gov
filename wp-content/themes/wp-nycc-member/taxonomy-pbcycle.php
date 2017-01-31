@@ -21,14 +21,9 @@
       <header class="page-header">
         <h1 class="header-xxlarge">Participatory Budgeting <small>Cycle <?php echo $cycleID; ?></small></h1>
         <p class="header-medium subheader sans-serif">
-          <?php
-            switch_to_blog(1);
-            $pbpage = get_page_by_path( 'pb' );
-            if ( $pbpage ) {
-              echo '<a href="' . get_permalink( $pbpage ) . '" class="">Learn more about PBNYC</a>';
-            }
-            restore_current_blog();
-          ?>
+          <?php switch_to_blog(1); ?>
+          <a href="<?php echo esc_url( home_url( '/pb/', 'http' ) ); ?>">Learn more about PBNYC</a>
+          <?php restore_current_blog(); ?>
         </p>
         <hr>
       </header>
@@ -181,9 +176,15 @@
       <?php else : ?>
         <h1 class="header-xxlarge">Participatory Budgeting <small>Cycle <?php echo $cycleID; ?></small></h1>
         <?php
+
         switch_to_blog(1);
-        echo get_option('pb_placeholder');
+          $pbsite = get_option('pb_site_id');
         restore_current_blog();
+
+        switch_to_blog($pbsite);
+          echo get_option('pb_placeholder');
+        restore_current_blog();
+
         ?>
       <?php endif; ?>
 

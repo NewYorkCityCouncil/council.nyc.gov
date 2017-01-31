@@ -1,15 +1,15 @@
-<?php /* Template Name: PB Results */ ?>
+<?php /* Template Name: Cycle Results */ ?>
 
 <?php get_header(); ?>
 
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
   <div class="row">
-    <div class="columns">
 
+    <div class="columns">
       <header class="page-header">
         <h1 class="header-xxlarge">Participatory Budgeting</h1>
-        <?php get_template_part( 'pb_page_nav' ); ?>
+        <div class="header-menu"><?php nycc_pb_nav(); ?></div>
         <hr>
       </header>
 

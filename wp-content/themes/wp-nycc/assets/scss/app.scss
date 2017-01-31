@@ -195,7 +195,8 @@
 .text-medium-gray { color: $medium-gray; }
 .text-dark-gray { color: $dark-gray; }
 
-.menu + hr {
+.menu + hr,
+.header-menu + hr {
   margin-top: rem-calc(20);
 }
 
