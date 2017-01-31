@@ -2,8 +2,6 @@
 
 <script type="text/javascript">
 
-// foo
-
     <?php
     $ballot_items = new WP_Query('post_type=nycc_pb_vote_site&orderby=menu_order&order=ASC&posts_per_page=-1');
     if ( $ballot_items->have_posts() ) : while ( $ballot_items->have_posts() ) : $ballot_items->the_post();
