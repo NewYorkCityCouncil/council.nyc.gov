@@ -1,6 +1,7 @@
 <?php
 
 // Add a custom user role
+remove_role( 'pbadmin' );
 $result = add_role( 'pbadmin', 'PB Admin', array(
     'delete_others_pages' => true,
     'delete_pages' => true,
@@ -10,6 +11,7 @@ $result = add_role( 'pbadmin', 'PB Admin', array(
     'edit_pages' => true,
     'edit_private_pages' => true,
     'edit_published_pages' => true,
+    'manage_categories' => true,
     'edit_theme_options' => true,
     'manage_options' => true,
     'publish_pages' => true,
