@@ -21,12 +21,15 @@ if( current_user_can('editor') && !current_user_can('administrator') ) {
 
 }
 
-// Hide stuff from PB Admins
-if( current_user_can('pbadmin') && !is_super_admin() ) {
-
-  function pbadmin_remove_menus(){
+// Hide stuff for PB Admin
+function remove_pbadmin_menus(){
+  if ( current_user_can('pbadmin') && !current_user_can('administrator') ) {
+    remove_menu_page( 'edit.php' );
+    remove_menu_page( 'edit.php?post_type=page' );
+    remove_menu_page( 'themes.php' );
+    remove_menu_page( 'options-general.php' );
+    remove_menu_page( 'upload.php' );
     remove_menu_page( 'edit-tags.php?taxonomy=category' );
   }
-  add_action( 'admin_menu', 'pbadmin_remove_menus' );
-
 }
+add_action( 'admin_menu', 'remove_pbadmin_menus' );

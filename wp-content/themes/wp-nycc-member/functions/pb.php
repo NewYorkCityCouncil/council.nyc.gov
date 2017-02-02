@@ -227,16 +227,3 @@ function save_nycc_pb_vote_site_meta($post_id, $post) {
   }
 }
 add_action('save_post', 'save_nycc_pb_vote_site_meta', 1, 2);
-
-
-// Hide stuff for PB Admin
-function remove_pbadmin_menus(){
-  if ( current_user_can( 'pbadmin' ) ) {
-    remove_menu_page( 'edit.php' );
-    remove_menu_page( 'edit.php?post_type=page' );
-    remove_menu_page( 'themes.php' );
-    remove_menu_page( 'options-general.php' );
-    remove_menu_page( 'upload.php' );
-  }
-}
-add_action( 'admin_menu', 'remove_pbadmin_menus' );
