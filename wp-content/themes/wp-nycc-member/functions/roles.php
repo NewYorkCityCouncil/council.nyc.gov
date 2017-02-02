@@ -22,7 +22,7 @@ if( current_user_can('editor') && !current_user_can('administrator') ) {
 }
 
 // Hide stuff from PB Admins
-if( current_user_can('pbadmin') ) {
+if( current_user_can('pbadmin') && !is_super_admin() ) {
 
   function pbadmin_remove_menus(){
     remove_menu_page( 'edit-tags.php?taxonomy=category' );
