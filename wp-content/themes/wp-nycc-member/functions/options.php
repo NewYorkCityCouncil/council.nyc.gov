@@ -20,6 +20,7 @@ function register_nycc_district_options() {
     register_setting( 'district-options-group', 'council_legislative_contact', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_district_email', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_district_contact_form' );
+    register_setting( 'district-options-group', 'council_district_subscribe_form' );
 }
 
 function sanitize_district_options ($input) {
@@ -116,6 +117,13 @@ function nycc_district_options_page() {
             <th scope="row">Contact Form</th>
             <td>
               <textarea name="council_district_contact_form" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('council_district_contact_form') ); ?></textarea>
+            </td>
+          </tr>
+
+          <tr valign="top">
+            <th scope="row">Subscribe Form</th>
+            <td>
+              <textarea name="council_district_subscribe_form" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('council_district_subscribe_form') ); ?></textarea>
             </td>
           </tr>
 
