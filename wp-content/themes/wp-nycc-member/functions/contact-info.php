@@ -31,7 +31,7 @@ class nycc_district_contact_widget extends WP_Widget {
         if ( $contact_form ) {
             ?>
             <div class="reveal" id="contact_form" data-reveal>
-              <h4 class="header-small">Contact <?php echo get_option('council_member_name'); ?></h4>
+              <h4 class="header-small">Send a message to <?php echo get_option('council_member_name'); ?></h4>
               <?php echo $contact_form; ?>
               <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
             </div>
@@ -41,7 +41,7 @@ class nycc_district_contact_widget extends WP_Widget {
         if ( $subscribe_form ) {
             ?>
             <div class="reveal" id="subscribe_form" data-reveal>
-              <h4 class="header-small">Subscribe to<?php echo get_option('council_member_name'); ?> updates</h4>
+              <h4 class="header-small">Subscribe to updates from <?php echo get_option('council_member_name'); ?></h4>
               <?php echo $subscribe_form; ?>
               <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
             </div>
