@@ -353,7 +353,7 @@ figure {
 /*--------------------------------------------------
   Image Header
 --------------------------------------------------*/
-$image-overlay-padding: map-get($grid-column-gutter, small);
+$image-overlay-padding: map-get($grid-column-gutter, small)*0.75;
 
 @mixin image-overlay {
   position: absolute;
@@ -448,14 +448,10 @@ $image-overlay-padding: map-get($grid-column-gutter, small);
 // Core WordPress Widgets
 $widget-item-margin: rem-calc(8);
 .widget {
-  font-size: rem-calc(11);
+  @extend .text-small;
   margin-bottom: map-get($grid-column-gutter, medium);
   .screen-reader-text {
     @extend .show-for-sr;
-  }
-  &:not(.widget_text) a {
-    font-size: rem-calc(13);
-    font-weight: $global-weight-bold;
   }
   li + li,
   li > ul {
@@ -465,14 +461,20 @@ $widget-item-margin: rem-calc(8);
 .widget-title {
   @extend h6;
   margin-bottom: 0.5rem;
-  a {
-    font-size: inherit;
-    font-weight: inherit;
-  }
 }
+// bold the links
+.widget_archive,
+.widget_categories,
+.widget_recent_entries,
+.widget_recent_entries_network {
+  a { font-weight: bold; }
+  .post-date { @extend .text-tiny; }
+}
+// specific widget styles
 .widget_archive {}
 .widget_categories {}
-.widget_recent_entries {}
+.widget_recent_entries {
+}
 .widget_rss {
   .rss-widget-icon { display: none; }
   .rss-date { display: block; }
@@ -878,6 +880,9 @@ $map-height-tall:   rem-calc(400);
     @include breakpoint(large) {
       font-size: rem-calc(45);
     }
+  }
+  .district-neighborhoods {
+    @extend .sans-serif, .text-tiny;
   }
   a {
     color: inherit;

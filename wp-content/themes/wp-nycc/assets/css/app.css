@@ -4894,16 +4894,19 @@ table.hover tr:nth-of-type(even):hover {
 /*--------------------------------------------------
   Typography
 --------------------------------------------------*/
-.sans-serif, .image-header.district-image-header .district-number {
+.sans-serif, .image-header.district-image-header .district-number, .image-header.district-image-header .district-neighborhoods {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
 
 .serif, .byline, .post-footer {
   font-family: Georgia, Cambria, "Times New Roman", Times, serif; }
 
-.text-tiny {
+.text-tiny, .widget_archive .post-date,
+.widget_categories .post-date,
+.widget_recent_entries .post-date,
+.widget_recent_entries_network .post-date, .image-header.district-image-header .district-neighborhoods {
   font-size: 0.6875rem; }
 
-.text-small, .byline, .post-footer {
+.text-small, .byline, .post-footer, .widget {
   font-size: 0.8125rem; }
 
 .text-medium {
@@ -4919,9 +4922,12 @@ table.hover tr:nth-of-type(even):hover {
   font-size: 1.25rem; }
 
 @media screen and (min-width: 40em) {
-  .text-tiny {
+  .text-tiny, .widget_archive .post-date,
+  .widget_categories .post-date,
+  .widget_recent_entries .post-date,
+  .widget_recent_entries_network .post-date, .image-header.district-image-header .district-neighborhoods {
     font-size: 0.6875rem; }
-  .text-small, .byline, .post-footer {
+  .text-small, .byline, .post-footer, .widget {
     font-size: 0.8125rem; }
   .text-medium {
     font-size: 1rem; }
@@ -5101,15 +5107,15 @@ figure {
   .image-header.fit-container {
     margin-top: 0; }
     .image-header.fit-container .image-overlay-text {
-      margin-right: 35px;
-      margin-left: 35px; }
+      margin-right: 26.25px;
+      margin-left: 26.25px; }
     .image-header.fit-container .image-overlay-large .image-overlay-text {
       margin-right: 0;
       margin-left: 0; }
       @media screen and (min-width: 64em) {
         .image-header.fit-container .image-overlay-large .image-overlay-text {
-          margin-right: 35px;
-          margin-left: 35px; } }
+          margin-right: 26.25px;
+          margin-left: 26.25px; } }
 
 .image-overlay {
   position: absolute;
@@ -5120,9 +5126,9 @@ figure {
   color: #fff; }
   .image-overlay .image-overlay-text {
     background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 20px 0 0 0 rgba(0, 0, 0, 0.5), -20px 0 0 0 rgba(0, 0, 0, 0.5);
-    padding: 10px 0;
-    margin: -15px 0 20px;
+    box-shadow: 15px 0 0 0 rgba(0, 0, 0, 0.5), -15px 0 0 0 rgba(0, 0, 0, 0.5);
+    padding: 7.5px 0;
+    margin: -11.25px 0 15px;
     float: left;
     clear: left; }
 
@@ -5138,9 +5144,9 @@ figure {
 @media screen and (min-width: 64em) {
   .image-overlay-large .image-overlay-text {
     background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 20px 0 0 0 rgba(0, 0, 0, 0.5), -20px 0 0 0 rgba(0, 0, 0, 0.5);
-    padding: 10px 0;
-    margin: -15px 0 20px;
+    box-shadow: 15px 0 0 0 rgba(0, 0, 0, 0.5), -15px 0 0 0 rgba(0, 0, 0, 0.5);
+    padding: 7.5px 0;
+    margin: -11.25px 0 15px;
     float: left;
     clear: left; } }
 
@@ -5153,20 +5159,19 @@ figure {
   Widgets
 --------------------------------------------------*/
 .widget {
-  font-size: 0.6875rem;
   margin-bottom: 30px; }
-  .widget:not(.widget_text) a {
-    font-size: 0.8125rem;
-    font-weight: bold; }
   .widget li + li,
   .widget li > ul {
     margin-top: 0.5rem; }
 
 .widget-title {
   margin-bottom: 0.5rem; }
-  .widget-title a {
-    font-size: inherit;
-    font-weight: inherit; }
+
+.widget_archive a,
+.widget_categories a,
+.widget_recent_entries a,
+.widget_recent_entries_network a {
+  font-weight: bold; }
 
 .widget_rss .rss-widget-icon {
   display: none; }

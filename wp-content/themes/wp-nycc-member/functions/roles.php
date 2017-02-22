@@ -4,6 +4,7 @@
 function nycc_edit_admin_capabilities() {
   $role_object = get_role( 'editor' );
   $role_object->add_cap( 'edit_theme_options' );
+  $role_object->add_cap( 'manage_options' );
 }
 add_action( 'init', 'nycc_edit_admin_capabilities' );
 
@@ -18,6 +19,14 @@ if( current_user_can('editor') && !current_user_can('administrator') ) {
     add_menu_page( __('Widgets', 'widgets'), __('Widgets', 'widgets'), 'edit_theme_options', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 50 );
   }
   add_action( 'admin_menu', 'remove_themes_menu' );
+
+  function remove_settings_menu(){
+    // Hide the Appearace menu (Themes)
+    remove_menu_page( 'options-general.php' );
+    // Show Menus & Widgets submenus
+    add_menu_page( __('District Options', 'options-general'), __('District Options', 'options-general'), 'edit_theme_options', 'options-general.php?page=district-options', '', 'dashicons-admin-settings', 50 );
+  }
+  add_action( 'admin_menu', 'remove_settings_menu' );
 
 }
 

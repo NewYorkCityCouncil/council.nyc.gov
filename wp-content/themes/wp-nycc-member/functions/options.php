@@ -10,17 +10,19 @@ function nycc_district_options() {
 function register_nycc_district_options() {
     register_setting( 'district-options-group', 'council_district_number', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_member_name', 'sanitize_district_options' );
-    register_setting( 'district-options-group', 'council_member_short_name', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_member_thumbnail', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_member_party', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_district_borough', 'sanitize_district_options' );
-    register_setting( 'district-options-group', 'council_member_short_bio', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_district_neighborhoods', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_district_contact', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_legislative_contact', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_district_email', 'sanitize_district_options' );
     register_setting( 'district-options-group', 'council_district_contact_form' );
     register_setting( 'district-options-group', 'council_district_subscribe_form' );
+
+    // TODO: These are deprecated:
+    // register_setting( 'district-options-group', 'council_member_short_name', 'sanitize_district_options' );
+    register_setting( 'district-options-group', 'council_member_short_bio', 'sanitize_district_options' );
 }
 
 function sanitize_district_options ($input) {
@@ -41,30 +43,33 @@ function nycc_district_options_page() {
         <?php do_settings_sections( 'district-options-group' ); ?>
         <table class="form-table">
 
+          <?php if( current_user_can('administrator') ) { ?>
           <tr valign="top">
             <th scope="row">District Number</th>
             <td>
               <input type="number" name="council_district_number" value="<?php echo esc_attr( get_option('council_district_number') ); ?>" min="1" max="51" />
             </td>
           </tr>
+          <?php } ?>
 
           <tr valign="top">
-            <th scope="row">Council Member</th>
+            <th scope="row">Member's Full Name</th>
             <td>
-              Full Name: <input type="text" name="council_member_name" value="<?php echo esc_attr( get_option('council_member_name') ); ?>" />&nbsp;&nbsp;
-              Short Name: <input type="text" name="council_member_short_name" value="<?php echo esc_attr( get_option('council_member_short_name') ); ?>" />
+              <input type="text" name="council_member_name" value="<?php echo esc_attr( get_option('council_member_name') ); ?>" />
             </td>
           </tr>
 
+          <?php if( current_user_can('administrator') ) { ?>
           <tr valign="top">
             <th scope="row">Thumbnail</th>
             <td>
               <input type="text" name="council_member_thumbnail" value="<?php echo esc_attr( get_option('council_member_thumbnail') ); ?>" placeholder="http://..." />
             </td>
           </tr>
+          <?php } ?>
 
           <tr valign="top">
-            <th scope="row">Party</th>
+            <th scope="row">Member's Party</th>
             <td>
               <select name="council_member_party">
                 <option <?php echo ( get_option('council_member_party') == 'Democrat' )? 'selected':''; ?> value="Democrat">Democrat</option>
@@ -73,19 +78,23 @@ function nycc_district_options_page() {
             </td>
           </tr>
 
+          <?php if( current_user_can('administrator') ) { ?>
           <tr valign="top">
             <th scope="row">Borough</th>
             <td>
               <input type="text" name="council_district_borough" value="<?php echo esc_attr( get_option('council_district_borough') ); ?>" />
             </td>
           </tr>
+          <?php } ?>
 
+          <?php if( current_user_can('administrator') ) { // TODO: This is deprecated ?>
           <tr valign="top">
-            <th scope="row">Short Bio</th>
+            <th scope="row">Short Bio <small>(deprecated)</small></th>
             <td>
               <textarea name="council_member_short_bio" rows="8" cols="50" class="large-text"><?php echo esc_attr( get_option('council_member_short_bio') ); ?></textarea>
             </td>
           </tr>
+          <?php } ?>
 
           <tr valign="top">
             <th scope="row">Neighborhoods</th>
@@ -113,19 +122,23 @@ function nycc_district_options_page() {
             </td>
           </tr>
 
+          <?php if( current_user_can('administrator') ) { ?>
           <tr valign="top">
             <th scope="row">Contact Form</th>
             <td>
               <textarea name="council_district_contact_form" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('council_district_contact_form') ); ?></textarea>
             </td>
           </tr>
+          <?php } ?>
 
+          <?php if( current_user_can('administrator') ) { ?>
           <tr valign="top">
             <th scope="row">Subscribe Form</th>
             <td>
               <textarea name="council_district_subscribe_form" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('council_district_subscribe_form') ); ?></textarea>
             </td>
           </tr>
+          <?php } ?>
 
         </table>
 
