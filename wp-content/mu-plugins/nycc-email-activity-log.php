@@ -9,12 +9,14 @@ License: GNU General Public License & MIT
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-function nycc_email_activity_log( $post ) {
+function nycc_email_activity_log( $new_status, $old_status, $post ) {
 
-    global $post;
+    // don't email if post is being autosaved or isn't published
+    if ( ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) || $post->post_status === 'auto-draft' )
+        return;
 
-    // don't send email if post is being autosaved or isn't published
-    if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || $post->post_status === 'auto-draft' || $post->post_status !== 'publish' )
+    // don't email if post isn't published
+    if ( $new_status !== 'publish' || $post->post_status === 'publish' )
         return;
 
     $emailto = get_option( 'admin_email' );
