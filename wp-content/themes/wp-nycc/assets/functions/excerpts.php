@@ -27,7 +27,7 @@ if ( ! function_exists( 'nycc_excerpt_custom_wp_trim_excerpt' ) ) :
             } else {
               $excerpt_word_count = 60;
             }
-            $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count);
+            $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); // TODO: Can this line be nixed?
             $tokens = array();
             $excerptOutput = '';
             $count = 0;
@@ -40,7 +40,7 @@ if ( ! function_exists( 'nycc_excerpt_custom_wp_trim_excerpt' ) ) :
                 if ($count >= $excerpt_word_count && preg_match('/[\;\?\.\!]\s*$/uS', $token)) {
                     // Limit reached, continue until ; ? . or ! occur at the end
                     $excerptOutput .= trim($token);
-                    $excerpt_is_full_length = false;
+                    $excerpt_is_full_length = false; // TODO: This is wrongly set if the max is hit in the last sentence.
                     break;
                 }
 
@@ -56,7 +56,7 @@ if ( ! function_exists( 'nycc_excerpt_custom_wp_trim_excerpt' ) ) :
             $nycc_excerpt = trim(force_balance_tags($excerptOutput));
 
             $excerpt_end = ' <strong><small><a href="'. esc_url( get_permalink() ) . '">READ&nbsp;MORE</a></small></strong>';
-            $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
+            $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end); // TODO: Can this line be nixed?
 
             $pos = strrpos($nycc_excerpt, '</');
             if ( $excerpt_is_full_length ) {
