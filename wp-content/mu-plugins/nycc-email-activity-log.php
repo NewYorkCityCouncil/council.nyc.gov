@@ -11,6 +11,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 function nycc_email_activity_log( $new_status, $old_status, $post ) {
 
+  global $post;
+
     // don't email if post is being autosaved or isn't published
     if ( ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) || $post->post_status === 'auto-draft' )
         return;
