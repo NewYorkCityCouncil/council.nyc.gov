@@ -17,6 +17,9 @@ if( current_user_can('editor') && !current_user_can('administrator') ) {
     // Show Menus & Widgets submenus
     add_menu_page( __('Menus', 'nav-menus'), __('Menus', 'nav-menus'), 'edit_theme_options', 'nav-menus.php', '', 'dashicons-menu', 50 );
     add_menu_page( __('Widgets', 'widgets'), __('Widgets', 'widgets'), 'edit_theme_options', 'widgets.php', '', 'dashicons-welcome-widgets-menus', 50 );
+    // Hide PB stuff
+    remove_menu_page( 'edit.php?post_type=nycc_pb_ballot_item' );
+    remove_menu_page( 'edit.php?post_type=nycc_pb_vote_site' );
   }
   add_action( 'admin_menu', 'remove_themes_menu' );
 
