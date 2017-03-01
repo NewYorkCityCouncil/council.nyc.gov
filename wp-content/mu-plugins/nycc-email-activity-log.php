@@ -13,7 +13,9 @@ function nycc_email_activity_log( $post_id, $post_after ) {
 
     if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) return; // don't send email if post is being autosaved or isn't published
     if ( get_post_status($post_id) !== 'publish' ) return; // don't send email if post isn't published
-    // if ( is_super_admin() ) return; // don't send email if user is Superadmin
+    if ( is_super_admin() ) return; // don't send email if user is Superadmin
+    $theme = wp_get_theme();
+    if ( 'NYCC Press' == $theme->name ) return; // don't send email if it's the Press theme
 
     $post = $post_after;
 
