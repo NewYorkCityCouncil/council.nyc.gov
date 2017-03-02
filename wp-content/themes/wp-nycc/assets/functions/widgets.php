@@ -34,7 +34,7 @@ function nycc_unregister_default_widgets() {
   unregister_widget('WP_Widget_Tag_Cloud');
   // unregister_widget('WP_Nav_Menu_Widget');
   unregister_widget('Twenty_Eleven_Ephemera_Widget');
-  unregister_widget('wpe_widget_powered_by');
+  wp_unregister_sidebar_widget('wpe_widget_powered_by');
 }
 add_action('widgets_init', 'nycc_unregister_default_widgets', 11);
 
