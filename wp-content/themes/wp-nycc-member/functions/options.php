@@ -43,14 +43,12 @@ function nycc_district_options_page() {
         <?php do_settings_sections( 'district-options-group' ); ?>
         <table class="form-table">
 
-          <?php if( current_user_can('administrator') ) { ?>
-          <tr valign="top">
+          <tr valign="top" <?php if( !current_user_can('administrator') ) { echo 'class="hidden"'; } ?>>
             <th scope="row">District Number</th>
             <td>
-              <input type="number" name="council_district_number" value="<?php echo esc_attr( get_option('council_district_number') ); ?>" min="1" max="51" />
+              <input type="number" name="council_district_number" value="<?php echo esc_attr( get_option('council_district_number') ); ?>" min="1" max="51" <?php if( !current_user_can('administrator') ) { echo "readonly"; } ?> />
             </td>
           </tr>
-          <?php } ?>
 
           <tr valign="top">
             <th scope="row">Member's Full Name</th>
@@ -59,14 +57,12 @@ function nycc_district_options_page() {
             </td>
           </tr>
 
-          <?php if( current_user_can('administrator') ) { ?>
-          <tr valign="top">
+          <tr valign="top" <?php if( !current_user_can('administrator') ) { echo 'class="hidden"'; } ?>>
             <th scope="row">Thumbnail</th>
             <td>
-              <input type="text" name="council_member_thumbnail" value="<?php echo esc_attr( get_option('council_member_thumbnail') ); ?>" placeholder="http://..." />
+              <input type="text" name="council_member_thumbnail" value="<?php echo esc_attr( get_option('council_member_thumbnail') ); ?>" placeholder="http://..." <?php if( !current_user_can('administrator') ) { echo "readonly"; } ?> />
             </td>
           </tr>
-          <?php } ?>
 
           <tr valign="top">
             <th scope="row">Member's Party</th>
@@ -78,23 +74,20 @@ function nycc_district_options_page() {
             </td>
           </tr>
 
-          <?php if( current_user_can('administrator') ) { ?>
-          <tr valign="top">
+          <tr valign="top" <?php if( !current_user_can('administrator') ) { echo 'class="hidden"'; } ?>>
             <th scope="row">Borough</th>
             <td>
-              <input type="text" name="council_district_borough" value="<?php echo esc_attr( get_option('council_district_borough') ); ?>" />
+              <input type="text" name="council_district_borough" value="<?php echo esc_attr( get_option('council_district_borough') ); ?>" <?php if( !current_user_can('administrator') ) { echo "readonly"; } ?> />
             </td>
           </tr>
-          <?php } ?>
 
-          <?php if( current_user_can('administrator') ) { // TODO: This is deprecated ?>
-          <tr valign="top">
+          <?php // TODO: This is deprecated ?>
+          <tr valign="top" <?php if( !current_user_can('administrator') ) { echo 'class="hidden"'; } ?>>
             <th scope="row">Short Bio <small>(deprecated)</small></th>
             <td>
-              <textarea name="council_member_short_bio" rows="8" cols="50" class="large-text"><?php echo esc_attr( get_option('council_member_short_bio') ); ?></textarea>
+              <textarea name="council_member_short_bio" rows="8" cols="50" class="large-text" <?php if( !current_user_can('administrator') ) { echo "readonly"; } ?>><?php echo esc_attr( get_option('council_member_short_bio') ); ?></textarea>
             </td>
           </tr>
-          <?php } ?>
 
           <tr valign="top">
             <th scope="row">Neighborhoods</th>
@@ -122,23 +115,19 @@ function nycc_district_options_page() {
             </td>
           </tr>
 
-          <?php if( current_user_can('administrator') ) { ?>
-          <tr valign="top">
+          <tr valign="top" <?php if( !current_user_can('administrator') ) { echo 'class="hidden"'; } ?>>
             <th scope="row">Contact Form</th>
             <td>
-              <textarea name="council_district_contact_form" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('council_district_contact_form') ); ?></textarea>
+              <textarea name="council_district_contact_form" rows="10" cols="50" class="large-text" <?php if( !current_user_can('administrator') ) { echo "readonly"; } ?>><?php echo esc_attr( get_option('council_district_contact_form') ); ?></textarea>
             </td>
           </tr>
-          <?php } ?>
 
-          <?php if( current_user_can('administrator') ) { ?>
-          <tr valign="top">
+          <tr valign="top" <?php if( !current_user_can('administrator') ) { echo 'class="hidden"'; } ?>>
             <th scope="row">Subscribe Form</th>
             <td>
-              <textarea name="council_district_subscribe_form" rows="10" cols="50" class="large-text"><?php echo esc_attr( get_option('council_district_subscribe_form') ); ?></textarea>
+              <textarea name="council_district_subscribe_form" rows="10" cols="50" class="large-text" <?php if( !current_user_can('administrator') ) { echo "readonly"; } ?>><?php echo esc_attr( get_option('council_district_subscribe_form') ); ?></textarea>
             </td>
           </tr>
-          <?php } ?>
 
         </table>
 
