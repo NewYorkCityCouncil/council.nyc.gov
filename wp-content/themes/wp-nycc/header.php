@@ -61,8 +61,7 @@
       <div class="site-container">
 
         <?php
-        $theme = wp_get_theme();
-        if ( 'NYCC Member' == $theme->name || is_page_template( 'page-district.php' ) && metadata_exists('post', $post->ID, 'current_member_site') ) {
+        if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {
           $is_member_site = true;
         } else {
           $is_member_site = false;
