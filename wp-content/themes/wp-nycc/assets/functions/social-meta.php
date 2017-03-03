@@ -5,12 +5,18 @@ function insert_share_meta_in_head() {
   global $post;
 
   // Define the image
-  if ( !has_post_thumbnail() ) {
-    $share_image = get_template_directory_uri() . '/assets/images/social-img-1024x512.jpg';
-  }
-  else{
+  if ( has_post_thumbnail() ) {
+    // The Post has a Featured Image
     $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
     $share_image = esc_attr( $thumbnail_src[0] );
+  } else if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {
+    // This is a Member's site, or using the District page template and switch_to_blog()
+    $frontpage_id = get_option( 'page_on_front' );
+    $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id($frontpage_id), 'medium' );
+    $share_image = esc_attr( $thumbnail_src[0] );
+  } else {
+    // There's no Featured Image, so use the default one from the theme
+    $share_image = get_template_directory_uri() . '/assets/images/social-img-1024x512.jpg';
   }
 
   // Define the description
