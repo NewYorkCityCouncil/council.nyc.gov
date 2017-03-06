@@ -29,7 +29,7 @@ function nycc_email_activity_log( $post_id, $post_after, $post_before ) {
     }
 
     // Set the message
-    $message = "Title:\n" . $post_after->post_title . "\n\nView it:\n" . get_permalink( $post_after->ID ) . "\n\nEdit it:\n" . get_edit_post_link( $post_after->ID );
+    $message = $post_after->post_title . "\n\nView it:\n" . get_permalink( $post_after->ID ) . "\n\nEdit it:\n" . get_edit_post_link( $post_after->ID );
 
     if ( did_action('post_updated') == 1 ) {
         wp_mail( $emailto, $subject, $message );
