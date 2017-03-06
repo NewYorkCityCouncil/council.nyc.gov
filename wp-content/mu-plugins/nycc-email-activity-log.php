@@ -22,7 +22,7 @@ function nycc_email_activity_log( $post_id, $post_after, $post_before ) {
     $emailto  = get_option( 'admin_email' );
 
     // Set the subject line
-    if ( $post_before->post_status === 'publish' && $post_before->post_status === 'publish' ) {
+    if ( $post_before->post_status === 'publish' && $post_after->post_status === 'publish' ) {
       $subject = "Content Updated";
     } else {
       $subject = "New Content";
