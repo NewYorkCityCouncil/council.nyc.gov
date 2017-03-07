@@ -19,6 +19,8 @@
 
       <?php endwhile; endif; ?>
 
+      <?php nycc_page_navi(); ?>
+
     </div>
 
     <?php get_sidebar(); ?>
