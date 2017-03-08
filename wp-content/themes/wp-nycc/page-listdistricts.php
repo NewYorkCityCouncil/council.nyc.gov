@@ -77,19 +77,19 @@
                       while ( $list_districts->have_posts() ) : $list_districts->the_post();
 
                       // Get the District meta
-                      $ID = get_post_meta($post->ID, 'current_member_site', true);
+                      $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
 
-                      if ($ID) {
+                      if ($current_member_site_ID) {
                         // Switch to the current Member's site
-                        switch_to_blog($current_member_site);
+                        switch_to_blog($current_member_site_ID);
 
                         // Get the Member's site meta
-                        $number = get_blog_option($ID,'council_district_number');
-                        $name = get_blog_option($ID,'council_member_name' );
-                        $thumbnail = get_blog_option($ID,'council_member_thumbnail' );
-                        $party = get_blog_option($ID,'council_member_party');
-                        $borough = get_blog_option($ID,'council_district_borough');
-                        $neighborhoods = get_blog_option($ID,'council_district_neighborhoods');
+                        $number = get_blog_option($current_member_site_ID,'council_district_number');
+                        $name = get_blog_option($current_member_site_ID,'council_member_name' );
+                        $thumbnail = get_blog_option($current_member_site_ID,'council_member_thumbnail' );
+                        $party = get_blog_option($current_member_site_ID,'council_member_party');
+                        $borough = get_blog_option($current_member_site_ID,'council_district_borough');
+                        $neighborhoods = get_blog_option($current_member_site_ID,'council_district_neighborhoods');
                         $district_url = esc_url( network_site_url() ) . 'district-' . $number . '/';
 
                         // Add the Member's table row
