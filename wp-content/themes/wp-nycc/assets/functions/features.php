@@ -17,7 +17,7 @@ function nycc_feature_post_type() {
       'not_found_in_trash' => __('Nothing found in Trash', 'nycc')
       ),
       'description' => __( 'NYC Council Features', 'nycc' ),
-      'public' => fasle,
+      'public' => false,
       'publicly_queryable' => false,
       'exclude_from_search' => true,
       'show_ui' => true,
