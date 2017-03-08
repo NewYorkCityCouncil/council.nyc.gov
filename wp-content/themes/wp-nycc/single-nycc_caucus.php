@@ -44,126 +44,126 @@
               if ( $list_districts->have_posts() ) {
 
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
-                $ID = get_post_meta($post->ID, 'current_member_site', true);
-                if ($ID) {
-                  switch_to_blog($current_member_site);
-                    $number = get_blog_option($ID,'council_district_number');
-                    $cm_name = get_blog_option($ID,'council_member_name' );
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                if ($current_member_site_ID) {
+                  switch_to_blog($current_member_site_ID);
+                    $number = get_blog_option($current_member_site_ID,'council_district_number');
+                    $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
                     $cm_number = 'council_member_' . $number;
                   restore_current_blog();
                   wp_reset_postdata();
                 }
                 $status = get_post_meta($post->ID, $cm_number, true);
                 if ( $status == 'chair' ) {
-                  echo '<li><a href="' . get_site_url($ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Chair)</small></li>';
+                  echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Chair)</small></li>';
                 }
                 endwhile;
 
                 $list_districts->rewind_posts();
 
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
-                $ID = get_post_meta($post->ID, 'current_member_site', true);
-                if ($ID) {
-                  switch_to_blog($current_member_site);
-                    $number = get_blog_option($ID,'council_district_number');
-                    $cm_name = get_blog_option($ID,'council_member_name' );
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                if ($current_member_site_ID) {
+                  switch_to_blog($current_member_site_ID);
+                    $number = get_blog_option($current_member_site_ID,'council_district_number');
+                    $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
                     $cm_number = 'council_member_' . $number;
                   restore_current_blog();
                   wp_reset_postdata();
                 }
                 $status = get_post_meta($post->ID, $cm_number, true);
                 if ( $status == 'co_chair' ) {
-                  echo '<li><a href="' . get_site_url($ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Co-Chair)</small></li>';
+                  echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Co-Chair)</small></li>';
                 }
                 endwhile;
 
                 $list_districts->rewind_posts();
 
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
-                $ID = get_post_meta($post->ID, 'current_member_site', true);
-                if ($ID) {
-                  switch_to_blog($current_member_site);
-                    $number = get_blog_option($ID,'council_district_number');
-                    $cm_name = get_blog_option($ID,'council_member_name' );
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                if ($current_member_site_ID) {
+                  switch_to_blog($current_member_site_ID);
+                    $number = get_blog_option($current_member_site_ID,'council_district_number');
+                    $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
                     $cm_number = 'council_member_' . $number;
                   restore_current_blog();
                   wp_reset_postdata();
                 }
                 $status = get_post_meta($post->ID, $cm_number, true);
                 if ( $status == 'vice_chair' ) {
-                  echo '<li><a href="' . get_site_url($ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Vice Chair)</small></li>';
+                  echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Vice Chair)</small></li>';
                 }
                 endwhile;
 
                 $list_districts->rewind_posts();
 
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
-                $ID = get_post_meta($post->ID, 'current_member_site', true);
-                if ($ID) {
-                  switch_to_blog($current_member_site);
-                    $number = get_blog_option($ID,'council_district_number');
-                    $cm_name = get_blog_option($ID,'council_member_name' );
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                if ($current_member_site_ID) {
+                  switch_to_blog($current_member_site_ID);
+                    $number = get_blog_option($current_member_site_ID,'council_district_number');
+                    $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
                     $cm_number = 'council_member_' . $number;
                   restore_current_blog();
                   wp_reset_postdata();
                 }
                 $status = get_post_meta($post->ID, $cm_number, true);
                 if ( $status == 'vice_co_chair' ) {
-                  echo '<li><a href="' . get_site_url($ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Vice Co-Chair)</small></li>';
+                  echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Vice Co-Chair)</small></li>';
                 }
                 endwhile;
 
                 $list_districts->rewind_posts();
 
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
-                $ID = get_post_meta($post->ID, 'current_member_site', true);
-                if ($ID) {
-                  switch_to_blog($current_member_site);
-                    $number = get_blog_option($ID,'council_district_number');
-                    $cm_name = get_blog_option($ID,'council_member_name' );
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                if ($current_member_site_ID) {
+                  switch_to_blog($current_member_site_ID);
+                    $number = get_blog_option($current_member_site_ID,'council_district_number');
+                    $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
                     $cm_number = 'council_member_' . $number;
                   restore_current_blog();
                   wp_reset_postdata();
                 }
                 $status = get_post_meta($post->ID, $cm_number, true);
                 if ( $status == 'secretary' ) {
-                  echo '<li><a href="' . get_site_url($ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Secretary)</small></li>';
+                  echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Secretary)</small></li>';
                 }
                 endwhile;
 
                 $list_districts->rewind_posts();
 
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
-                $ID = get_post_meta($post->ID, 'current_member_site', true);
-                if ($ID) {
-                  switch_to_blog($current_member_site);
-                    $number = get_blog_option($ID,'council_district_number');
-                    $cm_name = get_blog_option($ID,'council_member_name' );
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                if ($current_member_site_ID) {
+                  switch_to_blog($current_member_site_ID);
+                    $number = get_blog_option($current_member_site_ID,'council_district_number');
+                    $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
                     $cm_number = 'council_member_' . $number;
                   restore_current_blog();
                   wp_reset_postdata();
                 }
                 $status = get_post_meta($post->ID, $cm_number, true);
                 if ( $status == 'treasurer' ) {
-                  echo '<li><a href="' . get_site_url($ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Treasurer)</small></li>';
+                  echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Treasurer)</small></li>';
                 }
                 endwhile;
 
                 $list_districts->rewind_posts();
 
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
-                $ID = get_post_meta($post->ID, 'current_member_site', true);
-                if ($ID) {
-                  switch_to_blog($current_member_site);
-                    $number = get_blog_option($ID,'council_district_number');
-                    $cm_name = get_blog_option($ID,'council_member_name' );
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                if ($current_member_site_ID) {
+                  switch_to_blog($current_member_site_ID);
+                    $number = get_blog_option($current_member_site_ID,'council_district_number');
+                    $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
                     $cm_number = 'council_member_' . $number;
                   restore_current_blog();
                   wp_reset_postdata();
                 }
                 $status = get_post_meta($post->ID, $cm_number, true);
                 if ( $status == 'member' ) {
-                  echo '<li><a href="' . get_site_url($ID) . '"><strong>' . $cm_name . '</strong></a></li>';
+                  echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a></li>';
                 }
                 endwhile;
 
