@@ -18,7 +18,7 @@
  * @uses is_multisite()
  * @uses switch_to_blog()
  * @uses update_option()
- * @uses wp_get_sites()
+ * @uses get_sites()
  */
 
 if(!defined('WP_UNINSTALL_PLUGIN')) {
@@ -30,7 +30,7 @@ $users = get_users();
 
 // Remove settings for all sites in multisite
 if(is_multisite()) {
-  $blogs = wp_get_sites();
+  $blogs = get_sites();
   foreach($users as $user) {
     foreach($blogs as $blog) {
       delete_user_meta($user->ID, $wpdb->get_blog_prefix($blog->blog_id).'user_avatar');

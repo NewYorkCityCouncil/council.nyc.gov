@@ -61,12 +61,12 @@ class Widget_Recent_Posts_Network extends WP_Widget {
       $show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
 
       // Find posts in all blogs
-      $blog_list = wp_get_sites();
+      $blog_list = get_sites();
       $found_posts = array();
       foreach ($blog_list as $blog) {
-         switch_to_blog($blog['blog_id']);
+         switch_to_blog($blog->blog_id);
 
-         if ( in_array($blog['blog_id'], $included_blogs) ) {
+         if ( in_array($blog->blog_id, $included_blogs) ) {
 
            $query = new WP_Query( apply_filters( 'widget_posts_args', array(
               'posts_per_page'      => $number,
@@ -81,7 +81,7 @@ class Widget_Recent_Posts_Network extends WP_Widget {
               $query->the_post();
               $found_posts[$post->post_date] = array(
                  'pid' => get_the_ID(),
-                 'bid' => $blog['blog_id']
+                 'bid' => $blog->blog_id
               );
            }
 

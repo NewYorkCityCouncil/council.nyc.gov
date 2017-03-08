@@ -63,9 +63,9 @@ $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
                             if ( is_page_template( 'page-pbdistricts.php' ) ) {
                             ?>
                             if ( false<?php
-                              $sites = wp_get_sites();
+                              $sites = get_sites();
                               foreach ( $sites as $site ) {
-                                $ID = $site['blog_id'];
+                                $ID = $site->blog_id;
                                 switch_to_blog($ID);
                                 $number = get_blog_option($ID,'council_district_number');
                                 if ( $number ) {
