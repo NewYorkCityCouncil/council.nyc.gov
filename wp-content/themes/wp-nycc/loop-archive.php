@@ -61,7 +61,7 @@ if ( get_post_type() == 'attachment' ) {
       </div>
       <div class="columns large-6 large-pull-6">
         <?php
-        $content = apply_filters('the_content', get_post_field('post_content', $post_id));
+        $content = apply_filters('the_content', get_post_field('post_content', $post->ID));
         $iframes = get_media_embedded_in_content( $content, 'iframe' );
         echo $iframes[0];
         ?>
