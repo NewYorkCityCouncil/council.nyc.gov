@@ -75,7 +75,7 @@
       }
       wp_reset_postdata();
 
-      if ($winner_exists == 'yes') {
+      if ( isset($winner_exists) && $winner_exists == 'yes') {
 
         $args = array(
           'post_type'  => 'nycc_pb_ballot_item',
