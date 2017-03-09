@@ -61,21 +61,23 @@ function nycc_feature_meta() {
 }
 
 function save_nycc_feature_meta($post_id, $post) {
-  if ( !wp_verify_nonce( $_POST['nycc_feature_meta_noncename'], plugin_basename(__FILE__) )) {
-    return $post->ID;
-  }
-  if ( !current_user_can( 'edit_post', $post->ID ))
-    return $post->ID;
-  $feature_meta['feature_link_url'] = $_POST['feature_link_url'];
-  foreach ($feature_meta as $key => $value) { // Cycle through the $events_meta array!
-    if( $post->post_type == 'revision' ) return; // Don't store custom data twice
-    $value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
-    if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
-      update_post_meta($post->ID, $key, $value);
-    } else { // If the custom field doesn't have a value
-      add_post_meta($post->ID, $key, $value);
+  if ( isset($_POST['nycc_feature_meta_noncename']) ) {
+    if ( !wp_verify_nonce( $_POST['nycc_feature_meta_noncename'], plugin_basename(__FILE__) )) {
+      return $post->ID;
     }
-    if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
+    if ( !current_user_can( 'edit_post', $post->ID ))
+      return $post->ID;
+    $feature_meta['feature_link_url'] = $_POST['feature_link_url'];
+    foreach ($feature_meta as $key => $value) { // Cycle through the $events_meta array!
+      if( $post->post_type == 'revision' ) return; // Don't store custom data twice
+      $value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
+      if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
+        update_post_meta($post->ID, $key, $value);
+      } else { // If the custom field doesn't have a value
+        add_post_meta($post->ID, $key, $value);
+      }
+      if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
+    }
   }
 }
 add_action('save_post', 'save_nycc_feature_meta', 1, 2);

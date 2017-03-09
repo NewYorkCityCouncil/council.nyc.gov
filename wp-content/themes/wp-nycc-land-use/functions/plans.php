@@ -100,25 +100,27 @@ function nycc_land_use_plan_meta() {
 }
 
 function save_nycc_land_use_plan_meta($post_id, $post) {
-  if ( !wp_verify_nonce( $_POST['nycc_land_use_plan_meta_noncename'], plugin_basename(__FILE__) )) {
-    return $post->ID;
-  }
-  if ( !current_user_can( 'edit_post', $post->ID ))
-    return $post->ID;
-  $land_use_meta['land_use_plan_event_title'] = $_POST['land_use_plan_event_title'];
-  $land_use_meta['land_use_plan_event_date'] = $_POST['land_use_plan_event_date'];
-  $land_use_meta['land_use_plan_event_time'] = $_POST['land_use_plan_event_time'];
-  $land_use_meta['land_use_plan_event_location'] = $_POST['land_use_plan_event_location'];
-  $land_use_meta['land_use_plan_event_map_link'] = $_POST['land_use_plan_event_map_link'];
-  foreach ($land_use_meta as $key => $value) { // Cycle through the $events_meta array!
-    if( $post->post_type == 'revision' ) return; // Don't store custom data twice
-    $value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
-    if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
-      update_post_meta($post->ID, $key, $value);
-    } else { // If the custom field doesn't have a value
-      add_post_meta($post->ID, $key, $value);
+  if ( isset($_POST['nycc_land_use_plan_meta_noncename']) ) {
+    if ( !wp_verify_nonce( $_POST['nycc_land_use_plan_meta_noncename'], plugin_basename(__FILE__) )) {
+      return $post->ID;
     }
-    if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
+    if ( !current_user_can( 'edit_post', $post->ID ))
+      return $post->ID;
+    $land_use_meta['land_use_plan_event_title'] = $_POST['land_use_plan_event_title'];
+    $land_use_meta['land_use_plan_event_date'] = $_POST['land_use_plan_event_date'];
+    $land_use_meta['land_use_plan_event_time'] = $_POST['land_use_plan_event_time'];
+    $land_use_meta['land_use_plan_event_location'] = $_POST['land_use_plan_event_location'];
+    $land_use_meta['land_use_plan_event_map_link'] = $_POST['land_use_plan_event_map_link'];
+    foreach ($land_use_meta as $key => $value) { // Cycle through the $events_meta array!
+      if( $post->post_type == 'revision' ) return; // Don't store custom data twice
+      $value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
+      if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
+        update_post_meta($post->ID, $key, $value);
+      } else { // If the custom field doesn't have a value
+        add_post_meta($post->ID, $key, $value);
+      }
+      if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
+    }
   }
 }
 add_action('save_post', 'save_nycc_land_use_plan_meta', 1, 2);

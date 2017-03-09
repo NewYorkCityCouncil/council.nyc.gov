@@ -113,7 +113,7 @@ function nycc_pb_ballot_item_meta() {
 }
 
 function save_nycc_pb_ballot_item_meta($post_id, $post) {
-  if ( !wp_verify_nonce( $_POST['nycc_pb_ballot_item_meta_noncename'], plugin_basename(__FILE__) )) {
+  if ( isset($_POST['nycc_pb_ballot_item_meta_noncename']) && !wp_verify_nonce( $_POST['nycc_pb_ballot_item_meta_noncename'], plugin_basename(__FILE__) )) {
     return $post->ID;
   }
   if ( !current_user_can( 'edit_post', $post->ID ))
@@ -208,22 +208,24 @@ function nycc_pb_vote_site_meta() {
 }
 
 function save_nycc_pb_vote_site_meta($post_id, $post) {
-  if ( !wp_verify_nonce( $_POST['nycc_pb_vote_site_meta_noncename'], plugin_basename(__FILE__) )) {
-    return $post->ID;
-  }
-  if ( !current_user_can( 'edit_post', $post->ID ))
-    return $post->ID;
-  $pb_vote_site_meta['pb_vote_site_lat'] = $_POST['pb_vote_site_lat'];
-  $pb_vote_site_meta['pb_vote_site_lon'] = $_POST['pb_vote_site_lon'];
-  foreach ($pb_vote_site_meta as $key => $value) {
-    if( $post->post_type == 'revision' ) return;
-    $value = implode(',', (array)$value);
-    if(get_post_meta($post->ID, $key, FALSE)) {
-      update_post_meta($post->ID, $key, $value);
-    } else {
-      add_post_meta($post->ID, $key, $value);
+  if ( isset($_POST['nycc_pb_vote_site_meta_noncename']) ) {
+    if ( !wp_verify_nonce( $_POST['nycc_pb_vote_site_meta_noncename'], plugin_basename(__FILE__) )) {
+      return $post->ID;
     }
-    if(!$value) delete_post_meta($post->ID, $key);
+    if ( !current_user_can( 'edit_post', $post->ID ))
+      return $post->ID;
+    $pb_vote_site_meta['pb_vote_site_lat'] = $_POST['pb_vote_site_lat'];
+    $pb_vote_site_meta['pb_vote_site_lon'] = $_POST['pb_vote_site_lon'];
+    foreach ($pb_vote_site_meta as $key => $value) {
+      if( $post->post_type == 'revision' ) return;
+      $value = implode(',', (array)$value);
+      if(get_post_meta($post->ID, $key, FALSE)) {
+        update_post_meta($post->ID, $key, $value);
+      } else {
+        add_post_meta($post->ID, $key, $value);
+      }
+      if(!$value) delete_post_meta($post->ID, $key);
+    }
   }
 }
 add_action('save_post', 'save_nycc_pb_vote_site_meta', 1, 2);

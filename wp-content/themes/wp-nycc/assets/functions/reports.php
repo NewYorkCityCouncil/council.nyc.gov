@@ -86,24 +86,26 @@ function nycc_report_toc() {
 }
 
 function save_nycc_report_meta($post_id, $post) {
-  if ( !wp_verify_nonce( $_POST['nycc_report_meta_noncename'], plugin_basename(__FILE__) )) {
-    return $post->ID;
-  }
-  if ( !current_user_can( 'edit_post', $post->ID ))
-    return $post->ID;
-  $report_meta['report_link_url'] = $_POST['report_link_url'];
-  $report_meta['report_link_text'] = $_POST['report_link_text'];
-  $report_meta['report_toc_before'] = $_POST['report_toc_before'];
-  $report_meta['report_toc_label'] = $_POST['report_toc_label'];
-  foreach ($report_meta as $key => $value) { // Cycle through the $events_meta array!
-    if( $post->post_type == 'revision' ) return; // Don't store custom data twice
-    $value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
-    if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
-      update_post_meta($post->ID, $key, $value);
-    } else { // If the custom field doesn't have a value
-      add_post_meta($post->ID, $key, $value);
+  if ( isset($_POST['nycc_report_meta_noncename']) ) {
+    if ( !wp_verify_nonce( $_POST['nycc_report_meta_noncename'], plugin_basename(__FILE__) )) {
+      return $post->ID;
     }
-    if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
+    if ( !current_user_can( 'edit_post', $post->ID ))
+      return $post->ID;
+    $report_meta['report_link_url'] = $_POST['report_link_url'];
+    $report_meta['report_link_text'] = $_POST['report_link_text'];
+    $report_meta['report_toc_before'] = $_POST['report_toc_before'];
+    $report_meta['report_toc_label'] = $_POST['report_toc_label'];
+    foreach ($report_meta as $key => $value) { // Cycle through the $events_meta array!
+      if( $post->post_type == 'revision' ) return; // Don't store custom data twice
+      $value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
+      if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
+        update_post_meta($post->ID, $key, $value);
+      } else { // If the custom field doesn't have a value
+        add_post_meta($post->ID, $key, $value);
+      }
+      if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
+    }
   }
 }
 add_action('save_post', 'save_nycc_report_meta', 1, 2);

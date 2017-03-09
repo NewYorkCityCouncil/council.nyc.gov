@@ -77,15 +77,15 @@ function nycc_caucus_members() {
         while ( $list_districts->have_posts() ) : $list_districts->the_post();
 
         // Get the District meta
-        $ID = get_post_meta($post->ID, 'current_member_site', true);
+        $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
 
-        if ($ID) {
+        if ($current_member_site_ID) {
           // Switch to the current Member's site
-          switch_to_blog($current_member_site);
+          switch_to_blog($current_member_site_ID);
 
           // Get the Member's site meta
-          $number = get_blog_option($ID,'council_district_number');
-          $cm_name = get_blog_option($ID,'council_member_name' );
+          $number = get_blog_option($current_member_site_ID,'council_district_number');
+          $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
 
           // Set the variable for the committee's wp_options key
           $cm_number = 'council_member_' . $number;
@@ -124,23 +124,25 @@ function nycc_caucus_members() {
 }
 
 function save_nycc_caucus_members($post_id, $post) {
-  if ( !wp_verify_nonce( $_POST['nycc_caucus_members_noncename'], plugin_basename(__FILE__) )) {
-    return $post->ID;
-  }
-  if ( !current_user_can( 'edit_post', $post->ID ))
-    return $post->ID;
-  for($i=1; $i <= 51; $i++) {
-      $caucus_members['council_member_' . $i] = $_POST['council_member_' . $i];
-  }
-  foreach ($caucus_members as $key => $value) { // Cycle through the $events_meta array!
-    if( $post->post_type == 'revision' ) return; // Don't store custom data twice
-    $value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
-    if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
-      update_post_meta($post->ID, $key, $value);
-    } else { // If the custom field doesn't have a value
-      add_post_meta($post->ID, $key, $value);
+  if ( isset($_POST['nycc_caucus_members_noncename']) )  {
+    if ( !wp_verify_nonce( $_POST['nycc_caucus_members_noncename'], plugin_basename(__FILE__) )) {
+      return $post->ID;
     }
-    if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
+    if ( !current_user_can( 'edit_post', $post->ID ))
+      return $post->ID;
+    for($i=1; $i <= 51; $i++) {
+        $caucus_members['council_member_' . $i] = $_POST['council_member_' . $i];
+    }
+    foreach ($caucus_members as $key => $value) { // Cycle through the $events_meta array!
+      if( $post->post_type == 'revision' ) return; // Don't store custom data twice
+      $value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
+      if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
+        update_post_meta($post->ID, $key, $value);
+      } else { // If the custom field doesn't have a value
+        add_post_meta($post->ID, $key, $value);
+      }
+      if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
+    }
   }
 }
 add_action('save_post', 'save_nycc_caucus_members', 1, 2);
