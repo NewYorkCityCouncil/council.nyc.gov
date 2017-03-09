@@ -3,7 +3,8 @@
 // add the District Meta box
 function nycc_district_meta_box() {
   global $post;
-  if ( 'page-district.php' == get_post_meta( $post->ID, '_wp_page_template', true ) ) {
+  $screen = get_current_screen();
+  if ( $screen->post_type == 'page' && 'page-district.php' == get_post_meta( $post->ID, '_wp_page_template', true ) ) {
     add_meta_box('nycc_district_meta', 'District Meta', 'nycc_district_meta', 'page', 'side', 'default');
   }
 }
@@ -12,7 +13,8 @@ add_action( 'add_meta_boxes_page', 'nycc_district_meta_box' );
 // hide the Featured Image box
 function remove_thumbnail_box() {
   global $post;
-  if ( 'page-district.php' == get_post_meta( $post->ID, '_wp_page_template', true ) ) {
+  $screen = get_current_screen();
+  if ( $screen->post_type == 'page' && 'page-district.php' == get_post_meta( $post->ID, '_wp_page_template', true ) ) {
     remove_meta_box( 'postimagediv','page','side' );
   }
 }
