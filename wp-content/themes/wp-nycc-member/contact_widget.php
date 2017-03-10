@@ -12,7 +12,7 @@ if ( $district_contact ) { ?><h4 class="widget-title">District Office</h4><p cla
 
 if ( $legislative_contact ) { ?><h4 class="widget-title">Legislative Office</h4><p class="text-small"><?php echo nl2br( $legislative_contact ); ?></p><?php }
 
-if ( $email ) { ?><a href="mailto:<?php echo $email; ?>" class="button secondary expanded dashicons-before dashicons-email-alt">&nbsp;Send&nbsp;Email</a><?php }
+if ( $email ) { ?><a href="mailto:<?php echo $email; ?>" class="button secondary expanded dashicons-before dashicons-email-alt">&nbsp;Send&nbsp;Email<br class="show-for-large"><small class="show-for-xlarge" style="font-size:0.5em;"><?php echo $email; ?></small></a><?php }
 
 if ( $contact_form ) {
     ?>
