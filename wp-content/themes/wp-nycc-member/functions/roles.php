@@ -31,6 +31,12 @@ if( current_user_can('editor') && !current_user_can('administrator') ) {
   }
   add_action( 'admin_menu', 'remove_settings_menu' );
 
+  function remove_avatars_menu(){
+    // Hide the WP User Avatar plugin menu
+    remove_menu_page( 'wp-user-avatar' );
+  }
+  add_action( 'admin_init', 'remove_avatars_menu', 999 );
+
 }
 
 // Hide stuff for PB Admin
