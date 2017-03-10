@@ -35,7 +35,14 @@ if( current_user_can('editor') && !current_user_can('administrator') ) {
     // Hide the WP User Avatar plugin menu
     remove_menu_page( 'wp-user-avatar' );
   }
-  add_action( 'admin_init', 'remove_avatars_menu', 999 );
+  add_action( 'admin_init', 'remove_avatars_menu' );
+
+  function remove_profile_fields() {
+    // Hide stuff in the user profile
+    echo '<style>tr.user-url-wrap,tr.user-profile-picture,tr.user-admin-color-wrap,tr.user-comment-shortcuts-wrap{display:none;}</style>';
+  }
+  add_action( 'admin_head-user-edit.php', 'remove_profile_fields' );
+  add_action( 'admin_head-profile.php',   'remove_profile_fields' );
 
 }
 
