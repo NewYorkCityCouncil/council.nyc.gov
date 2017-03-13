@@ -110,7 +110,7 @@ if ( is_page_template( 'page-district.php' ) ) {
     }
 
     function getColor(n) {
-      <?php if ( $districtNumber ) { ?>
+      <?php if ( isset($districtNumber) ) { ?>
         if ( n == <?php echo $districtNumber ?> ) {
             return 0.25;
         } else {
@@ -144,7 +144,7 @@ if ( is_page_template( 'page-district.php' ) ) {
             '</div>' +
           '</div>'
         );
-        <?php if ( $districtNumber ) { ?>
+        <?php if ( isset($districtNumber) ) { ?>
         if ( <?php echo $districtNumber ?> == layer.feature.properties.CounDist ){
           map.fitBounds(layer.getBounds(),{animate: false});
         }
