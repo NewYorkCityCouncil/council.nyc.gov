@@ -10,7 +10,7 @@ function nycc_primary_nav() {
     wp_nav_menu(array(
         'container' => 'div',
         'container_class' => 'widget district-menu',
-        'menu_class' => 'vertical menu',
+        'menu_class' => 'vertical menu small',
         'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
         'theme_location' => 'primary',
         'depth' => 5,

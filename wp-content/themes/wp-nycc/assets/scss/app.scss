@@ -517,6 +517,10 @@ $widget-item-margin: rem-calc(8);
       margin-left: $global-margin;
       a {}
     }
+    li + li,
+    li > ul {
+      margin-top: 2px;
+    }
     li.current-menu-item,
     li.current-menu-ancestor,
     li.current-menu-parent {

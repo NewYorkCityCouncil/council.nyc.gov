@@ -5232,6 +5232,11 @@ figure {
   .widget_pages ul ul {
     display: none;
     margin-left: 1rem; }
+  .widget_nav_menu ul li + li, .district-menu ul li + li,
+  .widget_nav_menu ul li > ul, .district-menu ul li > ul,
+  .widget_pages ul li + li,
+  .widget_pages ul li > ul {
+    margin-top: 2px; }
   .widget_nav_menu ul li.current-menu-item > ul, .district-menu ul li.current-menu-item > ul,
   .widget_nav_menu ul li.current-menu-ancestor > ul, .district-menu ul li.current-menu-ancestor > ul,
   .widget_nav_menu ul li.current-menu-parent > ul, .district-menu ul li.current-menu-parent > ul,
