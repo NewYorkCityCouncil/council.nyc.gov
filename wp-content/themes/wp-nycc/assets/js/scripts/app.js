@@ -75,7 +75,7 @@ tabDeepLink('.tabs');
   When tabs load, refresh embedded content
 --------------------------------------------------*/
 jQuery('.tabs').on('change.zf.tabs', function() {
-    jQuery('.tabs-panel.is-active').find('iframe, embed').prop('src', function(){
+    jQuery('.tabs-panel').find('iframe, embed').prop('src', function(){
       return jQuery(this).attr('src');
     });
 });
