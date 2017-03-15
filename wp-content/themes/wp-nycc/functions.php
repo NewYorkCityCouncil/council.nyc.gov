@@ -61,3 +61,12 @@ function exclude_protected_action($query) {
     }
 }
 add_action('pre_get_posts', 'exclude_protected_action');
+
+
+// Override the default tagline "Just another [WordPress] site"
+if ( is_network_admin() ) {
+  function set_default_options($blog_id) {
+    update_blog_option($blog_id, 'blogdescription', 'New York City Council');
+  }
+  add_action( 'wpmu_new_blog', 'set_default_options', 10 , 2 );
+}
