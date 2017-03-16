@@ -18,6 +18,10 @@ This repository contains the themes & plugins for [New York City Council's](http
 * [Bower](https://bower.io/)
 * [Gulp](http://gulpjs.com/)
 
+### Documentation
+
+For details on how themes and plugins function, see documentation in the [wiki](wiki). 
+
 ### Local Installation
 
 Only the themes and plugins are included in this repository. All WordPress core files are ignored. To run locally, clone this repository and manually install WordPress in the same directory, being careful not to overwrite any files.
