@@ -66,6 +66,6 @@ _Note: The `wp-nycc/map_scripts.php` and `wp-nycc-member/pb-map-scripts.php` fil
 
 ---
 
-## Contributors
+### Contributors
 
 Want to add a new feature or update an existing one? The best way to contribute is to submit a pull request on GitHub. Find a bug? Please submit an issue on GitHub. You can also contact us on [Twitter](https://twitter.com/NYCCouncil) and [Facebook](https://www.facebook.com/NYCCouncil/).
