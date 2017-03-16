@@ -129,7 +129,12 @@
           <h3 class="header-large">What's on the ballot?</h3>
 
           <ul class="accordion" data-accordion data-allow-all-closed="true">
-            <?php while ( have_posts() ) : the_post(); ?>
+            <?php
+            global $wp_query;
+            $args = array_merge( $wp_query->query, array( 'posts_per_page' => -1 ) );
+            query_posts( $args );
+            while ( have_posts() ) : the_post();
+            ?>
             <li class="accordion-item" data-accordion-item>
               <a href="#" class="accordion-title"><strong><?php the_title(); ?></strong></a>
               <div class="accordion-content text-small" data-tab-content>
