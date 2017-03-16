@@ -2,8 +2,6 @@
 
 This repository contains the themes & plugins for [New York City Council's](http://council.nyc.gov/) WordPress multisite installation.
 
----
-
 ### Requirements
 
 To work on all aspects of this package, developers will need the following skills:
