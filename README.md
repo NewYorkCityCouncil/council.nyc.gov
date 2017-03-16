@@ -4,7 +4,6 @@ This repository contains the themes & plugins for [New York City Council's](http
 
 ### Requirements
 
-To work on all aspects of this package, developers will need the following skills:
 * [WordPress](https://wordpress.org/)
     * [PHP](http://php.net/)
     * [MySQL](http://mysql.com/)
