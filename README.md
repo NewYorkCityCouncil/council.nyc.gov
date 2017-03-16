@@ -1,82 +1,74 @@
 # New York City Council WordPress
 
-This package contains the WordPress themes & plugins for [New York City Council's website](http://labs.council.nyc/).
+This repository contains the themes & plugins for [New York City Council's](http://council.nyc.gov/) WordPress multisite installation.
 
-## Documentation
+---
 
-### Writing Code
+### Requirements
 
-* **[Architecture](docs/ARCHITECTURE.md)**
-    * [Required Skills](docs/ARCHITECTURE.md#required-skills)
-    * [Local Installation](docs/ARCHITECTURE.md#local-installation)
-    * [WordPress Multisite](docs/ARCHITECTURE.md#wordpress-multisite)
-    * [Themes](docs/ARCHITECTURE.md#themes)
-    * [Foundation for Sites](docs/ARCHITECTURE.md#foundation-for-sites)
-    * [Editing Themes](docs/ARCHITECTURE.md#editing-themes)
-    * [Styles](docs/ARCHITECTURE.md#styles)
-    * [JavaScript](docs/ARCHITECTURE.md#javascript)
-    * [Upgrading](docs/ARCHITECTURE.md#upgrading)
+To work on all aspects of this package, developers will need the following skills:
+* [WordPress](https://wordpress.org/)
+    * [PHP](http://php.net/)
+    * [MySQL](http://mysql.com/)
+* [Git](https://git-scm.com/)/[GitHub](https://github.com/)
+* [HTML5](https://www.w3.org/TR/html5/)
+* [Sass](http://sass-lang.com/)
+* JavaScript/[jQuery](https://jquery.com/)
+* [Leaflet](http://leafletjs.com/)
+* [Mapbox](https://www.mapbox.com/)
+* [Foundation for Sites](http://foundation.zurb.com/sites.html)
+* [NPM](https://www.npmjs.com/)
+* [Bower](https://bower.io/)
+* [Gulp](http://gulpjs.com/)
 
-### Managing Content
+### Local Installation
 
-* **[Content](docs/CONTENT.md)**
-    * [Posts](docs/CONTENT.md#posts)
-    * [Pages](docs/CONTENT.md#pages)
-        * [Page Templates](docs/CONTENT.md#page-templates)
-    * [Comments](docs/CONTENT.md#comments)
-    * [Markup](docs/CONTENT.md#markup)
-    * [Layout](docs/CONTENT.md#layout)
-    * [Foundation Components](docs/CONTENT.md#foundation-components)
-* **[Homepage](docs/HOMEPAGE.md)**
-* **[Menus and Widgets](docs/MENUS_AND_WIDGETS.md)**
-    * [The Top Bar](docs/MENUS_AND_WIDGETS.md#the-top-bar)
-    * [The Sidebar](docs/MENUS_AND_WIDGETS.md#the-sidebar)
-* **[Footer](docs/FOOTER.md)**
-* **[Committees](docs/COMMITTEES.md)**
-* **[Caucuses](docs/CAUCUSES.md)**
-* **[Initiatives](docs/INITIATIVES.md)**
-* **[Reports](docs/REPORTS.md)**
-* **[Districts](docs/DISTRICTS.md)**
-    * [District Options](docs/DISTRICTS.md#district-options)
-    * [District Front Page](docs/DISTRICTS.md#district-front-page)
-    * [District Sidebar](docs/DISTRICTS.md#district-sidebar)
-* **[Participatory Budgeting](docs/PARTICIPATORY_BUDGETING.md)**
-    * [District Ballot Items](docs/PARTICIPATORY_BUDGETING.md#district-ballot-items)
-    * [District Vote Sites](docs/PARTICIPATORY_BUDGETING.md#district-vote-sites)
-    * [District PB Cycles](docs/PARTICIPATORY_BUDGETING.md#district-pb-cycles)
-    * [Main Site Page Templates](docs/PARTICIPATORY_BUDGETING.md#main-site-page-templates)
-* **[Budget](docs/BUDGET.md)**
-* **[Land Use](docs/LAND_USE.md)**
-    * [Plans](docs/LAND_USE.md#plans)
-* **[Legislation](docs/LEGISLATION.md)**
-* **[Press](docs/PRESS.md)**
-    * [Press Releases](docs/PRESS.md#press-releases)
-    * [Image Gallery](docs/PRESS.md#image-gallery)
-* **[Jobs](docs/JOBS.md)**
-* **[The Map](docs/MAP.md)**
-* **[Social Media Share Images](docs/SOCIAL_SHARE_IMAGES.md)**
+Only the themes and plugins are included in this repository. All WordPress core files are ignored. To run locally, clone this repository and manually install WordPress in the same directory, being careful not to overwrite any files.
 
-### Writing Content
+### WordPress Multisite
 
-* **[Content Guidelines](docs/CONTENT_GUIDELINES.md)**
-    * [Voice and style](docs/CONTENT_GUIDELINES.md#voice-and-style)
-    * [Acronyms and Abbreviations](docs/CONTENT_GUIDELINES.md#acronyms-and-abbreviations)
-    * [Addresses](docs/CONTENT_GUIDELINES.md#addresses)
-    * [Phone Numbers](docs/CONTENT_GUIDELINES.md#phone-numbers)
-    * [Capitalization](docs/CONTENT_GUIDELINES.md#capitalization)
-    * [Compositions](docs/CONTENT_GUIDELINES.md#compositions)
-    * [Contractions](docs/CONTENT_GUIDELINES.md#contractions)
-    * [Names](docs/CONTENT_GUIDELINES.md#names)
-    * [Numbers](docs/CONTENT_GUIDELINES.md#numbers)
-    * [Hyperlinks](docs/CONTENT_GUIDELINES.md#hyperlinks)
-    * [Pronouns](docs/CONTENT_GUIDELINES.md#pronouns)
-    * [Punctuation](docs/CONTENT_GUIDELINES.md#punctuation)
-    * [Words to avoid](docs/CONTENT_GUIDELINES.md#words-to-avoid)
+This package is meant to be used with a [network](https://codex.wordpress.org/Create_A_Network) of sites. The primary site is for basic Council pages—such as the home page or about page. Each Council Districts and each Division (Legislation, Budget, Land Use, Press, etc) has its own site in the network and uses a custom child theme.
+
+### Themes
+
+There are several themes included in this package. The primary site uses the `wp-nycc` theme. All other themes are [child themes](https://codex.wordpress.org/Child_Themes) of the `wp-nycc` parent theme. Each District site should use the `wp-nycc-district` child theme. And each Division site should use its specific `wp-nycc-[division]` child theme.
+
+### Foundation for Sites
+
+The New York City Council website uses [Foundation for Sites](http://foundation.zurb.com/sites/docs/), a responsive and accessible front-end framework. The `wp-nycc` theme is based on [andycochran/wp-foundation-sites](https://github.com/andycochran/wp-foundation-sites), a bare-bones WordPress theme built with Foundation.
+
+When upgrading to a newer version of Foundation, make sure `wp-nycc/assets/scss/_settings.scss` uses `@import '../../bower_components/foundation-sites/scss/util/util';` not `@import 'util/util';`.
+
+### Editing Themes
+
+* `cd wp-nycc/`
+* Run `npm install` to get `node_modules`
+* Run `bower install` to get `bower_components`
+* Run `gulp` to compile the CSS & JavaScript
+* Run `gulp watch` to watch for changes to `.sass` and `.js` files
+
+### Styles
+
+The styles for all themes are in the `wp-nycc` parent theme. The child themes do not include any styles.
+
+* **Do not** edit the files in `wp-nycc/assets/css/`—they're generated by Gulp
+* Add your custom styles to `wp-nycc/assets/scss/app.scss`
+* Change the Foundation variables in `wp-nycc/assets/scss/_settings.scss`
+* Choose which Foundation component to include in `wp-nycc/assets/scss/foundation.scss`
+
+### JavaScript
+
+The scripts for all themes are in the `wp-nycc` parent theme. The child themes do not include any JavaScript.
+
+* **Do not** edit the files in `wp-nycc/assets/js/`—they're generated by Gulp
+* Add/edit your custom JavaScript files in `wp-nycc/assets/js/scripts/`
+* All .js files in `wp-nycc/assets/js/scripts/` will concatenate to `wp-nycc/assets/js/scripts.js` and `wp-nycc/assets/js/scripts.min.js`
+* Choose which Foundation JavaScript components to include in `wp-nycc/gulpfile.js`
+
+_Note: The `wp-nycc/map_scripts.php` and `wp-nycc-member/pb-map-scripts.php` files contain JavaScript that is dynamically produced from WordPress content and is inserted directly into the footer._
+
+---
 
 ## Contributors
 
 Want to add a new feature or update an existing one? The best way to contribute is to submit a pull request on GitHub. Find a bug? Please submit an issue on GitHub. You can also contact us on [Twitter](https://twitter.com/NYCCouncil) and [Facebook](https://www.facebook.com/NYCCouncil/).
-
-## License
-
-[GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)
