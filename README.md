@@ -18,10 +18,6 @@ This repository contains the themes & plugins for [New York City Council's](http
 * [Bower](https://bower.io/)
 * [Gulp](http://gulpjs.com/)
 
-### Documentation
-
-For details on how themes and plugins function, see documentation in the [wiki](wiki). 
-
 ### Local Installation
 
 Only the themes and plugins are included in this repository. All WordPress core files are ignored. To run locally, clone this repository and manually install WordPress in the same directory, being careful not to overwrite any files.
@@ -33,6 +29,8 @@ This package is meant to be used with a [network](https://codex.wordpress.org/Cr
 ### Themes
 
 There are several themes included in this package. The primary site uses the `wp-nycc` theme. All other themes are [child themes](https://codex.wordpress.org/Child_Themes) of the `wp-nycc` parent theme. Each District site should use the `wp-nycc-district` child theme. And each Division site should use its specific `wp-nycc-[division]` child theme.
+
+For details on how particular themes function, see documentation in the [wiki](wiki).
 
 ### Foundation for Sites
 
