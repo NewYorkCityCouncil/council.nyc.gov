@@ -77,7 +77,13 @@ function job_division_meta_box( $post ) {
   }
   ?>
   <label title="">
-      <input type="radio" name="tax_input[job_division]" value="" <?php checked( $term->name, null ); ?>>
+      <input type="radio" name="tax_input[job_division]" value="" <?php
+      if ( !isset($term) ) {
+        echo 'checked="checked"';
+      } else if ( null == $term->name ) {
+        echo 'checked="checked"';
+      }
+      ?>>
     <span>N/A <small>(regular page)</small></span>
   </label><br>
   <?php
