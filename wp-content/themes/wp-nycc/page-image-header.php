@@ -4,7 +4,7 @@
 
   <?php if ( has_post_thumbnail() ) {
     get_template_part( 'img_header_style' );
-  } ?>
+  ?>
   <div class="image-header">
     <header class="page-header image-overlay-large">
       <div class="row">
@@ -15,6 +15,7 @@
       </div>
     </header>
   </div>
+  <?php } ?>
 
   <div class="row">
     <div class="columns">
