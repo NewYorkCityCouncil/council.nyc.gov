@@ -5443,6 +5443,8 @@ figure {
     .leaflet-popup-content .media-object h4, .leaflet-popup-content .media-object .header-medium {
       margin-top: 0.5rem;
       margin-bottom: 0; }
+    .leaflet-popup-content .media-object p {
+      margin-top: 0; }
     .leaflet-popup-content .media-object .thumbnail {
       margin-bottom: 0; }
       .leaflet-popup-content .media-object .thumbnail img {
