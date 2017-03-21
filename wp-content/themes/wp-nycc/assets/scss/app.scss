@@ -823,7 +823,7 @@ $map-height-tall:   rem-calc(400);
     .thumbnail {
       margin-bottom: 0;
       img {
-        max-width: 2.75rem;
+        max-width: 2.75rem !important; // important overrides cartodb.css
       }
     }
   }

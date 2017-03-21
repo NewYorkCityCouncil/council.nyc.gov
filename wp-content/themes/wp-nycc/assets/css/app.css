@@ -5446,7 +5446,7 @@ figure {
     .leaflet-popup-content .media-object .thumbnail {
       margin-bottom: 0; }
       .leaflet-popup-content .media-object .thumbnail img {
-        max-width: 2.75rem; }
+        max-width: 2.75rem !important; }
 
 #pbnycmap-container {
   width: 100%; }
