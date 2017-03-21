@@ -18,9 +18,6 @@ if ( is_page_template( 'page-district.php' ) ) {
 <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script>
 
-var southWest = L.latLng(40.25, -75.25);
-var northEast = L.latLng(41.17, -72.75);
-
 function main() {
 
     var popupData = new Object;
@@ -99,10 +96,11 @@ function main() {
         vis.map.set({
           minZoom: 9,
           maxZoom: 17,
-          maxBounds: L.latLngBounds(southWest, northEast),
         });
 
         map = vis.getNativeMap();
+
+        map.setMaxBounds([[40.25,-75.25],[41.17,-72.75]]);
 
         var districtsLayer = L.geoJson(districtsData,  {
             style: defaultStyle,
