@@ -5322,9 +5322,6 @@ figure {
 #map p {
   font-weight: 400; }
 
-#map .mapbox-logo {
-  margin-left: -100px; }
-
 @media screen and (min-width: 40em) {
   .district > #map {
     height: 25rem; } }
@@ -5394,6 +5391,11 @@ figure {
 .leaflet-right.leaflet-bottom .leaflet-control {
   transition: margin 0.75s; }
 
+.cartodb-searchbox {
+  transition: margin 0.75s; }
+  .cartodb-searchbox .text {
+    height: auto; }
+
 @media screen and (max-width: 89.9375em) {
   .short .leaflet-left.leaflet-top .leaflet-control {
     margin-left: -60px; }
@@ -5403,6 +5405,8 @@ figure {
     border-radius: 3px 0 0 0;
     background-color: #f9f9f9 !important;
     box-shadow: -2px -2px 1px rgba(0, 0, 0, 0.2); }
+  .short .cartodb-searchbox {
+    margin-top: -50px; }
   .short .leaflet-control-attribution-toggle:before {
     content: 'Map Attributions';
     color: #2f56a6;

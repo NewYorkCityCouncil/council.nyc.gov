@@ -650,9 +650,6 @@ $map-height-tall:   rem-calc(400);
   p {
     font-weight: 400;
   }
-  .mapbox-logo {
-    margin-left: -100px;
-  }
   .district > & {
     @include breakpoint(medium) {
       height: $map-height-tall;
@@ -748,6 +745,15 @@ $map-height-tall:   rem-calc(400);
           transition: margin 0.75s;
 }
 
+.cartodb-searchbox {
+  -webkit-transition: margin 0.75s;
+     -moz-transition: margin 0.75s;
+          transition: margin 0.75s;
+  .text {
+    height: auto;
+  }
+}
+
 @include breakpoint(xlarge down) {
   .short .leaflet-left.leaflet-top .leaflet-control {
     margin-left: -60px;
@@ -760,6 +766,10 @@ $map-height-tall:   rem-calc(400);
     border-radius: 3px 0 0 0;
     background-color: $off-white !important;
     box-shadow: -2px -2px 1px rgba(0,0,0,0.2);
+  }
+
+  .short .cartodb-searchbox {
+    margin-top: -50px
   }
 
   .short .leaflet-control-attribution-toggle {

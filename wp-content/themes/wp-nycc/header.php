@@ -16,9 +16,8 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 
-    <!-- Mapbox -->
-    <script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
-    <link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
+    <!-- Carto -->
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
 
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
 

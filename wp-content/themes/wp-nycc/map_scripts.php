@@ -14,7 +14,14 @@ if ( is_page_template( 'page-district.php' ) ) {
 ?>
 
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/nyccouncil-districts.js"></script>
-<script type="text/javascript">
+
+<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script>
+
+var southWest = L.latLng(40.25, -75.25);
+var northEast = L.latLng(41.17, -72.75);
+
+function main() {
 
     var popupData = new Object;
 
@@ -80,93 +87,103 @@ if ( is_page_template( 'page-district.php' ) ) {
 
     ?>
 
-    var southWest = L.latLng(40.25, -75.25),
-        northEast = L.latLng(41.17, -72.75),
-        bounds = L.latLngBounds(southWest, northEast);
+    cartodb.createVis('map', 'http://nyc-council.carto.com/api/v2/viz/3162b988-05b4-11e7-aea7-0ee66e2c9693/viz.json', {
+        shareable: false,
+        search: true,
+        zoom: 11,
+        cartodb_logo: false,
+        loaderControl: false,
+    })
+    .done(function(vis, layers) {
 
-    L.mapbox.accessToken = 'pk.eyJ1IjoibnljY291bmNpbGFuZHkiLCJhIjoiZWRiNzk5NTY3OGVkOTQxZTMxNDJmN2NhZTJmZjExMWIifQ.eKEKYrL_pyNJ3cP0XthU9Q';
-
-    var map = L.mapbox.map('map', 'nyccouncilandy.3a808ec1', {
-        scrollWheelZoom: false,
-        maxBounds: bounds,
-        maxZoom: 17,
-        minZoom: 8
-    }).setView([40.74, -73.89], 11).addControl(L.mapbox.geocoderControl('mapbox.places', {
-        autocomplete: true
-    }));
-
-    var districtsLayer = L.geoJson(districtsData,  {
-        style: defaultStyle,
-        onEachFeature: onEachFeature
-    }).addTo(map);
-
-    function defaultStyle(feature) {
-        return {
-            weight: 1,
-            opacity: 1,
-            color: '#2f56a6',
-            fillOpacity: getColor(feature.properties.CounDist)
-        };
-    }
-
-    function getColor(n) {
-      <?php if ( isset($districtNumber) ) { ?>
-        if ( n == <?php echo $districtNumber ?> ) {
-            return 0.25;
-        } else {
-            return 0;
-        }
-      <?php } else { ?>
-        return 0;
-      <?php } ?>
-    }
-
-    var popup = new L.Popup();
-
-    function onEachFeature(feature, layer) {
-        var CounDist = layer.feature.properties.CounDist,
-            popupThumbnail = popupData["Thumb" + CounDist],
-            popupMember = popupData["Member" + CounDist],
-            popupLink = popupData["URI" + CounDist];
-        layer.on({
-            mousemove: mousemove,
-            mouseout: mouseout
-        }).bindPopup(
-          '<div class="media-object">' +
-            '<div class="media-object-section">' +
-              '<div class="thumbnail">' +
-                '<a href="' + popupLink + '"><img src="' + popupThumbnail + '"></a>' +
-              '</div>' +
-            '</div>' +
-            '<div class="media-object-section">' +
-              '<h4><a href="' + popupLink + '"><strong>District ' + layer.feature.properties.CounDist + '</strong></a></h4>' +
-              '<p><strong>' + popupMember + '</strong></p>' +
-            '</div>' +
-          '</div>'
-        );
-        <?php if ( isset($districtNumber) ) { ?>
-        if ( <?php echo $districtNumber ?> == layer.feature.properties.CounDist ){
-          map.fitBounds(layer.getBounds(),{animate: false});
-        }
-        <?php } ?>
-    }
-
-    function mousemove(e) {
-        var layer = e.target;
-
-        layer.setStyle({
-            weight: 3,
-            color: '#174299'
+        vis.map.set({
+          minZoom: 9,
+          maxZoom: 17,
+          maxBounds: L.latLngBounds(southWest, northEast),
         });
-    }
 
-      function mouseout(e) {
-          var layer = e.target;
+        map = vis.getNativeMap();
 
-          layer.setStyle({
-              weight: 1,
-              color: '#2f56a6'
-          });
-      }
+        var districtsLayer = L.geoJson(districtsData,  {
+            style: defaultStyle,
+            onEachFeature: onEachFeature
+        }).addTo(map);
+
+        L.control.zoom({ position: 'topleft' }).addTo(map);
+
+        function defaultStyle(feature) {
+            return {
+                weight: 2,
+                opacity: 0,
+                color: '#174299',
+                fillOpacity: getColor(feature.properties.CounDist)
+            };
+        }
+
+        function getColor(n) {
+          <?php if ( isset($districtNumber) ) { ?>
+            if ( n == <?php echo $districtNumber ?> ) {
+                return 0.25;
+            } else {
+                return 0;
+            }
+          <?php } else { ?>
+            return 0;
+          <?php } ?>
+        }
+
+        var popup = new L.Popup();
+
+        function onEachFeature(feature, layer) {
+            var CounDist = layer.feature.properties.CounDist,
+                popupThumbnail = popupData["Thumb" + CounDist],
+                popupMember = popupData["Member" + CounDist],
+                popupLink = popupData["URI" + CounDist];
+            layer.on({
+                mousemove: mousemove,
+                mouseout: mouseout
+            }).bindPopup(
+              '<div class="media-object">' +
+                '<div class="media-object-section">' +
+                  '<div class="thumbnail">' +
+                    '<a href="' + popupLink + '"><img src="' + popupThumbnail + '"></a>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="media-object-section">' +
+                  '<h4><a href="' + popupLink + '"><strong>District ' + layer.feature.properties.CounDist + '</strong></a></h4>' +
+                  '<p><strong>' + popupMember + '</strong></p>' +
+                '</div>' +
+              '</div>'
+            );
+            <?php if ( isset($districtNumber) ) { ?>
+            if ( <?php echo $districtNumber ?> == layer.feature.properties.CounDist ){
+              map.fitBounds(layer.getBounds(),{animate: false});
+            }
+            <?php } ?>
+        }
+
+        function mousemove(e) {
+            var layer = e.target;
+
+            layer.setStyle({
+                opacity: 1,
+            });
+        }
+
+          function mouseout(e) {
+              var layer = e.target;
+
+              layer.setStyle({
+                  opacity: 0,
+              });
+          }
+
+    })
+    .error(function(err) {
+       console.log(err);
+    });
+
+}
+window.onload = main;
 
 </script>
