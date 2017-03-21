@@ -12,7 +12,7 @@ This repository contains the themes & plugins for [New York City Council's](http
 * [Sass](http://sass-lang.com/)
 * JavaScript/[jQuery](https://jquery.com/)
 * [Leaflet](http://leafletjs.com/)
-* [Mapbox](https://www.mapbox.com/)
+* [Carto](https://carto.com/)
 * [Foundation for Sites](http://foundation.zurb.com/sites.html)
 * [NPM](https://www.npmjs.com/)
 * [Bower](https://bower.io/)
