@@ -1284,13 +1284,6 @@ jQuery('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').each(function () 
 });
 
 /*--------------------------------------------------
-  URL query string to open modals
---------------------------------------------------*/
-if (window.location.href.indexOf("?modal=true") > -1) {
-  jQuery('#onload-modal').foundation('open');
-}
-
-/*--------------------------------------------------
   Link exit notification
 --------------------------------------------------*/
 jQuery('a:not([href*="council.nyc/"]):not([href*="legistar.council.nyc.gov/"]):not([href*="www.nyc.gov/"]):not([href^="#"]):not([href^="/"])').filter(function () {
@@ -1403,6 +1396,22 @@ jQuery(document).ready(function () {
 });
 
 /*--------------------------------------------------
+  URL query string to open modals
+--------------------------------------------------*/
+// openModal must be called after ajax sidebar loads
+var openModal = function openModal() {
+  if (window.location.href.indexOf("?modal=true") > -1) {
+    jQuery('#onload-modal').foundation('open');
+  }
+  if (window.location.href.indexOf("?contact=subscribe") > -1) {
+    jQuery('#subscribe_form').foundation('open');
+  }
+  if (window.location.href.indexOf("?contact=message") > -1) {
+    jQuery('#contact_form').foundation('open');
+  }
+};
+
+/*--------------------------------------------------
   Load Member sidebars on District pages
 --------------------------------------------------*/
 jQuery(document).ready(function () {
@@ -1411,6 +1420,9 @@ jQuery(document).ready(function () {
     jQuery('#district-sidebar').load(memberSiteURL + ' #district-widgets', function () {
       jQuery('#district-sidebar .menu-item').removeClass('current-menu-item current-menu-ancestor current-menu-parent');
       jQuery('#district-sidebar').foundation();
+      openModal();
     });
+  } else {
+    openModal();
   }
 });
