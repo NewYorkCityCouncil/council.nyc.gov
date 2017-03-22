@@ -13,7 +13,7 @@ if ( is_page_template( 'page-district.php' ) ) {
 
 ?>
 
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/nyccouncil-districts.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/nyccouncil-districts.min.js"></script>
 
 <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script>
