@@ -5401,7 +5401,8 @@ figure {
   position: relative; }
   .addresslookup input {
     margin: 0;
-    padding-right: 2.25rem; }
+    padding-right: 2.25rem;
+    min-width: 14em; }
   .addresslookup button {
     position: absolute;
     top: 0;

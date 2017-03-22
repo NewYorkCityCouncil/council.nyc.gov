@@ -762,6 +762,7 @@ $map-height-tall:   rem-calc(400);
   input {
     margin: 0;
     padding-right: 2.25rem;
+    min-width: 14em;
   }
   button {
     position: absolute;
