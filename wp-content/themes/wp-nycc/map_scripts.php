@@ -197,7 +197,7 @@ function main() {
         var addresslookup = L.control({position: 'topright'});
         addresslookup.onAdd = function (map) {
             var div = L.DomUtil.create('div', 'addresslookup');
-            div.innerHTML = '<form id="addresslookup"><input id="mapAddress" type="text" placeholder="Street Addres, Borough"><button type="submit" class="dashicons-before dashicons-search"><span class="show-for-sr">Search</span></button></form><div id="addresslookup-error" class="addresslookup-error"></div>';
+            div.innerHTML = '<form id="addresslookup"><input id="mapAddress" type="text" placeholder="Street Address, Borough"><button type="submit" class="dashicons-before dashicons-search"><span class="show-for-sr">Search</span></button></form><div id="addresslookup-error" class="addresslookup-error"></div>';
             return div;
         };
         addresslookup.addTo(map);
