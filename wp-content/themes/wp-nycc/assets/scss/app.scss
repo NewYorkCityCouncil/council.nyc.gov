@@ -754,6 +754,36 @@ $map-height-tall:   rem-calc(400);
   }
 }
 
+.addresslookup {
+  -webkit-transition: margin 0.75s;
+     -moz-transition: margin 0.75s;
+          transition: margin 0.75s;
+  position: relative;
+  input {
+    margin: 0;
+    padding-right: 2.25rem;
+  }
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding-right: 0.5rem;
+    padding-left: 0.25rem;
+    color: $dark-gray;
+  }
+  .addresslookup-error {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 2;
+  }
+  .callout {
+    padding: 0.5rem;
+    line-height: 1.2;
+  }
+}
+
 @include breakpoint(xlarge down) {
   .short .leaflet-left.leaflet-top .leaflet-control {
     margin-left: -60px;
@@ -768,7 +798,8 @@ $map-height-tall:   rem-calc(400);
     box-shadow: -2px -2px 1px rgba(0,0,0,0.2);
   }
 
-  .short .cartodb-searchbox {
+  .short .cartodb-searchbox,
+  .short .addresslookup {
     margin-top: -50px
   }
 

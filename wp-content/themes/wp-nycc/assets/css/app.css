@@ -5396,6 +5396,29 @@ figure {
   .cartodb-searchbox .text {
     height: auto; }
 
+.addresslookup {
+  transition: margin 0.75s;
+  position: relative; }
+  .addresslookup input {
+    margin: 0;
+    padding-right: 2.25rem; }
+  .addresslookup button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding-right: 0.5rem;
+    padding-left: 0.25rem;
+    color: #666; }
+  .addresslookup .addresslookup-error {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 2; }
+  .addresslookup .callout {
+    padding: 0.5rem;
+    line-height: 1.2; }
+
 @media screen and (max-width: 89.9375em) {
   .short .leaflet-left.leaflet-top .leaflet-control {
     margin-left: -60px; }
@@ -5405,7 +5428,8 @@ figure {
     border-radius: 3px 0 0 0;
     background-color: #f9f9f9 !important;
     box-shadow: -2px -2px 1px rgba(0, 0, 0, 0.2); }
-  .short .cartodb-searchbox {
+  .short .cartodb-searchbox,
+  .short .addresslookup {
     margin-top: -50px; }
   .short .leaflet-control-attribution-toggle:before {
     content: 'Map Attributions';
