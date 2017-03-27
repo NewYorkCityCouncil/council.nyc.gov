@@ -21,7 +21,7 @@
     </div>
     <div class="columns large-5">
 
-      <h4>Is my Council Member participating?</h4>
+      <h4><?php echo esc_attr( get_option('pb_above_district_list') ); ?></h4>
       <div id="districts-list">
         <table class="full-width table--no-border-spacing">
           <thead>
