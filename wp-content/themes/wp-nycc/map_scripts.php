@@ -11,281 +11,255 @@ if ( is_page_template( 'page-district.php' ) ) {
 }
 ?>
 
-<script src="<?php echo get_template_directory_uri(); ?>/assets/js/nyccouncil-districts.min.js"></script>
 <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
 <script>
 
-function main() {
+  /**
+   * Popup Data
+   */
 
-    var popupData = new Object;
+  var popupData = new Object;
 
-    <?php
+  <?php
 
-    switch_to_blog(1);
+  switch_to_blog(1);
 
-      // Define the popup data
-      // Get all the pages that use the District page template...
-      $args = array(
-        'post_type' => 'page',
-        'post_status' => 'publish',
-        'orderby'    => 'menu_order',
-        'order'      => 'ASC',
-        'posts_per_page' => '-1',
-        'meta_query' => array(
-            array(
-                'key' => '_wp_page_template',
-                'value' => 'page-district.php',
-            )
-        )
-      );
-      $list_districts = new WP_Query( $args );
+    // Define the popup data
+    // Get all the pages that use the District page template...
+    $args = array(
+      'post_type' => 'page',
+      'post_status' => 'publish',
+      'orderby'    => 'menu_order',
+      'order'      => 'ASC',
+      'posts_per_page' => '-1',
+      'meta_query' => array(
+          array(
+              'key' => '_wp_page_template',
+              'value' => 'page-district.php',
+          )
+      )
+    );
+    $list_districts = new WP_Query( $args );
 
-      // Loop through the District pages
-      if ( $list_districts->have_posts() ) {
-        while ( $list_districts->have_posts() ) : $list_districts->the_post();
+    // Loop through the District pages
+    if ( $list_districts->have_posts() ) {
+      while ( $list_districts->have_posts() ) : $list_districts->the_post();
 
-        global $post;
+      global $post;
 
-        // Get the District meta
-        $current_member_site = get_post_meta($post->ID, 'current_member_site', true);
-        $number = $post->menu_order;
-        $link = network_site_url() . 'district-' . $number . '/';
+      // Get the District meta
+      $current_member_site = get_post_meta($post->ID, 'current_member_site', true);
+      $number = $post->menu_order;
+      $link = network_site_url() . 'district-' . $number . '/';
 
+      ?>
+      popupData.URI<?php echo $number ?> = '<?php echo $link ?>';
+      <?php
+
+      if ($current_member_site) {
+
+        // Switch to the current Member's site
+        switch_to_blog($current_member_site);
+
+        // Set properties for popupData Object
         ?>
-        popupData.URI<?php echo $number ?> = '<?php echo $link ?>';
+        popupData.Thumb<?php echo $number ?> = '<?php echo get_blog_option($current_member_site,'council_member_thumbnail' ) ?>';
+        popupData.Member<?php echo $number ?> = '<?php echo get_blog_option($current_member_site,'council_member_name' ) ?>';
         <?php
 
-        if ($current_member_site) {
-
-          // Switch to the current Member's site
-          switch_to_blog($current_member_site);
-
-          // Set properties for popupData Object
-          ?>
-          popupData.Thumb<?php echo $number ?> = '<?php echo get_blog_option($current_member_site,'council_member_thumbnail' ) ?>';
-          popupData.Member<?php echo $number ?> = '<?php echo get_blog_option($current_member_site,'council_member_name' ) ?>';
-          <?php
-
-          restore_current_blog();
-          wp_reset_postdata();
-
-        } else {
-
-          // Fallback properties for vacant Districs
-          ?>
-          popupData.Thumb<?php echo $number ?> = '<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png';
-          popupData.Member<?php echo $number ?> = 'Vacant';
-          <?php
-        }
-
-        endwhile;
+        restore_current_blog();
         wp_reset_postdata();
 
+      } else {
+
+        // Fallback properties for vacant Districs
+        ?>
+        popupData.Thumb<?php echo $number ?> = '<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png';
+        popupData.Member<?php echo $number ?> = 'Vacant';
+        <?php
       }
 
-    restore_current_blog();
-    wp_reset_postdata();
+      endwhile;
+      wp_reset_postdata();
 
-    // Add the Carto map ?>
-    cartodb.createVis('map', 'http://nyc-council.carto.com/api/v2/viz/3162b988-05b4-11e7-aea7-0ee66e2c9693/viz.json', {
-        shareable: false,
-        // search: true,
-        zoom: 11,
-        cartodb_logo: false,
-        loaderControl: false,
-    })
-    .done(function(vis, layers) {
+    }
 
-        vis.map.set({
-          minZoom: 9,
-          maxZoom: 17,
+  restore_current_blog();
+  wp_reset_postdata();
+
+  ?>
+
+  // Get the right popup info from the popupData object
+  function getPopupInfo(n) {
+
+    var CounDist = n,
+        CounDist = parseInt(CounDist, 10);
+        popupThumbnail = popupData['Thumb' + CounDist],
+        popupMember = popupData['Member' + CounDist],
+        popupLink = popupData['URI' + CounDist];
+
+    var popupInfo = '' +
+    '<div class="media-object">' +
+      '<div class="media-object-section">' +
+        '<div class="thumbnail">' +
+          '<a href="' + popupLink + '"><img src="' + popupThumbnail + '"></a>' +
+        '</div>' +
+      '</div>' +
+      '<div class="media-object-section">' +
+        '<h4><a href="' + popupLink + '"><strong>District ' + CounDist + '</strong></a></h4>' +
+        '<p><strong>' + popupMember + '</strong></p>' +
+      '</div>' +
+    '</div>'
+
+    return popupInfo;
+
+  }
+
+
+  /**
+   * Carto Map
+   */
+
+  var map = L.map('map', {
+    minZoom: 9,
+    maxZoom: 17,
+    layers: [
+        L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+          minZoom: 13,
+          maxZoom: 17
+        }),
+        L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+          maxZoom: 12,
+          minZoom: 9
+        })
+    ]
+  }).setView([40.727760, -73.987218], 11);
+
+  // var sublayers = [];
+  var layerSource = {
+    user_name: 'nyc-council',
+    type: 'cartodb',
+    sublayers: [
+      {
+        sql: "SELECT * FROM nyc_city_council_dist_cm",
+        cartocss: "#nyc_city_council_dist_cm {polygon-fill: #374c70;polygon-opacity: 0;line-width: 1;line-color: #2f56a6;line-opacity: 0.5;polygon-comp-op: darken;}#layer::labels {text-name: [coundist];text-face-name: 'Open Sans Bold';text-size: 12;text-fill: #23417d;text-label-position-tolerance: 0;text-halo-radius: 2;text-halo-fill: #F9F9F9;text-dy: 0;text-allow-overlap: false;text-placement: point;text-placement-type: dummy;}",
+      }
+    ],
+    cartodb_logo: false,
+  }
+
+  cartodb.createLayer(map, layerSource)
+  .addTo(map)
+  .done(function(layer) {
+
+      console.log('done');
+
+      layer.setInteraction(true);
+
+      layer.on('error', function(err) {
+          console.log('error:' + err);
+      });
+
+  });
+
+  var popup = new L.Popup();
+
+  map.on('click', function(e) {
+
+    var sql = new cartodb.SQL({ user: 'nyc-council' });
+
+    sql.execute('SELECT * FROM nyc_city_council_dist_cm WHERE ST_Intersects(the_geom,CDB_' + e.latlng + ')')
+        .done(function(data) {
+          if ( data.rows.length != 0 ) {
+            var CounDist = data.rows[0]['dist'];
+            popup.setLatLng(e.latlng);
+            popup.setContent(getPopupInfo(CounDist));
+            map.openPopup(popup);
+          }
+        })
+        .error(function(errors) {
+          console.log("errors:" + errors);
         });
 
-        map = vis.getNativeMap();
+  });
 
-        map.setMaxBounds([[40.25,-75.25],[41.17,-72.75]]);
 
-        // TODO: Default Carto zoom control isn't loading with createVis() - error: "zoom template is empty"
-        L.control.zoom({ position: 'topleft' }).addTo(map);
+  /**
+   * Address Lookup
+   * Use the NYC Geoclient API to get Council District info
+   */
 
-        // Add the Districts GeoJSON as map features
-        var districtsLayer = L.geoJson(districtsData,  {
-            style: defaultStyle,
-            onEachFeature: onEachFeature
-        }).addTo(map);
+  // Add the Leaflet control
+  var addresslookup = L.control({position: 'topright'});
+  addresslookup.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'addresslookup');
+    L.DomEvent.disableClickPropagation(div);
+    div.innerHTML = '<form id="addresslookup"><input id="mapAddress" type="text" placeholder="Street Address, Borough"><button type="submit" class="dashicons-before dashicons-search"><span class="show-for-sr">Search</span></button></form><div id="addresslookup-error" class="addresslookup-error"></div>';
+    return div;
+  };
+  addresslookup.addTo(map);
 
-        // Style the features
-        function defaultStyle(feature) {
-            return {
-                weight: 2,
-                opacity: 0,
-                color: '#174299',
-                fillOpacity: getOpacity(feature.properties.CounDist)
-            };
-        }
+  // Prevent the control from panning or zooming the map
+  addresslookup.getContainer().addEventListener('mouseover', function () {
+    map.dragging.disable();
+    map.doubleClickZoom.disable();
+  });
+  addresslookup.getContainer().addEventListener('mouseout', function () {
+    map.dragging.enable();
+    map.doubleClickZoom.enable();
+  });
 
-        // Set each District's fill opacity
-        function getOpacity(n) {
-          <?php if ( isset($districtNumber) ) { ?>
-            if ( n == <?php echo $districtNumber ?> ) {
-                return 0.25;
-            } else {
-                return 0;
+  // When user submits the form...
+  document.getElementById('addresslookup').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    // Get values in the form
+    var mapAddress = jQuery('#mapAddress').val();
+
+    // Set the form error message
+    var badaddress = '<div class="callout alert text-small text-center"><strong>Please enter a valid street address and borough</strong></div>';
+
+    // Set API vars
+    var apiKey = 'db87f7a57ab963b71d36c179ce32157c';
+    var apiId = 'f208e50a';
+    var apiQuery = 'https://api.cityofnewyork.us/geoclient/v1/search.json?input=' + mapAddress + '&app_id=' + apiId + '&app_key=' + apiKey;
+
+    // Talk to the Geoclient
+    jQuery.ajax({
+      url: apiQuery,
+      dataType: 'jsonp',
+      success: function (data) {
+
+        if ( data.status == 'OK' ) {
+          for (var key in data.results) {
+            if (data.results.hasOwnProperty(key)) {
+
+              var theLatitude = data.results[key].response.latitude,
+                  theLongitude = data.results[key].response.longitude,
+                  latlngPoint = new L.LatLng( theLatitude, theLongitude ),
+                  CounDist = data.results[key].response.cityCouncilDistrict;
+
+              var popup = L.popup()
+                  .setLatLng(latlngPoint)
+                  .setContent(getPopupInfo(CounDist))
+                  .openOn(map);
+
+              map.setView(latlngPoint, 15, {})
+
+              jQuery('#addresslookup-error').html('');
+
             }
-          <?php } else { ?>
-            return 0;
-          <?php } ?>
+          }
+        } else {
+          jQuery('#addresslookup-error').html(badaddress);
         }
 
-        var popup = new L.Popup();
-
-        // For each feature, set mouse events and bind the popup info
-        function onEachFeature(feature, layer) {
-
-            var CounDist = layer.feature.properties.CounDist,
-                popupThumbnail = popupData["Thumb" + CounDist],
-                popupMember = popupData["Member" + CounDist],
-                popupLink = popupData["URI" + CounDist];
-
-            layer.on({
-                mousemove: mousemove,
-                mouseout: mouseout
-            }).bindPopup(
-              '<div class="media-object">' +
-                '<div class="media-object-section">' +
-                  '<div class="thumbnail">' +
-                    '<a href="' + popupLink + '"><img src="' + popupThumbnail + '"></a>' +
-                  '</div>' +
-                '</div>' +
-                '<div class="media-object-section">' +
-                  '<h4><a href="' + popupLink + '"><strong>District ' + layer.feature.properties.CounDist + '</strong></a></h4>' +
-                  '<p><strong>' + popupMember + '</strong></p>' +
-                '</div>' +
-              '</div>'
-            );
-
-            <?php
-            // If we're on a District/Member page, zoom the map to that District
-            if ( isset($districtNumber) ) {
-            ?>
-            if ( <?php echo $districtNumber ?> == layer.feature.properties.CounDist ){
-              map.fitBounds(layer.getBounds(),{animate: false});
-            }
-            <?php
-            }
-            ?>
-
-        }
-
-        function mousemove(e) {
-            var layer = e.target;
-
-            layer.setStyle({
-                opacity: 1,
-            });
-        }
-
-        function mouseout(e) {
-            var layer = e.target;
-
-            layer.setStyle({
-                opacity: 0,
-            });
-        }
-
-        // Add a Leaflet control for the address lookup
-        var addresslookup = L.control({position: 'topright'});
-        addresslookup.onAdd = function (map) {
-            var div = L.DomUtil.create('div', 'addresslookup');
-            div.innerHTML = '<form id="addresslookup"><input id="mapAddress" type="text" placeholder="Street Address, Borough"><button type="submit" class="dashicons-before dashicons-search"><span class="show-for-sr">Search</span></button></form><div id="addresslookup-error" class="addresslookup-error"></div>';
-            return div;
-        };
-        addresslookup.addTo(map);
-        // ...prevent it from panning or zooming the map
-        addresslookup.getContainer().addEventListener('mouseover', function () {
-            map.dragging.disable();
-            map.doubleClickZoom.disable();
-        });
-        addresslookup.getContainer().addEventListener('mouseout', function () {
-            map.dragging.enable();
-            map.doubleClickZoom.enable();
-        });
-
-        // When user submits address lookup form..
-        document.getElementById('addresslookup').addEventListener('submit', function(e){
-          e.preventDefault();
-
-          // get values in the form
-          var mapAddress = jQuery('#mapAddress').val();
-
-          // set the form error message
-          var badaddress = '<div class="callout alert text-small text-center"><strong>Please enter a valid street address and borough</strong></div>';
-
-          // talk to the NYC Geoclient API
-          var apiKey = 'db87f7a57ab963b71d36c179ce32157c';
-          var apiId = 'f208e50a';
-          var apiQuery = 'https://api.cityofnewyork.us/geoclient/v1/search.json?input=' + mapAddress + '&app_id=' + apiId + '&app_key=' + apiKey;
-
-          jQuery.ajax({
-              url: apiQuery,
-              dataType: 'jsonp',
-              success: function (data) {
-
-                if ( data.status == 'OK' ) {
-                    for (var key in data.results) {
-                       if (data.results.hasOwnProperty(key)) {
-
-                            var theLatitude = data.results[key].response.latitude;
-                            var theLongitude = data.results[key].response.longitude;
-                            var latlngPoint = new L.LatLng( theLatitude, theLongitude );
-
-                            var CounDist = data.results[key].response.cityCouncilDistrict,
-                                CounDist = parseInt(CounDist, 10);
-                                popupThumbnail = popupData['Thumb' + CounDist],
-                                popupMember = popupData['Member' + CounDist],
-                                popupLink = popupData['URI' + CounDist];
-
-                            var popup = L.popup()
-                                .setLatLng(latlngPoint)
-                                .setContent(
-                                  '<div class="media-object">' +
-                                    '<div class="media-object-section">' +
-                                      '<div class="thumbnail">' +
-                                        '<a href="' + popupLink + '"><img src="' + popupThumbnail + '"></a>' +
-                                      '</div>' +
-                                    '</div>' +
-                                    '<div class="media-object-section">' +
-                                      '<h4><a href="' + popupLink + '"><strong>District ' + CounDist + '</strong></a></h4>' +
-                                      '<p><strong>' + popupMember + '</strong></p>' +
-                                    '</div>' +
-                                  '</div>'
-                                )
-                                .openOn(map);
-
-                            map.setView(latlngPoint, 15, {})
-
-                            jQuery('#addresslookup-error').html('');
-
-                         }
-                    }
-                } else {
-                  jQuery('#addresslookup-error').html(badaddress);
-                }
-
-              },
-              error: function(){
-                jQuery('#addresslookup-error').html(badaddress);
-              }
-          });
-
-        }, false);
-
-    })
-    .error(function(err) {
-       console.log(err);
+      },
+      error: function(){
+        jQuery('#addresslookup-error').html(badaddress);
+      }
     });
 
-}
-window.onload = main;
+  }, false);
 
 </script>
