@@ -68,7 +68,7 @@
 
       <br>
 
-      <h4>Don't know your district?</h4>
+      <h4>Don't know your District?</h4>
       <form id="geolocate-district" class="callout secondary">
         <div class="input-group">
           <label class="input-group-label" for="myAddress">Address</label>
