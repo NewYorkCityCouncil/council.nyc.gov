@@ -120,6 +120,7 @@ if ( is_page_template( 'page-district.php' ) ) {
    * Carto Map
    */
 
+  // Add the map
   var map = L.map('map', {
     minZoom: 9,
     maxZoom: 17,
@@ -135,32 +136,60 @@ if ( is_page_template( 'page-district.php' ) ) {
     ]
   }).setView([40.727760, -73.987218], 11);
 
-  // var sublayers = [];
+  // Add the Districts layer
   var layerSource = {
     user_name: 'nyc-council',
     type: 'cartodb',
     sublayers: [
       {
         sql: "SELECT * FROM nyc_city_council_dist_cm",
-        cartocss: "#nyc_city_council_dist_cm {polygon-fill: #374c70;polygon-opacity: 0;line-width: 1;line-color: #2f56a6;line-opacity: 0.5;polygon-comp-op: darken;}#layer::labels {text-name: [coundist];text-face-name: 'Open Sans Bold';text-size: 12;text-fill: #23417d;text-label-position-tolerance: 0;text-halo-radius: 2;text-halo-fill: #F9F9F9;text-dy: 0;text-allow-overlap: false;text-placement: point;text-placement-type: dummy;}",
+        cartocss: "#nyc_city_council_dist_cm { polygon-fill: #2f56a6; polygon-opacity: 0; line-width: 1; line-color: #2f56a6; line-opacity: 0.5; polygon-comp-op: darken; } #layer::labels {text-name: [coundist]; text-face-name: 'Open Sans Bold'; text-size: 12; text-fill: #23417d; text-label-position-tolerance: 0; text-halo-radius: 2; text-halo-fill: #F9F9F9; text-dy: 0; text-allow-overlap: false; text-placement: point; text-placement-type: dummy; }",
       }
     ],
     cartodb_logo: false,
   }
-
   cartodb.createLayer(map, layerSource)
   .addTo(map)
   .done(function(layer) {
-
-      console.log('done');
-
-      layer.setInteraction(true);
-
+      layer.setInteraction(false);
       layer.on('error', function(err) {
           console.log('error:' + err);
       });
-
   });
+
+  <?php if ( isset($districtNumber) ) { ?>
+  // We're on a District/Member page
+  var sql = new cartodb.SQL({ user: 'nyc-council', format: 'geojson' });
+
+  // Add a layer for the current District
+  var currentDistrictLayer = L.geoJson().addTo(map);
+
+  sql.execute("SELECT * FROM nyc_city_council_dist_cm WHERE dist=<?php echo $districtNumber ?>")
+      .done(function(geojson) {
+
+        currentDistrictLayer.addData(geojson);
+
+        // style the District layer
+        currentDistrictLayer.setStyle({
+          color: '#23417d',
+          weight: 1,
+          opacity: 1,
+          fillColor: '#2f56a6',
+          fillOpacity: 0.15,
+        });
+
+        // zoom to the District
+        map.fitBounds(currentDistrictLayer.getBounds(), {
+          animate: false
+        })
+
+      });
+
+  <?php } ?>
+
+  /**
+   * Set the popups
+   */
 
   var popup = new L.Popup();
 
