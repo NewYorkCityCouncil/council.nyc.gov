@@ -9,7 +9,6 @@
         <hr>
       </header>
 
-      <div class="row">
 
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
           <?php get_template_part( 'loop', 'video' ); ?>
@@ -21,7 +20,6 @@
 
       <?php nycc_page_navi(); ?>
 
-    </div>
 
     <div class="sidebar columns medium-4">
       <?php get_sidebar(); ?>
