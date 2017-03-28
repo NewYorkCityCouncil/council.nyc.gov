@@ -16,10 +16,9 @@
         <p class="columns"><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
       <?php endif; ?>
 
-      </div>
-
       <?php nycc_page_navi(); ?>
 
+    </div>
 
     <div class="sidebar columns medium-4">
       <?php get_sidebar(); ?>
