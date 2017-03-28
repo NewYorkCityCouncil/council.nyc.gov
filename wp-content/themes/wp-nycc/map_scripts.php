@@ -195,6 +195,8 @@ if ( is_page_template( 'page-district.php' ) ) {
 
   map.on('click', function(e) {
 
+    $('#mapAddress').val('');
+
     var sql = new cartodb.SQL({ user: 'nyc-council' });
 
     sql.execute('SELECT * FROM nyc_city_council_dist_cm WHERE ST_Intersects(the_geom,CDB_' + e.latlng + ')')
@@ -268,12 +270,14 @@ if ( is_page_template( 'page-district.php' ) ) {
                   latlngPoint = new L.LatLng( theLatitude, theLongitude ),
                   CounDist = data.results[key].response.cityCouncilDistrict;
 
+              map.setZoom(17, { animate: false })
+
+              map.panTo(latlngPoint, { animate: false })
+
               var popup = L.popup()
                   .setLatLng(latlngPoint)
                   .setContent(getPopupInfo(CounDist))
                   .openOn(map);
-
-              map.setView(latlngPoint, 15, {})
 
               jQuery('#addresslookup-error').html('');
 
