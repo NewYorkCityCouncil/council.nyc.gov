@@ -66,14 +66,10 @@ The scripts for all themes are in the `wp-nycc` parent theme. The child themes d
 
 _Note: The `wp-nycc/map_scripts.php` and `wp-nycc-member/pb-map-scripts.php` files contain JavaScript that is dynamically produced from WordPress content and is inserted directly into the footer._
 
----
+# Documentation
 
-## Documentation
+All documentation is in the [wiki](https://github.com/NewYorkCityCouncil/council.nyc/wiki), where you can find details on how the themes and plugins function.
 
-All documentation is in the [wiki](https://github.com/NewYorkCityCouncil/council.nyc/wiki), where you can find details on how the themes and plugins function. 
-
----
-
-## Contributors
+# Contributors
 
 Want to add a new feature or update an existing one? The best way to contribute is to submit a pull request on GitHub. Find a bug? Please submit an issue on GitHub. You can also contact us on [Twitter](https://twitter.com/NYCCouncil) and [Facebook](https://www.facebook.com/NYCCouncil/).
