@@ -15,9 +15,9 @@ jQuery('.map-toggler').click(function() {
 --------------------------------------------------*/
 jQuery('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').each(function() {
   if ( jQuery(this).innerWidth() / jQuery(this).innerHeight() > 1.5 ) {
-    jQuery(this).wrap("<div class='widescreen flex-video'/>");
+    jQuery(this).wrap("<div class='responsive-embed widescreen'/>");
   } else {
-    jQuery(this).wrap("<div class='flex-video'/>");
+    jQuery(this).wrap("<div class='responsive-embed'/>");
   }
 });
 

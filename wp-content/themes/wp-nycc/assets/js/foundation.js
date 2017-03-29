@@ -1,289 +1,12 @@
 'use strict';
 
-window.whatInput = function () {
-
-  'use strict';
-
-  /*
-    ---------------
-    variables
-    ---------------
-  */
-
-  // array of actively pressed keys
-
-  var activeKeys = [];
-
-  // cache document.body
-  var body;
-
-  // boolean: true if touch buffer timer is running
-  var buffer = false;
-
-  // the last used input type
-  var currentInput = null;
-
-  // `input` types that don't accept text
-  var nonTypingInputs = ['button', 'checkbox', 'file', 'image', 'radio', 'reset', 'submit'];
-
-  // detect version of mouse wheel event to use
-  // via https://developer.mozilla.org/en-US/docs/Web/Events/wheel
-  var mouseWheel = detectWheel();
-
-  // list of modifier keys commonly used with the mouse and
-  // can be safely ignored to prevent false keyboard detection
-  var ignoreMap = [16, // shift
-  17, // control
-  18, // alt
-  91, // Windows key / left Apple cmd
-  93 // Windows menu / right Apple cmd
-  ];
-
-  // mapping of events to input types
-  var inputMap = {
-    'keydown': 'keyboard',
-    'keyup': 'keyboard',
-    'mousedown': 'mouse',
-    'mousemove': 'mouse',
-    'MSPointerDown': 'pointer',
-    'MSPointerMove': 'pointer',
-    'pointerdown': 'pointer',
-    'pointermove': 'pointer',
-    'touchstart': 'touch'
-  };
-
-  // add correct mouse wheel event mapping to `inputMap`
-  inputMap[detectWheel()] = 'mouse';
-
-  // array of all used input types
-  var inputTypes = [];
-
-  // mapping of key codes to a common name
-  var keyMap = {
-    9: 'tab',
-    13: 'enter',
-    16: 'shift',
-    27: 'esc',
-    32: 'space',
-    37: 'left',
-    38: 'up',
-    39: 'right',
-    40: 'down'
-  };
-
-  // map of IE 10 pointer events
-  var pointerMap = {
-    2: 'touch',
-    3: 'touch', // treat pen like touch
-    4: 'mouse'
-  };
-
-  // touch buffer timer
-  var timer;
-
-  /*
-    ---------------
-    functions
-    ---------------
-  */
-
-  // allows events that are also triggered to be filtered out for `touchstart`
-  function eventBuffer() {
-    clearTimer();
-    setInput(event);
-
-    buffer = true;
-    timer = window.setTimeout(function () {
-      buffer = false;
-    }, 650);
-  }
-
-  function bufferedEvent(event) {
-    if (!buffer) setInput(event);
-  }
-
-  function unBufferedEvent(event) {
-    clearTimer();
-    setInput(event);
-  }
-
-  function clearTimer() {
-    window.clearTimeout(timer);
-  }
-
-  function setInput(event) {
-    var eventKey = key(event);
-    var value = inputMap[event.type];
-    if (value === 'pointer') value = pointerType(event);
-
-    // don't do anything if the value matches the input type already set
-    if (currentInput !== value) {
-      var eventTarget = target(event);
-      var eventTargetNode = eventTarget.nodeName.toLowerCase();
-      var eventTargetType = eventTargetNode === 'input' ? eventTarget.getAttribute('type') : null;
-
-      if ( // only if the user flag to allow typing in form fields isn't set
-      !body.hasAttribute('data-whatinput-formtyping') &&
-
-      // only if currentInput has a value
-      currentInput &&
-
-      // only if the input is `keyboard`
-      value === 'keyboard' &&
-
-      // not if the key is `TAB`
-      keyMap[eventKey] !== 'tab' && (
-
-      // only if the target is a form input that accepts text
-      eventTargetNode === 'textarea' || eventTargetNode === 'select' || eventTargetNode === 'input' && nonTypingInputs.indexOf(eventTargetType) < 0) ||
-      // ignore modifier keys
-      ignoreMap.indexOf(eventKey) > -1) {
-        // ignore keyboard typing
-      } else {
-          switchInput(value);
-        }
-    }
-
-    if (value === 'keyboard') logKeys(eventKey);
-  }
-
-  function switchInput(string) {
-    currentInput = string;
-    body.setAttribute('data-whatinput', currentInput);
-
-    if (inputTypes.indexOf(currentInput) === -1) inputTypes.push(currentInput);
-  }
-
-  function key(event) {
-    return event.keyCode ? event.keyCode : event.which;
-  }
-
-  function target(event) {
-    return event.target || event.srcElement;
-  }
-
-  function pointerType(event) {
-    if (typeof event.pointerType === 'number') {
-      return pointerMap[event.pointerType];
-    } else {
-      return event.pointerType === 'pen' ? 'touch' : event.pointerType; // treat pen like touch
-    }
-  }
-
-  // keyboard logging
-  function logKeys(eventKey) {
-    if (activeKeys.indexOf(keyMap[eventKey]) === -1 && keyMap[eventKey]) activeKeys.push(keyMap[eventKey]);
-  }
-
-  function unLogKeys(event) {
-    var eventKey = key(event);
-    var arrayPos = activeKeys.indexOf(keyMap[eventKey]);
-
-    if (arrayPos !== -1) activeKeys.splice(arrayPos, 1);
-  }
-
-  function bindEvents() {
-    body = document.body;
-
-    // pointer events (mouse, pen, touch)
-    if (window.PointerEvent) {
-      body.addEventListener('pointerdown', bufferedEvent);
-      body.addEventListener('pointermove', bufferedEvent);
-    } else if (window.MSPointerEvent) {
-      body.addEventListener('MSPointerDown', bufferedEvent);
-      body.addEventListener('MSPointerMove', bufferedEvent);
-    } else {
-
-      // mouse events
-      body.addEventListener('mousedown', bufferedEvent);
-      body.addEventListener('mousemove', bufferedEvent);
-
-      // touch events
-      if ('ontouchstart' in window) {
-        body.addEventListener('touchstart', eventBuffer);
-      }
-    }
-
-    // mouse wheel
-    body.addEventListener(mouseWheel, bufferedEvent);
-
-    // keyboard events
-    body.addEventListener('keydown', unBufferedEvent);
-    body.addEventListener('keyup', unBufferedEvent);
-    document.addEventListener('keyup', unLogKeys);
-  }
-
-  /*
-    ---------------
-    utilities
-    ---------------
-  */
-
-  // detect version of mouse wheel event to use
-  // via https://developer.mozilla.org/en-US/docs/Web/Events/wheel
-  function detectWheel() {
-    return mouseWheel = 'onwheel' in document.createElement('div') ? 'wheel' : // Modern browsers support "wheel"
-
-    document.onmousewheel !== undefined ? 'mousewheel' : // Webkit and IE support at least "mousewheel"
-    'DOMMouseScroll'; // let's assume that remaining browsers are older Firefox
-  }
-
-  /*
-    ---------------
-    init
-     don't start script unless browser cuts the mustard,
-    also passes if polyfills are used
-    ---------------
-  */
-
-  if ('addEventListener' in window && Array.prototype.indexOf) {
-
-    // if the dom is already ready already (script was placed at bottom of <body>)
-    if (document.body) {
-      bindEvents();
-
-      // otherwise wait for the dom to load (script was placed in the <head>)
-    } else {
-        document.addEventListener('DOMContentLoaded', bindEvents);
-      }
-  }
-
-  /*
-    ---------------
-    api
-    ---------------
-  */
-
-  return {
-
-    // returns string: the current input type
-    ask: function ask() {
-      return currentInput;
-    },
-
-    // returns array: currently pressed keys
-    keys: function keys() {
-      return activeKeys;
-    },
-
-    // returns array: all the detected input types
-    types: function types() {
-      return inputTypes;
-    },
-
-    // accepts string: manually set the input type
-    set: switchInput
-  };
-}();
-'use strict';
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 !function ($) {
 
   "use strict";
 
-  var FOUNDATION_VERSION = '6.2.1';
+  var FOUNDATION_VERSION = '6.3.1';
 
   // Global Foundation object
   // This is attached to the window, or used as a module for AMD/Browserify
@@ -325,7 +48,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @function
      * Populates the _uuids array with pointers to each individual plugin instance.
      * Adds the `zfPlugin` data-attribute to programmatically created plugins to allow use of $(selector).foundation(method) calls.
-     * Also fires the initialization event for each plugin, consolidating repeditive code.
+     * Also fires the initialization event for each plugin, consolidating repetitive code.
      * @param {Object} plugin - an instance of a plugin, usually `this` in context.
      * @param {String} name - the name of the plugin, passed as a camelCased string.
      * @fires Plugin#init
@@ -354,7 +77,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @function
      * Removes the plugins uuid from the _uuids array.
      * Removes the zfPlugin data attribute, as well as the data-plugin-name attribute.
-     * Also fires the destroyed event for the plugin, consolidating repeditive code.
+     * Also fires the destroyed event for the plugin, consolidating repetitive code.
      * @param {Object} plugin - an instance of a plugin, usually `this` in context.
      * @fires Plugin#destroyed
      */
@@ -656,7 +379,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }
   }
   function parseValue(str) {
-    if (/true/.test(str)) return true;else if (/false/.test(str)) return false;else if (!isNaN(str * 1)) return parseFloat(str);
+    if ('true' === str) return true;else if ('false' === str) return false;else if (!isNaN(str * 1)) return parseFloat(str);
     return str;
   }
   // Convert PascalCase to kebab-case
@@ -698,7 +421,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       bottom = eleDims.offset.top + eleDims.height <= parDims.height + parDims.offset.top;
       top = eleDims.offset.top >= parDims.offset.top;
       left = eleDims.offset.left >= parDims.offset.left;
-      right = eleDims.offset.left + eleDims.width <= parDims.width;
+      right = eleDims.offset.left + eleDims.width <= parDims.width + parDims.offset.left;
     } else {
       bottom = eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top;
       top = eleDims.offset.top >= eleDims.windowDims.offset.top;
@@ -843,19 +566,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         break;
       case 'left bottom':
         return {
-          left: $anchorDims.offset.left - ($eleDims.width + hOffset),
-          top: $anchorDims.offset.top + $anchorDims.height
+          left: $anchorDims.offset.left,
+          top: $anchorDims.offset.top + $anchorDims.height + vOffset
         };
         break;
       case 'right bottom':
         return {
           left: $anchorDims.offset.left + $anchorDims.width + hOffset - $eleDims.width,
-          top: $anchorDims.offset.top + $anchorDims.height
+          top: $anchorDims.offset.top + $anchorDims.height + vOffset
         };
         break;
       default:
         return {
-          left: Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left,
+          left: Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left + hOffset,
           top: $anchorDims.offset.top + $anchorDims.height + vOffset
         };
     }
@@ -897,9 +620,17 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      */
     parseKey: function parseKey(event) {
       var key = keyCodes[event.which || event.keyCode] || String.fromCharCode(event.which).toUpperCase();
+
+      // Remove un-printable characters, e.g. for `fromCharCode` calls for CTRL only events
+      key = key.replace(/\W+/, '');
+
       if (event.shiftKey) key = 'SHIFT_' + key;
       if (event.ctrlKey) key = 'CTRL_' + key;
       if (event.altKey) key = 'ALT_' + key;
+
+      // Remove trailing underscore, in case only modifiers were used (e.g. only `CTRL_ALT`)
+      key = key.replace(/_$/, '');
+
       return key;
     },
 
@@ -931,15 +662,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       fn = functions[command];
       if (fn && typeof fn === 'function') {
         // execute function  if exists
-        fn.apply();
+        var returnValue = fn.apply();
         if (functions.handled || typeof functions.handled === 'function') {
           // execute function when event was handled
-          functions.handled.apply();
+          functions.handled(returnValue);
         }
       } else {
         if (functions.unhandled || typeof functions.unhandled === 'function') {
           // execute function when event was not handled
-          functions.unhandled.apply();
+          functions.unhandled();
         }
       }
     },
@@ -951,6 +682,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      * @return {jQuery} $focusable - all focusable elements within `$element`
      */
     findFocusable: function findFocusable($element) {
+      if (!$element) {
+        return false;
+      }
       return $element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function () {
         if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) {
           return false;
@@ -968,6 +702,35 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
     register: function register(componentName, cmds) {
       commands[componentName] = cmds;
+    },
+
+
+    /**
+     * Traps the focus in the given element.
+     * @param  {jQuery} $element  jQuery object to trap the foucs into.
+     */
+    trapFocus: function trapFocus($element) {
+      var $focusable = Foundation.Keyboard.findFocusable($element),
+          $firstFocusable = $focusable.eq(0),
+          $lastFocusable = $focusable.eq(-1);
+
+      $element.on('keydown.zf.trapfocus', function (event) {
+        if (event.target === $lastFocusable[0] && Foundation.Keyboard.parseKey(event) === 'TAB') {
+          event.preventDefault();
+          $firstFocusable.focus();
+        } else if (event.target === $firstFocusable[0] && Foundation.Keyboard.parseKey(event) === 'SHIFT_TAB') {
+          event.preventDefault();
+          $lastFocusable.focus();
+        }
+      });
+    },
+
+    /**
+     * Releases the trapped focus from the given element.
+     * @param  {jQuery} $element  jQuery object to release the focus for.
+     */
+    releaseFocus: function releaseFocus($element) {
+      $element.off('keydown.zf.trapfocus');
     }
   };
 
@@ -1016,10 +779,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       namedQueries = parseStyleToObject(extractedStyles);
 
       for (var key in namedQueries) {
-        self.queries.push({
-          name: key,
-          value: 'only screen and (min-width: ' + namedQueries[key] + ')'
-        });
+        if (namedQueries.hasOwnProperty(key)) {
+          self.queries.push({
+            name: key,
+            value: 'only screen and (min-width: ' + namedQueries[key] + ')'
+          });
+        }
       }
 
       this.current = this._getCurrentSize();
@@ -1046,6 +811,23 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
     /**
+     * Checks if the screen matches to a breakpoint.
+     * @function
+     * @param {String} size - Name of the breakpoint to check, either 'small only' or 'small'. Omitting 'only' falls back to using atLeast() method.
+     * @returns {Boolean} `true` if the breakpoint matches, `false` if it does not.
+     */
+    is: function is(size) {
+      size = size.trim().split(' ');
+      if (size.length > 1 && size[1] === 'only') {
+        if (size[0] === this._getCurrentSize()) return true;
+      } else {
+        return this.atLeast(size[0]);
+      }
+      return false;
+    },
+
+
+    /**
      * Gets the media query of a breakpoint.
      * @function
      * @param {String} size - Name of the breakpoint to get.
@@ -1053,8 +835,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      */
     get: function get(size) {
       for (var i in this.queries) {
-        var query = this.queries[i];
-        if (size === query.name) return query.value;
+        if (this.queries.hasOwnProperty(i)) {
+          var query = this.queries[i];
+          if (size === query.name) return query.value;
+        }
       }
 
       return null;
@@ -1095,14 +879,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       var _this = this;
 
       $(window).on('resize.zf.mediaquery', function () {
-        var newSize = _this._getCurrentSize();
+        var newSize = _this._getCurrentSize(),
+            currentSize = _this.current;
 
-        if (newSize !== _this.current) {
-          // Broadcast the media query change on the window
-          $(window).trigger('changed.zf.mediaquery', [newSize, _this.current]);
-
+        if (newSize !== currentSize) {
           // Change the current media query
           _this.current = newSize;
+
+          // Broadcast the media query change on the window
+          $(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
         }
       });
     }
@@ -1128,7 +913,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       style.type = 'text/css';
       style.id = 'matchmediajs-test';
 
-      script.parentNode.insertBefore(style, script);
+      script && script.parentNode && script.parentNode.insertBefore(style, script);
 
       // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
       info = 'getComputedStyle' in window && window.getComputedStyle(style, null) || style.currentStyle;
@@ -1225,8 +1010,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         start = null;
     // console.log('called');
 
+    if (duration === 0) {
+      fn.apply(elem);
+      elem.trigger('finished.zf.animate', [elem]).triggerHandler('finished.zf.animate', [elem]);
+      return;
+    }
+
     function move(ts) {
-      if (!start) start = window.performance.now();
+      if (!start) start = ts;
       // console.log(start, ts);
       prog = ts - start;
       fn.apply(elem);
@@ -1309,8 +1100,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           subItemClass = subMenuClass + '-item',
           hasSubClass = 'is-' + type + '-submenu-parent';
 
-      menu.find('a:first').attr('tabindex', 0);
-
       items.each(function () {
         var $item = $(this),
             $sub = $item.children('ul');
@@ -1318,15 +1107,22 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         if ($sub.length) {
           $item.addClass(hasSubClass).attr({
             'aria-haspopup': true,
-            'aria-expanded': false,
             'aria-label': $item.children('a:first').text()
           });
+          // Note:  Drilldowns behave differently in how they hide, and so need
+          // additional attributes.  We should look if this possibly over-generalized
+          // utility (Nest) is appropriate when we rework menus in 6.4
+          if (type === 'drilldown') {
+            $item.attr({ 'aria-expanded': false });
+          }
 
           $sub.addClass('submenu ' + subMenuClass).attr({
             'data-submenu': '',
-            'aria-hidden': true,
             'role': 'menu'
           });
+          if (type === 'drilldown') {
+            $sub.attr({ 'aria-hidden': true });
+          }
         }
 
         if ($item.parent('[data-submenu]').length) {
@@ -1337,12 +1133,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       return;
     },
     Burn: function Burn(menu, type) {
-      var items = menu.find('li').removeAttr('tabindex'),
-          subMenuClass = 'is-' + type + '-submenu',
+      var //items = menu.find('li'),
+      subMenuClass = 'is-' + type + '-submenu',
           subItemClass = subMenuClass + '-item',
           hasSubClass = 'is-' + type + '-submenu-parent';
 
-      menu.find('*').removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' is-submenu-item submenu is-active').removeAttr('data-submenu').css('display', '');
+      menu.find('>li, .menu, .menu > li').removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' is-submenu-item submenu is-active').removeAttr('data-submenu').css('display', '');
 
       // console.log(      menu.find('.' + subMenuClass + ', .' + subItemClass + ', .has-submenu, .is-submenu-item, .submenu, [data-submenu]')
       //           .removeClass(subMenuClass + ' ' + subItemClass + ' has-submenu is-submenu-item submenu')
@@ -1395,7 +1191,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         if (options.infinite) {
           _this.restart(); //rerun the timer.
         }
-        cb();
+        if (cb && typeof cb === 'function') {
+          cb();
+        }
       }, remain);
       elem.trigger('timerstart.zf.' + nameSpace);
     };
@@ -1425,15 +1223,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }
 
     images.each(function () {
-      if (this.complete) {
+      // Check if image is loaded
+      if (this.complete || this.readyState === 4 || this.readyState === 'complete') {
         singleImageLoaded();
-      } else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
-        singleImageLoaded();
-      } else {
-        $(this).one('load', function () {
-          singleImageLoaded();
-        });
       }
+      // Force load the image
+      else {
+          // fix for IE. See https://css-tricks.com/snippets/jquery/fixing-load-in-ie-for-cached-images/
+          var src = $(this).attr('src');
+          $(this).attr('src', src + (src.indexOf('?') >= 0 ? '&' : '?') + new Date().getTime());
+          $(this).one('load', function () {
+            singleImageLoaded();
+          });
+        }
     });
 
     function singleImageLoaded() {
@@ -1553,7 +1355,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			    simulatedEvent;
 
 			if ('MouseEvent' in window && typeof window.MouseEvent === 'function') {
-				simulatedEvent = window.MouseEvent(type, {
+				simulatedEvent = new window.MouseEvent(type, {
 					'bubbles': true,
 					'cancelable': true,
 					'screenX': first.screenX,
@@ -1840,7 +1642,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
   // Elements with [data-toggle] will toggle a plugin that supports it when clicked.
   $(document).on('click.zf.trigger', '[data-toggle]', function () {
-    triggers($(this), 'toggle');
+    var id = $(this).data('toggle');
+    if (id) {
+      triggers($(this), 'toggle');
+    } else {
+      $(this).trigger('toggle.zf.trigger');
+    }
   });
 
   // Elements with [data-closable] will respond to close.zf.trigger events.
@@ -1867,7 +1674,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   * @function
   * @private
   */
-  $(window).load(function () {
+  $(window).on('load', function () {
     checkListeners();
   });
 
@@ -1967,26 +1774,27 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     //element callback
     var listeningElementsMutation = function listeningElementsMutation(mutationRecordsList) {
       var $target = $(mutationRecordsList[0].target);
+
       //trigger the event handler for the element depending on type
-      switch ($target.attr("data-events")) {
+      switch (mutationRecordsList[0].type) {
 
-        case "resize":
-          $target.triggerHandler('resizeme.zf.trigger', [$target]);
+        case "attributes":
+          if ($target.attr("data-events") === "scroll" && mutationRecordsList[0].attributeName === "data-events") {
+            $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
+          }
+          if ($target.attr("data-events") === "resize" && mutationRecordsList[0].attributeName === "data-events") {
+            $target.triggerHandler('resizeme.zf.trigger', [$target]);
+          }
+          if (mutationRecordsList[0].attributeName === "style") {
+            $target.closest("[data-mutate]").attr("data-events", "mutate");
+            $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
+          }
           break;
 
-        case "scroll":
-          $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
+        case "childList":
+          $target.closest("[data-mutate]").attr("data-events", "mutate");
+          $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
           break;
-
-        // case "mutate" :
-        // console.log('mutate', $target);
-        // $target.triggerHandler('mutate.zf.trigger');
-        //
-        // //make sure we don't get stuck in an infinite loop from sloppy codeing
-        // if ($target.index('[data-mutate]') == $("[data-mutate]").length-1) {
-        //   domMutationObserver();
-        // }
-        // break;
 
         default:
           return false;
@@ -1995,10 +1803,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
 
     if (nodes.length) {
-      //for each element that needs to listen for resizing, scrolling, (or coming soon mutation) add a single observer
+      //for each element that needs to listen for resizing, scrolling, or mutation add a single observer
       for (var i = 0; i <= nodes.length - 1; i++) {
         var elementObserver = new MutationObserver(listeningElementsMutation);
-        elementObserver.observe(nodes[i], { attributes: true, childList: false, characterData: false, subtree: false, attributeFilter: ["data-events"] });
+        elementObserver.observe(nodes[i], { attributes: true, childList: true, characterData: false, subtree: true, attributeFilter: ["data-events", "style"] });
       }
     }
   }
@@ -2011,41 +1819,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   // Foundation.ISeeYou = scrollListener;
   // Foundation.IFeelYou = closemeListener;
 }(jQuery);
-
-// function domMutationObserver(debounce) {
-//   // !!! This is coming soon and needs more work; not active  !!! //
-//   var timer,
-//   nodes = document.querySelectorAll('[data-mutate]');
-//   //
-//   if (nodes.length) {
-//     // var MutationObserver = (function () {
-//     //   var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
-//     //   for (var i=0; i < prefixes.length; i++) {
-//     //     if (prefixes[i] + 'MutationObserver' in window) {
-//     //       return window[prefixes[i] + 'MutationObserver'];
-//     //     }
-//     //   }
-//     //   return false;
-//     // }());
-//
-//
-//     //for the body, we need to listen for all changes effecting the style and class attributes
-//     var bodyObserver = new MutationObserver(bodyMutation);
-//     bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true, attributeFilter:["style", "class"]});
-//
-//
-//     //body callback
-//     function bodyMutation(mutate) {
-//       //trigger all listening elements and signal a mutation event
-//       if (timer) { clearTimeout(timer); }
-//
-//       timer = setTimeout(function() {
-//         bodyObserver.disconnect();
-//         $('[data-mutate]').attr('data-events',"mutate");
-//       }, debounce || 150);
-//     }
-//   }
-// }
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2090,7 +1863,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     _createClass(Abide, [{
       key: '_init',
       value: function _init() {
-        this.$inputs = this.$element.find('input, textarea, select').not('[data-abide-ignore]');
+        this.$inputs = this.$element.find('input, textarea, select');
 
         this._events();
       }
@@ -2122,6 +1895,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this2.validateInput($(e.target));
           });
         }
+
+        if (this.options.validateOnBlur) {
+          this.$inputs.off('blur.zf.abide').on('blur.zf.abide', function (e) {
+            _this2.validateInput($(e.target));
+          });
+        }
       }
 
       /**
@@ -2149,6 +1928,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var isGood = true;
 
         switch ($el[0].type) {
+          case 'checkbox':
+            isGood = $el[0].checked;
+            break;
+
           case 'select':
           case 'select-one':
           case 'select-multiple':
@@ -2164,9 +1947,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       /**
-       * Based on $el, get the first element with selector in this order:
-       * 1. The element's direct sibling('s).
-       * 3. The element's parent's children.
+       * Get:
+       * - Based on $el, the first element(s) corresponding to `formErrorSelector` in this order:
+       *   1. The element's direct sibling('s).
+       *   2. The element's parent's children.
+       * - Element(s) with the attribute `[data-form-error-for]` set with the element's id.
        *
        * This allows for multiple form errors per input, though if none are found, no form errors will be shown.
        *
@@ -2177,11 +1962,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'findFormError',
       value: function findFormError($el) {
+        var id = $el[0].id;
         var $error = $el.siblings(this.options.formErrorSelector);
 
         if (!$error.length) {
           $error = $el.parent().find(this.options.formErrorSelector);
         }
+
+        $error = $error.add(this.$element.find('[data-form-error-for="' + id + '"]'));
 
         return $error;
       }
@@ -2309,7 +2097,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       /**
-       * Goes through a form to find inputs and proceeds to validate them in ways specific to their type
+       * Goes through a form to find inputs and proceeds to validate them in ways specific to their type. 
+       * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
        * @fires Abide#invalid
        * @fires Abide#valid
        * @param {Object} element - jQuery object to validate, should be an HTML input
@@ -2319,11 +2108,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'validateInput',
       value: function validateInput($el) {
+        var _this4 = this;
+
         var clearRequire = this.requiredCheck($el),
             validated = false,
             customValidator = true,
             validator = $el.attr('data-validator'),
             equalTo = true;
+
+        // don't validate ignored inputs or hidden inputs or disabled inputs
+        if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
+          return true;
+        }
 
         switch ($el[0].type) {
           case 'radio':
@@ -2354,6 +2150,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1;
         var message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
+
+        if (goodToGo) {
+          // Re-validate inputs that depend on this one with equalto
+          var dependentElements = this.$element.find('[data-equalto="' + $el.attr('id') + '"]');
+          if (dependentElements.length) {
+            (function () {
+              var _this = _this4;
+              dependentElements.each(function () {
+                if ($(this).val()) {
+                  _this.validateInput($(this));
+                }
+              });
+            })();
+          }
+        }
 
         this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($el);
 
@@ -2447,19 +2258,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // If at least one radio in the group has the `required` attribute, the group is considered required
         // Per W3C spec, all radio buttons in a group should have `required`, but we're being nice
         var $group = this.$element.find(':radio[name="' + groupName + '"]');
-        var valid = false;
+        var valid = false,
+            required = false;
 
-        // .attr() returns undefined if no elements in $group have the attribute "required"
-        if ($group.attr('required') === undefined) {
-          valid = true;
-        }
-
-        // For the group to be valid, at least one radio needs to be checked
+        // For the group to be required, at least one radio needs to be required
         $group.each(function (i, e) {
-          if ($(e).prop('checked')) {
-            valid = true;
+          if ($(e).attr('required')) {
+            required = true;
           }
         });
+        if (!required) valid = true;
+
+        if (!valid) {
+          // For the group to be valid, at least one radio needs to be checked
+          $group.each(function (i, e) {
+            if ($(e).prop('checked')) {
+              valid = true;
+            }
+          });
+        };
 
         return valid;
       }
@@ -2475,12 +2292,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'matchValidation',
       value: function matchValidation($el, validators, required) {
-        var _this4 = this;
+        var _this5 = this;
 
         required = required ? true : false;
 
         var clear = validators.split(' ').map(function (v) {
-          return _this4.options.validators[v]($el, required, $el.parent());
+          return _this5.options.validators[v]($el, required, $el.parent());
         });
         return clear.indexOf(false) === -1;
       }
@@ -2500,7 +2317,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         $('.' + opts.inputErrorClass, $form).not('small').removeClass(opts.inputErrorClass);
         $(opts.formErrorSelector + '.' + opts.formErrorClass).removeClass(opts.formErrorClass);
         $form.find('[data-abide-error]').css('display', 'none');
-        $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr('data-invalid');
+        $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').removeAttr('data-invalid');
+        $(':input:radio', $form).not('[data-abide-ignore]').prop('checked', false).removeAttr('data-invalid');
+        $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked', false).removeAttr('data-invalid');
         /**
          * Fires when the form has been reset.
          * @event Abide#formreset
@@ -2540,44 +2359,58 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * The default event to validate inputs. Checkboxes and radios validate immediately.
      * Remove or change this value for manual validation.
      * @option
-     * @example 'fieldChange'
+     * @type {?string}
+     * @default 'fieldChange'
      */
     validateOn: 'fieldChange',
 
     /**
      * Class to be applied to input labels on failed validation.
      * @option
-     * @example 'is-invalid-label'
+     * @type {string}
+     * @default 'is-invalid-label'
      */
     labelErrorClass: 'is-invalid-label',
 
     /**
      * Class to be applied to inputs on failed validation.
      * @option
-     * @example 'is-invalid-input'
+     * @type {string}
+     * @default 'is-invalid-input'
      */
     inputErrorClass: 'is-invalid-input',
 
     /**
      * Class selector to use to target Form Errors for show/hide.
      * @option
-     * @example '.form-error'
+     * @type {string}
+     * @default '.form-error'
      */
     formErrorSelector: '.form-error',
 
     /**
      * Class added to Form Errors on failed validation.
      * @option
-     * @example 'is-visible'
+     * @type {string}
+     * @default 'is-visible'
      */
     formErrorClass: 'is-visible',
 
     /**
      * Set to true to validate text inputs on any value change.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     liveValidate: false,
+
+    /**
+     * Set to true to validate inputs on blur.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    validateOnBlur: false,
 
     patterns: {
       alpha: /^[a-zA-Z]+$/,
@@ -2679,8 +2512,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     _createClass(Accordion, [{
       key: '_init',
       value: function _init() {
+        var _this2 = this;
+
         this.$element.attr('role', 'tablist');
-        this.$tabs = this.$element.children('li, [data-accordion-item]');
+        this.$tabs = this.$element.children('[data-accordion-item]');
 
         this.$tabs.each(function (idx, el) {
           var $el = $(el),
@@ -2699,9 +2534,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           $content.attr({ 'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id });
         });
         var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
+        this.firstTimeInit = true;
         if ($initActive.length) {
-          this.down($initActive, true);
+          this.down($initActive, this.firstTimeInit);
+          this.firstTimeInit = false;
         }
+
+        this._checkDeepLink = function () {
+          var anchor = window.location.hash;
+          //need a hash and a relevant anchor in this tabset
+          if (anchor.length) {
+            var $link = _this2.$element.find('[href$="' + anchor + '"]'),
+                $anchor = $(anchor);
+
+            if ($link.length && $anchor) {
+              if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
+                _this2.down($anchor, _this2.firstTimeInit);
+                _this2.firstTimeInit = false;
+              };
+
+              //roll up a little to show the titles
+              if (_this2.options.deepLinkSmudge) {
+                var _this = _this2;
+                $(window).load(function () {
+                  var offset = _this.$element.offset();
+                  $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
+                });
+              }
+
+              /**
+                * Fires when the zplugin has deeplinked at pageload
+                * @event Accordion#deeplink
+                */
+              _this2.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
+            }
+          }
+        };
+
+        //use browser to open a tab, if it exists in this tabset
+        if (this.options.deepLink) {
+          this._checkDeepLink();
+        }
+
         this._events();
       }
 
@@ -2720,15 +2594,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var $tabContent = $elem.children('[data-tab-content]');
           if ($tabContent.length) {
             $elem.children('a').off('click.zf.accordion keydown.zf.accordion').on('click.zf.accordion', function (e) {
-              // $(this).children('a').on('click.zf.accordion', function(e) {
               e.preventDefault();
-              if ($elem.hasClass('is-active')) {
-                if (_this.options.allowAllClosed || $elem.siblings().hasClass('is-active')) {
-                  _this.up($tabContent);
-                }
-              } else {
-                _this.down($tabContent);
-              }
+              _this.toggle($tabContent);
             }).on('keydown.zf.accordion', function (e) {
               Foundation.Keyboard.handleKey(e, 'Accordion', {
                 toggle: function toggle() {
@@ -2754,11 +2621,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
           }
         });
+        if (this.options.deepLink) {
+          $(window).on('popstate', this._checkDeepLink);
+        }
       }
 
       /**
        * Toggles the selected content pane's open/close state.
-       * @param {jQuery} $target - jQuery object of the pane to toggle.
+       * @param {jQuery} $target - jQuery object of the pane to toggle (`.accordion-content`).
        * @function
        */
 
@@ -2766,19 +2636,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: 'toggle',
       value: function toggle($target) {
         if ($target.parent().hasClass('is-active')) {
-          if (this.options.allowAllClosed || $target.parent().siblings().hasClass('is-active')) {
-            this.up($target);
-          } else {
-            return;
-          }
+          this.up($target);
         } else {
           this.down($target);
+        }
+        //either replace or update browser history
+        if (this.options.deepLink) {
+          var anchor = $target.prev('a').attr('href');
+
+          if (this.options.updateHistory) {
+            history.pushState({}, '', anchor);
+          } else {
+            history.replaceState({}, '', anchor);
+          }
         }
       }
 
       /**
        * Opens the accordion tab defined by `$target`.
-       * @param {jQuery} $target - Accordion pane to open.
+       * @param {jQuery} $target - Accordion pane to open (`.accordion-content`).
        * @param {Boolean} firstTime - flag to determine if reflow should happen.
        * @fires Accordion#down
        * @function
@@ -2787,23 +2663,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'down',
       value: function down($target, firstTime) {
-        var _this2 = this;
+        var _this3 = this;
+
+        $target.attr('aria-hidden', false).parent('[data-tab-content]').addBack().parent().addClass('is-active');
 
         if (!this.options.multiExpand && !firstTime) {
           var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
           if ($currentActive.length) {
-            this.up($currentActive);
+            this.up($currentActive.not($target));
           }
         }
-
-        $target.attr('aria-hidden', false).parent('[data-tab-content]').addBack().parent().addClass('is-active');
 
         $target.slideDown(this.options.slideSpeed, function () {
           /**
            * Fires when the tab is done opening.
            * @event Accordion#down
            */
-          _this2.$element.trigger('down.zf.accordion', [$target]);
+          _this3.$element.trigger('down.zf.accordion', [$target]);
         });
 
         $('#' + $target.attr('aria-labelledby')).attr({
@@ -2814,7 +2690,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       /**
        * Closes the tab defined by `$target`.
-       * @param {jQuery} $target - Accordion tab to close.
+       * @param {jQuery} $target - Accordion tab to close (`.accordion-content`).
        * @fires Accordion#up
        * @function
        */
@@ -2824,9 +2700,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function up($target) {
         var $aunts = $target.parent().siblings(),
             _this = this;
-        var canClose = this.options.multiExpand ? $aunts.hasClass('is-active') : $target.parent().hasClass('is-active');
 
-        if (!this.options.allowAllClosed && !canClose) {
+        if (!this.options.allowAllClosed && !$aunts.hasClass('is-active') || !$target.parent().hasClass('is-active')) {
           return;
         }
 
@@ -2857,8 +2732,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'destroy',
       value: function destroy() {
-        this.$element.find('[data-tab-content]').slideUp(0).css('display', '');
+        this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
         this.$element.find('a').off('.zf.accordion');
+        if (this.options.deepLink) {
+          $(window).off('popstate', this._checkDeepLink);
+        }
 
         Foundation.unregisterPlugin(this);
       }
@@ -2871,21 +2749,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Amount of time to animate the opening of an accordion pane.
      * @option
-     * @example 250
+     * @type {number}
+     * @default 250
      */
     slideSpeed: 250,
     /**
      * Allow the accordion to have multiple open panes.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     multiExpand: false,
     /**
      * Allow the accordion to close all panes.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
-    allowAllClosed: false
+    allowAllClosed: false,
+    /**
+     * Allows the window to scroll to content of pane specified by hash anchor
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    deepLink: false,
+
+    /**
+     * Adjust the deep link scroll to make sure the top of the accordion panel is visible
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    deepLinkSmudge: false,
+
+    /**
+     * Animation time (ms) for the deep link adjustment
+     * @option
+     * @type {number}
+     * @default 300
+     */
+    deepLinkSmudgeDelay: 300,
+
+    /**
+     * Update the browser history with the open accordion
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    updateHistory: false
   };
 
   // Window exports
@@ -2934,9 +2846,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         'ARROW_UP': 'up',
         'ARROW_DOWN': 'down',
         'ARROW_LEFT': 'close',
-        'ESCAPE': 'closeAll',
-        'TAB': 'down',
-        'SHIFT_TAB': 'up'
+        'ESCAPE': 'closeAll'
       });
     }
 
@@ -2951,7 +2861,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _init() {
         this.$element.find('[data-submenu]').not('.is-active').slideUp(0); //.find('a').css('padding-left', '1rem');
         this.$element.attr({
-          'role': 'tablist',
+          'role': 'menu',
           'aria-multiselectable': this.options.multiOpen
         });
 
@@ -2965,13 +2875,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           $elem.attr({
             'aria-controls': subId,
             'aria-expanded': isActive,
-            'role': 'tab',
+            'role': 'menuitem',
             'id': linkId
           });
           $sub.attr({
             'aria-labelledby': linkId,
             'aria-hidden': !isActive,
-            'role': 'tabpanel',
+            'role': 'menu',
             'id': subId
           });
         });
@@ -3024,9 +2934,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if ($(this).is(':first-child')) {
                 // is first element of sub menu
                 $prevElement = $element.parents('li').first().find('a').first();
-              } else if ($prevElement.children('[data-submenu]:visible').length) {
+              } else if ($prevElement.parents('li').first().children('[data-submenu]:visible').length) {
                 // if previous element has open sub menu
-                $prevElement = $prevElement.find('li:last-child').find('a').first();
+                $prevElement = $prevElement.parents('li').find('li:last-child').find('a').first();
               }
               if ($(this).is(':last-child')) {
                 // is last element of sub menu
@@ -3036,6 +2946,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               return;
             }
           });
+
           Foundation.Keyboard.handleKey(e, 'AccordionMenu', {
             open: function open() {
               if ($target.is(':hidden')) {
@@ -3054,12 +2965,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }
             },
             up: function up() {
-              $prevElement.attr('tabindex', -1).focus();
-              e.preventDefault();
+              $prevElement.focus();
+              return true;
             },
             down: function down() {
-              $nextElement.attr('tabindex', -1).focus();
-              e.preventDefault();
+              $nextElement.focus();
+              return true;
             },
             toggle: function toggle() {
               if ($element.children('[data-submenu]').length) {
@@ -3069,7 +2980,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             closeAll: function closeAll() {
               _this.hideAll();
             },
-            handled: function handled() {
+            handled: function handled(preventDefault) {
+              if (preventDefault) {
+                e.preventDefault();
+              }
               e.stopImmediatePropagation();
             }
           });
@@ -3084,7 +2998,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'hideAll',
       value: function hideAll() {
-        this.$element.find('[data-submenu]').slideUp(this.options.slideSpeed);
+        this.up(this.$element.find('[data-submenu]'));
+      }
+
+      /**
+       * Opens all panes of the menu.
+       * @function
+       */
+
+    }, {
+      key: 'showAll',
+      value: function showAll() {
+        this.down(this.$element.find('[data-submenu]'));
       }
 
       /**
@@ -3122,15 +3047,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         $target.addClass('is-active').attr({ 'aria-hidden': false }).parent('.is-accordion-submenu-parent').attr({ 'aria-expanded': true });
 
-        Foundation.Move(this.options.slideSpeed, $target, function () {
-          $target.slideDown(_this.options.slideSpeed, function () {
-            /**
-             * Fires when the menu is done opening.
-             * @event AccordionMenu#down
-             */
-            _this.$element.trigger('down.zf.accordionMenu', [$target]);
-          });
+        //Foundation.Move(this.options.slideSpeed, $target, function() {
+        $target.slideDown(_this.options.slideSpeed, function () {
+          /**
+           * Fires when the menu is done opening.
+           * @event AccordionMenu#down
+           */
+          _this.$element.trigger('down.zf.accordionMenu', [$target]);
         });
+        //});
       }
 
       /**
@@ -3143,15 +3068,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: 'up',
       value: function up($target) {
         var _this = this;
-        Foundation.Move(this.options.slideSpeed, $target, function () {
-          $target.slideUp(_this.options.slideSpeed, function () {
-            /**
-             * Fires when the menu is done collapsing up.
-             * @event AccordionMenu#up
-             */
-            _this.$element.trigger('up.zf.accordionMenu', [$target]);
-          });
+        //Foundation.Move(this.options.slideSpeed, $target, function(){
+        $target.slideUp(_this.options.slideSpeed, function () {
+          /**
+           * Fires when the menu is done collapsing up.
+           * @event AccordionMenu#up
+           */
+          _this.$element.trigger('up.zf.accordionMenu', [$target]);
         });
+        //});
 
         var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
 
@@ -3181,13 +3106,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Amount of time to animate the opening of a submenu in ms.
      * @option
-     * @example 250
+     * @type {number}
+     * @default 250
      */
     slideSpeed: 250,
     /**
      * Allow the menu to have multiple open panes.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     multiOpen: true
   };
@@ -3231,9 +3158,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       Foundation.Keyboard.register('Dropdown', {
         'ENTER': 'open',
         'SPACE': 'open',
-        'ESCAPE': 'close',
-        'TAB': 'tab_forward',
-        'SHIFT_TAB': 'tab_backward'
+        'ESCAPE': 'close'
       });
     }
 
@@ -3249,7 +3174,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _init() {
         var $id = this.$element.attr('id');
 
-        this.$anchor = $('[data-toggle="' + $id + '"]') || $('[data-open="' + $id + '"]');
+        this.$anchor = $('[data-toggle="' + $id + '"]').length ? $('[data-toggle="' + $id + '"]') : $('[data-open="' + $id + '"]');
         this.$anchor.attr({
           'aria-controls': $id,
           'data-is-focus': false,
@@ -3259,6 +3184,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         });
 
+        if (this.options.parentClass) {
+          this.$parent = this.$element.parents('.' + this.options.parentClass);
+        } else {
+          this.$parent = null;
+        }
         this.options.positionClass = this.getPositionClass();
         this.counter = 4;
         this.usedPositions = [];
@@ -3282,9 +3212,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function getPositionClass() {
         var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
         verticalPosition = verticalPosition ? verticalPosition[0] : '';
-        var horizontalPosition = /float-(.+)\s/.exec(this.$anchor[0].className);
+        var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
         horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
         var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
+
         return position;
       }
 
@@ -3349,9 +3280,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             param = direction === 'top' ? 'height' : 'width',
             offset = param === 'height' ? this.options.vOffset : this.options.hOffset;
 
-        if ($eleDims.width >= $eleDims.windowDims.width || !this.counter && !Foundation.Box.ImNotTouchingYou(this.$element)) {
-          this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
-            'width': $eleDims.windowDims.width - this.options.hOffset * 2,
+        if ($eleDims.width >= $eleDims.windowDims.width || !this.counter && !Foundation.Box.ImNotTouchingYou(this.$element, this.$parent)) {
+          var newWidth = $eleDims.windowDims.width,
+              parentHOffset = 0;
+          if (this.$parent) {
+            var $parentDims = Foundation.Box.GetDimensions(this.$parent),
+                parentHOffset = $parentDims.offset.left;
+            if ($parentDims.width < newWidth) {
+              newWidth = $parentDims.width;
+            }
+          }
+
+          this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset + parentHOffset, true)).css({
+            'width': newWidth - this.options.hOffset * 2,
             'height': 'auto'
           });
           this.classChanged = true;
@@ -3360,7 +3301,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
-        while (!Foundation.Box.ImNotTouchingYou(this.$element, false, true) && this.counter) {
+        while (!Foundation.Box.ImNotTouchingYou(this.$element, this.$parent, true) && this.counter) {
           this._reposition(position);
           this._setPosition();
         }
@@ -3385,11 +3326,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.options.hover) {
           this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
-            clearTimeout(_this.timeout);
-            _this.timeout = setTimeout(function () {
-              _this.open();
-              _this.$anchor.data('hover', true);
-            }, _this.options.hoverDelay);
+            var bodyData = $('body').data();
+            if (typeof bodyData.whatinput === 'undefined' || bodyData.whatinput === 'mouse') {
+              clearTimeout(_this.timeout);
+              _this.timeout = setTimeout(function () {
+                _this.open();
+                _this.$anchor.data('hover', true);
+              }, _this.options.hoverDelay);
+            }
           }).on('mouseleave.zf.dropdown', function () {
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function () {
@@ -3415,32 +3359,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               visibleFocusableElements = Foundation.Keyboard.findFocusable(_this.$element);
 
           Foundation.Keyboard.handleKey(e, 'Dropdown', {
-            tab_forward: function tab_forward() {
-              if (_this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) {
-                // left modal downwards, setting focus to first element
-                if (_this.options.trapFocus) {
-                  // if focus shall be trapped
-                  visibleFocusableElements.eq(0).focus();
-                  e.preventDefault();
-                } else {
-                  // if focus is not trapped, close dropdown on focus out
-                  _this.close();
-                }
-              }
-            },
-            tab_backward: function tab_backward() {
-              if (_this.$element.find(':focus').is(visibleFocusableElements.eq(0)) || _this.$element.is(':focus')) {
-                // left modal upwards, setting focus to last element
-                if (_this.options.trapFocus) {
-                  // if focus shall be trapped
-                  visibleFocusableElements.eq(-1).focus();
-                  e.preventDefault();
-                } else {
-                  // if focus is not trapped, close dropdown on focus out
-                  _this.close();
-                }
-              }
-            },
             open: function open() {
               if ($target.is(_this.$anchor)) {
                 _this.open();
@@ -3491,7 +3409,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function open() {
         // var _this = this;
         /**
-         * Fires to close other open dropdowns
+         * Fires to close other open dropdowns, typically when dropdown is opening
          * @event Dropdown#closeme
          */
         this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
@@ -3509,6 +3427,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.options.closeOnClick) {
           this._addBodyHandler();
+        }
+
+        if (this.options.trapFocus) {
+          Foundation.Keyboard.trapFocus(this.$element);
         }
 
         /**
@@ -3545,7 +3467,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.counter = 4;
           this.usedPositions.length = 0;
         }
+        /**
+         * Fires once the dropdown is no longer visible.
+         * @event Dropdown#hide
+         */
         this.$element.trigger('hide.zf.dropdown', [this.$element]);
+
+        if (this.options.trapFocus) {
+          Foundation.Keyboard.releaseFocus(this.$element);
+        }
       }
 
       /**
@@ -3584,57 +3514,73 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   Dropdown.defaults = {
     /**
+     * Class that designates bounding container of Dropdown (default: window)
+     * @option
+     * @type {?string}
+     * @default null
+     */
+    parentClass: null,
+    /**
      * Amount of time to delay opening a submenu on hover event.
      * @option
-     * @example 250
+     * @type {number}
+     * @default 250
      */
     hoverDelay: 250,
     /**
      * Allow submenus to open on hover events
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     hover: false,
     /**
      * Don't close dropdown when hovering over dropdown pane
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     hoverPane: false,
     /**
      * Number of pixels between the dropdown pane and the triggering element on open.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     vOffset: 1,
     /**
      * Number of pixels between the dropdown pane and the triggering element on open.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     hOffset: 1,
     /**
      * Class applied to adjust open position. JS will test and fill this in.
      * @option
-     * @example 'top'
+     * @type {string}
+     * @default ''
      */
     positionClass: '',
     /**
      * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     trapFocus: false,
     /**
      * Allow the plugin to set focus to the first focusable element within the pane, regardless of method of opening.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     autoFocus: false,
     /**
      * Allows a click on the body to close the dropdown.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     closeOnClick: false
   };
@@ -3715,57 +3661,74 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this._events();
       }
     }, {
-      key: '_events',
+      key: '_isVertical',
+      value: function _isVertical() {
+        return this.$tabs.css('display') === 'block';
+      }
 
       /**
        * Adds event listeners to elements within the menu
        * @private
        * @function
        */
+
+    }, {
+      key: '_events',
       value: function _events() {
         var _this = this,
             hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined',
             parClass = 'is-dropdown-submenu-parent';
 
-        if (this.options.clickOpen || hasTouch) {
-          this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', function (e) {
-            var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
-                hasSub = $elem.hasClass(parClass),
-                hasClicked = $elem.attr('data-is-click') === 'true',
-                $sub = $elem.children('.is-dropdown-submenu');
+        // used for onClick and in the keyboard handlers
+        var handleClickFn = function handleClickFn(e) {
+          var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
+              hasSub = $elem.hasClass(parClass),
+              hasClicked = $elem.attr('data-is-click') === 'true',
+              $sub = $elem.children('.is-dropdown-submenu');
 
-            if (hasSub) {
-              if (hasClicked) {
-                if (!_this.options.closeOnClick || !_this.options.clickOpen && !hasTouch || _this.options.forceFollow && hasTouch) {
-                  return;
-                } else {
-                  e.stopImmediatePropagation();
-                  e.preventDefault();
-                  _this._hide($elem);
-                }
+          if (hasSub) {
+            if (hasClicked) {
+              if (!_this.options.closeOnClick || !_this.options.clickOpen && !hasTouch || _this.options.forceFollow && hasTouch) {
+                return;
               } else {
-                e.preventDefault();
                 e.stopImmediatePropagation();
-                _this._show($elem.children('.is-dropdown-submenu'));
-                $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
+                e.preventDefault();
+                _this._hide($elem);
               }
             } else {
-              return;
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              _this._show($sub);
+              $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
+            }
+          }
+        };
+
+        if (this.options.clickOpen || hasTouch) {
+          this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
+        }
+
+        // Handle Leaf element Clicks
+        if (_this.options.closeOnClickInside) {
+          this.$menuItems.on('click.zf.dropdownmenu', function (e) {
+            var $elem = $(this),
+                hasSub = $elem.hasClass(parClass);
+            if (!hasSub) {
+              _this._hide();
             }
           });
         }
 
         if (!this.options.disableHover) {
           this.$menuItems.on('mouseenter.zf.dropdownmenu', function (e) {
-            e.stopImmediatePropagation();
             var $elem = $(this),
                 hasSub = $elem.hasClass(parClass);
 
             if (hasSub) {
-              clearTimeout(_this.delay);
-              _this.delay = setTimeout(function () {
+              clearTimeout($elem.data('_delay'));
+              $elem.data('_delay', setTimeout(function () {
                 _this._show($elem.children('.is-dropdown-submenu'));
-              }, _this.options.hoverDelay);
+              }, _this.options.hoverDelay));
             }
           }).on('mouseleave.zf.dropdownmenu', function (e) {
             var $elem = $(this),
@@ -3775,10 +3738,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 return false;
               }
 
-              clearTimeout(_this.delay);
-              _this.delay = setTimeout(function () {
+              clearTimeout($elem.data('_delay'));
+              $elem.data('_delay', setTimeout(function () {
                 _this._hide($elem);
-              }, _this.options.closingTime);
+              }, _this.options.closingTime));
             }
           });
         }
@@ -3798,16 +3761,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
 
           var nextSibling = function nextSibling() {
-            if (!$element.is(':last-child')) $nextElement.children('a:first').focus();
+            if (!$element.is(':last-child')) {
+              $nextElement.children('a:first').focus();
+              e.preventDefault();
+            }
           },
               prevSibling = function prevSibling() {
             $prevElement.children('a:first').focus();
+            e.preventDefault();
           },
               openSub = function openSub() {
             var $sub = $element.children('ul.is-dropdown-submenu');
             if ($sub.length) {
               _this._show($sub);
               $element.find('li > a:first').focus();
+              e.preventDefault();
             } else {
               return;
             }
@@ -3817,6 +3785,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var close = $element.parent('ul').parent('li');
             close.children('a:first').focus();
             _this._hide(close);
+            e.preventDefault();
             //}
           };
           var functions = {
@@ -3824,25 +3793,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             close: function close() {
               _this._hide(_this.$element);
               _this.$menuItems.find('a:first').focus(); // focus to first element
+              e.preventDefault();
             },
             handled: function handled() {
-              e.preventDefault();
               e.stopImmediatePropagation();
             }
           };
 
           if (isTab) {
-            if (_this.vertical) {
+            if (_this._isVertical()) {
               // vertical menu
-              if (_this.options.alignment === 'left') {
-                // left aligned
-                $.extend(functions, {
-                  down: nextSibling,
-                  up: prevSibling,
-                  next: openSub,
-                  previous: closeSub
-                });
-              } else {
+              if (Foundation.rtl()) {
                 // right aligned
                 $.extend(functions, {
                   down: nextSibling,
@@ -3850,31 +3811,50 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   next: closeSub,
                   previous: openSub
                 });
+              } else {
+                // left aligned
+                $.extend(functions, {
+                  down: nextSibling,
+                  up: prevSibling,
+                  next: openSub,
+                  previous: closeSub
+                });
               }
             } else {
               // horizontal menu
-              $.extend(functions, {
-                next: nextSibling,
-                previous: prevSibling,
-                down: openSub,
-                up: closeSub
-              });
+              if (Foundation.rtl()) {
+                // right aligned
+                $.extend(functions, {
+                  next: prevSibling,
+                  previous: nextSibling,
+                  down: openSub,
+                  up: closeSub
+                });
+              } else {
+                // left aligned
+                $.extend(functions, {
+                  next: nextSibling,
+                  previous: prevSibling,
+                  down: openSub,
+                  up: closeSub
+                });
+              }
             }
           } else {
             // not tabs -> one sub
-            if (_this.options.alignment === 'left') {
-              // left aligned
-              $.extend(functions, {
-                next: openSub,
-                previous: closeSub,
-                down: nextSibling,
-                up: prevSibling
-              });
-            } else {
+            if (Foundation.rtl()) {
               // right aligned
               $.extend(functions, {
                 next: closeSub,
                 previous: openSub,
+                down: nextSibling,
+                up: prevSibling
+              });
+            } else {
+              // left aligned
+              $.extend(functions, {
+                next: openSub,
+                previous: closeSub,
                 down: nextSibling,
                 up: prevSibling
               });
@@ -3922,7 +3902,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }));
         var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
         this._hide($sibs, idx);
-        $sub.css('visibility', 'hidden').addClass('js-dropdown-active').attr({ 'aria-hidden': false }).parent('li.is-dropdown-submenu-parent').addClass('is-active').attr({ 'aria-expanded': true });
+        $sub.css('visibility', 'hidden').addClass('js-dropdown-active').parent('li.is-dropdown-submenu-parent').addClass('is-active');
         var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
         if (!clear) {
           var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
@@ -3970,13 +3950,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (somethingToClose) {
           $toClose.find('li.is-active').add($toClose).attr({
-            'aria-expanded': false,
             'data-is-click': false
           }).removeClass('is-active');
 
-          $toClose.find('ul.js-dropdown-active').attr({
-            'aria-hidden': true
-          }).removeClass('js-dropdown-active');
+          $toClose.find('ul.js-dropdown-active').removeClass('js-dropdown-active');
 
           if (this.changed || $toClose.find('opens-inner').length) {
             var oldClass = this.options.alignment === 'left' ? 'right' : 'left';
@@ -4018,62 +3995,79 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Disallows hover events from opening submenus
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     disableHover: false,
     /**
      * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     autoclose: true,
     /**
      * Amount of time to delay opening a submenu on hover event.
      * @option
-     * @example 50
+     * @type {number}
+     * @default 50
      */
     hoverDelay: 50,
     /**
      * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     clickOpen: false,
     /**
      * Amount of time to delay closing a submenu on a mouseleave event.
      * @option
-     * @example 500
+     * @type {number}
+     * @default 500
      */
 
     closingTime: 500,
     /**
-     * Position of the menu relative to what direction the submenus should open. Handled by JS.
+     * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'left'` or `'right'`.
      * @option
-     * @example 'left'
+     * @type {string}
+     * @default 'left'
      */
     alignment: 'left',
     /**
      * Allow clicks on the body to close any open submenus.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     closeOnClick: true,
     /**
+     * Allow clicks on leaf anchor links to close any open submenus.
+     * @option
+     * @type {boolean}
+     * @default true
+     */
+    closeOnClickInside: true,
+    /**
      * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
      * @option
-     * @example 'vertical'
+     * @type {string}
+     * @default 'vertical'
      */
     verticalClass: 'vertical',
     /**
      * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
      * @option
-     * @example 'align-right'
+     * @type {string}
+     * @default 'align-right'
      */
     rightClass: 'align-right',
     /**
      * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default true
      */
     forceFollow: true
   };
@@ -4092,6 +4086,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /**
    * Equalizer module.
    * @module foundation.equalizer
+   * @requires foundation.util.mediaQuery
+   * @requires foundation.util.timerAndImageLoader if equalizer contains images
    */
 
   var Equalizer = function () {
@@ -4128,10 +4124,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.$watched = $watched.length ? $watched : this.$element.find('[data-equalizer-watch]');
         this.$element.attr('data-resize', eqId || Foundation.GetYoDigits(6, 'eq'));
+        this.$element.attr('data-mutate', eqId || Foundation.GetYoDigits(6, 'eq'));
 
         this.hasNested = this.$element.find('[data-equalizer]').length > 0;
         this.isNested = this.$element.parentsUntil(document.body, '[data-equalizer]').length > 0;
         this.isOn = false;
+        this._bindHandler = {
+          onResizeMeBound: this._onResizeMe.bind(this),
+          onPostEqualizedBound: this._onPostEqualized.bind(this)
+        };
 
         var imgs = this.$element.find('img');
         var tooSmall;
@@ -4159,7 +4160,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_pauseEvents',
       value: function _pauseEvents() {
         this.isOn = false;
-        this.$element.off('.zf.equalizer resizeme.zf.trigger');
+        this.$element.off({
+          '.zf.equalizer': this._bindHandler.onPostEqualizedBound,
+          'resizeme.zf.trigger': this._bindHandler.onResizeMeBound,
+          'mutateme.zf.trigger': this._bindHandler.onResizeMeBound
+        });
+      }
+
+      /**
+       * function to handle $elements resizeme.zf.trigger, with bound this on _bindHandler.onResizeMeBound
+       * @private
+       */
+
+    }, {
+      key: '_onResizeMe',
+      value: function _onResizeMe(e) {
+        this._reflow();
+      }
+
+      /**
+       * function to handle $elements postequalized.zf.equalizer, with bound this on _bindHandler.onPostEqualizedBound
+       * @private
+       */
+
+    }, {
+      key: '_onPostEqualized',
+      value: function _onPostEqualized(e) {
+        if (e.target !== this.$element[0]) {
+          this._reflow();
+        }
       }
 
       /**
@@ -4173,13 +4202,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var _this = this;
         this._pauseEvents();
         if (this.hasNested) {
-          this.$element.on('postequalized.zf.equalizer', function (e) {
-            if (e.target !== _this.$element[0]) {
-              _this._reflow();
-            }
-          });
+          this.$element.on('postequalized.zf.equalizer', this._bindHandler.onPostEqualizedBound);
         } else {
-          this.$element.on('resizeme.zf.trigger', this._reflow.bind(this));
+          this.$element.on('resizeme.zf.trigger', this._bindHandler.onResizeMeBound);
+          this.$element.on('mutateme.zf.trigger', this._bindHandler.onResizeMeBound);
         }
         this.isOn = true;
       }
@@ -4192,7 +4218,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_checkMQ',
       value: function _checkMQ() {
-        var tooSmall = !Foundation.MediaQuery.atLeast(this.options.equalizeOn);
+        var tooSmall = !Foundation.MediaQuery.is(this.options.equalizeOn);
         if (tooSmall) {
           if (this.isOn) {
             this._pauseEvents();
@@ -4246,7 +4272,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_isStacked',
       value: function _isStacked() {
-        return this.$watched[0].offsetTop !== this.$watched[1].offsetTop;
+        if (!this.$watched[0] || !this.$watched[1]) {
+          return true;
+        }
+        return this.$watched[0].getBoundingClientRect().top !== this.$watched[1].getBoundingClientRect().top;
       }
 
       /**
@@ -4332,8 +4361,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
        * Changes the CSS height property of each child in an Equalizer parent to match the tallest by row
        * @param {array} groups - An array of heights of children within Equalizer container grouped by row with element,height and max as last child
        * @fires Equalizer#preequalized
-       * @fires Equalizer#preequalizedRow
-       * @fires Equalizer#postequalizedRow
+       * @fires Equalizer#preequalizedrow
+       * @fires Equalizer#postequalizedrow
        * @fires Equalizer#postequalized
        */
 
@@ -4353,7 +4382,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
           /**
             * Fires before the heights per row are applied
-            * @event Equalizer#preequalizedRow
+            * @event Equalizer#preequalizedrow
             */
           this.$element.trigger('preequalizedrow.zf.equalizer');
           for (var j = 0, lenJ = groupsILength - 1; j < lenJ; j++) {
@@ -4361,7 +4390,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
           /**
             * Fires when the heights per row have been applied
-            * @event Equalizer#postequalizedRow
+            * @event Equalizer#postequalizedrow
             */
           this.$element.trigger('postequalizedrow.zf.equalizer');
         }
@@ -4398,19 +4427,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Enable height equalization when stacked on smaller screens.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
-    equalizeOnStack: true,
+    equalizeOnStack: false,
     /**
      * Enable height equalization row by row.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     equalizeByRow: false,
     /**
      * String representing the minimum breakpoint size the plugin should equalize heights on.
      * @option
-     * @example 'medium'
+     * @type {string}
+     * @default ''
      */
     equalizeOn: ''
   };
@@ -4431,9 +4463,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @module foundation.responsiveMenu
    * @requires foundation.util.triggers
    * @requires foundation.util.mediaQuery
-   * @requires foundation.util.accordionMenu
-   * @requires foundation.util.drilldown
-   * @requires foundation.util.dropdown-menu
    */
 
   var ResponsiveMenu = function () {
@@ -4493,6 +4522,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (!$.isEmptyObject(this.rules)) {
           this._checkMediaQueries();
         }
+        // Add data-mutate since children may need it.
+        this.$element.attr('data-mutate', this.$element.attr('data-mutate') || Foundation.GetYoDigits(6, 'responsive-menu'));
       }
 
       /**
@@ -4640,7 +4671,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this.$targetMenu = $('#' + targetID);
-        this.$toggler = this.$element.find('[data-toggle]');
+        this.$toggler = this.$element.find('[data-toggle]').filter(function () {
+          var target = $(this).data('toggle');
+          return target === targetID || target === "";
+        });
+        this.options = $.extend({}, this.options, this.$targetMenu.data());
+
+        // If they were set, parse the animation classes
+        if (this.options.animate) {
+          var input = this.options.animate.split(' ');
+
+          this.animationIn = input[0];
+          this.animationOut = input[1] || null;
+        }
 
         this._update();
       }
@@ -4656,7 +4699,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _events() {
         var _this = this;
 
-        $(window).on('changed.zf.mediaquery', this._update.bind(this));
+        this._updateMqHandler = this._update.bind(this);
+
+        $(window).on('changed.zf.mediaquery', this._updateMqHandler);
 
         this.$toggler.on('click.zf.responsiveToggle', this.toggleMenu.bind(this));
       }
@@ -4692,20 +4737,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'toggleMenu',
       value: function toggleMenu() {
-        if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
-          this.$targetMenu.toggle(0);
+        var _this2 = this;
 
+        if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
           /**
            * Fires when the element attached to the tab bar toggles.
            * @event ResponsiveToggle#toggled
            */
-          this.$element.trigger('toggled.zf.responsiveToggle');
+          if (this.options.animate) {
+            if (this.$targetMenu.is(':hidden')) {
+              Foundation.Motion.animateIn(this.$targetMenu, this.animationIn, function () {
+                _this2.$element.trigger('toggled.zf.responsiveToggle');
+                _this2.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
+              });
+            } else {
+              Foundation.Motion.animateOut(this.$targetMenu, this.animationOut, function () {
+                _this2.$element.trigger('toggled.zf.responsiveToggle');
+              });
+            }
+          } else {
+            this.$targetMenu.toggle(0);
+            this.$targetMenu.find('[data-mutate]').trigger('mutateme.zf.trigger');
+            this.$element.trigger('toggled.zf.responsiveToggle');
+          }
         }
       }
     }, {
       key: 'destroy',
       value: function destroy() {
-        //TODO this...
+        this.$element.off('.zf.responsiveToggle');
+        this.$toggler.off('.zf.responsiveToggle');
+
+        $(window).off('changed.zf.mediaquery', this._updateMqHandler);
+
+        Foundation.unregisterPlugin(this);
       }
     }]);
 
@@ -4716,9 +4781,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * The breakpoint after which the menu is always shown, and the tab bar is hidden.
      * @option
-     * @example 'medium'
+     * @type {string}
+     * @default 'medium'
      */
-    hideFor: 'medium'
+    hideFor: 'medium',
+
+    /**
+     * To decide if the toggle should be animated or not.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    animate: false
   };
 
   // Window exports
@@ -4761,9 +4835,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       Foundation.Keyboard.register('Reveal', {
         'ENTER': 'open',
         'SPACE': 'open',
-        'ESCAPE': 'close',
-        'TAB': 'tab_forward',
-        'SHIFT_TAB': 'tab_backward'
+        'ESCAPE': 'close'
       });
     }
 
@@ -4779,25 +4851,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.id = this.$element.attr('id');
         this.isActive = false;
         this.cached = { mq: Foundation.MediaQuery.current };
-        this.isiOS = iPhoneSniff();
-
-        if (this.isiOS) {
-          this.$element.addClass('is-ios');
-        }
+        this.isMobile = mobileSniff();
 
         this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
-
-        if (this.$anchor.length) {
-          var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
-
-          this.$anchor.attr({
-            'aria-controls': this.id,
-            'id': anchorId,
-            'aria-haspopup': true,
-            'tabindex': 0
-          });
-          this.$element.attr({ 'aria-labelledby': anchorId });
-        }
+        this.$anchor.attr({
+          'aria-controls': this.id,
+          'aria-haspopup': true,
+          'tabindex': 0
+        });
 
         if (this.options.fullScreen || this.$element.hasClass('full')) {
           this.options.fullScreen = true;
@@ -4817,7 +4878,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (this.$overlay) {
           this.$element.detach().appendTo(this.$overlay);
         } else {
-          this.$element.detach().appendTo($('body'));
+          this.$element.detach().appendTo($(this.options.appendTo));
           this.$element.addClass('without-overlay');
         }
         this._events();
@@ -4833,9 +4894,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     }, {
       key: '_makeOverlay',
-      value: function _makeOverlay(id) {
-        var $overlay = $('<div></div>').addClass('reveal-overlay').attr({ 'tabindex': -1, 'aria-hidden': true }).appendTo('body');
-        return $overlay;
+      value: function _makeOverlay() {
+        return $('<div></div>').addClass('reveal-overlay').appendTo(this.options.appendTo);
       }
 
       /**
@@ -4883,11 +4943,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_events',
       value: function _events() {
+        var _this2 = this;
+
         var _this = this;
 
         this.$element.on({
           'open.zf.trigger': this.open.bind(this),
-          'close.zf.trigger': this.close.bind(this),
+          'close.zf.trigger': function closeZfTrigger(event, $element) {
+            if (event.target === _this.$element[0] || $(event.target).parents('[data-closable]')[0] === $element) {
+              // only close reveal when it's explicitly called
+              return _this2.close.apply(_this2);
+            }
+          },
           'toggle.zf.trigger': this.toggle.bind(this),
           'resizeme.zf.trigger': function resizemeZfTrigger() {
             _this._updatePosition();
@@ -4906,7 +4973,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.options.closeOnClick && this.options.overlay) {
           this.$overlay.off('.zf.reveal').on('click.zf.reveal', function (e) {
-            if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) {
+            if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target) || !$.contains(document, e.target)) {
               return;
             }
             _this.close();
@@ -4942,7 +5009,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'open',
       value: function open() {
-        var _this2 = this;
+        var _this3 = this;
 
         if (this.options.deepLink) {
           var hash = '#' + this.id;
@@ -4968,6 +5035,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.$overlay) {
           this.$overlay.css({ 'visibility': '' }).hide();
+          if (this.$element.hasClass('fast')) {
+            this.$overlay.addClass('fast');
+          } else if (this.$element.hasClass('slow')) {
+            this.$overlay.addClass('slow');
+          }
         }
 
         if (!this.options.multipleOpened) {
@@ -4979,14 +5051,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.$element.trigger('closeme.zf.reveal', this.id);
         }
 
+        var _this = this;
+
+        function addRevealOpenClasses() {
+          if (_this.isMobile) {
+            if (!_this.originalScrollPos) {
+              _this.originalScrollPos = window.pageYOffset;
+            }
+            $('html, body').addClass('is-reveal-open');
+          } else {
+            $('body').addClass('is-reveal-open');
+          }
+        }
         // Motion UI method of reveal
         if (this.options.animationIn) {
-          if (this.options.overlay) {
-            Foundation.Motion.animateIn(this.$overlay, 'fade-in');
-          }
-          Foundation.Motion.animateIn(this.$element, this.options.animationIn, function () {
-            _this2.focusableElements = Foundation.Keyboard.findFocusable(_this2.$element);
-          });
+          (function () {
+            var afterAnimation = function afterAnimation() {
+              _this.$element.attr({
+                'aria-hidden': false,
+                'tabindex': -1
+              }).focus();
+              addRevealOpenClasses();
+              Foundation.Keyboard.trapFocus(_this.$element);
+            };
+
+            if (_this3.options.overlay) {
+              Foundation.Motion.animateIn(_this3.$overlay, 'fade-in');
+            }
+            Foundation.Motion.animateIn(_this3.$element, _this3.options.animationIn, function () {
+              if (_this3.$element) {
+                // protect against object having been removed
+                _this3.focusableElements = Foundation.Keyboard.findFocusable(_this3.$element);
+                afterAnimation();
+              }
+            });
+          })();
         }
         // jQuery method of reveal
         else {
@@ -5001,6 +5100,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           'aria-hidden': false,
           'tabindex': -1
         }).focus();
+        Foundation.Keyboard.trapFocus(this.$element);
 
         /**
          * Fires when the modal has successfully opened.
@@ -5008,17 +5108,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
          */
         this.$element.trigger('open.zf.reveal');
 
-        if (this.isiOS) {
-          var scrollPos = window.pageYOffset;
-          $('html, body').addClass('is-reveal-open').scrollTop(scrollPos);
-        } else {
-          $('body').addClass('is-reveal-open');
-        }
-
-        $('body').addClass('is-reveal-open').attr('aria-hidden', this.options.overlay || this.options.fullScreen ? true : false);
+        addRevealOpenClasses();
 
         setTimeout(function () {
-          _this2._extraHandlers();
+          _this3._extraHandlers();
         }, 0);
       }
 
@@ -5031,11 +5124,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_extraHandlers',
       value: function _extraHandlers() {
         var _this = this;
+        if (!this.$element) {
+          return;
+        } // If we're in the middle of cleanup, don't freak out
         this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
 
         if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
           $('body').on('click.zf.reveal', function (e) {
-            if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) {
+            if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target) || !$.contains(document, e.target)) {
               return;
             }
             _this.close();
@@ -5060,28 +5156,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var $target = $(this);
           // handle keyboard event with keyboard util
           Foundation.Keyboard.handleKey(e, 'Reveal', {
-            tab_forward: function tab_forward() {
-              if (_this.$element.find(':focus').is(_this.focusableElements.eq(-1))) {
-                // left modal downwards, setting focus to first element
-                _this.focusableElements.eq(0).focus();
-                e.preventDefault();
-              }
-              if (_this.focusableElements.length === 0) {
-                // no focusable elements inside the modal at all, prevent tabbing in general
-                e.preventDefault();
-              }
-            },
-            tab_backward: function tab_backward() {
-              if (_this.$element.find(':focus').is(_this.focusableElements.eq(0)) || _this.$element.is(':focus')) {
-                // left modal upwards, setting focus to last element
-                _this.focusableElements.eq(-1).focus();
-                e.preventDefault();
-              }
-              if (_this.focusableElements.length === 0) {
-                // no focusable elements inside the modal at all, prevent tabbing in general
-                e.preventDefault();
-              }
-            },
             open: function open() {
               if (_this.$element.find(':focus').is(_this.$element.find('[data-close]'))) {
                 setTimeout(function () {
@@ -5097,6 +5171,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if (_this.options.closeOnEsc) {
                 _this.close();
                 _this.$anchor.focus();
+              }
+            },
+            handled: function handled(preventDefault) {
+              if (preventDefault) {
+                e.preventDefault();
               }
             }
           });
@@ -5129,13 +5208,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
         // jQuery method of hiding
         else {
+
+            this.$element.hide(this.options.hideDelay);
+
             if (this.options.overlay) {
               this.$overlay.hide(0, finishUp);
             } else {
               finishUp();
             }
-
-            this.$element.hide(this.options.hideDelay);
           }
 
         // Conditionals to remove extra event listeners added on open
@@ -5150,16 +5230,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.off('keydown.zf.reveal');
 
         function finishUp() {
-          if (_this.isiOS) {
-            $('html, body').removeClass('is-reveal-open');
+          if (_this.isMobile) {
+            if ($('.reveal:visible').length === 0) {
+              $('html, body').removeClass('is-reveal-open');
+            }
+            if (_this.originalScrollPos) {
+              $('body').scrollTop(_this.originalScrollPos);
+              _this.originalScrollPos = null;
+            }
           } else {
-            $('body').removeClass('is-reveal-open');
+            if ($('.reveal:visible').length === 0) {
+              $('body').removeClass('is-reveal-open');
+            }
           }
 
-          $('body').attr({
-            'aria-hidden': false,
-            'tabindex': ''
-          });
+          Foundation.Keyboard.releaseFocus(_this.$element);
 
           _this.$element.attr('aria-hidden', true);
 
@@ -5181,7 +5266,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.isActive = false;
         if (_this.options.deepLink) {
           if (window.history.replaceState) {
-            window.history.replaceState("", document.title, window.location.pathname);
+            window.history.replaceState('', document.title, window.location.href.replace('#' + this.id, ''));
           } else {
             window.location.hash = '';
           }
@@ -5212,7 +5297,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
        */
       value: function destroy() {
         if (this.options.overlay) {
-          this.$element.appendTo($('body')); // move $element outside of $overlay to prevent error unregisterPlugin()
+          this.$element.appendTo($(this.options.appendTo)); // move $element outside of $overlay to prevent error unregisterPlugin()
           this.$overlay.hide().off().remove();
         }
         this.$element.hide().off();
@@ -5230,87 +5315,109 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.
      * @option
-     * @example 'slide-in-left'
+     * @type {string}
+     * @default ''
      */
     animationIn: '',
     /**
      * Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.
      * @option
-     * @example 'slide-out-right'
+     * @type {string}
+     * @default ''
      */
     animationOut: '',
     /**
      * Time, in ms, to delay the opening of a modal after a click if no animation used.
      * @option
-     * @example 10
+     * @type {number}
+     * @default 0
      */
     showDelay: 0,
     /**
      * Time, in ms, to delay the closing of a modal after a click if no animation used.
      * @option
-     * @example 10
+     * @type {number}
+     * @default 0
      */
     hideDelay: 0,
     /**
      * Allows a click on the body/overlay to close the modal.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     closeOnClick: true,
     /**
      * Allows the modal to close if the user presses the `ESCAPE` key.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     closeOnEsc: true,
     /**
      * If true, allows multiple modals to be displayed at once.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     multipleOpened: false,
     /**
      * Distance, in pixels, the modal should push down from the top of the screen.
      * @option
-     * @example auto
+     * @type {number|string}
+     * @default auto
      */
     vOffset: 'auto',
     /**
      * Distance, in pixels, the modal should push in from the side of the screen.
      * @option
-     * @example auto
+     * @type {number|string}
+     * @default auto
      */
     hOffset: 'auto',
     /**
      * Allows the modal to be fullscreen, completely blocking out the rest of the view. JS checks for this as well.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     fullScreen: false,
     /**
      * Percentage of screen height the modal should push up from the bottom of the view.
      * @option
-     * @example 10
+     * @type {number}
+     * @default 10
      */
     btmOffsetPct: 10,
     /**
      * Allows the modal to generate an overlay div, which will cover the view when modal opens.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     overlay: true,
     /**
      * Allows the modal to remove and reinject markup on close. Should be true if using video elements w/o using provider's api, otherwise, videos will continue to play in the background.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     resetOnClose: false,
     /**
      * Allows the modal to alter the url on open/close, and allows the use of the `back` button to close modals. ALSO, allows a modal to auto-maniacally open on page load IF the hash === the modal's user-set id.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
-    deepLink: false
+    deepLink: false,
+    /**
+    * Allows the modal to append to custom div.
+    * @option
+    * @type {string}
+    * @default "body"
+    */
+    appendTo: "body"
+
   };
 
   // Window exports
@@ -5319,6 +5426,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   function iPhoneSniff() {
     return (/iP(ad|hone|od).*OS/.test(window.navigator.userAgent)
     );
+  }
+
+  function androidSniff() {
+    return (/Android/.test(window.navigator.userAgent)
+    );
+  }
+
+  function mobileSniff() {
+    return iPhoneSniff() || androidSniff();
   }
 }(jQuery);
 'use strict';
@@ -5375,11 +5491,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$container = $parent.length ? $parent : $(this.options.container).wrapInner(this.$element);
         this.$container.addClass(this.options.containerClass);
 
-        this.$element.addClass(this.options.stickyClass).attr({ 'data-resize': id });
+        this.$element.addClass(this.options.stickyClass).attr({ 'data-resize': id, 'data-mutate': id });
+        if (this.options.anchor !== '') {
+          $('#' + _this.options.anchor).attr({ 'data-mutate': id });
+        }
 
         this.scrollCount = this.options.checkEvery;
         this.isStuck = false;
         $(window).one('load.zf.sticky', function () {
+          //We calculate the container height to have correct values for anchor points offset calculation.
+          _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
+          _this.$container.css('height', _this.containerHeight);
+          _this.elemHeight = _this.containerHeight;
           if (_this.options.anchor !== '') {
             _this.$anchor = $('#' + _this.options.anchor);
           } else {
@@ -5387,7 +5510,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
 
           _this._setSizes(function () {
-            _this._calc(false);
+            var scroll = window.pageYOffset;
+            _this._calc(false, scroll);
+            //Unstick the element will ensure that proper classes are set.
+            if (!_this.isStuck) {
+              _this._removeSticky(scroll >= _this.topPoint ? false : true);
+            }
           });
           _this._events(id.split('-').reverse().join('-'));
         });
@@ -5402,29 +5530,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_parsePoints',
       value: function _parsePoints() {
-        var top = this.options.topAnchor,
-            btm = this.options.btmAnchor,
+        var top = this.options.topAnchor == "" ? 1 : this.options.topAnchor,
+            btm = this.options.btmAnchor == "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
             pts = [top, btm],
             breaks = {};
-        if (top && btm) {
+        for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
+          var pt;
+          if (typeof pts[i] === 'number') {
+            pt = pts[i];
+          } else {
+            var place = pts[i].split(':'),
+                anchor = $('#' + place[0]);
 
-          for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
-            var pt;
-            if (typeof pts[i] === 'number') {
-              pt = pts[i];
-            } else {
-              var place = pts[i].split(':'),
-                  anchor = $('#' + place[0]);
-
-              pt = anchor.offset().top;
-              if (place[1] && place[1].toLowerCase() === 'bottom') {
-                pt += anchor[0].getBoundingClientRect().height;
-              }
+            pt = anchor.offset().top;
+            if (place[1] && place[1].toLowerCase() === 'bottom') {
+              pt += anchor[0].getBoundingClientRect().height;
             }
-            breaks[i] = pt;
           }
-        } else {
-          breaks = { 0: 1, 1: document.documentElement.scrollHeight };
+          breaks[i] = pt;
         }
 
         this.points = breaks;
@@ -5461,16 +5584,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this.$element.off('resizeme.zf.trigger').on('resizeme.zf.trigger', function (e, el) {
-          _this._setSizes(function () {
-            _this._calc(false);
-            if (_this.canStick) {
-              if (!_this.isOn) {
-                _this._events(id);
-              }
-            } else if (_this.isOn) {
-              _this._pauseListeners(scrollListener);
-            }
+          _this._eventsHandler(id);
+        });
+
+        this.$element.on('mutateme.zf.trigger', function (e, el) {
+          _this._eventsHandler(id);
+        });
+
+        if (this.$anchor) {
+          this.$anchor.on('mutateme.zf.trigger', function (e, el) {
+            _this._eventsHandler(id);
           });
+        }
+      }
+
+      /**
+       * Handler for events.
+       * @private
+       * @param {String} id - psuedo-random id for unique scroll event listener.
+       */
+
+    }, {
+      key: '_eventsHandler',
+      value: function _eventsHandler(id) {
+        var _this = this,
+            scrollListener = this.scrollListener = 'scroll.zf.' + id;
+
+        _this._setSizes(function () {
+          _this._calc(false);
+          if (_this.canStick) {
+            if (!_this.isOn) {
+              _this._events(id);
+            }
+          } else if (_this.isOn) {
+            _this._pauseListeners(scrollListener);
+          }
         });
       }
 
@@ -5547,7 +5695,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_setSticky',
       value: function _setSticky() {
-        var stickTo = this.options.stickTo,
+        var _this = this,
+            stickTo = this.options.stickTo,
             mrgn = stickTo === 'top' ? 'marginTop' : 'marginBottom',
             notStuckTo = stickTo === 'top' ? 'bottom' : 'top',
             css = {};
@@ -5555,7 +5704,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         css[mrgn] = this.options[mrgn] + 'em';
         css[stickTo] = 0;
         css[notStuckTo] = 'auto';
-        css['left'] = this.$container.offset().left + parseInt(window.getComputedStyle(this.$container[0])["padding-left"], 10);
         this.isStuck = true;
         this.$element.removeClass('is-anchored is-at-' + notStuckTo).addClass('is-stuck is-at-' + stickTo).css(css)
         /**
@@ -5564,6 +5712,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
          * @event Sticky#stuckto
          */
         .trigger('sticky.zf.stuckto:' + stickTo);
+        this.$element.on("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", function () {
+          _this._setSizes();
+        });
       }
 
       /**
@@ -5588,15 +5739,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         css[mrgn] = 0;
 
-        if (isTop && !stickToTop || stickToTop && !isTop) {
-          css[stickTo] = anchorPt;
-          css[notStuckTo] = 0;
+        css['bottom'] = 'auto';
+        if (isTop) {
+          css['top'] = 0;
         } else {
-          css[stickTo] = 0;
-          css[notStuckTo] = anchorPt;
+          css['top'] = anchorPt;
         }
 
-        css['left'] = '';
         this.isStuck = false;
         this.$element.removeClass('is-stuck is-at-' + stickTo).addClass('is-anchored is-at-' + topOrBottom).css(css)
         /**
@@ -5617,14 +5766,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_setSizes',
       value: function _setSizes(cb) {
-        this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
+        this.canStick = Foundation.MediaQuery.is(this.options.stickyOn);
         if (!this.canStick) {
-          cb();
+          if (cb && typeof cb === 'function') {
+            cb();
+          }
         }
         var _this = this,
             newElemWidth = this.$container[0].getBoundingClientRect().width,
             comp = window.getComputedStyle(this.$container[0]),
-            pdng = parseInt(comp['padding-right'], 10);
+            pdngl = parseInt(comp['padding-left'], 10),
+            pdngr = parseInt(comp['padding-right'], 10);
 
         if (this.$anchor && this.$anchor.length) {
           this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
@@ -5633,22 +5785,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this.$element.css({
-          'max-width': newElemWidth - pdng + 'px'
+          'max-width': newElemWidth - pdngl - pdngr + 'px'
         });
 
         var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+        if (this.$element.css("display") == "none") {
+          newContainerHeight = 0;
+        }
         this.containerHeight = newContainerHeight;
         this.$container.css({
           height: newContainerHeight
         });
         this.elemHeight = newContainerHeight;
 
-        if (this.isStuck) {
-          this.$element.css({ "left": this.$container.offset().left + parseInt(comp['padding-left'], 10) });
+        if (!this.isStuck) {
+          if (this.$element.hasClass('is-at-bottom')) {
+            var anchorPt = (this.points ? this.points[1] - this.$container.offset().top : this.anchorHeight) - this.elemHeight;
+            this.$element.css('top', anchorPt);
+          }
         }
 
         this._setBreakPoints(newContainerHeight, function () {
-          if (cb) {
+          if (cb && typeof cb === 'function') {
             cb();
           }
         });
@@ -5665,7 +5823,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_setBreakPoints',
       value: function _setBreakPoints(elemHeight, cb) {
         if (!this.canStick) {
-          if (cb) {
+          if (cb && typeof cb === 'function') {
             cb();
           } else {
             return false;
@@ -5693,7 +5851,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.topPoint = topPoint;
         this.bottomPoint = bottomPoint;
 
-        if (cb) {
+        if (cb && typeof cb === 'function') {
           cb();
         }
       }
@@ -5715,9 +5873,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           top: '',
           bottom: '',
           'max-width': ''
-        }).off('resizeme.zf.trigger');
-
-        this.$anchor.off('change.zf.sticky');
+        }).off('resizeme.zf.trigger').off('mutateme.zf.trigger');
+        if (this.$anchor && this.$anchor.length) {
+          this.$anchor.off('change.zf.sticky');
+        }
         $(window).off(this.scrollListener);
 
         if (this.wasWrapped) {
@@ -5738,67 +5897,78 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Customizable container template. Add your own classes for styling and sizing.
      * @option
-     * @example '&lt;div data-sticky-container class="small-6 columns"&gt;&lt;/div&gt;'
+     * @type {string}
+     * @default '&lt;div data-sticky-container&gt;&lt;/div&gt;'
      */
     container: '<div data-sticky-container></div>',
     /**
-     * Location in the view the element sticks to.
+     * Location in the view the element sticks to. Can be `'top'` or `'bottom'`.
      * @option
-     * @example 'top'
+     * @type {string}
+     * @default 'top'
      */
     stickTo: 'top',
     /**
      * If anchored to a single element, the id of that element.
      * @option
-     * @example 'exampleId'
+     * @type {string}
+     * @default ''
      */
     anchor: '',
     /**
      * If using more than one element as anchor points, the id of the top anchor.
      * @option
-     * @example 'exampleId:top'
+     * @type {string}
+     * @default ''
      */
     topAnchor: '',
     /**
      * If using more than one element as anchor points, the id of the bottom anchor.
      * @option
-     * @example 'exampleId:bottom'
+     * @type {string}
+     * @default ''
      */
     btmAnchor: '',
     /**
      * Margin, in `em`'s to apply to the top of the element when it becomes sticky.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     marginTop: 1,
     /**
      * Margin, in `em`'s to apply to the bottom of the element when it becomes sticky.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     marginBottom: 1,
     /**
      * Breakpoint string that is the minimum screen size an element should become sticky.
      * @option
-     * @example 'medium'
+     * @type {string}
+     * @default 'medium'
      */
     stickyOn: 'medium',
     /**
      * Class applied to sticky element, and removed on destruction. Foundation defaults to `sticky`.
      * @option
-     * @example 'sticky'
+     * @type {string}
+     * @default 'sticky'
      */
     stickyClass: 'sticky',
     /**
      * Class applied to sticky container. Foundation defaults to `sticky-container`.
      * @option
-     * @example 'sticky-container'
+     * @type {string}
+     * @default 'sticky-container'
      */
     containerClass: 'sticky-container',
     /**
      * Number of scroll events between the plugin's recalculating sticky points. Setting it to `0` will cause it to recalc every scroll event, setting it to `-1` will prevent recalc on scroll.
      * @option
-     * @example 50
+     * @type {number}
+     * @default -1
      */
     checkEvery: -1
   };
@@ -5869,15 +6039,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     _createClass(Tabs, [{
       key: '_init',
       value: function _init() {
+        var _this2 = this;
+
         var _this = this;
 
+        this.$element.attr({ 'role': 'tablist' });
         this.$tabTitles = this.$element.find('.' + this.options.linkClass);
         this.$tabContent = $('[data-tabs-content="' + this.$element[0].id + '"]');
 
         this.$tabTitles.each(function () {
           var $elem = $(this),
               $link = $elem.find('a'),
-              isActive = $elem.hasClass('is-active'),
+              isActive = $elem.hasClass('' + _this.options.linkActiveClass),
               hash = $link[0].hash.slice(1),
               linkId = $link[0].id ? $link[0].id : hash + '-label',
               $tabContent = $('#' + hash);
@@ -5898,10 +6071,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
 
           if (isActive && _this.options.autoFocus) {
-            $link.focus();
+            $(window).load(function () {
+              $('html, body').animate({ scrollTop: $elem.offset().top }, _this.options.deepLinkSmudgeDelay, function () {
+                $link.focus();
+              });
+            });
           }
         });
-
         if (this.options.matchHeight) {
           var $images = this.$tabContent.find('img');
 
@@ -5910,6 +6086,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           } else {
             this._setHeight();
           }
+        }
+
+        //current context-bound function to open tabs on page load or history popstate
+        this._checkDeepLink = function () {
+          var anchor = window.location.hash;
+          //need a hash and a relevant anchor in this tabset
+          if (anchor.length) {
+            var $link = _this2.$element.find('[href$="' + anchor + '"]');
+            if ($link.length) {
+              _this2.selectTab($(anchor), true);
+
+              //roll up a little to show the titles
+              if (_this2.options.deepLinkSmudge) {
+                var offset = _this2.$element.offset();
+                $('html, body').animate({ scrollTop: offset.top }, _this2.options.deepLinkSmudgeDelay);
+              }
+
+              /**
+                * Fires when the zplugin has deeplinked at pageload
+                * @event Tabs#deeplink
+                */
+              _this2.$element.trigger('deeplink.zf.tabs', [$link, $(anchor)]);
+            }
+          }
+        };
+
+        //use browser to open a tab, if it exists in this tabset
+        if (this.options.deepLink) {
+          this._checkDeepLink();
         }
 
         this._events();
@@ -5925,9 +6130,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _events() {
         this._addKeyHandler();
         this._addClickHandler();
+        this._setHeightMqHandler = null;
 
         if (this.options.matchHeight) {
-          $(window).on('changed.zf.mediaquery', this._setHeight.bind(this));
+          this._setHeightMqHandler = this._setHeight.bind(this);
+
+          $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
+        }
+
+        if (this.options.deepLink) {
+          $(window).on('popstate', this._checkDeepLink);
         }
       }
 
@@ -5944,9 +6156,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.off('click.zf.tabs').on('click.zf.tabs', '.' + this.options.linkClass, function (e) {
           e.preventDefault();
           e.stopPropagation();
-          if ($(this).hasClass('is-active')) {
-            return;
-          }
           _this._handleTabChange($(this));
         });
       }
@@ -5960,13 +6169,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_addKeyHandler',
       value: function _addKeyHandler() {
         var _this = this;
-        var $firstTab = _this.$element.find('li:first-of-type');
-        var $lastTab = _this.$element.find('li:last-of-type');
 
         this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function (e) {
           if (e.which === 9) return;
-          e.stopPropagation();
-          e.preventDefault();
 
           var $element = $(this),
               $elements = $element.parent('ul').children('li'),
@@ -5999,50 +6204,119 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             next: function next() {
               $nextElement.find('[role="tab"]').focus();
               _this._handleTabChange($nextElement);
+            },
+            handled: function handled() {
+              e.stopPropagation();
+              e.preventDefault();
             }
           });
         });
       }
 
       /**
-       * Opens the tab `$targetContent` defined by `$target`.
+       * Opens the tab `$targetContent` defined by `$target`. Collapses active tab.
        * @param {jQuery} $target - Tab to open.
+       * @param {boolean} historyHandled - browser has already handled a history update
        * @fires Tabs#change
        * @function
        */
 
     }, {
       key: '_handleTabChange',
-      value: function _handleTabChange($target) {
-        var $tabLink = $target.find('[role="tab"]'),
+      value: function _handleTabChange($target, historyHandled) {
+
+        /**
+         * Check for active class on target. Collapse if exists.
+         */
+        if ($target.hasClass('' + this.options.linkActiveClass)) {
+          if (this.options.activeCollapse) {
+            this._collapseTab($target);
+
+            /**
+             * Fires when the zplugin has successfully collapsed tabs.
+             * @event Tabs#collapse
+             */
+            this.$element.trigger('collapse.zf.tabs', [$target]);
+          }
+          return;
+        }
+
+        var $oldTab = this.$element.find('.' + this.options.linkClass + '.' + this.options.linkActiveClass),
+            $tabLink = $target.find('[role="tab"]'),
             hash = $tabLink[0].hash,
-            $targetContent = this.$tabContent.find(hash),
-            $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active').removeClass('is-active').find('[role="tab"]').attr({ 'aria-selected': 'false' });
+            $targetContent = this.$tabContent.find(hash);
 
-        $('#' + $oldTab.attr('aria-controls')).removeClass('is-active').attr({ 'aria-hidden': 'true' });
+        //close old tab
+        this._collapseTab($oldTab);
 
-        $target.addClass('is-active');
+        //open new tab
+        this._openTab($target);
 
-        $tabLink.attr({ 'aria-selected': 'true' });
+        //either replace or update browser history
+        if (this.options.deepLink && !historyHandled) {
+          var anchor = $target.find('a').attr('href');
 
-        $targetContent.addClass('is-active').attr({ 'aria-hidden': 'false' });
+          if (this.options.updateHistory) {
+            history.pushState({}, '', anchor);
+          } else {
+            history.replaceState({}, '', anchor);
+          }
+        }
 
         /**
          * Fires when the plugin has successfully changed tabs.
          * @event Tabs#change
          */
-        this.$element.trigger('change.zf.tabs', [$target]);
+        this.$element.trigger('change.zf.tabs', [$target, $targetContent]);
+
+        //fire to children a mutation event
+        $targetContent.find("[data-mutate]").trigger("mutateme.zf.trigger");
+      }
+
+      /**
+       * Opens the tab `$targetContent` defined by `$target`.
+       * @param {jQuery} $target - Tab to Open.
+       * @function
+       */
+
+    }, {
+      key: '_openTab',
+      value: function _openTab($target) {
+        var $tabLink = $target.find('[role="tab"]'),
+            hash = $tabLink[0].hash,
+            $targetContent = this.$tabContent.find(hash);
+
+        $target.addClass('' + this.options.linkActiveClass);
+
+        $tabLink.attr({ 'aria-selected': 'true' });
+
+        $targetContent.addClass('' + this.options.panelActiveClass).attr({ 'aria-hidden': 'false' });
+      }
+
+      /**
+       * Collapses `$targetContent` defined by `$target`.
+       * @param {jQuery} $target - Tab to Open.
+       * @function
+       */
+
+    }, {
+      key: '_collapseTab',
+      value: function _collapseTab($target) {
+        var $target_anchor = $target.removeClass('' + this.options.linkActiveClass).find('[role="tab"]').attr({ 'aria-selected': 'false' });
+
+        $('#' + $target_anchor.attr('aria-controls')).removeClass('' + this.options.panelActiveClass).attr({ 'aria-hidden': 'true' });
       }
 
       /**
        * Public method for selecting a content pane to display.
        * @param {jQuery | String} elem - jQuery object or string of the id of the pane to display.
+       * @param {boolean} historyHandled - browser has already handled a history update
        * @function
        */
 
     }, {
       key: 'selectTab',
-      value: function selectTab(elem) {
+      value: function selectTab(elem, historyHandled) {
         var idStr;
 
         if ((typeof elem === 'undefined' ? 'undefined' : _typeof(elem)) === 'object') {
@@ -6055,9 +6329,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           idStr = '#' + idStr;
         }
 
-        var $target = this.$tabTitles.find('[href="' + idStr + '"]').parent('.' + this.options.linkClass);
+        var $target = this.$tabTitles.find('[href$="' + idStr + '"]').parent('.' + this.options.linkClass);
 
-        this._handleTabChange($target);
+        this._handleTabChange($target, historyHandled);
       }
     }, {
       key: '_setHeight',
@@ -6066,14 +6340,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
        * Sets the height of each panel to the height of the tallest panel.
        * If enabled in options, gets called on media query change.
        * If loading content via external source, can be called directly or with _reflow.
+       * If enabled with `data-match-height="true"`, tabs sets to equal height
        * @function
        * @private
        */
       value: function _setHeight() {
-        var max = 0;
+        var max = 0,
+            _this = this; // Lock down the `this` value for the root tabs object
+
         this.$tabContent.find('.' + this.options.panelClass).css('height', '').each(function () {
+
           var panel = $(this),
-              isActive = panel.hasClass('is-active');
+              isActive = panel.hasClass('' + _this.options.panelActiveClass); // get the options from the parent instead of trying to get them from the child
 
           if (!isActive) {
             panel.css({ 'visibility': 'hidden', 'display': 'block' });
@@ -6103,7 +6381,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.find('.' + this.options.linkClass).off('.zf.tabs').hide().end().find('.' + this.options.panelClass).hide();
 
         if (this.options.matchHeight) {
-          $(window).off('changed.zf.mediaquery');
+          if (this._setHeightMqHandler != null) {
+            $(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
+          }
+        }
+
+        if (this.options.deepLink) {
+          $(window).off('popstate', this._checkDeepLink);
         }
 
         Foundation.unregisterPlugin(this);
@@ -6115,44 +6399,102 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   Tabs.defaults = {
     /**
-     * Allows the window to scroll to content of active pane on load if set to true.
+     * Allows the window to scroll to content of pane specified by hash anchor
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
+     */
+    deepLink: false,
+
+    /**
+     * Adjust the deep link scroll to make sure the top of the tab panel is visible
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    deepLinkSmudge: false,
+
+    /**
+     * Animation time (ms) for the deep link adjustment
+     * @option
+     * @type {number}
+     * @default 300
+     */
+    deepLinkSmudgeDelay: 300,
+
+    /**
+     * Update the browser history with the open tab
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    updateHistory: false,
+
+    /**
+     * Allows the window to scroll to content of active pane on load if set to true.
+     * Not recommended if more than one tab panel per page.
+     * @option
+     * @type {boolean}
+     * @default false
      */
     autoFocus: false,
 
     /**
      * Allows keyboard input to 'wrap' around the tab links.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     wrapOnKeys: true,
 
     /**
      * Allows the tab content panes to match heights if set to true.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     matchHeight: false,
 
     /**
+     * Allows active tabs to collapse when clicked.
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    activeCollapse: false,
+
+    /**
      * Class applied to `li`'s in tab link list.
      * @option
-     * @example 'tabs-title'
+     * @type {string}
+     * @default 'tabs-title'
      */
     linkClass: 'tabs-title',
 
     /**
+     * Class applied to the active `li` in tab link list.
+     * @option
+     * @type {string}
+     * @default 'is-active'
+     */
+    linkActiveClass: 'is-active',
+
+    /**
      * Class applied to the content containers.
      * @option
-     * @example 'tabs-panel'
+     * @type {string}
+     * @default 'tabs-panel'
      */
-    panelClass: 'tabs-panel'
-  };
+    panelClass: 'tabs-panel',
 
-  function checkClass($elem) {
-    return $elem.hasClass('is-active');
-  }
+    /**
+     * Class applied to the active content container.
+     * @option
+     * @type {string}
+     * @default 'is-active'
+     */
+    panelActiveClass: 'is-active'
+  };
 
   // Window exports
   Foundation.plugin(Tabs, 'Tabs');
@@ -6271,6 +6613,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this._updateARIA(isOn);
+        this.$element.find('[data-mutate]').trigger('mutateme.zf.trigger');
       }
     }, {
       key: '_toggleAnimate',
@@ -6281,11 +6624,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           Foundation.Motion.animateIn(this.$element, this.animationIn, function () {
             _this._updateARIA(true);
             this.trigger('on.zf.toggler');
+            this.find('[data-mutate]').trigger('mutateme.zf.trigger');
           });
         } else {
           Foundation.Motion.animateOut(this.$element, this.animationOut, function () {
             _this._updateARIA(false);
             this.trigger('off.zf.toggler');
+            this.find('[data-mutate]').trigger('mutateme.zf.trigger');
           });
         }
       }
@@ -6315,7 +6660,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Tells the plugin if the element should animated when toggled.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     animate: false
   };
@@ -6335,6 +6681,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * Tooltip module.
    * @module foundation.tooltip
    * @requires foundation.util.box
+   * @requires foundation.util.mediaQuery
    * @requires foundation.util.triggers
    */
 
@@ -6371,11 +6718,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _init() {
         var elemId = this.$element.attr('aria-describedby') || Foundation.GetYoDigits(6, 'tooltip');
 
-        this.options.positionClass = this._getPositionClass(this.$element);
+        this.options.positionClass = this.options.positionClass || this._getPositionClass(this.$element);
         this.options.tipText = this.options.tipText || this.$element.attr('title');
         this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
-        this.template.appendTo(document.body).text(this.options.tipText).hide();
+        if (this.options.allowHtml) {
+          this.template.appendTo(document.body).html(this.options.tipText).hide();
+        } else {
+          this.template.appendTo(document.body).text(this.options.tipText).hide();
+        }
 
         this.$element.attr({
           'title': '',
@@ -6383,7 +6734,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           'data-yeti-box': elemId,
           'data-toggle': elemId,
           'data-resize': elemId
-        }).addClass(this.triggerClass);
+        }).addClass(this.options.triggerClass);
 
         //helper variables to track movement on collisions
         this.usedPositions = [];
@@ -6512,7 +6863,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'show',
       value: function show() {
-        if (this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)) {
+        if (this.options.showOn !== 'all' && !Foundation.MediaQuery.is(this.options.showOn)) {
           // console.error('The screen is too small to display this tooltip');
           return false;
         }
@@ -6598,7 +6949,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }).on('mouseleave.zf.tooltip', function (e) {
             clearTimeout(_this.timeout);
-            if (!isFocus || !_this.isClick && _this.options.clickOpen) {
+            if (!isFocus || _this.isClick && !_this.options.clickOpen) {
               _this.hide();
             }
           });
@@ -6608,7 +6959,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.$element.on('mousedown.zf.tooltip', function (e) {
             e.stopImmediatePropagation();
             if (_this.isClick) {
-              _this.hide();
+              //_this.hide();
               // _this.isClick = false;
             } else {
                 _this.isClick = true;
@@ -6616,6 +6967,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   _this.show();
                 }
               }
+          });
+        } else {
+          this.$element.on('mousedown.zf.tooltip', function (e) {
+            e.stopImmediatePropagation();
+            _this.isClick = true;
           });
         }
 
@@ -6633,11 +6989,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.$element.on('focus.zf.tooltip', function (e) {
           isFocus = true;
-          // console.log(_this.isClick);
           if (_this.isClick) {
+            // If we're not showing open on clicks, we need to pretend a click-launched focus isn't
+            // a real focus, otherwise on hover and come back we get bad behavior
+            if (!_this.options.clickOpen) {
+              isFocus = false;
+            }
             return false;
           } else {
-            // $(window)
             _this.show();
           }
         }).on('focusout.zf.tooltip', function (e) {
@@ -6674,9 +7033,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'destroy',
       value: function destroy() {
-        this.$element.attr('title', this.template.text()).off('.zf.trigger .zf.tootip')
-        //  .removeClass('has-tip')
-        .removeAttr('aria-describedby').removeAttr('data-yeti-box').removeAttr('data-toggle').removeAttr('data-resize');
+        this.$element.attr('title', this.template.text()).off('.zf.trigger .zf.tooltip').removeClass('has-tip top right left').removeAttr('aria-describedby aria-haspopup data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
 
         this.template.remove();
 
@@ -6692,88 +7049,110 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Time, in ms, before a tooltip should open on hover.
      * @option
-     * @example 200
+     * @type {number}
+     * @default 200
      */
     hoverDelay: 200,
     /**
      * Time, in ms, a tooltip should take to fade into view.
      * @option
-     * @example 150
+     * @type {number}
+     * @default 150
      */
     fadeInDuration: 150,
     /**
      * Time, in ms, a tooltip should take to fade out of view.
      * @option
-     * @example 150
+     * @type {number}
+     * @default 150
      */
     fadeOutDuration: 150,
     /**
      * Disables hover events from opening the tooltip if set to true
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     disableHover: false,
     /**
      * Optional addtional classes to apply to the tooltip template on init.
      * @option
-     * @example 'my-cool-tip-class'
+     * @type {string}
+     * @default ''
      */
     templateClasses: '',
     /**
      * Non-optional class added to tooltip templates. Foundation default is 'tooltip'.
      * @option
-     * @example 'tooltip'
+     * @type {string}
+     * @default 'tooltip'
      */
     tooltipClass: 'tooltip',
     /**
      * Class applied to the tooltip anchor element.
      * @option
-     * @example 'has-tip'
+     * @type {string}
+     * @default 'has-tip'
      */
     triggerClass: 'has-tip',
     /**
      * Minimum breakpoint size at which to open the tooltip.
      * @option
-     * @example 'small'
+     * @type {string}
+     * @default 'small'
      */
     showOn: 'small',
     /**
      * Custom template to be used to generate markup for tooltip.
      * @option
-     * @example '&lt;div class="tooltip"&gt;&lt;/div&gt;'
+     * @type {string}
+     * @default ''
      */
     template: '',
     /**
      * Text displayed in the tooltip template on open.
      * @option
-     * @example 'Some cool space fact here.'
+     * @type {string}
+     * @default ''
      */
     tipText: '',
     touchCloseText: 'Tap to close.',
     /**
      * Allows the tooltip to remain open if triggered with a click or touch event.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     clickOpen: true,
     /**
      * Additional positioning classes, set by the JS
      * @option
-     * @example 'top'
+     * @type {string}
+     * @default ''
      */
     positionClass: '',
     /**
      * Distance, in pixels, the template should push away from the anchor on the Y axis.
      * @option
-     * @example 10
+     * @type {number}
+     * @default 10
      */
     vOffset: 10,
     /**
      * Distance, in pixels, the template should push away from the anchor on the X axis, if aligned to a side.
      * @option
-     * @example 12
+     * @type {number}
+     * @default 12
      */
-    hOffset: 12
+    hOffset: 12,
+    /**
+    * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
+    * allowing HTML may open yourself up to XSS attacks.
+    * @option
+    * @type {boolean}
+    * @default false
+    */
+    allowHtml: false
   };
 
   /**
