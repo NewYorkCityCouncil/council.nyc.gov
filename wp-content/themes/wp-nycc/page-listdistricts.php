@@ -44,7 +44,7 @@
             </div>
             <div class="columns large-8 xxlarge-12 scrollable">
               <input type="text" class="no-margin search search--no-submit" placeholder="Search the list..." />
-              <table class="full-width table--no-border-spacing">
+              <table class="full-width">
                 <thead>
                   <th><button class="button sort small secondary expanded" data-sort="sort-district">#</button></th>
                   <th colspan="2"><button class="button sort small secondary expanded" data-sort="sort-member">Member</button></th>

@@ -23,7 +23,7 @@
 
       <h4><?php echo esc_attr( get_option('pb_above_district_list') ); ?></h4>
       <div id="districts-list">
-        <table class="full-width table--no-border-spacing">
+        <table class="full-width">
           <thead>
             <th><button class="button sort small secondary expanded" data-sort="sort-district">#</button></th>
             <th colspan="2"><button class="button sort small secondary expanded" data-sort="sort-member">Member</button></th>

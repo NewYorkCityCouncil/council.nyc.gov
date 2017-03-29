@@ -232,6 +232,11 @@ legend {
   }
 }
 
+table {
+  border-collapse: collapse;
+}
+
+
 
 /*--------------------------------------------------
   Menus & Button Groups
@@ -1028,5 +1033,61 @@ $map-height-tall:   rem-calc(400);
   }
   .goog-te-gadget, .goog-te-combo {
     font-family: $body-font-family;
+  }
+}
+
+
+/*--------------------------------------------------
+  Print Styles
+--------------------------------------------------*/
+#map-container,
+#menu-global,
+.responsive-menu-toggle,
+#translation-menu,
+#geolocate-district,
+input.search,
+footer.site-footer {
+  @extend .hide-for-print;
+}
+
+@media print {
+  * {
+    color: black !important;
+    box-shadow:none !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+  }
+  .sticky {
+    margin-top: 0 !important;
+    bottom: auto !important;
+    top: 0 !important;
+    max-width: 100% !important;
+  }
+  table, th, td {
+    border-collapse: collapse !important;
+    border: 1px solid black !important;
+  }
+  #districts-list {
+    td + td,
+    th + th {
+      padding-left: 0.5rem !important;
+    }
+    .sort-district a,
+    .sort-member a {
+      font-size: 1.25rem !important;
+    }
+    a {
+      text-decoration: none !important;
+    }
+    a[href]:after {
+      content: "";
+    }
+    img {
+      height: auto !important;
+      width: 6rem !important;
+    }
+  }
+  .scrollable {
+    overflow: visible !important;
   }
 }
