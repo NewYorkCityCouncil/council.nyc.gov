@@ -52,9 +52,6 @@ function nycc_filter_theme_page_templates( $page_templates, $this, $post ) {
     if ( isset( $page_templates['page-image-header.php'] ) ) {
          unset( $page_templates['page-image-header.php'] );
     }
-    if ( isset( $page_templates['page-initiatives.php'] ) ) {
-         unset( $page_templates['page-initiatives.php'] );
-    }
     if ( isset( $page_templates['page-listdistricts.php'] ) ) {
          unset( $page_templates['page-listdistricts.php'] );
     }

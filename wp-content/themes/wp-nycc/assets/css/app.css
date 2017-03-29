@@ -5533,15 +5533,6 @@ figure {
   color: inherit; }
 
 /*--------------------------------------------------
-  Initiatives
---------------------------------------------------*/
-.initiatives-list > li {
-  margin-bottom: 30px; }
-  @media screen and (min-width: 40em) {
-    .initiatives-list > li {
-      margin-bottom: 60px; } }
-
-/*--------------------------------------------------
   TOC: Table of Contents
 --------------------------------------------------*/
 .table-of-contents-header {

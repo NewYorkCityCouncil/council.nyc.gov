@@ -943,20 +943,6 @@ $map-height-tall:   rem-calc(400);
 
 
 /*--------------------------------------------------
-  Initiatives
---------------------------------------------------*/
-.initiatives-list {
-  & > li {
-    margin-bottom: map-get($grid-column-gutter, medium);;
-    @include breakpoint(medium) {
-      margin-bottom: map-get($grid-column-gutter, large);;
-    }
-
-  }
-}
-
-
-/*--------------------------------------------------
   TOC: Table of Contents
 --------------------------------------------------*/
 
