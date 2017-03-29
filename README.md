@@ -68,6 +68,12 @@ _Note: The `wp-nycc/map_scripts.php` and `wp-nycc-member/pb-map-scripts.php` fil
 
 ---
 
-### Contributors
+## Documentation
+
+All documentation is in the [wiki](https://github.com/NewYorkCityCouncil/council.nyc/wiki), where you can find details on how the themes and plugins function. 
+
+---
+
+## Contributors
 
 Want to add a new feature or update an existing one? The best way to contribute is to submit a pull request on GitHub. Find a bug? Please submit an issue on GitHub. You can also contact us on [Twitter](https://twitter.com/NYCCouncil) and [Facebook](https://www.facebook.com/NYCCouncil/).
