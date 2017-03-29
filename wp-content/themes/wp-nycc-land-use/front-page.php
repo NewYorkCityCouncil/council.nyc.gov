@@ -31,9 +31,9 @@
       <?php endwhile; endif; ?>
 
     </div>
-    <div class="sidebar columns medium-4">
-      <?php get_sidebar(); ?>
-    </div>
+
+    <?php get_sidebar(); ?>
+
   </div>
 
 <?php get_footer(); ?>
