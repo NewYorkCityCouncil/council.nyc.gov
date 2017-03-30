@@ -75,7 +75,7 @@
 
             <div class="row">
               <div class="columns medium-6">
-                <h1 class="site-logo"><a style="font-size:1.25em;"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">New York City Council</a></h1>
+                <h1 class="site-logo"><a href="<?php echo get_permalink( $post->post_parent ); ?>" style="font-size:1.25em;"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">New York City Council</a></h1>
               </div>
               <div class="columns medium-6 text-right">
                 <p class="text-small" style="margin-top: 1.25rem;"><strong>Council Members as of <?php $todayDateTime = date("F j, Y"); echo $todayDateTime ?></strong></p>
