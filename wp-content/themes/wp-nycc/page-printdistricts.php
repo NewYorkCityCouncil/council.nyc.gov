@@ -40,6 +40,7 @@
         padding-left: 0.5rem !important;
         margin-bottom: 1rem !important;
         page-break-inside: avoid !important;
+        font-size: 0.5rem;
       }
       .cm-thumbnail {
         position: relative !important;
@@ -87,7 +88,7 @@
 
             <?php the_content(); ?>
 
-            <div class="row small-up-3 medium-up-8 text-center text-tiny">
+            <div class="row small-up-3 medium-up-8 text-center">
               <?php
 
               // Get all the pages that use the District template
