@@ -157,6 +157,9 @@ if ( is_page_template( 'page-district.php' ) ) {
       });
   });
 
+  // Set the popup var
+  var popup = new L.Popup();
+
   <?php if ( isset($districtNumber) ) { ?>
   // We're on a District/Member page
   var sql = new cartodb.SQL({ user: 'nyc-council', format: 'geojson' });
@@ -183,15 +186,15 @@ if ( is_page_template( 'page-district.php' ) ) {
           animate: false
         })
 
+        currentDistrictLayer.bindPopup(getPopupInfo(<?php echo $districtNumber ?>));
+
       });
 
   <?php } ?>
 
   /**
-   * Set the popups
+   * Get popups info via Carto SQL for map clicks
    */
-
-  var popup = new L.Popup();
 
   map.on('click', function(e) {
 
