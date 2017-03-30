@@ -16,11 +16,9 @@
       <?php the_content(); ?>
 
     </div>
-    <div class="columns medium-4">
 
-      <?php get_sidebar(); ?>
+    <?php get_sidebar(); ?>
 
-    </div>
   </div>
 
   <?php endwhile; endif; ?>
