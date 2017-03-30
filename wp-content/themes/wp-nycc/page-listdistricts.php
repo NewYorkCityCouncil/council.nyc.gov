@@ -73,7 +73,6 @@
 
                   // Loop through the District pages
                   if ( $list_districts->have_posts() ) {
-                    echo '<ul>';
                       while ( $list_districts->have_posts() ) : $list_districts->the_post();
 
                       // Get the District meta
@@ -126,7 +125,6 @@
 
                       endwhile;
                       wp_reset_postdata();
-                      echo '</ul>';
                   }
                   ?>
                 </tbody>
