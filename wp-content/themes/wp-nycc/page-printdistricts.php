@@ -72,7 +72,7 @@
 
             <?php the_content(); ?>
 
-            <div class="row small-up-3 medium-up-6 text-center text-small">
+            <div class="row small-up-3 medium-up-8 text-center text-small">
               <?php
 
               // Get all the pages that use the District template
