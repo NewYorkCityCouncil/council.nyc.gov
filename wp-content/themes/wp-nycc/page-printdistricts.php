@@ -22,8 +22,12 @@
 
     <style>
     @media all {
+      body {
+        background-color: white !important;
+      }
       .site-container {
-        padding: 0 !important;
+        padding: 0 4rem !important;
+        margin: 0 !important;
       }
       .site-logo a {
         text-decoration: none !important;
@@ -32,6 +36,7 @@
         padding-right: 0.5rem !important;
         padding-left: 0.5rem !important;
         margin-bottom: 1rem !important;
+        page-break-inside: avoid !important;
       }
       .cm-thumbnail {
         position: relative !important;
