@@ -22,6 +22,9 @@
 
     <style>
     @media all {
+      .site-container {
+        padding: 0 !important;
+      }
       .site-logo a {
         text-decoration: none !important;
       }
@@ -65,14 +68,18 @@
 
           <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-            <header class="page-header text-center">
-              <h1 class="header-xxlarge site-logo"><a style="font-size:2em;"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">New York City Council</a></h1>
-              <p class="header-small subheader sans-serif"><em>as of <?php $todayDateTime = date("F j, Y"); echo $todayDateTime ?></em></p>
-            </header>
+            <div class="row">
+              <div class="columns medium-6">
+                <h1 class="site-logo"><a style="font-size:1.25em;"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">New York City Council</a></h1>
+              </div>
+              <div class="columns medium-6 text-right">
+                <p class="text-small" style="margin-top: 1.25rem;"><strong>Council Members as of <?php $todayDateTime = date("F j, Y"); echo $todayDateTime ?></strong></p>
+              </div>
+            </div>
 
             <?php the_content(); ?>
 
-            <div class="row small-up-3 medium-up-8 text-center text-small">
+            <div class="row small-up-3 medium-up-8 text-center text-tiny">
               <?php
 
               // Get all the pages that use the District template
