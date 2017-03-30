@@ -25,6 +25,11 @@
       .site-logo a {
         text-decoration: none !important;
       }
+      .cm-column {
+        padding-right: 0.5rem !important;
+        padding-left: 0.5rem !important;
+        margin-bottom: 1rem !important;
+      }
       .cm-thumbnail {
         position: relative !important;
         background-size: cover !important;
@@ -32,7 +37,7 @@
         width: 100% !important;
         height: 0 !important;
         padding-bottom: 150% !important;
-        margin-bottom: 0rem !important;
+        margin-bottom: 0.25rem !important;
         overflow: hidden !important;
       }
       .cm-thumbnail img {
@@ -67,62 +72,60 @@
 
             <?php the_content(); ?>
 
-            <div id="districts-list">
-              <div class="row small-up-3 medium-up-6 text-center text-small">
-                <?php
+            <div class="row small-up-3 medium-up-6 text-center text-small">
+              <?php
 
-                // Get all the pages that use the District template
-                $args = array(
-                  'post_type' => 'page',
-                  'post_status' => 'publish',
-                  'orderby'    => 'menu_order',
-                  'order'      => 'ASC',
-                  'posts_per_page' => '-1',
-                  'meta_query' => array(
-                      array(
-                          'key' => '_wp_page_template',
-                          'value' => 'page-district.php',
-                      )
-                  )
-                );
-                $list_districts = new WP_Query( $args );
+              // Get all the pages that use the District template
+              $args = array(
+                'post_type' => 'page',
+                'post_status' => 'publish',
+                'orderby'    => 'menu_order',
+                'order'      => 'ASC',
+                'posts_per_page' => '-1',
+                'meta_query' => array(
+                    array(
+                        'key' => '_wp_page_template',
+                        'value' => 'page-district.php',
+                    )
+                )
+              );
+              $list_districts = new WP_Query( $args );
 
-                // Loop through the District pages
-                if ( $list_districts->have_posts() ) {
-                  while ( $list_districts->have_posts() ) : $list_districts->the_post();
+              // Loop through the District pages
+              if ( $list_districts->have_posts() ) {
+                while ( $list_districts->have_posts() ) : $list_districts->the_post();
 
-                  // Get the District meta
-                  $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                // Get the District meta
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
 
-                  if ($current_member_site_ID) {
-                    // Switch to the current Member's site
-                    switch_to_blog($current_member_site_ID);
+                if ($current_member_site_ID) {
+                  // Switch to the current Member's site
+                  switch_to_blog($current_member_site_ID);
 
-                    // Get the Member's site meta
-                    $number = get_blog_option($current_member_site_ID,'council_district_number');
-                    $name = get_blog_option($current_member_site_ID,'council_member_name' );
-                    $thumbnail = get_blog_option($current_member_site_ID,'council_member_thumbnail' );
+                  // Get the Member's site meta
+                  $number = get_blog_option($current_member_site_ID,'council_district_number');
+                  $name = get_blog_option($current_member_site_ID,'council_member_name' );
+                  $thumbnail = get_blog_option($current_member_site_ID,'council_member_thumbnail' );
 
-                    restore_current_blog();
-                    wp_reset_postdata();
-                  } else {
-                    $number = $post->menu_order;
-                    $name = 'Vacant';
-                    $thumbnail = null;
-                  }
-                  ?>
-
-                  <div class="column">
-                    <div class="column cm-thumbnail"><?php if ($thumbnail) { ?><img src="<?php echo $thumbnail; ?>"><?php } ?></div>
-                    <strong><?php echo $name; ?></strong><br>District&nbsp;<?php echo $number; ?>
-                  </div>
-
-                  <?php
-                  endwhile;
+                  restore_current_blog();
                   wp_reset_postdata();
+                } else {
+                  $number = $post->menu_order;
+                  $name = 'Vacant';
+                  $thumbnail = null;
                 }
                 ?>
-              </div>
+
+                <div class="column cm-column">
+                  <div class="cm-thumbnail"><?php if ($thumbnail) { ?><img src="<?php echo $thumbnail; ?>"><?php } ?></div>
+                  <strong><?php echo $name; ?></strong><br>District&nbsp;<?php echo $number; ?>
+                </div>
+
+                <?php
+                endwhile;
+                wp_reset_postdata();
+              }
+              ?>
             </div>
 
           </article>
