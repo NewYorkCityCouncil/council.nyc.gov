@@ -32,6 +32,9 @@
       .site-logo a {
         text-decoration: none !important;
       }
+      .site-logo a::after {
+        content: '';
+      }
       .cm-column {
         padding-right: 0.5rem !important;
         padding-left: 0.5rem !important;
