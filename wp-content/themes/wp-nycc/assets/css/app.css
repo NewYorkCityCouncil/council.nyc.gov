@@ -2639,7 +2639,8 @@ kbd {
   #translation-menu,
   #geolocate-district,
   input.search,
-  footer.site-footer {
+  footer.site-footer,
+  .image-header.district-image-header::before {
     display: none !important; }
   table.show-for-print {
     display: table !important; }
@@ -2656,8 +2657,6 @@ kbd {
   a,
   a:visited {
     text-decoration: underline; }
-  a[href]:after {
-    content: " (" attr(href) ")"; }
   .ir a:after,
   a[href^='javascript:']:after,
   a[href^='#']:after {
@@ -5662,14 +5661,24 @@ figure {
     box-shadow: none !important;
     text-shadow: none !important;
     opacity: 1 !important; }
+  .sticky-container {
+    margin-bottom: 1.5rem !important; }
   .sticky {
     margin-top: 0 !important;
     bottom: auto !important;
     top: 0 !important;
     max-width: 100% !important; }
+  .image-header * {
+    position: relative !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important; }
   table, th, td {
     border-collapse: collapse !important;
     border: 1px solid black !important; }
+  .dashicons-before {
+    text-decoration: none; }
   #districts-list td + td,
   #districts-list th + th {
     padding-left: 0.5rem !important; }
@@ -5678,8 +5687,6 @@ figure {
     font-size: 1.25rem !important; }
   #districts-list a {
     text-decoration: none !important; }
-  #districts-list a[href]:after {
-    content: ""; }
   #districts-list img {
     height: auto !important;
     width: 6rem !important; }

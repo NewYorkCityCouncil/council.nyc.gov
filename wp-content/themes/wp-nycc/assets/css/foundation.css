@@ -2634,8 +2634,6 @@ kbd {
   a,
   a:visited {
     text-decoration: underline; }
-  a[href]:after {
-    content: " (" attr(href) ")"; }
   .ir a:after,
   a[href^='javascript:']:after,
   a[href^='#']:after {

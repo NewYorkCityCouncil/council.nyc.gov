@@ -1046,7 +1046,8 @@ $map-height-tall:   rem-calc(400);
 #translation-menu,
 #geolocate-district,
 input.search,
-footer.site-footer {
+footer.site-footer,
+.image-header.district-image-header::before {
   @extend .hide-for-print;
 }
 
@@ -1057,15 +1058,28 @@ footer.site-footer {
     text-shadow: none !important;
     opacity: 1 !important;
   }
+  .sticky-container {
+    margin-bottom: 1.5rem !important;
+  }
   .sticky {
     margin-top: 0 !important;
     bottom: auto !important;
     top: 0 !important;
     max-width: 100% !important;
   }
+  .image-header * {
+    position: relative !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
   table, th, td {
     border-collapse: collapse !important;
     border: 1px solid black !important;
+  }
+  .dashicons-before {
+    text-decoration: none;
   }
   #districts-list {
     td + td,
@@ -1078,9 +1092,6 @@ footer.site-footer {
     }
     a {
       text-decoration: none !important;
-    }
-    a[href]:after {
-      content: "";
     }
     img {
       height: auto !important;
