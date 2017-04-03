@@ -1040,23 +1040,22 @@ $map-height-tall:   rem-calc(400);
 /*--------------------------------------------------
   Print Styles
 --------------------------------------------------*/
-#map-container,
-#menu-global,
-.responsive-menu-toggle,
-#translation-menu,
-#geolocate-district,
-input.search,
-footer.site-footer,
-.image-header.district-image-header::before {
-  @extend .hide-for-print;
-}
-
 @media print {
   * {
     color: black !important;
     box-shadow:none !important;
     text-shadow: none !important;
     opacity: 1 !important;
+  }
+  #map-container,
+  #menu-global,
+  .responsive-menu-toggle,
+  #translation-menu,
+  #geolocate-district,
+  input.search,
+  footer.site-footer,
+  .image-header.district-image-header::before {
+    display: none!important;
   }
   .sticky-container {
     margin-bottom: 1.5rem !important;

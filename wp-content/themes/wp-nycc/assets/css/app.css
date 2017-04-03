@@ -2633,14 +2633,7 @@ kbd {
     text-shadow: none !important; }
   .show-for-print {
     display: block !important; }
-  .hide-for-print, #map-container,
-  #menu-global,
-  .responsive-menu-toggle,
-  #translation-menu,
-  #geolocate-district,
-  input.search,
-  footer.site-footer,
-  .image-header.district-image-header::before {
+  .hide-for-print {
     display: none !important; }
   table.show-for-print {
     display: table !important; }
@@ -5661,6 +5654,15 @@ figure {
     box-shadow: none !important;
     text-shadow: none !important;
     opacity: 1 !important; }
+  #map-container,
+  #menu-global,
+  .responsive-menu-toggle,
+  #translation-menu,
+  #geolocate-district,
+  input.search,
+  footer.site-footer,
+  .image-header.district-image-header::before {
+    display: none !important; }
   .sticky-container {
     margin-bottom: 1.5rem !important; }
   .sticky {
