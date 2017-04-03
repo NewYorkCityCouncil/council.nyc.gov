@@ -10,7 +10,6 @@ require_once(get_stylesheet_directory().'/functions/pages.php');          // Pag
 require_once(get_stylesheet_directory().'/functions/options.php');        // District Options
 // require_once(get_stylesheet_directory().'/functions/contact-info.php');   // Contact Info widget
 require_once(get_stylesheet_directory().'/functions/pb.php');             // Participatory Budgeting
-require_once(get_stylesheet_directory().'/functions/menus.php');          // Menus
 require_once(get_stylesheet_directory().'/functions/widgets.php');        // Widgets
 require_once(get_stylesheet_directory().'/functions/roles.php');          // Roles
 require_once(get_stylesheet_directory().'/functions/theme-support.php');  // Theme Support
