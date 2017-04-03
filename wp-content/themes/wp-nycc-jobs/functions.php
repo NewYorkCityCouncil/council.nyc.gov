@@ -5,9 +5,10 @@ require_once(get_template_directory().'/assets/functions/remove-in-child-theme.p
 
 
 // Jobs-specific functions
-require_once(get_stylesheet_directory().'/functions/pages.php');          // Repurpose pages for Job Opportunities
-require_once(get_stylesheet_directory().'/functions/widgets.php');        // Widgets
-require_once(get_stylesheet_directory().'/functions/jobs-widget.php');    // Jobs Widget
+require_once(get_stylesheet_directory().'/functions/jobs-widget.php');
+require_once(get_stylesheet_directory().'/functions/menus.php');
+require_once(get_stylesheet_directory().'/functions/pages.php');
+require_once(get_stylesheet_directory().'/functions/widgets.php');
 
 
 // Hide admin stuff

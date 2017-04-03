@@ -26,13 +26,6 @@ function remove_admin_bar_links() {
 add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
 
 
-// Remove nav menus
-function nycc_remove_parent_theme_menus () {
-    unregister_nav_menu( 'main-nav' );
-}
-add_action( 'after_setup_theme', 'nycc_remove_parent_theme_menus', 20 );
-
-
 // Remove page templates: committees, caucuses, etc.
 function nycc_filter_theme_page_templates( $page_templates, $this, $post ) {
     $the_theme = wp_get_theme();

@@ -20,6 +20,22 @@ if ( ! function_exists ( 'nycc_main_nav' ) ) {
     }
 }
 
+// Display the sidebar menu
+if ( ! function_exists ( 'nycc_sidebar_nav' ) ) {
+    function nycc_sidebar_nav() {
+        wp_nav_menu(array(
+            'container' => 'div',
+            'container_class' => 'widget district-menu',
+            'menu_class' => 'vertical menu small',
+            'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+            'theme_location' => 'primary',
+            'depth' => 5,
+            'fallback_cb' => false,
+            'walker' => new Main_Menu_Walker()
+        ));
+    }
+  }
+
 class Main_Menu_Walker extends Walker_Nav_Menu {
     function start_lvl(&$output, $depth = 0, $args = Array() ) {
         $indent = str_repeat("\t", $depth);

@@ -9,7 +9,9 @@ require_once(get_stylesheet_directory().'/functions/posts.php');          // Pos
 require_once(get_stylesheet_directory().'/functions/pages.php');          // Pages
 require_once(get_stylesheet_directory().'/functions/widgets.php');        // Widgets
 require_once(get_stylesheet_directory().'/functions/media.php');          // Media
+require_once(get_stylesheet_directory().'/functions/menus.php');          // Menus
 require_once(get_stylesheet_directory().'/functions/roles.php');          // Roles
+
 
 // Hide admin stuff
 function remove_press_menus(){

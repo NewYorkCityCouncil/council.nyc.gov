@@ -4,7 +4,7 @@
 
     nycc_sidebar_nav();
 
-    get_template_part('contact_widget');
+    get_template_part( '../wp-nycc-member/contact_widget' );
 
     if ( is_active_sidebar( 'posts-sidebar' ) ) :
       dynamic_sidebar( 'posts-sidebar' );
