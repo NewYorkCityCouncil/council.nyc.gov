@@ -798,10 +798,14 @@ $map-height-tall:   rem-calc(400);
     margin-bottom: -50px;
   }
 
-  .leaflet-control-attribution {
-    border-radius: 3px 0 0 0;
-    background-color: $off-white !important;
-    box-shadow: -2px -2px 1px rgba(0,0,0,0.2);
+  .leaflet-bar {
+    box-shadow: 0 0 0 0.125rem rgba(0,0,0,0.1);
+
+    & a:first-child,
+    & a:last-child,
+    & {
+      border-radius: 0 !important;
+    }
   }
 
   .short .cartodb-searchbox,
