@@ -6,9 +6,7 @@
 
     get_template_part( '../wp-nycc-member/contact_widget' );
 
-    if ( is_active_sidebar( 'posts-sidebar' ) ) :
-      dynamic_sidebar( 'posts-sidebar' );
-    endif;
+    dynamic_sidebar( 'posts-sidebar' );
 
     ?>
   </div>
