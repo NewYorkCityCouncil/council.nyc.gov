@@ -179,18 +179,29 @@ if ($current_member_site) {
   if ($current_member_site) {
     // Switch to the current Member's site
     switch_to_blog($current_member_site);
+    ?>
 
-    get_sidebar('district');
+    <div class="sidebar columns medium-4 large-3 xxlarge-4">
+      <?php
 
+      nycc_sidebar_nav();
+
+      get_template_part( '../wp-nycc-member/contact_widget' );
+
+      ?>
+
+      <div id="district-widgets-container" data-membersite="<?php echo $member_siteurl; ?>">
+      </div>
+
+    </div>
+
+    <?php
     restore_current_blog();
     wp_reset_postdata();
   } else {
     get_header();
   }
   ?>
-
-  <!-- <div id="district-sidebar" data-membersite="<?php echo $member_siteurl; ?>" class="sidebar columns medium-4 large-3 xxlarge-4">
-  </div> -->
 
 </div>
 

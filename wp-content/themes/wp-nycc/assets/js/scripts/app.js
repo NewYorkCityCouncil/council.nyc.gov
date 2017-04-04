@@ -142,7 +142,6 @@ jQuery( document ).ready(function() {
 /*--------------------------------------------------
   URL query string to open modals
 --------------------------------------------------*/
-// openModal must be called after ajax sidebar loads
 var openModal = function(){
   if ( window.location.href.indexOf("?modal=true") > -1 ) {
     jQuery('#onload-modal').foundation('open');
@@ -155,3 +154,13 @@ var openModal = function(){
   }
 };
 openModal();
+
+/*--------------------------------------------------
+  Load Member site widgets on District pages
+--------------------------------------------------*/
+jQuery(document).ready(function () {
+  var memberSiteURL = jQuery('#district-widgets-container').attr('data-membersite');
+  if (typeof memberSiteURL !== 'undefined') {
+    jQuery('#district-widgets-container').load(memberSiteURL + ' #district-widgets');
+  }
+});
