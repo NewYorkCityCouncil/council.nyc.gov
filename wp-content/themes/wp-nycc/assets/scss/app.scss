@@ -129,8 +129,13 @@
       line-height: rem-calc(58);
     }
   }
-  .submenu > li > a {
-    line-height: 1.125rem;
+  .submenu {
+    @include menu-direction(vertical);
+    @include breakpoint(large) {
+      & li > a {
+        line-height: 1rem;
+      }
+    }
   }
   .is-dropdown-submenu {
     box-shadow: 0 0.125rem 0 0.125rem rgba(0,0,0,0.1);
