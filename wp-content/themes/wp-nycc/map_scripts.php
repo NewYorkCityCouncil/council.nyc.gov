@@ -135,7 +135,7 @@ if ( is_page_template( 'page-district.php' ) ) {
           minZoom: 9
         })
     ]
-  }).setView([40.727760, -73.987218], 11);
+  }).setView([40.727760, -73.987218], <?php if ( is_page_template( 'page-widget-map.php' ) ){ ?>10<?php } else {?>11<?php } ?>);
 
   // Add the Districts layer
   var layerSource = {
