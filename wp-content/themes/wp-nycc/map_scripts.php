@@ -122,6 +122,7 @@ if ( is_page_template( 'page-district.php' ) ) {
 
   // Add the map
   var map = L.map('map', {
+    scrollWheelZoom: false,
     minZoom: 9,
     maxZoom: 17,
     layers: [
