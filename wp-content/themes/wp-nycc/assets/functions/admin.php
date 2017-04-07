@@ -33,3 +33,13 @@ function remove_profile_sidebar_menu_item(){
   remove_submenu_page( 'users.php', 'profile.php' );
 }
 add_action( 'admin_menu', 'remove_profile_sidebar_menu_item' );
+
+// Don't show the Admin Bar on the Map Widget page template
+function my_theme_hide_admin_bar($bool) {
+  if ( is_page_template( 'page-widget-map.php' ) ) :
+    return false;
+    else :
+      return $bool;
+    endif;
+}
+add_filter('show_admin_bar', 'my_theme_hide_admin_bar');
