@@ -90,6 +90,12 @@
 
     <?php get_template_part( 'map_scripts' ); ?>
 
+    <script>
+    $(document).ready(function(){
+      $('a').attr('target', '_blank');
+    });
+    </script>
+
     <!-- Google Analytics -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

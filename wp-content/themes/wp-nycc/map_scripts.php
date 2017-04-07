@@ -102,11 +102,11 @@ if ( is_page_template( 'page-district.php' ) ) {
     '<div class="media-object">' +
       '<div class="media-object-section">' +
         '<div class="thumbnail">' +
-          '<a href="' + popupLink + '"><img src="' + popupThumbnail + '"></a>' +
+          '<a href="' + popupLink + '"<?php if ( is_page_template( 'page-widget-map.php' ) ){ ?> target="_blank"<?php } ?>><img src="' + popupThumbnail + '"></a>' +
         '</div>' +
       '</div>' +
       '<div class="media-object-section">' +
-        '<h4><a href="' + popupLink + '"><strong>District ' + CounDist + '</strong></a></h4>' +
+        '<h4><a href="' + popupLink + '"<?php if ( is_page_template( 'page-widget-map.php' ) ){ ?> target="_blank"<?php } ?>><strong>District ' + CounDist + '</strong></a></h4>' +
         '<p><strong>' + popupMember + '</strong></p>' +
       '</div>' +
     '</div>'
