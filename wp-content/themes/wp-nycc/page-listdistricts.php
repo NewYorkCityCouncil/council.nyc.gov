@@ -20,27 +20,6 @@
 
               <?php the_content(); ?>
 
-              <form id="geolocate-district" class="callout secondary">
-                <h4 class="header-tiny">Address lookup</h4>
-                <div class="input-group">
-                  <label class="input-group-label" for="myAddress">Address</label>
-                  <input class="input-group-field" type="text" name="myAddress" id="myAddress" />
-                </div>
-                <div class="input-group">
-                  <label class="input-group-label" for="myBorough">Borough</label>
-                  <select class="input-group-field" name="myBorough" id="myBorough">
-                    <option></option>
-                    <option value="Manhattan">Manhattan</option>
-                    <option value="Bronx">Bronx</option>
-                    <option value="Brooklyn">Brooklyn</option>
-                    <option value="Queens">Queens</option>
-                    <option value="Staten Island">Staten Island</option>
-                  </select>
-                </div>
-                <input type="submit" value="Find my district" class="button expanded secondary" />
-              </form>
-              <div id="geolocate-district-result"></div>
-
             </div>
             <div class="columns large-8 xxlarge-12 scrollable">
               <input type="text" class="no-margin search search--no-submit" placeholder="Search the list..." />
