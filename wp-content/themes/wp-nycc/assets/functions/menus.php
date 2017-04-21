@@ -28,7 +28,7 @@ if ( ! function_exists ( 'nycc_sidebar_nav' ) ) {
             'container_class' => 'widget district-menu',
             'menu_class' => 'vertical menu small',
             'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-            'theme_location' => 'primary',
+            'theme_location' => 'main-nav',
             'depth' => 5,
             'fallback_cb' => false,
             'walker' => new Main_Menu_Walker()
