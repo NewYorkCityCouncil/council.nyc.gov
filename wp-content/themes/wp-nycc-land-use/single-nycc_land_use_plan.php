@@ -24,6 +24,7 @@
       $land_use_plan_event_time = get_post_meta($post->ID, 'land_use_plan_event_time', true);
       $land_use_plan_event_location = get_post_meta($post->ID, 'land_use_plan_event_location', true);
       $land_use_plan_event_map_link = get_post_meta($post->ID, 'land_use_plan_event_map_link', true);
+      $land_use_plan_event_description = get_post_meta($post->ID, 'land_use_plan_event_description', true);
       if ( $land_use_plan_event_title ) { ?>
       <div class="callout secondary widget">
         <h3 class="header-medium"><?php echo $land_use_plan_event_title; ?></h3>
@@ -39,6 +40,10 @@
             echo '&nbsp;<small><a href="' . $land_use_plan_event_map_link . '"><strong>MAP</strong></a></small>';
           }
         ?></p>
+        <?php if ( $land_use_plan_event_description ) {
+          echo '<div class="text-medium">' . $land_use_plan_event_description . '</div>';
+        } ?>
+
       </div>
       <?php }
 

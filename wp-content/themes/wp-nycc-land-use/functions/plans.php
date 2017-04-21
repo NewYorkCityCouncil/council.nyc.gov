@@ -50,6 +50,7 @@ function nycc_land_use_plan_meta() {
   $land_use_plan_event_time = get_post_meta($post->ID, 'land_use_plan_event_time', true);
   $land_use_plan_event_location = get_post_meta($post->ID, 'land_use_plan_event_location', true);
   $land_use_plan_event_map_link = get_post_meta($post->ID, 'land_use_plan_event_map_link', true);
+  $land_use_plan_event_description = get_post_meta($post->ID, 'land_use_plan_event_description', true);
   ?>
   <table class="form-table">
 
@@ -88,6 +89,13 @@ function nycc_land_use_plan_meta() {
       </td>
     </tr>
 
+    <tr valign="top">
+      <th scope="row">Event Description</th>
+      <td>
+        <input type="text" name="land_use_plan_event_description" value="<?php echo esc_attr( $land_use_plan_event_description ); ?>" class="regular-text" />
+      </td>
+    </tr>
+
   </table>
   <script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -111,6 +119,7 @@ function save_nycc_land_use_plan_meta($post_id, $post) {
     $land_use_meta['land_use_plan_event_time'] = $_POST['land_use_plan_event_time'];
     $land_use_meta['land_use_plan_event_location'] = $_POST['land_use_plan_event_location'];
     $land_use_meta['land_use_plan_event_map_link'] = $_POST['land_use_plan_event_map_link'];
+    $land_use_meta['land_use_plan_event_description'] = $_POST['land_use_plan_event_description'];
     foreach ($land_use_meta as $key => $value) { // Cycle through the $events_meta array!
       if( $post->post_type == 'revision' ) return; // Don't store custom data twice
       $value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
