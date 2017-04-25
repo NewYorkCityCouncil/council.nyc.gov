@@ -43,3 +43,6 @@ function nycc_disable_wpe_widgets() {
   remove_meta_box('wpe_dify_news_feed', 'dashboard', 'normal');
 }
 add_action( 'admin_init', 'nycc_disable_wpe_widgets', 9999 );
+
+// Disable the WP User Avatar widget
+remove_action('widgets_init', 'wpua_widgets_init');
