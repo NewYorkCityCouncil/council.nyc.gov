@@ -334,4 +334,14 @@ if ( is_page_template( 'page-district.php' ) ) {
 
   }, false);
 
+  <?php
+  if ( is_page_template( 'page-listdistricts.php' ) ) {
+  ?>document.getElementById('mapAddress').addEventListener('input', function(){
+    userList.search();
+    map.closePopup();
+  });
+  <?php
+  }
+  ?>
+
 </script>
