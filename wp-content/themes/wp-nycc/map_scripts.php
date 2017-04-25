@@ -305,7 +305,7 @@ if ( is_page_template( 'page-district.php' ) ) {
             <?php
             if ( is_page_template( 'page-listdistricts.php' ) ) {
             ?>
-              searchUserList(CounDist);
+              searchUserList( parseInt(CounDist, 10) );
             <?php
             }
             ?>}
