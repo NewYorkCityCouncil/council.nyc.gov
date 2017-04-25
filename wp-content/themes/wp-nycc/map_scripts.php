@@ -219,7 +219,24 @@ if ( is_page_template( 'page-district.php' ) ) {
   });
 
 
-  /**
+  <?php
+  if ( is_page_template( 'page-listdistricts.php' ) ) {
+  ?>/**
+   * Initialize list.js
+   */
+
+  var listOptions = {
+    valueNames: [ 'sort-district', 'sort-member', 'sort-borough', 'sort-party', 'sort-neighborhoods' ]
+  };
+  var userList = new List('districts-list', listOptions);
+
+  function searchUserList(searchTerms) {
+    userList.search(searchTerms);
+  }
+
+  <?php
+  }
+  ?>/**
    * Address Lookup
    * Use the NYC Geoclient API to get Council District info
    */
@@ -285,16 +302,34 @@ if ( is_page_template( 'page-district.php' ) ) {
 
               jQuery('#addresslookup-error').html('');
 
+            <?php
+            if ( is_page_template( 'page-listdistricts.php' ) ) {
+            ?>
+              searchUserList(CounDist);
+            <?php
             }
+            ?>}
           }
         } else {
           jQuery('#addresslookup-error').html(badaddress);
+        <?php
+        if ( is_page_template( 'page-listdistricts.php' ) ) {
+        ?>
+          searchUserList(mapAddress);
+        <?php
         }
+        ?>}
 
       },
       error: function(){
         jQuery('#addresslookup-error').html(badaddress);
+      <?php
+      if ( is_page_template( 'page-listdistricts.php' ) ) {
+      ?>
+        searchUserList(mapAddress);
+      <?php
       }
+      ?>}
     });
 
   }, false);

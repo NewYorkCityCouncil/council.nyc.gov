@@ -1334,12 +1334,12 @@ jQuery('.tabs').on('change.zf.tabs', function () {
 /*--------------------------------------------------
   List.js
 --------------------------------------------------*/
-if (jQuery('#districts-list').length) {
-  var options = {
-    valueNames: ['sort-district', 'sort-member', 'sort-borough', 'sort-party', 'sort-neighborhoods']
-  };
-  var userList = new List('districts-list', options);
-}
+// if ( jQuery('#districts-list').length ) {
+//   var options = {
+//     valueNames: [ 'sort-district', 'sort-member', 'sort-borough', 'sort-party', 'sort-neighborhoods' ]
+//   };
+//   var userList = new List('districts-list', options);
+// }
 
 /*--------------------------------------------------
   Filter Page Content
