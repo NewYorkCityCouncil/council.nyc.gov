@@ -1058,6 +1058,8 @@ $map-height-tall:   rem-calc(400);
 .fscf-required-text {
   font-size: $helptext-font-size;
   color: $input-error-color;
+  margin-bottom: $form-spacing;
+  display: inline-block;
 }
 .fscf-hint-text {
   font-size: $helptext-font-size;
@@ -1067,10 +1069,12 @@ $map-height-tall:   rem-calc(400);
   display: block;
 }
 .fscf-div-error {
+  margin-bottom: $form-spacing/2;
   font-size: $input-error-font-size;
   font-weight: $input-error-font-weight;
   color: $input-error-color;
-  + .fscf-input-text {
+  + input[type=text],
+  + textarea {
     @include form-input-error;
   }
 }

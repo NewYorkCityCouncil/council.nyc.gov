@@ -5659,7 +5659,9 @@ figure {
 
 .fscf-required-text {
   font-size: 0.8125rem;
-  color: #d05d4e; }
+  color: #d05d4e;
+  margin-bottom: 1rem;
+  display: inline-block; }
 
 .fscf-hint-text {
   font-size: 0.8125rem;
@@ -5669,19 +5671,25 @@ figure {
   display: block; }
 
 .fscf-div-error {
+  margin-bottom: 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;
   color: #d05d4e; }
-  .fscf-div-error + .fscf-input-text:not(:focus) {
+  .fscf-div-error + input[type=text]:not(:focus),
+  .fscf-div-error + textarea:not(:focus) {
     border-color: #d05d4e;
     background-color: #faefed; }
-    .fscf-div-error + .fscf-input-text:not(:focus)::-webkit-input-placeholder {
+    .fscf-div-error + input[type=text]:not(:focus)::-webkit-input-placeholder,
+    .fscf-div-error + textarea:not(:focus)::-webkit-input-placeholder {
       color: #d05d4e; }
-    .fscf-div-error + .fscf-input-text:not(:focus)::-moz-placeholder {
+    .fscf-div-error + input[type=text]:not(:focus)::-moz-placeholder,
+    .fscf-div-error + textarea:not(:focus)::-moz-placeholder {
       color: #d05d4e; }
-    .fscf-div-error + .fscf-input-text:not(:focus):-ms-input-placeholder {
+    .fscf-div-error + input[type=text]:not(:focus):-ms-input-placeholder,
+    .fscf-div-error + textarea:not(:focus):-ms-input-placeholder {
       color: #d05d4e; }
-    .fscf-div-error + .fscf-input-text:not(:focus)::placeholder {
+    .fscf-div-error + input[type=text]:not(:focus)::placeholder,
+    .fscf-div-error + textarea:not(:focus)::placeholder {
       color: #d05d4e; }
 
 .fscf-button-submit {
