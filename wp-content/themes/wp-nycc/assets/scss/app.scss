@@ -1082,6 +1082,10 @@ $map-height-tall:   rem-calc(400);
   @include button;
 }
 
+.fscf-div-redirecting {
+  @extend .callout, .success, .text-xlarge;
+}
+
 
 /*--------------------------------------------------
   Print Styles
