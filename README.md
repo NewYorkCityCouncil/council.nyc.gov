@@ -30,7 +30,7 @@ This package is meant to be used with a [network](https://codex.wordpress.org/Cr
 
 There are several themes included in this package. The primary site uses the `wp-nycc` theme. All other themes are [child themes](https://codex.wordpress.org/Child_Themes) of the `wp-nycc` parent theme. Each Member site should use the `wp-nycc-member` child theme. And each Division site should use its specific `wp-nycc-[division]` child theme.
 
-For details on how particular themes function, see documentation in the [wiki](https://github.com/NewYorkCityCouncil/council.nyc/wiki).
+For details on how particular themes function, see documentation in the [wiki](https://github.com/NewYorkCityCouncil/council.nyc.gov/wiki).
 
 ### Foundation for Sites
 
@@ -68,7 +68,7 @@ _Note: The `wp-nycc/map_scripts.php` and `wp-nycc-member/pb-map-scripts.php` fil
 
 # Documentation
 
-All documentation is in the [wiki](https://github.com/NewYorkCityCouncil/council.nyc/wiki), where you can find details on how the themes and plugins function.
+All documentation is in the [wiki](https://github.com/NewYorkCityCouncil/council.nyc.gov/wiki), where you can find details on how the themes and plugins function.
 
 # Contributors
 
