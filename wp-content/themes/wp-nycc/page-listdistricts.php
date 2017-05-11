@@ -22,7 +22,9 @@
 
             </div>
             <div class="columns large-8 xxlarge-12 scrollable">
-              <input type="text" class="no-margin search search--no-submit" placeholder="Filter the list..." />
+              <form id="list-search">
+                <input type="text" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Filter the list..." />
+              </form>
               <table class="full-width">
                 <thead>
                   <th><button class="button sort small secondary expanded" data-sort="sort-district">#</button></th>

@@ -199,7 +199,7 @@ if ( is_page_template( 'page-district.php' ) ) {
 
   map.on('click', function(e) {
 
-    $('#mapAddress').val('');
+    jQuery('#mapAddress').val('');
 
     var sql = new cartodb.SQL({ user: 'nyc-council' });
 
@@ -219,24 +219,7 @@ if ( is_page_template( 'page-district.php' ) ) {
   });
 
 
-  <?php
-  if ( is_page_template( 'page-listdistricts.php' ) ) {
-  ?>/**
-   * Initialize list.js
-   */
-
-  var listOptions = {
-    valueNames: [ 'sort-district', 'sort-member', 'sort-borough', 'sort-party', 'sort-neighborhoods' ]
-  };
-  var userList = new List('districts-list', listOptions);
-
-  function searchUserList(searchTerms) {
-    userList.search(searchTerms);
-  }
-
-  <?php
-  }
-  ?>/**
+  /**
    * Address Lookup
    * Use the NYC Geoclient API to get Council District info
    */
@@ -264,28 +247,23 @@ if ( is_page_template( 'page-district.php' ) ) {
   // When user submits the form...
   document.getElementById('addresslookup').addEventListener('submit', function(e){
     e.preventDefault();
-
-    // Get values in the form
     var mapAddress = jQuery('#mapAddress').val();
+    ajaxGeoclient( mapAddress, true );
+  }, false);
 
-    // Set the form error message
-    var badaddress = '<div class="callout alert text-small text-center"><strong>Please enter a valid street address and borough</strong></div>';
-
-    // Set API vars
+  // Talk to the Geoclient
+  function ajaxGeoclient( terms, error ) {
     var apiKey = 'db87f7a57ab963b71d36c179ce32157c';
     var apiId = 'f208e50a';
-    var apiQuery = 'https://api.cityofnewyork.us/geoclient/v1/search.json?input=' + mapAddress + '&app_id=' + apiId + '&app_key=' + apiKey;
+    var apiQuery = 'https://api.cityofnewyork.us/geoclient/v1/search.json?input=' + terms + '&app_id=' + apiId + '&app_key=' + apiKey;
 
-    // Talk to the Geoclient
     jQuery.ajax({
       url: apiQuery,
       dataType: 'jsonp',
       success: function (data) {
-
         if ( data.status == 'OK' ) {
           for (var key in data.results) {
             if (data.results.hasOwnProperty(key)) {
-
               var theLatitude = data.results[key].response.latitude,
                   theLongitude = data.results[key].response.longitude,
                   latlngPoint = new L.LatLng( theLatitude, theLongitude ),
@@ -302,46 +280,57 @@ if ( is_page_template( 'page-district.php' ) ) {
 
               jQuery('#addresslookup-error').html('');
 
-            <?php
-            if ( is_page_template( 'page-listdistricts.php' ) ) {
-            ?>
-              searchUserList( parseInt(CounDist, 10) );
-            <?php
+<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?>
+              CounDist = parseInt(CounDist, 10);
+              var listMember = popupData['Member' + CounDist];
+              // var listMember = CounDist;
+              userList.search(listMember);
+              console.log(listMember);
+<?php } ?>
             }
-            ?>}
           }
         } else {
-          jQuery('#addresslookup-error').html(badaddress);
-        <?php
-        if ( is_page_template( 'page-listdistricts.php' ) ) {
-        ?>
-          searchUserList(mapAddress);
-        <?php
+          badAddress( terms, error );
         }
-        ?>}
-
       },
       error: function(){
-        jQuery('#addresslookup-error').html(badaddress);
-      <?php
-      if ( is_page_template( 'page-listdistricts.php' ) ) {
-      ?>
-        searchUserList(mapAddress);
-      <?php
+        badAddress( terms, error );
       }
-      ?>}
     });
+  }
 
-  }, false);
+  function badAddress( terms, error ) {
+    if ( error == true ) {
+      var errorMessage = '<div class="callout alert text-small text-center"><strong>Please enter a valid street address and borough</strong></div>';
+      jQuery('#addresslookup-error').html(errorMessage);
+    }<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?> else {
+      userList.search(terms);
+    }<?php } ?>
+  }
 
-  <?php
-  if ( is_page_template( 'page-listdistricts.php' ) ) {
-  ?>document.getElementById('mapAddress').addEventListener('input', function(){
+<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?>
+  /**
+   * Districts list.js filter + address search
+   */
+
+  var listOptions = {
+    valueNames: [ 'sort-district', 'sort-member', 'sort-borough', 'sort-party', 'sort-neighborhoods' ]
+  };
+  var userList = new List('districts-list', listOptions);
+
+  // Handle form submit
+  jQuery('#list-search').submit(function(e){
+    e.preventDefault();
+    var searchTerms = jQuery('#list-search-input').val();
+    ajaxGeoclient( searchTerms, false );
+  });
+
+  // Clear search & close popup while typing
+  jQuery('#list-search-input, #mapAddress').on('input', function() {
     userList.search();
     map.closePopup();
+    jQuery('#list-search-input, #mapAddress').not(this).val('');
   });
-  <?php
-  }
-  ?>
 
+<?php } ?>
 </script>
