@@ -285,7 +285,6 @@ if ( is_page_template( 'page-district.php' ) ) {
               var listMember = popupData['Member' + CounDist];
               // var listMember = CounDist;
               userList.search(listMember);
-              console.log(listMember);
 <?php } ?>
             }
           }
