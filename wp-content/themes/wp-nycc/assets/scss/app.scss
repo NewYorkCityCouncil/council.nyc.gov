@@ -1047,6 +1047,47 @@ $map-height-tall:   rem-calc(400);
 
 
 /*--------------------------------------------------
+  Fast Secure Contact Form
+--------------------------------------------------*/
+.fscf-required-indicator {
+  color: $input-error-color;
+  .fscf-label & {
+    margin-left: 0.25em;
+  }
+}
+.fscf-required-text {
+  font-size: $helptext-font-size;
+  color: $input-error-color;
+  margin-bottom: $form-spacing;
+  display: inline-block;
+}
+.fscf-hint-text {
+  font-size: $helptext-font-size;
+  font-style: $helptext-font-style;
+  color: $helptext-color;
+  margin-bottom: $form-spacing;
+  display: block;
+}
+.fscf-div-error {
+  margin-bottom: $form-spacing/2;
+  font-size: $input-error-font-size;
+  font-weight: $input-error-font-weight;
+  color: $input-error-color;
+  + input[type=text],
+  + textarea {
+    @include form-input-error;
+  }
+}
+.fscf-button-submit {
+  @include button;
+}
+
+.fscf-div-redirecting {
+  @extend .callout, .success, .text-xlarge;
+}
+
+
+/*--------------------------------------------------
   Print Styles
 --------------------------------------------------*/
 @media print {

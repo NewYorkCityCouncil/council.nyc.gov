@@ -1,0 +1,53 @@
+/*------------------------------------------------*/
+/*-----------[Fast Secure Contact Form]-----------*/
+/*------------------------------------------------*/
+
+/* Alignment DIVs */
+.fscf-div-form              { width:99%; max-width:555px; }
+.fscf-div-left-box          { float:left; width:55%; max-width:270px; }
+.fscf-div-right-box         { float:left; width:235px; }
+.fscf-div-clear             { clear:both; }
+.fscf-div-field-left        { clear:left; float:left; width:99%; max-width:550px; margin-right:10px; }
+.fscf-div-field-prefollow   { clear:left; float:left; width:99%; max-width:250px; margin-right:10px; }
+.fscf-div-field-follow      { float:left; padding-left:10px; width:99%; max-width:250px; }
+.fscf-div-label             { text-align:left; padding-top:5px; }
+.fscf-div-field             { text-align:left; }
+.fscf-div-captcha-sm        { width:175px; height:50px; padding-top:2px; }
+.fscf-div-captcha-m         { width:250px; height:65px; padding-top:2px; }
+.fscf-image-captcha         { border-style:none; margin:0; padding:0px; padding-right:5px; float:left; }
+.fscf-image-captcha-refresh { border-style:none; margin:0; padding:0px; vertical-align:bottom; }
+.fscf-div-submit            { text-align:left; clear:both; padding-top:15px; }
+.fscf-fieldset              { border:1px solid black; width:99%; max-width:550px; padding:10px; }
+
+/* Styles of labels, fields and text */
+.fscf-required-indicator { text-align:left; }
+.fscf-required-text      { text-align:left; }
+.fscf-hint-text          { font-size:x-small; font-weight:normal; }
+.fscf-div-error          { text-align:left; color:red; }
+.fscf-div-redirecting    { text-align:left; }
+.fscf-fieldset-field     { border:1px solid black; width:97%; max-width:500px; padding:10px; }
+.fscf-label              { display:inline; }
+.fscf-option-label       { display:inline; }
+.fscf-input-text         { text-align:left; margin:0; width:99%; max-width:250px; }
+.fscf-input-captcha      { text-align:left; margin:0; width:50px; }
+.fscf-input-textarea     { text-align:left; margin:0; width:99%; max-width:250px; height:120px; }
+.fscf-input-select       { text-align:left; }
+.fscf-input-checkbox     { width:22px; height:32px; }
+.fscf-input-radio        { width:22px; height:32px; }
+.fscf-button-submit      { cursor:pointer; margin:0; }
+.fscf-button-reset       { cursor:pointer; margin:0; }
+.fscf-button-vcita       { text-decoration:none; display:block; text-align:center; background:linear-gradient(to bottom, #ed6a31 0%, #e55627 100%); color:#fff !important; padding:10px; }
+.fscf-button-div-vcita   { border-left:1px dashed #ccc; margin-top:25px; height:50px; padding:8px 20px; }
+.fscf-powered-by         { font-size:x-small; font-weight:normal; padding-top:5px; text-align:center; }
+
+/* Placeholder Style - WebKit browsers - Safari, Chrome */
+::-webkit-input-placeholder { opacity:0.6; color:#333333; }
+
+/* Placeholder Style - Mozilla Firefox 4 - 18 */
+:-moz-placeholder { opacity:0.6; color:#333333; }
+
+/* Placeholder Style - Mozilla Firefox 19+ */
+::-moz-placeholder { opacity:0.6; color:#333333; }
+
+/* Placeholder Style - Internet Explorer 10+ */
+:-ms-input-placeholder { opacity:0.6; color:#333333; }
