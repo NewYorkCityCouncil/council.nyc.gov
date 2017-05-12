@@ -304,6 +304,9 @@ if ( is_page_template( 'page-district.php' ) ) {
       jQuery('#addresslookup-error').html(errorMessage);
     }<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?> else {
       districtsList.search(terms);
+      if (districtsList.matchingItems.length == 0) {
+        jQuery('#list-search-error').removeClass('hide');
+      }
     }<?php } ?>
   }
 
@@ -332,6 +335,7 @@ if ( is_page_template( 'page-district.php' ) ) {
   // Clear search & close popup while typing
   jQuery('#list-search-input, #mapAddress').on('input', function() {
     districtsList.search();
+    jQuery('#list-search-error').addClass('hide');
     map.closePopup();
     jQuery('#list-search-input, #mapAddress').not(this).val('');
   });

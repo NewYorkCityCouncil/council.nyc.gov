@@ -110,6 +110,10 @@
                   ?>
                 </tbody>
               </table>
+              <div id="list-search-error" class="callout alert text-center hide">
+                <p class="text-small">No results match your search terms.</p>
+                <p><strong>If you're searching for an address, be sure to include the borough.</strong></p>
+              </div>
             </div>
           </div>
 
