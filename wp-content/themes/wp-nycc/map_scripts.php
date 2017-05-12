@@ -321,9 +321,9 @@ if ( is_page_template( 'page-district.php' ) ) {
   jQuery('#list-search').submit(function(e){
     e.preventDefault();
     var searchTerms = jQuery('#list-search-input').val();
-    // First search the list for Member names
-    districtsList.search(searchTerms, ['sort-member']);
-    // If no Member names match, use the Geoclient 
+    // First search the list
+    districtsList.search(searchTerms);
+    // If no results, use the Geoclient
     if (districtsList.matchingItems.length == 0) {
       ajaxGeoclient( searchTerms, false );
     }

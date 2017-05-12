@@ -23,7 +23,7 @@
             </div>
             <div class="columns large-8 xxlarge-12 scrollable">
               <form id="list-search">
-                <input type="text" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Filter the list..." />
+                <input type="text" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Address &amp; Borough | Member | Neighborhood" />
               </form>
               <table class="full-width">
                 <thead>
