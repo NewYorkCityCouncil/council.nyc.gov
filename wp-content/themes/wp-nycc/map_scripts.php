@@ -284,7 +284,7 @@ if ( is_page_template( 'page-district.php' ) ) {
               CounDist = parseInt(CounDist, 10);
               var listMember = popupData['Member' + CounDist];
               // var listMember = CounDist;
-              userList.search(listMember);
+              districtsList.search(listMember);
 <?php } ?>
             }
           }
@@ -303,7 +303,7 @@ if ( is_page_template( 'page-district.php' ) ) {
       var errorMessage = '<div class="callout alert text-small text-center"><strong>Please enter a valid street address and borough</strong></div>';
       jQuery('#addresslookup-error').html(errorMessage);
     }<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?> else {
-      userList.search(terms);
+      districtsList.search(terms);
     }<?php } ?>
   }
 
@@ -315,18 +315,23 @@ if ( is_page_template( 'page-district.php' ) ) {
   var listOptions = {
     valueNames: [ 'sort-district', 'sort-member', 'sort-borough', 'sort-party', 'sort-neighborhoods' ]
   };
-  var userList = new List('districts-list', listOptions);
+  var districtsList = new List('districts-list', listOptions);
 
   // Handle form submit
   jQuery('#list-search').submit(function(e){
     e.preventDefault();
     var searchTerms = jQuery('#list-search-input').val();
-    ajaxGeoclient( searchTerms, false );
+    // First search the list for Member names
+    districtsList.search(searchTerms, ['sort-member']);
+    // If no Member names match, use the Geoclient 
+    if (districtsList.matchingItems.length == 0) {
+      ajaxGeoclient( searchTerms, false );
+    }
   });
 
   // Clear search & close popup while typing
   jQuery('#list-search-input, #mapAddress').on('input', function() {
-    userList.search();
+    districtsList.search();
     map.closePopup();
     jQuery('#list-search-input, #mapAddress').not(this).val('');
   });
