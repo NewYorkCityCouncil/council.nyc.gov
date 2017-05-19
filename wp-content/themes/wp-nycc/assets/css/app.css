@@ -5771,6 +5771,9 @@ figure {
 .wpcf7-form-control-wrap {
   position: relative; }
 
+.wpcf7-recaptcha {
+  margin-bottom: 1rem; }
+
 /*--------------------------------------------------
   Print Styles
 --------------------------------------------------*/
