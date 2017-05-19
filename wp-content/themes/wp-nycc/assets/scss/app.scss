@@ -1088,6 +1088,40 @@ $map-height-tall:   rem-calc(400);
 
 
 /*--------------------------------------------------
+  Contact Form 7
+--------------------------------------------------*/
+.wpcf7-display-none {
+  display: none;
+}
+.screen-reader-response {
+  @include element-invisible;
+}
+.wpcf7-response-output {
+  @include callout($white);
+}
+.wpcf7-mail-sent-ok {
+  @include callout-style($success-color);
+}
+.wpcf7-validation-errors {
+  @include callout-style($input-error-color);
+}
+.wpcf7-not-valid {
+  @include form-input-error;
+}
+.wpcf7-not-valid-tip {
+  display: block;
+  margin-top: $form-spacing * -0.5;
+  margin-bottom: $form-spacing;
+  font-size: $input-error-font-size;
+  font-weight: $input-error-font-weight;
+  color: $input-error-color;
+}
+.wpcf7-form-control-wrap {
+  position: relative;
+}
+
+
+/*--------------------------------------------------
   Print Styles
 --------------------------------------------------*/
 @media print {

@@ -5715,6 +5715,63 @@ figure {
     color: #fff; }
 
 /*--------------------------------------------------
+  Contact Form 7
+--------------------------------------------------*/
+.wpcf7-display-none {
+  display: none; }
+
+.screen-reader-response {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); }
+
+.wpcf7-response-output {
+  position: relative;
+  margin: 0 0 1rem 0;
+  padding: 1rem;
+  border: 1px solid rgba(34, 34, 34, 0.25);
+  border-radius: 0;
+  background-color: white;
+  color: #222; }
+  .wpcf7-response-output > :first-child {
+    margin-top: 0; }
+  .wpcf7-response-output > :last-child {
+    margin-bottom: 0; }
+
+.wpcf7-mail-sent-ok {
+  background-color: #e1faea;
+  color: #222; }
+
+.wpcf7-validation-errors {
+  background-color: #f8e7e4;
+  color: #222; }
+
+.wpcf7-not-valid:not(:focus) {
+  border-color: #d05d4e;
+  background-color: #faefed; }
+  .wpcf7-not-valid:not(:focus)::-webkit-input-placeholder {
+    color: #d05d4e; }
+  .wpcf7-not-valid:not(:focus)::-moz-placeholder {
+    color: #d05d4e; }
+  .wpcf7-not-valid:not(:focus):-ms-input-placeholder {
+    color: #d05d4e; }
+  .wpcf7-not-valid:not(:focus)::placeholder {
+    color: #d05d4e; }
+
+.wpcf7-not-valid-tip {
+  display: block;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #d05d4e; }
+
+.wpcf7-form-control-wrap {
+  position: relative; }
+
+/*--------------------------------------------------
   Print Styles
 --------------------------------------------------*/
 @media print {
