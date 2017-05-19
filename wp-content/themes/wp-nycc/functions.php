@@ -69,3 +69,7 @@ if ( is_network_admin() ) {
   }
   add_action( 'wpmu_new_blog', 'set_default_options', 10 , 2 );
 }
+
+
+// Don't load Contact Form 7 CSS (Foundation styles forms)
+add_filter( 'wpcf7_load_css', '__return_false' );
