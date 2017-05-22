@@ -1124,6 +1124,19 @@ $map-height-tall:   rem-calc(400);
 .wpcf7-recaptcha {
   margin-bottom: $paragraph-margin-bottom;
 }
+[type='checkbox'] + .wpcf7-list-item-label,
+[type='radio'] + .wpcf7-list-item-label {
+  display: inline-block;
+  vertical-align: baseline;
+
+  margin-#{$global-left}: $form-spacing * 0.5;
+  margin-#{$global-right}: $form-spacing;
+  margin-bottom: 0;
+
+  &[for] {
+    cursor: pointer;
+  }
+}
 
 
 /*--------------------------------------------------

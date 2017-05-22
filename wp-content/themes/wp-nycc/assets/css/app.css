@@ -5784,6 +5784,17 @@ figure {
 .wpcf7-recaptcha {
   margin-bottom: 1rem; }
 
+[type='checkbox'] + .wpcf7-list-item-label,
+[type='radio'] + .wpcf7-list-item-label {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 0; }
+  [type='checkbox'] + .wpcf7-list-item-label[for],
+  [type='radio'] + .wpcf7-list-item-label[for] {
+    cursor: pointer; }
+
 /*--------------------------------------------------
   Print Styles
 --------------------------------------------------*/
