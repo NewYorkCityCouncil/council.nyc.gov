@@ -14,7 +14,9 @@ require_once(get_stylesheet_directory().'/functions/roles.php');          // Rol
 
 // Hide admin stuff
 function remove_press_menus(){
-  remove_menu_page( 'plugins.php' );
+  if ( !current_user_can('administrator') ) {
+    remove_menu_page( 'plugins.php' );
+  }
   remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
 }
 add_action( 'admin_menu', 'remove_press_menus' );

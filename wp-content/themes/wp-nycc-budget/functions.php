@@ -10,7 +10,9 @@ require_once(get_stylesheet_directory().'/functions/widgets.php');
 // Hide admin stuff
 function remove_budget_menus(){
   remove_menu_page( 'edit-comments.php' );
-  remove_menu_page( 'plugins.php' );
+  if ( !current_user_can('administrator') ) {
+    remove_menu_page( 'plugins.php' );
+  }
   remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
 }
 add_action( 'admin_menu', 'remove_budget_menus' );
