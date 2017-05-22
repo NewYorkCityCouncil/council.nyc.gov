@@ -1126,6 +1126,7 @@ $map-height-tall:   rem-calc(400);
 }
 [type='checkbox'] + .wpcf7-list-item-label,
 [type='radio'] + .wpcf7-list-item-label {
+  font-size: $form-label-font-size;
   display: inline-block;
   vertical-align: baseline;
 

@@ -5786,6 +5786,7 @@ figure {
 
 [type='checkbox'] + .wpcf7-list-item-label,
 [type='radio'] + .wpcf7-list-item-label {
+  font-size: 0.875rem;
   display: inline-block;
   vertical-align: baseline;
   margin-left: 0.5rem;
