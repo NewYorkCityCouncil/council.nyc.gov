@@ -43,3 +43,11 @@ function my_theme_hide_admin_bar($bool) {
     endif;
 }
 add_filter('show_admin_bar', 'my_theme_hide_admin_bar');
+
+// Only show Contact Forms 7 for Super Admins
+if ( !is_super_admin() ) {
+  function remove_wpcf7() {
+    remove_menu_page( 'wpcf7' );
+  }
+  add_action('admin_menu', 'remove_wpcf7');
+}
