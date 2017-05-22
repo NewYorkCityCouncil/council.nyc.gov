@@ -5748,16 +5748,26 @@ figure {
   background-color: #f8e7e4;
   color: #222; }
 
-.wpcf7-not-valid:not(:focus) {
+.wpcf7-not-valid:not(:focus),
+.wpcf7-validation-errors:not(:focus),
+.wpcf7-spam-blocked:not(:focus) {
   border-color: #d05d4e;
   background-color: #faefed; }
-  .wpcf7-not-valid:not(:focus)::-webkit-input-placeholder {
+  .wpcf7-not-valid:not(:focus)::-webkit-input-placeholder,
+  .wpcf7-validation-errors:not(:focus)::-webkit-input-placeholder,
+  .wpcf7-spam-blocked:not(:focus)::-webkit-input-placeholder {
     color: #d05d4e; }
-  .wpcf7-not-valid:not(:focus)::-moz-placeholder {
+  .wpcf7-not-valid:not(:focus)::-moz-placeholder,
+  .wpcf7-validation-errors:not(:focus)::-moz-placeholder,
+  .wpcf7-spam-blocked:not(:focus)::-moz-placeholder {
     color: #d05d4e; }
-  .wpcf7-not-valid:not(:focus):-ms-input-placeholder {
+  .wpcf7-not-valid:not(:focus):-ms-input-placeholder,
+  .wpcf7-validation-errors:not(:focus):-ms-input-placeholder,
+  .wpcf7-spam-blocked:not(:focus):-ms-input-placeholder {
     color: #d05d4e; }
-  .wpcf7-not-valid:not(:focus)::placeholder {
+  .wpcf7-not-valid:not(:focus)::placeholder,
+  .wpcf7-validation-errors:not(:focus)::placeholder,
+  .wpcf7-spam-blocked:not(:focus)::placeholder {
     color: #d05d4e; }
 
 .wpcf7-not-valid-tip {

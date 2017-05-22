@@ -1105,7 +1105,9 @@ $map-height-tall:   rem-calc(400);
 .wpcf7-validation-errors {
   @include callout-style($input-error-color);
 }
-.wpcf7-not-valid {
+.wpcf7-not-valid,
+.wpcf7-validation-errors,
+.wpcf7-spam-blocked {
   @include form-input-error;
 }
 .wpcf7-not-valid-tip {
