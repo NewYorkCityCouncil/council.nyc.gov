@@ -5336,6 +5336,8 @@ figure {
     padding: 0; }
   .social-buttons img {
     margin: 0.2em !important; }
+  .social-buttons li + li {
+    margin-top: 0; }
 
 /*--------------------------------------------------
   Comments & Forms

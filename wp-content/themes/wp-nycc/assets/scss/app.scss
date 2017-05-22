@@ -606,6 +606,9 @@ $widget-item-margin: rem-calc(8);
     @extend .inline-icon;
     margin: 0.2em !important;
   }
+  li + li {
+    margin-top: 0;
+  }
 }
 
 
