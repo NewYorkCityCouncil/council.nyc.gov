@@ -149,7 +149,9 @@ if ( is_page_template( 'page-district.php' ) ) {
     ],
     cartodb_logo: false,
   }
-  cartodb.createLayer(map, layerSource)
+  cartodb.createLayer(map, layerSource, {
+    https: true
+  })
   .addTo(map)
   .done(function(layer) {
       layer.setInteraction(false);
