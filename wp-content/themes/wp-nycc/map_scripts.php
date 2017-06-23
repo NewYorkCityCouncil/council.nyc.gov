@@ -126,11 +126,11 @@ if ( is_page_template( 'page-district.php' ) ) {
     minZoom: 9,
     maxZoom: 17,
     layers: [
-        L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
           minZoom: 13,
           maxZoom: 17
         }),
-        L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
           maxZoom: 12,
           minZoom: 9
         })
