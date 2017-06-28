@@ -5,6 +5,7 @@ $legislative_contact = get_option('council_legislative_contact');
 $email = get_option('council_district_email');
 $contact_form = get_option('council_district_contact_form');
 $subscribe_form = get_option('council_district_subscribe_form');
+$siteurl = get_site_url();
 
 echo '<div class="callout">';
 
@@ -21,7 +22,7 @@ if ( $contact_form ) {
       <?php echo do_shortcode($contact_form); ?>
       <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
     </div>
-    <a data-open="contact_form" class="button secondary expanded dashicons-before dashicons-admin-comments">&nbsp;Send&nbsp;Message</a>
+    <a id="contact_form-button" href="<?php echo $siteurl; ?>?contact=message" data-open="contact_form" class="button secondary expanded dashicons-before dashicons-admin-comments">&nbsp;Send&nbsp;Message</a>
     <?php
 }
 
@@ -32,7 +33,7 @@ if ( $subscribe_form ) {
       <?php echo do_shortcode($subscribe_form); ?>
       <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
     </div>
-    <a data-open="subscribe_form" class="button secondary expanded dashicons-before dashicons-email-alt">&nbsp;Subscribe</a>
+    <a id="subscribe_form-button" href="<?php echo $siteurl; ?>?contact=subscribe" data-open="subscribe_form" class="button secondary expanded dashicons-before dashicons-email-alt">&nbsp;Subscribe</a>
     <?php
 }
 
