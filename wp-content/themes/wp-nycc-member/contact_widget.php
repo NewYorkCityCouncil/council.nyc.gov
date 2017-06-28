@@ -18,7 +18,7 @@ if ( $contact_form ) {
     ?>
     <div class="reveal" id="contact_form" data-reveal>
       <h4 class="header-small">Send a message to <?php echo get_option('council_member_name'); ?></h4>
-      <?php echo $contact_form; ?>
+      <?php echo do_shortcode($contact_form); ?>
       <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
     </div>
     <a data-open="contact_form" class="button secondary expanded dashicons-before dashicons-admin-comments">&nbsp;Send&nbsp;Message</a>
@@ -29,7 +29,7 @@ if ( $subscribe_form ) {
     ?>
     <div class="reveal" id="subscribe_form" data-reveal>
       <h4 class="header-small">Subscribe to updates from <?php echo get_option('council_member_name'); ?></h4>
-      <?php echo $subscribe_form; ?>
+      <?php echo do_shortcode($subscribe_form); ?>
       <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
     </div>
     <a data-open="subscribe_form" class="button secondary expanded dashicons-before dashicons-email-alt">&nbsp;Subscribe</a>
