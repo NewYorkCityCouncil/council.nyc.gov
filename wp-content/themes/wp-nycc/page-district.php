@@ -186,7 +186,9 @@ if ($current_member_site) {
 
       nycc_sidebar_nav();
 
-      get_template_part( '../wp-nycc-member/contact_widget' );
+      $is_main = true;
+      include(locate_template('../wp-nycc-member/contact_widget.php'));
+      // get_template_part( '../wp-nycc-member/contact_widget' );
 
       ?>
 
