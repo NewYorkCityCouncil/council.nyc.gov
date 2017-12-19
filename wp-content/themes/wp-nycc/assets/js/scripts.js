@@ -1286,7 +1286,7 @@ jQuery('iframe[src*="youtube.com"], iframe[src*="vimeo.com"]').each(function () 
 /*--------------------------------------------------
   Link exit notification
 --------------------------------------------------*/
-jQuery('a:not([href*="council.nyc/"]):not([href*="legistar.council.nyc.gov/"]):not([href*="www.nyc.gov/"]):not([href^="#"]):not([href^="/"])').filter(function () {
+jQuery('a:not([href*="council.nyc/"]):not([href*="legistar.council.nyc.gov/"]):not([href*="laws.council.nyc.gov/"]):not([href*="www.nyc.gov/"]):not([href^="#"]):not([href^="/"])').filter(function () {
   return this.hostname && this.hostname !== location.hostname;
 }).click(function (e) {
   if (!confirm("You are leaving the New York City Council's website. When following an external link, you are subject to the privacy, copyright, security, and information quality policies of that website. By providing links to other sites, The New York City Council does not guarantee, approve, or endorse the views they express, or products/services available on these sites.")) {
