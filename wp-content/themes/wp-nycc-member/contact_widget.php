@@ -23,7 +23,7 @@ if ( $contact_form ) {
       <?php echo do_shortcode($contact_form); ?>
       <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
     </div>
-    <a<?php if ($is_main) {?> href="<?php echo $siteurl; ?>?contact=message"<?php } else { ?> data-open="contact_form"<?php } ?> class="button secondary expanded dashicons-before dashicons-admin-comments">&nbsp;Send&nbsp;Message</a>
+    <a<?php if ($is_main) {?> href="<?php echo $siteurl; ?>?contact=message"<?php } else { ?> data-open="contact_form"<?php } ?> class="button secondary expanded dashicons-before dashicons-admin-comments">&nbsp;Get&nbsp;Assistance</a>
     <?php
 }
 
