@@ -38,7 +38,7 @@ class nycc_district_contact_widget extends WP_Widget {
               <?php echo $contact_form; ?>
               <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
             </div>
-            <a data-open="contact_form" class="button secondary expanded dashicons-before dashicons-admin-comments">&nbsp;Send&nbsp;Message</a>
+            <a data-open="contact_form" class="button secondary expanded dashicons-before dashicons-admin-comments">&nbsp;Get&nbsp;Assistance</a>
             <?php
         }
 
