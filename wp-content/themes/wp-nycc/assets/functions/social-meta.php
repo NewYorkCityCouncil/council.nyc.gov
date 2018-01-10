@@ -16,7 +16,7 @@ function insert_share_meta_in_head() {
     $share_image = esc_attr( $thumbnail_src[0] );
   } else {
     // There's no Featured Image, so use the default one from the theme
-    $share_image = get_theme_file_uri() . '/assets/images/social-img-1024x512.jpg';
+    $share_image = get_theme_file_uri() . '/assets/images/social-img-1024x512-1.jpg';
   }
 
   // Define the the title
