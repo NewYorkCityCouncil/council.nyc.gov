@@ -5847,3 +5847,25 @@ figure {
     width: 6rem !important; }
   .scrollable {
     overflow: visible !important; } }
+/*-------------------------------------------------------------------
+  Archive Ribbon (Archive css adjusts found between lines 719 and 739
+-------------------------------------------------------------------*/
+    #archive{
+      background: #2F56A6;
+      color: #f9f9f9;
+      font-size: 13px;
+      padding: 2px;
+      position: fixed;
+      text-align: center;
+      width: 100%;
+      z-index: 99999;
+    }
+    #archive .dismiss span{
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    #archive .message{
+      margin: 0 auto;
+      pointer-events: none;
+      width: 100%;
+    }

@@ -22,12 +22,16 @@
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
 
     <?php wp_head(); ?>
-
+    <script>jQuery(document).ready(function(){jQuery('#archive .dismiss span').on('click',function(){jQuery('#archive').animate({'opacity': 0}, 300)})});</script>
   </head>
 
   <body <?php body_class(); ?>>
 
     <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {} else { ?>
+    <div id="archive">
+      <div class="message">This is historical material "frozen in time" from the 2014-17 New York City Council legislative session. The website is no longer updated. Links to external websites and some internal pages may not work.</div>
+      <div class="dismiss"><span>Dismiss</span></div>
+    </div>
     <div id="map-container" class="short">
       <div id="map"></div>
       <button class="map-toggler" id="map-toggler">Expand Map</button>

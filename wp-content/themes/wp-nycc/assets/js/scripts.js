@@ -1420,3 +1420,11 @@ jQuery(document).ready(function () {
     jQuery('#district-widgets-container').load(memberSiteURL + ' #district-widgets');
   }
 });
+/*--------------------------------------------------
+  Dismiss archive message
+--------------------------------------------------*/
+jQuery(document).ready(function () {
+  jQuery('#archive .dismiss span').on('click',function(){
+    jQuery('#archive').animate({'opacity': 0}, 300);
+  });
+});
