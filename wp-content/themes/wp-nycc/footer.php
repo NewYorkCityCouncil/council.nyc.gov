@@ -4,6 +4,13 @@
         <?php
         switch_to_blog(1);
         echo get_option('site_footer_content');
+        ?>
+        <div class="reveal" id="general_inquiries" data-reveal>
+          <h4 class="header-small">General Inquiries</h4>
+          <?php echo do_shortcode('[contact-form-7 id="968" title="General Inquiries"]'); ?>
+          <button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <?php
         restore_current_blog();
         ?>
       </footer>
