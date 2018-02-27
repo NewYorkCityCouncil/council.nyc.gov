@@ -71,10 +71,18 @@
     <div class="columns medium-11 medium-centered">
       <hr>
       <div class="columns medium-5 speaker-council-twitter-feed">
-        <a class="twitter-timeline" href="https://twitter.com/NYCSpeakerCoJo?ref_src=twsrc%5Etfw">Tweets by NYCSpeakerCoJo</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="600" href="https://twitter.com/NYCSpeakerCoJo?ref_src=twsrc%5Etfw">Tweets by NYCSpeakerCoJo</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
       <div class="columns medium-5 medium-offset-2 speaker-council-twitter-feed">
-        <a class="twitter-timeline" href="https://twitter.com/NYCCouncil?ref_src=twsrc%5Etfw">Tweets by NYCCouncil</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="600" href="https://twitter.com/NYCCouncil?ref_src=twsrc%5Etfw">Tweets by NYCCouncil</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async>
+      function adjustiFrames(){
+        jQuery("#twitter-widget-0").width(jQuery("#twitter-widget-0").parent().width());
+        jQuery("#twitter-widget-1").width(jQuery("#twitter-widget-1").parent().width());
+      };
+      setTimeout(function(){adjustiFrames()},1000);
+      jQuery(window).on("orientationchange",function(){setTimeout(function(){adjustiFrames()},500)}).resize(adjustiFrames());
+    </script>
       </div>
     </div>
 
