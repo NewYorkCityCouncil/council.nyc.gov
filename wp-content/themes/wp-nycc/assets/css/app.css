@@ -5324,6 +5324,30 @@ figure {
 .widget_recent_entries_network a[href*="/budget/"]:before {
   content: 'Budget'; }
 
+#recent-posts-network-2.widget_recent_entries_network ul li a, #recent-posts-network-3.widget_recent_entries_network ul li a{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  -webkit-line-clamp: 3;
+  -moz-line-clamp: 3;
+  -ms-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  overflow: hidden;
+}
+
+.speaker-council-twitter-feed{
+  height:400px;
+  overflow-y:scroll;
+}
+
+@media screen and (min-width: 40em) {
+  .speaker-council-twitter-feed{
+    height:750px;
+  }
+}
+
 /*--------------------------------------------------
   Social Media Links
 --------------------------------------------------*/
