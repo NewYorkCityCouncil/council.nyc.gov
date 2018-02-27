@@ -5337,17 +5337,6 @@ figure {
   overflow: hidden;
 }
 
-.speaker-council-twitter-feed{
-  height:400px;
-  overflow-y:scroll;
-}
-
-@media screen and (min-width: 40em) {
-  .speaker-council-twitter-feed{
-    height:750px;
-  }
-}
-
 /*--------------------------------------------------
   Social Media Links
 --------------------------------------------------*/
