@@ -3521,7 +3521,7 @@ select {
     padding: 0; }
   .menu.simple li {
     margin-left: 0;
-    margin-right: 1rem; }
+    margin-right: 10px; }
   .menu.simple.align-right li {
     margin-right: 0;
     margin-left: 1rem; }
