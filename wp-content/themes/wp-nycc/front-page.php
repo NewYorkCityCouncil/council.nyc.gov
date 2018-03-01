@@ -75,15 +75,89 @@
       </div>
       <div class="columns medium-5 medium-offset-2 speaker-council-twitter-feed">
         <a class="twitter-timeline" data-height="600" href="https://twitter.com/NYCCouncil?ref_src=twsrc%5Etfw">Tweets by NYCCouncil</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <script async>
-      function adjustiFrames(){
-        jQuery("#twitter-widget-0").width(jQuery("#twitter-widget-0").parent().width());
-        jQuery("#twitter-widget-1").width(jQuery("#twitter-widget-1").parent().width());
-      };
-      setTimeout(function(){adjustiFrames()},1000);
-      jQuery(window).on("orientationchange",function(){setTimeout(function(){adjustiFrames()},500)}).resize(adjustiFrames());
-    </script>
       </div>
+      <script async>
+        function adjustiFrames(){
+          jQuery("#twitter-widget-0").width(jQuery("#twitter-widget-0").parent().width());
+          jQuery("#twitter-widget-1").width(jQuery("#twitter-widget-1").parent().width());
+        };
+        setTimeout(function(){adjustiFrames()},1000);
+        jQuery(window).on("orientationchange",function(){setTimeout(function(){adjustiFrames()},500)}).resize(adjustiFrames());
+      </script>
+      <script>
+        var date = new Date(new Date().getTime() - 5 * 3600 * 1000), month31 = [0,2,4,6,7,9,11], month30 = [3,5,8,10], startDate, endDate, startYear = date.getFullYear(), startMonth = date.getMonth()+1, startDay = date.getDate(), nowHour = date.getUTCHours(), nowMinute = date.getUTCMinutes(), midDay, meetingHour, meetingMinute, endYear, endMonth, endDay;
+        var addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
+        if(startMonth === 12 && startDay === 31){ // if start day is NYE. Unlikely.
+          endYear = startYear+1;
+          endMonth = 1;
+          endDay = 1;
+        } else if (startYear%4 !== 0 && startMonth === 2 && startDay === 28){ //if last day of Feb in normal year
+          endYear = startYear;
+          endMonth = 3;
+          endDay = 1;
+        } else if (startYear%4 === 0 && startMonth === 2 && startDay === 29){ //if last day of Feb in leap year
+          endYear = startYear;
+          endMonth = 3;
+          endDay = 1;
+        } else if ((month31.indexOf(startMonth) !== -1) && startDay === 31){ //if start day is 31st day of month
+          endYear = startYear;
+          endMonth = startMonth+1;
+          endDay = 1;
+        } else if ((month30.indexOf(startMonth) !== -1) && startDay === 30){ //if start day is 30th day of month
+          endYear = startYear;
+          endMonth = startMonth+1;
+          endDay = 1;
+        } else { //any other day
+          endYear = startYear;
+          endMonth = startMonth;
+          endDay = startDay+1;
+        };
+
+        startDate = startYear+"-"+addZero(startMonth)+"-"+addZero(startDay);
+        endDate = endYear+"-"+addZero(endMonth)+"-"+addZero(endDay);
+
+        jQuery.ajax({
+          type:"GET",
+          dataType: "jsonp",
+          url:"https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventDate+ge+datetime%27"+startDate+"%27+and+EventDate+lt+datetime%27"+endDate+"%27&$orderby=EventTime+asc",
+          success:function(hearings){
+            if (hearings.length === 0){
+              jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO HEARINGS TODAY</em></div>");
+            } else {
+              hearings.forEach(function(hearing){
+                midDay = hearing.EventTime.split(" ")[1];
+                meetingHour = parseInt(hearing.EventTime.split(" ")[0].split(":")[0]);
+                meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
+                midDay === "PM" ? meetingHour += 12 : meetingHour + 0;
+                if((nowHour < meetingHour) || (nowHour === meetingHour && nowMinute <= meetingMinute)){ // if scheduled meeting has not happened yet
+                  if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+hearing.EventAgendaFile+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>")
+                  } else {
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+hearing.EventAgendaFile+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>")
+                };
+                };
+              });
+            };
+
+            //Display all hearing today no matter if deferred or past
+            // if (hearings.length === 0){
+            //   jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO HEARINGS TODAY</em></div>");
+            // } else {
+            //   hearings.forEach(function(hearing){
+            //     if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
+            //       jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+hearing.EventAgendaFile+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>")
+            //     } else {
+            //       jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+hearing.EventAgendaFile+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>")
+            //     }
+            //   })
+            // };
+
+            if (jQuery("#front-page-hearings").children().length === 0){
+              jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO HEARINGS TODAY</em></div>");
+            };
+          }
+        });
+      </script>
     </div>
 
   </div>
