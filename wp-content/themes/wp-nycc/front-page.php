@@ -85,7 +85,7 @@
         jQuery(window).on("orientationchange",function(){setTimeout(function(){adjustiFrames()},500)}).resize(adjustiFrames());
       </script>
       <script>
-        var date = new Date(new Date().getTime() - 5 * 3600 * 1000), month31 = [0,2,4,6,7,9,11], month30 = [3,5,8,10], startDate, endDate, startYear = date.getFullYear(), startMonth = date.getMonth()+1, startDay = date.getDate(), nowHour = date.getUTCHours(), nowMinute = date.getUTCMinutes(), midDay, meetingHour, meetingMinute, endYear, endMonth, endDay;
+        var date = new Date(new Date().getTime() - 5 * 3600 * 1000), month31 = [1,3,5,7,8,10,12], month30 = [4,6,9,11], startDate, endDate, startYear = date.getFullYear(), startMonth = date.getMonth()+1, startDay = date.getDate(), nowHour = date.getUTCHours(), nowMinute = date.getUTCMinutes(), midDay, meetingHour, meetingMinute, endYear, endMonth, endDay;
         var addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
         if(startMonth === 12 && startDay === 31){ // if start day is NYE. Unlikely.
           endYear = startYear+1;
