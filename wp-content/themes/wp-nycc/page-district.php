@@ -23,6 +23,18 @@ if ($current_member_site) {
 }
 
 ?>
+<input type="hidden" id="district-val" value="<?php the_ID(); ?>" />
+<script>
+  var pageID = parseInt(jQuery("#district-val").val()), searchableTag;
+  if (pageID === 357){
+    searchableTag = "district_27";
+  } else if (pageID >= 307 && pageID <= 332 && pageID !== 357){
+    searchableTag = "district_"+(pageID % 306);
+  } else {
+    searchableTag = "district_"+((pageID + 1) % 306);
+  }
+  console.log("The tag is "+searchableTag);
+</script>
 <div class="row">
   <div class="columns medium-8 large-9 xxlarge-8">
 

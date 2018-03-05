@@ -123,7 +123,7 @@
           success:function(hearings){
             jQuery("#committee-loader").remove();
             if (hearings.length === 0){
-              jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO HEARINGS TODAY</em></div>");
+              jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
             } else {
               hearings.forEach(function(hearing){
                 midDay = hearing.EventTime.split(" ")[1];
@@ -139,13 +139,13 @@
                 };
               });
               if (jQuery("#front-page-hearings").children().length === 0){
-                jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO HEARINGS TODAY</em></div>");
+                jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
               };
             };
 
             //Display all hearing today no matter if deferred or past
             // if (hearings.length === 0){
-            //   jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO HEARINGS TODAY</em></div>");
+            //   jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
             // } else {
             //   hearings.forEach(function(hearing){
             //     if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
