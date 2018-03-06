@@ -121,11 +121,21 @@
           dataType:"jsonp",
           url:"https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventDate+ge+datetime%27"+startDate+"%27+and+EventDate+lt+datetime%27"+endDate+"%27&$orderby=EventTime+asc",
           success:function(hearings){
+            function timeConverter(timeString){
+              var hr = parseInt(timeString.split(" ")[0].split(":")[0]);
+              var min = parseInt(timeString.split(" ")[0].split(":")[1]);
+              var ampm = timeString.split(" ")[1];
+              ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr * 100 : hr = (hr+12) * 100;
+              return hr+min;
+            };
+            var sortedHearings = hearings.sort(function(a,b){
+              return timeConverter(a.EventTime) - timeConverter(b.EventTime);
+            });
             jQuery("#committee-loader").remove();
             if (hearings.length === 0){
               jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
             } else {
-              hearings.forEach(function(hearing){
+              sortedHearings.forEach(function(hearing){
                 midDay = hearing.EventTime.split(" ")[1];
                 meetingHour = parseInt(hearing.EventTime.split(" ")[0].split(":")[0]);
                 meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
