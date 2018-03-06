@@ -85,7 +85,7 @@
         jQuery(window).on("orientationchange",function(){setTimeout(function(){adjustiFrames()},500)}).resize(adjustiFrames());
       </script>
       <script>
-        var date = new Date(new Date().getTime() - 5 * 3600 * 1000), month31 = [1,3,5,7,8,10,12], month30 = [4,6,9,11], startDate, endDate, startYear = date.getFullYear(), startMonth = date.getMonth()+1, startDay = date.getDate(), nowHour = date.getUTCHours(), nowMinute = date.getUTCMinutes(), midDay, meetingHour, meetingMinute, endYear, endMonth, endDay;
+        var date = new Date(new Date().getTime() - 5 * 3600 * 1000), month31 = [1,3,5,7,8,10,12], month30 = [4,6,9,11], startDate, endDate, startYear = date.getFullYear(), startMonth = date.getMonth()+1, startDay = date.getDate(), nowHour = date.getUTCHours(), nowMinute = date.getUTCMinutes(), midDay, meetingHour, meetingMinute, endYear, endMonth, endDay, agendaLink;
         var addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
         if(startMonth === 12 && startDay === 31){ // if start day is NYE. Unlikely.
           endYear = startYear+1;
@@ -139,12 +139,13 @@
                 midDay = hearing.EventTime.split(" ")[1];
                 meetingHour = parseInt(hearing.EventTime.split(" ")[0].split(":")[0]);
                 meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
+                hearing.EventAgendaFile !== null ? agendaLink = hearing.EventAgendaFile : agendaLink = "#";
                 midDay === "PM" ? meetingHour += 12 : meetingHour;
                 if((nowHour < meetingHour) || (nowHour === meetingHour && nowMinute <= meetingMinute)){ // if scheduled meeting has not happened yet
                   if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
-                    jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+hearing.EventAgendaFile+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
                   } else {
-                    jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+hearing.EventAgendaFile+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
                   };
                 };
               });
@@ -159,9 +160,9 @@
             // } else {
             //   hearings.forEach(function(hearing){
             //     if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
-            //       jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+hearing.EventAgendaFile+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
+            //       jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
             //     } else {
-            //       jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+hearing.EventAgendaFile+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
+            //       jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
             //     };
             //   });
             // };
