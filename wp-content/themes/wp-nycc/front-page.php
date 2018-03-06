@@ -140,7 +140,7 @@
                 meetingHour = parseInt(hearing.EventTime.split(" ")[0].split(":")[0]);
                 meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
                 hearing.EventAgendaFile !== null ? agendaLink = hearing.EventAgendaFile : agendaLink = "#";
-                midDay === "PM" ? meetingHour += 12 : meetingHour;
+                midDay === "PM" && meetingHour !== 12 ? meetingHour += 12 : meetingHour;
                 if((nowHour < meetingHour) || (nowHour === meetingHour && nowMinute <= meetingMinute)){ // if scheduled meeting has not happened yet
                   if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
                     jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
