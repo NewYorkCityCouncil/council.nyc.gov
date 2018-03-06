@@ -10,6 +10,18 @@
       <hr>
     </div>
     <div class="columns medium-8">
+      <div class="row">
+        <div class="columns small-12">
+          <!-- <h3>Last Week at the Council</h3> -->
+          <div class="featured-carousel" style="display:none;"></div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <br>
+        <div class="columns small-12">
+          <h3>Featured Content</h3>
+        </div>
+      </div> -->
       <div class="row small-up-1 large-up-2 block-grid">
 
       <?php
@@ -85,6 +97,9 @@
         jQuery(window).on("orientationchange",function(){setTimeout(function(){adjustiFrames()},500)}).resize(adjustiFrames());
       </script>
       <script>
+        /*--------------------------------------------------
+          Upcoming Hearings jQuery
+        --------------------------------------------------*/
         var date = new Date(new Date().getTime() - 5 * 3600 * 1000), month31 = [1,3,5,7,8,10,12], month30 = [4,6,9,11], startDate, endDate, startYear = date.getFullYear(), startMonth = date.getMonth()+1, startDay = date.getDate(), nowHour = date.getUTCHours(), nowMinute = date.getUTCMinutes(), midDay, meetingHour, meetingMinute, endYear, endMonth, endDay, agendaLink;
         var addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
         if(startMonth === 12 && startDay === 31){ // if start day is NYE. Unlikely.
@@ -168,6 +183,28 @@
             // };
           }
         });
+
+        /*--------------------------------------------------
+          Load Flickr API Response to Slick Slider
+        --------------------------------------------------*/
+        function jsonFlickrApi(json) {
+          jQuery.each(json.photos.photo, function(i, pic) {
+            jQuery(".featured-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
+          });
+          jQuery('.featured-carousel').show().slick({
+            // adaptiveHeight: true,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed:2000,
+            cssEase: 'linear',
+            dots: false,
+            fade: true,
+            infinite: true,
+            pauseOnFocus: false,
+            pauseOnHover: false,
+            speed: 1000,
+          });
+        };
       </script>
     </div>
 
