@@ -12,16 +12,16 @@
     <div class="columns medium-8">
       <div class="row">
         <div class="columns small-12">
-          <!-- <h3>Last Week at the Council</h3> -->
+          <h3>Last Week at the Council</h3>
           <div class="featured-carousel" style="display:none;"></div>
         </div>
       </div>
-      <!-- <div class="row">
+      <div class="row">
         <br>
         <div class="columns small-12">
           <h3>Featured Content</h3>
         </div>
-      </div> -->
+      </div>
       <div class="row small-up-1 large-up-2 block-grid">
 
       <?php
@@ -207,6 +207,19 @@
             speed: 1000,
           });
         };
+
+        jQuery.ajax({
+          url: 'https://api.flickr.com/services/rest/',
+          dataType: 'jsonp',
+          data: {
+            "method":"flickr.photos.search",
+            "user_id":"34210875@N06",
+            "api_key":"f5f12de72b3f9da379b9b6949ce0e219",
+            "format":"json",
+            "tags":"featured",
+            "tag_mode": "any",
+          }
+        });
       </script>
     </div>
 

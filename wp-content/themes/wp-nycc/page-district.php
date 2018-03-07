@@ -25,19 +25,56 @@ if ($current_member_site) {
 ?>
 <input type="hidden" id="district-val" value="<?php the_ID(); ?>" />
 <script>
-  var pageID = parseInt(jQuery("#district-val").val()), searchableTag;
-  if (pageID === 357){
-    searchableTag = "district_27";
-  } else if (pageID >= 307 && pageID <= 332 && pageID !== 357){
-    searchableTag = "district_"+(pageID % 306);
-  } else {
-    searchableTag = "district_"+((pageID + 1) % 306);
-  }
-  console.log("The tag is "+searchableTag);
+  jQuery(document).ready(function(){
+    var pageID = parseInt(jQuery("#district-val").val()), searchableTag;
+    if (pageID === 357){
+      searchableTag = "district_27";
+    } else if (pageID >= 307 && pageID <= 332 && pageID !== 357){
+      searchableTag = "district_"+(pageID % 306);
+    } else {
+      searchableTag = "district_"+((pageID + 1) % 306);
+    }
+    jQuery(".at-a-glance").html("District "+searchableTag.split("_")[1]+" at a Glance");
+    searchableTag = "district_test"; //only for testing purposes
+
+    function jsonFlickrApi(json) {
+      jQuery.each(json.photos.photo, function(i, pic) {
+        jQuery(".district-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
+      });
+      jQuery('.district-carousel').show().slick({
+        // adaptiveHeight: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed:2000,
+        cssEase: 'linear',
+        dots: false,
+        fade: true,
+        infinite: true,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        speed: 1000,
+      });
+    };
+
+    jQuery.ajax({
+      url: 'https://api.flickr.com/services/rest/',
+      dataType: 'jsonp',
+      data: {
+        "method":"flickr.photos.search",
+        "user_id":"34210875@N06",
+        "api_key":"f5f12de72b3f9da379b9b6949ce0e219",
+        "format":"json",
+        "tags":searchableTag,
+        "tag_mode": "any",
+      }
+    });
+  });
 </script>
 <div class="row">
   <div class="columns medium-8 large-9 xxlarge-8">
-
+    <h3 class="at-a-glance"></h3>
+    <div class="district_carousel" style="display:none;"></div>
+    <br>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
     <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
