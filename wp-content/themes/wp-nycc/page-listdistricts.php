@@ -22,8 +22,9 @@
 
             </div>
             <div class="columns large-8 xxlarge-12 scrollable">
-              <form id="list-search">
+              <form id="list-search" style="position:relative;">
                 <input type="text" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Address &amp; Borough | Member | Neighborhood" />
+                <span class="district-submit" onClick="jQuery('#list-search').submit();" style="color: #666; cursor: pointer; position: absolute; top: 7px; right: 10px;"><i class="fa fa-search" aria-hidden="true"></i></span>
               </form>
               <table class="full-width">
                 <thead>

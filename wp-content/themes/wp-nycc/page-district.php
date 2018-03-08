@@ -37,25 +37,6 @@ if ($current_member_site) {
     jQuery(".at-a-glance").html("District "+searchableTag.split("_")[1]+" at a Glance");
     searchableTag = "district_test"; //only for testing purposes
 
-    function jsonFlickrApi(json) {
-      jQuery.each(json.photos.photo, function(i, pic) {
-        jQuery(".district-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
-      });
-      jQuery('.district-carousel').show().slick({
-        // adaptiveHeight: true,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed:2000,
-        cssEase: 'linear',
-        dots: false,
-        fade: true,
-        infinite: true,
-        pauseOnFocus: false,
-        pauseOnHover: false,
-        speed: 1000,
-      });
-    };
-
     jQuery.ajax({
       url: 'https://api.flickr.com/services/rest/',
       dataType: 'jsonp',
@@ -69,11 +50,29 @@ if ($current_member_site) {
       }
     });
   });
+  function jsonFlickrApi(json) {
+    jQuery.each(json.photos.photo, function(i, pic) {
+      jQuery(".district-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
+    });
+    jQuery('.district-carousel').show().slick({
+      // adaptiveHeight: true,
+      arrows: false,
+      autoplay: true,
+      autoplaySpeed:2000,
+      cssEase: 'linear',
+      dots: false,
+      fade: true,
+      infinite: true,
+      pauseOnFocus: false,
+      pauseOnHover: false,
+      speed: 1000,
+    });
+  };
 </script>
 <div class="row">
   <div class="columns medium-8 large-9 xxlarge-8">
     <h3 class="at-a-glance"></h3>
-    <div class="district_carousel" style="display:none;"></div>
+    <div class="district-carousel" style="display:none;"></div>
     <br>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
