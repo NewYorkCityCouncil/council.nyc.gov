@@ -52,13 +52,14 @@ if ($current_member_site) {
   });
   function jsonFlickrApi(json) {
     jQuery.each(json.photos.photo, function(i, pic) {
-      jQuery(".district-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
+      jQuery(".district-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><div class='pic-title'>"+pic.title.split("-")[0]+"</div><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
     });
+    jQuery(".pic-title").each(function(){$(this).width(($(this).parent().children().last().width()-10))})
     jQuery('.district-carousel').show().slick({
       // adaptiveHeight: true,
       arrows: false,
       autoplay: true,
-      autoplaySpeed:2000,
+      autoplaySpeed:3000,
       cssEase: 'linear',
       dots: false,
       fade: true,
