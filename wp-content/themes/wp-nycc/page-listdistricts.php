@@ -87,7 +87,7 @@
                           <td class="sort-borough"><?php echo $borough; ?></td>
                           <td class="sort-party"><?php echo $party; ?></td>
                           <td class="sort-neighborhoods neighborhoods"><?php echo $neighborhoods; ?></td>
-                          <td class="sort-email email" style="text-align:center;"><a href="mailto:<?php echo $email; ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" onclick="copyToClipboard(jQuery(this))" data-email=<?php echo $email; ?>>Copy</span></td>
+                          <td class="sort-email email" style="text-align:center;"><a href="mailto:<?php echo $email; ?>"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" onclick="copyToClipboard(jQuery(this))" data-email=<?php echo $email; ?>>Copy</span></td>
                         </tr>
                         <?php
 
