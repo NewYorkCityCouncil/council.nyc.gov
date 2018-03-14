@@ -22,6 +22,7 @@
 
             </div>
             <div class="columns large-8 xxlarge-12 scrollable">
+              <input type="text" style="right:1000%;position:absolute;" value="" id="clipboard-copy">
               <form id="list-search" style="position:relative;">
                 <input type="text" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Address &amp; Borough | Member | Neighborhood" />
                 <span class="district-submit" onClick="jQuery('#list-search').submit();" style="color: #666; cursor: pointer; position: absolute; top: 7px; right: 10px;"><i class="fa fa-search" aria-hidden="true"></i></span>
@@ -33,6 +34,7 @@
                   <th><button class="button sort small secondary expanded" data-sort="sort-borough">Borough</button></th>
                   <th><button class="button sort small secondary expanded" data-sort="sort-party">Party</button></th>
                   <th><button class="button disabled no-outline small secondary expanded" tabindex="-1">Neighborhoods</button></th>
+                  <th><button class="button disabled no-outline small secondary expanded" tabindex="-1">Email</button></th>
                 </thead>
                 <tbody class="list">
                   <?php
@@ -72,6 +74,8 @@
                         $borough = get_blog_option($current_member_site_ID,'council_district_borough');
                         $neighborhoods = get_blog_option($current_member_site_ID,'council_district_neighborhoods');
                         $district_url = esc_url( network_site_url() ) . 'district-' . $number . '/';
+                        //New from JC
+                        $email = get_blog_option($current_member_site_ID,'council_district_email');
 
                         // Add the Member's table row
                         ?>
@@ -83,6 +87,7 @@
                           <td class="sort-borough"><?php echo $borough; ?></td>
                           <td class="sort-party"><?php echo $party; ?></td>
                           <td class="sort-neighborhoods neighborhoods"><?php echo $neighborhoods; ?></td>
+                          <td class="sort-email email" style="text-align:center;"><a href="mailto:<?php echo $email; ?>"><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" onclick="copyToClipboard(jQuery(this))" data-email=<?php echo $email; ?>>Copy</span></td>
                         </tr>
                         <?php
 
@@ -101,6 +106,7 @@
                           <td class="sort-borough"></td>
                           <td class="sort-party"></td>
                           <td class="sort-neighborhoods neighborhoods"></td>
+                          <td class="sort-email email"></td>
                         </tr>
                         <?php
                       }
@@ -111,6 +117,17 @@
                   ?>
                 </tbody>
               </table>
+              <script>
+                function copyToClipboard(el) {
+                  var copyText = jQuery("#clipboard-copy");
+                  copyText.val(el.attr("data-email"));
+                  copyText.select();
+                  document.execCommand("copy");
+                  $(el).animate({'opacity': 0}, 250, function () {
+                      $(el).text('Copied!');
+                  }).animate({'opacity': 1}, 250);
+                }
+              </script>
               <div id="list-search-error" class="callout alert text-center hide">
                 <p class="text-small">No results match your search terms.</p>
                 <p><strong>If you're searching for an address, be sure to include the borough.</strong></p>

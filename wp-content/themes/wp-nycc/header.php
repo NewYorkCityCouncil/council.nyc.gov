@@ -12,7 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-
+    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+      <title><?php the_title();?> - <?php bloginfo( $show = 'name' )?></title>
+    <?php endwhile; endif; ?>
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <!-- Google Tag Manager
