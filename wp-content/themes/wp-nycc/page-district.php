@@ -33,10 +33,8 @@ if ($current_member_site) {
       searchableTag = "district_"+(pageID % 306);
     } else {
       searchableTag = "district_"+((pageID + 1) % 306);
-    }
-    jQuery(".at-a-glance").html("District "+searchableTag.split("_")[1]+" at a Glance");
-    searchableTag = "district_test"; //only for testing purposes
-
+    };
+    
     jQuery.ajax({
       url: 'https://api.flickr.com/services/rest/',
       dataType: 'jsonp',
