@@ -93,8 +93,10 @@
           jQuery("#twitter-widget-0").width(jQuery("#twitter-widget-0").parent().width());
           jQuery("#twitter-widget-1").width(jQuery("#twitter-widget-1").parent().width());
         };
-        setTimeout(function(){adjustiFrames()},1000);
-        jQuery(window).on("orientationchange",function(){setTimeout(function(){adjustiFrames()},500)}).resize(adjustiFrames());
+        jQuery(window).on("load",function(){
+          setTimeout(function(){adjustiFrames()},1000);
+          jQuery(window).on("orientationchange",function(){setTimeout(function(){adjustiFrames()},500)}).resize(adjustiFrames());
+        });
       </script>
       <script>
         /*--------------------------------------------------
@@ -179,19 +181,6 @@
                 jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
               };
             };
-
-            //Display all hearing today no matter if deferred or past
-            // if (hearings.length === 0){
-            //   jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
-            // } else {
-            //   hearings.forEach(function(hearing){
-            //     if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
-            //       jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
-            //     } else {
-            //       jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
-            //     };
-            //   });
-            // };
           }
         });
 
@@ -201,20 +190,6 @@
         function jsonFlickrApi(json) {
           jQuery.each(json.photos.photo, function(i, pic) {
             jQuery(".featured-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><div class='pic-title'>"+pic.title.split("-")[0]+"</div><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
-          });
-          jQuery(".pic-title").each(function(){$(this).width(($(this).parent().children().last().width()-10))})
-          jQuery('.featured-carousel').show().slick({
-            // adaptiveHeight: true,
-            arrows: false,
-            autoplay: true,
-            autoplaySpeed:3000,
-            cssEase: 'linear',
-            dots: false,
-            fade: true,
-            infinite: true,
-            pauseOnFocus: false,
-            pauseOnHover: false,
-            speed: 1000,
           });
         };
 
@@ -229,6 +204,23 @@
             "tags":"featured",
             "tag_mode": "any",
           }
+        });
+
+        jQuery(window).on("load", function() {
+          jQuery(".pic-title").each(function(){$(this).width(($(this).parent().children().last().width()-10))})
+          jQuery('.featured-carousel').show().slick({
+            // adaptiveHeight: true,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed:2500,
+            cssEase: 'linear',
+            dots: false,
+            fade: true,
+            infinite: true,
+            pauseOnFocus: false,
+            pauseOnHover: false,
+            speed: 1000,
+          });
         });
       </script>
     </div>
