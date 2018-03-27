@@ -100,6 +100,25 @@
       </script>
       <script>
         /*--------------------------------------------------
+          Upcoming Stated Meetings jQuery
+        --------------------------------------------------*/
+        jQuery.ajax({
+          type:"GET",
+          dataType:"jsonp",
+          url:"https://webapi.legistar.com/v1/nyc/EventDates/1?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ",
+          success:function(meetings){
+            if (meetings.length > 0){
+              var oneDate = meetings[0].split("T")[0].split("-");
+              var date = new Date(oneDate[0],(parseInt(oneDate[1])-1),oneDate[2])
+              jQuery("#upcoming-stated").html("<strong>"+date.toLocaleDateString("en-US",{ weekday: 'long', month: 'long', day: 'numeric' })+"</strong>")
+            } else {
+              jQuery("#stated").remove();
+            };
+          }
+        });
+      </script>
+      <script>
+        /*--------------------------------------------------
           Upcoming Hearings jQuery
         --------------------------------------------------*/
         Date.prototype.stdTimezoneOffset = function() {
@@ -167,13 +186,11 @@
                 meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
                 hearing.EventAgendaFile !== null ? agendaLink = hearing.EventAgendaFile : agendaLink = "#";
                 midDay === "PM" && meetingHour !== 12 ? meetingHour += 12 : meetingHour;
-                if((nowHour < meetingHour) || (nowHour === meetingHour && nowMinute <= meetingMinute)){ // if scheduled meeting has not happened yet
-                  if(hearing.EventAgendaStatusName.toLowerCase() !== "draft"){
-                    if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
-                      jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
-                    } else {
-                      jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
-                    };
+                if(hearing.EventAgendaStatusName.toLowerCase() !== "draft"){
+                  if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
+                  } else {
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small>"+hearing.EventLocation+"</small></div>");
                   };
                 };
               });
@@ -221,7 +238,27 @@
             pauseOnHover: false,
             speed: 1000,
           });
+          jQuery(".slider-image").width("100%");
         });
+      </script>
+      <script>
+      //Pop up for subscribe
+        function setCookie(key, value) {
+          var expires = new Date();
+          expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+          document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
+        function getCookie(key) {
+          var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+          return keyValue ? keyValue[2] : null;
+        }
+
+        if(getCookie("subscribe_shown") === null){
+          //Create cookie if none exists
+          setCookie("subscribe_shown",true);
+          //Display pop up to go to subscribe page
+        };
       </script>
     </div>
 

@@ -5936,7 +5936,7 @@ figure {
   #menu-main-menu .submenu {
     margin-left:25px; }
   .pic-title {
-    background:linear-gradient(to right,black,transparent);
+    background:linear-gradient(to right,black,rgba(0,0,0,.3));
     bottom:0;
     color:white;
     font-size:16px;
