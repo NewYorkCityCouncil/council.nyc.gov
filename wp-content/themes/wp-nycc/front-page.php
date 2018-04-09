@@ -206,7 +206,7 @@
         --------------------------------------------------*/
         function jsonFlickrApi(json) {
           jQuery.each(json.photos.photo, function(i, pic) {
-            jQuery(".featured-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><div class='pic-title'>"+pic.title.split("-")[0]+"</div><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
+            jQuery(".featured-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><div class='pic-title'>"+pic.title.split("-")[0]+"</div><img class='slider-image' alt='"+pic.title+"' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
           });
         };
 
