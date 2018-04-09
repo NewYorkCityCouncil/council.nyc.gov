@@ -35,3 +35,5 @@ function nycc_unregister_press_widgets() {
   unregister_widget('WP_Widget_Categories');
 }
 add_action('widgets_init', 'nycc_unregister_press_widgets', 11);
+
+add_filter('jpeg_quality', function($arg){return 100;});

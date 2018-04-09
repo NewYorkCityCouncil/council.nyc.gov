@@ -25,3 +25,5 @@ function remove_budget_admin_bar_links() {
     $wp_admin_bar->remove_menu('new-user');
 }
 add_action( 'wp_before_admin_bar_render', 'remove_budget_admin_bar_links' );
+
+add_filter('jpeg_quality', function($arg){return 100;});

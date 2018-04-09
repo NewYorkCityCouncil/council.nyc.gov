@@ -50,3 +50,5 @@ add_action('widgets_init', 'nycc_unregister_pb_widgets', 11);
 // Gotta register an unused taxonomies so switch_to_blog() works
 register_taxonomy( 'pbtags', array(''), array('') );
 register_taxonomy( 'pbcycle', array(''), array('') );
+
+add_filter('jpeg_quality', function($arg){return 100;});

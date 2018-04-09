@@ -73,3 +73,5 @@ if ( is_network_admin() ) {
 
 // Don't load Contact Form 7 CSS (Foundation styles forms)
 add_filter( 'wpcf7_load_css', '__return_false' );
+
+add_filter('jpeg_quality', function($arg){return 100;});

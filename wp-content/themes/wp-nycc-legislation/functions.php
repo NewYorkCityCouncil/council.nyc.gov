@@ -27,3 +27,5 @@ function remove_land_use_admin_bar_links() {
     $wp_admin_bar->remove_menu('new-post');
 }
 add_action( 'wp_before_admin_bar_render', 'remove_land_use_admin_bar_links' );
+
+add_filter('jpeg_quality', function($arg){return 100;});

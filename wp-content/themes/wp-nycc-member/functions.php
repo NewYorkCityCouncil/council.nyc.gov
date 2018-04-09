@@ -13,3 +13,5 @@ require_once(get_stylesheet_directory().'/functions/pb.php');             // Par
 require_once(get_stylesheet_directory().'/functions/widgets.php');        // Widgets
 require_once(get_stylesheet_directory().'/functions/roles.php');          // Roles
 require_once(get_stylesheet_directory().'/functions/theme-support.php');  // Theme Support
+
+add_filter('jpeg_quality', function($arg){return 100;});
