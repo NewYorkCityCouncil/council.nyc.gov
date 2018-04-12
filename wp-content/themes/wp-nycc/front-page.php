@@ -80,7 +80,7 @@
     <?php get_sidebar(); ?>
 
     <!-- New content -->
-    <div class="columns medium-11 medium-centered">
+    <div aria-hidden="true" class="columns medium-11 medium-centered">
       <hr>
       <div class="columns medium-5 speaker-council-twitter-feed">
         <a class="twitter-timeline" data-height="600" href="https://twitter.com/NYCSpeakerCoJo?ref_src=twsrc%5Etfw">Tweets by NYCSpeakerCoJo</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
