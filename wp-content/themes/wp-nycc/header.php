@@ -40,7 +40,7 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     End Google Tag Manager (noscript) -->
     <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {} else { ?>
-    <div id="map-container" class="short">
+    <div id="map-container" class="short" aria-hidden="true">
       <div id="map"></div>
       <button class="map-toggler" id="map-toggler">Expand Map</button>
     </div>
@@ -79,7 +79,7 @@
         }
         ?>
 
-        <div id="translation-menu" class="row column text-right<?php if ( $is_member_site == true ) { echo ' member'; } ?>">
+        <div id="translation-menu" aria-hidden="true" class="row column text-right<?php if ( $is_member_site == true ) { echo ' member'; } ?>">
           <button data-toggle="translation-menu-dropdown" class="button dashicons-before dashicons-translation"><span class="show-for-sr">Translate this page</span></button>
           <div class="dropdown-pane" id="translation-menu-dropdown" data-dropdown data-hover="true" data-hover-pane="true">
             <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
