@@ -33,6 +33,20 @@
             <?php
             $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
             $sites = get_sites();
+
+            function sortScripts($a, $b) {
+              $aID = $a->blog_id;
+              switch_to_blog($aID);
+              $aDistrict = get_blog_option($aID,'council_district_number');
+              $bID = $b->blog_id;
+              switch_to_blog($bID);
+              $bDistrict = get_blog_option($bID,'council_district_number');
+              restore_current_blog();
+              return  $aDistrict - $bDistrict;
+            };
+
+            usort($sites, "sortScripts");
+
             foreach ( $sites as $site ) {
 
               $ID = $site->blog_id;
@@ -58,8 +72,8 @@
                 }
               }
 
-              restore_current_blog();
-
+              restore_current_blog();  
+              
             }
             ?>
           </tbody>
