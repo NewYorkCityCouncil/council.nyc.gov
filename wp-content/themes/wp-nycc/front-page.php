@@ -10,7 +10,7 @@
       <hr>
     </div>
     <div class="columns medium-8">
-      <div class="row">
+      <div class="row" aria-hidden="true">
         <div class="columns small-12">
           <h3>Featured at the Council</h3>
           <div class="featured-carousel" style="display:none;"></div>
