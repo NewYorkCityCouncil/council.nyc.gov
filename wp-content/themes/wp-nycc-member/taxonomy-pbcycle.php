@@ -25,6 +25,12 @@
           <a href="<?php echo esc_url( home_url( '/pb/', 'http' ) ); ?>">Learn more about PBNYC</a>
           <?php restore_current_blog(); ?>
         </p>
+        <!-- DELETE THIS AFTER SUNDAY -->
+        <?php
+          if ($cycleID == 7)
+          echo '<span><a class="button" style="color:white;" href="https://pbnyc2018.d21.me/">Vote Now!</a></span>';
+        ?>
+        <!-- DELETE THIS AFTER SUNDAY -->
         <hr>
       </header>
 
