@@ -57,7 +57,7 @@
                   <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png"><?php bloginfo('name'); ?></a></strong>
                 </div>
                 <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon dark" data-toggle></span></span>
-                <div id="responsive-menu">
+                <div role="navigation" id="responsive-menu">
                   <div class="top-bar-right">
                     <?php nycc_main_nav(); ?>
                   </div>
@@ -69,7 +69,7 @@
         </header>
       </div>
 
-      <div class="site-container">
+      <div role="main" aria-label="Main menu" class="site-container">
 
         <?php
         if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {
