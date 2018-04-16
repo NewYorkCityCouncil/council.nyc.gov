@@ -69,7 +69,7 @@
         </header>
       </div>
 
-      <div role="main" aria-label="Main menu" class="site-container">
+      <div role="main" aria-label="main content" class="site-container">
 
         <?php
         if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {
