@@ -7,8 +7,8 @@ function nycc_register_sidebars() {
             'id' => 'land-use-sidebar',
             'name' => __( 'Land Use Sidebar', 'nycc' ),
             'description' => __( 'Sidebar Widget Area', 'nycc' ),
-            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-            'after_widget' => '</aside>',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget' => '</div>',
             'before_title' => '<h4 class="widget-title">',
             'after_title' => '</h4>'
         )
@@ -65,7 +65,7 @@ class Widget_Recent_Plans extends WP_Widget {
         $recent_plans_query = new WP_Query( $args );
 
         if ( $recent_plans_query->have_posts() ) {
-          echo '<aside class="widget widget_nav_menu">';
+          echo '<div class="widget widget_nav_menu">';
           if ( $title ) {
             echo '<h4 class="widget-title">' . $title . '</h4>';
           }
@@ -77,7 +77,7 @@ class Widget_Recent_Plans extends WP_Widget {
             echo '</li>';
           }
           echo '</ul>';
-          echo '</aside>';
+          echo '</div>';
           wp_reset_postdata();
         }
 

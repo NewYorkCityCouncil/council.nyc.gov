@@ -10,11 +10,25 @@
 
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php
+      function console_log( $data ) {
+        $output  = "<script>console.log( 'PHP debugger: ";
+        $output .= json_encode(print_r($data, true));
+        $output .= "' );</script>";
+        echo $output;
+      }
+    ?>
 
+    <title><?php the_title();?> - <?php bloginfo( $show = 'name' )?></title>
+
+    <script>
+      if (document.getElementsByTagName("title").length > 1){
+        extraTitle = document.getElementsByTagName("title")[1];
+        extraTitle.parentNode.removeChild(extraTitle);
+      };
+    </script>
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-      <title><?php the_title();?> - <?php bloginfo( $show = 'name' )?></title>
-    <?php endwhile; endif; ?>
+
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <!-- Google Tag Manager

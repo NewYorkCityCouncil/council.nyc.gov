@@ -1,3 +1,6 @@
+<head>
+  <title>News Post - <?php bloginfo( $show = 'name' )?></title>
+</head>
 <?php get_header(); ?>
 
   <div class="row">
