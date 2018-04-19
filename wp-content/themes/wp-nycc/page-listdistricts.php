@@ -22,19 +22,19 @@
 
             </div>
             <div class="columns large-8 xxlarge-12 scrollable">
-              <input type="text" style="right:1000%;position:absolute;" value="" id="clipboard-copy">
-              <form id="list-search" style="position:relative;">
+              <input type="text" aria-hidden="true" style="right:1000%;position:absolute;" value="" id="clipboard-copy">
+              <form role="search" id="list-search" style="position:relative;">
                 <input type="text" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Address &amp; Borough | Member | Neighborhood" />
                 <span class="district-submit" onClick="jQuery('#list-search').submit();" style="color: #666; cursor: pointer; position: absolute; top: 7px; right: 10px;"><i class="fa fa-search" aria-hidden="true"></i></span>
               </form>
               <table class="full-width">
                 <thead>
-                  <th><button class="button sort small secondary expanded" data-sort="sort-district">#</button></th>
+                  <th><button class="button sort small secondary expanded" data-sort="sort-district">No.</button></th>
                   <th colspan="2"><button class="button sort small secondary expanded" data-sort="sort-member">Member</button></th>
                   <th><button class="button sort small secondary expanded" data-sort="sort-borough">Borough</button></th>
                   <th><button class="button sort small secondary expanded" data-sort="sort-party">Party</button></th>
                   <th><button class="button disabled no-outline small secondary expanded" tabindex="-1">Neighborhoods</button></th>
-                  <th><button class="button disabled no-outline small secondary expanded" tabindex="-1">Email</button></th>
+                  <th aria-hidden="true"><button class="button disabled no-outline small secondary expanded" tabindex="-1">Email</button></th>
                 </thead>
                 <tbody class="list">
                   <?php
@@ -83,11 +83,11 @@
                           <td class="sort-district"><a class="button small expanded" href="<?php echo $district_url; ?>"
                             ><strong><?php echo $number; ?></strong></a></td>
                           <td class="sort-member"><a data-member-name="<?php echo $name; ?>" href="<?php echo $district_url; ?>"><strong><?php echo $name; ?></strong></a></td>
-                          <td><a href="<?php echo $district_url; ?>"><img class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
+                          <td><a href="<?php echo $district_url; ?>"><img alt="<?php echo $name; ?> Head Shot" class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
                           <td class="sort-borough"><?php echo $borough; ?></td>
                           <td class="sort-party"><?php echo $party; ?></td>
                           <td class="sort-neighborhoods neighborhoods"><?php echo $neighborhoods; ?></td>
-                          <td class="sort-email email" style="text-align:center;"><a href="mailto:<?php echo $email; ?>"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" onclick="copyToClipboard(jQuery(this))" data-email=<?php echo $email; ?>>Copy</span></td>
+                          <td  aria-hidden="true" class="sort-email email" style="text-align:center;"><a href="mailto:<?php echo $email; ?>"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" onclick="copyToClipboard(jQuery(this))" data-email=<?php echo $email; ?>>Copy</span></td>
                         </tr>
                         <?php
 
