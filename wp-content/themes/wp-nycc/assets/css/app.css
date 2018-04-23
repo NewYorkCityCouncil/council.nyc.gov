@@ -4006,7 +4006,7 @@ select {
   white-space: nowrap;
   cursor: default;
   background: #e6e6e6;
-  color: #666; }
+  color: #222; }
   .label.primary, .widget_tag_cloud a.primary, .widget_recent_entries_network a.primary[href*="/press/"]:before,
   .widget_recent_entries_network a.primary[href*="/budget/"]:before {
     background: #2f56a6;
@@ -4022,11 +4022,11 @@ select {
   .widget_recent_entries_network a.success[href*="/budget/"]:before,
   .widget_recent_entries_network a[href*="/budget/"].fscf-div-redirecting:before, .label.fscf-div-redirecting {
     background: #3adb76;
-    color: #666; }
+    color: #222; }
   .label.warning, .widget_tag_cloud a.warning, .widget_recent_entries_network a.warning[href*="/press/"]:before,
   .widget_recent_entries_network a.warning[href*="/budget/"]:before {
     background: #ffae00;
-    color: #666; }
+    color: #222; }
   .label.alert, .widget_tag_cloud a.alert, .widget_recent_entries_network a.alert[href*="/press/"]:before,
   .widget_recent_entries_network a.alert[href*="/budget/"]:before {
     background: #d05d4e;
