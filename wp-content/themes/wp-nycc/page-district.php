@@ -71,6 +71,8 @@ if ($current_member_site) {
       pauseOnHover: false,
       speed: 1000,
     });
+    console.log("adjust size")
+    jQuery(".slider-image").css({width:"100%"})
   });
 </script>
 <div class="row">

@@ -105,7 +105,7 @@ function remove_page_attribute_meta_box() {
 function remove_featured_img_box() {
     remove_meta_box('postimagediv', 'page', 'side');
 }
-add_action( 'do_meta_boxes', 'remove_featured_img_box' );
+// add_action( 'do_meta_boxes', 'remove_featured_img_box' );
 
 
 // Remove page templates
