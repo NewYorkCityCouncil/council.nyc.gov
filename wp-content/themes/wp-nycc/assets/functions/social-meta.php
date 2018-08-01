@@ -40,7 +40,8 @@ function insert_share_meta_in_head() {
   <!-- Social Share Images -->
   <meta property="og:url"          content="<?php the_permalink(); ?>" />
   <meta property="og:type"         content="website" />
-  <meta property="og:title"        content="<?php echo $social_title ?>" />
+  <meta property="og:title"        content="<?php the_title(); ?>" />
+  <!-- <meta property="og:title"        content="<#?php echo $social_title ?>" /> -->
   <meta property="og:site_name"    content="<?php bloginfo('name'); ?>"/>
   <meta property="og:description"  content="<?php echo $social_description; ?>" />
   <meta property="og:image"        content="<?php echo $share_image; ?>"/>
