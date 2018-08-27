@@ -102,14 +102,19 @@
         /*--------------------------------------------------
           Upcoming Stated Meetings jQuery
         --------------------------------------------------*/
+        today = new Date();
+        todays_date = {};
+        todays_date.year = today.getFullYear();
+        todays_date.month = (today.getMonth()+1) < 10 ? "0" + (today.getMonth()+1) : (today.getMonth()+1);
+        todays_date.day = today.getDate() < 10 ? "0" + today.getDate() : today.getDate();
         jQuery.ajax({
           type:"GET",
           dataType:"jsonp",
-          url:"https://webapi.legistar.com/v1/nyc/EventDates/1?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ",
+          url:'https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventBodyId+eq+1+and+EventAgendaStatusId+eq+2+and+EventDate+ge+datetime%27'+todays_date.year+"-"+todays_date.month+"-"+todays_date.day+'%27&$orderby=EventTime+asc',
           success:function(meetings){
             if (meetings.length > 0){
-              var oneDate = meetings[0].split("T")[0].split("-");
-              var date = new Date(oneDate[0],(parseInt(oneDate[1])-1),oneDate[2])
+              var oneDate = meetings[0]["EventDate"].split("T")[0].split("-");
+              var date = new Date(oneDate[0],(parseInt(oneDate[1])-1),oneDate[2]);
               jQuery("#stated").html("Our next <strong>Stated Meeting</strong> will be held on <strong>"+date.toLocaleDateString("en-US",{ weekday: 'long', month: 'long', day: 'numeric' })+"</strong>.")
             } else {
               jQuery("#stated").remove();
