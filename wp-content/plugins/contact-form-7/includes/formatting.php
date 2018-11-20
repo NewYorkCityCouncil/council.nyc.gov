@@ -51,7 +51,9 @@ function wpcf7_autop( $pee, $br = 1 ) {
 
 	if ( $br ) {
 		/* wpcf7: add textarea */
-		$pee = preg_replace_callback( '/<(script|style|textarea).*?<\/\\1>/s', create_function( '$matches', 'return str_replace("\n", "<WPPreserveNewline />", $matches[0]);' ), $pee );
+		$pee = preg_replace_callback( '/<(script|style|textarea).*?<\/\\1>/s', function ( $matches ){ return str_replace("\n", "<WPPreserveNewline />", $matches[0]); }, $pee );
+		// create_function is deprecated in v7.2
+		// $pee = preg_replace_callback( '/<(script|style|textarea).*?<\/\\1>/s', create_function( '$matches', 'return str_replace("\n", "<WPPreserveNewline />", $matches[0]);' ), $pee );
 		$pee = preg_replace( '|(?<!<br />)\s*\n|', "<br />\n", $pee ); // optionally make line breaks
 		$pee = str_replace( '<WPPreserveNewline />', "\n", $pee );
 
