@@ -102,6 +102,7 @@ class Widget_Recent_Posts_Network extends WP_Widget {
             echo $args['before_title'] . $title . $args['after_title'];
          } ?>
          <ul>
+            <?php #each is deprecated in v7.2 ?>
             <?php while(list($date, $i) = each($posts)) {
                switch_to_blog($i['bid']);
                $post = get_post($i['pid']);
