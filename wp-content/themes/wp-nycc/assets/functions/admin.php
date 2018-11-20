@@ -23,7 +23,9 @@ function nycc_custom_admin_footer() {
 add_filter('admin_footer_text', 'nycc_custom_admin_footer');
 
 if ( is_super_admin() ) {
-  add_filter( 'wp_default_editor', create_function('', 'return "html";') ); // Make text editor default for super admins
+  add_filter( 'wp_default_editor', function(){ return "html";} ); // Make text editor default for super admins
+  // create_function is deprecated in v7.2
+  // add_filter( 'wp_default_editor', create_function('', 'return "html";') ); 
   // add_filter( 'user_can_richedit', '__return_false' ); // Disable the visual editor for super admins
 }
 

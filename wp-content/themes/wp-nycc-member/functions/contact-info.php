@@ -60,5 +60,7 @@ class nycc_district_contact_widget extends WP_Widget {
 } // end class nycc_district_contact_widget
 add_action(
     'widgets_init',
-    create_function('','return register_widget(nycc_district_contact_widget);')
+    function(){ return register_widget(nycc_district_contact_widget); }
+    // create_function is deprecated in v7.2
+    //create_function('','return register_widget(nycc_district_contact_widget);')
 );
