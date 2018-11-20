@@ -27,7 +27,7 @@ add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
 
 
 // Remove page templates: committees, caucuses, etc.
-function nycc_filter_theme_page_templates( $page_templates, $this, $post ) {
+function nycc_filter_theme_page_templates( $page_templates, $post ) {
     $the_theme = wp_get_theme();
 
     if ( isset( $page_templates['page-caucuses.php'] ) ) {
@@ -60,4 +60,4 @@ function nycc_filter_theme_page_templates( $page_templates, $this, $post ) {
 
     return $page_templates;
 }
-add_filter( 'theme_page_templates', 'nycc_filter_theme_page_templates', 20, 3 );
+add_filter( 'theme_page_templates', 'nycc_filter_theme_page_templates', 20, 2 );

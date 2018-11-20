@@ -1,7 +1,7 @@
 <?php
 
 // Remove page templates
-function nycc_press_filter_theme_page_templates( $page_templates, $this, $post ) {
+function nycc_press_filter_theme_page_templates( $page_templates, $post ) {
     $the_theme = wp_get_theme();
 
     if ( isset( $page_templates['page-sidebar.php'] ) ) {
@@ -10,4 +10,4 @@ function nycc_press_filter_theme_page_templates( $page_templates, $this, $post )
 
     return $page_templates;
 }
-add_filter( 'theme_page_templates', 'nycc_press_filter_theme_page_templates', 20, 3 );
+add_filter( 'theme_page_templates', 'nycc_press_filter_theme_page_templates', 20, 2 );
