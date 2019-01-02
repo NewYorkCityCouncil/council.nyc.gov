@@ -25,16 +25,15 @@ if ($current_member_site) {
 ?>
 <input type="hidden" id="district-val" value="<?php the_ID(); ?>" />
 <script>
-
-    var pageID = parseInt(jQuery("#district-val").val()), searchableTag;
-    if (pageID === 357){
-      searchableTag = "district_27";
-    } else if (pageID >= 307 && pageID <= 332 && pageID !== 357){
-      searchableTag = "district_"+(pageID % 306);
-    } else {
-      searchableTag = "district_"+((pageID + 1) % 306);
-    };
-    jQuery("#district-val").val(searchableTag)
+  var pageID = parseInt(jQuery("#district-val").val()), searchableTag;
+  if (pageID === 357){
+    searchableTag = "district_27";
+  } else if (pageID >= 307 && pageID <= 332 && pageID !== 357){
+    searchableTag = "district_"+(pageID % 306);
+  } else {
+    searchableTag = "district_"+((pageID + 1) % 306);
+  };
+  jQuery("#district-val").val(searchableTag)
 
   
   function jsonFlickrApi(json) {
@@ -57,7 +56,6 @@ if ($current_member_site) {
   });
 
   jQuery(window).on("load", function() {
-    jQuery(".pic-title").each(function(){$(this).width(($(this).parent().children().last().width()-10))})
     jQuery('.district-carousel').show().slick({
       // adaptiveHeight: true,
       arrows: false,
@@ -71,8 +69,8 @@ if ($current_member_site) {
       pauseOnHover: false,
       speed: 1000,
     });
-    console.log("adjust size")
     jQuery(".slider-image").css({width:"100%"})
+    jQuery(".pic-title").each(function(){jQuery(this).width((jQuery(this).parent().children().last().width()-10))})
   });
 </script>
 <div class="row">

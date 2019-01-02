@@ -9,6 +9,7 @@
 
         <header class="page-header">
           <h1><?php the_title(); ?></h1>
+          <?php if ( has_excerpt( $post->ID ) ) { ?><p class="image-overlay-text header-medium sans-serif"><?php echo get_the_excerpt(); ?></p><?php } ?>
           <hr>
         </header>
 

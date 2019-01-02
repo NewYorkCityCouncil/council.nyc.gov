@@ -17,7 +17,6 @@
         </div>
       </div>
       <div class="row">
-        <br>
         <div class="columns small-12">
           <h3>Featured Content</h3>
         </div>
@@ -87,7 +86,7 @@
       </div>
       <div class="columns medium-5 medium-offset-2 speaker-council-twitter-feed">
         <a class="twitter-timeline" data-height="600" href="https://twitter.com/NYCCouncil?ref_src=twsrc%5Etfw">Tweets by NYCCouncil</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      </div>
+      </div>		
       <script async>
         function adjustiFrames(){
           jQuery("#twitter-widget-0").width(jQuery("#twitter-widget-0").parent().width());
@@ -110,12 +109,12 @@
         jQuery.ajax({
           type:"GET",
           dataType:"jsonp",
-          url:'https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventBodyId+eq+1+and+EventAgendaStatusId+eq+2+and+EventDate+ge+datetime%27'+todays_date.year+"-"+todays_date.month+"-"+todays_date.day+'%27&$orderby=EventTime+asc',
+          url:'https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventBodyId+eq+1+and+EventAgendaStatusId+eq+2+and+EventDate+ge+datetime%27'+todays_date.year+"-"+todays_date.month+"-"+todays_date.day+'%27&$orderby=EventDate+asc',
           success:function(meetings){
             if (meetings.length > 0){
               var oneDate = meetings[0]["EventDate"].split("T")[0].split("-");
               var date = new Date(oneDate[0],(parseInt(oneDate[1])-1),oneDate[2]);
-              jQuery("#stated").html("Our next <strong>Stated Meeting</strong> will be held on <strong>"+date.toLocaleDateString("en-US",{ weekday: 'long', month: 'long', day: 'numeric' })+"</strong>.")
+              jQuery("#stated").html("Our next <strong>Charter Meeting</strong> will be held on <strong>"+date.toLocaleDateString("en-US",{ weekday: 'long', month: 'long', day: 'numeric' })+"</strong>.")
             } else {
               jQuery("#stated").remove();
             };
@@ -229,7 +228,6 @@
         });
 
         jQuery(window).on("load", function() {
-          jQuery(".pic-title").each(function(){$(this).width(($(this).parent().children().last().width()-10))})
           jQuery('.featured-carousel').show().slick({
             // adaptiveHeight: true,
             arrows: false,
@@ -244,26 +242,8 @@
             speed: 1000,
           });
           jQuery(".slider-image").width("100%");
+          jQuery(".pic-title").each(function(){jQuery(this).width((jQuery(this).parent().children().last().width()-10))})
         });
-      </script>
-      <script>
-      //Pop up for subscribe
-        function setCookie(key, value) {
-          var expires = new Date();
-          expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
-          document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
-        }
-
-        function getCookie(key) {
-          var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
-          return keyValue ? keyValue[2] : null;
-        }
-
-        if(getCookie("subscribe_shown") === null){
-          //Create cookie if none exists
-          setCookie("subscribe_shown",true);
-          //Display pop up to go to subscribe page
-        };
       </script>
     </div>
 
