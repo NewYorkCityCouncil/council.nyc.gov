@@ -73,46 +73,43 @@
                 <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon dark" data-toggle></span></span>
                 <div role="navigation" id="responsive-menu">
                   <div class="top-bar-right">
-
-                    <ul class="dropdown menu" data-dropdown-menu data-options="disableHover:true;clickOpen:true">
-                      <li>
-                        <a href="#">About</a>
-                        <ul class="menu">
-                          <li><a href="/visit-the-council">Visit the Council</a></li>
-                          <li><a href="/about">What we do</a></li>
-                          <li><a href="/committees">Committees</a></li>
-                          <li><a href="/caucuses">Caucuses</a></li>
+                    <?php nycc_main_nav(); ?>
+                    <ul style="height:0px; overflow: hidden; position: absolute; width: 0px;">
+                      <li><a href="https://council.nyc.gov/public-advocate/">Acting Public Advocate</a></li>
+                      <li><a href="https://council.nyc.gov/about/">About</a>
+                        <ul>
+                          <li><a href="https://council.nyc.gov/visit-the-council/">Visiting the Council</a></li>
+                          <li><a href="https://council.nyc.gov/about/">What we do</a></li>
+                          <li><a href="https://council.nyc.gov/committees/">Committees</a></li>
+                          <li><a href="https://council.nyc.gov/caucuses/">Caucuses</a></li>
                         </ul>
                       </li>
-                      <li>
-                        <a href="#">Districts</a>
-                        <ul class="menu">
-                          <li><a href="/districts">Council Members & Districts</a></li>
-                          <li><a href="/districts-info">District Info</a></li>
+                      <li><a href="https://council.nyc.gov/districts/">Districts</a>
+                        <ul>
+                          <li><a href="https://council.nyc.gov/districts/">Council Memebers & Districts</a></li>
+                          <li><a href="https://council.nyc.gov/district-info/">District Info</a></li>
                         </ul>
                       </li>
-                      <li>
-                        <a href="#">Legislation</a>
-                        <ul class="menu">
-                          <li><a href="/legislation">Our legislative process</a></li>
-                          <li><a href="http://legistar.nyccouncillabs.staging.wpengine.com/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
-                          <li><a href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
-                          <li><a href="http://laws.council.nyc.gov/">Search legislation via Councilmatic (beta)</a></li>
-                          <li><a href="/live">Live Video</a></li>
-                          <li><a href="/legislation/api">Legislative API</a></li>
+                      <li><a href="https://council.nyc.gov/legislation/">Legislation</a>
+                        <ul>
+                          <li><a href="https://council.nyc.gov/legislation/">Our legislative process</a></li>
+                          <li><a href="https://legistar.council.nyc.gov/Calendar.aspx">Hearing calendar and vide archive</a></li>
+                          <li><a href="https://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
+                          <li><a href="https://laws.council.nyc.gov/">Search legislation via Councilmatic (beta)</a></li>
+                          <li><a href="https://council.nyc.gov/live/">Live Video</a></li>
+                          <li><a href="https://council.nyc.gov/legislation/api/">Legislative API</a></li>
                         </ul>
                       </li>
-                      <li><a href="/budget">Budget</a></li>
-                      <li><a href="/land-use">Land Use</a></li>
-                      <li>
-                        <a href="#">Press & News</a>
-                        <ul class="menu">
-                          <li><a href="/press">Press Releases</a></li>
-                          <li><a href="/news">Recent News</a></li>
-                          <li><a href="/news/catergory/reports">Reports</a></li>
-                          <li><a href="/press/press-photos">Photos</a></li>
-                          <li><a href="/news/tag/video">Videos</a></li>
-                          <li><a href="/press/audio">Audio</a></li>
+                      <li><a href="https://council.nyc.gov/budget/">Budget</a></li>
+                      <li><a href="https://council.nyc.gov/land-use/">Land Use</a></li>
+                      <li><a href="https://council.nyc.gov/press/">Press & News</a>
+                        <ul>
+                          <li><a href="https://council.nyc.gov/press/">Press Releases</a></li>
+                          <li><a href="https://council.nyc.gov/news/">Recent News</a></li>
+                          <li><a href="https://council.nyc.gov/news/category/reports/">Reports</a></li>
+                          <li><a href="https://council.nyc.gov/press/press-photos/">Photos</a></li>
+                          <li><a href="http://nyccarchived.wpengine.com/news/tag/video/">Videos</a></li>
+                          <li><a href="https://council.nyc.gov/press/audio/">Audio</a></li>
                         </ul>
                       </li>
                     </ul>

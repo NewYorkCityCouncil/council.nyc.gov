@@ -79,7 +79,7 @@
     <?php get_sidebar(); ?>
 
     <!-- New content -->
-    <div aria-hidden="true" class="columns medium-11 medium-centered">
+    <div class="columns medium-11 medium-centered">
       <hr>
       <div class="columns medium-5 speaker-council-twitter-feed">
         <a class="twitter-timeline" data-height="600" href="https://twitter.com/NYCSpeakerCoJo?ref_src=twsrc%5Etfw">Tweets by NYCSpeakerCoJo</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -93,6 +93,8 @@
           jQuery("#twitter-widget-1").width(jQuery("#twitter-widget-1").parent().width());
         };
         jQuery(window).on("load",function(){
+          jQuery("#twitter-widget-0").attr("title", "Twitter feed from @NYC Speaker Co Jo")
+          jQuery("#twitter-widget-1").attr("title", "Twitter feed from @NYC Council")
           setTimeout(function(){adjustiFrames()},1000);
           jQuery(window).on("orientationchange",function(){setTimeout(function(){adjustiFrames()},500)}).resize(adjustiFrames());
         });
@@ -114,7 +116,7 @@
             if (meetings.length > 0){
               var oneDate = meetings[0]["EventDate"].split("T")[0].split("-");
               var date = new Date(oneDate[0],(parseInt(oneDate[1])-1),oneDate[2]);
-              jQuery("#stated").html("Our next <strong>Charter Meeting</strong> will be held on <strong>"+date.toLocaleDateString("en-US",{ weekday: 'long', month: 'long', day: 'numeric' })+"</strong>.")
+              jQuery("#stated").html("Our next <strong>Stated Meeting</strong> will be held on <strong>"+date.toLocaleDateString("en-US",{ weekday: 'long', month: 'long', day: 'numeric' })+"</strong>.")
             } else {
               jQuery("#stated").remove();
             };
@@ -192,9 +194,9 @@
                 midDay === "PM" && meetingHour !== 12 ? meetingHour += 12 : meetingHour;
                 if(hearing.EventAgendaStatusName.toLowerCase() !== "draft"){
                   if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
-                    jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='hearing start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small aria-label='hearing location'>"+hearing.EventLocation+"</small></div>");
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
                   } else {
-                    jQuery("#front-page-hearings").append("<div class='columns column-block' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='hearing start time'>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small aria-label='hearing location'>"+hearing.EventLocation+"</small></div>");
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
                   };
                 };
               });

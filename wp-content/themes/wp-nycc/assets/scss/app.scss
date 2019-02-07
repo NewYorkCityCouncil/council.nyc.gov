@@ -349,7 +349,7 @@ figure {
   }
   .caption {
     color: $white;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     padding: map-get($grid-column-gutter, small)/3 map-get($grid-column-gutter, small)/2;
     position: absolute;
     bottom: 0;
@@ -375,8 +375,8 @@ $image-overlay-padding: map-get($grid-column-gutter, small)*0.75;
 }
 
 @mixin image-overlay-text {
-  background-color: rgba(0,0,0,0.5);
-  box-shadow: $image-overlay-padding 0 0 0 rgba(0,0,0,0.5), $image-overlay-padding*-1 0 0 0 rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: $image-overlay-padding 0 0 0 rgba(0, 0, 0, 0.8), $image-overlay-padding*-1 0 0 0 rgba(0, 0, 0, 0.8);
   padding: $image-overlay-padding/2 0;
   margin: $image-overlay-padding*-0.75 0 $image-overlay-padding;
   float: left;

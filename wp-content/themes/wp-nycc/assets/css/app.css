@@ -5116,7 +5116,7 @@ figure {
 
 .image-grid .caption {
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 6.66667px 10px;
   position: absolute;
   bottom: 0;
@@ -5170,8 +5170,8 @@ figure {
   width: 100%;
   color: #fff; }
   .image-overlay .image-overlay-text {
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 15px 0 0 0 rgba(0, 0, 0, 0.5), -15px 0 0 0 rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 15px 0 0 0 rgba(0, 0, 0, 0.8), -15px 0 0 0 rgba(0, 0, 0, 0.8);
     padding: 7.5px 0;
     margin: -11.25px 0 15px;
     float: left;
@@ -5188,8 +5188,8 @@ figure {
 
 @media screen and (min-width: 64em) {
   .image-overlay-large .image-overlay-text {
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 15px 0 0 0 rgba(0, 0, 0, 0.5), -15px 0 0 0 rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8;
+    box-shadow: 15px 0 0 0 rgba(0, 0, 0, 0.8), -15px 0 0 0 rgba(0, 0, 0, 0.8);
     padding: 7.5px 0;
     margin: -11.25px 0 15px;
     float: left;
@@ -5936,7 +5936,7 @@ figure {
   #menu-main-menu .submenu {
     margin-left:25px; }
   .pic-title {
-    background:linear-gradient(to right,black,rgba(0,0,0,.3));
+    background:linear-gradient(to right,black,rgba(0,0,0,.8));
     bottom:0;
     color:white;
     font-size:16px;

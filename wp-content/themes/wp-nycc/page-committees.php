@@ -34,13 +34,13 @@
               )
             );
             if ( $list_committees->have_posts() ) {
-              echo '<ul class="text-large">';
+              echo '<ul aria-label="Committees list" class="text-large">';
 
                 while ( $list_committees->have_posts() ) {
                   $list_committees->the_post();
                   echo '<li>';
                   ?><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong><?php
-
+                  $parent_committee = get_the_title();
                   $pub_id = get_the_ID();
                   $issue = new WP_Query(
                     array(
@@ -53,7 +53,7 @@
                     )
                   );
                   if ( $issue->have_posts() ) {
-                    echo '<ul class="text-small">';
+                    echo '<ul aria-label="Subcommittees of the '.$parent_committee.'" class="text-small">';
                       while ( $issue->have_posts() ) : $issue->the_post();
                           echo '<li>';
                           ?><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong><?php
