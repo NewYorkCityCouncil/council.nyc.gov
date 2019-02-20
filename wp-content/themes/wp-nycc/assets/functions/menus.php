@@ -11,7 +11,7 @@ if ( ! function_exists ( 'nycc_main_nav' ) ) {
         wp_nav_menu(array(
             'container' => false,
             'menu_class' => 'vertical large-horizontal menu',
-            'items_wrap' => '<ul id="%1$s" class="%2$s" data-responsive-menu="accordion large-dropdown" aria-hidden="true">%3$s</ul>',
+            'items_wrap' => '<ul id="%1$s" class="%2$s" data-responsive-menu="accordion large-dropdown">%3$s</ul>',
             'theme_location' => 'main-nav',
             'depth' => 5,
             'fallback_cb' => false,

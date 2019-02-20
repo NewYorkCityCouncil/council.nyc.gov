@@ -34,7 +34,7 @@
               )
             );
             if ( $list_committees->have_posts() ) {
-              echo '<ul aria-label="Committees list" class="text-large">';
+              echo '<ul aria-label="of all committees in the City Council" class="text-large">';
 
                 while ( $list_committees->have_posts() ) {
                   $list_committees->the_post();
@@ -53,7 +53,7 @@
                     )
                   );
                   if ( $issue->have_posts() ) {
-                    echo '<ul aria-label="Subcommittees of the '.$parent_committee.'" class="text-small">';
+                    echo '<ul aria-label="of the '.$parent_committee.'s subcommittees" class="text-small">';
                       while ( $issue->have_posts() ) : $issue->the_post();
                           echo '<li>';
                           ?><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong><?php

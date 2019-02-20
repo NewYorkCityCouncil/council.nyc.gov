@@ -35,7 +35,7 @@
               )
             );
             if ( $list_caucuses->have_posts() ) {
-              echo '<ul class="text-large">';
+              echo '<ul class="text-large" aria-label="of all caucuses in the City Council">';
 
                 while ( $list_caucuses->have_posts() ) {
                   $list_caucuses->the_post();
