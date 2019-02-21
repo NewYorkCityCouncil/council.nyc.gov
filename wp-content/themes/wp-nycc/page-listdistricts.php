@@ -34,7 +34,7 @@
                   <th><button class="button sort small secondary expanded" data-sort="sort-borough">Borough</button></th>
                   <th><button class="button sort small secondary expanded" data-sort="sort-party">Party</button></th>
                   <th><button class="button disabled no-outline small secondary expanded" tabindex="-1">Neighborhoods</button></th>
-                  <th aria-hidden="true"><button class="button disabled no-outline small secondary expanded" tabindex="-1">Email</button></th>
+                  <th><button class="button disabled no-outline small secondary expanded" tabindex="-1">Email</button></th>
                 </thead>
                 <tbody class="list">
                   <?php
@@ -87,7 +87,7 @@
                           <td class="sort-borough"><?php echo $borough; ?></td>
                           <td class="sort-party"><?php echo $party; ?></td>
                           <td class="sort-neighborhoods neighborhoods"><?php echo $neighborhoods; ?></td>
-                          <td  aria-hidden="true" class="sort-email email" style="text-align:center;"><a href="mailto:<?php echo $email; ?>"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" onclick="copyToClipboard(jQuery(this))" data-email=<?php echo $email; ?>>Copy</span></td>
+                          <td class="sort-email email" style="text-align:center;"><a aria-label="Send an email to Council Member <?php echo $name; ?>" href="mailto:<?php echo $email; ?>"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" aria-label="Click to copy Council Member <?php echo $name; ?>'s email address" onclick="copyToClipboard(jQuery(this))" data-email=<?php echo $email; ?>>Copy</span></td>
                         </tr>
                         <?php
 

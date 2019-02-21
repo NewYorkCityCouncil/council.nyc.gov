@@ -114,7 +114,7 @@
                   <div class="top-bar-right">
                     <?php nycc_main_nav(); ?>
                     <script>
-                      jQuery(document).ready(function(){
+                      // jQuery(document).ready(function(){
                       //   [[22, "About"],[17, "Districts"],[44, "Legislation"], [46, "Press and News"]].forEach(function(group){
                       //     // jQuery("#menu-item-"+group[0]).attr("aria-label",group[1]+", this is a collapsed menu. Press the space bar to open and close the menu");
                       //     $("#menu-item-"+group[0]+" a").click(function(e){

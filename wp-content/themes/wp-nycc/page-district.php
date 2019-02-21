@@ -38,7 +38,7 @@ if ($current_member_site) {
   
   function jsonFlickrApi(json) {
     jQuery.each(json.photos.photo, function(i, pic) {
-      jQuery(".district-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><div class='pic-title'>"+pic.title.split("-")[0]+"</div><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
+      jQuery(".district-carousel").append("<div class='carousel-images'><div class='pic-title'>"+pic.title.split("-")[0]+"</div><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
     });
   };
 
@@ -76,7 +76,7 @@ if ($current_member_site) {
 <div class="row">
   <div class="columns medium-8 large-9 xxlarge-8">
     <h3 class="at-a-glance"></h3>
-    <div class="district-carousel" style="display:none;"></div>
+    <div class="district-carousel" aria-hidden="true" style="display:none;"></div>
     <br>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
