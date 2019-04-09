@@ -194,9 +194,9 @@
                 midDay === "PM" && meetingHour !== 12 ? meetingHour += 12 : meetingHour;
                 if(hearing.EventAgendaStatusName.toLowerCase() !== "draft"){
                   if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
-                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
                   } else {
-                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fa fa-map-marker' aria-hidden='true'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
                   };
                 };
               });
