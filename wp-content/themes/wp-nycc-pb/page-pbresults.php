@@ -59,7 +59,7 @@
               <div class="columns large-4">
                 <div class="media-object">
                   <div class="media-object-section">
-                    <div class="thumbnail"><a href="<?php echo get_blogaddress_by_id($ID); ?>pb/<?php echo $current_pb_cycle;?>/"><img style="max-width:80px;" src= "<?php echo $thumbnail; ?>"></a></div>
+                    <div class="thumbnail"><a href="<?php echo get_blogaddress_by_id($ID); ?>pb/<?php echo $current_pb_cycle;?>/"><img alt="Headshot of <?php echo $name; ?>" style="max-width:80px;" src= "<?php echo $thumbnail; ?>"></a></div>
                   </div>
                   <div class="media-object-section">
                     <h4 class="header-xlarge">
