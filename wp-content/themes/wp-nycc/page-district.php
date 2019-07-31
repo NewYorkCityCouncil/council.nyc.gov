@@ -25,17 +25,7 @@ if ($current_member_site) {
 ?>
 <input type="hidden" id="district-val" value="<?php the_ID(); ?>" />
 <script>
-  var pageID = parseInt(jQuery("#district-val").val()), searchableTag;
-  if (pageID === 357){
-    searchableTag = "district_27";
-  } else if (pageID >= 307 && pageID <= 332 && pageID !== 357){
-    searchableTag = "district_"+(pageID % 306);
-  } else {
-    searchableTag = "district_"+((pageID + 1) % 306);
-  };
-  jQuery("#district-val").val(searchableTag)
-
-  
+  var searchableTag = "district_"+window.location.href.split("district-")[1].replace("/","")
   function jsonFlickrApi(json) {
     jQuery.each(json.photos.photo, function(i, pic) {
       jQuery(".district-carousel").append("<div class='carousel-images'><div class='pic-title'>"+pic.title.split("-")[0]+"</div><img class='slider-image' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");

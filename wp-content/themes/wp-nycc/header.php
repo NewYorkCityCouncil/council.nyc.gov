@@ -72,61 +72,8 @@
                 </div>
                 <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon dark" data-toggle></span></span>
                 <div role="navigation" id="responsive-menu">
-                  <!--<ul style="height:0px; overflow: hidden; position: absolute; width: 0px;">
-                    <li><a href="https://council.nyc.gov/public-advocate/">Acting Public Advocate</a></li>
-                    <li><a href="https://council.nyc.gov/about/">About</a>
-                      <ul>
-                        <li><a href="https://council.nyc.gov/visit-the-council/">Visiting the Council</a></li>
-                        <li><a href="https://council.nyc.gov/about/">What we do</a></li>
-                        <li><a href="https://council.nyc.gov/committees/">Committees</a></li>
-                        <li><a href="https://council.nyc.gov/caucuses/">Caucuses</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="https://council.nyc.gov/districts/">Districts</a>
-                      <ul>
-                        <li><a href="https://council.nyc.gov/districts/">Council Memebers & Districts</a></li>
-                        <li><a href="https://council.nyc.gov/district-info/">District Info</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="https://council.nyc.gov/legislation/">Legislation</a>
-                      <ul>
-                        <li><a href="https://council.nyc.gov/legislation/">Our legislative process</a></li>
-                        <li><a href="https://legistar.council.nyc.gov/Calendar.aspx">Hearing calendar and vide archive</a></li>
-                        <li><a href="https://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
-                        <li><a href="https://laws.council.nyc.gov/">Search legislation via Councilmatic (beta)</a></li>
-                        <li><a href="https://council.nyc.gov/live/">Live Video</a></li>
-                        <li><a href="https://council.nyc.gov/legislation/api/">Legislative API</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="https://council.nyc.gov/budget/">Budget</a></li>
-                    <li><a href="https://council.nyc.gov/land-use/">Land Use</a></li>
-                    <li><a href="https://council.nyc.gov/press/">Press & News</a>
-                      <ul>
-                        <li><a href="https://council.nyc.gov/press/">Press Releases</a></li>
-                        <li><a href="https://council.nyc.gov/news/">Recent News</a></li>
-                        <li><a href="https://council.nyc.gov/news/category/reports/">Reports</a></li>
-                        <li><a href="https://council.nyc.gov/press/press-photos/">Photos</a></li>
-                        <li><a href="http://nyccarchived.wpengine.com/news/tag/video/">Videos</a></li>
-                        <li><a href="https://council.nyc.gov/press/audio/">Audio</a></li>
-                      </ul>
-                    </li>
-                  </ul>-->
                   <div class="top-bar-right">
                     <?php nycc_main_nav(); ?>
-                    <script>
-                      // jQuery(document).ready(function(){
-                      //   [[22, "About"],[17, "Districts"],[44, "Legislation"], [46, "Press and News"]].forEach(function(group){
-                      //     // jQuery("#menu-item-"+group[0]).attr("aria-label",group[1]+", this is a collapsed menu. Press the space bar to open and close the menu");
-                      //     $("#menu-item-"+group[0]+" a").click(function(e){
-                      //       e.preventDefault();
-                      //       $("is-active").removeClass("is-active");
-                      //       $("js-dropdown-active").removeClass("js-dropdown-active");
-                      //       $(this).parent().addClass("is-active");
-                      //       $(this).parent().children().last().addClass("js-dropdown-active");
-                      //     })
-                      //   });
-                      // });
-                    </script>
                   </div>
                 </div>
                 <?php restore_current_blog(); ?>
@@ -147,6 +94,7 @@
         ?>
 
         <div id="translation-menu" aria-hidden="true" class="row column text-right<?php if ( $is_member_site == true ) { echo ' member'; } ?>">
+          <a href="https://www.essentialaccessibility.com/new-york-city-council?utm_source=newyorkcitycouncilhomepage&utm_medium=iconlarge&utm_term=eachannelpage&utm_content=header&utm_campaign=newyorkcitycouncil" target="_blank" style="margin-right:50px;"><img style="width:60px;margin-top:5px;" alt="This icon serves as a link to download the eSSENTIAL Accessibility assistive technology app for individuals with physical disabilities. It is featured as part of our commitment to diversity and inclusion." src="https://council.nyc.gov/wp-content/themes/wp-nycc/assets/images/eA_Icon.jpg"/></a>
           <button data-toggle="translation-menu-dropdown" class="button dashicons-before dashicons-translation"><span class="show-for-sr">Translate this page</span></button>
           <div class="dropdown-pane" id="translation-menu-dropdown" data-dropdown data-hover="true" data-hover-pane="true">
             <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
