@@ -55,7 +55,7 @@
             'transport': 'beacon',
             'hitCallback': function(){document.location = url;}
           });
-        } else if (url == "http://council.nyc.gov/data/wp-content/uploads/sites/73/2019/07/Growing-Food-Equity-in-NYC.pdf"){
+        } else if (url == "http://council.nyc.gov/data/wp-content/uploads/sites/73/2019/08/growing-food-equity.pdf"){
           ga('send', 'event', 'SOC Food Equity Report', 'click', url, {
             'transport': 'beacon',
             'hitCallback': function(){document.location = url;}
