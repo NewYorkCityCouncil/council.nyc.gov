@@ -68,11 +68,12 @@
               <div class="columns">
                 <?php switch_to_blog(1); ?>
                 <div class="top-bar-title">
-                  <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png"><?php bloginfo('name'); ?></a></strong>
+                  <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png"><h1 class="site-logo" style="display:inline;"><?php bloginfo('name'); ?></h1></a></strong>
                 </div>
                 <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon dark" data-toggle></span></span>
                 <div role="navigation" id="responsive-menu">
                   <div class="top-bar-right">
+                    <!-- replace with hardcoded html-->
                     <?php nycc_main_nav(); ?>
                   </div>
                 </div>
@@ -94,7 +95,6 @@
         ?>
 
         <div id="translation-menu" aria-hidden="true" class="row column text-right<?php if ( $is_member_site == true ) { echo ' member'; } ?>">
-          <a href="https://www.essentialaccessibility.com/new-york-city-council?utm_source=newyorkcitycouncilhomepage&utm_medium=iconlarge&utm_term=eachannelpage&utm_content=header&utm_campaign=newyorkcitycouncil" target="_blank" style="margin-right:50px;"><img style="width:60px;margin-top:5px;" alt="This icon serves as a link to download the eSSENTIAL Accessibility assistive technology app for individuals with physical disabilities. It is featured as part of our commitment to diversity and inclusion." src="https://council.nyc.gov/wp-content/themes/wp-nycc/assets/images/eA_Icon.jpg"/></a>
           <button data-toggle="translation-menu-dropdown" class="button dashicons-before dashicons-translation"><span class="show-for-sr">Translate this page</span></button>
           <div class="dropdown-pane" id="translation-menu-dropdown" data-dropdown data-hover="true" data-hover-pane="true">
             <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
