@@ -65,7 +65,6 @@ if ($current_member_site) {
 </script>
 <div class="row">
   <div class="columns medium-8 large-9 xxlarge-8">
-    <h3 class="at-a-glance"></h3>
     <div class="district-carousel" aria-hidden="true" style="display:none;"></div>
     <br>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

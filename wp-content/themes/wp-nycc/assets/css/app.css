@@ -4504,15 +4504,12 @@ select[multiple] {
   display: block;
   width: 300px;
   padding: 1rem;
-  visibility: hidden;
+  display: none;
+  right: 2%;
   border: 1px solid #cacaca;
   border-radius: 0;
   background-color: #e6e6e6;
   font-size: 1rem;
-}
-
-.dropdown-pane.is-open {
-  visibility: visible;
 }
 
 .invisible,.slick-loading .slick-slide,.slick-loading .slick-track {
@@ -5856,6 +5853,7 @@ a.thumbnail image {
 
 .top-bar-right {
   float: right;
+  min-width: 200px;
 }
 
 .hide {
