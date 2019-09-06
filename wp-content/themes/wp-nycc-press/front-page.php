@@ -15,10 +15,10 @@
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-          <header class="press-release-header">
+          <div class="press-release-header">
             <h2 class="header-large"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
             <p class="byline"><?php the_time('F j, Y') ?></p>
-          </header>
+          </div>
 
           <section class="post-content text-small">
             <?php the_excerpt(); ?>

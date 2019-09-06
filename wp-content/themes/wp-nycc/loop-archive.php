@@ -6,7 +6,7 @@ if ( get_post_type() == 'attachment' ) {
 
       <?php if ( get_post_mime_type() == 'application/pdf' ) { ?>
 
-        <header>
+        <div>
           <h2 class="header-small"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
           <p class="byline"><?php the_time('F j, Y') ?></p>
         </header>
@@ -15,11 +15,11 @@ if ( get_post_type() == 'attachment' ) {
       <?php } elseif ( in_array(get_post_mime_type(),array('image/jpeg','image/png','image/gif')) ) { ?>
 
         <div class="row">
-          <header class="columns large-5">
+          <div class="columns large-5">
             <h2 class="header-small"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
             <p class="byline"><?php the_time('F j, Y') ?></p>
             <?php the_excerpt(); ?>
-          </header>
+          </div>
           <section class="post-content columns large-7">
             <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
               <img class="thumbnail" src="<?php echo wp_get_attachment_url() ?>">
@@ -30,10 +30,10 @@ if ( get_post_type() == 'attachment' ) {
       <?php } else { ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
-          <header>
+          <div>
             <h2 class="header-large"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
             <p class="byline"><?php the_time('F j, Y') ?></p>
-          </header>
+          </div>
           <section class="post-content">
             <?php the_excerpt(); ?>
           </section>
@@ -48,10 +48,10 @@ if ( get_post_type() == 'attachment' ) {
 
   ?>
   <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
-    <header>
+    <div>
       <h2 class="header-large"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
       <p class="byline"><?php the_time('F j, Y') ?></p>
-    </header>
+    </div>
     <?php if ( has_post_format( 'video' )) { ?>
     <div class="row">
       <div class="columns large-6 large-push-6">

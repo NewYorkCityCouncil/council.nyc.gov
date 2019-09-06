@@ -1,5 +1,5 @@
-      </div><!-- end .site-container -->
-
+        </div><!-- end .site-container -->
+      </main>
       <footer class="site-footer">
         <?php
         switch_to_blog(1);

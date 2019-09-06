@@ -9,9 +9,9 @@
 
       <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-        <header class="page-header">
+        <div class="page-header">
           <h1 class="header-xxlarge"><?php the_title(); ?></h1>
-        </header>
+        </div>
 
         <div id="districts-list">
 

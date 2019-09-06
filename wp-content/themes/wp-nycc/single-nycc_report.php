@@ -8,21 +8,21 @@
         get_template_part( 'img_header_style' );
         ?>
         <div class="image-header fit-container widescreen">
-          <header class="page-header image-overlay-large">
+          <div class="page-header image-overlay-large">
             <div class="row">
               <div class="columns clearfix">
                 <h1 class="image-overlay-text header-xxlarge"><?php the_title(); ?></h1>
               </div>
             </div>
-          </header>
+          </div>
         </div>
         <?php
     } else {
         ?>
-        <header class="page-header">
+        <div class="page-header">
           <h1 class="header-xxlarge"><?php the_title(); ?></h1>
           <?php if ( has_excerpt( $post->ID ) ) { ?><p class="header-medium subheader sans-serif"><?php echo get_the_excerpt(); ?></p><?php } ?>
-        </header>
+        </div>
         <hr>
         <?php
     }

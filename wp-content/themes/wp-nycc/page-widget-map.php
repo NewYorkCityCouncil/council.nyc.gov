@@ -80,9 +80,9 @@
   </head>
   <body <?php body_class(); ?>>
 
-    <header class="map-widget-header">
+    <div class="map-widget-header">
       <h1 class="site-logo"><a href="<?php echo esc_url( home_url( '/districts/', 'http' ) ); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-white.png">New York City Council <span class="map-widget-title sans-serif"><em>Find My District</em></span></a></h1>
-    </header>
+    </div>
 
     <div id="map-container" aria-hidden="true"><div id="map"></div></div>
 

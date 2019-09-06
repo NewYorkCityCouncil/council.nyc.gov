@@ -7,10 +7,10 @@
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-          <header class="post-header">
+          <div class="post-header">
             <h1 class="post-title single-title"><?php the_title(); ?></h1>
             <p class="byline"><?php if ( function_exists( 'get_wp_user_avatar' ) ) { echo get_wp_user_avatar( get_the_author_meta('ID'), 'small' ); } ?>&nbsp;&nbsp;<?php the_author(); ?>&nbsp;<span class="meta-separator">|</span> <?php the_time('F j, Y') ?></p>
-          </header>
+          </div>
 
           <section class="post-content">
             <?php the_content(); ?>

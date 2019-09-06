@@ -3,10 +3,10 @@
   <div class="row">
     <div class="columns medium-8">
 
-      <header>
+      <div>
         <h1 class="header-small"><small>Search Results for: </small><em><?php echo esc_attr(get_search_query()); ?></em></h1>
         <hr>
-      </header>
+      </div>
 
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

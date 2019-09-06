@@ -7,10 +7,10 @@
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-          <header>
+          <div>
             <h1 class="header-large"><?php the_title(); ?></h1>
             <?php the_excerpt(); ?>
-          </header>
+          </div>
           <section class="post-content">
             <?php
             $image_attributes = wp_get_attachment_image_src( $post->ID, 'full' );

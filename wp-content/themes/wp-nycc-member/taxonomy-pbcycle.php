@@ -18,7 +18,7 @@
           global $wp_query;
       }  ?>
 
-      <header class="page-header">
+      <div class="page-header">
         <h1 class="header-xxlarge">Participatory Budgeting <small>Cycle <?php echo $cycleID; ?></small></h1>
         <p class="header-medium subheader sans-serif">
           <?php switch_to_blog(1); ?>
@@ -26,7 +26,7 @@
           <?php restore_current_blog(); ?>
         </p>
         <hr>
-      </header>
+      </div>
 
       <?php
       $args = array(

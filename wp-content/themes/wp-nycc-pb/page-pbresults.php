@@ -7,11 +7,11 @@
   <div class="row">
 
     <div class="columns">
-      <header class="page-header">
+      <div class="page-header">
         <h1 class="header-xxlarge">Participatory Budgeting</h1>
         <div class="header-menu"><?php nycc_pb_nav(); ?></div>
         <hr>
-      </header>
+      </div>
 
       <?php the_content(); ?>
 

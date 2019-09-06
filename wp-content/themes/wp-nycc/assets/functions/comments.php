@@ -9,7 +9,7 @@ function nycc_comments($comment, $args, $depth) {
         </div>
       <div class="media-object-section">
         <article id="comment-<?php comment_ID(); ?>" class="clearfix">
-          <header class="comment-author">
+          <div class="comment-author">
             <?php
               // create variable
               $bgauthemail = get_comment_author_email();
@@ -17,7 +17,7 @@ function nycc_comments($comment, $args, $depth) {
             <?php printf(__('%s', 'nycc'), get_comment_author_link()) ?> on
             <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__(' F jS, Y - g:ia', 'nycc')); ?> </a></time>
             <?php edit_comment_link(__('(Edit)', 'nycc'),'  ','') ?>
-          </header>
+          </div>
           <?php if ($comment->comment_approved == '0') : ?>
             <div class="alert alert-info">
               <p><?php _e('Your comment is awaiting moderation.', 'nycc') ?></p>

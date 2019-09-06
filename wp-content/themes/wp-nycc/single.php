@@ -7,10 +7,10 @@
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
-          <header class="post-header">
+          <div class="post-header">
             <h1 class="header-xlarge"><?php the_title(); ?></h1>
             <p class="byline"><?php the_time('F j, Y') ?></p>
-          </header>
+          </div>
 
           <section class="post-content">
             <?php the_content(); ?>

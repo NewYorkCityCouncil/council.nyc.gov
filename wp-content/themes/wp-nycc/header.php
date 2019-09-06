@@ -62,7 +62,7 @@
 
     <div id="sticky-wrapper">
       <div data-sticky-container>
-        <header class="site-header sticky" role="banner" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
+        <header class="site-header sticky" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
           <div class="top-bar">
             <div class="row">
               <div class="columns">
@@ -161,32 +161,19 @@
           </div>
         </header>
       </div>
-
-      <div role="main" aria-label="main content" class="site-container">
-
-        <?php
-        if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {
-          $is_member_site = true;
-        } else {
-          $is_member_site = false;
-        }
-        ?>
-
-        <div id="translation-menu" aria-hidden="true" class="row column text-right<?php if ( $is_member_site == true ) { echo ' member'; } ?>">
-          <button id="translation-button" class="button dashicons-before dashicons-translation"><span class="show-for-sr">Translate this page</span></button>
-          <div class="dropdown-pane" id="translation-menu-dropdown">
-          <div id="close-menu" style="position:absolute; top:-5px; right:3px; cursor:pointer;">×</div>
-            <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
-            <script type="text/javascript">
-              function googleTranslateElementInit() {
-                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.BOTTOM_RIGHT}, 'google_translate_element');
-              }
-            </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      <main>
+        <div class="site-container">
+          <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) { $is_member_site = true; } else { $is_member_site = false; } ?>
+          <div id="translation-menu" aria-hidden="true" class="row column text-right<?php if ( $is_member_site == true ) { echo ' member'; } ?>">
+            <button id="translation-button" class="button dashicons-before dashicons-translation">
+              <span class="show-for-sr">Translate this page</span>
+            </button>
+            <div class="dropdown-pane" id="translation-menu-dropdown">
+              <div id="close-menu" style="position:absolute; top:-5px; right:3px; cursor:pointer;">×</div>
+              <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
+              <script type="text/javascript">function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.BOTTOM_RIGHT}, 'google_translate_element');}</script>
+              <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            </div>
           </div>
-        </div>
-
-        <?php
-        if ( $is_member_site == true ) {
-          get_template_part( 'district_header' );
-        }
-        ?>
+          <?php if ( $is_member_site == true ) { get_template_part( 'district_header' ); } ?>
+          <!-- START OF MAIN CONTENT -->
