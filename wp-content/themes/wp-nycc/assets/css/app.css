@@ -7035,6 +7035,7 @@ figure {
   box-shadow: 0 0 0 .125rem rgba(0,0,0,.1);
   border-radius: 0 0 1px 1px;
   position: relative;
+  outline-color: #23417D;
 }
 
 #translation-menu .lang-label:hover, #translation-menu .button:hover,#translation-menu .comment-reply-link:hover,#translation-menu .press-release-tags ul li a:hover,#translation-menu .social-buttons a:hover,.press-release-tags ul li #translation-menu a:hover,.social-buttons #translation-menu a:hover {

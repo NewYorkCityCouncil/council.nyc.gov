@@ -76,31 +76,31 @@
                     <!-- replace with hardcoded html-->
                     <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" data-responsive-menu="accordion large-dropdown" role="menubar" data-dropdown-menu="xrgjtw-dropdown-menu" data-mutate="99wzrm-responsive-menu" data-events="mutate">
                       <li class="custom-dropdown-hover menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1582 is-dropdown-submenu-parent opens-left" role="menuitem" aria-haspopup="true" aria-label="About" data-is-click="false">
-                        <a href="#">About</a>
+                        <a href="#" aria-expanded="false">About</a>
                         <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" role="menu">
-                          <li id="menu-item-1100" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1100 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/visit-the-council/">Visit the Council</a></li>
-                          <li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/about/">What we do</a></li>
-                          <li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/committees/">Committees</a></li>
-                          <li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/caucuses/">Caucuses</a></li>
+                          <li id="menu-item-1100" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1100 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/visit-the-council/">Visit the Council</a></li>
+                          <li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/about/">What we do</a></li>
+                          <li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/committees/">Committees</a></li>
+                          <li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/caucuses/">Caucuses</a></li>
                         </ul>
                       </li>
                       <li class="custom-dropdown-hover menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1583 is-dropdown-submenu-parent opens-left" role="menuitem" aria-haspopup="true" aria-label="Districts" data-is-click="false">
-                        <a href="#">Districts</a>
+                        <a href="#" aria-expanded="false">Districts</a>
                         <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" role="menu">
-                          <li id="menu-item-1209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1209 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/districts/">Council Members &amp; Districts</a></li>
-                          <li id="menu-item-1208" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1208 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/district-info/">District Info</a></li>
+                          <li id="menu-item-1209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1209 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/districts/">Council Members &amp; Districts</a></li>
+                          <li id="menu-item-1208" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1208 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/district-info/">District Info</a></li>
                         </ul>
                       </li>
                       <li class="custom-dropdown-hover menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-44 is-dropdown-submenu-parent opens-left" role="menuitem" aria-haspopup="true" aria-label="Legislation" data-is-click="false">
-                        <a href="#">Legislation</a>
+                        <a href="#" aria-expanded="false">Legislation</a>
                         <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" role="menu">
-                          <li id="menu-item-238" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-238 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/legislation/">Our legislative process</a></li>
-                          <li id="menu-item-237" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-237 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
-                          <li id="menu-item-861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-861 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
-                          <li id="menu-item-239" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-239 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>
-                          <li id="menu-item-1601" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1601 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/news/2017/11/17/api/">Legislative API</a></li>
-                          <li id="menu-item-291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-291 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/live/">Live video</a></li>
-                          <li id="menu-item-747" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-747 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/data/">Data</a></li>
+                          <li id="menu-item-238" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-238 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/legislation/">Our legislative process</a></li>
+                          <li id="menu-item-237" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-237 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
+                          <li id="menu-item-861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-861 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
+                          <li id="menu-item-239" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-239 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>
+                          <li id="menu-item-1601" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1601 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/news/2017/11/17/api/">Legislative API</a></li>
+                          <li id="menu-item-291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-291 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/live/">Live video</a></li>
+                          <li id="menu-item-747" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-747 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/data/">Data</a></li>
                         </ul>
                       </li>
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-45" role="menuitem">
@@ -110,36 +110,28 @@
                         <a href="https://council.nyc.gov/land-use/">Land Use</a>
                       </li>
                       <li class="custom-dropdown-hover menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-46 is-dropdown-submenu-parent opens-left" role="menuitem" aria-haspopup="true" aria-label="Press &amp; News" data-is-click="false">
-                        <a href="#">Press &amp; News</a>
+                        <a href="#" aria-expanded="false">Press &amp; News</a>
                         <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" role="menu">
-                          <li id="menu-item-304" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-304 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/press/">Press Releases</a></li>
-                          <li id="menu-item-305" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-305 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/news/">Recent News</a></li>
-                          <li id="menu-item-1317" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1317 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/news/category/reports/">Reports</a></li>
-                          <li id="menu-item-302" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-302 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/press/press-photos/">Photos</a></li>
-                          <li id="menu-item-303" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-303 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/news/tag/video/">Videos</a></li>
-                          <li id="menu-item-1060" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1060 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a aria-expanded="false" href="https://council.nyc.gov/press/audio/">Audio</a></li>
+                          <li id="menu-item-304" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-304 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/press/">Press Releases</a></li>
+                          <li id="menu-item-305" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-305 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/news/">Recent News</a></li>
+                          <li id="menu-item-1317" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1317 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/news/category/reports/">Reports</a></li>
+                          <li id="menu-item-302" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-302 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/press/press-photos/">Photos</a></li>
+                          <li id="menu-item-303" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-303 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/news/tag/video/">Videos</a></li>
+                          <li id="menu-item-1060" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1060 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/press/audio/">Audio</a></li>
                         </ul>
                       </li>
                     </ul>                  
                     <!--<#?php nycc_main_nav(); ?>-->
                     <script>
                       jQuery(".custom-dropdown-hover").mouseenter(function(){
-                        jQuery(this).children().last().children().each(function(){
-                          $(this).children().first().attr("aria-expanded", "true");
-                        });
+                        jQuery(this).children().first().attr("aria-expanded", "true");
                       }).focusin(function(){
-                        jQuery(this).children().last().children().each(function(){
-                          $(this).children().first().attr("aria-expanded", "true");
-                        });
+                        jQuery(this).children().first().attr("aria-expanded", "true");
                       });
                       jQuery(".custom-dropdown-hover").mouseleave(function(){
-                        jQuery(this).children().last().children().each(function(){
-                          $(this).children().first().attr("aria-expanded", "false");
-                        });
+                        jQuery(this).children().first().attr("aria-expanded", "false");
                       }).focusout(function(){
-                        jQuery(this).children().last().children().each(function(){
-                          $(this).children().first().attr("aria-expanded", "false");
-                        });
+                        jQuery(this).children().first().attr("aria-expanded", "false");
                       });
                       jQuery(document).ready(function(){
                         $("#translation-menu-dropdown").css("visibility","visible").hide();
