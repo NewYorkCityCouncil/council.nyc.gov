@@ -6910,11 +6910,11 @@ figure {
 }
 
 #districts-list table {
-  font-size: .8125rem;
+  font-size: .9rem;
 }
 
 #districts-list .neighborhoods {
-  font-size: 60%;
+  font-size: 75%;
   line-height: 1.2;
 }
 
@@ -7424,4 +7424,7 @@ input::placeholder{
 }
 #list-search-input{
   padding-right:30px;
+}
+.sort-borough, .sort-party{
+  text-align: center;
 }
