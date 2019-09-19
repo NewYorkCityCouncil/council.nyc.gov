@@ -3790,6 +3790,7 @@ select[multiple] {
   font-size: .75rem;
   line-height: 1;
   color: #2f56a6;
+  padding-right:30px;
 }
 
 :last-child:not(.is-active)>.accordion-title {
@@ -6758,6 +6759,7 @@ figure {
 
   #map-container,#map-container #map {
     height: 100%!important;
+    cursor: move !important;
   }
 
   #map-container::after {
@@ -7393,7 +7395,6 @@ figure {
 #menu-main-menu .submenu {
   margin-left: 25px;
 }
-
 .pic-title {
   background: linear-gradient(to right,#000,rgba(0,0,0,.8));
   bottom: 0;
@@ -7420,4 +7421,7 @@ input::placeholder{
   line-height: inherit;
   text-decoration: none;
   cursor: pointer;
+}
+#list-search-input{
+  padding-right:30px;
 }
