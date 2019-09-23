@@ -17,12 +17,12 @@
         <hr>
 
         <div class="row">
-          <div class="columns medium-6">
+          <div class="columns small-12">
 
             <?php the_content(); ?>
 
           </div>
-          <div class="columns medium-6">
+          <div class="columns small-12">
             <?php
             $list_committees = new WP_Query(
               array(
@@ -34,7 +34,7 @@
               )
             );
             if ( $list_committees->have_posts() ) {
-              echo '<ul aria-label="of all committees in the City Council" class="text-large">';
+              echo '<ul aria-label="of all committees in the City Council" id="committee-list" class="text-large">';
 
                 while ( $list_committees->have_posts() ) {
                   $list_committees->the_post();

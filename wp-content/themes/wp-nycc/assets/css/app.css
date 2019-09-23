@@ -7428,3 +7428,15 @@ input::placeholder{
 .sort-borough, .sort-party{
   text-align: center;
 }
+#committee-list{
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+@media only screen and (max-width: 910px) {
+  #committee-list{
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+  }
+}

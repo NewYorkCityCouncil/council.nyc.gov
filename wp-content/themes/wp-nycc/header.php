@@ -113,7 +113,6 @@
                         <a href="#" aria-expanded="false">Press &amp; News</a>
                         <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" role="menu">
                           <li id="menu-item-304" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-304 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/press/">Press Releases</a></li>
-                          <li id="menu-item-305" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-305 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/news/">Recent News</a></li>
                           <li id="menu-item-1317" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1317 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/news/category/reports/">Reports</a></li>
                           <li id="menu-item-302" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-302 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/press/press-photos/">Photos</a></li>
                           <li id="menu-item-303" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-303 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/news/tag/video/">Videos</a></li>
