@@ -54,7 +54,7 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     End Google Tag Manager (noscript) -->
     <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {} else { ?>
-    <div id="map-container" class="short">
+    <div id="map-container" aria-hidden="true" class="short">
       <div id="map"></div>
       <button class="map-toggler" id="map-toggler">Expand Map</button>
     </div>
@@ -84,6 +84,9 @@
                           <li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/caucuses/">Caucuses</a></li>
                         </ul>
                       </li>
+                      <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-45" role="menuitem">
+                        <a href="https://council.nyc.gov/events/">Events</a>
+                      </li> -->
                       <li class="custom-dropdown-hover menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1583 is-dropdown-submenu-parent opens-left" role="menuitem" aria-haspopup="true" aria-label="Districts" data-is-click="false">
                         <a href="#" aria-expanded="false">Districts</a>
                         <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" role="menu">
