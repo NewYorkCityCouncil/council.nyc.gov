@@ -12,13 +12,13 @@
     <div class="columns medium-8">
       <div class="row" aria-hidden="true">
         <div class="columns small-12">
-          <h3>Featured at the Council</h3>
+          <h2>Featured at the Council</h2>
           <div class="featured-carousel" style="display:none;"></div>
         </div>
       </div>
       <div class="row">
         <div class="columns small-12">
-          <h3>Featured Content</h3>
+          <h2>Featured Content</h2>
         </div>
       </div>
       <div class="row small-up-1 large-up-2 block-grid">
@@ -61,7 +61,7 @@
             <a href="<?php echo $feature_link_url; ?>">
               <div class="image-header fit-container">
                 <div class="image-overlay">
-                  <h4 class="image-overlay-text header-small sans-serif"><?php the_title(); ?></h4>
+                  <h3 class="image-overlay-text header-small sans-serif"><?php the_title(); ?></h3>
                 </div>
               </div>
             </a>
