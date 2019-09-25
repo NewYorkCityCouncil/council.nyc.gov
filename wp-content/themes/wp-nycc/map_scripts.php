@@ -231,7 +231,7 @@ if ( is_page_template( 'page-district.php' ) ) {
   addresslookup.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'addresslookup');
     L.DomEvent.disableClickPropagation(div);
-    div.innerHTML = '<form aria-hidden="true" id="addresslookup"><input id="mapAddress" type="text" placeholder="Street Address, Borough"><button type="submit" class="dashicons-before dashicons-search"><span class="show-for-sr">Search</span></button></form><div aria-live="assertive" role="alert" id="addresslookup-error" class="addresslookup-error"></div>';
+    div.innerHTML = '<form aria-hidden="true" id="addresslookup"><input id="mapAddress" aria-label="Enter street address or borough" type="text" placeholder="Street Address, Borough"><button type="submit" class="dashicons-before dashicons-search" aria-label="Search"><span class="show-for-sr">Search</span></button></form><div aria-live="assertive" role="alert" id="addresslookup-error" class="addresslookup-error"></div>';
     return div;
   };
   addresslookup.addTo(map);
