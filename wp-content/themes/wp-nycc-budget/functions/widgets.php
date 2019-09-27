@@ -9,8 +9,8 @@ function nycc_register_sidebars() {
             'description' => __( 'widget area for posts, archives, search, etc', 'nycc' ),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget' => '</div>',
-            'before_title' => '<h3 class="widget-title">',
-            'after_title' => '</h3>'
+            'before_title' => '<h2 class="widget-title">',
+            'after_title' => '</h2>'
         )
     );
     register_sidebar(
@@ -20,8 +20,8 @@ function nycc_register_sidebars() {
             'description' => __( 'widget area for front page only', 'nycc' ),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget' => '</div>',
-            'before_title' => '<h3 class="widget-title">',
-            'after_title' => '</h3>'
+            'before_title' => '<h2 class="widget-title">',
+            'after_title' => '</h2>'
         )
     );
 }
