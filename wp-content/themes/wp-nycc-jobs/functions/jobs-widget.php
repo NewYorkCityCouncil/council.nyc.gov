@@ -43,7 +43,7 @@ class nycc_jobs_list_widget extends WP_Widget {
               )
           ) );
           ?>
-          <h4 class="widget-title"><?php echo $term->name; ?></h4>
+          <h2 class="widget-title"><?php echo $term->name; ?></h2>
           <ul>
             <?php
             if ( $divisions_query->have_posts() ) : while ( $divisions_query->have_posts() ) : $divisions_query->the_post(); ?>
