@@ -52,7 +52,7 @@
       $winners = new WP_Query( $args );
       if ( $winners->have_posts() ) {
         $winner_exists = 'yes';
-        echo '<h3 class="header-xlarge">Winning Projects:</h3>';
+        echo '<h2 class="header-xlarge">Winning Projects:</h2>';
         while ( $winners->have_posts() ) {
           $winners->the_post();
           ?>
@@ -99,7 +99,7 @@
         );
         $losers = new WP_Query( $args );
         if ( $losers->have_posts() ) {
-          echo '<hr><h3 class="header-xlarge">The following projects were not funded:</h3>';
+          echo '<hr><h2 class="header-xlarge">The following projects were not funded:</h2>';
           while ( $losers->have_posts() ) {
             $losers->the_post();
             ?>
@@ -126,7 +126,7 @@
       <div class="row">
         <div class="columns large-6">
 
-          <h3 class="header-large">What's on the ballot?</h3>
+          <h2 class="header-large">What's on the ballot?</h2>
 
           <ul class="accordion" data-accordion data-allow-all-closed="true">
             <?php
@@ -147,7 +147,7 @@
         </div>
         <div class="columns large-6">
 
-          <h3 class="header-large">Where do I vote?</h3>
+          <h2 class="header-large">Where do I vote?</h2>
 
           <?php
           $ballot_items = new WP_Query('post_type=nycc_pb_vote_site&orderby=menu_order&order=ASC&posts_per_page=-1');

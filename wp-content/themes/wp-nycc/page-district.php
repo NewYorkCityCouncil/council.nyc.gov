@@ -98,7 +98,7 @@ if ($current_member_site) {
                 // List Committees
                 $list_committees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=0&posts_per_page=-1');
                 if ( $list_committees->have_posts() ) {
-                  echo '<h4 class="header-tiny">Committees</h4>';
+                  echo '<h2 class="header-tiny">Committees</h2>';
                   echo '<ul>';
                     while ( $list_committees->have_posts() ) {
                       $list_committees->the_post();
@@ -174,7 +174,7 @@ if ($current_member_site) {
                 );
                 $list_caucuses = new WP_Query( $args );
                 if ( $list_caucuses->have_posts() ) {
-                  echo '<h4 class="header-tiny">Caucuses</h4>';
+                  echo '<h2 class="header-tiny">Caucuses</h2>';
 
                   echo '<ul>';
                     while ( $list_caucuses->have_posts() ) {
