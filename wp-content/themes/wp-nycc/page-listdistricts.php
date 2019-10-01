@@ -10,7 +10,7 @@
       <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
         <div class="page-header">
-          <h1 class="header-xxlarge"><?php the_title(); ?></h1>
+          <h2 id="for-table-caption" class="header-xxlarge"><?php the_title(); ?></h2>
         </div>
 
         <div id="districts-list">
@@ -24,17 +24,18 @@
             <div class="columns large-8 xxlarge-12 scrollable">
               <input type="text" aria-hidden="true" style="right:1000%;position:absolute;" value="" id="clipboard-copy">
               <form role="search" id="list-search" style="position:relative;">
-                <input type="text" aria-label="Search for you district and council member" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Address &amp; Borough | Member | Neighborhood" />
+                <input type="text" aria-label="Search for your district and council member" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Address &amp; Borough | Member | Neighborhood" />
                 <span class="district-submit" onClick="jQuery('#list-search').submit();" style="color: #666; cursor: pointer; position: absolute; top: 7px; right: 10px;"><i class="fa fa-search" aria-hidden="true"></i></span>
               </form>
-              <table class="full-width">
+              <div style="display:none;" aria-live="assertive" id="assertive-message"></div>
+              <table class="full-width" aria-describedby="for-table-caption">
                 <thead>
-                  <th><button class="button sort small secondary expanded" data-sort="sort-district">No.</button></th>
-                  <th colspan="2"><button class="button sort small secondary expanded" data-sort="sort-member">Member</button></th>
-                  <th><button class="button sort small secondary expanded" data-sort="sort-borough">Borough</button></th>
-                  <th><button class="button sort small secondary expanded" data-sort="sort-party">Party</button></th>
-                  <th><button class="button disabled no-outline small secondary expanded" tabindex="-1">Neighborhoods</button></th>
-                  <th><button class="button disabled no-outline small secondary expanded" tabindex="-1">Email</button></th>
+                  <th><button class="button sort small secondary expanded" aria-label="Sort by district number" data-sort="sort-district">No.</button></th>
+                  <th colspan="2"><button class="button sort small secondary expanded" aria-label="Sort by council member" data-sort="sort-member">Member</button></th>
+                  <th><button class="button sort small secondary expanded" aria-label="Sort by borough" data-sort="sort-borough">Borough</button></th>
+                  <th><button class="button sort small secondary expanded" aria-label="Sort by political party" data-sort="sort-party">Party</button></th>
+                  <th><button class="button disabled no-outline small secondary expanded" tabindex="-1" disabled>Neighborhoods</button></th>
+                  <th><button class="button disabled no-outline small secondary expanded" tabindex="-1" disabled>Email</button></th>
                 </thead>
                 <tbody class="list">
                   <?php

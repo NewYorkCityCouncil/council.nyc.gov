@@ -317,20 +317,35 @@ if ( is_page_template( 'page-district.php' ) ) {
    * Districts list.js filter + address search
    */
 
-  var listOptions = {
+  const listOptions = {
     valueNames: [ 'sort-district', 'sort-member', 'sort-borough', 'sort-party', 'sort-neighborhoods' ]
   };
-  var districtsList = new List('districts-list', listOptions);
+  let districtsList = new List('districts-list', listOptions);
 
   // Handle form submit
   jQuery('#list-search').submit(function(e){
     e.preventDefault();
-    var searchTerms = jQuery('#list-search-input').val();
+    let searchTerms = jQuery('#list-search-input').val();
     // First search the list
     districtsList.search(searchTerms);
     // If no results, use the Geoclient
     if (districtsList.matchingItems.length == 0) {
       ajaxGeoclient( searchTerms, false );
+      jQuery("#assertive-message").html("No results found for your search.");
+    } else {
+      let cmList = "";
+      let resultNum = "";
+      districtsList.matchingItems.length > 1 ? resultNum = " Council Members match your search: " : resultNum = " Council Member matches your search: ";
+      for(let i = 0; i < districtsList.matchingItems.length; i++){
+        cmList += districtsList.matchingItems[i]._values['sort-member'].split("<strong>")[1].split("</strong>")[0];
+        if (i < districtsList.matchingItems.length - 1){
+          cmList += ", ";
+        };
+        if (i == districtsList.matchingItems.length - 2){
+          cmList += "and ";
+        };
+      }
+      jQuery("#assertive-message").html(districtsList.matchingItems.length + resultNum + cmList);
     }
   });
 
