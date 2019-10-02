@@ -16,11 +16,11 @@
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
           <div class="press-release-header">
-            <h2 class="header-large"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+            <h3 class="header-large"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
             <p class="byline"><?php the_time('F j, Y') ?></p>
           </div>
 
-          <section class="post-content text-small">
+          <section class="post-content">
             <?php the_excerpt(); ?>
           </section>
 
