@@ -5,7 +5,7 @@
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
     <div class="page-header columns">
-      <h1 class="header-xxlarge"><?php the_title(); ?></h1>
+      <h2 class="header-xxlarge"><?php the_title(); ?></h2>
       <?php if ( has_excerpt( $post->ID ) ) { ?><p class="header-medium subheader sans-serif"><?php echo get_the_excerpt(); ?></p><?php } ?>
       <hr>
     </div>
