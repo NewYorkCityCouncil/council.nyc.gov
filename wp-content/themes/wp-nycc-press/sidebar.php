@@ -4,8 +4,8 @@
     <?php dynamic_sidebar( 'posts-sidebar' ); ?>
   <?php endif; ?>
 
-  <div class="press-release-tags">
-    <?php
+  <!--<div class="press-release-tags">
+    <#?php
     $args = array(
       'smallest'                  => 1,
       'largest'                   => 1,
@@ -21,7 +21,7 @@
     );
     wp_tag_cloud($args);
     ?>
-  </div>
+  </div>-->
 
   <a class="button small expanded- dashicons-before dashicons-rss" href="<?php bloginfo('rss2_url'); ?>">&nbsp;Press Release RSS&nbsp;Feed</a>
 
