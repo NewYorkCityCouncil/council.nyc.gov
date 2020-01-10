@@ -81,6 +81,7 @@
                         <a href="#" aria-expanded="false">About</a>
                         <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" role="menu">
                           <li id="menu-item-1100" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1100 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/visit-the-council/">Visit the Council</a></li>
+                          <li id="menu-item-1777" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1777 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/events/">Events</a></li>
                           <li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/about/">What we do</a></li>
                           <li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/committees/">Committees</a></li>
                           <li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/caucuses/">Caucuses</a></li>
@@ -117,11 +118,11 @@
                       <li class="custom-dropdown-hover menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-46 is-dropdown-submenu-parent opens-left" role="menuitem" aria-haspopup="true" aria-label="Press &amp; News" data-is-click="false">
                         <a href="#" aria-expanded="false">Press &amp; News</a>
                         <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" role="menu">
+                          <li id="menu-item-1060" class="menu-item menu-item-type-custom menu-item-object-custom is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/foil-request/">Submit a "Freedom of Information Law" (FOIL) Request</a></li>
                           <li id="menu-item-304" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-304 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/press/">Press Releases</a></li>
                           <li id="menu-item-1317" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1317 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/news/category/reports/">Reports</a></li>
                           <li id="menu-item-302" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-302 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/press/press-photos/">Photos</a></li>
                           <li id="menu-item-303" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-303 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/news/tag/video/">Videos</a></li>
-                          <li id="menu-item-1060" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1060 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/press/audio/">Audio</a></li>
                         </ul>
                       </li>
                     </ul>                  
