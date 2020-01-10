@@ -33,8 +33,8 @@
                   <th><button class="button sort small secondary expanded" aria-label="Sort by district number" data-sort="sort-district">No.</button></th>
                   <th colspan="2"><button class="button sort small secondary expanded" aria-label="Sort by council member" data-sort="sort-member">Member</button></th>
                   <th><button class="button sort small secondary expanded" aria-label="Sort by borough" data-sort="sort-borough">Borough</button></th>
-                  <th><button class="button sort small secondary expanded" aria-label="Sort by political party" data-sort="sort-party">Party</button></th>
-                  <th><button class="button disabled no-outline small secondary expanded" tabindex="-1" disabled>Neighborhoods</button></th>
+                  <th class="show-for-medium"><button class="button sort small secondary expanded" aria-label="Sort by political party" data-sort="sort-party">Party</button></th>
+                  <th class="show-for-medium" style="width:30%;"><button class="button disabled no-outline small secondary expanded" tabindex="-1" disabled>Neighborhoods</button></th>
                   <th><button class="button disabled no-outline small secondary expanded" tabindex="-1" disabled>Email</button></th>
                 </thead>
                 <tbody class="list">
@@ -84,11 +84,15 @@
                           <td class="sort-district"><a class="button small expanded" href="<?php echo $district_url; ?>"
                             ><strong><?php echo $number; ?></strong></a></td>
                           <td class="sort-member"><a data-member-name="<?php echo $name; ?>" href="<?php echo $district_url; ?>"><strong><?php echo $name; ?></strong></a></td>
-                          <td><a href="<?php echo $district_url; ?>"><img alt="<?php echo $name; ?> Head Shot" class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
+                          <td style="text-align: right;"><a href="<?php echo $district_url; ?>"><img alt="<?php echo $name; ?> Head Shot" class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
                           <td class="sort-borough"><?php echo $borough; ?></td>
-                          <td class="sort-party"><?php echo $party; ?></td>
-                          <td class="sort-neighborhoods neighborhoods"><?php echo $neighborhoods; ?></td>
-                          <td class="sort-email email" style="text-align:center;"><a aria-label="Send an email to Council Member <?php echo $name; ?>" href="mailto:<?php echo $email; ?>"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" aria-label="Click to copy Council Member <?php echo $name; ?>'s email address" onclick="copyToClipboard(jQuery(this))" data-email=<?php echo $email; ?>>Copy</span></td>
+                          <td class="sort-party show-for-medium"><?php echo $party; ?></td>
+                          <td class="sort-neighborhoods neighborhoods show-for-medium"><?php echo $neighborhoods; ?></td>
+                          <?php if ($email !== "") :  ?>
+                            <td class="sort-email email" style="text-align:center;"><a aria-label="Send an email to Council Member <?php echo $name; ?>" href="mailto:<?php echo $email; ?>"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" aria-label="Click to copy Council Member <?php echo $name; ?>'s email address" onclick="copyToClipboard(jQuery(this))" data-email=<?php echo $email; ?>>Copy</span></td>
+                          <?php else : ?>
+                            <td></td>
+                          <?php endif; ?>  
                         </tr>
                         <?php
 
@@ -105,8 +109,8 @@
                           <td class="sort-member"><a data-member-name="<?php echo $name; ?>" href="<?php echo $district_url; ?>"><strong><?php echo $name; ?></strong></a></td>
                           <td></td>
                           <td class="sort-borough"></td>
-                          <td class="sort-party"></td>
-                          <td class="sort-neighborhoods neighborhoods"></td>
+                          <td class="sort-party show-for-medium"></td>
+                          <td class="sort-neighborhoods neighborhoods show-for-medium"></td>
                           <td class="sort-email email"></td>
                         </tr>
                         <?php

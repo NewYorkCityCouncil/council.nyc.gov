@@ -7028,7 +7028,7 @@ figure {
 #translation-menu .button,#translation-menu .comment-reply-link,#translation-menu .press-release-tags ul li a,#translation-menu .social-buttons a,.press-release-tags ul li #translation-menu a,.social-buttons #translation-menu a {
   font-weight: 700;
   padding: 0 .625em;
-  padding-left:100px;
+  padding-left:120px;
   line-height: 2rem;
   height: 2rem;
   background-color: white;
@@ -7052,7 +7052,7 @@ figure {
   white-space: nowrap; 
   color: black;
   background-color:white;
-  font-size: 13px;
+  font-size: 18px;
   width:100px;
   text-align: center;
 }
@@ -7273,6 +7273,12 @@ figure {
 
   .dashicons-before {
     text-decoration: none;
+  }
+
+  .dashicons-before::before {
+    font-size: 23px;
+    height: 23px;
+    width: 23px;
   }
 
   #districts-list td+td,#districts-list th+th {
