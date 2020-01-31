@@ -62,6 +62,7 @@
 
                       // Get the District meta
                       $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                      $neighborhoods = get_post_meta($post->ID, 'neighborhoods',true);
 
                       if ($current_member_site_ID) {
                         // Switch to the current Member's site
@@ -73,7 +74,6 @@
                         $thumbnail = get_blog_option($current_member_site_ID,'council_member_thumbnail' );
                         $party = get_blog_option($current_member_site_ID,'council_member_party');
                         $borough = get_blog_option($current_member_site_ID,'council_district_borough');
-                        $neighborhoods = get_blog_option($current_member_site_ID,'council_district_neighborhoods');
                         $district_url = esc_url( network_site_url() ) . 'district-' . $number . '/';
                         //New from JC
                         $email = get_blog_option($current_member_site_ID,'council_district_email');
@@ -104,14 +104,21 @@
                         $district_url = esc_url( network_site_url() ) . 'district-' . $number . '/';
                         ?>
                         <tr>
-                          <td class="sort-district"><a class="button small expanded" href="<?php echo $district_url; ?>"
-                            ><strong><?php echo $number; ?></strong></a></td>
-                          <td class="sort-member"><a data-member-name="<?php echo $name; ?>" href="<?php echo $district_url; ?>"><strong><?php echo $name; ?></strong></a></td>
+                          <td class="sort-district">
+                            <a class="button small expanded" href="#">
+                              <strong><?php echo $number; ?></strong>
+                            </a>
+                          </td>
+                          <td class="sort-member">
+                            <a data-member-name="<#?php echo $name; ?>" href="#">
+                              <strong><?php echo $name; ?></strong>
+                            </a>
+                          </td>
                           <td></td>
                           <td class="sort-borough"></td>
                           <td class="sort-party show-for-medium"></td>
-                          <td class="sort-neighborhoods neighborhoods show-for-medium"></td>
-                          <td class="sort-email email"></td>
+                          <td class="sort-neighborhoods neighborhoods show-for-medium"><?php echo $neighborhoods ?></td>
+                          <td class="sort-email email" style="text-align:center;"><a aria-label="Send an email to District <?php echo $number; ?>" href="mailto:District<?php echo $number; ?>@council.nyc.gov"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" aria-label="Click to copy District <?php echo $number; ?>'s email address" onclick="copyToClipboard(jQuery(this))" data-email="District<?php echo $number; ?>@council.nyc.gov">Copy</span></td>
                         </tr>
                         <?php
                       }

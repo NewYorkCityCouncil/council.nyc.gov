@@ -40,23 +40,33 @@
       * using 'navigator.sendBeacon' in browser that support it.
       */
       var captureOutboundLink = function(url) {
-        if(url == "http://www.nyc.gov/html/citycouncil/html/budget/expense_funding.shtml"){
+        if(url === "http://www.nyc.gov/html/citycouncil/html/budget/expense_funding.shtml"){
           ga('send', 'event', 'Outbound - Expense Funding', 'click', url, {
             'transport': 'beacon',
             'hitCallback': function(){document.location = url;}
           });
-        } else if (url == "http://www.nyc.gov/html/citycouncil/html/budget/capital_funding.shtml"){
+        } else if (url === "http://www.nyc.gov/html/citycouncil/html/budget/capital_funding.shtml"){
           ga('send', 'event', 'Outbound - Capital Funding', 'click', url, {
             'transport': 'beacon',
             'hitCallback': function(){document.location = url;}
           });
-        } else if (url == "https://data.cityofnewyork.us/City-Government/New-York-City-Council-Discretionary-Funding/4d7f-74pe"){
+        } else if (url === "https://data.cityofnewyork.us/City-Government/New-York-City-Council-Discretionary-Funding/4d7f-74pe"){
           ga('send', 'event', 'Outbound - Discretionary Funding', 'click', url, {
             'transport': 'beacon',
             'hitCallback': function(){document.location = url;}
           });
-        } else if (url == "http://council.nyc.gov/data/wp-content/uploads/sites/73/2019/08/growing-food-equity-1.pdf"){
+        } else if (url === "http://council.nyc.gov/data/wp-content/uploads/sites/73/2019/08/growing-food-equity-1.pdf"){
           ga('send', 'event', 'SOC Food Equity Report', 'click', url, {
+            'transport': 'beacon',
+            'hitCallback': function(){document.location = url;}
+          });
+        } else if (url === "http://council.nyc.gov/data/wp-content/uploads/sites/73/2020/01/Taxi-Medallion-Task-Force-Report-Final.pdf"){
+          ga('send', 'event', 'Taxi Medallion Task Force Report', 'click', url, {
+            'transport': 'beacon',
+            'hitCallback': function(){document.location = url;}
+          });
+        } else if (url === "http://council.nyc.gov/data/wp-content/uploads/sites/73/2020/01/FINAL-PAPER.pdf"){
+          ga('send', 'event', 'Homelessness Crisi Report', 'click', url, {
             'transport': 'beacon',
             'hitCallback': function(){document.location = url;}
           });
