@@ -105,12 +105,12 @@
                         ?>
                         <tr>
                           <td class="sort-district">
-                            <a class="button small expanded" href="#">
+                            <a class="button small expanded" href="<?php echo $district_url ?>">
                               <strong><?php echo $number; ?></strong>
                             </a>
                           </td>
                           <td class="sort-member">
-                            <a data-member-name="<#?php echo $name; ?>" href="#">
+                            <a data-member-name="<#?php echo $name; ?>" href="<?php echo $district_url ?>">
                               <strong><?php echo $name; ?></strong>
                             </a>
                           </td>
