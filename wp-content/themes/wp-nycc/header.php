@@ -75,8 +75,8 @@
                   <div class="top-bar-right">
                     <!-- replace with hardcoded html-->
                     <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" data-responsive-menu="accordion large-dropdown" role="menubar" data-dropdown-menu="xrgjtw-dropdown-menu" data-mutate="99wzrm-responsive-menu" data-events="mutate">
-                      <li style="display:none;"><a id="skip-link">Skip to main content</a></li>
-                      <script>jQuery("#skip-link").attr("href", window.location.origin+window.location.pathname+"#main");</script>
+                      <li id="skip-link-li"><a id="skip-link-a" href="#main">Skip to main content</a></li>
+                      <script>jQuery("#skip-link-a").focus(function(){jQuery("#skip-link-li").css("position","initial")}).focusout(function(){jQuery("#skip-link-li").css("position","absolute")});</script>
                       <li class="custom-dropdown-hover menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1582 is-dropdown-submenu-parent opens-left" role="menuitem" aria-haspopup="true" aria-label="About" data-is-click="false">
                         <a href="#" aria-expanded="false">About</a>
                         <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" role="menu">
@@ -161,7 +161,7 @@
       <main id="main">
         <div class="site-container">
           <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) { $is_member_site = true; } else { $is_member_site = false; } ?>
-          <div id="translation-menu" aria-hidden="true" class="row column text-right<?php if ( $is_member_site == true ) { echo ' member'; } ?>">
+          <div id="translation-menu" class="row column text-right<?php if ( $is_member_site == true ) { echo ' member'; } ?>">
             <button id="translation-button" class="button dashicons-before dashicons-translation">
               <span class="show-for-sr">Translate this page</span>
             </button>

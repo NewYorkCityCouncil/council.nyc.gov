@@ -2976,6 +2976,10 @@ a:focus,a:hover {
   color: #23417d;
 }
 
+a:focus{
+  outline-style:solid;
+}
+
 a img {
   border: 0;
 }
@@ -3604,12 +3608,14 @@ select[multiple] {
 
 .button.secondary,.comment-reply-link,.press-release-tags ul li a,.social-buttons a.comment-reply-link,.social-buttons a.secondary {
   background-color: #767676;
-  color: #fff;
+  outline-color: #23417D!important;
+  color: #ffffff;
 }
 
 .button.secondary:focus,.button.secondary:hover,.comment-reply-link:focus,.comment-reply-link:hover,.press-release-tags ul li a:focus,.press-release-tags ul li a:hover,.social-buttons a.secondary:focus,.social-buttons a.secondary:hover {
-  background-color: #5e5e5e;
-  color: #fff;
+  background-color: #CACACA;
+  color: #000;
+  outline-style:solid;
 }
 
 .button.fscf-div-redirecting,.button.success,.comment-reply-link.fscf-div-redirecting,.press-release-tags ul li a.fscf-div-redirecting,.press-release-tags ul li a.success,.social-buttons a.fscf-div-redirecting,.social-buttons a.success,.success.comment-reply-link {
@@ -4051,8 +4057,8 @@ select[multiple] {
 }
 
 .button-group.comment-reply-link .button:focus,.button-group.comment-reply-link .button:hover,.button-group.comment-reply-link .comment-reply-link:focus,.button-group.comment-reply-link .comment-reply-link:hover,.button-group.comment-reply-link .press-release-tags ul li a:focus,.button-group.comment-reply-link .press-release-tags ul li a:hover,.button-group.comment-reply-link .social-buttons a:focus,.button-group.comment-reply-link .social-buttons a:hover,.button-group.secondary .button:focus,.button-group.secondary .button:hover,.button-group.secondary .comment-reply-link:focus,.button-group.secondary .comment-reply-link:hover,.button-group.secondary .press-release-tags ul li a:focus,.button-group.secondary .press-release-tags ul li a:hover,.button-group.secondary .social-buttons a:focus,.button-group.secondary .social-buttons a:hover,.press-release-tags ul li .button-group.comment-reply-link a:focus,.press-release-tags ul li .button-group.comment-reply-link a:hover,.press-release-tags ul li .button-group.secondary a:focus,.press-release-tags ul li .button-group.secondary a:hover,.press-release-tags ul li a.button-group .button:focus,.press-release-tags ul li a.button-group .button:hover,.press-release-tags ul li a.button-group .comment-reply-link:focus,.press-release-tags ul li a.button-group .comment-reply-link:hover,.press-release-tags ul li a.button-group a:focus,.press-release-tags ul li a.button-group a:hover,.social-buttons .button-group.comment-reply-link a:focus,.social-buttons .button-group.comment-reply-link a:hover,.social-buttons .button-group.secondary a:focus,.social-buttons .button-group.secondary a:hover {
-  background-color: #5e5e5e;
-  color: #fff;
+  background-color: #CACACA;
+  color: #000;
 }
 
 .button-group.fscf-div-redirecting .button,.button-group.fscf-div-redirecting .comment-reply-link,.button-group.fscf-div-redirecting .press-release-tags ul li a,.button-group.fscf-div-redirecting .social-buttons a,.button-group.success .button,.button-group.success .comment-reply-link,.button-group.success .press-release-tags ul li a,.button-group.success .social-buttons a,.press-release-tags ul li .button-group.fscf-div-redirecting a,.press-release-tags ul li .button-group.success a,.social-buttons .button-group.fscf-div-redirecting a,.social-buttons .button-group.success a {
@@ -4505,7 +4511,7 @@ select[multiple] {
   display: block;
   width: 300px;
   padding: 1rem;
-  visibility: hidden;
+  display: none;
   right: 2%;
   border: 1px solid #cacaca;
   border-radius: 0;
@@ -7040,6 +7046,11 @@ figure {
   outline-color: #23417D;
 }
 
+#translation-menu .button,#translation-menu .comment-reply-link,#translation-menu .press-release-tags ul li a:focus,
+#translation-menu .social-buttons a:focus,
+.press-release-tags ul li #translation-menu a,.social-buttons #translation-menu a:focus{
+  outline-style:solid;
+}
 #translation-menu .lang-label:hover, #translation-menu .button:hover,#translation-menu .comment-reply-link:hover,#translation-menu .press-release-tags ul li a:hover,#translation-menu .social-buttons a:hover,.press-release-tags ul li #translation-menu a:hover,.social-buttons #translation-menu a:hover {
   /* background-color: #e6e6e6; */
 }
@@ -7401,6 +7412,10 @@ figure {
 #menu-main-menu .submenu {
   margin-left: 25px;
 }
+#skip-link-li{
+  position: absolute;
+  left:-15em;
+}
 .pic-title {
   background: linear-gradient(to right,#000,rgba(0,0,0,.8));
   bottom: 0;
@@ -7427,6 +7442,9 @@ input::placeholder{
   line-height: inherit;
   text-decoration: none;
   cursor: pointer;
+}
+#map-container a:focus{
+  outline-style:solid;
 }
 #list-search-input{
   padding-right:30px;

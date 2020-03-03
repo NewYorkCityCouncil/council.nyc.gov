@@ -27,13 +27,13 @@
                 <input type="text" aria-label="Search for your district and council member" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Address &amp; Borough | Member | Neighborhood" />
                 <span class="district-submit" onClick="jQuery('#list-search').submit();" style="color: #666; cursor: pointer; position: absolute; top: 7px; right: 10px;"><i class="fa fa-search" aria-hidden="true"></i></span>
               </form>
-              <div style="display:none;" aria-live="assertive" id="assertive-message"></div>
+              <div style="display:none;" role="alert" aria-live="assertive" id="assertive-message"></div>
               <table class="full-width" aria-describedby="for-table-caption">
                 <thead>
-                  <th><button class="button sort small secondary expanded" aria-label="Sort by district number" data-sort="sort-district">No.</button></th>
-                  <th colspan="2"><button class="button sort small secondary expanded" aria-label="Sort by council member" data-sort="sort-member">Member</button></th>
-                  <th><button class="button sort small secondary expanded" aria-label="Sort by borough" data-sort="sort-borough">Borough</button></th>
-                  <th class="show-for-medium"><button class="button sort small secondary expanded" aria-label="Sort by political party" data-sort="sort-party">Party</button></th>
+                  <th><button onclick="declareAction('Sorted list based on district number in ascending order')" class="button sort small secondary expanded" aria-label="Sort by district number" data-sort="sort-district">No.</button></th>
+                  <th colspan="2"><button onclick="declareAction('Sorted list based on council member name in A to Z order')" class="button sort small secondary expanded" aria-label="Sort by council member" data-sort="sort-member">Member</button></th>
+                  <th><button onclick="declareAction('Sorted list based on borough in A to Z order')" class="button sort small secondary expanded" aria-label="Sort by borough" data-sort="sort-borough">Borough</button></th>
+                  <th class="show-for-medium"><button onclick="declareAction('Sorted list based on political party in A to Z order')" class="button sort small secondary expanded" aria-label="Sort by political party" data-sort="sort-party">Party</button></th>
                   <th class="show-for-medium" style="width:30%;"><button class="button disabled no-outline small secondary expanded" tabindex="-1" disabled>Neighborhoods</button></th>
                   <th><button class="button disabled no-outline small secondary expanded" tabindex="-1" disabled>Email</button></th>
                 </thead>
@@ -138,6 +138,22 @@
                   $(el).animate({'opacity': 0}, 250, function () {
                       $(el).text('Copied!');
                   }).animate({'opacity': 1}, 250);
+                }
+
+                function declareAction(msg){
+                  let newMsg = "";
+                  if ($("#assertive-message").html().includes("district") && msg.includes("district")){
+                    if ($("#assertive-message").html().includes("ascending")){newMsg = msg.replace("ascending", "descending")} else {newMsg = msg.replace("descending", "ascending")};
+                  } else if ($("#assertive-message").html().includes("council") && msg.includes("council")){
+                    if ($("#assertive-message").html().includes("A to Z")){newMsg = msg.replace("A to Z", "Z to A");} else {newMsg = msg.replace("Z to A", "A to Z");};
+                  } else if ($("#assertive-message").html().includes("borough") && msg.includes("borough")){
+                    if ($("#assertive-message").html().includes("A to Z")){newMsg = msg.replace("A to Z", "Z to A");} else {newMsg = msg.replace("Z to A", "A to Z");};
+                  } else if ($("#assertive-message").html().includes("party") && msg.includes("party")){
+                    if ($("#assertive-message").html().includes("A to Z")){newMsg = msg.replace("A to Z", "Z to A");} else {newMsg = msg.replace("Z to A", "A to Z");};
+                  } else {
+                    newMsg = msg;
+                  };
+                    $("#assertive-message").html(newMsg);
                 }
               </script>
               <div id="list-search-error" class="callout alert text-center hide">
