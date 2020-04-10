@@ -114,8 +114,8 @@
           url:'https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventBodyId+eq+1+and+EventAgendaStatusId+eq+2+and+EventDate+ge+datetime%27'+todays_date.year+"-"+todays_date.month+"-"+todays_date.day+'%27&$orderby=EventDate+asc',
           success:function(meetings){
             if (meetings.length > 0){
-              var oneDate = meetings[0]["EventDate"].split("T")[0].split("-");
-              var date = new Date(oneDate[0],(parseInt(oneDate[1])-1),oneDate[2]);
+              let oneDate = meetings[0]["EventDate"].split("T")[0].split("-");
+              let date = new Date(oneDate[0],(parseInt(oneDate[1])-1),oneDate[2]);
               jQuery("#stated").html("Our next <strong>Stated Meeting</strong> will be held on <strong>"+date.toLocaleDateString("en-US",{ weekday: 'long', month: 'long', day: 'numeric' })+"</strong>.")
             } else {
               jQuery("#stated").remove();
@@ -126,6 +126,9 @@
       <script>
         /*--------------------------------------------------
           Upcoming Hearings jQuery
+          After COVID Pandemics and normal operations resume comment in and delete the following lines:
+          Comment In: 162 - 190, 196 - 205, 222, 239, 242, 248
+          Delete: 141 - 154, 158 - 161, 206 - 219, 223, 240, 243, 249
         --------------------------------------------------*/
         Date.prototype.stdTimezoneOffset = function() {
           var jan = new Date(this.getFullYear(), 0, 1);
@@ -135,58 +138,97 @@
         Date.prototype.dst = function() {
           return this.getTimezoneOffset() < this.stdTimezoneOffset();
         }
-        var date;
+        Date.prototype.getWeek = function() {
+          var date = new Date(this.valueOf())
+          date.setHours(0)
+          date.setMinutes(0)
+          date.setSeconds(0)
+          date.setMilliseconds(0)
+          var sunday = date.setDate(date.getDate() - date.getDay());
+          date.setHours(23)
+          date.setMinutes(59)
+          date.setSeconds(59)
+          date.setMilliseconds(999)
+          var saturday = date.setDate(date.getDate() + 6);
+          return [new Date(sunday), new Date(saturday)];
+        }
+        let addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
+        let date;
         new Date().dst() ?  date = new Date(new Date().getTime() - 4 * 3600 * 1000) : date = new Date(new Date().getTime() - 5 * 3600 * 1000)
-        var month31 = [1,3,5,7,8,10,12], month30 = [4,6,9,11], startDate, endDate, startYear = date.getFullYear(), startMonth = date.getMonth()+1, startDay = date.getDate(), nowHour = date.getUTCHours(), nowMinute = date.getUTCMinutes(), midDay, meetingHour, meetingMinute, endYear, endMonth, endDay, agendaLink;
-        var addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
-        if(startMonth === 12 && startDay === 31){ // if start day is NYE. Unlikely.
-          endYear = startYear+1;
-          endMonth = 1;
-          endDay = 1;
-        } else if (startYear%4 !== 0 && startMonth === 2 && startDay === 28){ //if last day of Feb in normal year
-          endYear = startYear;
-          endMonth = 3;
-          endDay = 1;
-        } else if (startYear%4 === 0 && startMonth === 2 && startDay === 29){ //if last day of Feb in leap year
-          endYear = startYear;
-          endMonth = 3;
-          endDay = 1;
-        } else if ((month31.indexOf(startMonth) !== -1) && startDay === 31){ //if start day is 31st day of month
-          endYear = startYear;
-          endMonth = startMonth+1;
-          endDay = 1;
-        } else if ((month30.indexOf(startMonth) !== -1) && startDay === 30){ //if start day is 30th day of month
-          endYear = startYear;
-          endMonth = startMonth+1;
-          endDay = 1;
-        } else { //any other day
-          endYear = startYear;
-          endMonth = startMonth;
-          endDay = startDay+1;
-        };
+        let sunday = date.getWeek()[0]
+        let saturday = date.getWeek()[1]
+        let startDate = sunday.getFullYear()+"-"+addZero(sunday.getMonth()+1)+"-"+addZero(sunday.getDate());
+        let endDate = saturday.getFullYear()+"-"+addZero(saturday.getMonth()+1)+"-"+addZero(saturday.getDate());
+        // var month31 = [1,3,5,7,8,10,12], month30 = [4,6,9,11], startDate, endDate, startYear = date.getFullYear(), startMonth = date.getMonth()+1, startDay = date.getDate(), nowHour = date.getUTCHours(), nowMinute = date.getUTCMinutes(), midDay, meetingHour, meetingMinute, endYear, endMonth, endDay, agendaLink;
+        // if(startMonth === 12 && startDay === 31){ // if start day is NYE. Unlikely.
+        //   endYear = startYear+1;
+        //   endMonth = 1;
+        //   endDay = 1;
+        // } else if (startYear%4 !== 0 && startMonth === 2 && startDay === 28){ //if last day of Feb in normal year
+        //   endYear = startYear;
+        //   endMonth = 3;
+        //   endDay = 1;
+        // } else if (startYear%4 === 0 && startMonth === 2 && startDay === 29){ //if last day of Feb in leap year
+        //   endYear = startYear;
+        //   endMonth = 3;
+        //   endDay = 1;
+        // } else if ((month31.indexOf(startMonth) !== -1) && startDay === 31){ //if start day is 31st day of month
+        //   endYear = startYear;
+        //   endMonth = startMonth+1;
+        //   endDay = 1;
+        // } else if ((month30.indexOf(startMonth) !== -1) && startDay === 30){ //if start day is 30th day of month
+        //   endYear = startYear;
+        //   endMonth = startMonth+1;
+        //   endDay = 1;
+        // } else { //any other day
+        //   endYear = startYear;
+        //   endMonth = startMonth;
+        //   endDay = startDay+1;
+        // };
 
-        startDate = startYear+"-"+addZero(startMonth)+"-"+addZero(startDay);
-        endDate = endYear+"-"+addZero(endMonth)+"-"+addZero(endDay);
+        // startDate = startYear+"-"+addZero(startMonth)+"-"+addZero(startDay);
+        // endDate = endYear+"-"+addZero(endMonth)+"-"+addZero(endDay);
         jQuery.ajax({
           type:"GET",
           dataType:"jsonp",
           url:"https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventDate+ge+datetime%27"+startDate+"%27+and+EventDate+lt+datetime%27"+endDate+"%27&$orderby=EventTime+asc",
           success:function(hearings){
-            function timeConverter(timeString){
-              var hr = parseInt(timeString.split(" ")[0].split(":")[0]);
-              var min = parseInt(timeString.split(" ")[0].split(":")[1]);
-              var ampm = timeString.split(" ")[1];
+            // function timeConverter(timeString){
+            //   let hr = parseInt(timeString.split(" ")[0].split(":")[0]);
+            //   let min = parseInt(timeString.split(" ")[0].split(":")[1]);
+            //   let ampm = timeString.split(" ")[1];
+            //   ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr * 100 : hr = (hr+12) * 100;
+            //   return hr+min;
+            // };
+            // let sortedHearings = hearings.sort(function(a,b){
+            //   return timeConverter(a.EventTime) - timeConverter(b.EventTime);
+            // });
+            function dateTimeConverter(dateString, timeString){
+              let fullDate = dateString.split("T")[0].split("-")
+              let year = fullDate[0]
+              let month = fullDate[1]
+              let date = fullDate[2]
+              let hr = parseInt(timeString.split(" ")[0].split(":")[0]);
+              let min = parseInt(timeString.split(" ")[0].split(":")[1]);
+              let ampm = timeString.split(" ")[1];
               ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr * 100 : hr = (hr+12) * 100;
-              return hr+min;
+              return new Date([year, month, date, hr, min, 00].join(","))
             };
-            var sortedHearings = hearings.sort(function(a,b){
-              return timeConverter(a.EventTime) - timeConverter(b.EventTime);
+            let sortedHearings = hearings.sort(function(a,b){
+              return dateTimeConverter(a.EventDate, a.EventTime).getTime() - dateTimeConverter(b.EventDate, b.EventTime).getTime();
             });
             jQuery("#committee-loader").remove();
             if (hearings.length === 0){
-              jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
+              // jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
+              jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></div>");
             } else {
               sortedHearings.forEach(function(hearing){
+                let meetingDate = hearing.EventDate.split("T")[0];
+                let meetingDateFormat = new Date(meetingDate.split("-")[0], parseInt(meetingDate.split("-")[1])-1, meetingDate.split("-")[2])
+                meetingDate = meetingDateFormat.toDateString().split(" ")
+                meetingDate.pop()
+                meetingDate[0] = meetingDate[0] + ","
+                meetingDate = meetingDate.join(" ")
                 midDay = hearing.EventTime.split(" ")[1];
                 meetingHour = parseInt(hearing.EventTime.split(" ")[0].split(":")[0]);
                 meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
@@ -194,14 +236,17 @@
                 midDay === "PM" && meetingHour !== 12 ? meetingHour += 12 : meetingHour;
                 if(hearing.EventAgendaStatusName.toLowerCase() !== "draft"){
                   if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
-                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
+                    // jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'><s>"+meetingDate+"</s> Deferred</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small></div>");
                   } else {
-                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
+                    // jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
+                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'>"+meetingDate+"</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small></div>");
                   };
                 };
               });
               if (jQuery("#front-page-hearings").children().length === 0){
-                jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
+                // jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
+                jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></div>");
               };
             };
           }
