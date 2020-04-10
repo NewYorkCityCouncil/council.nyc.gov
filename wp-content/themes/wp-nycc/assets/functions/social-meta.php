@@ -14,6 +14,8 @@ function insert_share_meta_in_head() {
     $frontpage_id = get_option( 'page_on_front' );
     $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id($frontpage_id), 'medium' );
     $share_image = esc_attr( $thumbnail_src[0] );
+  } else if ( wp_get_theme()->get('Name') == 'NYCC Press' ) {
+    $share_image = 'https://council.nyc.gov/press/wp-content/uploads/sites/56/2020/04/nycc_press.jpg';
   } else {
     // There's no Featured Image, so use the default one from the theme
     $share_image = 'https://council.nyc.gov/jobs/wp-content/themes/wp-nycc/assets/images/social-img-1024x512.jpg';
