@@ -131,25 +131,25 @@
           Delete: 141 - 154, 158 - 161, 206 - 219, 223, 240, 243, 249
         --------------------------------------------------*/
         Date.prototype.stdTimezoneOffset = function() {
-          var jan = new Date(this.getFullYear(), 0, 1);
-          var jul = new Date(this.getFullYear(), 6, 1);
+          let jan = new Date(this.getFullYear(), 0, 1);
+          let jul = new Date(this.getFullYear(), 6, 1);
           return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
         }
         Date.prototype.dst = function() {
           return this.getTimezoneOffset() < this.stdTimezoneOffset();
         }
         Date.prototype.getWeek = function() {
-          var date = new Date(this.valueOf())
+          let date = new Date(this.valueOf())
           date.setHours(0)
           date.setMinutes(0)
           date.setSeconds(0)
           date.setMilliseconds(0)
-          var sunday = date.setDate(date.getDate() - date.getDay());
+          let sunday = date.setDate(date.getDate() - date.getDay());
           date.setHours(23)
           date.setMinutes(59)
           date.setSeconds(59)
           date.setMilliseconds(999)
-          var saturday = date.setDate(date.getDate() + 6);
+          let saturday = date.setDate(date.getDate() + 6);
           return [new Date(sunday), new Date(saturday)];
         }
         let addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
@@ -159,7 +159,7 @@
         let saturday = date.getWeek()[1]
         let startDate = sunday.getFullYear()+"-"+addZero(sunday.getMonth()+1)+"-"+addZero(sunday.getDate());
         let endDate = saturday.getFullYear()+"-"+addZero(saturday.getMonth()+1)+"-"+addZero(saturday.getDate());
-        // var month31 = [1,3,5,7,8,10,12], month30 = [4,6,9,11], startDate, endDate, startYear = date.getFullYear(), startMonth = date.getMonth()+1, startDay = date.getDate(), nowHour = date.getUTCHours(), nowMinute = date.getUTCMinutes(), midDay, meetingHour, meetingMinute, endYear, endMonth, endDay, agendaLink;
+        // let month31 = [1,3,5,7,8,10,12], month30 = [4,6,9,11], startDate, endDate, startYear = date.getFullYear(), startMonth = date.getMonth()+1, startDay = date.getDate(), nowHour = date.getUTCHours(), nowMinute = date.getUTCMinutes(), midDay, meetingHour, meetingMinute, endYear, endMonth, endDay, agendaLink;
         // if(startMonth === 12 && startDay === 31){ // if start day is NYE. Unlikely.
         //   endYear = startYear+1;
         //   endMonth = 1;
@@ -205,14 +205,14 @@
             // });
             function dateTimeConverter(dateString, timeString){
               let fullDate = dateString.split("T")[0].split("-")
-              let year = fullDate[0]
-              let month = fullDate[1]
-              let date = fullDate[2]
+              let year = parseInt(fullDate[0])
+              let month = parseInt(fullDate[1])
+              let date = parseInt(fullDate[2])
               let hr = parseInt(timeString.split(" ")[0].split(":")[0]);
               let min = parseInt(timeString.split(" ")[0].split(":")[1]);
               let ampm = timeString.split(" ")[1];
               ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr * 100 : hr = (hr+12) * 100;
-              return new Date([year, month, date, hr, min, 00].join(","))
+              return new Date(year, month, date, hr, min, 00)
             };
             let sortedHearings = hearings.sort(function(a,b){
               return dateTimeConverter(a.EventDate, a.EventTime).getTime() - dateTimeConverter(b.EventDate, b.EventTime).getTime();
