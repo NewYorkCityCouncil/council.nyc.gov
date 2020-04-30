@@ -8,9 +8,10 @@
         <#?php the_archive_description('<div class="taxonomy-description">', '</div>');?>
         <hr>
       </header> -->
-      <h1 class="header-small">Videos</h1>
+      <h2 class="header-xlarge">Videos</h2>
+      <a href="https://council.nyc.gov/livestream/">Click here to watch our <strong>live streamed hearings</strong>.</a><br/>
+      <a href="https://legistar.council.nyc.gov/Calendar.aspx">Click here for our <strong>hearing calendar and video archive</strong>.</a>
       <hr>
-
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
           <?php get_template_part( 'loop', 'video' ); ?>
       <?php endwhile; else : ?>

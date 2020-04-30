@@ -101,11 +101,13 @@
                         <a href="#" aria-expanded="false">Legislation</a>
                         <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" role="menu">
                           <li id="menu-item-238" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-238 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/legislation/">Our legislative process</a></li>
+                          <li id="menu-item-99" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-99 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/testify">Register to Testify</a></li>
+                          <li id="menu-item-291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-291 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/livestream/">Live Stream</a></li>
                           <li id="menu-item-237" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-237 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
                           <li id="menu-item-861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-861 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
                           <li id="menu-item-239" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-239 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>
                           <li id="menu-item-1601" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1601 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/legislation/api/">Legislative API</a></li>
-                          <li id="menu-item-291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-291 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/live/">Live video</a></li>
+                          <!-- <li id="menu-item-291" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-291 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/live/">Live video</a></li> -->
                           <li id="menu-item-747" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-747 is-submenu-item is-dropdown-submenu-item" role="menuitem"><a href="https://council.nyc.gov/data/">Data</a></li>
                         </ul>
                       </li>
