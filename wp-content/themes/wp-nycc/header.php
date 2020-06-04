@@ -168,7 +168,7 @@
               <span class="show-for-sr">Translate this page</span>
             </button>
             <div class="dropdown-pane" id="translation-menu-dropdown">
-              <div id="close-menu" style="position:absolute; top:-5px; right:3px; cursor:pointer;">×</div>
+              <button id="close-menu" style="position:absolute; top:3px; right:3px; cursor:pointer;">&#10005;</button>
               <div id="google_translate_element"><span class="show-for-sr">Google Translate</span></div>
               <script type="text/javascript">function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.BOTTOM_RIGHT}, 'google_translate_element');}</script>
               <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
