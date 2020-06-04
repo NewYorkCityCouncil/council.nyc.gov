@@ -27,7 +27,7 @@
                 <input type="text" aria-label="Search for your district and council member" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Address &amp; Borough | Member | Neighborhood" />
                 <span class="district-submit" onClick="jQuery('#list-search').submit();" style="color: #666; cursor: pointer; position: absolute; top: 7px; right: 10px;"><i class="fa fa-search" aria-hidden="true"></i></span>
               </form>
-              <div style="display:none;" role="alert" aria-live="assertive" id="assertive-message"></div>
+              <div style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;" role="alert" aria-live="assertive" id="assertive-message"></div>
               <table class="full-width" aria-describedby="for-table-caption">
                 <thead>
                   <th><button onclick="declareAction('Sorted list based on district number in ascending order')" class="button sort small secondary expanded" aria-label="Sort by district number" data-sort="sort-district">No.</button></th>
