@@ -127,8 +127,8 @@
         /*--------------------------------------------------
           Upcoming Hearings jQuery
           After COVID Pandemics and normal operations resume comment in and delete the following lines:
-          Comment In: 162 - 190, 196 - 205, 222, 239, 242, 248
-          Delete: 141 - 154, 158 - 161, 206 - 219, 223, 240, 243, 249
+          Comment In: 162 - 190, 196 - 205, 222, 246, 249, 254
+          Delete: 141 - 154, 158 - 161, 206 - 219, 223, 226, 238 - 244, 247, 250,  255
         --------------------------------------------------*/
         Date.prototype.stdTimezoneOffset = function() {
           let jan = new Date(this.getFullYear(), 0, 1);
@@ -191,13 +191,13 @@
         jQuery.ajax({
           type:"GET",
           dataType:"jsonp",
-          url:"https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventDate+ge+datetime%27"+startDate+"%27+and+EventDate+lt+datetime%27"+endDate+"%27&$orderby=EventTime+asc",
+          url:"https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventDate+ge+datetime%27"+startDate+"%27+and+EventDate+lt+datetime%27"+endDate+"%27+and+tolower(EventAgendaStatusName)+ne+'draft'&$orderby=EventTime+asc",
           success:function(hearings){
             // function timeConverter(timeString){
             //   let hr = parseInt(timeString.split(" ")[0].split(":")[0]);
             //   let min = parseInt(timeString.split(" ")[0].split(":")[1]);
             //   let ampm = timeString.split(" ")[1];
-            //   ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr * 100 : hr = (hr+12) * 100;
+            //   ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr : hr = (hr+12);
             //   return hr+min;
             // };
             // let sortedHearings = hearings.sort(function(a,b){
@@ -211,7 +211,7 @@
               let hr = parseInt(timeString.split(" ")[0].split(":")[0]);
               let min = parseInt(timeString.split(" ")[0].split(":")[1]);
               let ampm = timeString.split(" ")[1];
-              ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr * 100 : hr = (hr+12) * 100;
+              ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr : hr = (hr+12) ;
               return new Date(year, month, date, hr, min, 00)
             };
             let sortedHearings = hearings.sort(function(a,b){
@@ -223,6 +223,7 @@
               jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></div>");
             } else {
               sortedHearings.forEach(function(hearing){
+                let hearingName = "<strong>"+hearing.EventBodyName+"</strong><br>"
                 let meetingDate = hearing.EventDate.split("T")[0];
                 let meetingDateFormat = new Date(meetingDate.split("-")[0], parseInt(meetingDate.split("-")[1])-1, meetingDate.split("-")[2])
                 meetingDate = meetingDateFormat.toDateString().split(" ")
@@ -234,14 +235,19 @@
                 meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
                 hearing.EventAgendaFile !== null ? agendaLink = hearing.EventAgendaFile : agendaLink = "#";
                 midDay === "PM" && meetingHour !== 12 ? meetingHour += 12 : meetingHour;
-                if(hearing.EventAgendaStatusName.toLowerCase() !== "draft"){
-                  if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
-                    // jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
-                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'><s>"+meetingDate+"</s> Deferred</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small></div>");
-                  } else {
-                    // jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
-                    jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'>"+meetingDate+"</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small></div>");
-                  };
+                if (hearing.EventComment !== null){
+                  if(hearing.EventComment.toLowerCase().includes("jointly") && !hearing.EventLocation.toLowerCase().includes("-")){
+                      hearingName += "<small><em>("+hearing.EventComment+")</em></small><br>"
+                  } else if (hearing.EventComment.toLowerCase().includes("jointly") && hearing.EventLocation.toLowerCase().includes("-")){
+                      return
+                  }
+                }
+                if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
+                  // jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
+                  jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'><s>"+meetingDate+"</s> Deferred</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small></div>");
+                } else {
+                  // jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
+                  jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'>"+meetingDate+"</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small></div>");
                 };
               });
               if (jQuery("#front-page-hearings").children().length === 0){
