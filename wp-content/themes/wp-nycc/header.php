@@ -41,15 +41,16 @@
 
     <!-- Carto -->
     <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-
+    
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
-
+    
     <?php wp_head(); ?>
     <script>jQuery(document).ready(function(){jQuery('#archive .dismiss span').on('click',function(){jQuery('#archive').animate({'opacity': 0}, 300)})});</script>
   </head>
-
+  
   <body <?php body_class(); ?>>
     <a style="position: absolute; top:0; left: -10000px;" id="skip-link-a" href="#main">Skip to main content</a>
+    <!-- <script>jQuery("#skip-link-a").focus(function(){jQuery("#skip-link-li").css("position","initial")}).focusout(function(){jQuery("#skip-link-li").css("position","absolute")});</script> -->
     <!-- Google Tag Manager (noscript)
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCN4XTT"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -69,7 +70,6 @@
               <div class="columns">
                 <?php switch_to_blog(1); ?>
                 <div class="top-bar-title">
-                  <!-- <script>jQuery("#skip-link-a").focus(function(){jQuery("#skip-link-li").css("position","initial")}).focusout(function(){jQuery("#skip-link-li").css("position","absolute")});</script> -->
                   <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png"><div class="site-logo" style="display:inline;"><?php bloginfo('name'); ?></div></a></strong>
                 </div>
                 <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon dark" data-toggle></span></span>
