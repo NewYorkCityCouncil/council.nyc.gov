@@ -233,6 +233,7 @@
                 let hearingName = "<strong>"+hearing.EventBodyName+"</strong><br>"
                 let meetingDate = hearing.EventDate.split("T")[0];
                 let meetingDateFormat = new Date(meetingDate.split("-")[0], parseInt(meetingDate.split("-")[1])-1, meetingDate.split("-")[2])
+                let livestreamLocation = hearing.EventLocation.match(/\(([^)]+)\)/)[1];
                 meetingDate = meetingDateFormat.toDateString().split(" ")
                 meetingDate.pop()
                 meetingDate[0] = meetingDate[0] + ","
@@ -254,13 +255,13 @@
                   // jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
                 
 /* ----------------------- POST-COVID ----------------------- */
-                  jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'><s>"+meetingDate+"</s> Deferred</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small></div>");
+                  jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'><s>"+meetingDate+"</s> Deferred</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-podcast'></i> <small><s>"+livestreamLocation+"</s></small></div>");
                 } else {
 /* ----------------------- PRE-COVID ----------------------- */
                   // jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
                 
 /* ----------------------- POST-COVID ----------------------- */
-                  jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'>"+meetingDate+"</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small></div>");
+                  jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'>"+meetingDate+"</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fas fa-podcast'></i> <small><a href='https://council.nyc.gov/livestream/#"+livestreamLocation.toLowerCase().split(' ').join('-')+"'>"+livestreamLocation+"</a></small></div>");
                 };
               });
               if (jQuery("#front-page-hearings").children().length === 0){
