@@ -100,7 +100,7 @@
                         wp_reset_postdata();
                       } else {
                         $number = $post->menu_order;
-                        $name = 'Vacant';
+                        $name = 'Vacant (Servicing Constituents)';
                         $district_url = esc_url( network_site_url() ) . 'district-' . $number . '/';
                         ?>
                         <tr>
