@@ -3,7 +3,7 @@
 // Remove parent theme's admin pages, nav menus, and page tempaltes
 require_once(get_template_directory().'/assets/functions/remove-in-child-theme.php');
 
-
+require_once(get_stylesheet_directory().'/functions/events.php');         // Events
 require_once(get_stylesheet_directory().'/functions/posts.php');          // Posts
 require_once(get_stylesheet_directory().'/functions/pages.php');          // Pages
 require_once(get_stylesheet_directory().'/functions/widgets.php');        // Widgets
