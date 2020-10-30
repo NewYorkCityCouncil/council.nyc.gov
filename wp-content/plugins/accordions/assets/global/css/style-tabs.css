@@ -1,0 +1,103 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.accordions-tabs {
+  border: medium none !important;
+  border-radius: 0 !important;
+}
+	
+.accordions-tabs .ui-tabs-nav {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  margin: 0 !important;
+  padding: 0 !important;
+
+}
+	
+.accordions-tabs .tabs-nav {
+  border: none;
+  border-radius: 0px;
+}
+	
+.accordions-tabs .ui-tabs-nav li a {
+outline: medium none;
+  display: block;
+}
+
+.accordions-tabs .accordion-icons {
+  padding: 0 5px;
+}
+
+.accordions-tabs .accordion-icon-inactive {
+  display: none;
+}
+
+
+.accordions-tabs .ui-tabs-active .accordion-icon-active{
+  display: none;
+}
+
+.accordions-tabs .ui-tabs-active .accordion-icon-inactive{
+  display: inline-block;
+}
+
+
+
+
+.accordions-tabs .tabs-content {
+  border-radius: 0;
+  padding: 0;
+}
+
+
+
+/*Themes Flat*/
+.accordions-tabs.flat {
+  border: medium none;
+}
+
+.accordions-tabs.flat .tabs-nav {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: 0 none;
+  border-radius: 0;
+}
+
+
+.accordions-tabs.flat .tabs-content{}
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

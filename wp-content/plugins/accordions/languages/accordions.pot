@@ -1,0 +1,1214 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Accordions\n"
+"POT-Creation-Date: 2020-03-18 14:51+0600\n"
+"PO-Revision-Date: 2018-10-08 21:27+0600\n"
+"Last-Translator: \n"
+"Language-Team: PickPlugins <support@pickplugins.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: includes\n"
+"X-Poedit-SearchPath-1: templates\n"
+
+#: includes/class-admin-notices.php:38
+#, php-format
+msgid ""
+"Data migration required for <b>Accordions by PickPlugins</b> plugin, please "
+"<a class=\"button button-primary\" href=\"%s\">click to start</a> migration. "
+"Watch this <a target=\"_blank\" href=\"https://youtu.be/DDKMWphWLGI\">video</"
+"a>  first"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:21
+msgid "Shortcodes"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:22
+msgid "Simply copy these shortcode and user under content"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:33
+#: includes/class-post-meta-accordions-hook.php:38
+#: includes/class-post-meta-accordions-hook.php:43
+#: includes/class-post-meta-accordions-hook.php:48
+#: includes/class-post-meta-accordions-hook.php:79
+#: includes/class-post-meta-accordions-hook.php:84
+#: includes/class-post-meta-accordions-hook.php:89
+#: includes/class-post-meta-accordions-hook.php:94
+msgid "Copied"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:34
+#: includes/class-post-meta-accordions-hook.php:80
+msgid "You can use this shortcode under post content"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:39
+msgid ""
+"To avoid conflict with 3rd party shortcode also used same "
+"<code>[accordions]</code>You can use this shortcode under post content."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:44
+#: includes/class-post-meta-accordions-hook.php:90
+msgid "PHP Code, you can use under theme .php files."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:49
+#: includes/class-post-meta-accordions-hook.php:95
+msgid "To avoid conflict, PHP code you can use under theme .php files."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:60
+msgid "Accordion shortcode"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:85
+msgid ""
+"To avoid conflict with 3rd party shortcode also used same "
+"<code>[accordions_tabs]</code>You can use this shortcode under post content"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:137
+msgid "Tabs shortcodes"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:182
+msgid "General options"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:183
+msgid "Some general options"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:189
+#: includes/class-settings-hook.php:849
+msgid "Enable lazy load"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:190
+msgid "Accordion content will be hidden until page load completed."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:195
+#: includes/class-post-meta-accordions-hook.php:224
+#: includes/class-post-meta-accordions-hook.php:241
+#: includes/class-post-meta-accordions-hook.php:257
+#: includes/class-post-meta-accordions-hook.php:273
+#: includes/class-post-meta-accordions-hook.php:289
+#: includes/class-post-meta-accordions-hook.php:350
+#: includes/class-settings-hook.php:46
+msgid "No"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:196
+#: includes/class-post-meta-accordions-hook.php:225
+#: includes/class-post-meta-accordions-hook.php:242
+#: includes/class-post-meta-accordions-hook.php:258
+#: includes/class-post-meta-accordions-hook.php:274
+#: includes/class-post-meta-accordions-hook.php:290
+#: includes/class-post-meta-accordions-hook.php:351
+#: includes/class-settings-hook.php:46
+msgid "Yes"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:205
+#: includes/class-settings-hook.php:855
+msgid "Lazy load image"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:206
+msgid "Set custom image source for lazy load icon."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:218
+msgid "Hide edit link"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:219
+msgid "You can display/hide accordion edit link on front-end"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:235
+#: includes/class-settings-hook.php:860
+msgid "Enable autoembed"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:236
+msgid "Enable autoembed for content."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:251
+msgid "Enable shortcode"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:252
+msgid "Enable shortcode for content."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:267
+#: includes/class-settings-hook.php:870
+msgid "Enable wpautop"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:268
+msgid "Enable wpautop for content."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:283
+msgid "Enable schema"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:284
+msgid "Enable schema for accordion or tabs."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:321
+msgid "Accordion options"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:322
+msgid "Some general setting for accordion"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:328
+#: includes/class-post-meta-accordions-hook.php:423
+msgid "Collapsible"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:329
+msgid "Make accordion collapsible."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:334
+#: includes/class-post-meta-accordions-hook.php:429
+#: includes/class-post-meta-accordions-hook.php:1123
+msgid "True"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:335
+#: includes/class-post-meta-accordions-hook.php:430
+#: includes/class-post-meta-accordions-hook.php:1124
+msgid "False"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:344
+msgid "Keep expanded others"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:345
+msgid "This is useful when use collapsible."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:360
+msgid "Content height style"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:361
+msgid "accordion content style."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:367
+msgid "Content"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:368
+msgid "Fill"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:377
+#: includes/class-post-meta-accordions-hook.php:439
+msgid "Activate event"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:378
+msgid "Activate event type for header."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:383
+#: includes/class-post-meta-accordions-hook.php:445
+msgid "Click"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:384
+#: includes/class-post-meta-accordions-hook.php:446
+msgid "Mouseover"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:385
+msgid "Focus"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:415
+msgid "Tabs options"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:416
+msgid "Settings for tabs"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:424
+msgid "Make tabs collapsible."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:440
+msgid "Event for activate tabs"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:455
+msgid "Navs alignment"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:456
+msgid "Set navs alignment"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:461
+#: includes/class-post-meta-accordions-hook.php:673
+#: includes/class-post-meta-accordions-hook.php:988
+msgid "Left"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:462
+#: includes/class-post-meta-accordions-hook.php:674
+#: includes/class-post-meta-accordions-hook.php:989
+msgid "Right"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:549
+msgid "Accordion icons"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:550
+msgid "Customize accordion icons."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:557
+msgid "Active icon"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:558
+msgid ""
+"Icon for idle, you can use <a target=\"_blank\" href=\"https://fontawesome."
+"com/icons\">Font Awesome</a> icon html <code>&lt;i class=\"fas fa-chevron-"
+"right\">&lt;/i></code>"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:570
+msgid "Inactive icon"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:571
+msgid ""
+"Icon for activate, you can use <a target=\"_blank\" href=\"https://"
+"fontawesome.com/icons\">Font Awesome</a> icon html <code>&lt;i class=\"fas "
+"fa-chevron-down\">&lt;/i></code>"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:584
+#: includes/class-post-meta-accordions-hook.php:740
+#: includes/class-post-meta-accordions-hook.php:844
+msgid "Color"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:585
+msgid "Color for icons"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:598
+msgid "Hover color"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:599
+msgid "Color for icons on mousehover"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:612
+#: includes/class-post-meta-accordions-hook.php:712
+#: includes/class-post-meta-accordions-hook.php:889
+#: includes/class-post-meta-accordions-hook.php:968
+msgid "Background color"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:613
+msgid "Background color for icons"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:625
+#: includes/class-post-meta-accordions-hook.php:767
+#: includes/class-post-meta-accordions-hook.php:860
+msgid "Font size"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:626
+msgid "You can set custom font size."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:639
+#: includes/class-post-meta-accordions-hook.php:793
+#: includes/class-post-meta-accordions-hook.php:905
+#: includes/class-post-meta-accordions-hook.php:954
+msgid "Padding"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:640
+msgid "Choose icon area padding"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:652
+#: includes/class-post-meta-accordions-hook.php:806
+#: includes/class-post-meta-accordions-hook.php:921
+msgid "Margin"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:653
+#: includes/class-post-meta-accordions-hook.php:807
+msgid "Choose header area margin"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:666
+msgid "Position"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:667
+msgid "Set icon position"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:672
+#: includes/class-settings-hook.php:33
+msgid "None"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:686
+msgid "Accordion header style"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:687
+msgid "Customize accordion header."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:694
+#: includes/class-post-meta-accordions-hook.php:829
+msgid "Add class"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:695
+msgid ""
+"Header style class, ex: <code>border-flat, border-semi-round, border-round, "
+"border-1px border-2px border-3px, shadow-bottom, shadow-top shadow-bottom-"
+"right, shadow-bottom-left</code>"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:713
+msgid "Background color of header on idle"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:726
+msgid "Active background color"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:727
+msgid "Background color of header on active stats"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:741
+#: includes/class-post-meta-accordions-hook.php:755
+msgid "Font color for accordion headers"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:754
+msgid "Color on hover"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:768
+msgid "Choose font size for header text"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:781
+#: includes/class-post-meta-accordions-hook.php:873
+msgid "Font family"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:782
+msgid "Choose font family for header text"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:794
+msgid "Choose header area padding"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:820
+msgid "Accordions content style"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:821
+msgid "Customize accordion content."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:830
+msgid ""
+"Body style class, ex: <code>border-flat, border-semi-round, border-round, "
+"border-1px border-2px border-3px, shadow-bottom, shadow-top shadow-bottom-"
+"right, shadow-bottom-left</code>"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:845
+msgid "You can choose custom color for accordion content"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:861
+msgid "You can set custom font size for accordion content"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:874
+msgid "Choose font family for accordion content text"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:890
+msgid "You can choose custom background color for accordion content area"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:906
+msgid "You can set custom padding for accordion content"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:922
+msgid "You can set custom margin for accordion content"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:935
+msgid "Container style"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:936
+msgid "Customize container style optons."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:955
+msgid "Set container padding"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:969
+msgid "Set container background color"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:982
+msgid "Text align"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:983
+msgid "Set container text align"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:990
+msgid "Center"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:991
+msgid "Justify"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1002
+msgid "Background image"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1003
+msgid "Set container background image"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1017
+msgid "Container width"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1018
+msgid "Set accordion width."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1024
+msgid "In desktop"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1025
+msgid "min-width: 1200px, ex: 300px"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1034
+msgid "In tablet & small desktop"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1035
+msgid "min-width: 992px, ex: 90%"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1044
+msgid "In mobile"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1045
+msgid "min-width: 576px, ex: 90%"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1083
+msgid "Accordions content"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1084
+msgid "Add you accordion content here."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1097
+msgid "Header"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1098
+msgid "Accordion header."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1107
+msgid "Body"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1108
+msgid "Accordion body content."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1117
+msgid "Hide"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1118
+msgid "Hide this."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1135
+msgid "Accordion content"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1136
+msgid "Set accordion content & title here."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1177
+msgid "Accordions Scripts"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1178
+msgid "Add your own CSS & Scripts."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1184
+msgid "Custom Js"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1185
+msgid ""
+"You can add custom scripts here, do not use <code>&lt;script&gt; &lt;/"
+"script&gt;</code> tag"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1196
+msgid "Custom CSS"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1197
+msgid ""
+"You can add custom css here, do not use <code>  &lt;style&gt; &lt;/style&gt;"
+"</code> tag"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1224
+#: includes/class-settings-hook.php:192
+msgid "Get support"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1225
+#: includes/class-settings-hook.php:193
+msgid "Use following to get help and support from our expert team."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1233
+#: includes/class-settings-hook.php:201
+msgid ""
+"Ask question for free on our forum and get quick reply from our expert team "
+"members."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1234
+#: includes/class-settings-hook.php:202
+msgid "Create support ticket"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1236
+#: includes/class-settings-hook.php:204
+msgid "Read our documentation before asking your question."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1237
+#: includes/class-settings-hook.php:205
+msgid "Documentation"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1239
+#: includes/class-settings-hook.php:207
+msgid "Watch video tutorials."
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1240
+#: includes/class-settings-hook.php:208
+msgid "All tutorials"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1257
+#: includes/class-settings-hook.php:225
+msgid "Ask question"
+msgstr ""
+
+#: includes/class-post-meta-accordions-hook.php:1282
+#: includes/class-settings-hook.php:250
+msgid "Submit reviews"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:19
+msgid "Accordions data"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:51
+#, php-format
+msgid "%s Shortcode"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:58 includes/menu/settings.php:11
+#, php-format
+msgid "%s General"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:65
+#, php-format
+msgid "%s Accordion options"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:73
+#, php-format
+msgid "%s Style"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:80
+#, php-format
+msgid "%s Tabs options"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:92
+#, php-format
+msgid "%s Content"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:101
+#, php-format
+msgid "%s Custom scripts"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:108
+#, php-format
+msgid "%s Help support"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:116
+#, php-format
+msgid "%s Buy pro"
+msgstr ""
+
+#: includes/class-post-meta-accordions.php:193
+msgid "View type"
+msgstr ""
+
+#: includes/class-post-meta-product.php:19
+msgid "Product FAQ Tab"
+msgstr ""
+
+#: includes/class-post-types.php:29 includes/class-post-types.php:30
+#: includes/class-widget-accordions.php:13
+#: includes/class-widget-accordions.php:29
+msgid "Accordions"
+msgstr ""
+
+#: includes/class-post-types.php:42
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: includes/class-post-types.php:43
+msgid "Add New"
+msgstr ""
+
+#: includes/class-post-types.php:44
+#, php-format
+msgid "Add %s"
+msgstr ""
+
+#: includes/class-post-types.php:45
+msgid "Edit"
+msgstr ""
+
+#: includes/class-post-types.php:46
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: includes/class-post-types.php:47
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: includes/class-post-types.php:48 includes/class-post-types.php:49
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: includes/class-post-types.php:50
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: includes/class-post-types.php:51
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#: includes/class-post-types.php:52
+#, php-format
+msgid "No %s found in trash"
+msgstr ""
+
+#: includes/class-post-types.php:53
+#, php-format
+msgid "Parent %s"
+msgstr ""
+
+#: includes/class-post-types.php:55
+#, php-format
+msgid "This is where you can create and manage %s."
+msgstr ""
+
+#: includes/class-settings-hook.php:18
+msgid "General"
+msgstr ""
+
+#: includes/class-settings-hook.php:19
+msgid "Choose some general options."
+msgstr ""
+
+#: includes/class-settings-hook.php:28
+msgid "Font-awesome version"
+msgstr ""
+
+#: includes/class-settings-hook.php:29
+msgid "Choose font awesome version you want to load."
+msgstr ""
+
+#: includes/class-settings-hook.php:33
+msgid "Version 5+"
+msgstr ""
+
+#: includes/class-settings-hook.php:33
+msgid "Version 4+"
+msgstr ""
+
+#: includes/class-settings-hook.php:41
+msgid "Enable accordions preview"
+msgstr ""
+
+#: includes/class-settings-hook.php:42
+msgid "You can enable preview accordions."
+msgstr ""
+
+#: includes/class-settings-hook.php:137
+msgid "Export"
+msgstr ""
+
+#: includes/class-settings-hook.php:158
+msgid "Import"
+msgstr ""
+
+#: includes/class-settings-hook.php:348
+msgid "Reset migration"
+msgstr ""
+
+#: includes/class-settings-hook.php:374
+msgid "Older version"
+msgstr ""
+
+#: includes/class-settings-hook.php:408
+msgid "3rd party plugin data import"
+msgstr ""
+
+#: includes/class-settings-hook.php:409
+msgid "Import from 3rd party plugin data for accordion and tabs."
+msgstr ""
+
+#: includes/class-settings-hook.php:714
+msgid "Import data"
+msgstr ""
+
+#: includes/class-settings-hook.php:715
+msgid "Please contact our support form to add new 3rd party plugin source."
+msgstr ""
+
+#: includes/class-settings-hook.php:751
+msgid "Get Premium"
+msgstr ""
+
+#: includes/class-settings-hook.php:752
+msgid ""
+"Thanks for using our plugin, if you looking for some advance feature please "
+"buy premium version."
+msgstr ""
+
+#: includes/class-settings-hook.php:760
+msgid ""
+"If you love our plugin and want more feature please consider to buy pro "
+"version."
+msgstr ""
+
+#: includes/class-settings-hook.php:761 includes/class-settings-hook.php:1108
+msgid "Buy premium"
+msgstr ""
+
+#: includes/class-settings-hook.php:762
+msgid "See all demo"
+msgstr ""
+
+#: includes/class-settings-hook.php:764
+msgid "See the differences"
+msgstr ""
+
+#: includes/class-settings-hook.php:769 includes/class-settings-hook.php:1101
+msgid "Features"
+msgstr ""
+
+#: includes/class-settings-hook.php:770 includes/class-settings-hook.php:1102
+msgid "Free"
+msgstr ""
+
+#: includes/class-settings-hook.php:771 includes/class-settings-hook.php:1103
+msgid "Premium"
+msgstr ""
+
+#: includes/class-settings-hook.php:776
+msgid "Nested/multi level accordion"
+msgstr ""
+
+#: includes/class-settings-hook.php:781
+msgid "Click header to scroll top"
+msgstr ""
+
+#: includes/class-settings-hook.php:787
+msgid "Header text toggle"
+msgstr ""
+
+#: includes/class-settings-hook.php:792
+msgid "Display expand/collapse all button"
+msgstr ""
+
+#: includes/class-settings-hook.php:797
+msgid "Expand/collapse all text"
+msgstr ""
+
+#: includes/class-settings-hook.php:802
+msgid "Expand/collapse all button background color"
+msgstr ""
+
+#: includes/class-settings-hook.php:807
+msgid "Header click track & stats"
+msgstr ""
+
+#: includes/class-settings-hook.php:813
+msgid "Header background image"
+msgstr ""
+
+#: includes/class-settings-hook.php:819
+msgid "Custom background color"
+msgstr ""
+
+#: includes/class-settings-hook.php:825
+msgid "Active accordion on page load"
+msgstr ""
+
+#: includes/class-settings-hook.php:831
+msgid "Icon position to right"
+msgstr ""
+
+#: includes/class-settings-hook.php:837
+msgid "Enable search"
+msgstr ""
+
+#: includes/class-settings-hook.php:842
+msgid "Search placeholder text"
+msgstr ""
+
+#: includes/class-settings-hook.php:865
+msgid "3rd party shortcode on content"
+msgstr ""
+
+#: includes/class-settings-hook.php:875
+msgid "Schema for FAQ page"
+msgstr ""
+
+#: includes/class-settings-hook.php:881
+msgid "Accordion feature collapsible"
+msgstr ""
+
+#: includes/class-settings-hook.php:886
+msgid "Accordion feature keep expanded others"
+msgstr ""
+
+#: includes/class-settings-hook.php:891
+msgid "Accordion feature content height style"
+msgstr ""
+
+#: includes/class-settings-hook.php:896
+msgid "Accordion feature activate event"
+msgstr ""
+
+#: includes/class-settings-hook.php:901
+msgid "Accordion custom active icon"
+msgstr ""
+
+#: includes/class-settings-hook.php:906
+msgid "Accordion custom inactive icon"
+msgstr ""
+
+#: includes/class-settings-hook.php:912
+msgid "Accordion icons text color"
+msgstr ""
+
+#: includes/class-settings-hook.php:917
+msgid "Accordion icons hover color"
+msgstr ""
+
+#: includes/class-settings-hook.php:922
+msgid "Accordion icons background color"
+msgstr ""
+
+#: includes/class-settings-hook.php:927
+msgid "Accordion icons font size"
+msgstr ""
+
+#: includes/class-settings-hook.php:932
+msgid "Accordion icons padding"
+msgstr ""
+
+#: includes/class-settings-hook.php:937
+msgid "Accordion icons margin"
+msgstr ""
+
+#: includes/class-settings-hook.php:943
+msgid "Accordion header custom class"
+msgstr ""
+
+#: includes/class-settings-hook.php:949
+msgid "Accordion header background color"
+msgstr ""
+
+#: includes/class-settings-hook.php:955
+msgid "Accordion header Active background color"
+msgstr ""
+
+#: includes/class-settings-hook.php:960
+msgid "Accordion header text color"
+msgstr ""
+
+#: includes/class-settings-hook.php:966
+msgid "Accordion header hover text color"
+msgstr ""
+
+#: includes/class-settings-hook.php:972
+msgid "Accordion header font size"
+msgstr ""
+
+#: includes/class-settings-hook.php:977
+msgid "Accordion header padding"
+msgstr ""
+
+#: includes/class-settings-hook.php:982
+msgid "Accordion header margin"
+msgstr ""
+
+#: includes/class-settings-hook.php:987
+msgid "Accordion header font family"
+msgstr ""
+
+#: includes/class-settings-hook.php:995
+msgid "Accordion content custom class"
+msgstr ""
+
+#: includes/class-settings-hook.php:1001
+msgid "Accordion content background color"
+msgstr ""
+
+#: includes/class-settings-hook.php:1007
+msgid "Accordion content text color"
+msgstr ""
+
+#: includes/class-settings-hook.php:1014
+msgid "Accordion content font size"
+msgstr ""
+
+#: includes/class-settings-hook.php:1019
+msgid "Accordion content padding"
+msgstr ""
+
+#: includes/class-settings-hook.php:1024
+msgid "Accordion content margin"
+msgstr ""
+
+#: includes/class-settings-hook.php:1029
+msgid "Accordion content font family"
+msgstr ""
+
+#: includes/class-settings-hook.php:1037
+msgid "Accordion container padding"
+msgstr ""
+
+#: includes/class-settings-hook.php:1042
+msgid "Accordion container background color"
+msgstr ""
+
+#: includes/class-settings-hook.php:1047
+msgid "Accordion container background image"
+msgstr ""
+
+#: includes/class-settings-hook.php:1052
+msgid "Accordion container text align"
+msgstr ""
+
+#: includes/class-settings-hook.php:1057
+msgid "Sort accordion content"
+msgstr ""
+
+#: includes/class-settings-hook.php:1063
+msgid "Hide accordion content"
+msgstr ""
+
+#: includes/class-settings-hook.php:1069
+msgid "WP editor for accordion content"
+msgstr ""
+
+#: includes/class-settings-hook.php:1075
+msgid "Font-awesome version selection"
+msgstr ""
+
+#: includes/class-settings-hook.php:1081
+msgid "Accordions preview on frontend"
+msgstr ""
+
+#: includes/class-settings-hook.php:1087
+msgid "Export accordion"
+msgstr ""
+
+#: includes/class-settings-hook.php:1093
+msgid "Import accordion"
+msgstr ""
+
+#: includes/class-settings-hook.php:1106
+msgid "Buy now"
+msgstr ""
+
+#: includes/class-settings-hook.php:1121
+msgid "Get pro version"
+msgstr ""
+
+#: includes/class-settings-tabs.php:319
+msgid "Placeholder.jpg"
+msgstr ""
+
+#: includes/class-settings-tabs.php:375 includes/class-settings-tabs.php:456
+msgid "Upload"
+msgstr ""
+
+#: includes/class-settings-tabs.php:376 includes/class-settings-tabs.php:457
+msgid "Clear"
+msgstr ""
+
+#: includes/class-settings-tabs.php:563 includes/class-settings-tabs.php:834
+msgid "Add"
+msgstr ""
+
+#: includes/class-settings.php:21
+msgid "Settings"
+msgstr ""
+
+#: includes/class-settings.php:24
+msgid "Upgrade status"
+msgstr ""
+
+#: includes/class-widget-accordions.php:13
+msgid "Show Accordions"
+msgstr ""
+
+#: includes/class-widget-accordions.php:34
+msgid "Title"
+msgstr ""
+
+#: includes/class-widget-accordions.php:39
+msgid "Select Accordion"
+msgstr ""
+
+#: includes/functions-wc.php:20
+msgid "FAQ"
+msgstr ""
+
+#: includes/functions.php:303
+msgid "Shortcode"
+msgstr ""
+
+#: includes/menu/settings.php:18
+#, php-format
+msgid "%s 3rd party import"
+msgstr ""
+
+#: includes/menu/settings.php:25
+#, php-format
+msgid "%s Help & support"
+msgstr ""
+
+#: includes/menu/settings.php:32
+#, php-format
+msgid "%s Buy Pro"
+msgstr ""
+
+#: includes/menu/settings.php:63
+#, php-format
+msgid "%s Settings"
+msgstr ""
+
+#: includes/menu/settings.php:73
+msgid "Changes Saved."
+msgstr ""
+
+#: includes/menu/settings.php:138
+msgid "Save Changes"
+msgstr ""
+
+#: includes/menu/upgrade-status.php:18
+#, php-format
+msgid "%s Settings - Update"
+msgstr ""
+
+#: templates/accordion/accordion-hook.php:507 templates/tabs/tabs-hook.php:504
+msgid "Edit this accordion"
+msgstr ""
+
+#: templates/accordion/accordion-hook.php:507 templates/tabs/tabs-hook.php:504
+msgid "Only admin can see this."
+msgstr ""
+
+#: templates/accordion/accordion-hook.php:614 templates/tabs/tabs-hook.php:592
+msgid "Content missing"
+msgstr ""
