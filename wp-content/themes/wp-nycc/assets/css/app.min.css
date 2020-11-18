@@ -3249,7 +3249,7 @@ kbd {
 
   img {
     max-width: 100%!important;
-  }@  page {
+  }@page {
     margin: .5cm;
   }
 
@@ -7457,6 +7457,7 @@ input::placeholder{
   -webkit-columns: 2;
   -moz-columns: 2;
 }
+#front-page-hearings:before, #front-page-hearings:after{display:block; content: ''}
 @media only screen and (max-width: 910px) {
   #committee-list{
     columns: 1;

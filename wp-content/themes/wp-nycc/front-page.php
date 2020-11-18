@@ -227,7 +227,7 @@
               // jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
 
 /* ----------------------- POST-COVID ----------------------- */
-              jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></div>");
+              jQuery("#front-page-hearings").append("<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></li>");
             } else {
               sortedHearings.forEach(function(hearing){
                 let hearingName = "<strong>"+hearing.EventBodyName+"</strong><br>"
@@ -252,24 +252,24 @@
                 }
                 if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
 /* ----------------------- PRE-COVID ----------------------- */
-                  // jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
+                  // jQuery("#front-page-hearings").append("<li class='columns column-block' aria-label='deferred hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-map-marker-alt'></i> <small>"+hearing.EventLocation+"</small></li>");
                 
 /* ----------------------- POST-COVID ----------------------- */
-                  jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'><s>"+meetingDate+"</s> Deferred</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-podcast'></i> <small><s>"+livestreamLocation+"</s></small></div>");
+                  jQuery("#front-page-hearings").append("<li class='columns column-block' aria-label='deferred hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small><s>"+meetingDate+"</s> Deferred</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-podcast'></i> <small><s>"+livestreamLocation+"</s></small></li>");
                 } else {
 /* ----------------------- PRE-COVID ----------------------- */
-                  // jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fas fa-map-marker-alt'></i> <small aria-label='location'>"+hearing.EventLocation+"</small></div>");
+                  // jQuery("#front-page-hearings").append("<li class='columns column-block' aria-label='scheduled hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'><strong>"+hearing.EventBodyName+"</strong></a><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fas fa-map-marker-alt'></i> <small>"+hearing.EventLocation+"</small></li>");
                 
 /* ----------------------- POST-COVID ----------------------- */
-                  jQuery("#front-page-hearings").append("<div class='columns column-block' aria-label='hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small aria-label='hearing date'>"+meetingDate+"</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small aria-label='start time'>"+hearing.EventTime+"</small><br><i class='fas fa-podcast'></i> <small><a href='https://council.nyc.gov/livestream/#"+livestreamLocation.toLowerCase().split(' ').join('-')+"'>"+livestreamLocation+"</a></small></div>");
+                  jQuery("#front-page-hearings").append("<li class='columns column-block' aria-label='scheduled hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small>"+meetingDate+"</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fas fa-podcast'></i> <small><a href='https://council.nyc.gov/livestream/#"+livestreamLocation.toLowerCase().split(' ').join('-')+"'>"+livestreamLocation+"</a></small></li>");
                 };
               });
               if (jQuery("#front-page-hearings").children().length === 0){
 /* ----------------------- PRE-COVID ----------------------- */
-                // jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></div>");
+                // jQuery("#front-page-hearings").append("<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO UPCOMING HEARINGS TODAY</em></li>");
               
 /* ----------------------- POST-COVID ----------------------- */
-                jQuery("#front-page-hearings").append("<div class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></div>");
+                jQuery("#front-page-hearings").append("<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></li>");
               };
             };
           }
