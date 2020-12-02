@@ -100,7 +100,7 @@
                         wp_reset_postdata();
                       } else {
                         $number = $post->menu_order;
-                        $name = 'Vacant (Servicing Constituents)';
+                        $name = 'Office of Council District ' . $number;
                         $district_url = esc_url( network_site_url() ) . 'district-' . $number . '/';
                         ?>
                         <tr>
