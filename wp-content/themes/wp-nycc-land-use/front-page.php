@@ -7,7 +7,7 @@
     <div class="page-header image-overlay-large">
       <div class="row">
         <div class="columns clearfix">
-          <h2 class="image-overlay-text header-xxlarge"><?php the_title(); ?></h2>
+          <h1 class="image-overlay-text header-xxlarge"><?php the_title(); ?></h1>
           <?php if ( has_excerpt( $post->ID ) ) { ?><p class="image-overlay-text header-medium sans-serif"><?php echo get_the_excerpt(); ?></p><?php } ?>
         </div>
       </div>

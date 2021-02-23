@@ -8,7 +8,7 @@
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
           <div class="press-release-header">
-            <h2 class="header-xlarge"><?php the_title(); ?></h2>
+            <h1 class="header-xlarge"><?php the_title(); ?></h1>
             <p class="byline"><?php the_time('F j, Y') ?></p>
           </div>
 
