@@ -55,8 +55,8 @@ if ($current_member_site) {
       dots: false,
       fade: true,
       infinite: true,
-      pauseOnFocus: false,
-      pauseOnHover: false,
+      pauseOnFocus: true,
+      pauseOnHover: true,
       speed: 1000,
     });
     jQuery(".slider-image").css({width:"100%"})
