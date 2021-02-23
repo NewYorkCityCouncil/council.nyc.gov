@@ -8,7 +8,7 @@
         <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
           <div class="post-header">
-            <h2 class="header-large"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+            <h1 class="header-large"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
           </div>
 
           <section class="post-content">

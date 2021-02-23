@@ -8,7 +8,7 @@
       <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
         <div class="page-header">
-          <h2 class="header-xxlarge"><?php the_title(); ?></h2>
+          <h1 class="header-xxlarge"><?php the_title(); ?></h1>
           <?php if ( has_excerpt( $post->ID ) ) { ?><p class="header-medium subheader sans-serif"><?php echo get_the_excerpt(); ?></p><?php } ?>
         </div>
 
