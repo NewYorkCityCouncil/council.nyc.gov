@@ -117,9 +117,9 @@ class Disable_Comments_MU {
 	function filter_admin_menu(){
 		global $pagenow;
 
-		if ( in_array( $pagenow, array( 'comment.php', 'edit-comments.php', 'options-discussion.php' ) ) ) {
-			wp_die( __( 'Comments are closed.' ), '', array( 'response' => 403 ) );
-		}
+		// if ( in_array( $pagenow, array( 'comment.php', 'edit-comments.php', 'options-discussion.php' ) ) ) {
+		// 	wp_die( __( 'Comments are closed.' ), '', array( 'response' => 403 ) );
+		// }
 
 		remove_menu_page( 'edit-comments.php' );
 		remove_submenu_page( 'options-general.php', 'options-discussion.php' );
