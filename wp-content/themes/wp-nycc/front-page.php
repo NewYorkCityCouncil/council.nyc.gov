@@ -81,11 +81,12 @@
     <!-- New content -->
     <div class="columns medium-11 medium-centered">
       <hr>
-      <div class="columns medium-5 speaker-council-twitter-feed">
-        <a class="twitter-timeline" data-height="600" data-tweet-limit="20" data-aria-polite="assertive" href="https://twitter.com/NYCSpeakerCoJo?ref_src=twsrc%5Etfw">Tweets by NYCSpeakerCoJo</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <h2>On Social Media</h2>
+      <div class="columns medium-5 speaker-council-twitter-feed" style="overflow: scroll; height: 550px; box-shadow: 0px 0px 10px grey;">
+        <a class="twitter-timeline" data-height="600" data-tweet-limit="10" data-aria-polite="assertive" href="https://twitter.com/NYCSpeakerCoJo?ref_src=twsrc%5Etfw">Tweets by NYCSpeakerCoJo</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
-      <div class="columns medium-5 medium-offset-2 speaker-council-twitter-feed">
-        <a class="twitter-timeline" data-height="600" data-tweet-limit="20" data-aria-polite="assertive" href="https://twitter.com/NYCCouncil?ref_src=twsrc%5Etfw">Tweets by NYCCouncil</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <div class="columns medium-5 medium-offset-2 speaker-council-twitter-feed" style="overflow: scroll; height: 550px; box-shadow: 0px 0px 10px grey;">
+        <a class="twitter-timeline" data-height="600" data-tweet-limit="10" data-aria-polite="assertive" href="https://twitter.com/NYCCouncil?ref_src=twsrc%5Etfw">Tweets by NYCCouncil</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>		
       <script async>
         function adjustiFrames(){
