@@ -114,9 +114,9 @@
                               <strong><?php echo $name; ?></strong>
                             </a>
                           </td>
-                          <td></td>
-                          <td class="sort-borough"></td>
-                          <td class="sort-party show-for-medium"></td>
+                          <td><span style="opacity: 0%;">Blank</span></td>
+                          <td class="sort-borough"><span style="opacity: 0%;">Blank</span></td>
+                          <td class="sort-party show-for-medium"><span style="opacity: 0%;">Blank</span></td>
                           <td class="sort-neighborhoods neighborhoods show-for-medium"><?php echo $neighborhoods ?></td>
                           <td class="sort-email email" style="text-align:center;"><a aria-label="Send an email to District <?php echo $number; ?>" href="mailto:District<?php echo $number; ?>@council.nyc.gov"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" aria-label="Click to copy District <?php echo $number; ?>'s email address" onclick="copyToClipboard(jQuery(this))" data-email="District<?php echo $number; ?>@council.nyc.gov">Copy</span></td>
                         </tr>
