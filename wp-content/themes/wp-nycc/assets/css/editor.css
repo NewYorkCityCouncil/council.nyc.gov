@@ -2258,19 +2258,19 @@ select {
     background-image: none; }
 
 .is-invalid-input:not(:focus) {
-  border-color: #d05d4e;
+  border-color: #CB4A3A;
   background-color: #faefed; }
   .is-invalid-input:not(:focus)::-webkit-input-placeholder {
-    color: #d05d4e; }
+    color: #CB4A3A; }
   .is-invalid-input:not(:focus)::-moz-placeholder {
-    color: #d05d4e; }
+    color: #CB4A3A; }
   .is-invalid-input:not(:focus):-ms-input-placeholder {
-    color: #d05d4e; }
+    color: #CB4A3A; }
   .is-invalid-input:not(:focus)::placeholder {
-    color: #d05d4e; }
+    color: #CB4A3A; }
 
 .is-invalid-label {
-  color: #d05d4e; }
+  color: #CB4A3A; }
 
 .form-error {
   display: none;
@@ -2278,7 +2278,7 @@ select {
   margin-bottom: 1rem;
   font-size: 0.75rem;
   font-weight: bold;
-  color: #d05d4e; }
+  color: #CB4A3A; }
   .form-error.is-visible {
     display: block; }
 
@@ -2338,7 +2338,7 @@ select {
       background-color: #cc8b00;
       color: #222; }
   .button.alert {
-    background-color: #d05d4e;
+    background-color: #CB4A3A;
     color: #fff; }
     .button.alert:hover, .button.alert:focus {
       background-color: #b53f30;
@@ -2376,8 +2376,8 @@ select {
         border-color: #805700;
         color: #805700; }
     .button.hollow.alert {
-      border: 1px solid #d05d4e;
-      color: #d05d4e; }
+      border: 1px solid #CB4A3A;
+      color: #CB4A3A; }
       .button.hollow.alert:hover, .button.hollow.alert:focus {
         border-color: #71281e;
         color: #71281e; }
@@ -2415,7 +2415,7 @@ select {
       opacity: 0.3;
       cursor: not-allowed; }
       .button.disabled.alert, .button.disabled.alert:hover, .button.disabled.alert:focus, .button[disabled].alert, .button[disabled].alert:hover, .button[disabled].alert:focus {
-        background-color: #d05d4e;
+        background-color: #CB4A3A;
         color: #fff; }
   .button.dropdown::after {
     display: block;
@@ -2442,7 +2442,7 @@ select {
   .button.dropdown.hollow.warning::after {
     border-top-color: #ffae00; }
   .button.dropdown.hollow.alert::after {
-    border-top-color: #d05d4e; }
+    border-top-color: #CB4A3A; }
   .button.arrow-only::after {
     top: -0.1em;
     float: none;

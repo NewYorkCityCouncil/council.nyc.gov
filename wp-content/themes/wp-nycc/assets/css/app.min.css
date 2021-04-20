@@ -3486,7 +3486,7 @@ select {
 }
 
 .form-error,.is-invalid-label {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 @media screen and (min-width:0\0) {
@@ -3515,24 +3515,24 @@ select[multiple] {
 }
 
 .is-invalid-input:not(:focus) {
-  border-color: #d05d4e;
+  border-color: #CB4A3A;
   background-color: #faefed;
 }
 
 .is-invalid-input:not(:focus)::-webkit-input-placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .is-invalid-input:not(:focus)::-moz-placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .is-invalid-input:not(:focus):-ms-input-placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .is-invalid-input:not(:focus)::placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .form-error {
@@ -3639,7 +3639,7 @@ select[multiple] {
 }
 
 .alert.comment-reply-link,.button.alert,.press-release-tags ul li a.alert,.social-buttons a.alert {
-  background-color: #d05d4e;
+  background-color: #CB4A3A;
   color: #fff;
 }
 
@@ -3708,8 +3708,8 @@ select[multiple] {
 }
 
 .button.hollow.alert,.hollow.alert.comment-reply-link,.press-release-tags ul li a.hollow.alert,.social-buttons a.hollow.alert {
-  border: 1px solid #d05d4e;
-  color: #d05d4e;
+  border: 1px solid #CB4A3A;
+  color: #CB4A3A;
 }
 
 .button.hollow.alert:focus,.button.hollow.alert:hover,.hollow.alert.comment-reply-link:focus,.hollow.alert.comment-reply-link:hover,.press-release-tags ul li a.hollow.alert:focus,.press-release-tags ul li a.hollow.alert:hover,.social-buttons a.hollow.alert:focus,.social-buttons a.hollow.alert:hover {
@@ -3733,7 +3733,7 @@ select[multiple] {
 }
 
 .button.disabled.alert,.button.disabled.alert:focus,.button.disabled.alert:hover,.button[disabled].alert,.button[disabled].alert:focus,.button[disabled].alert:hover,.disabled.alert.comment-reply-link,.disabled.alert.comment-reply-link:focus,.disabled.alert.comment-reply-link:hover,.press-release-tags ul li a.disabled.alert,.press-release-tags ul li a.disabled.alert:focus,.press-release-tags ul li a.disabled.alert:hover,.press-release-tags ul li a[disabled].alert,.press-release-tags ul li a[disabled].alert:focus,.press-release-tags ul li a[disabled].alert:hover,.social-buttons a.disabled.alert,.social-buttons a.disabled.alert:focus,.social-buttons a.disabled.alert:hover,.social-buttons a[disabled].alert,.social-buttons a[disabled].alert:focus,.social-buttons a[disabled].alert:hover,[disabled].alert.comment-reply-link,[disabled].alert.comment-reply-link:focus,[disabled].alert.comment-reply-link:hover {
-  background-color: #d05d4e;
+  background-color: #CB4A3A;
   color: #fff;
 }
 
@@ -3769,7 +3769,7 @@ select[multiple] {
 }
 
 .button.dropdown.hollow.alert::after,.dropdown.hollow.alert.comment-reply-link::after,.press-release-tags ul li a.dropdown.hollow.alert::after,.social-buttons a.dropdown.hollow.alert::after {
-  border-top-color: #d05d4e;
+  border-top-color: #CB4A3A;
 }
 
 .arrow-only.comment-reply-link::after,.button.arrow-only::after,.press-release-tags ul li a.arrow-only::after,.social-buttons a.arrow-only::after {
@@ -3893,7 +3893,7 @@ select[multiple] {
 }
 
 .badge.alert {
-  background: #d05d4e;
+  background: #CB4A3A;
   color: #fff;
 }
 
@@ -4082,7 +4082,7 @@ select[multiple] {
 }
 
 .button-group.alert .button,.button-group.alert .comment-reply-link,.button-group.alert .press-release-tags ul li a,.button-group.alert .social-buttons a,.press-release-tags ul li .button-group.alert a,.social-buttons .button-group.alert a {
-  background-color: #d05d4e;
+  background-color: #CB4A3A;
   color: #fff;
 }
 
@@ -5038,7 +5038,7 @@ select[multiple] {
 }
 
 .label.alert,.widget_recent_entries_network a.alert[href*="/press/"]:before,.widget_recent_entries_network a.alert[href*="/budget/"]:before,.widget_tag_cloud a.alert {
-  background: #d05d4e;
+  background: #CB4A3A;
   color: #fff;
 }
 
@@ -5184,7 +5184,7 @@ select[multiple] {
 }
 
 .progress.alert .progress-meter {
-  background-color: #d05d4e;
+  background-color: #CB4A3A;
 }
 
 .progress-meter {
@@ -6299,7 +6299,7 @@ legend {
 }
 
 .text-color-alert {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .byline,.post-footer {
@@ -7083,7 +7083,7 @@ figure {
 }
 
 .fscf-required-indicator {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .fscf-label .fscf-required-indicator {
@@ -7091,7 +7091,7 @@ figure {
 }
 
 .fscf-required-text {
-  color: #d05d4e;
+  color: #CB4A3A;
   display: inline-block;
 }
 
@@ -7105,28 +7105,28 @@ figure {
   margin-bottom: .5rem;
   font-size: .75rem;
   font-weight: 700;
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .fscf-div-error+input[type=text]:not(:focus),.fscf-div-error+textarea:not(:focus) {
-  border-color: #d05d4e;
+  border-color: #CB4A3A;
   background-color: #faefed;
 }
 
 .fscf-div-error+input[type=text]:not(:focus)::-webkit-input-placeholder,.fscf-div-error+textarea:not(:focus)::-webkit-input-placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .fscf-div-error+input[type=text]:not(:focus)::-moz-placeholder,.fscf-div-error+textarea:not(:focus)::-moz-placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .fscf-div-error+input[type=text]:not(:focus):-ms-input-placeholder,.fscf-div-error+textarea:not(:focus):-ms-input-placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .fscf-div-error+input[type=text]:not(:focus)::placeholder,.fscf-div-error+textarea:not(:focus)::placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .fscf-button-submit {
@@ -7196,24 +7196,24 @@ figure {
 }
 
 .wpcf7-not-valid:not(:focus),.wpcf7-spam-blocked:not(:focus),.wpcf7-validation-errors:not(:focus) {
-  border-color: #d05d4e;
+  border-color: #CB4A3A;
   background-color: #faefed;
 }
 
 .wpcf7-not-valid:not(:focus)::-webkit-input-placeholder,.wpcf7-spam-blocked:not(:focus)::-webkit-input-placeholder,.wpcf7-validation-errors:not(:focus)::-webkit-input-placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .wpcf7-not-valid:not(:focus)::-moz-placeholder,.wpcf7-spam-blocked:not(:focus)::-moz-placeholder,.wpcf7-validation-errors:not(:focus)::-moz-placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .wpcf7-not-valid:not(:focus):-ms-input-placeholder,.wpcf7-spam-blocked:not(:focus):-ms-input-placeholder,.wpcf7-validation-errors:not(:focus):-ms-input-placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .wpcf7-not-valid:not(:focus)::placeholder,.wpcf7-spam-blocked:not(:focus)::placeholder,.wpcf7-validation-errors:not(:focus)::placeholder {
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .wpcf7-not-valid-tip {
@@ -7222,7 +7222,7 @@ figure {
   margin-bottom: 1rem;
   font-size: .75rem;
   font-weight: 700;
-  color: #d05d4e;
+  color: #CB4A3A;
 }
 
 .wpcf7-form-control-wrap {
