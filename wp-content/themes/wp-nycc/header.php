@@ -98,13 +98,13 @@
                         <a href="#">Legislation</a>
                         <ul class="menu">
                           <li><a href="https://council.nyc.gov/legislation/">Our legislative process</a></li>
-                          <li><a href="https://council.nyc.gov/testify">Register to Testify</a></li>
-                          <li><a href="https://council.nyc.gov/livestream/">Live Stream</a></li>
+                          <!-- <li><a href="https://council.nyc.gov/testify">Register to Testify</a></li> -->
+                          <!-- <li><a href="https://council.nyc.gov/livestream/">Live Stream</a></li> -->
+                          <li><a href="https://council.nyc.gov/live/">Live video</a></li>
                           <li><a href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
                           <li><a href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
                           <!--<li><a href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>-->
                           <li><a href="https://council.nyc.gov/legislation/api/">Legislative API</a></li>
-                          <!-- <li><a href="https://council.nyc.gov/live/">Live video</a></li> -->
                           <li><a href="https://council.nyc.gov/data/">Data</a></li>
                         </ul>
                       </li>
