@@ -15,7 +15,7 @@
 
       <?php the_content(); ?>
 
-      <h3 class="header-xxlarge">Winning Projects</h3>
+      <h2 class="header-xxlarge">Winning Projects</h2>
       <br>
       <?php
       $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
@@ -58,17 +58,17 @@
             <article class="row hentry">
               <div class="columns large-4">
                 <div class="media-object">
+                  <!-- <div class="media-object-section">
+                    <div class="thumbnail"><a href="<#?php echo get_blogaddress_by_id($ID); ?>pb/<#?php echo $current_pb_cycle;?>/"><img alt="Headshot of <#?php echo $name; ?>" style="max-width:80px;" src= "<#?php echo $thumbnail; ?>"></a></div>
+                  </div> -->
                   <div class="media-object-section">
-                    <div class="thumbnail"><a href="<?php echo get_blogaddress_by_id($ID); ?>pb/<?php echo $current_pb_cycle;?>/"><img alt="Headshot of <?php echo $name; ?>" style="max-width:80px;" src= "<?php echo $thumbnail; ?>"></a></div>
-                  </div>
-                  <div class="media-object-section">
-                    <h4 class="header-xlarge">
+                    <h3 class="header-xlarge">
                       <a href="<?php echo get_blogaddress_by_id($ID); ?>pb/<?php echo $current_pb_cycle;?>/">
                         District <?php echo $number; ?>
                         <br>
                         <small><?php echo $name; ?></small>
                       </a>
-                    </h4>
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -87,7 +87,7 @@
                           }
                       endif; ?><span class="label success"><strong>Funded</strong></span>
                     </span>
-                    <h5 class="header-medium"><?php echo get_the_title(); ?></h5>
+                    <h4 class="header-medium"><?php echo get_the_title(); ?></h4>
                     <?php the_content(); ?>
                   </article>
                   <?php
