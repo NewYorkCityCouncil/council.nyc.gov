@@ -255,54 +255,71 @@ if ( is_page_template( 'page-district.php' ) ) {
 
   // Talk to the Geoclient
   function ajaxGeoclient( terms, error ) {
-    var apiKey = 'db87f7a57ab963b71d36c179ce32157c';
-    var apiId = 'f208e50a';
-    var apiQuery = 'https://api.cityofnewyork.us/geoclient/v1/search.json?input=' + terms + '&app_id=' + apiId + '&app_key=' + apiKey;
+    let params;
+    try{
+      let boro = terms.split(",")[1].replace(/[^\w\s]/gi, '');
+      if (boro.toLowerCase().includes("manhattan") || boro.toLowerCase().includes("new york")){
+        boro = "Manhattan"
+      } else if (terms.toLowerCase().includes("brooklyn")){
+        boro = "Brooklyn"
+      } else if (terms.toLowerCase().includes("bronx")){
+        boro = "Bronx"
+      } else if (terms.toLowerCase().includes("queens")){
+        boro = "Queens"
+      } else if (terms.toLowerCase().includes("staten island")){
+        boro = "Staten Island"
+      };
+      let sanitizedTerms = terms.split(",")[0].replace(/[^\w\s]/gi, '')
+      let houseNum = sanitizedTerms.match(/^\d+/g)[0]
+      params = {
+        "houseNumber": houseNum,
+        "street": sanitizedTerms.replace(houseNum, "").trim(),
+        "borough": boro,
+      };
+    } catch(e) {
+      badAddress( terms, error );
+      return(console.log(e))
+    }
 
-    jQuery.ajax({
-      url: apiQuery,
-      dataType: 'jsonp',
-      success: function (data) {
-        if ( data.status == 'OK' ) {
-          for (var key in data.results) {
-            if (data.results.hasOwnProperty(key)) {
-              var theLatitude = data.results[key].response.latitude,
-                  theLongitude = data.results[key].response.longitude,
-                  latlngPoint = new L.LatLng( theLatitude, theLongitude ),
-                  CounDist = data.results[key].response.cityCouncilDistrict;
-
-              map.setZoom(17, { animate: false })
-
-              map.panTo(latlngPoint, { animate: false })
-
-              var popup = L.popup()
-                  .setLatLng(latlngPoint)
-                  .setContent(getPopupInfo(CounDist))
-                  .openOn(map);
-
-              jQuery('#addresslookup-error').html('');
-
-<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?>
-              CounDist = parseInt(CounDist, 10);
-              var listMember = popupData['Member' + CounDist];
-              // var listMember = CounDist;
-              districtsList.search(listMember);
-<?php } ?>
-            }
-          }
-        } else {
-          badAddress( terms, error );
-        }
-      },
-      error: function(){
+    $.ajax({
+      url: "https://api.nyc.gov/geo/geoclient/v1/address.json?" + $.param(params),
+      beforeSend: (xhrObj) => { xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","744d90c882ac4a72ad581670a273bced") },
+    })
+    .done((data) => {
+      if ( (data.address.geosupportReturnCode === "00" || data.address.geosupportReturnCode === "01") &&
+      (data.address.geosupportReturnCode2 === "00" || data.address.geosupportReturnCode2 === "01")) {
+        let theLatitude = data.address.latitude,
+          theLongitude = data.address.longitude,
+          latlngPoint = new L.LatLng( theLatitude, theLongitude ),
+          CounDist = data.address.cityCouncilDistrict;
+        map.setZoom(17, { animate: false })
+        map.panTo(latlngPoint, { animate: false })
+        var popup = L.popup()
+          .setLatLng(latlngPoint)
+          .setContent(getPopupInfo(CounDist))
+          .openOn(map);
+        $('#addresslookup-error').html('');
+        <?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?>
+          CounDist = parseInt(CounDist, 10);
+          var listMember = popupData['Member' + CounDist];
+          // var listMember = CounDist;
+          districtsList.search(listMember);
+        <?php } ?>
+      } else {
         badAddress( terms, error );
+        console.log("Error message 1 from API Client: ", data.address.message)
+        console.log("Error message 2 from API Client: ", data.address.message2)
       }
+    })
+    .fail((e) => { 
+      badAddress( terms, error );
+      console.log("Error message from AJAX: ", e) 
     });
   }
 
   function badAddress( terms, error ) {
     if ( error == true ) {
-      var errorMessage = '<div class="callout alert text-small text-center"><strong>Please enter a valid street address and borough</strong></div>';
+      var errorMessage = '<div class="callout alert text-small text-center"><strong>Please enter a valid street address and borough separated by a comma.</strong></div>';
       jQuery('#addresslookup-error').html(errorMessage);
     }<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?> else {
       districtsList.search(terms);
@@ -329,7 +346,7 @@ if ( is_page_template( 'page-district.php' ) ) {
     // First search the list
     districtsList.search(searchTerms);
     // If no results, use the Geoclient
-    if (districtsList.matchingItems.length == 0) {
+    if (districtsList.matchingItems.length === 0) {
       ajaxGeoclient( searchTerms, false );
       jQuery("#assertive-message").html("No results found for your search.");
     } else {
