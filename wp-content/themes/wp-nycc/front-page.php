@@ -125,7 +125,107 @@
         });
       </script>
       <script>
+        /*-----------------------------------------------------------------------------------
+          Upcoming Council Hearings jQuery - VIRTUAL + IN-PERSON HEARING 1 WEEK IN ADVANCE
+        -----------------------------------------------------------------------------------*/
         Date.prototype.stdTimezoneOffset = function() {
+          let jan = new Date(this.getFullYear(), 0, 1);
+          let jul = new Date(this.getFullYear(), 6, 1);
+          return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+        }
+        Date.prototype.dst = function() {
+          // Accounts for daylight savings 1 hour offset
+          return this.getTimezoneOffset() < this.stdTimezoneOffset();
+        }
+        Date.prototype.getWeek = function() {
+          let date = new Date(this.valueOf())
+          date.setHours(0)
+          date.setMinutes(0)
+          date.setSeconds(0)
+          date.setMilliseconds(0)
+          let sunday = date.setDate(date.getDate() - date.getDay());
+          date.setHours(23)
+          date.setMinutes(59)
+          date.setSeconds(59)
+          date.setMilliseconds(999)
+          let saturday = date.setDate(date.getDate() + 6);
+          return [new Date(sunday), new Date(saturday)];
+        }
+        let addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
+        let date = new Date().dst() ? new Date(new Date().getTime() - 4 * 3600 * 1000) : new Date(new Date().getTime() - 5 * 3600 * 1000)
+        let sunday = date.getWeek()[0]
+        let saturday = date.getWeek()[1]
+
+        let startDate = sunday.getFullYear()+"-"+addZero(sunday.getMonth()+1)+"-"+addZero(sunday.getDate());
+        let endDate = saturday.getFullYear()+"-"+addZero(saturday.getMonth()+1)+"-"+addZero(saturday.getDate());
+        jQuery.ajax({
+          type:"GET",
+          dataType:"jsonp",
+          url:"https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventDate+ge+datetime%27"+startDate+"%27+and+EventDate+lt+datetime%27"+endDate+"%27+and+tolower(EventAgendaStatusName)+ne+'draft'&$orderby=EventTime+asc",
+          success:function(hearings){
+            function dateTimeConverter(dateString, timeString){
+              let fullDate = dateString.split("T")[0].split("-")
+              let year = parseInt(fullDate[0])
+              let month = parseInt(fullDate[1])
+              let date = parseInt(fullDate[2])
+              let hr = parseInt(timeString.split(" ")[0].split(":")[0]);
+              let min = parseInt(timeString.split(" ")[0].split(":")[1]);
+              let ampm = timeString.split(" ")[1];
+              ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr : hr = (hr+12) ;
+              return new Date(year, month, date, hr, min, 00)
+            };
+            let sortedHearings = hearings.sort(function(a,b){
+              return dateTimeConverter(a.EventDate, a.EventTime).getTime() - dateTimeConverter(b.EventDate, b.EventTime).getTime();
+            });
+
+            jQuery("#committee-loader").remove();
+            if (hearings.length === 0){
+              jQuery("#front-page-hearings").append("<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></li>");
+            } else {
+              sortedHearings.forEach(function(hearing){
+                let hearingName = "<strong>"+hearing.EventBodyName+"</strong><br>"
+                let meetingDate = hearing.EventDate.split("T")[0];
+                let meetingDateFormat = new Date(meetingDate.split("-")[0], parseInt(meetingDate.split("-")[1])-1, meetingDate.split("-")[2])
+                let livestreamLocation = hearing.EventLocation.match(/\(([^)]+)\)/)
+                if(livestreamLocation) {
+                  livestreamLocation = livestreamLocation[1];
+                } else {
+                  livestreamLocation = hearing.EventLocation;
+                }
+                meetingDate = meetingDateFormat.toDateString().split(" ")
+                meetingDate.pop()
+                meetingDate[0] = meetingDate[0] + ","
+                meetingDate = meetingDate.join(" ")
+                midDay = hearing.EventTime.split(" ")[1];
+                meetingHour = parseInt(hearing.EventTime.split(" ")[0].split(":")[0]);
+                meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
+                hearing.EventAgendaFile !== null ? agendaLink = hearing.EventAgendaFile : agendaLink = "#";
+                midDay === "PM" && meetingHour !== 12 ? meetingHour += 12 : meetingHour;
+                if (hearing.EventComment !== null){
+                  if(hearing.EventComment.toLowerCase().includes("jointly") && !hearing.EventLocation.toLowerCase().includes("-")){
+                      hearingName += "<small><em>("+hearing.EventComment+")</em></small><br>"
+                  } else if (hearing.EventComment.toLowerCase().includes("jointly") && hearing.EventLocation.toLowerCase().includes("-")){
+                      return
+                  }
+                }
+                if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
+                  jQuery("#front-page-hearings").append("<li class='columns column-block' aria-label='deferred hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small><s>"+meetingDate+"</s> Deferred</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small><s>"+hearing.EventTime+"</s> Deferred</small><br><i class='fas fa-podcast'></i> <small><s>"+livestreamLocation+"</s></small></li>");
+                } else {
+                  jQuery("#front-page-hearings").append("<li class='columns column-block' aria-label='scheduled hearing' style='margin-bottom:10px;'><a href='"+agendaLink+"' target='_blank'>"+hearingName+"</a><i class='fa fa-calendar' aria-hidden='true'></i> <small>"+meetingDate+"</small><br><i class='fa fa-clock-o' aria-hidden='true'></i> <small>"+hearing.EventTime+"</small><br><i class='fas fa-podcast'></i> <small><a href='https://council.nyc.gov/livestream/#"+livestreamLocation.toLowerCase().replace(/[^\w\s\-]/gi, '').split(" ").join("-")+"'>"+livestreamLocation+"</a></small></li>");
+                };
+              });
+              if (jQuery("#front-page-hearings").children().length === 0){
+                jQuery("#front-page-hearings").append("<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></li>");
+              };
+            };
+          }
+        });
+      </script>
+      <script>
+        /*-----------------------------------------------------------------------------------
+          Upcoming Council Hearings jQuery - IN-PERSON HEARINGS DAY OFF
+        -----------------------------------------------------------------------------------*/
+        /*Date.prototype.stdTimezoneOffset = function() {
           let jan = new Date(this.getFullYear(), 0, 1);
           let jul = new Date(this.getFullYear(), 6, 1);
           return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
@@ -217,8 +317,9 @@
               };
             };
           }
-        });
-
+        });*/
+      </script>
+      <script>
         /*--------------------------------------------------
           Load Flickr API Response to Slick Slider
         --------------------------------------------------*/
