@@ -158,7 +158,7 @@
               </script>
               <div id="list-search-error" class="callout alert text-center hide">
                 <p class="text-small">No results match your search terms.</p>
-                <p><strong>If you're searching for an address, be sure to include the borough.</strong></p>
+                <p><strong>If you're searching an address, be sure to separate the address and borough with a comma.</strong></p>
               </div>
             </div>
           </div>
