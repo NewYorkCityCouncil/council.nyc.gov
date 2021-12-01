@@ -65,10 +65,10 @@ if ($current_member_site) {
 </script>
 <div class="row">
   <div class="columns medium-8 large-9 xxlarge-8">
-    <?php if($current_member_site) : ?>
+    <!-- <#?php if($current_member_site) : ?>
       <div class="district-carousel" aria-hidden="true" style="display:none;"></div>
       <br>
-    <?php endif; ?>
+    <#?php endif; ?> -->
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
     <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
