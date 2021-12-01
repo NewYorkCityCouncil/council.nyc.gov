@@ -84,7 +84,11 @@
                           <td class="sort-district"><a class="button small expanded" href="<?php echo $district_url; ?>"
                             ><strong><?php echo $number; ?></strong></a></td>
                           <td class="sort-member"><a data-member-name="<?php echo $name; ?>" href="<?php echo $district_url; ?>"><strong><?php echo $name; ?></strong></a></td>
-                          <td style="text-align: right;"><a href="<?php echo $district_url; ?>"><img alt="<?php echo $name; ?> Head Shot" class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
+                          <?php if ($thumbnail): ?>
+                            <td style="text-align: right;"><a href="<?php echo $district_url; ?>"><img alt="<?php echo $name; ?> Head Shot" class="inline-icon large" src="<?php echo $thumbnail; ?>" /></a></td>
+                          <?php else: ?>
+                            <td></td>
+                          <?php endif; ?>
                           <td class="sort-borough"><?php echo $borough; ?></td>
                           <td class="sort-party show-for-medium"><?php echo $party; ?></td>
                           <td class="sort-neighborhoods neighborhoods show-for-medium"><?php echo $neighborhoods; ?></td>
