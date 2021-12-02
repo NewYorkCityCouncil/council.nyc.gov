@@ -83,7 +83,7 @@
           </div>
           <div class="columns medium-4">
             <p><strong>The following Council Members serve on this committee:</strong></p>
-            <ul>
+            <ul id="committee-members">
 
               <?php
 

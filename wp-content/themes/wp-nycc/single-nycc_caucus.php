@@ -20,7 +20,7 @@
           </div>
           <div class="columns medium-4">
             <p><strong>The following Council Members participate in this caucus:</strong></p>
-            <ul>
+            <ul id="caucus-members">
 
               <?php
 
