@@ -80,7 +80,7 @@
                       <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
                         <a href="#">About</a>
                         <ul class="menu">
-                          <li><a href="https://council.nyc.gov/visit-the-council/">Visits the Council</a></li>
+                          <li><a href="https://council.nyc.gov/visit-the-council/">Visit the Council</a></li>
                           <li><a href="https://council.nyc.gov/events/">Events</a></li>
                           <li><a href="https://council.nyc.gov/about/">What we do</a></li>
                           <li><a href="https://council.nyc.gov/committees/">Committees</a></li>
