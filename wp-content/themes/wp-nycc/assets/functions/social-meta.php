@@ -18,7 +18,8 @@ function insert_share_meta_in_head() {
     $share_image = 'https://council.nyc.gov/press/wp-content/uploads/sites/56/2020/04/nycc_press.jpg';
   } else {
     // There's no Featured Image, so use the default one from the theme
-    $share_image = 'https://council.nyc.gov/jobs/wp-content/themes/wp-nycc/assets/images/social-img-1024x512.jpg';
+    $share_image = 'https://council.nyc.gov/press/wp-content/uploads/sites/56/2020/04/nycc_press.jpg';
+    // $share_image = 'https://council.nyc.gov/jobs/wp-content/themes/wp-nycc/assets/images/social-img-1024x512.jpg';
   }
 
   // Define the the title
