@@ -80,48 +80,48 @@
                       <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
                         <a href="#">About</a>
                         <ul class="menu">
-                          <li><a href="https://council.nyc.gov/visit-the-council/">Visit the Council</a></li>
-                          <li><a href="https://council.nyc.gov/events/">Events</a></li>
-                          <li><a href="https://council.nyc.gov/about/">What we do</a></li>
-                          <li><a href="https://council.nyc.gov/committees/">Committees</a></li>
-                          <li><a href="https://council.nyc.gov/caucuses/">Caucuses</a></li>
+                          <li><a href="/visit-the-council/">Visit the Council</a></li>
+                          <li><a href="/events/">Events</a></li>
+                          <li><a href="/about/">What we do</a></li>
+                          <li><a href="/committees/">Committees</a></li>
+                          <li><a href="/caucuses/">Caucuses</a></li>
                         </ul>
                       </li>
                       <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
                         <a href="#">Districts</a>
                         <ul class="menu">
-                          <li><a href="https://council.nyc.gov/districts/">Council Members &amp; Districts</a></li>
-                          <li><a href="https://council.nyc.gov/district-info/">District Info</a></li>
+                          <li><a href="/districts/">Council Members &amp; Districts</a></li>
+                          <li><a href="/district-info/">District Info</a></li>
                         </ul>
                       </li>
                       <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
                         <a href="#">Legislation</a>
                         <ul class="menu">
-                          <li><a href="https://council.nyc.gov/legislation/">Our legislative process</a></li>
-                          <!-- <li><a href="https://council.nyc.gov/testify">Register to Testify</a></li> -->
-                          <!-- <li><a href="https://council.nyc.gov/livestream/">Live Stream</a></li> -->
-                          <li><a href="https://council.nyc.gov/live/">Live video</a></li>
+                          <li><a href="/legislation/">Our legislative process</a></li>
+                          <!-- <li><a href="/testify">Register to Testify</a></li> -->
+                          <!-- <li><a href="/livestream/">Live Stream</a></li> -->
+                          <li><a href="/live/">Live video</a></li>
                           <li><a href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
                           <li><a href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
                           <!--<li><a href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>-->
-                          <li><a href="https://council.nyc.gov/legislation/api/">Legislative API</a></li>
-                          <li><a href="https://council.nyc.gov/data/">Data</a></li>
+                          <li><a href="/legislation/api/">Legislative API</a></li>
+                          <li><a href="/data/">Data</a></li>
                         </ul>
                       </li>
                       <li>
-                        <a href="https://council.nyc.gov/budget/">Budget</a>
+                        <a href="/budget/">Budget</a>
                       </li>
                       <li>
-                        <a href="https://council.nyc.gov/land-use/">Land Use</a>
+                        <a href="/land-use/">Land Use</a>
                       </li>
                       <li class="is-dropdown-submenu-parent opens-left">
                         <a href="#">Press &amp; News</a>
                         <ul class="menu">
-                          <li><a href="https://council.nyc.gov/foil-request/">Submit a "Freedom of Information Law" (FOIL) Request</a></li>
-                          <li><a href="https://council.nyc.gov/press/">Press Releases</a></li>
-                          <li><a href="https://council.nyc.gov/news/category/reports/">Reports</a></li>
-                          <li><a href="https://council.nyc.gov/press/press-photos/">Photos</a></li>
-                          <li><a href="https://council.nyc.gov/news/tag/video/">Videos</a></li>
+                          <li><a href="/foil-request/">Submit a "Freedom of Information Law" (FOIL) Request</a></li>
+                          <li><a href="/press/">Press Releases</a></li>
+                          <li><a href="/news/category/reports/">Reports</a></li>
+                          <li><a href="/press/press-photos/">Photos</a></li>
+                          <li><a href="/news/tag/video/">Videos</a></li>
                         </ul>
                       </li>
                     </ul>                  
