@@ -10,12 +10,12 @@
       <hr>
     </div>
     <div class="columns medium-8">
-      <div class="row" aria-hidden="true">
+      <!--<div class="row" aria-hidden="true">
         <div class="columns small-12">
           <h2>Featured at the Council</h2>
           <div class="featured-carousel" style="display:none;"></div>
         </div>
-      </div>
+      </div>-->
       <div class="row">
         <div class="columns small-12">
           <h2>Featured Content</h2>
@@ -83,7 +83,7 @@
       <hr>
       <h2>On Social Media</h2>
       <div class="columns medium-5 speaker-council-twitter-feed" style="overflow: scroll; height: 550px; box-shadow: 0px 0px 10px grey;">
-        <a class="twitter-timeline" data-height="600" data-tweet-limit="10" data-aria-polite="assertive" href="https://twitter.com/NYCSpeakerCoJo?ref_src=twsrc%5Etfw">Tweets by NYCSpeakerCoJo</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="600" data-tweet-limit="10" data-aria-polite="assertive" href="https://twitter.com/NYCSpeakerAdams?ref_src=twsrc%5Etfw">Tweets by NYCSpeakerAdams</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
       <div class="columns medium-5 medium-offset-2 speaker-council-twitter-feed" style="overflow: scroll; height: 550px; box-shadow: 0px 0px 10px grey;">
         <a class="twitter-timeline" data-height="600" data-tweet-limit="10" data-aria-polite="assertive" href="https://twitter.com/NYCCouncil?ref_src=twsrc%5Etfw">Tweets by NYCCouncil</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -328,6 +328,7 @@
         /*--------------------------------------------------
           Load Flickr API Response to Slick Slider
         --------------------------------------------------*/
+        /*
         function jsonFlickrApi(json) {
           jQuery.each(json.photos.photo, function(i, pic) {
             jQuery(".featured-carousel").append("<div class='carousel-images'><a href='https://www.flickr.com/photos/nyccouncil/"+pic.id+"/' target='_blank'><div class='pic-title'>"+pic.title.split("-")[0]+"</div><img class='slider-image' alt='"+pic.title+"' src='https://c1.staticflickr.com/"+pic.farm+"/"+pic.server+"/"+pic.id+"_"+pic.secret+"_z.jpg'/></div>");
@@ -364,6 +365,7 @@
           jQuery(".slider-image").width("100%");
           jQuery(".pic-title").each(function(){jQuery(this).width((jQuery(this).parent().children().last().width()-10))})
         });
+        */
       </script>
     </div>
 
