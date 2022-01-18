@@ -98,7 +98,7 @@
                         <a href="#">Legislation</a>
                         <ul class="menu">
                           <li><a href="/legislation/">Our legislative process</a></li>
-                          <!-- <li><a href="/testify">Register to Testify</a></li> -->
+                          <li><a href="/testify">Register to Testify</a></li>
                           <!-- <li><a href="/livestream/">Live Stream</a></li> -->
                           <li><a href="/live/">Live video</a></li>
                           <li><a href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
