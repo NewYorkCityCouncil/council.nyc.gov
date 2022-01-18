@@ -32,7 +32,7 @@
 
         $cycle = term_exists($current_pb_cycle,'pbcycle');
         if ( $number && $cycle !== 0 && $cycle !== null ) {
-          $args = array(
+          $winner_args = array(
             'post_type'  => 'nycc_pb_ballot_item',
             'orderby'    => 'menu_order',
             'order'      => 'ASC',
@@ -52,52 +52,96 @@
               ),
             ),
           );
-          $winners = new WP_Query( $args );
+          $loser_args = array(
+            'post_type'  => 'nycc_pb_ballot_item',
+            'orderby'    => 'menu_order',
+            'order'      => 'ASC',
+            'posts_per_page' => '-1',
+            'tax_query' => array(
+              array(
+                'taxonomy' => 'pbcycle',
+                'field'    => 'slug',
+                'terms'    => $current_pb_cycle,
+              ),
+            ),
+            'meta_query' => array(
+              array(
+                'key'     => 'pb_ballot_item_winner',
+                'value'   => 'no',
+                'compare' => 'IN',
+              ),
+            ),
+          );
+          $winners = new WP_Query( $winner_args );
+          $losers = new WP_Query( $loser_args );
           if ( $winners->have_posts() ) {
             ?>
             <article class="row hentry">
-              <div class="columns large-4">
-                <div class="media-object">
+              <div class="columns large-12">
+                <!-- <div class="media-object"> -->
                   <!-- <div class="media-object-section">
                     <div class="thumbnail"><a href="<#?php echo get_blogaddress_by_id($ID); ?>pb/<#?php echo $current_pb_cycle;?>/"><img alt="Headshot of <#?php echo $name; ?>" style="max-width:80px;" src= "<#?php echo $thumbnail; ?>"></a></div>
                   </div> -->
-                  <div class="media-object-section">
+                  <!-- <div class="media-object-section"> -->
                     <h3 class="header-xlarge">
-                      <a href="<?php echo get_blogaddress_by_id($ID); ?>pb/<?php echo $current_pb_cycle;?>/">
-                        District <?php echo $number; ?>
-                        <br>
-                        <small><?php echo $name; ?></small>
-                      </a>
+                      District <?php echo $number; ?>
+                      <br>
+                      <small><?php echo $name; ?></small>
                     </h3>
-                  </div>
-                </div>
+                  <!-- </div> -->
+                <!-- </div> -->
               </div>
-              <div class="columns large-8">
-                <?php
-                while ( $winners->have_posts() ) {
-                  $winners->the_post();
-                  ?>
-                  <article id="post-<?php the_ID(); ?>" <?php post_class('no-border'); ?>>
-                    <span class="float-right no-break">
-                      <?php
-                      $tags = get_the_terms( get_the_ID(), 'pbtags' );
-                      if ( $tags && ! is_wp_error( $tags ) ) :
-                          foreach ( $tags as $tag ) {
-                            echo '<span class="label">' . $tag->name . '</span>';
-                          }
-                      endif; ?><span class="label success"><strong>Funded</strong></span>
-                    </span>
-                    <h4 class="header-medium"><?php echo get_the_title(); ?></h4>
-                    <?php the_content(); ?>
-                  </article>
+              <div class="columns large-6">
+                <h4 class="header-medium">Funded Projects</h4>
+                <ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
                   <?php
-                }
-                ?>
-                <article class="hentry no-border">
-                  <a class="button small" href="<?php echo get_blogaddress_by_id($ID); ?>pb/<?php echo $current_pb_cycle;?>/">See all projects</a>
-                </article>
-                </div>
-              </article>
+                  while ( $winners->have_posts() ) {
+                    $winners->the_post();
+                    ?>
+                    <li class="accordion-item" data-accordion-item>
+                      <a style="font-size: 1.25em; margin-bottom: 0px;" class="accordion-title header-medium"><?php echo get_the_title(); ?></a>
+                      <div class="accordion-content" data-tab-content>
+                        <p class="no-break">
+                          <?php
+                          $tags = get_the_terms( get_the_ID(), 'pbtags' );
+                          if ( $tags && ! is_wp_error( $tags ) ) :
+                              foreach ( $tags as $tag ) {
+                                echo '<span class="label primary">' . $tag->name . '</span>';
+                              }
+                          endif; ?>
+                        </p>
+                        <?php the_content(); ?>
+                      </div>
+                    </li>
+                  <?php } ?>
+                </ul>
+              </div>
+              <div class="columns large-6">
+                <h4 class="header-medium">Other Projects</h4>
+                <ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
+                  <?php
+                  while ( $losers->have_posts() ) {
+                    $losers->the_post();
+                  ?>
+                    <li class="accordion-item" data-accordion-item>
+                      <a style="font-size: 1.25em; margin-bottom: 0px;" class="accordion-title header-medium"><?php echo get_the_title(); ?></a>
+                      <div class="accordion-content" data-tab-content>
+                        <p class="no-break">
+                          <?php
+                          $tags = get_the_terms( get_the_ID(), 'pbtags' );
+                          if ( $tags && ! is_wp_error( $tags ) ) :
+                            foreach ( $tags as $tag ) {
+                              echo '<span class="label primary">' . $tag->name . '</span>';
+                            }
+                          endif; ?>
+                        </p>
+                        <?php the_content(); ?>
+                      </div>
+                    </li>
+                  <?php } ?>
+                </ul>
+              </div>
+            </article>
             <?php
           }
         }
