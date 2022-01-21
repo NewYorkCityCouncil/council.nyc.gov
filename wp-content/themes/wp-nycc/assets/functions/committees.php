@@ -103,8 +103,12 @@ function nycc_committee_members() {
                 <option <?php echo (${'council_member_' . $number} == 'co_chair')? 'selected':''; ?> value="co_chair"> Co-Chair</option>
                 <option <?php echo (${'council_member_' . $number} == 'vice_chair')? 'selected':''; ?> value="vice_chair"> Vice Chair</option>
                 <option <?php echo (${'council_member_' . $number} == 'vice_co_chair')? 'selected':''; ?> value="vice_co_chair"> Vice Co-Chair</option>
+                <option <?php echo (${'council_member_' . $number} == 'acting_co_chair')? 'selected':''; ?> value="acting_co_chair"> Acting Co-Chair</option>
                 <option <?php echo (${'council_member_' . $number} == 'secretary')? 'selected':''; ?> value="secretary"> Secretary</option>
                 <option <?php echo (${'council_member_' . $number} == 'treasurer')? 'selected':''; ?> value="treasurer"> Treasurer</option>
+                <option <?php echo (${'council_member_' . $number} == 'speaker')? 'selected':''; ?> value="speaker"> Speaker</option>
+                <option <?php echo (${'council_member_' . $number} == 'deputy_speaker')? 'selected':''; ?> value="deputy_speaker"> Deputy Speaker</option>
+                <option <?php echo (${'council_member_' . $number} == 'majority_whip')? 'selected':''; ?> value="majority_whip"> Majority Whip</option>
               </select>
             </td>
           </tr>

@@ -105,7 +105,61 @@
 
               // Loop through the District pages
               if ( $list_districts->have_posts() ) {
+                // ----- Committee Speaker ----- //
+                while ( $list_districts->have_posts() ) : $list_districts->the_post();
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                if ($current_member_site_ID) {
+                  switch_to_blog($current_member_site_ID);
+                    $number = get_blog_option($current_member_site_ID,'council_district_number');
+                    $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
+                    $cm_number = 'council_member_' . $number;
+                  restore_current_blog();
+                  wp_reset_postdata();
+                }
+                $status = get_post_meta($post->ID, $cm_number, true);
+                if ( $status == 'speaker' ) {
+                  echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Speaker)</small></li>';
+                }
+                endwhile;
+                $list_districts->rewind_posts();
 
+                // ----- Committee Deputy Speaker ----- //
+                while ( $list_districts->have_posts() ) : $list_districts->the_post();
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                if ($current_member_site_ID) {
+                  switch_to_blog($current_member_site_ID);
+                    $number = get_blog_option($current_member_site_ID,'council_district_number');
+                    $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
+                    $cm_number = 'council_member_' . $number;
+                  restore_current_blog();
+                  wp_reset_postdata();
+                }
+                $status = get_post_meta($post->ID, $cm_number, true);
+                if ( $status == 'deputy_speaker' ) {
+                  echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Deputy Speaker)</small></li>';
+                }
+                endwhile;
+                $list_districts->rewind_posts();
+
+                // ----- Committee Majority Whip ----- //
+                while ( $list_districts->have_posts() ) : $list_districts->the_post();
+                $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                if ($current_member_site_ID) {
+                  switch_to_blog($current_member_site_ID);
+                    $number = get_blog_option($current_member_site_ID,'council_district_number');
+                    $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
+                    $cm_number = 'council_member_' . $number;
+                  restore_current_blog();
+                  wp_reset_postdata();
+                }
+                $status = get_post_meta($post->ID, $cm_number, true);
+                if ( $status == 'majority_whip' ) {
+                  echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Majority Whip)</small></li>';
+                }
+                endwhile;
+                $list_districts->rewind_posts();
+
+                // ----- Committee Chair ----- //
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
                 $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
                 if ($current_member_site_ID) {
@@ -121,9 +175,9 @@
                   echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Chair)</small></li>';
                 }
                 endwhile;
-
                 $list_districts->rewind_posts();
 
+                // ----- Committee Co-Chair ----- //
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
                 $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
                 if ($current_member_site_ID) {
@@ -139,9 +193,9 @@
                   echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Co-Chair)</small></li>';
                 }
                 endwhile;
-
                 $list_districts->rewind_posts();
 
+                // ----- Committee Vice Chair ----- //
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
                 $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
                 if ($current_member_site_ID) {
@@ -157,9 +211,9 @@
                   echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Vice Chair)</small></li>';
                 }
                 endwhile;
-
                 $list_districts->rewind_posts();
 
+                // ----- Committee Vice Co-Chair ----- //
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
                 $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
                 if ($current_member_site_ID) {
@@ -175,9 +229,28 @@
                   echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Vice Co-Chair)</small></li>';
                 }
                 endwhile;
-
                 $list_districts->rewind_posts();
 
+                 // ----- Committee Acting Co-Chair ----- //
+                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
+                 $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
+                 if ($current_member_site_ID) {
+                   switch_to_blog($current_member_site_ID);
+                     $number = get_blog_option($current_member_site_ID,'council_district_number');
+                     $cm_name = get_blog_option($current_member_site_ID,'council_member_name' );
+                     $cm_number = 'council_member_' . $number;
+                   restore_current_blog();
+                   wp_reset_postdata();
+                 }
+                 $status = get_post_meta($post->ID, $cm_number, true);
+                 if ( $status == 'acting_co_chair' ) {
+                   echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Acting Co-Chair)</small></li>';
+                 }
+                 endwhile;
+
+                 $list_districts->rewind_posts();
+
+                // ----- Committee Secretary ----- //
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
                 $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
                 if ($current_member_site_ID) {
@@ -193,9 +266,9 @@
                   echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Secretary)</small></li>';
                 }
                 endwhile;
-
                 $list_districts->rewind_posts();
 
+                // ----- Committee Treasurer ----- //
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
                 $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
                 if ($current_member_site_ID) {
@@ -211,9 +284,9 @@
                   echo '<li><a href="' . get_site_url($current_member_site_ID) . '"><strong>' . $cm_name . '</strong></a> <small>(Treasurer)</small></li>';
                 }
                 endwhile;
-
                 $list_districts->rewind_posts();
 
+                // ----- Committee Member ----- //
                 while ( $list_districts->have_posts() ) : $list_districts->the_post();
                 $current_member_site_ID = get_post_meta($post->ID, 'current_member_site', true);
                 if ($current_member_site_ID) {

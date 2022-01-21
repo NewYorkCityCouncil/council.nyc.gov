@@ -98,7 +98,7 @@ if ($current_member_site) {
             <div class="columns large-6">
               <?php
                 // List Committees
-                $list_committees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=0&posts_per_page=-1');
+                $list_committees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&posts_per_page=-1');
                 if ( $list_committees->have_posts() ) {
                   echo '<h2 class="header-tiny">Committees</h2>';
                   echo '<ul>';
@@ -116,39 +116,47 @@ if ($current_member_site) {
                             echo ' <small>(Vice Chair)</small>';
                         elseif (  $cm_position == 'vice_co_chair'  ):
                             echo ' <small>(Vice Co-Chair)</small>';
+                        // elseif (  $cm_position == 'acting_co_chair'  ):
+                        //     echo ' <small>(Acting Co-Chair)</small>';
                         elseif (  $cm_position == 'secretary'  ):
                             echo ' <small>(Secretary)</small>';
                         elseif (  $cm_position == 'treasurer'  ):
                             echo ' <small>(Treasurer)</small>';
+                        // elseif (  $cm_position == 'speaker'  ):
+                        //     echo ' <small>(Speaker)</small>';
+                        // elseif (  $cm_position == 'deputy_speaker'  ):
+                        //     echo ' <small>(Deputy Speaker)</small>';
+                        // elseif (  $cm_position == 'majority_whip'  ):
+                        //     echo ' <small>(Majority Whip)</small>';
                         endif;
-                        $pub_id = get_the_ID();
-                        $list_subcommittees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=' . $pub_id . '&posts_per_page=-1');
-                        if ( $list_subcommittees->have_posts() ) {
-                          echo '<ul>';
-                            while ( $list_subcommittees->have_posts() ) : $list_subcommittees->the_post();
-                              $cm_position = get_post_meta($post->ID, $cm_number, true);
-                              if ( $cm_position != '' ) {
-                                echo '<li>';
-                                ?><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong><?php
-                                if ( $cm_position == 'chair' ):
-                                    echo ' <small>(Chair)</small>';
-                                elseif (  $cm_position == 'co_chair'  ):
-                                    echo ' <small>(Co-Chair)</small>';
-                                elseif (  $cm_position == 'vice_chair'  ):
-                                    echo ' <small>(Vice Chair)</small>';
-                                elseif (  $cm_position == 'vice_co_chair'  ):
-                                    echo ' <small>(Vice Co-Chair)</small>';
-                                elseif (  $cm_position == 'secretary'  ):
-                                    echo ' <small>(Secretary)</small>';
-                                elseif (  $cm_position == 'treasurer'  ):
-                                    echo ' <small>(Treasurer)</small>';
-                                endif;
-                                echo '</li>';
-                              }
-                            endwhile;
-                            wp_reset_postdata();
-                            echo '</ul>';
-                        }
+                        // $pub_id = get_the_ID();
+                        // $list_subcommittees = new WP_Query('post_type=nycc_committee&orderby=menu_order&order=ASC&post_parent=' . $pub_id . '&posts_per_page=-1');
+                        // if ( $list_subcommittees->have_posts() ) {
+                        //   echo '<ul>';
+                        //     while ( $list_subcommittees->have_posts() ) : $list_subcommittees->the_post();
+                        //       $cm_position = get_post_meta($post->ID, $cm_number, true);
+                        //       if ( $cm_position != '' ) {
+                        //         echo '<li>';
+                        //         ?#><strong><a href="<?php the_permalink(); ?#>"><?php the_title(); ?#></a></strong><?php
+                        //         if ( $cm_position == 'chair' ):
+                        //             echo ' <small>(Chair)</small>';
+                        //         elseif (  $cm_position == 'co_chair'  ):
+                        //             echo ' <small>(Co-Chair)</small>';
+                        //         elseif (  $cm_position == 'vice_chair'  ):
+                        //             echo ' <small>(Vice Chair)</small>';
+                        //         elseif (  $cm_position == 'vice_co_chair'  ):
+                        //             echo ' <small>(Vice Co-Chair)</small>';
+                        //         elseif (  $cm_position == 'secretary'  ):
+                        //             echo ' <small>(Secretary)</small>';
+                        //         elseif (  $cm_position == 'treasurer'  ):
+                        //             echo ' <small>(Treasurer)</small>';
+                        //         endif;
+                        //         echo '</li>';
+                        //       }
+                        //     endwhile;
+                        //     wp_reset_postdata();
+                        //     echo '</ul>';
+                        // }
                         echo '</li>';
                       }
                     }
@@ -168,7 +176,7 @@ if ($current_member_site) {
                   'meta_query' => array(
                     array(
                       'key'     => $cm_number,
-                      'value'   => array( 'member','chair','co_chair','vice_chair','vice_co_chair','secretary','treasurer' ),
+                      'value'   => array( 'member','chair','co_chair','vice_chair','vice_co_chair', 'acting_co_chair', 'secretary','treasurer', 'speaker', 'deputy_speaker', 'majority_whip' ),
                       'compare' => 'IN'
                     ),
                   ),
@@ -192,10 +200,18 @@ if ($current_member_site) {
                           echo ' <small>(Vice Chair)</small>';
                       elseif (  $cm_position == 'vice_co_chair'  ):
                           echo ' <small>(Vice Co-Chair)</small>';
+                      // elseif (  $cm_position == 'acting_co_chair'  ):
+                      //     echo ' <small>(Acting Co-Chair)</small>';
                       elseif (  $cm_position == 'secretary'  ):
                           echo ' <small>(Secretary)</small>';
                       elseif (  $cm_position == 'treasurer'  ):
                           echo ' <small>(Treasurer)</small>';
+                      // elseif (  $cm_position == 'speaker'  ):
+                      //     echo ' <small>(Speaker)</small>';
+                      // elseif (  $cm_position == 'deputy_speaker'  ):
+                      //     echo ' <small>(Deputy Speaker)</small>';
+                      // elseif (  $cm_position == 'majority_whip'  ):
+                      //     echo ' <small>(Majority Whip)</small>';
                       endif;
                       echo '</li>';
                     }
