@@ -106,7 +106,7 @@
                           $tags = get_the_terms( get_the_ID(), 'pbtags' );
                           if ( $tags && ! is_wp_error( $tags ) ) :
                               foreach ( $tags as $tag ) {
-                                echo '<span class="label primary">' . $tag->name . '</span>';
+                                echo '<span style="margin-right: 1px; text-transform: capitalize;" class="label primary">' . $tag->name . '</span>';
                               }
                           endif; ?>
                         </p>
@@ -131,7 +131,7 @@
                           $tags = get_the_terms( get_the_ID(), 'pbtags' );
                           if ( $tags && ! is_wp_error( $tags ) ) :
                             foreach ( $tags as $tag ) {
-                              echo '<span class="label primary">' . $tag->name . '</span>';
+                              echo '<span style="margin-right: 1px; text-transform: capitalize;" class="label primary">' . $tag->name . '</span>';
                             }
                           endif; ?>
                         </p>
@@ -155,5 +155,5 @@
   </div>
 
   <?php endwhile; endif; ?>
-
+<style>.label{}</style>
 <?php get_footer(); ?>
