@@ -1,0 +1,186 @@
+[hidden attending-or-submitting-phone id:hidden-phone "Testifying via Zoom Phone"]
+<div class="row">
+    <div class="columns small-12">[response]</div>
+    <div class="columns small-12 medium-6">   
+        <label> Full Name <span class="required-field">*</span>
+    [text* user-name-phone] </label>
+    </div>
+    <div class="columns small-12 medium-6">
+        <label> Your Email <span class="required-field">*</span>
+    [email* user-email-phone] </label>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <label id="phone-in-number-phone"> Phone Number <span class="required-field">*</span><br><small>The number you will be calling from. We use this to verify your identity.</small>[tel* phone-in-number-phone placeholder "i.e., 123-456-7890"]</label>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <label> Select a hearing <span class="required-field">*</span>
+    [select* hearing-phone id:hearing-select-phone] </label>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <label> Subject of testimony <span class="required-field">*</span>
+    [text* testimony-subject-phone id:testimony-subject-phone] </label>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12 medium-6">
+        <label> Organization
+    [select organization-phone id:organization-select-phone "Self" "Other"] </label>
+    </div>
+    <div class="columns small-12 medium-6">
+        <label id="if-other-phone" style="display: none;"> If other, please specify:
+[text organization-other-phone]</label>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        <label id="toggle-testimony-phone">Upload your testimony<br><small><em>DOC, DOCX, PDF only<br/>Max upload limit: 10 MB</em></small>
+[file upload-testimony-phone filetypes:doc|docx|pdf id:upload-testimony-phone limit:10000000]</label>
+    </div>
+</div>
+<div class="row">
+    <div class="columns small-12">
+        [response]
+        [submit class:button class:full-width "Send"]
+    </div>
+</div>
+<style>.required-field{font-weight: bolder; color: red;}.full-width{width:100%;}</style>
+<script>
+    jQuery(document).ready(() => {
+        // Custom date methods
+        Date.prototype.stdTimezoneOffset = function() {
+            let jan = new Date(this.getFullYear(), 0, 1);
+            let jul = new Date(this.getFullYear(), 6, 1);
+            return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+        }
+        Date.prototype.dst = function() {
+            return this.getTimezoneOffset() < this.stdTimezoneOffset();
+        }
+        Date.prototype.threeWeeks = function() {
+            let date = new Date(this.valueOf())
+            date.setHours(0)
+            date.setMinutes(0)
+            date.setSeconds(0)
+            date.setMilliseconds(0)
+            let saturday = date.setDate(date.getDate() + 21);
+            return new Date(saturday);
+        }
+        // Handles organization dropdown change
+        jQuery("#organization-select-phone").change(function(){
+            jQuery("#organization-select-phone").val() === "Other" ? jQuery("#if-other-phone").show() : jQuery("#if-other-phone").hide();
+        });
+        const getHearings = () => {
+            let addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
+            let date;
+            new Date().dst() ?  date = new Date(new Date().getTime() - 4 * 3600 * 1000) : date = new Date(new Date().getTime() - 5 * 3600 * 1000)
+            let threeWeeksFromNow = date.threeWeeks()
+            let startDate = date.getFullYear()+"-"+addZero(date.getMonth()+1)+"-"+addZero(date.getDate());
+            let endDate = threeWeeksFromNow.getFullYear()+"-"+addZero(threeWeeksFromNow.getMonth()+1)+"-"+addZero(threeWeeksFromNow.getDate());
+        const bodydExclusions = [
+            1,       // City Council
+            34,      // Subcommittee on Zoning and Franchises
+            5261,    // Subcommittee on Landmarks, Public Sitings and Dispositions
+            5224,    // Committee of the Whole
+            5254,    // New York City Advisory Commission on Property Tax Reform
+            5264,    // Minority (Republican) Conference of the Council of the City of New York
+        ]
+        let exclusions = []
+        for (id of bodydExclusions){exclusions.push(`EventBodyId+ne+${id}`)}
+            jQuery.ajax({
+                type:"GET",
+                dataType:"jsonp",
+                url:"https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventDate+ge+datetime%27"+startDate+"%27+and+EventDate+le+datetime%27"+endDate+"%27+and+"+exclusions.join("+and+")+"+and+tolower(EventAgendaStatusName)+eq+'final'&$orderby=EventTime+asc",
+                success:function(hearings){
+                    function dateTimeConverter(dateString, timeString){
+                        let fullDate = dateString.split("T")[0].split("-")
+                        let year = parseInt(fullDate[0])
+                        let month = parseInt(fullDate[1])
+                        let date = parseInt(fullDate[2])
+                        let hr = parseInt(timeString.split(" ")[0].split(":")[0]);
+                        let min = parseInt(timeString.split(" ")[0].split(":")[1]);
+                        let ampm = timeString.split(" ")[1];
+                        ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr : hr = (hr+12);
+                        return new Date(year, month, date, hr, min, 00)
+                    };
+                    let sortedHearings = hearings.sort(function(a,b){
+                        return dateTimeConverter(a.EventDate, a.EventTime).getTime() - dateTimeConverter(b.EventDate, b.EventTime).getTime();
+                    });
+                    if (hearings.length === 0){
+                        jQuery("#hearing-select-phone").children().first().remove();
+                        jQuery("#hearing-select-phone").append("<option disabled selected value> -- No eligible hearings in the next 3 weeks -- </option>");
+                        jQuery(".wpcf7-submit").prop("disabled",true)
+                    } else {
+                        let luFinSubCommittees = [
+                            // 11 - Finance
+                            5245,   // Subcommittee on Capital Budget (FIN)
+                            // 17 - Land Use
+                            34,     // Subcommittee on Zoning and Franchises (LU)
+                            5261,   // Subcommittee on Landmarks, Public Sitings and Dispositions (LU)
+                        ];
+                        sortedHearings.forEach(function(hearing){
+                            let hearingName = hearing.EventBodyName;
+                            let meetingDate = hearing.EventDate.split("T")[0];
+                            let meetingDateFormat = new Date(meetingDate.split("-")[0], parseInt(meetingDate.split("-")[1])-1, meetingDate.split("-")[2])
+                            meetingDate = meetingDateFormat.toDateString().split(" ")
+                            meetingDate.pop()
+                            meetingDate[0] = meetingDate[0] + ","
+                            meetingDate = meetingDate.join(" ")
+                            midDay = hearing.EventTime.split(" ")[1];
+                            meetingHour = parseInt(hearing.EventTime.split(" ")[0].split(":")[0]);
+                            meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
+                            midDay === "PM" && meetingHour !== 12 ? meetingHour += 12 : meetingHour;
+                            let cutoff = new Date(meetingDateFormat.getTime());
+                            cutoff.setDate(cutoff.getDate());  // add -1 here [This should be adjusted by september 18 2021]
+                            cutoff.setHours(meetingHour+3);  // take away +3 here [This should be adjusted by september 18 2021]
+                            cutoff.setMinutes(meetingMinute);
+                            // if(!hearing.EventLocation.toLowerCase().includes("remote hearing") && !hearing.EventLocation.toLowerCase().includes("hybrid hearing")) {
+                            //     return
+                            // } else 
+                            if (hearing.EventComment !== null){
+                                if(hearing.EventComment.toLowerCase() === "vote"){
+                                    return
+                                } else if(hearing.EventComment.toLowerCase().includes("jointly")){
+                                    if ((hearing.EventBodyId === 11 || hearing.EventBodyId === 17) && !hearing.EventComment.toLowerCase().includes("public testimony")){
+                                        return
+                                    }
+                                    if(!hearing.EventLocation.toLowerCase().includes("-")){
+                                        hearingName += " ("+hearing.EventComment+")";
+                                    } else {
+                                        return
+                                    }
+                                } else if(hearing.EventComment.toLowerCase().includes("executive session")){
+                                    return
+                                } else if(hearing.EventComment.toLowerCase().includes("oversight")){
+                                    return
+                                };
+                            } else {
+                                if(hearing.EventBodyId === 17){ return };
+                            };
+                            // If not just submitting testimony, disable meetings within 24 hr window. 86400000 ms = 24 hrs
+                            let valueTitle = ""
+                            if (Date.now() > cutoff && !luFinSubCommittees.includes(hearing.EventBodyId)){
+                                valueTitle = "[REGISTRATION CLOSED] "+meetingDate+" @ "+hearing.EventTime+" - "+hearingName
+                                jQuery("#hearing-select-phone").append("<option disabled value='"+valueTitle+"' title='"+valueTitle+"'>"+valueTitle+"</option>");
+                            } else {
+                                valueTitle = meetingDate+" @ "+hearing.EventTime+" - "+hearingName
+                                jQuery("#hearing-select-phone").append("<option value='"+valueTitle+"' title='"+valueTitle+"'>"+valueTitle+"</option>");
+                            }
+                            jQuery(".wpcf7-submit").prop("disabled", false);
+                        });
+                        if (jQuery("#hearing-select-phone").children().length === 1){
+                            jQuery("#hearing-select-phone").children().first().remove();
+                            jQuery("#hearing-select-phone").append("<option disabled selected value> -- No eligible hearings in the next 3 weeks -- </option>");
+                            jQuery(".wpcf7-submit").prop("disabled",true);
+                        };
+                    };
+                }
+            });
+        };
+        getHearings();
+    });
+</script>
