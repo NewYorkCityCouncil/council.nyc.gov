@@ -86,6 +86,7 @@
         const bodydExclusions = [1, 34, 5224, 5254, 5261, 5264,]
         const bodydExclusions = [
             1,       // City Council
+            17,      // Land Use
             34,      // Subcommittee on Zoning and Franchises
             5261,    // Subcommittee on Landmarks, Public Sitings and Dispositions
             5224,    // Committee of the Whole
@@ -138,29 +139,19 @@
                             meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
                             hearing.EventAgendaFile !== null ? agendaLink = hearing.EventAgendaFile : agendaLink = "#";
                             midDay === "PM" && meetingHour !== 12 ? meetingHour += 12 : meetingHour;
-                            // if(!hearing.EventLocation.toLowerCase().includes("remote hearing") && !hearing.EventLocation.toLowerCase().includes("hybrid hearing")) {
-                            //     return
-                            // } else 
+                            let jointHearingRegex = new RegExp(/^jointly [^.]*\./ig)
                             if (hearing.EventComment !== null){
                                 if(hearing.EventComment.toLowerCase() === "vote"){
                                     return
-                                } else if(hearing.EventComment.toLowerCase().includes("jointly")){
-                                    if ((hearing.EventBodyId === 11 || hearing.EventBodyId === 17) && !hearing.EventComment.toLowerCase().includes("public testimony")){
-                                        return
-                                    }
-                                    if(!hearing.EventLocation.toLowerCase().includes("-")){
-                                        hearingName += " ("+hearing.EventComment+")"
-                                    } else {
-                                        return
-                                    }
-                                } else if(hearing.EventComment.toLowerCase().includes("executive session")){
+                                }
+                                if (hearing.EventComment.toLowerCase().includes("jointly")){
+                                    if(jointHearingRegex.test(hearing.EventComment) ){ hearingName += " ("+hearing.EventComment+")"; }
                                     return
-                                } else if(hearing.EventComment.toLowerCase().includes("oversight")){
+                                }
+                                if (hearing.EventBodyId === 11 && !hearing.EventComment.toLowerCase().includes("public testimony")){
                                     return
                                 };
-                            } else {
-                                if(hearing.EventBodyId === 17){ return };
-                            };
+                            }
                             let valueTitle = meetingDate+" @ "+hearing.EventTime+" - "+hearingName
                             jQuery("#hearing-select-written").append("<option value='"+valueTitle+"' title='"+valueTitle+"'>"+valueTitle+"</option>");
                             jQuery(".wpcf7-submit").prop("disabled", false);

@@ -84,6 +84,7 @@
             let endDate = threeWeeksFromNow.getFullYear()+"-"+addZero(threeWeeksFromNow.getMonth()+1)+"-"+addZero(threeWeeksFromNow.getDate());
         const bodydExclusions = [
             1,       // City Council
+            17,      // Land Use
             34,      // Subcommittee on Zoning and Franchises
             5261,    // Subcommittee on Landmarks, Public Sitings and Dispositions
             5224,    // Committee of the Whole
@@ -139,29 +140,19 @@
                             cutoff.setDate(cutoff.getDate()); // add -1 here [This should be adjusted by september 18 2021]
                             cutoff.setHours(meetingHour+3); // take away +3 here [This should be adjusted by september 18 2021]
                             cutoff.setMinutes(meetingMinute);
-                            // if(!hearing.EventLocation.toLowerCase().includes("remote hearing") && !hearing.EventLocation.toLowerCase().includes("hybrid hearing")) {
-                            //     return
-                            // } else 
+                            let jointHearingRegex = new RegExp(/^jointly [^.]*\./ig)
                             if (hearing.EventComment !== null){
                                 if(hearing.EventComment.toLowerCase() === "vote"){
                                     return
-                                } else if(hearing.EventComment.toLowerCase().includes("jointly")){
-                                    if ((hearing.EventBodyId === 11 || hearing.EventBodyId === 17) && !hearing.EventComment.toLowerCase().includes("public testimony")){
-                                        return
-                                    };
-                                    if(!hearing.EventLocation.toLowerCase().includes("-")){
-                                        hearingName += " ("+hearing.EventComment+")";
-                                    } else {
-                                        return
-                                    };
-                                } else if(hearing.EventComment.toLowerCase().includes("executive session")){
+                                }
+                                if (hearing.EventComment.toLowerCase().includes("jointly")){
+                                    if(jointHearingRegex.test(hearing.EventComment) ){ hearingName += " ("+hearing.EventComment+")"; }
                                     return
-                                } else if(hearing.EventComment.toLowerCase().includes("oversight")){
+                                }
+                                if (hearing.EventBodyId === 11 && !hearing.EventComment.toLowerCase().includes("public testimony")){
                                     return
                                 };
-                            } else {
-                              if (hearing.EventBodyId === 17){ return }
-                            };
+                            }
                             // If not just submitting testimony, disable meetings within 24 hr window. 86400000 ms = 24 hrs
                             let valueTitle = "";
                             if (Date.now() > cutoff && !luFinSubCommittees.includes(hearing.EventBodyId)){
