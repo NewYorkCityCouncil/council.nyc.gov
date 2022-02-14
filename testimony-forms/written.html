@@ -143,15 +143,18 @@
                             if (hearing.EventComment !== null){
                                 if(hearing.EventComment.toLowerCase() === "vote"){
                                     return
-                                }
-                                if (hearing.EventComment.toLowerCase().includes("jointly")){
-                                    if(jointHearingRegex.test(hearing.EventComment) ){ hearingName += " ("+hearing.EventComment+")"; }
-                                    return
-                                }
+                                };
                                 if (hearing.EventBodyId === 11 && !hearing.EventComment.toLowerCase().includes("public testimony")){
                                     return
                                 };
-                            }
+                                if (hearing.EventComment.toLowerCase().includes("jointly")){
+                                    if(jointHearingRegex.test(hearing.EventComment) ){
+                                         hearingName += " ("+hearing.EventComment+")";
+                                    } else {
+                                        return
+                                    };
+                                };
+                            };
                             let valueTitle = meetingDate+" @ "+hearing.EventTime+" - "+hearingName
                             jQuery("#hearing-select-written").append("<option value='"+valueTitle+"' title='"+valueTitle+"'>"+valueTitle+"</option>");
                             jQuery(".wpcf7-submit").prop("disabled", false);
