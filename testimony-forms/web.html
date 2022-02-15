@@ -141,6 +141,9 @@
                             cutoff.setHours(meetingHour+3); // take away +3 here [This should be adjusted by september 18 2021]
                             cutoff.setMinutes(meetingMinute);
                             let jointHearingRegex = new RegExp(/^jointly [^.]*\./ig)
+                            if (!hearing.EventLocation.toLowerCase().includes("remote hearing") || !hearing.EventLocation.toLowerCase().includes("hyrid hearing")){
+                                return
+                            }
                             if (hearing.EventComment !== null){
                                 if(hearing.EventComment.toLowerCase() === "vote"){
                                     return
