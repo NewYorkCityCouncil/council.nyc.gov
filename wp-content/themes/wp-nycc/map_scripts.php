@@ -4,7 +4,7 @@ $theme = wp_get_theme();
 if ( 'NYCC Member' == $theme->name ) {
   $districtNumber = get_option('council_district_number');
 }
-if ( is_page_template( 'page-district.php' ) ) {
+if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerdistrict.php' )) {
   global $wp_query;
   $districtNumber = $wp_query->post->menu_order;;
   wp_reset_query();
@@ -33,10 +33,15 @@ if ( is_page_template( 'page-district.php' ) ) {
       'order'      => 'ASC',
       'posts_per_page' => '-1',
       'meta_query' => array(
-          array(
-              'key' => '_wp_page_template',
-              'value' => 'page-district.php',
-          )
+        'relation' => 'OR',
+        array(
+          'key' => '_wp_page_template',
+          'value' => 'page-district.php',
+        ),
+        array(
+          'key' => '_wp_page_template',
+          'value' => 'page-speakerdistrict.php',
+        ),
       )
     );
     $list_districts = new WP_Query( $args );

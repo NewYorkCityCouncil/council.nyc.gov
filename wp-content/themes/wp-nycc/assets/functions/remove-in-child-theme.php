@@ -51,6 +51,9 @@ function nycc_filter_theme_page_templates( $page_templates, $post ) {
     if ( isset( $page_templates['page-district.php'] ) ) {
          unset( $page_templates['page-district.php'] );
     }
+    if ( isset( $page_templates['page-speakerdistrict.php'] ) ) {
+         unset( $page_templates['page-speakerdistrict.php'] );
+     }
     if ( isset( $page_templates['page-widget-map.php'] ) ) {
          unset( $page_templates['page-widget-map.php'] );
     }

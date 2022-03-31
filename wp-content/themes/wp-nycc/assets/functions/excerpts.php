@@ -22,7 +22,7 @@ if ( ! function_exists( 'nycc_excerpt_custom_wp_trim_excerpt' ) ) :
             $nycc_excerpt = preg_replace('/style=".*?"/', '', $nycc_excerpt);
 
             //Set the excerpt word count and only break after sentence is complete.
-            if ( is_page_template( 'page-district.php' ) || is_page() ) {
+            if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerdistrict.php' ) || is_page() ) {
               $excerpt_word_count = 200;
             } else {
               $excerpt_word_count = 60;

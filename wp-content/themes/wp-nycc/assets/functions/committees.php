@@ -64,10 +64,15 @@ function nycc_committee_members() {
       'order'      => 'ASC',
       'posts_per_page' => '-1',
       'meta_query' => array(
-          array(
-              'key' => '_wp_page_template',
-              'value' => 'page-district.php',
-          )
+        'relation' => 'OR',
+        array(
+          'key' => '_wp_page_template',
+          'value' => 'page-district.php',
+        ),
+        array(
+          'key' => '_wp_page_template',
+          'value' => 'page-speakerdistrict.php',
+        ),
       )
     );
     $list_districts = new WP_Query( $args );
