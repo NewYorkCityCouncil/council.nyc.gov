@@ -124,6 +124,8 @@ if ($current_member_site) {
                             echo ' <small>(Treasurer)</small>';
                         // elseif (  $cm_position == 'speaker'  ):
                         //     echo ' <small>(Speaker)</small>';
+                        // elseif (  $cm_position == 'ex-officio'  ):
+                        //     echo ' <small>(Ex-Officio)</small>';
                         // elseif (  $cm_position == 'deputy_speaker'  ):
                         //     echo ' <small>(Deputy Speaker)</small>';
                         // elseif (  $cm_position == 'majority_whip'  ):
@@ -208,6 +210,8 @@ if ($current_member_site) {
                           echo ' <small>(Treasurer)</small>';
                       // elseif (  $cm_position == 'speaker'  ):
                       //     echo ' <small>(Speaker)</small>';
+                      // elseif (  $cm_position == 'ex-officio'  ):
+                      //     echo ' <small>(Ex-Officio)</small>';
                       // elseif (  $cm_position == 'deputy_speaker'  ):
                       //     echo ' <small>(Deputy Speaker)</small>';
                       // elseif (  $cm_position == 'majority_whip'  ):

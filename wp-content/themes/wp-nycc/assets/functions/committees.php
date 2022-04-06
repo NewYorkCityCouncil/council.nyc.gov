@@ -103,7 +103,10 @@ function nycc_committee_members() {
             <td>
               <select name="<?php echo $cm_number; ?>">
                 <option <?php echo (${'council_member_' . $number} == '')? 'selected':''; ?> value=""> Non-Member</option>
-                <option <?php echo (${'council_member_' . $number} == 'member')? 'selected':''; ?> value="member"> Member</option>
+                <option <?php echo (${'council_member_' . $number} == 'speaker')? 'selected':''; ?> value="speaker"> Speaker</option>
+                <option <?php echo (${'council_member_' . $number} == 'ex-officio')? 'selected':''; ?> value="ex-officio"> Ex-Officio</option>
+                <option <?php echo (${'council_member_' . $number} == 'deputy_speaker')? 'selected':''; ?> value="deputy_speaker"> Deputy Speaker</option>
+                <option <?php echo (${'council_member_' . $number} == 'majority_whip')? 'selected':''; ?> value="majority_whip"> Majority Whip</option>
                 <option <?php echo (${'council_member_' . $number} == 'chair')? 'selected':''; ?> value="chair"> Chair</option>
                 <option <?php echo (${'council_member_' . $number} == 'co_chair')? 'selected':''; ?> value="co_chair"> Co-Chair</option>
                 <option <?php echo (${'council_member_' . $number} == 'vice_chair')? 'selected':''; ?> value="vice_chair"> Vice Chair</option>
@@ -111,9 +114,7 @@ function nycc_committee_members() {
                 <option <?php echo (${'council_member_' . $number} == 'acting_co_chair')? 'selected':''; ?> value="acting_co_chair"> Acting Co-Chair</option>
                 <option <?php echo (${'council_member_' . $number} == 'secretary')? 'selected':''; ?> value="secretary"> Secretary</option>
                 <option <?php echo (${'council_member_' . $number} == 'treasurer')? 'selected':''; ?> value="treasurer"> Treasurer</option>
-                <option <?php echo (${'council_member_' . $number} == 'speaker')? 'selected':''; ?> value="speaker"> Speaker</option>
-                <option <?php echo (${'council_member_' . $number} == 'deputy_speaker')? 'selected':''; ?> value="deputy_speaker"> Deputy Speaker</option>
-                <option <?php echo (${'council_member_' . $number} == 'majority_whip')? 'selected':''; ?> value="majority_whip"> Majority Whip</option>
+                <option <?php echo (${'council_member_' . $number} == 'member')? 'selected':''; ?> value="member"> Member</option>
               </select>
             </td>
           </tr>
