@@ -209,8 +209,6 @@
                 if (hearing.EventComment !== null){
                   if(hearing.EventComment.toLowerCase().includes("jointly") && !hearing.EventLocation.toLowerCase().includes("-")){
                       hearingName += "<small><em>("+hearing.EventComment+")</em></small><br>"
-                  } else if (hearing.EventComment.toLowerCase().includes("jointly") && hearing.EventLocation.toLowerCase().includes("-")){
-                      return
                   }
                 }
                 if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
