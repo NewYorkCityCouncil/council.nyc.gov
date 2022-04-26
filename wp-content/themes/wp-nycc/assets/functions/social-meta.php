@@ -40,6 +40,11 @@ function insert_share_meta_in_head() {
 
   ?>
 
+  <!-- Web Crawler HTML meta tags -->
+  <meta name="msvalidate.01" content="FEFA4B73A90D4F72594248A5798534A2" />
+  <meta name="google-site-verification" content="0lcqA96XhYvLdVUgcqigEBTjX1mNTp9w4xuUOKqPCe8" />
+
+
   <!-- Social Share Images -->
   <meta property="og:url"          content="<?php the_permalink(); ?>" />
   <meta property="og:type"         content="website" />
