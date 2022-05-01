@@ -83,18 +83,17 @@
             date.setDate(date.getDate() - 3);
             let startDate = date.getFullYear()+"-"+addZero(date.getMonth()+1)+"-"+addZero(date.getDate());
             let endDate = threeWeeksFromNow.getFullYear()+"-"+addZero(threeWeeksFromNow.getMonth()+1)+"-"+addZero(threeWeeksFromNow.getDate());
-        const bodydExclusions = [1, 34, 5224, 5254, 5261, 5264,]
-        const bodydExclusions = [
-            1,       // City Council
-            17,      // Land Use
-            34,      // Subcommittee on Zoning and Franchises
-            5261,    // Subcommittee on Landmarks, Public Sitings and Dispositions
-            5224,    // Committee of the Whole
-            5254,    // New York City Advisory Commission on Property Tax Reform
-            5264,    // Minority (Republican) Conference of the Council of the City of New York
-        ]
-        let exclusions = []
-        for (id of bodydExclusions){exclusions.push(`EventBodyId+ne+${id}`)}
+                const bodydExclusions = [
+                    1,       // City Council
+                    17,      // Land Use
+                    34,      // Subcommittee on Zoning and Franchises
+                    5261,    // Subcommittee on Landmarks, Public Sitings and Dispositions
+                    5224,    // Committee of the Whole
+                    5254,    // New York City Advisory Commission on Property Tax Reform
+                    5264,    // Minority (Republican) Conference of the Council of the City of New York
+                ]
+            let exclusions = []
+            for (id of bodydExclusions){exclusions.push(`EventBodyId+ne+${id}`)}
             jQuery.ajax({
                 type:"GET",
                 dataType:"jsonp",
@@ -140,6 +139,9 @@
                             hearing.EventAgendaFile !== null ? agendaLink = hearing.EventAgendaFile : agendaLink = "#";
                             midDay === "PM" && meetingHour !== 12 ? meetingHour += 12 : meetingHour;
                             let jointHearingRegex = new RegExp(/^jointly [^.]*\./ig)
+                            if (!hearing.EventLocation.toLowerCase().includes("remote hearing") && !hearing.EventLocation.toLowerCase().includes("hybrid hearing")){
+                                return
+                            }
                             if (hearing.EventComment !== null){
                                 if(hearing.EventComment.toLowerCase() === "vote"){
                                     return

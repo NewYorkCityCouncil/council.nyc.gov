@@ -12,7 +12,8 @@
 </div>
 <div class="row">
     <div class="columns small-12">
-        <label id="phone-in-number-phone"> Phone Number <span class="required-field">*</span><br><small>The number you will be calling from. We use this to verify your identity.</small>[tel* phone-in-number-phone placeholder "i.e., 123-456-7890"]</label>
+        <label id="phone-in-number-phone"> Phone Number <span class="required-field">*</span><br><small>The number you will be calling from. We use this to verify your identity.</small>
+        [tel* phone-in-number-phone placeholder "i.e., 123-456-7890"]</label>
     </div>
 </div>
 <div class="row">
@@ -81,17 +82,17 @@
             let threeWeeksFromNow = date.threeWeeks()
             let startDate = date.getFullYear()+"-"+addZero(date.getMonth()+1)+"-"+addZero(date.getDate());
             let endDate = threeWeeksFromNow.getFullYear()+"-"+addZero(threeWeeksFromNow.getMonth()+1)+"-"+addZero(threeWeeksFromNow.getDate());
-        const bodydExclusions = [
-            1,       // City Council
-            17,      // Land Use
-            34,      // Subcommittee on Zoning and Franchises
-            5261,    // Subcommittee on Landmarks, Public Sitings and Dispositions
-            5224,    // Committee of the Whole
-            5254,    // New York City Advisory Commission on Property Tax Reform
-            5264,    // Minority (Republican) Conference of the Council of the City of New York
-        ]
-        let exclusions = []
-        for (id of bodydExclusions){exclusions.push(`EventBodyId+ne+${id}`)}
+            const bodydExclusions = [
+                1,       // City Council
+                17,      // Land Use
+                34,      // Subcommittee on Zoning and Franchises
+                5261,    // Subcommittee on Landmarks, Public Sitings and Dispositions
+                5224,    // Committee of the Whole
+                5254,    // New York City Advisory Commission on Property Tax Reform
+                5264,    // Minority (Republican) Conference of the Council of the City of New York
+            ]
+            let exclusions = []
+            for (id of bodydExclusions){exclusions.push(`EventBodyId+ne+${id}`)}
             jQuery.ajax({
                 type:"GET",
                 dataType:"jsonp",
@@ -140,7 +141,7 @@
                             cutoff.setHours(meetingHour+3);  // take away +3 here [This should be adjusted by september 18 2021]
                             cutoff.setMinutes(meetingMinute);
                             let jointHearingRegex = new RegExp(/^jointly [^.]*\./ig)
-                            if (!hearing.EventLocation.toLowerCase().includes("remote hearing") && !hearing.EventLocation.toLowerCase().includes("hyrid hearing")){
+                            if (!hearing.EventLocation.toLowerCase().includes("remote hearing") && !hearing.EventLocation.toLowerCase().includes("hybrid hearing")){
                                 return
                             }
                             if (hearing.EventComment !== null){
