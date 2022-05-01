@@ -81,23 +81,26 @@
             new Date().dst() ?  date = new Date(new Date().getTime() - 4 * 3600 * 1000) : date = new Date(new Date().getTime() - 5 * 3600 * 1000)
             let threeWeeksFromNow = date.threeWeeks()
             date.setDate(date.getDate() - 3);
-            let startDate = date.getFullYear()+"-"+addZero(date.getMonth()+1)+"-"+addZero(date.getDate());
-            let endDate = threeWeeksFromNow.getFullYear()+"-"+addZero(threeWeeksFromNow.getMonth()+1)+"-"+addZero(threeWeeksFromNow.getDate());
-                const bodydExclusions = [
-                    1,       // City Council
-                    17,      // Land Use
-                    34,      // Subcommittee on Zoning and Franchises
-                    5261,    // Subcommittee on Landmarks, Public Sitings and Dispositions
-                    5224,    // Committee of the Whole
-                    5254,    // New York City Advisory Commission on Property Tax Reform
-                    5264,    // Minority (Republican) Conference of the Council of the City of New York
-                ]
+            addZero(threeWeeksFromNow.getDate());
+            let startDate = "EventDate+ge+datetime%27"+date.getFullYear()+"-"+addZero(date.getMonth()+1)+"-"+addZero(date.getDate())+"%27";
+            let endDate = "EventDate+le+datetime%27"+threeWeeksFromNow.getFullYear()+"-"+addZero(threeWeeksFromNow.getMonth()+1)+"-"+addZero(threeWeeksFromNow.getDate())+"%27";
+            const bodydExclusions = [
+                1,       // City Council
+                17,      // Land Use
+                34,      // Subcommittee on Zoning and Franchises
+                5261,    // Subcommittee on Landmarks, Public Sitings and Dispositions
+                5224,    // Committee of the Whole
+                5254,    // New York City Advisory Commission on Property Tax Reform
+                5264,    // Minority (Republican) Conference of the Council of the City of New York
+            ]
             let exclusions = []
             for (id of bodydExclusions){exclusions.push(`EventBodyId+ne+${id}`)}
+            let otherParams = "tolower(EventAgendaStatusName)+eq+'final'&$orderby=EventTime+asc"
+            let endpointFilter = [startDate, /*endDate,*/ exclusions.join("+and+"), otherParams]
             jQuery.ajax({
                 type:"GET",
                 dataType:"jsonp",
-                url:"https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventDate+ge+datetime%27"+startDate+"%27+and+EventDate+le+datetime%27"+endDate+"%27+and+"+exclusions.join("+and+")+"+and+tolower(EventAgendaStatusName)+eq+'final'&$orderby=EventTime+asc",
+                url:"https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter="+endpointFilter.join("+and+"),
                 success:function(hearings){
                     function dateTimeConverter(dateString, timeString){
                         let fullDate = dateString.split("T")[0].split("-")
