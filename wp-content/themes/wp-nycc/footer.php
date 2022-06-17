@@ -1,23 +1,6 @@
         </div><!-- end .site-container -->
       </main>
       <footer class="site-footer">
-      <div class="reveal" id="hearingsModal" aria-labelledby="hearingsModalHeader" data-reveal="">
-        <h1 id="hearingsModalHeader">Please be advised!</h1>
-          <p class="lead">Pursuant to the State Open Meetings Law, as amended by Part WW of chapter 56 of the Laws of 2022, and New York City Council Resolution No. 204, adopted on June 2, 2022, and as authorized by such law and resolution by the continuing state disaster emergency declared by Governor Hochul, last renewed on May 15, 2022, and the local state of emergency declared by former Mayor De Blasio, last renewed by Mayor Adams on June 5, 2022, Speaker Adrienne Adams made a determination that, due to the risk to Members of the Council and the general public posed by COVID-19, the in-person participation requirements of the State Open Meetings Law are hereby suspended for all hearings on <strong>June 9, 2022</strong>, and for the hearings of the Committee on Land Use and its Subcommittees on <strong>June 14, 2022</strong>.</p>
-          <button class="close-button" data-close="" aria-label="Close this alert" type="button"><span aria-hidden="true">×</span></button>
-        </div>
-        <script>
-          jQuery(document).ready(() => {
-            let modal = jQuery("#hearingsModal");
-            let seen = sessionStorage.getItem("modalSeen");
-            let modalToday = new Date();
-            let modalCutoffDate = new Date(2022,5,15)
-            if ((modalToday < modalCutoffDate) && !seen){
-              modal.foundation("open");
-              sessionStorage.setItem("modalSeen", true)
-            };    
-          });
-        </script>
         <?php
         switch_to_blog(1);
         echo get_option('site_footer_content');
