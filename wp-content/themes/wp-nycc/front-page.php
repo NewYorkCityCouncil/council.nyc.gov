@@ -1,4 +1,236 @@
 <?php get_header(); ?>
+  <div class="row" style="margin-top: -55px; margin-bottom: 5em; max-width: 100%">
+    <div class="columns" style="padding: 0;">
+      <?php echo do_shortcode('[metaslider id="2697"]'); ?>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <ul class="tabs" data-tabs id="collapsing-tabs" style="border: none; display: flex; align-items: center">
+        <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true" style="font-size: 2rem; font-weight: 600">Today's Hearings</a></li>
+        <li class="tabs-title"><a href="#panel2c">Tomorrow's Hearings</a></li>
+        <li class="tabs-title"><a href="#panel3c">This Week's Hearings</a></li>
+      </ul>
+      <div class="tabs-content" data-tabs-content="collapsing-tabs" style="border: none;">
+        <div class="tabs-panel is-active" id="panel1c">
+          <div class="row small-up-1 medium-up-2 large-up-4">
+            <div class="columns" style="padding: .5em;">
+              <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="card-divider" style="margin-bottom: 2em;">
+                  <div class="row">
+                    <div class="columns small-6">
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">JUN</h4>
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">30</h4>
+                    </div>
+                    <div class="columns small-6" style="text-align: right;">10:00 AM</div>
+                  </div>
+                </div>
+                <div class="card-section">
+                  <h5 style="margin-bottom: 0">This is a row of cards.</h5>
+                  <p>This row of cards is embedded in an X-Y Block Grid.</p>
+                </div>
+              </div>
+            </div>
+            <div class="columns" style="padding: .5em;">
+              <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="card-divider" style="margin-bottom: 2em;">
+                  <div class="row">
+                    <div class="columns small-6">
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">JUN</h4>
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">30</h4>
+                    </div>
+                    <div class="columns small-6" style="text-align: right;">10:00 AM</div>
+                  </div>
+                </div>
+                <div class="card-section">
+                  <h5 style="margin-bottom: 0">This is a row of cards.</h5>
+                  <p>This row of cards is embedded in an X-Y Block Grid.</p>
+                </div>
+              </div>
+            </div>
+            <div class="columns" style="padding: .5em;">
+              <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="card-divider" style="margin-bottom: 2em;">
+                  <div class="row">
+                    <div class="columns small-6">
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">JUN</h4>
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">30</h4>
+                    </div>
+                    <div class="columns small-6" style="text-align: right;">10:00 AM</div>
+                  </div>
+                </div>
+                <div class="card-section">
+                  <h5 style="margin-bottom: 0">This is a row of cards.</h5>
+                  <p>This row of cards is embedded in an X-Y Block Grid.</p>
+                </div>
+              </div>
+            </div>
+            <div class="columns" style="padding: .5em;">
+              <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="card-divider" style="margin-bottom: 2em;">
+                  <div class="row">
+                    <div class="columns small-6">
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">JUN</h4>
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">30</h4>
+                    </div>
+                    <div class="columns small-6" style="text-align: right;">10:00 AM</div>
+                  </div>
+                </div>
+                <div class="card-section">
+                  <h5 style="margin-bottom: 0">This is a row of cards.</h5>
+                  <p>This row of cards is embedded in an X-Y Block Grid.</p>
+                </div>
+              </div>
+            </div>
+            <div class="columns" style="padding: .5em;">
+              <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="card-divider" style="margin-bottom: 2em;">
+                  <div class="row">
+                    <div class="columns small-6">
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">JUN</h4>
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">30</h4>
+                    </div>
+                    <div class="columns small-6" style="text-align: right;">10:00 AM</div>
+                  </div>
+                </div>
+                <div class="card-section">
+                  <h5 style="margin-bottom: 0">This is a row of cards.</h5>
+                  <p>This row of cards is embedded in an X-Y Block Grid.</p>
+                </div>
+              </div>
+            </div>
+            <div class="columns" style="padding: .5em;">
+              <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="card-divider" style="margin-bottom: 2em;">
+                  <div class="row">
+                    <div class="columns small-6">
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">JUN</h4>
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">30</h4>
+                    </div>
+                    <div class="columns small-6" style="text-align: right;">10:00 AM</div>
+                  </div>
+                </div>
+                <div class="card-section">
+                  <h5 style="margin-bottom: 0">This is a row of cards.</h5>
+                  <p>This row of cards is embedded in an X-Y Block Grid.</p>
+                </div>
+              </div>
+            </div>
+            <div class="columns" style="padding: .5em;">
+              <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="card-divider" style="margin-bottom: 2em;">
+                  <div class="row">
+                    <div class="columns small-6">
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">JUN</h4>
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">30</h4>
+                    </div>
+                    <div class="columns small-6" style="text-align: right;">10:00 AM</div>
+                  </div>
+                </div>
+                <div class="card-section">
+                  <h5 style="margin-bottom: 0px">This is a row of cards.</h5>
+                  <p>This row of cards is embedded in an X-Y Block Grid.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tabs-panel" id="panel2c">
+          <div class="row small-up-1 medium-up-2 large-up-4">
+            <div class="columns" style="padding: .5em;">
+              <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="card-divider" style="margin-bottom: 2em;">
+                  <div class="row">
+                    <div class="columns small-6">
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">JUN</h4>
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">30</h4>
+                    </div>
+                    <div class="columns small-6" style="text-align: right;">10:00 AM</div>
+                  </div>
+                </div>
+                <div class="card-section">
+                  <h5 style="margin-bottom: 0px">This is a row of cards.</h5>
+                  <p>This row of cards is embedded in an X-Y Block Grid.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tabs-panel" id="panel3c">
+          <div class="row small-up-1 medium-up-2 large-up-4">
+            <div class="columns" style="padding: .5em;">
+              <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="card-divider" style="margin-bottom: 2em;">
+                  <div class="row">
+                    <div class="columns small-6">
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">JUN</h4>
+                      <h4 style="margin-bottom: 0; line-height: 0.8em">30</h4>
+                    </div>
+                    <div class="columns small-6" style="text-align: right;">10:00 AM</div>
+                  </div>
+                </div>
+                <div class="card-section">
+                  <h5 style="margin-bottom: 0">This is a row of cards.</h5>
+                  <p>This row of cards is embedded in an X-Y Block Grid.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="background-color:#2F56A6; padding: 2rem;">
+    <div class="columns">
+      <h4 style="color: #FFF">Live Video Feed</h4>
+      <div class="row">
+        <div class="columns medium-9" style="padding: 0;">
+          <div class="tabs-content vertical" data-tabs-content="example-tabs">
+            <div class="tabs-panel is-active" id="panel1v">
+              <div class="responsive-embed">
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="tabs-panel" id="panel2v">
+              <div class="responsive-embed">
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="tabs-panel" id="panel3v">
+              <div class="responsive-embed">
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="tabs-panel" id="panel4v">
+              <div class="responsive-embed">
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="tabs-panel" id="panel5v">
+              <div class="responsive-embed">
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="tabs-panel" id="panel6v">
+              <div class="responsive-embed">
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns medium-3">
+          <ul class="vertical tabs" style="max-height: 260px; overflow: auto;" data-tabs id="example-tabs">
+            <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">City Hall, Council Chambers</a></li>
+            <li class="tabs-title"><a href="#panel2v">City Hall, Council Chambers ASL</a></li>
+            <li class="tabs-title"><a href="#panel3v">City Hall, Committee Room</a></li>
+            <li class="tabs-title"><a href="#panel4v">Tab 4</a></li>
+            <li class="tabs-title"><a href="#panel5v">Tab 5</a></li>
+            <li class="tabs-title"><a href="#panel6v">Tab 6</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="row">
     <div class="columns">
