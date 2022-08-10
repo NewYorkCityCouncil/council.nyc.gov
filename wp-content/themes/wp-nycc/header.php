@@ -64,22 +64,48 @@
 
     <div id="sticky-wrapper">
       <div data-sticky-container>
-        <header class="site-header sticky" style="background-color: #2F56A6;" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
+        <header class="site-header sticky" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
           <div class="top-bar">
-            <div class="row">
-              <div class="columns">
-                <div class="top-bar-title">
-                  <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png"><div class="site-logo" style="display:inline;"><?php bloginfo('name'); ?></div></a></strong>
+            <div class="row" style="max-width: 100%">
+              <div class="columns" style="background-color: #2F56A6;">
+                <div class="row" style="display: flex; align-items: center;">
+                  <div class="columns medium-7">
+                    <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-white.png"><div class="site-logo" style="display:inline;"><?php bloginfo('name'); ?></div></a></strong>
+                  </div>
+                  <div class="columns medium-5" style="display: flex; justify-content: end; align-items: end;">
+                    <label style="color: #FFF; float: left; max-width: 300px; width: 100%;">Find Your Representative
+                      <input type="text" style="margin-bottom: 0" placeholder="Search here"/>
+                    </label>
+                    <input type="submit" class="button" style="background-color: #23417D;margin-left: 30px; margin-bottom: 0px;" value="Submit"/>
+                  </div>
                 </div>
               </div>
-              <div class="columns">
+              <div class="columns" style="background-color: #23417D">
                 <?php switch_to_blog(1); ?>
                 <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon dark" data-toggle></span></span>
                 <div role="navigation" id="responsive-menu">
-                  <div class="top-bar-right">
+                  <div class="top-bar-center">
                     <!-- replace with hardcoded html-->
-                    <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
-                      <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
+                    <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" style="text-align: -webkit-center" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
+                      <li>
+                        <a href="/livestream/">Live Stream</a>
+                      </li>
+                      <li>
+                        <a href="/budget/">Budget</a>
+                      </li>
+                      <li>
+                        <a href="/districts/">Districts</a>
+                      </li>
+                      <li>
+                        <a href="/committees/">Committees</a>
+                      </li>
+                      <li>
+                        <a href="/land-use/">Land Use</a>
+                      </li>
+                      <li>
+                        <a href="https://legistar.council.nyc.gov/Calendar.aspx">Upcoming Hearings</a>
+                      </li>  
+                      <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
                         <a href="#">About</a>
                         <ul class="menu">
                           <li><a href="/visit-the-council/">Visit the Council</a></li>
@@ -88,35 +114,30 @@
                           <li><a href="/committees/">Committees</a></li>
                           <li><a href="/caucuses/">Caucuses</a></li>
                         </ul>
-                      </li>
-                      <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
+                      </li> -->
+                      <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
                         <a href="#">Districts</a>
                         <ul class="menu">
                           <li><a href="/districts/">Council Members &amp; Districts</a></li>
                           <li><a href="/district-info/">District Info</a></li>
                         </ul>
-                      </li>
-                      <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
+                      </li> -->
+                      <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
                         <a href="#">Legislation</a>
                         <ul class="menu">
                           <li><a href="/legislation/">Our legislative process</a></li>
                           <li><a href="/testify">Register to Testify</a></li>
-                          <!-- <li><a href="/livestream/">Live Stream</a></li> -->
+                          <li><a href="/livestream/">Live Stream</a></li>
                           <li><a href="/live/">Live video</a></li>
                           <li><a href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
                           <li><a href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
-                          <!--<li><a href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>-->
+                          <li><a href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>
                           <li><a href="/legislation/api/">Legislative API</a></li>
                           <li><a href="/data/">Data</a></li>
                         </ul>
-                      </li>
-                      <li>
-                        <a href="/budget/">Budget</a>
-                      </li>
-                      <li>
-                        <a href="/land-use/">Land Use</a>
-                      </li>
-                      <li class="is-dropdown-submenu-parent opens-left">
+                      </li> -->
+                      
+                      <!-- <li class="is-dropdown-submenu-parent opens-left">
                         <a href="#">Press &amp; News</a>
                         <ul class="menu">
                           <li><a href="/foil-request/">Submit a "Freedom of Information Law" (FOIL) Request</a></li>
@@ -125,7 +146,7 @@
                           <li><a href="/press/press-photos/">Photos</a></li>
                           <li><a href="/news/tag/video/">Videos</a></li>
                         </ul>
-                      </li>
+                      </li> -->
                     </ul>                  
                     <!--<#?php nycc_main_nav(); ?>-->
                     <script>
