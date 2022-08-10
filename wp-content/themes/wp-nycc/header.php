@@ -64,14 +64,16 @@
 
     <div id="sticky-wrapper">
       <div data-sticky-container>
-        <header class="site-header sticky" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
+        <header class="site-header sticky" style="background-color: #2F56A6;" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
           <div class="top-bar">
             <div class="row">
               <div class="columns">
-                <?php switch_to_blog(1); ?>
                 <div class="top-bar-title">
                   <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png"><div class="site-logo" style="display:inline;"><?php bloginfo('name'); ?></div></a></strong>
                 </div>
+              </div>
+              <div class="columns">
+                <?php switch_to_blog(1); ?>
                 <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon dark" data-toggle></span></span>
                 <div role="navigation" id="responsive-menu">
                   <div class="top-bar-right">
