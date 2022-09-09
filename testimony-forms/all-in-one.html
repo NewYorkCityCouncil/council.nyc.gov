@@ -1,7 +1,7 @@
 <div class="row">
     <div class="columns small-12">
         <label>How will you be testifying? <span class="required-field">*</span>
-    [select* testimony-type id:testimony-type include_blank "Testifying in-person" "Testifying via Zoom (web)" "Testifying Zoom (phone)" "Submitting written testimony"]</label>
+    [select* testimony-type id:testimony-type include_blank "Testifying in-person" "Testifying via Zoom (web)" "Testifying via Zoom (phone)" "Submitting written testimony"]</label>
     </div>
     <div class="columns small-12 medium-6">   
         <label> Full Name <span class="required-field">*</span>
@@ -54,6 +54,7 @@
 <style>.required-field{font-weight: bolder; color: red;}.full-width{width:100%;}</style>
 <script>
 jQuery(document).ready(() => {
+    jQuery("#hearing-select").attr('disabled', 'disabled');
     // Custom date methods
     Date.prototype.stdTimezoneOffset = function() {
         let jan = new Date(this.getFullYear(), 0, 1);
@@ -77,14 +78,16 @@ jQuery(document).ready(() => {
         jQuery("#organization-select").val() === "Other" ? jQuery("#if-other").show() : jQuery("#if-other").hide();
     });
     jQuery("#testimony-type").change(function(e){
+        jQuery("#hearing-select").attr('disabled', 'disabled');
         jQuery("#hearing-select").empty()
         jQuery("#hearing-select").append('<option value="">---</option>')
-        jQuery("#testimony-type").val() === "Written Testimony" ? getHearings(true) : getHearings();
+        jQuery("#testimony-type").val() === "Submitting written testimony" ? getHearings(true) : getHearings();
     })
     const getHearings = (written=null) => {
         let addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
         let date;
         new Date().dst() ?  date = new Date(new Date().getTime() - 4 * 3600 * 1000) : date = new Date(new Date().getTime() - 5 * 3600 * 1000)
+        if (written){ date.setDate(date.getDate() - 3) };
         let threeWeeksFromNow = date.threeWeeks()
         let startDate = "EventDate+ge+datetime%27"+date.getFullYear()+"-"+addZero(date.getMonth()+1)+"-"+addZero(date.getDate())+"%27";
         let endDate = "EventDate+le+datetime%27"+threeWeeksFromNow.getFullYear()+"-"+addZero(threeWeeksFromNow.getMonth()+1)+"-"+addZero(threeWeeksFromNow.getDate())+"%27";
@@ -190,9 +193,9 @@ jQuery(document).ready(() => {
                         jQuery(".wpcf7-submit").prop("disabled", false);
                     };
                 };
-            }
+            },
+            complete: function(){jQuery("#hearing-select").attr('disabled', false);}
         });
     };
-    getHearings();
 });
 </script>
