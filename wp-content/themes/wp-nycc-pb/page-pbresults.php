@@ -19,7 +19,7 @@
       <br>
       <?php
       $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
-      $sites = get_sites();
+      $sites = get_sites(array('number' => 1000000));
       foreach ( $sites as $site ) {
 
         $ID = $site->blog_id;
