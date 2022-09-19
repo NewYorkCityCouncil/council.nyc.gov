@@ -8,26 +8,17 @@
     <div class="tabs-content" data-tabs-content="collapsing-tabs" style="border: none;">
       <div class="tabs-panel is-active" id="panel1c">
         <div id="fp-todays-hearings" class="row small-up-1 medium-up-2 large-up-4">
-          <div aria-hidden="true" class="column column-block committee-loader" style="float:none; margin:20px 0; text-align:center; width:100%;">
-            <img alt="Loading this week's hearings" aria-hidden="true" src="/wp-content/themes/wp-nycc/assets/images/committee_loader.gif">
-          </div>
           <!-- Today's hearings here -->
         </div>
       </div>
       <div class="tabs-panel" id="panel2c">
         <div id="fp-tomorrows-hearings" class="row small-up-1 medium-up-2 large-up-4">
-          <div aria-hidden="true" class="column column-block committee-loader" style="float:none; margin:20px 0; text-align:center; width:100%;">
-            <img alt="Loading this week's hearings" aria-hidden="true" src="/wp-content/themes/wp-nycc/assets/images/committee_loader.gif">
-          </div>
           <!-- Tomorrow's hearings here -->
           </div>
         </div>
       </div>
       <div class="tabs-panel" id="panel3c">
         <div id="fp-weeks-hearings" class="row small-up-1 medium-up-2 large-up-4">
-          <div aria-hidden="true" class="column column-block committee-loader" style="float:none; margin:20px 0; text-align:center; width:100%;">
-            <img alt="Loading this week's hearings" aria-hidden="true" src="/wp-content/themes/wp-nycc/assets/images/committee_loader.gif">
-          </div>
           <!-- Next week's hearings here -->
         </div>
       </div>
@@ -91,7 +82,7 @@
     let saturday = date.setDate(date.getDate() + 6);
     return [new Date(sunday), new Date(saturday)];
   }
-  const getFrontPageHearings = (timeFrame="today") => {
+  const getFrontPageHearings = (timeFrame="todays") => {
     const committeeLoader = 
     `<div aria-hidden="true" class="column column-block committee-loader" style="float:none; margin:20px 0; text-align:center; width:100%;">
         <img alt="Loading this week's hearings" aria-hidden="true" src="/wp-content/themes/wp-nycc/assets/images/committee_loader.gif">
@@ -103,18 +94,20 @@
     let date = new Date().dst() ? new Date(new Date().getTime() - 4 * 3600 * 1000) : new Date(new Date().getTime() - 5 * 3600 * 1000);
     let sunday = date.getWeek()[0];
     let saturday = date.getWeek()[1];
-    let startDate;
-    let endDate;
+    let startDate, endDate, noHearingMessage;
     if (timeFrame === "todays"){
       startDate = date.getFullYear()+"-"+addZero(date.getMonth()+1)+"-"+addZero(date.getDate());
-      endDate = startDate
+      endDate = startDate;
+      noHearingMessage = "TODAY";
     } else if (timeFrame === "tomorrows"){
       date.setDate(date.getDate() + 1);
       startDate = date.getFullYear()+"-"+addZero(date.getMonth()+1)+"-"+addZero(date.getDate());
-      endDate = startDate
+      endDate = startDate;
+      noHearingMessage = "TOMORROW";
     } else if (timeFrame === "weeks") {
       startDate = sunday.getFullYear()+"-"+addZero(sunday.getMonth()+1)+"-"+addZero(sunday.getDate());
       endDate = saturday.getFullYear()+"-"+addZero(saturday.getMonth()+1)+"-"+addZero(saturday.getDate());
+      noHearingMessage = "THIS WEEK";
     }
     const bodydExclusions = ["5264"]
     let exclusions = []
@@ -142,7 +135,7 @@
 
         jQuery(`#fp-${timeFrame}-hearings .committee-loader`).remove();
         if (hearings.length === 0){
-          jQuery(`#fp-${timeFrame}-hearings`).append("<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></li>");
+          jQuery(`#fp-${timeFrame}-hearings`).append(`<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS ${noHearingMessage}</em></li>`);
         } else {
           sortedHearings.forEach(function(hearing){
             let hearingName = "<strong>"+hearing.EventBodyName+"</strong><br>"
@@ -171,6 +164,8 @@
               }
             }
             if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
+              // Add strikethrough
+              // Add 'DEFERRED' somewhere on the card
               jQuery(`#fp-${timeFrame}-hearings`).append(`
                 <div class="columns" style="padding: .5em;" aria-label='deferred hearing'>
                   <div class="card" style="background-color: #E6E6E6; border: none;">
@@ -213,11 +208,11 @@
             };
           });
           if (jQuery(`#fp-${timeFrame}-hearings`).children().length === 0){
-            jQuery(`#fp-${timeFrame}-hearings`).append("<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></li>");
+            jQuery(`#fp-${timeFrame}-hearings`).append(`<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS ${noHearingMessage}</em></li>`);
           };
         };
       }
     });
   }
-  jQuery(document).on("load", getFrontPageHearings);
+  jQuery(document).ready(getFrontPageHearings);
 </script>
