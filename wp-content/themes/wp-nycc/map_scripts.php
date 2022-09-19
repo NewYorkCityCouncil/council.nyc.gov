@@ -13,6 +13,11 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
 
 <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
 <script>
+  jQuery(document).ready(function(){
+    var urlParams = new URLSearchParams(window.location.search);
+    var address = urlParams.get("address") || ""
+    if (address){ ajaxGeoclient( address, true ); }
+  })
 
   /**
    * Popup Data
@@ -235,8 +240,10 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
   var addresslookup = L.control({position: 'topright'});
   addresslookup.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'addresslookup');
+    var urlParams = new URLSearchParams(window.location.search);
+    var address = urlParams.get("address") || ""
     L.DomEvent.disableClickPropagation(div);
-    div.innerHTML = '<form aria-hidden="true" aria-describedby="addresslookup-error" id="addresslookup"><input id="mapAddress" aria-label="Enter street address or borough" type="text" placeholder="Street Address, Borough" tabindex="-1"><button type="submit" class="dashicons-before dashicons-search" aria-label="Search" tabindex="-1"><span class="show-for-sr">Search</span></button><div aria-live="assertive" role="alert" id="addresslookup-error" class="addresslookup-error"></div></form>';
+    div.innerHTML = `<form aria-hidden="true" aria-describedby="addresslookup-error" id="addresslookup"><input value="${address}" id="mapAddress" aria-label="Enter street address or borough" type="text" placeholder="Street Address, Borough" tabindex="-1"><button type="submit" class="dashicons-before dashicons-search" aria-label="Search" tabindex="-1"><span class="show-for-sr">Search</span></button><div aria-live="assertive" role="alert" id="addresslookup-error" class="addresslookup-error"></div></form>`;
     return div;
   };
   addresslookup.addTo(map);
