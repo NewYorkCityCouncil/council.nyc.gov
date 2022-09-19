@@ -86,7 +86,6 @@
     `<div aria-hidden="true" class="column column-block committee-loader" style="float:none; margin:20px 0; text-align:center; width:100%;">
         <img alt="Loading this week's hearings" aria-hidden="true" src="/wp-content/themes/wp-nycc/assets/images/committee_loader.gif">
     </div>`
-    
     jQuery(`#fp-${timeFrame}-hearings`).empty();
     jQuery(`#fp-${timeFrame}-hearings`).append(committeeLoader);
     let addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
@@ -213,5 +212,5 @@
       }
     });
   }
-  jQuery(document).ready(getFrontPageHearings);
+  jQuery(document).ready(() => getFrontPageHearings("todays"));
 </script>
