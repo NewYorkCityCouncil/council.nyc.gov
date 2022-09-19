@@ -14,7 +14,6 @@
       <div class="tabs-panel" id="panel2c">
         <div id="fp-tomorrows-hearings" class="row small-up-1 medium-up-2 large-up-4">
           <!-- Tomorrow's hearings here -->
-          </div>
         </div>
       </div>
       <div class="tabs-panel" id="panel3c">
