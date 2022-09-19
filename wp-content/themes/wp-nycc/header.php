@@ -66,27 +66,27 @@
       <div data-sticky-container>
         <header class="site-header sticky" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
           <div class="top-bar">
-            <div class="row" style="max-width: 100%">
-              <div class="columns" style="background-color: #2F56A6;">
-                <div class="row" style="display: flex; align-items: center;">
-                  <div class="columns medium-7">
+            <div class="row" style="max-width: 100%" data-equalizer>
+              <div class="columns small-8 large-12" style="background-color: #2F56A6; padding: .3rem 0" data-equalizer-watch>
+                <div style="display: flex; align-items: center;">
+                  <div class="columns medium-12 large-7">
                     <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-white.png"><div class="site-logo" style="display:inline;"><?php bloginfo('name'); ?></div></a></strong>
                   </div>
-                  <div class="columns medium-5" style="display: flex; justify-content: end; align-items: end;">
-                    <label style="color: #FFF; float: left; max-width: 300px; width: 100%;">Find Your Representative
+                  <div class="show-for-large columns large-5" style="display: flex; justify-content: end; align-items: end;">
+                    <label class="search">Find Your Representative
                       <input type="text" style="margin-bottom: 0" placeholder="Search here"/>
                     </label>
                     <input type="submit" class="button" style="background-color: #23417D;margin-left: 30px; margin-bottom: 0px;" value="Submit"/>
                   </div>
                 </div>
               </div>
-              <div class="columns" style="background-color: #23417D">
+              <div class="columns small-4 large-12" id="mobile-nav-col" style="background-color: #23417D" data-equalizer-watch>
                 <?php switch_to_blog(1); ?>
-                <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon dark" data-toggle></span></span>
+                <span class="responsive-menu-toggle" style="line-height: none" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon" data-toggle></span></span>
                 <div role="navigation" id="responsive-menu">
                   <div class="top-bar-center">
                     <!-- replace with hardcoded html-->
-                    <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" style="text-align: -webkit-center" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
+                    <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" style="text-align: -webkit-center;" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
                       <li>
                         <a href="/livestream/">Live Stream</a>
                       </li>
@@ -104,7 +104,14 @@
                       </li>
                       <li>
                         <a href="https://legistar.council.nyc.gov/Calendar.aspx">Upcoming Hearings</a>
-                      </li>  
+                      </li>
+                      <li class="hide-for-large">
+                        <label style="color: #FFF; float: left; max-width: 300px; width: 100%;">Find Your Representative
+                          <input type="text" style="margin-bottom: 0" placeholder="Search here"/>
+                          <input type="submit" class="button" style="background-color: #23417D;margin-left: 30px; margin-bottom: 0px;" value="Submit"/>
+                        </label>
+                       
+                      </li>
                       <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
                         <a href="#">About</a>
                         <ul class="menu">
