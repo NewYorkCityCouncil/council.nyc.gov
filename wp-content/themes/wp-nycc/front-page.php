@@ -2,7 +2,7 @@
   <div class="row homepage-carousel-container">
     <div class="columns" style="padding: 0;">
       <?php echo do_shortcode('[metaslider id="2697"]'); ?>
-      <a hreef="">
+      <!-- <a href=""> -->
     </div>
   </div>
   <?php include 'hearings.php';?>
@@ -200,8 +200,6 @@
           jQuery(window).on("orientationchange",function(){setTimeout(function(){adjustiFrames()},500)}).resize(adjustiFrames());
         });
       </script> -->
-    
-      
       
       <script>
         /*--------------------------------------------------
