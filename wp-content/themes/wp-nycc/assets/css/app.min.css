@@ -7577,6 +7577,8 @@ input::placeholder{
 
 #metaslider-id-2697 .flex-control-nav a{
   background-color: transparent !important;
+  color: #FFFFFF;
+  height: 66px;
 }
 
 #metaslider-id-2697 .flex-control-nav a.flex-active{
