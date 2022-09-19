@@ -212,5 +212,14 @@
       }
     });
   }
-  jQuery(document).ready(() => getFrontPageHearings("todays"));
+  jQuery(document).ready(() => {
+    let hash = window.location.hash;
+    if (hash === "panel1c" || hash === ""){
+      getFrontPageHearings("todays");
+    } else if (hash === "panel2c"){
+      getFrontPageHearings("tomorrows");
+    } else if (hash === "panel3c"){
+      getFrontPageHearings("weeks");
+    };
+  });
 </script>
