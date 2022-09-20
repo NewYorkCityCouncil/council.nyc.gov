@@ -214,11 +214,11 @@
   }
   jQuery(document).ready(() => {
     let hash = window.location.hash;
-    if (hash === "todays-hearings" || hash === ""){
+    if (hash === "#todays-hearings" || hash === ""){
       getFrontPageHearings("todays");
-    } else if (hash === "tomorrows-hearings"){
+    } else if (hash === "#tomorrows-hearings"){
       getFrontPageHearings("tomorrows");
-    } else if (hash === "week-hearings"){
+    } else if (hash === "#week-hearings"){
       getFrontPageHearings("weeks");
     };
   });
