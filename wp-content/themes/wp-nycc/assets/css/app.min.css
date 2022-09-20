@@ -7584,3 +7584,29 @@ input::placeholder{
 #metaslider-id-2697 .flex-control-nav a.flex-active{
   background-color: #333333 !important;
 }
+
+.hearing-card:hover, .hearing-card:hover .card-divider, .hearing-card:hover .card-section{
+  background-color:#2f56a6;
+  color: #FFFFFF;
+}
+
+.hearing-card{
+  background: #e6e6e6;
+}
+
+.hearing-card:hover{
+  background-color:#2f56a6;
+  color: #FFFFFF;
+}
+
+.hearing-card h4, .hearing-card .hearing-time{
+  color: #2f56a6;
+}
+
+.hearing-card:hover h5, 
+.hearing-card:hover h4, 
+.hearing-card:hover p,
+.hearing-card:hover a,
+.hearing-card:hover .hearing-time{
+  color: #FFFFFF;
+}

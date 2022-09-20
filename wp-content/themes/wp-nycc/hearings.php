@@ -1,23 +1,23 @@
 <div class="row" style="margin-bottom: 6rem">
   <div class="columns">
     <ul class="tabs live-stream-homepage" data-tabs id="collapsing-tabs" style="border: none; display: flex; align-items: center; justify-content: center;">
-      <li class="tabs-title is-active" onclick="getFrontPageHearings('todays')"><a href="#panel1c" aria-selected="true" data-text="title">Today's Hearings</a></li>
-      <li class="tabs-title" onclick="getFrontPageHearings('tomorrows')"><a href="#panel2c" data-text="title">Tomorrow's Hearings</a></li>
-      <li class="tabs-title" onclick="getFrontPageHearings('weeks')"><a href="#panel3c" data-text="title">This Week's Hearings</a></li>
+      <li class="tabs-title is-active" onclick="getFrontPageHearings('todays')"><a href="#todays-hearings" aria-selected="true" data-text="title">Today's Hearings</a></li>
+      <li class="tabs-title" onclick="getFrontPageHearings('tomorrows')"><a href="#tomorrows-hearings" data-text="title">Tomorrow's Hearings</a></li>
+      <li class="tabs-title" onclick="getFrontPageHearings('weeks')"><a href="#week-hearings" data-text="title">This Week's Hearings</a></li>
     </ul>
     <div class="tabs-content" data-tabs-content="collapsing-tabs" style="border: none;">
-      <div class="tabs-panel is-active" id="panel1c">
-        <div id="fp-todays-hearings" class="row small-up-1 medium-up-2 large-up-4">
+      <div class="tabs-panel is-active" id="todays-hearings">
+        <div id="fp-todays-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
           <!-- Today's hearings here -->
         </div>
       </div>
-      <div class="tabs-panel" id="panel2c">
-        <div id="fp-tomorrows-hearings" class="row small-up-1 medium-up-2 large-up-4">
+      <div class="tabs-panel" id="tomorrows-hearings">
+        <div id="fp-tomorrows-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
           <!-- Tomorrow's hearings here -->
         </div>
       </div>
-      <div class="tabs-panel" id="panel3c">
-        <div id="fp-weeks-hearings" class="row small-up-1 medium-up-2 large-up-4">
+      <div class="tabs-panel" id="week-hearings">
+        <div id="fp-weeks-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
           <!-- Next week's hearings here -->
         </div>
       </div>
@@ -165,15 +165,15 @@
               // Add strikethrough
               // Add 'DEFERRED' somewhere on the card
               jQuery(`#fp-${timeFrame}-hearings`).append(`
-                <div class="columns" style="padding: .5em;" aria-label='deferred hearing'>
-                  <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
+                  <div class="card hearing-card" style="border: none;">
                     <div class="card-divider" style="margin-bottom: 2em;">
                       <div class="row">
                         <div class="columns small-6">
-                          <h4 style="margin-bottom: 0; line-height: 0.8em">`+monthOnly+`</h4>
-                          <h4 style="margin-bottom: 0; line-height: 0.8em">`+dayNum+`</h4>
+                          <h4 style="margin-bottom: 0; line-height: 0.8em; text-transform: uppercase;">`+monthOnly+`</h4>
+                          <h4 style="margin-bottom: 0; line-height: 0.8em; font-size: 2.3rem;">`+dayNum+`</h4>
                         </div>
-                        <div class="columns small-6" style="text-align: right;">`+hearing.EventTime+`</div>
+                        <div class="columns small-6 hearing-time" style="text-align: right;">`+hearing.EventTime+`</div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -185,15 +185,15 @@
               `);
             } else {
               jQuery(`#fp-${timeFrame}-hearings`).append(`
-                <div class="columns" style="padding: .5em;" aria-label='deferred hearing'>
-                  <div class="card" style="background-color: #E6E6E6; border: none;">
+                <div class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
+                  <div class="card hearing-card" style="border: none;">
                     <div class="card-divider" style="margin-bottom: 2em;">
                       <div class="row">
                         <div class="columns small-6">
-                          <h4 style="margin-bottom: 0; line-height: 0.8em">`+monthOnly+`</h4>
-                          <h4 style="margin-bottom: 0; line-height: 0.8em">`+dayNum+`</h4>
+                          <h4 style="margin-bottom: 0; line-height: 0.8em; text-transform: uppercase;">`+monthOnly+`</h4>
+                          <h4 style="margin-bottom: 0; line-height: 0.8em; font-size: 2.3rem;">`+dayNum+`</h4>
                         </div>
-                        <div class="columns small-6" style="text-align: right;">`+hearing.EventTime+`</div>
+                        <div class="columns small-6 hearing-time" style="text-align: right;">`+hearing.EventTime+`</div>
                       </div>
                     </div>
                     <div class="card-section">
@@ -214,11 +214,11 @@
   }
   jQuery(document).ready(() => {
     let hash = window.location.hash;
-    if (hash === "panel1c" || hash === ""){
+    if (hash === "todays-hearings" || hash === ""){
       getFrontPageHearings("todays");
-    } else if (hash === "panel2c"){
+    } else if (hash === "tomorrows-hearings"){
       getFrontPageHearings("tomorrows");
-    } else if (hash === "panel3c"){
+    } else if (hash === "week-hearings"){
       getFrontPageHearings("weeks");
     };
   });
