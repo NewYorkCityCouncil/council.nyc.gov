@@ -7585,6 +7585,16 @@ input::placeholder{
   background-color: #333333 !important;
 }
 
+.row-hearings{
+  /* display:flex;
+  flex-flow: row wrap; */
+  display: grid;
+  /* auto auto is telling the browser to render two rows, if needed */
+  grid-template-rows: auto auto;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+}
+
 .hearing-card:hover, .hearing-card:hover .card-divider, .hearing-card:hover .card-section{
   background-color:#2f56a6;
   color: #FFFFFF;
@@ -7592,6 +7602,8 @@ input::placeholder{
 
 .hearing-card{
   background: #e6e6e6;
+  min-width: 290px;
+  width: 100%;
 }
 
 .hearing-card:hover{

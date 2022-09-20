@@ -7,17 +7,17 @@
     </ul>
     <div class="tabs-content" data-tabs-content="collapsing-tabs" style="border: none;">
       <div class="tabs-panel is-active" id="todays-hearings">
-        <ul id="fp-todays-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
+        <ul id="fp-todays-hearings" class="row row-hearings">
           <!-- Today's hearings here -->
         </ul>
       </div>
       <div class="tabs-panel" id="tomorrows-hearings">
-        <ul id="fp-tomorrows-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
+        <ul id="fp-tomorrows-hearings" class="row row-hearings">
           <!-- Tomorrow's hearings here -->
         </ul>
       </div>
       <div class="tabs-panel" id="week-hearings">
-        <ul id="fp-weeks-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
+        <ul id="fp-weeks-hearings" class="row row-hearings">
           <!-- Next week's hearings here -->
         </ul>
       </div>
