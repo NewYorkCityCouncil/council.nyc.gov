@@ -7,19 +7,19 @@
     </ul>
     <div class="tabs-content" data-tabs-content="collapsing-tabs" style="border: none;">
       <div class="tabs-panel is-active" id="todays-hearings">
-        <div id="fp-todays-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
+        <ul id="fp-todays-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
           <!-- Today's hearings here -->
-        </div>
+        </ul>
       </div>
       <div class="tabs-panel" id="tomorrows-hearings">
-        <div id="fp-tomorrows-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
+        <ul id="fp-tomorrows-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
           <!-- Tomorrow's hearings here -->
-        </div>
+        </ul>
       </div>
       <div class="tabs-panel" id="week-hearings">
-        <div id="fp-weeks-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
+        <ul id="fp-weeks-hearings" class="row small-up-1 medium-up-2 large-up-4" style="display:flex;flex-flow: row wrap;">
           <!-- Next week's hearings here -->
-        </div>
+        </ul>
       </div>
     </div>
   </div>
@@ -165,7 +165,7 @@
               // Add strikethrough
               // Add 'DEFERRED' somewhere on the card
               jQuery(`#fp-${timeFrame}-hearings`).append(`
-                <div class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
+                <li class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
                   <div class="card hearing-card" style="border: none;">
                     <div class="card-divider" style="margin-bottom: 2em;">
                       <div class="row">
@@ -181,11 +181,11 @@
                       <p>`+livestreamLocation+`</p>
                     </div>
                   </div>
-                </div>
+                </li>
               `);
             } else {
               jQuery(`#fp-${timeFrame}-hearings`).append(`
-                <div class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
+                <li class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
                   <div class="card hearing-card" style="border: none;">
                     <div class="card-divider" style="margin-bottom: 2em;">
                       <div class="row">
@@ -201,7 +201,7 @@
                       <p><a href='https://council.nyc.gov/livestream/#"+livestreamLocation.toLowerCase().replace(/[^\w\s\-]/gi, '').split(" ").join("-")+"'>`+livestreamLocation+`</a></p>
                     </div>
                   </div>
-                </div>
+                </li>
               `);
             };
           });
