@@ -108,29 +108,29 @@
           <?php the_content(); ?>
         </article>
       <?php endwhile; endif; ?>
-      <hr>
+      <!-- <hr> -->
     </div>
-    <div class="columns medium-8">
+    <!-- <div class="columns medium-8"> -->
       <!-- <div class="row" aria-hidden="true">
         <div class="columns small-12">
           <h2>Featured at the Council</h2>
           <div class="featured-carousel" style="display:none;"></div>
         </div>
       </div> -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="columns small-12">
           <h2>Featured Content</h2>
         </div>
-      </div>
-      <ul class="row block-grid" style="list-style: none;">
+      </div> -->
+      <!-- <ul class="row block-grid" style="list-style: none;"> -->
 
-      <?php
+      <!-- <?php
         $list_features = new WP_Query('post_type=nycc_feature&orderby=menu_order&order=ASC&posts_per_page=-1');
         if ( $list_features->have_posts() ) {
           while ( $list_features->have_posts() ) {
             $list_features->the_post(); 
-      ?>
-            <li class="columns" id="feature-<?php the_ID(); ?>">
+      ?> -->
+            <!-- <li class="columns" id="feature-<?php the_ID(); ?>">
               <?php $feature_link_url = get_post_meta($post->ID, 'feature_link_url', true); ?>
               <a href="<?php echo $feature_link_url; ?>">
                 <div class="image-header fit-container">
@@ -167,14 +167,14 @@
                   }
                 }
               </style>
-            </li>
-      <?php
+            </li> -->
+      <!-- <?php
           }
         }
         wp_reset_postdata();
-      ?>
-      </ul>
-    </div>
+      ?> -->
+      <!-- </ul> -->
+    <!-- </div> -->
 
     <!-- <?php get_sidebar(); ?> -->
 
