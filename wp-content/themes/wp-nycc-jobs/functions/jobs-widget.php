@@ -33,6 +33,8 @@ class nycc_jobs_list_widget extends WP_Widget {
           // Show a list of page links for the division
           $divisions_query = new WP_Query( array(
               'post_type' => 'page',
+              'orderby' => 'title',
+              'order' => 'ASC',
               'tax_query' => array(
                   array(
                       'taxonomy' => 'job_division',
