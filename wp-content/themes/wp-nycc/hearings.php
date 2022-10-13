@@ -136,10 +136,14 @@
         });
 
         jQuery(`#fp-${timeFrame}-hearings .committee-loader`).remove();
+        if (hearings.length < 5){
+          jQuery( ".row-hearings" ).addClass( "horizontal-grid" );
+        }
         if (hearings.length === 0){
           jQuery(`#fp-${timeFrame}-hearings`).append(`<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS ${noHearingMessage}</em></li>`);
         } else {
           sortedHearings.forEach(function(hearing){
+            let deferred = hearing.EventAgendaStatusName.toLowerCase() === "deferred"
             let hearingName = "<strong>"+hearing.EventBodyName+"</strong><br>"
             let meetingDate = hearing.EventDate.split("T")[0];
             let meetingDateFormat = new Date(meetingDate.split("-")[0], parseInt(meetingDate.split("-")[1])-1, meetingDate.split("-")[2])
@@ -165,56 +169,28 @@
                   hearingName += "<small><em>("+hearing.EventComment+")</em></small><br>"
               }
             }
-            if(hearing.EventAgendaStatusName.toLowerCase() === "deferred"){
-              // Add strikethrough
-              // Add 'DEFERRED' somewhere on the card
-              jQuery(`#fp-${timeFrame}-hearings`).append(`
-                <li class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
-                  <div class="card hearing-card" style="border: none;">
-                    <div class="card-divider" style="margin-bottom: 2em;">
+            // For deferred hearings use the new deferred variable set above in a ternary statement
+            // For example if the strikethrough style was a class: ${deferred ? "class-for-strikethrough" : ""}
+            jQuery(`#fp-${timeFrame}-hearings`).append(`
+              <li class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
+                <div class="card hearing-card" style="border: none;">
+                  <div class="card-divider" style="margin-bottom: 2em;">
                     
-                        <div class="columns small-6" style="padding: 0;">
-                          <h4 style="margin-bottom: 0; line-height: 0.8em; text-transform: uppercase;">`+monthOnly+`</h4>
-                          <h4 style="margin-bottom: 0; line-height: 0.8em; font-size: 2.3rem;">`+dayNum+`</h4>
-                        </div>
-                        <div class="columns small-6 hearing-time" style="text-align: right;">`+hearing.EventTime+`</div>
-                      
-                    </div>
-                    <div class="card-section">
-                      <h5 style="margin-bottom: 0; font-size: 1rem; line-height: 1.5em;"><a href='`+agendaLink+`' target='_blank'>`+hearingName+`</a></h5>
-                      <p>`+livestreamLocation+`</p>
-                    </div>
+                      <div class="columns small-6" style="padding: 0;">
+                        <h4 style="margin-bottom: 0; line-height: 0.8em; text-transform: uppercase;">${monthOnly}</h4>
+                        <h4 style="margin-bottom: 0; line-height: 0.8em; font-size: 2.3rem;">${dayNum}</h4>
+                      </div>
+                      <div class="columns small-6 hearing-time" style="text-align: right;">${hearing.EventTime}</div>
+                    
                   </div>
-                </li>
-              `);
-            } else {
-              jQuery(`#fp-${timeFrame}-hearings`).append(`
-                <li class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
-                  <div class="card hearing-card" style="border: none;">
-                    <div class="card-divider" style="margin-bottom: 2em;">
-                      
-                        <div class="columns small-6" style="padding: 0;">
-                          <h4 style="margin-bottom: 0; line-height: 0.8em; text-transform: uppercase;">`+monthOnly+`</h4>
-                          <h4 style="margin-bottom: 0; line-height: 0.8em; font-size: 2.3rem;">`+dayNum+`</h4>
-                        </div>
-                        <div class="columns small-6 hearing-time" style="text-align: right;">`+hearing.EventTime+`</div>
-                      
-                    </div>
-                    <div class="card-section">
-                      <h5 style="margin-bottom: 0; font-size: 1rem; line-height: 1.5em;"><a href='`+agendaLink+`' target='_blank'>`+hearingName+`</a></h5>
-                      <p><a href='https://council.nyc.gov/livestream/#"+livestreamLocation.toLowerCase().replace(/[^\w\s\-]/gi, '').split(" ").join("-")+"'>`+livestreamLocation+`</a></p>
-                    </div>
+                  <div class="card-section">
+                    <h5 style="margin-bottom: 0; font-size: 1rem; line-height: 1.5em;"><a href='${agendaLink}' target='_blank'>${hearingName}</a></h5>
+                    <p><a href='https://council.nyc.gov/livestream/#"+livestreamLocation.toLowerCase().replace(/[^\w\s\-]/gi, '').split(" ").join("-")+"'>${livestreamLocation}</a></p>
                   </div>
-                </li>
-              `);
-            };
+                </div>
+              </li>
+            `);
           });
-          if (jQuery(`#fp-${timeFrame}-hearings`).children().length === 0){
-            jQuery(`#fp-${timeFrame}-hearings`).append(`<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS ${noHearingMessage}</em></li>`);
-          };
-          if (jQuery(`#fp-${timeFrame}-hearings`).children().length < 5){
-          jQuery( ".row-hearings" ).addClass( "horizontal-grid" );
-          }
         };
       }
     });
