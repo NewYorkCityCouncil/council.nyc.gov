@@ -137,7 +137,7 @@
 
         jQuery(`#fp-${timeFrame}-hearings .committee-loader`).remove();
         if (hearings.length < 5){
-          jQuery( ".row-hearings" ).addClass( "horizontal-grid" );
+          jQuery(`#fp-${timeFrame}-hearings`).addClass("horizontal-grid");
         }
         if (hearings.length === 0){
           jQuery(`#fp-${timeFrame}-hearings`).append(`<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS ${noHearingMessage}</em></li>`);
