@@ -55,12 +55,12 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCN4XTT"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     End Google Tag Manager (noscript) -->
-    <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {} else { ?>
+    <!-- <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {} else { ?>
     <div id="map-container" class="short" aria-hidden="true">
       <div id="map"></div>
       <button class="map-toggler" id="map-toggler">Expand Map</button>
     </div>
-    <?php } ?>
+    <?php } ?> -->
 
     <div id="sticky-wrapper">
       <div data-sticky-container>
@@ -72,116 +72,119 @@
                   <div class="columns medium-12 large-7">
                     <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-white.png"><div class="site-logo" style="display:inline;"><?php bloginfo('name'); ?></div></a></strong>
                   </div>
-                  <div class="show-for-large columns large-5" style="display: flex; justify-content: end; align-items: end;">
-                    <label class="search">Find Your Representative
+                  
+                  <div class="show-for-large columns large-5 nav-search-container" style="display: flex; justify-content: end; align-items: end;">
+                    <?php get_search_form(); ?>  
+                    <!-- <label class="search">Find Your Representative
                       <input type="text" style="margin-bottom: 0" placeholder="Search here"/>
                     </label>
-                    <input type="submit" class="button" style="background-color: #23417D;margin-left: 30px; margin-bottom: 0px;" value="Submit"/>
+                    <input type="submit" class="button" style="background-color: #23417D;margin-left: 30px; margin-bottom: 0px;" value="Submit"/> -->
                   </div>
                 </div>
               </div>
-              <div class="columns small-4 large-12" id="mobile-nav-col" style="background-color: #23417D" data-equalizer-watch>
-                <?php switch_to_blog(1); ?>
-                <span class="responsive-menu-toggle" style="line-height: none" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon" data-toggle></span></span>
-                <div role="navigation" id="responsive-menu">
-                  <div class="top-bar-center">
-                    <!-- replace with hardcoded html-->
-                    <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" style="text-align: -webkit-center;" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
-                      <li>
-                        <a href="/livestream/">Live Stream</a>
-                      </li>
-                      <li>
-                        <a href="/budget/">Budget</a>
-                      </li>
-                      <li>
-                        <a href="/districts/">Districts</a>
-                      </li>
-                      <li>
-                        <a href="/committees/">Committees</a>
-                      </li>
-                      <li>
-                        <a href="/land-use/">Land Use</a>
-                      </li>
-                      <li>
-                        <a href="https://legistar.council.nyc.gov/Calendar.aspx">Upcoming Hearings</a>
-                      </li>
-                      <li class="hide-for-large">
-                        <label style="color: #FFF; float: left; max-width: 300px; width: 100%;">Find Your Representative
-                          <input type="text" style="margin-bottom: 0" placeholder="Search here"/>
-                          <input type="submit" class="button" style="background-color: #23417D;margin-left: 30px; margin-bottom: 0px;" value="Submit"/>
-                        </label>
-                       
-                      </li>
-                      <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
-                        <a href="#">About</a>
-                        <ul class="menu">
-                          <li><a href="/visit-the-council/">Visit the Council</a></li>
-                          <li><a href="/events/">Events</a></li>
-                          <li><a href="/about/">What we do</a></li>
-                          <li><a href="/committees/">Committees</a></li>
-                          <li><a href="/caucuses/">Caucuses</a></li>
-                        </ul>
-                      </li> -->
-                      <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
-                        <a href="#">Districts</a>
-                        <ul class="menu">
-                          <li><a href="/districts/">Council Members &amp; Districts</a></li>
-                          <li><a href="/district-info/">District Info</a></li>
-                        </ul>
-                      </li> -->
-                      <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
-                        <a href="#">Legislation</a>
-                        <ul class="menu">
-                          <li><a href="/legislation/">Our legislative process</a></li>
-                          <li><a href="/testify">Register to Testify</a></li>
-                          <li><a href="/livestream/">Live Stream</a></li>
-                          <li><a href="/live/">Live video</a></li>
-                          <li><a href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
-                          <li><a href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
-                          <li><a href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>
-                          <li><a href="/legislation/api/">Legislative API</a></li>
-                          <li><a href="/data/">Data</a></li>
-                        </ul>
-                      </li> -->
-                      
-                      <!-- <li class="is-dropdown-submenu-parent opens-left">
-                        <a href="#">Press &amp; News</a>
-                        <ul class="menu">
-                          <li><a href="/foil-request/">Submit a "Freedom of Information Law" (FOIL) Request</a></li>
-                          <li><a href="/press/">Press Releases</a></li>
-                          <li><a href="/news/category/reports/">Reports</a></li>
-                          <li><a href="/press/press-photos/">Photos</a></li>
-                          <li><a href="/news/tag/video/">Videos</a></li>
-                        </ul>
-                      </li> -->
-                    </ul>                  
-                    <!--<#?php nycc_main_nav(); ?>-->
-                    <script>
-                      // jQuery(".custom-dropdown-hover").mouseenter(function(){
-                      //   jQuery(this).children().first().attr("aria-expanded", "true");
-                      // }).focusin(function(){
-                      //   jQuery(this).children().first().attr("aria-expanded", "true");
-                      // });
-                      // jQuery(".custom-dropdown-hover").mouseleave(function(){
-                      //   jQuery(this).children().first().attr("aria-expanded", "false");
-                      // }).focusout(function(){
-                      //   jQuery(this).children().first().attr("aria-expanded", "false");
-                      // });
-                      jQuery(document).ready(function(){
-                        $("#translation-menu-dropdown").css("visibility","visible").hide();
-                        jQuery("#translation-button").click(function(){
-                          if(jQuery("#translation-menu-dropdown").css("display") === "none"){
-                            jQuery("#translation-menu-dropdown").show();
-                          } else{
-                            jQuery("#translation-menu-dropdown").hide();
-                          }
+              <div class="row" style="background-color: #23417D">
+                <div class="columns small-4 large-12" id="mobile-nav-col"  data-equalizer-watch>
+                  <?php switch_to_blog(1); ?>
+                  <span class="responsive-menu-toggle" style="line-height: none" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon" data-toggle></span></span>
+                  <div role="navigation" id="responsive-menu">
+                    <div class="top-bar-center">
+                      <!-- replace with hardcoded html-->
+                      <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" style="text-align: -webkit-center;" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
+                        <li>
+                          <a href="/livestream/">Live Stream</a>
+                        </li>
+                        <li>
+                          <a href="/budget/">Budget</a>
+                        </li>
+                        <li>
+                          <a href="/districts/">Districts</a>
+                        </li>
+                        <li>
+                          <a href="/committees/">Committees</a>
+                        </li>
+                        <li>
+                          <a href="/land-use/">Land Use</a>
+                        </li>
+                        <li>
+                          <a href="https://legistar.council.nyc.gov/Calendar.aspx">Upcoming Hearings</a>
+                        </li>
+                        <li class="hide-for-large">
+                          <!-- <label style="color: #FFF; float: left; max-width: 300px; width: 100%;">Find Your Representative
+                            <input type="text" style="margin-bottom: 0" placeholder="Search here"/>
+                            <input type="submit" class="button" style="background-color: #23417D;margin-left: 30px; margin-bottom: 0px;" value="Submit"/>
+                          </label> -->
+                        </li>
+                        <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
+                          <a href="#">About</a>
+                          <ul class="menu">
+                            <li><a href="/visit-the-council/">Visit the Council</a></li>
+                            <li><a href="/events/">Events</a></li>
+                            <li><a href="/about/">What we do</a></li>
+                            <li><a href="/committees/">Committees</a></li>
+                            <li><a href="/caucuses/">Caucuses</a></li>
+                          </ul>
+                        </li> -->
+                        <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
+                          <a href="#">Districts</a>
+                          <ul class="menu">
+                            <li><a href="/districts/">Council Members &amp; Districts</a></li>
+                            <li><a href="/district-info/">District Info</a></li>
+                          </ul>
+                        </li> -->
+                        <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
+                          <a href="#">Legislation</a>
+                          <ul class="menu">
+                            <li><a href="/legislation/">Our legislative process</a></li>
+                            <li><a href="/testify">Register to Testify</a></li>
+                            <li><a href="/livestream/">Live Stream</a></li>
+                            <li><a href="/live/">Live video</a></li>
+                            <li><a href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
+                            <li><a href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
+                            <li><a href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>
+                            <li><a href="/legislation/api/">Legislative API</a></li>
+                            <li><a href="/data/">Data</a></li>
+                          </ul>
+                        </li> -->
+                        
+                        <!-- <li class="is-dropdown-submenu-parent opens-left">
+                          <a href="#">Press &amp; News</a>
+                          <ul class="menu">
+                            <li><a href="/foil-request/">Submit a "Freedom of Information Law" (FOIL) Request</a></li>
+                            <li><a href="/press/">Press Releases</a></li>
+                            <li><a href="/news/category/reports/">Reports</a></li>
+                            <li><a href="/press/press-photos/">Photos</a></li>
+                            <li><a href="/news/tag/video/">Videos</a></li>
+                          </ul>
+                        </li> -->
+                      </ul>                  
+                      <!--<#?php nycc_main_nav(); ?>-->
+                      <script>
+                        // jQuery(".custom-dropdown-hover").mouseenter(function(){
+                        //   jQuery(this).children().first().attr("aria-expanded", "true");
+                        // }).focusin(function(){
+                        //   jQuery(this).children().first().attr("aria-expanded", "true");
+                        // });
+                        // jQuery(".custom-dropdown-hover").mouseleave(function(){
+                        //   jQuery(this).children().first().attr("aria-expanded", "false");
+                        // }).focusout(function(){
+                        //   jQuery(this).children().first().attr("aria-expanded", "false");
+                        // });
+                        jQuery(document).ready(function(){
+                          $("#translation-menu-dropdown").css("visibility","visible").hide();
+                          jQuery("#translation-button").click(function(){
+                            if(jQuery("#translation-menu-dropdown").css("display") === "none"){
+                              jQuery("#translation-menu-dropdown").show();
+                            } else{
+                              jQuery("#translation-menu-dropdown").hide();
+                            }
+                          });
+                          jQuery("#close-menu").click(function(){jQuery("#translation-menu-dropdown").hide();});
                         });
-                        jQuery("#close-menu").click(function(){jQuery("#translation-menu-dropdown").hide();});
-                      });
-                    </script>
+                      </script>
+                    </div>
                   </div>
+                  <?php restore_current_blog(); ?>
                 </div>
-                <?php restore_current_blog(); ?>
               </div>
             </div>
           </div>

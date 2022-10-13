@@ -1,34 +1,36 @@
-<div class="row" style="margin-bottom: 6rem">
-  <div class="columns">
-    <ul class="tabs live-stream-homepage" data-tabs id="collapsing-tabs" style="border: none; display: flex; align-items: center; justify-content: center;">
-      <li class="tabs-title is-active" onclick="getFrontPageHearings('todays')"><a href="#todays-hearings" aria-selected="true" data-text="title">Today's Hearings</a></li>
-      <li class="tabs-title" onclick="getFrontPageHearings('tomorrows')"><a href="#tomorrows-hearings" data-text="title">Tomorrow's Hearings</a></li>
-      <li class="tabs-title" onclick="getFrontPageHearings('weeks')"><a href="#week-hearings" data-text="title">This Week's Hearings</a></li>
-    </ul>
-    <div class="tabs-content" data-tabs-content="collapsing-tabs" style="border: none;">
-      <div class="tabs-panel is-active" id="todays-hearings">
-        <ul id="fp-todays-hearings" class="row row-hearings">
-          <!-- Today's hearings here -->
-        </ul>
-      </div>
-      <div class="tabs-panel" id="tomorrows-hearings">
-        <ul id="fp-tomorrows-hearings" class="row row-hearings">
-          <!-- Tomorrow's hearings here -->
-        </ul>
-      </div>
-      <div class="tabs-panel" id="week-hearings">
-        <ul id="fp-weeks-hearings" class="row row-hearings">
-          <!-- Next week's hearings here -->
-        </ul>
+<div class="container hearings-section" style="position: relative;padding: 6rem 0;" >
+  <div class="row" style="">
+    <div class="columns" style="padding-right: 0; ">
+      <h2 style="max-width: 75rem; margin-right: auto; margin-left: auto;">Hearings</h2>
+      <ul class="tabs live-stream-homepage" data-tabs id="collapsing-tabs" style="border: none; display: flex; align-items: center; background-color: transparent;">
+        <li class="tabs-title is-active" onclick="getFrontPageHearings('todays')"><a href="#todays-hearings" aria-selected="true" data-text="title">Today</a></li>
+        <li class="tabs-title" onclick="getFrontPageHearings('tomorrows')"><a href="#tomorrows-hearings" data-text="title">Tomorrow</a></li>
+        <li class="tabs-title" onclick="getFrontPageHearings('weeks')"><a href="#week-hearings" data-text="title">This Week</a></li>
+      </ul>
+      <div class="tabs-content" data-tabs-content="collapsing-tabs" style="border: none; background-color: transparent;">
+        <div class="tabs-panel is-active hearings" id="todays-hearings">
+          <ul id="fp-todays-hearings" class="row-hearings">
+            <!-- Today's hearings here -->
+          </ul>
+        </div>
+        <div class="tabs-panel hearings" id="tomorrows-hearings">
+          <ul id="fp-tomorrows-hearings" class="row-hearings">
+            <!-- Tomorrow's hearings here -->
+          </ul>
+        </div>
+        <div class="tabs-panel hearings" id="week-hearings">
+          <ul id="fp-weeks-hearings" class="row-hearings">
+            <!-- Next week's hearings here -->
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="columns">
-    <a href="https://legistar.council.nyc.gov/Calendar.aspx" target="_blank" rel="noopener noreferrer" style="display:block;"><strong>View the hearing calendar and video archive here.</strong></a>
-    <a style="display:block;" href="/testify" target="_blank" rel="noopener"><strong>Register to testify at one of our upcoming hearings</strong></a>
+    <div class="columns" style="max-width: 75rem; margin-right: auto; margin-left: auto;">
+      <a href="https://legistar.council.nyc.gov/Calendar.aspx" target="_blank" rel="noopener noreferrer" style="display:block;"><strong><i class="fa fa-play"></i> View the hearing calendar and video archive here.</strong></a>
+      <a style="display:block;" href="/testify" target="_blank" rel="noopener"><strong>Register to testify at one of our upcoming hearings</strong></a>
+    </div>
   </div>
 </div>
-
 
 <script>
   /*--------------------------------------------------
@@ -68,7 +70,8 @@
     return this.getTimezoneOffset() < this.stdTimezoneOffset();
   }
   Date.prototype.getWeek = function() {
-    let date = new Date(this.valueOf())
+    // let date = new Date(this.valueOf())
+    let date = new Date('October, 06 2022')
     date.setHours(0)
     date.setMinutes(0)
     date.setSeconds(0)
@@ -89,7 +92,8 @@
     jQuery(`#fp-${timeFrame}-hearings`).empty();
     jQuery(`#fp-${timeFrame}-hearings`).append(committeeLoader);
     let addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
-    let date = new Date().dst() ? new Date(new Date().getTime() - 4 * 3600 * 1000) : new Date(new Date().getTime() - 5 * 3600 * 1000);
+    let date = new Date('October, 06 2022')
+    // let date = new Date().dst() ? new Date(new Date().getTime() - 4 * 3600 * 1000) : new Date(new Date().getTime() - 5 * 3600 * 1000);
     let sunday = date.getWeek()[0];
     let saturday = date.getWeek()[1];
     let startDate, endDate, noHearingMessage;
@@ -168,13 +172,13 @@
                 <li class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
                   <div class="card hearing-card" style="border: none;">
                     <div class="card-divider" style="margin-bottom: 2em;">
-                      <div class="row">
-                        <div class="columns small-6">
+                    
+                        <div class="columns small-6" style="padding: 0;">
                           <h4 style="margin-bottom: 0; line-height: 0.8em; text-transform: uppercase;">`+monthOnly+`</h4>
                           <h4 style="margin-bottom: 0; line-height: 0.8em; font-size: 2.3rem;">`+dayNum+`</h4>
                         </div>
                         <div class="columns small-6 hearing-time" style="text-align: right;">`+hearing.EventTime+`</div>
-                      </div>
+                      
                     </div>
                     <div class="card-section">
                       <h5 style="margin-bottom: 0; font-size: 1rem; line-height: 1.5em;"><a href='`+agendaLink+`' target='_blank'>`+hearingName+`</a></h5>
@@ -188,13 +192,13 @@
                 <li class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
                   <div class="card hearing-card" style="border: none;">
                     <div class="card-divider" style="margin-bottom: 2em;">
-                      <div class="row">
-                        <div class="columns small-6">
+                      
+                        <div class="columns small-6" style="padding: 0;">
                           <h4 style="margin-bottom: 0; line-height: 0.8em; text-transform: uppercase;">`+monthOnly+`</h4>
                           <h4 style="margin-bottom: 0; line-height: 0.8em; font-size: 2.3rem;">`+dayNum+`</h4>
                         </div>
                         <div class="columns small-6 hearing-time" style="text-align: right;">`+hearing.EventTime+`</div>
-                      </div>
+                      
                     </div>
                     <div class="card-section">
                       <h5 style="margin-bottom: 0; font-size: 1rem; line-height: 1.5em;"><a href='`+agendaLink+`' target='_blank'>`+hearingName+`</a></h5>
@@ -208,6 +212,9 @@
           if (jQuery(`#fp-${timeFrame}-hearings`).children().length === 0){
             jQuery(`#fp-${timeFrame}-hearings`).append(`<li class='column column-block' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS ${noHearingMessage}</em></li>`);
           };
+          if (jQuery(`#fp-${timeFrame}-hearings`).children().length < 5){
+          jQuery( ".row-hearings" ).addClass( "horizontal-grid" );
+          }
         };
       }
     });

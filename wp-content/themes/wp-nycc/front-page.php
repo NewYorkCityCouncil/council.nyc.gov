@@ -5,13 +5,14 @@
       <!-- <a href=""> -->
     </div>
   </div>
+  <div class="row" style="background-color:#666666;max-width: 100vw;padding: 1rem 0;text-align: center;"><div class="columns"><a style="color: #FFFFFF;" href="">View Historical Features Content</a></div></div>
   <?php include 'hearings.php';?>
   <div class="container" style="background-color:#2F56A6; padding: 2rem 0;">
     <div class="row">
       <div class="columns">
         <h2 style="color: #FFF">Live Video Feed</h2>
         <div class="row">
-          <div class="columns large-9 no-right-padding">
+          <div class="columns medium-9">
             <div class="tabs-content" data-tabs-content="live-videos" style="border:0;">
               <div class="tabs-panel is-active" data-auto-focus="true" id="location-chambers" style="padding:0;">
                 <div class="flex-video widescreen" style="margin-bottom:0;">
@@ -78,20 +79,20 @@
             </div>
             <p class="text-small text-center" style="color: #FFF;"><em>If videos streams are not active, <a href="http://legistar.nyccouncilstg.wpengine.com/Calendar.aspx?Mode=This%20Month" style="color: #FFF;">please check our calendar</a>.</em></p>
           </div>
-          <div class="columns medium-3 no-left-padding">
+          <div class="columns medium-3">
             <h4 class="sans-serif subheading">Select a stream:</h4>
-            <ul class="vertical tabs" style="max-height: 450px; overflow: auto;" data-tabs id="live-videos">
-              <li class="tabs-title is-active" style="text-align:center"><a href="#location-chambers" aria-selected="true"><strong>City Hall, Council Chambers</strong></a></li>
-              <li class="tabs-title" style="text-align:center"><a href="#location-committee-room"><strong>City Hall, Committee Room</strong></a></li>
-              <li class="tabs-title" style="text-align:center"><a href="#location-14th-floor"><strong>250 Broadway, 14th Fl<span class="show-for-xlarge">oor</span> Hearing Room</strong></a></li>
-              <li class="tabs-title" style="text-align:center"><a href="#location-16th-floor"><strong>250 Broadway, 16th Fl<span class="show-for-xlarge">oor</span> Hearing Room</strong></a></li>
-              <li class="tabs-title" style="text-align:center"><a href="#virtual-room-1"><strong>Virtual Room 1</strong></a></li>
-              <li class="tabs-title" style="text-align:center"><a href="#virtual-room-2"><strong>Virtual Room 2</strong></a></li>
-              <li class="tabs-title" style="text-align:center"><a href="#virtual-room-3"><strong>Virtual Room 3</strong></a></li>
-              <li class="tabs-title" style="text-align:center"><a href="#virtual-room-4"><strong>Virtual Room 4</strong></a></li>
-              <li class="tabs-title" style="text-align:center"><a href="#virtual-room-5"><strong>Virtual Room 5</strong></a></li>
-              <li class="tabs-title" style="text-align:center"><a href="#virtual-room-6"><strong>Virtual Room 6</strong></a></li>
-              <li class="tabs-title" style="text-align:center"><a href="#press-room"><strong>Press Room</strong></a></li>
+            <ul class="vertical tabs" style="max-height: 432px; overflow: auto;" data-tabs id="live-videos">
+              <li class="tabs-title is-active" style="text-align:center; padding: 0.7rem"><a href="#location-chambers" aria-selected="true"><strong>City Hall, Council Chambers</strong></a></li>
+              <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#location-committee-room"><strong>City Hall, Committee Room</strong></a></li>
+              <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#location-14th-floor"><strong>250 Broadway, 14th Fl<span class="show-for-xlarge">oor</span> Hearing Room</strong></a></li>
+              <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#location-16th-floor"><strong>250 Broadway, 16th Fl<span class="show-for-xlarge">oor</span> Hearing Room</strong></a></li>
+              <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#virtual-room-1"><strong>Virtual Room 1</strong></a></li>
+              <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#virtual-room-2"><strong>Virtual Room 2</strong></a></li>
+              <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#virtual-room-3"><strong>Virtual Room 3</strong></a></li>
+              <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#virtual-room-4"><strong>Virtual Room 4</strong></a></li>
+              <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#virtual-room-5"><strong>Virtual Room 5</strong></a></li>
+              <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#virtual-room-6"><strong>Virtual Room 6</strong></a></li>
+              <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#press-room"><strong>Press Room</strong></a></li>
               <li><a class="button small expanded" style="margin-bottom:0;" href="https://legistar.nyccouncilstg.wpengine.com/Calendar.aspx"><strong>Video archive of past
                   hearings</strong></a>
               </li>
