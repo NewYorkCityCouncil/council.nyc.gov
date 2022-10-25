@@ -1,0 +1,57 @@
+.wpos-anylc-clearfix:before, .wpos-anylc-clearfix:after{content: ""; display: table;}
+.wpos-anylc-clearfix::after{clear: both;}
+.wpos-anylc-optin-wrap *{box-sizing:border-box; outline:0;}
+.wpos-anylc-hide{display:none;}
+.wpos-anylc-optin-wrap .button{border-radius:0;}
+.wpos-anylc-optin-wrap{max-width: 480px; width: 100%; border:1px solid #ddd; background-color: #fff;}
+.wpos-anylc-optin-icon-wrap{font-size:0; padding: 15px;}
+.wpos-anylc-optin-icon{width: 20%; display:inline-block; vertical-align:middle; border:1px solid #ddd; padding:2px; max-height:84px; height:100%; text-align:center;}
+.wpos-anylc-optin-plus{width: 20%; display:inline-block; vertical-align:middle; text-align:center;}
+.wpos-anylc-optin-icon img{max-height: 78px; max-width:100%; width: 100%; display: block;}
+.wpos-anylc-optin-plus .dashicons-plus{color:#999; height:auto; width:auto; font-size:26px;}
+.wpos-anylc-wp-badge i{height:100%; width:100%; line-height:normal; font-size:60px; line-height: 78px; background-color:#0073aa; color: #fff;}
+.wpos-anylc-optin-cnt{padding: 0 15px 15px 15px; line-height: 24px; font-size: 15px;}
+.wpos-anylc-optin-cnt p{line-height: 24px; font-size: 15px;}
+.wpos-anylc-subs-wrap, .wpos-anylc-promotion-wrap{margin:10px 0; font-size:14px; font-weight:600;}
+.wpos-anylc-optin-action{background-color:#C0C7CA; padding: 15px 15px;}
+.wpos-anylc-optin-action .button{height: auto !important; padding: 2px 12px !important; font-size: 15px; font-weight: 600;}
+.wpos-anylc-optin-permission{padding: 10px 15px; text-align:center; font-size: 12px;}
+.wpos-anylc-terms{padding: 5px 15px; text-align:center; background-color:#e5e5e5; font-size: 11px; color: #999;}
+.wpos-anylc-terms a{color: #999;}
+.wpos-anylc-optin-permission a, .wpos-anylc-terms a{text-decoration:none; box-shadow:none;}
+.wpos-anylc-optin-permission a{display:block;}
+.wpos-anylc-permission{margin: 15px 0 15px 0; text-align: left;}
+.wpos-anylc-permission i{height: auto; width: auto; font-size: 40px;}
+.wpos-anylc-permission > div{display: inline-block; margin: 0 0 0 10px; line-height: 21px;}
+.wpos-anylc-permission .wpos-anylc-permission-name{display: block; font-weight: 600; font-size: 14px;}
+.wpos-anylc-permission .wpos-anylc-permission-info{display: block;}
+.button.wpos-anylc-btn{height: auto !important; padding: 2px 12px !important; font-size:15px; font-weight:600; height:auto !important; padding: 2px 12px !important; font-size:15px; font-weight:600; border-radius:0;}
+.wpos-anylc-notice{position: relative;}
+.wpos-anylc-notice .notice-dismiss{text-decoration:none;}
+.wpos-anylc-center{text-align:center;}
+
+/* Popup CSS */
+.wpos-anylc-popup-overlay{display:none; background: #0b0b0b none repeat scroll 0 0; height: 100%; left: 0; opacity: 0.8; overflow: hidden; position: fixed; top: 0; width: 100%; z-index: 9995;}
+.wpos-anylc-popup-wrp{height: 100%; left: 0; outline: 0 none !important; position: fixed; top: 0; width: 100%; z-index: 9996; overflow:auto;}
+.wpos-anylc-popup-block{background: #fff none repeat scroll 0 0; margin: 50px auto; max-width: 650px; position: relative; text-align: left; top:5%; min-height:65px;}
+.wpos-anylc-popup-body .wpos-anylc-popup-heading{font-size: 21px; font-weight: 600;}
+.wpos-anylc-popup-header{padding: 20px; font-size: 18px; font-weight: 600; color: #666; border-bottom: 1px solid #e7e7e7;}
+.wpos-anylc-popup-body{padding:20px;}
+.wpos-anylc-popup-body p{margin:0 0 1em 0; font-size: 15px;}
+.wpos-anylc-popup-body p:last-child{margin:0;}
+.wpos-anylc-popup-footer{padding:20px; text-align:right;}
+.wpos-anylc-no-overflow{overflow:hidden;}
+.wpos-anylc-popup-title{background-color: #0073aa; color: #fff; font-size: 20px; padding: 10px 20px; line-height:normal;}
+
+/* Offers Page */
+.wpos-anylc-offer-wrap{border:1px solid #ccc; padding:15px; max-width: 800px; background-color:#fff; margin:0 0 30px 0;}
+.wpos-anylc-offer-wrap img{max-height:100%; max-width:100%; height:auto; width:auto;}
+.wpos-anylc-offer-wrap .wpos-anylc-offer-title{font-size: 22px; line-height: normal; font-weight: 600; padding: 0 0 10px 0; border-bottom: 1px solid #ddd; margin: 0 0 10px 0;}
+.wpos-anylc-offer-wrap .wpos-anylc-offer-body{margin-bottom: 10px;}
+.wpos-anylc-offer-wrap .wpos-anylc-offer-desc p{font-size: 16px;}
+.wpos-anylc-offer-wrap a:focus, .wpos-anylc-offer-wrap a:active, .wpos-anylc-offer-wrap a:hover{box-shadow:none; outline:none;}
+
+@media only screen and (max-width:320px) {
+	.wpos-anylc-optin-icon{max-height: 56px;}
+	.wpos-anylc-wp-badge i{font-size: 35px; line-height: 50px;}
+}

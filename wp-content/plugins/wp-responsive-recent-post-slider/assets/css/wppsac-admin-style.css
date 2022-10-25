@@ -1,0 +1,80 @@
+/* Builder Shortcode Preview */
+.wppsac-builder-shrt-prev{background-color: #e7e7e7; padding: 10px; border: 1px solid #ccc; font-size: 15px;text-align: center;}
+.wppsac-builder-shrt-title span{border-bottom: 1px solid #999; display: inline-block; padding: 0 0 5px 0;}
+
+/************** Start - Solutions & Features Page CSS ****************/
+.wppsac-sf-center{text-align:center;}
+.recent-post-slider_page_wprps-solutions-features #wpwrap { background: #f7faff;}
+.wppsac-sf-wrap{max-width: 860px;margin: 0 auto;}
+.wppsac-sf-heading{font-size: 28px;font-weight: 700;letter-spacing: -1px;text-align: center;margin-top: 30px; margin-bottom:5px;}
+.wppsac-sf-image{margin:25px 0 15px 0;}
+.wppsac-sf-cont {color: #000; font-size:15px;}
+.wppsac-sf-top-rsn p, .wppsac-sf-sf-testimonial-wrap p{color: #000; font-size:15px;}
+.wppsac-sf-left{text-align:left;}
+.wppsac-sf-feature__text h3{font-size: 22px;font-weight: 700;margin:0;}
+.wppsac-sf-solutions-box-grid	{display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-ms-flex-direction: column;
+flex-direction: column;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;}
+.wppsac-sf-team{margin-bottom:50px; border-radius: 10px;border: 1px solid #e5ecf6; padding:10px 30px 30px 30px;}
+.wppsac-sf-blue{color:#6c63ff; font-weight:bold;}
+.recent-post-slider_page_wprps-solutions-features #wpcontent{padding: 0 0 40px; line-height: normal;}
+.wppsac-sf-wrap .wppsac-sf-inr{padding: 30px 40px 0;}
+.wppsac-sf-wrap .wppsac-sf-welcome-wrap{ margin-bottom:50px; position: relative;  -webkit-box-sizing: border-box;  box-sizing: border-box;  background: #fff;  padding: 30px;  border-radius: 10px;  border: 1px solid #e5ecf6; }
+.wppsac-sf-welcome-wrap{margin-top:30px;}
+
+.wppsac-sf-subtitle{color: #6c7781; font-size: 16px; font-weight: 600; margin-bottom: 6px;}
+.wppsac-sf-title{font-size: 32px; font-weight: 600; color: #23282d; margin-top: 0; margin-bottom: 20px;}
+.wppsac-sf-ttl{font-size: 23px; font-weight: 600; color: #23282d; margin-top: 0; margin-bottom: 20px;}
+.wppsac-sf-content{margin: 0 0 20px; font-size: 22px;  color: #646970;}
+.wppsac-sf-btn{display: inline-block; font-size: 18px; padding: 10px 25px; border-radius: 100px;  background-color: #46b450; border-color: #46b450; color: #fff !important; font-weight: 600; text-decoration: none;}
+.wppsac-sf-btn-orange{ background-color: #FF1000; border-color: #FF1000 ;}
+.wppsac-sf-btn:hover,
+.wppsac-sf-btn:focus{background-color: #3fa548; border-color: #3fa548;}
+.wppsac-sf-btn-orange:hover,
+.wppsac-sf-btn-orange:focus {background-color: #D01003 ; border-color: #D01003 ;}
+.wppsac-sf-fp-ttl{font-size: 23px; line-height: 1.4em; margin-bottom: 10px; font-weight: 600; text-align: center;}
+.wppsac-sf-fp-box-wrp{display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; gap: 10px;}
+.wppsac-sf-fp-box-wrp .wppsac-sf-fp-box{position: relative; border: 1px solid #c3e6cb; padding: 10px; text-align: center;}
+.wppsac-sf-fp-box-wrp .wppsac-sf-pro-box{border: 1px solid #f5c6cb;}
+.wppsac-sf-fp-box-wrp>*{flex: 0 0 26.8%;}
+.wppsac-sf-fp-box-wrp i.dashicons{font-size: 25px; display: inline-block; color: #528bfa; width: 30px; height: 30px; line-height: 30px;}
+.wppsac-sf-fp-box-wrp .wppsac-sf-box-ttl{font-size: 16px;}
+.wppsac-sf-tag{position: absolute; display: inline-block; top: 0; right: 0; background-color: #d4edda; color: #155724; padding: 1px 8px; text-transform: uppercase; font-size: 12px; }
+.wppsac-sf-pro-box .wppsac-sf-tag{background-color: #f8d7da; color: #721c24;}
+
+.wppsac-rc-wrap{max-width: 550px; margin: 15px auto 0 auto; text-align: left;}
+.wppsac-rc-wrap .wppsac-rc-inr{display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-bottom: 15px;}
+.wppsac-rc-wrap .wppsac-rc-icon{margin-right: 15px; width: 60px; height: 60px;}
+.wppsac-rc-wrap .wppsac-rc-icon img{width: 100%; height: 100%;}
+.wppsac-rc-wrap .wppsac-rc-inr h3{font-size: 16px; margin: 0 0 5px 0;}
+.wppsac-rc-wrap .wppsac-rc-inr p{margin: 0;}
+.wppsac-rc-wrap .wppsac-rc-bg-box{ background-color:#f1f1f1; border: 1px solid #d1d1d1; padding: 5px 10px; }
+
+.wppsac-solutions-section{margin-bottom: 20px;}
+.wppsac-solutions-box-wrap{display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; gap: 15px; margin-top:50px; margin-bottom:10px;}
+.wppsac-solutions-box-wrap>*{flex: 1 0 21%;}
+
+.wppsac-solutions-box-wrap .wppsac-box-ttl{background-color: #cce5ff; color: #004085; font-size: 16px; padding: 10px;}
+.wppsac-solutions-box-wrap ul{padding: 0 10px; margin: 0;}
+.wppsac-solutions-box-wrap ul li{position: relative; font-size: 14px; border-bottom: 1px solid #e7e7e7; margin: 0; padding: 8px 0;}
+.wppsac-solutions-box-wrap ul li:last-child{border-bottom: none;}
+
+.wppsac-sf-welcome-wrap{margin-top:30px;}
+.wppsac-sf-features-ttl{margin-top:45px; margin-bottom: 15px;}
+.wppsac-sf-features-ttl h2{margin-bottom: 5px; color: #155724;}
+.wppsac-features-section .wppsac-features-section-inr{padding: 15px 30px; margin-bottom:30px; text-align:center;}
+.wppsac-features-section ul.wppsac-features-box-grid{margin:0px;display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; gap: 15px; list-style: none !important; margin-bottom:15px;}
+ul.wppsac-features-box-grid>*{flex: 1 0 30%; text-align:center; font-size:13px; font-weight:bold;}
+ul.wppsac-features-box-grid li{border:1px solid #f1f1f1; padding:10px 0;}
+ul.wppsac-features-box-grid li img{width:100%;}
+
+.bg-highlight{background:#bde1f9;color:#000;padding: 0 5px; display:inline-block;}
+.wppsac-testimonial-section-inr{text-align:center;}
+.wppsac-testimonial-box-wrap{margin-bottom:15px;}
+.wppsac-testimonial-box-wrap{display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; gap: 15px;}
+.wppsac-testimonial-box-wrap>*{flex: 1 0 21%;}
+.wppsac-testimonial-box-wrap .wppsac-testimonial-box-grid{border: 1px solid #ddd;background:#fff;  box-shadow: 0 3px 2px rgba(0,0,0,.05);
+padding: 30px;text-align: center;display: flex;flex-direction: column;align-items: center;}
+.wppsac-testimonial-box-wrap h3{margin-top:0px;}
+.wppsac-testimonial-clnt{margin:15px 0 0 0; font-size:16px; font-weight:bold;}
+
+/************** End - Solutions & Features Page CSS ****************/

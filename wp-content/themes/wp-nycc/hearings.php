@@ -1,4 +1,4 @@
-<div class="container hearings-section" style="position: relative;padding: 6rem 0;" >
+<div class="container hearings-section" style="position: relative;padding: 6rem 0;" id="hearings">
   <div class="row" style="">
     <div class="columns" style="padding-right: 0; ">
       <h2 style="max-width: 75rem; margin-right: auto; margin-left: auto;">Hearings</h2>
@@ -70,8 +70,8 @@
     return this.getTimezoneOffset() < this.stdTimezoneOffset();
   }
   Date.prototype.getWeek = function() {
-    // let date = new Date(this.valueOf())
-    let date = new Date('October, 06 2022')
+    let date = new Date(this.valueOf())
+    // let date = new Date('October, 06 2022')
     date.setHours(0)
     date.setMinutes(0)
     date.setSeconds(0)
@@ -92,8 +92,8 @@
     jQuery(`#fp-${timeFrame}-hearings`).empty();
     jQuery(`#fp-${timeFrame}-hearings`).append(committeeLoader);
     let addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
-    let date = new Date('October, 06 2022')
-    // let date = new Date().dst() ? new Date(new Date().getTime() - 4 * 3600 * 1000) : new Date(new Date().getTime() - 5 * 3600 * 1000);
+    // let date = new Date('October, 06 2022')
+    let date = new Date().dst() ? new Date(new Date().getTime() - 4 * 3600 * 1000) : new Date(new Date().getTime() - 5 * 3600 * 1000);
     let sunday = date.getWeek()[0];
     let saturday = date.getWeek()[1];
     let startDate, endDate, noHearingMessage;

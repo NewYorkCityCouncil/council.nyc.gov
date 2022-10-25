@@ -1,11 +1,12 @@
 <?php get_header(); ?>
   <div class="row homepage-carousel-container">
     <div class="columns" style="padding: 0;">
-      <?php echo do_shortcode('[metaslider id="2697"]'); ?>
+      <?php echo do_shortcode('[recent_post_slider design="design-4" limit="5" show_category_name="false" post_type="nycc_feature" dots="false" show_author="false" speed="3000" media_size="full"]'); ?>
       <!-- <a href=""> -->
     </div>
   </div>
-  <div class="row" style="background-color:#666666;max-width: 100vw;padding: 1rem 0;text-align: center;"><div class="columns"><a style="color: #FFFFFF;" href="">View Historical Features Content</a></div></div>
+  <div class="row" style="background-color: #3758a1;max-width: 100vw;padding: 0.4rem 0;text-align: center;"><div class="columns"><a class="button" style="margin: 0" href="/past-featured-content/">View Past Featured Content</a></div></div>
+  <a class="anchor" id="hearings"></a>
   <?php include 'hearings.php';?>
   <div class="container" style="background-color:#2F56A6; padding: 2rem 0;">
     <div class="row">
@@ -93,8 +94,7 @@
               <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#virtual-room-5"><strong>Virtual Room 5</strong></a></li>
               <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#virtual-room-6"><strong>Virtual Room 6</strong></a></li>
               <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#press-room"><strong>Press Room</strong></a></li>
-              <li><a class="button small expanded" style="margin-bottom:0;" href="https://legistar.nyccouncilstg.wpengine.com/Calendar.aspx"><strong>Video archive of past
-                  hearings</strong></a>
+              <li><a class="button past-hearings small expanded" style="margin-bottom:0;" href="https://legistar.nyccouncilstg.wpengine.com/Calendar.aspx"><strong>Video archive of pasthearings</strong></a>
               </li>
             </ul>
           </div>
@@ -109,75 +109,7 @@
           <?php the_content(); ?>
         </article>
       <?php endwhile; endif; ?>
-      <!-- <hr> -->
     </div>
-    <!-- <div class="columns medium-8"> -->
-      <!-- <div class="row" aria-hidden="true">
-        <div class="columns small-12">
-          <h2>Featured at the Council</h2>
-          <div class="featured-carousel" style="display:none;"></div>
-        </div>
-      </div> -->
-      <!-- <div class="row">
-        <div class="columns small-12">
-          <h2>Featured Content</h2>
-        </div>
-      </div> -->
-      <!-- <ul class="row block-grid" style="list-style: none;"> -->
-
-      <!-- <?php
-        $list_features = new WP_Query('post_type=nycc_feature&orderby=menu_order&order=ASC&posts_per_page=-1');
-        if ( $list_features->have_posts() ) {
-          while ( $list_features->have_posts() ) {
-            $list_features->the_post(); 
-      ?> -->
-            <!-- <li class="columns" id="feature-<?php the_ID(); ?>">
-              <?php $feature_link_url = get_post_meta($post->ID, 'feature_link_url', true); ?>
-              <a href="<?php echo $feature_link_url; ?>">
-                <div class="image-header fit-container">
-                  <div class="image-overlay">
-                    <h3 class="image-overlay-text header-xlarge sans-serif"><?php the_title(); ?></h3>
-                  </div>
-                </div>
-              </a>
-              <style>
-                #feature-<?php the_ID(); ?> .image-header {
-                  margin: 0;
-                }
-                #feature-<?php the_ID(); ?> .image-header::before {
-                  background-image: url("<?php the_post_thumbnail_url( 'small' ); ?>");
-                }
-                /* small retina */
-                @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-                  #feature-<?php the_ID(); ?> .image-header::before {
-                    background-image: url("<?php the_post_thumbnail_url( 'medium' ); ?>");
-                  }
-                }
-                /* medium */
-                @media only screen and (min-width: 40.0625em) {
-                  #feature-<?php the_ID(); ?> .image-header::before {
-                    padding-bottom: 56.25%;
-                    background-image: url("<?php the_post_thumbnail_url( 'medium' ); ?>");
-                    margin: 0;
-                  }
-                }
-                /* medium retina */
-                @media only screen and (min-width: 40.0625em) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 40.0625em) and (min--moz-device-pixel-ratio: 2), only screen and (min-width: 40.0625em) and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-width: 40.0625em) and (min-device-pixel-ratio: 2), only screen and (min-width: 40.0625em) and (min-resolution: 192dpi), only screen and (min-width: 40.0625em) and (min-resolution: 2dppx) {
-                  #feature-<?php the_ID(); ?> .image-header::before {
-                    background-image: url("<?php the_post_thumbnail_url( 'large' ); ?>");
-                  }
-                }
-              </style>
-            </li> -->
-      <!-- <?php
-          }
-        }
-        wp_reset_postdata();
-      ?> -->
-      <!-- </ul> -->
-    <!-- </div> -->
-
-    <!-- <?php get_sidebar(); ?> -->
 
     <!-- New content
     <div class="columns medium-11 medium-centered">

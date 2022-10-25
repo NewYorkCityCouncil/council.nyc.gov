@@ -3,6 +3,11 @@
 html,legend,select {
   box-sizing: border-box;
 }
+/*
+*/
+html{
+  scroll-behavior: smooth;
+}
 
 .small-pull-1,.small-pull-10,.small-pull-11,.small-pull-2,.small-pull-3,.small-pull-4,.small-pull-5,.small-pull-6,.small-pull-7,.small-pull-8,.small-pull-9,.small-push-1,.small-push-10,.small-push-11,.small-push-2,.small-push-3,.small-push-4,.small-push-5,.small-push-6,.small-push-7,.small-push-8,.small-push-9,sub,sup {
   position: relative;
@@ -3088,6 +3093,7 @@ kbd {
   line-height: 1.4;
   color: #666;
 }
+
 /* For selecting live video feed section */
 .subheading{
   text-align: center;
@@ -5637,6 +5643,21 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   width: auto;
 }
 
+.vertical.tabs li:hover{
+  background-color: #3e5d90;
+}
+.vertical.tabs li:hover a{
+  color: #FFFFFF;
+}
+.button.past-hearings{
+  background-color:#e2e2e2;
+  color: #2f56a6;
+}
+.button.past-hearings:hover{
+  background-color: #28498d;
+  color: #fff;
+}
+
 .tabs-title,.title-bar-left {
   float: left;
 }
@@ -5663,20 +5684,13 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 
 .tabs-title>a {
   display: block;
-  /* padding: 1.25rem 1.5rem; */
-  font-size: 1rem;
+  font-size: 0.85rem;
   line-height: 1;
   color: #2f56a6;
 }
 
-.tabs-title>a:hover {
-  color: #284a8f;
-}
-
 .tabs-title>a:focus,.tabs-title>a[aria-selected=true] {
-  /* background: #e6e6e6; */
   color: #2f56a6;
-  /* font-size: .8rem; */
   outline-style: none !important;
 }
 .live-stream-homepage .tabs-title>a[aria-selected=true]{
@@ -5686,25 +5700,6 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   outline: none !important;
 }
 
-.live-stream-homepage .tabs-title>a:focus,.tabs-title>a[aria-selected=true] {
-  background: #e6e6e6;
-  color: #2f56a6;
-  font-size: .8rem;
-  outline-style: none !important;
-}
-
-/* .live-stream-homepage .tabs-title>a[aria-selected=true]::after{
-  content: attr(data-text);
-  content: attr(data-text) / "";
-  height: 0;
-  visibility: hidden;
-  overflow: hidden;
-  user-select: none;
-  pointer-events: none;
-  font-weight: 600;
-  font-size: 1.5rem;
-} */
-
 .live-stream-homepage .tabs-title>a::after{
   content: attr(data-text);
   content: attr(data-text) / "";
@@ -5713,8 +5708,6 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   overflow: hidden;
   user-select: none;
   pointer-events: none;
-  /* font-weight: 600;
-  font-size: 1.5rem; */
 }
 
 .tabs-content {
@@ -5873,6 +5866,12 @@ a.thumbnail image {
   padding: 0;
 }
 
+.top-bar::after,
+.top-bar::before {
+  display: table;
+  content: ' ';
+}
+
 /* .top-bar input {
   max-width: 200px;
   margin-right: 1rem;
@@ -5953,12 +5952,11 @@ a.thumbnail image {
     background-color: #2f56a6 !important;
     padding-left: 0;
   }
-  #menu-main-menu .search{
+  #menu-main-menu label{
     padding: 0.9125rem 1rem;
   }
 }
 
-/* Utility classes */
 .hide {
   display: none!important;
 }
@@ -6186,32 +6184,33 @@ a.thumbnail image {
 }
 
 .site-logo {
-  color: #FFF;
+  color: #FFFFFF;
   display: block;
   font-family: Georgia,Cambria,"Times New Roman",Times,serif;
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: .875rem;
   line-height: 2.25rem;
   letter-spacing: -.03rem;
 }
 
 @media print,screen and (min-width:40em) {
   .site-logo {
-    font-size: 2.125rem;
+    /* font-size: 1.125rem; */
+    font-size: 1.575rem;
     letter-spacing: 0;
   }
 }
 
-@media screen and (min-width:75em) {
+/* @media screen and (min-width:75em) {
   .site-logo {
     font-size: 1.375rem;
   }
-}
+} */
 
 .site-logo a {
   display: inline-block;
   padding: .9125rem 1rem;
-  /* margin-left: -1rem; */
+  margin-left: -1rem;
 }
 
 @media screen and (min-width:64em) {
@@ -7564,100 +7563,37 @@ input::placeholder{
   }
 }
 
-/* Searchbar in Nav */
+/*--------------------------------------------------
+  SEARCHBAR IN NAVIGAGTION
+*/
 .nav-search-container .search-form{
   display: flex;
   position: relative;
 }
-
 .nav-search-container .search-form .search-field{
   margin-bottom: 0;
   width: 300px;
 }
-
 .nav-search-container .search-form .button{
   background-color: #294279;
   border: none;
   margin-bottom: 0;
 }
+/*
+  SEARCHBAR IN NAVIGAGTION END
+--------------------------------------------------*/
 
-/* Homepage Carousel */
-.homepage-carousel-container{
-  margin-top: -55px;
-  max-width: 100%;
-}
-
-/* Homepage carousel - MetaSlider plugin - custom CSS */
-.ms-theme-precognition{
-  padding-bottom: 0 !important;
-}
-
-.metaslider.ms-theme-precognition .flexslider ul.slides .caption-wrap .caption{
-  font-size: 1.5rem !important;
-  line-height: 1.3 !important;
-  transform: none !important;
-  text-align: left !important;
-  left: 0 !important;
-  bottom: auto !important;
-  background-color: rgba(0,0,0,1);
-  box-shadow: 15px 0 0 0 rgb(0 0 0 / 100%), -15px 0 0 0 rgb(0 0 0 / 100%);
-  position: relative !important;
-  width: fit-content !important;
-}
-.metaslider.ms-theme-precognition .flexslider ul.slides .caption-wrap{
-  background: none !important;
-  padding-right: 1.875rem !important;
-  padding-left: 1.875rem !important;
-  padding-bottom: 1.875rem !important;
-  display: flex;
-  align-items: end;
-}
-#metaslider-id-2697 .flex-prev,
-#metaslider-id-2697 .flex-next {
-  background-color: #19396f !important;
-  width: 40px !important;
-  height: 40px !important;
+/*--------------------------------------------------
+  HOMEPAGE HEARINGS SECTION
+*/
+a.anchor{
+  display: block;
+  position: relative;
+  top: -80px;
+  visibility: hidden;
 }
 
-#metaslider-id-2697.metaslider.ms-theme-precognition .flexslider ul.flex-direction-nav li a::before{
-  height: 20px !important;
-}
-
-#metaslider-id-2697 .flex-control-nav{
-  background-color: #666666;
-}
-
-#metaslider-id-2697 .flex-control-nav li{
-  margin: 0.5rem;
-}
-
-#metaslider-id-2697 .flex-control-nav a{
-  background-color: #333333 !important;
-  color: #FFFFFF;
-  height: 66px;
-}
-
-#metaslider-id-2697 .flex-control-nav a.flex-active:after {
-  content: " ";
-  position: absolute;
-  right: 44%;
-  top: -8px;
-  border-top: none;
-  border-right: 15px solid transparent;
-  border-left: 15px solid transparent;
-  border-bottom: 15px solid #969696;
-}
-
-#metaslider-id-2697 .flex-control-nav a.flex-active{
-  background-color: #969696 !important;
-}
-
-.tabs-panel.hearings{
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.hearings-section:before{
+#hearings:before{
   background-image: url('/wp-content/themes/wp-nycc/assets/images/nyc map.png');
   background-position: 50% 0;
   background-repeat: no-repeat;
@@ -7673,6 +7609,11 @@ input::placeholder{
   z-index: -1;
 }
 
+.tabs-panel.hearings{
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .row-hearings{
   display: grid;
   grid-auto-flow: column;
@@ -7686,12 +7627,9 @@ input::placeholder{
   grid-template-rows: auto !important;
 }
 
-.row-hearings:before, .row-hearings:after{
-  content: '';
-  width: 10px;
-}
-
-.hearing-card:hover, .hearing-card:hover .card-divider, .hearing-card:hover .card-section{
+.hearing-card:hover, 
+.hearing-card:hover .card-divider, 
+.hearing-card:hover .card-section{
   background-color:#2f56a6;
   color: #FFFFFF;
 }
@@ -7710,7 +7648,8 @@ input::placeholder{
   color: #FFFFFF;
 }
 
-.hearing-card h4, .hearing-card .hearing-time{
+.hearing-card h4, 
+.hearing-card .hearing-time{
   color: #2f56a6;
 }
 
@@ -7725,3 +7664,73 @@ input::placeholder{
 .hearing-card:hover .hearing-time{
   color: #FFFFFF;
 }
+/*
+  HOMEPAGE HEARINGS SECTION END
+--------------------------------------------------*/
+
+/*--------------------------------------------------
+  STYLES FOR WP RECENT POST SLIDER PLUGIN
+*/
+.homepage-carousel-container{
+  margin-top: -55px;
+  max-width: 100%;
+}
+
+@media only screen and (min-width: 40.0625em){
+  .homepage-carousel-container .wp-medium-5.wpcolumns{
+    width: 55%;
+  }
+
+  .homepage-carousel-container .wp-medium-7.wpcolumns{
+    align-content: center;
+    /* background-color: #364c7d; */
+    display: grid;
+    width: 45%;
+  }
+
+  .homepage-carousel-container .wppsac-post-slider.design-4 .wppsac-post-image-bg, .homepage-carousel-container .wp-medium-7.wpcolumns{
+    height: 420px;
+  }
+}
+
+.homepage-carousel-container .wppsac-post-slider.design-4 .wppsac-post-list-content .wp-medium-7{
+  padding-left: 35px;
+}
+
+.homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
+  font-size: 42px;
+  line-height: 44px
+}
+
+.homepage-carousel-container .wppsac-post-slider .wppsac-post-date::after{
+  background-color: #d6d6d6;
+}
+
+.homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{  
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 1rem;
+  padding: .85em 1em;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: background-color .25s ease-out,color .25s ease-out;
+  font-size: .9rem;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: #2f56a6;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+.homepage-carousel-container .wppsac-post-slider.design-4 .wp-medium-5{
+  padding: 0;
+}
+
+.homepage-carousel-container .wppsac-post-slider .wppsac-post-image-bg img{
+  object-position: center center;
+}
+/*
+  STYLES FOR WP RECENT POST SLIDER PLUGIN END
+--------------------------------------------------*/

@@ -1,0 +1,306 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Responsive Recent Post Slider/Carousel\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-15 09:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.0; wp-5.3.4"
+
+#: includes/admin/wprps-how-it-work.php:177
+msgid "100% Multi language"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:167
+msgid "3 Widgets (Post slider, Post List/Slider-1, Post List/Slider-2)"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:148
+msgid "5 stars!"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:163
+msgid "60+ designs"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Add and display Responsive WordPresss Recent Post Slider and Carousel on "
+"your website with 4 designs (Slider) and 1 designs (Carousel) using a "
+"shortcode. Also added Gutenberg block support."
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:82
+msgid "All Shortcodes"
+msgstr ""
+
+#: templates/carousel/design-1.php:34 templates/slider/design-1.php:27
+#: templates/slider/design-2.php:28 templates/slider/design-3.php:36
+#: templates/slider/design-4.php:38
+msgid "By"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:94
+msgid "Check Documentation"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:102
+msgid "Check Free Demo"
+msgstr ""
+
+#: includes/admin/settings/premium.php:55
+msgid "Compare \"WP Responsive Recent Post Slider/Carousel\" Free VS Pro"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:169
+msgid "Custom CSS option"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:99
+msgid "Demo"
+msgstr ""
+
+#: includes/wppsac-function.php:100 includes/wppsac-function.php:116
+msgid "Design 1"
+msgstr ""
+
+#: includes/wppsac-function.php:101
+msgid "Design 2"
+msgstr ""
+
+#: includes/wppsac-function.php:102
+msgid "Design 3"
+msgstr ""
+
+#: includes/wppsac-function.php:103
+msgid "Design 4"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:172
+msgid ""
+"Divi Page Builder Native Support. <span class=\"wpos-new-feature\">New</span>"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:91
+msgid "Documentation"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:168
+msgid "Drag & Drop order change"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:148
+msgid "Enjoyed this plugin? You can help by rate this plugin "
+msgstr ""
+
+#: includes/admin/supports/gutenberg-block.php:274
+msgid "Essential Plugin Blocks"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:63
+msgid "Featured Post"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:176
+msgid "Fully responsive"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:173
+msgid ""
+"Fusion Page Builder (Avada) native support.<span class=\"wpos-new-feature\">"
+"New</span>"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:179
+msgid ""
+"Gain access to <strong>Responsive Recent Post Slider</strong> included in "
+"<br/><strong>Essential Plugin Bundle"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:57
+msgid "Getting Started"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:180
+msgid "Grab Recent Post Slider Now"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:115
+msgid "Gutenberg Support"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:171
+msgid ""
+"Gutenberg, Elementor, Beaver and SiteOrigin Page Builder Support. <span "
+"class=\"wpos-new-feature\">New</span>"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:144
+msgid "Help to improve this plugin!"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:123
+msgid "How it Work"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:37
+msgid "How It Works"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:48
+msgid "How It Works - Display and shortcode"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:70
+msgid "How Shortcode Works"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid ""
+"https://www.essentialplugin.com/wordpress-plugin/wp-responsive-recent-post-"
+"slider/"
+msgstr ""
+
+#: wp-recent-post-slider.php:165
+#, php-format
+msgid ""
+"It looks like you had PRO version %s of this plugin activated. To avoid "
+"conflicts the extra version has been deactivated and we recommend you delete "
+"it."
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:86
+msgid "Post carousel Shortcode. Where you can use 1 designs."
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:85
+msgid "Post slider Shortcode. Where you can use 4 designs."
+msgstr ""
+
+#: templates/carousel/design-1.php:48 templates/slider/design-1.php:41
+#: templates/slider/design-2.php:42 templates/slider/design-3.php:50
+#: templates/slider/design-4.php:52
+msgid "Click to read more"
+msgstr ""
+
+#: includes/shortcodes/wppsac-carousel.php:26
+msgid "Recent Carousel View"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:166
+msgid "Recent gridbox slider with 8 designs"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:165
+msgid "Recent Post Carousel with 30 designs"
+msgstr ""
+
+#: includes/admin/class-wprps-admin.php:34
+msgid "Recent Post Slider"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:164
+msgid "Recent Post Slider with 25 designs"
+msgstr ""
+
+#: includes/shortcodes/wppsac-slider.php:26
+#: includes/shortcodes/wppsac-slider.php:34
+msgid "Recent Slider View"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:175
+msgid "Slider RTL support"
+msgstr ""
+
+#: includes/admin/class-wprps-admin.php:37
+msgid "Solutions & Features"
+msgstr ""
+
+#: includes/admin/class-wprps-admin.php:37
+msgid "Solutions & Features - Responsive Recent Post Slider"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:74
+msgid "Step-1. Create a page like Latest Post OR add the shortcode in a page."
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:127
+msgid "Step-1. Go to the Gutenberg editor of your page."
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:61
+msgid "Step-1. This plugin create a menu \"Recent Post Slider\"."
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:75
+msgid "Step-2. Put below shortcode as per your need."
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:128
+msgid "Step-2. Search \"recent\" keyword in the Gutenberg block list."
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:62
+msgid ""
+"Step-2. This plugin get all the latest POST from WordPress Post section with "
+"a simple shortcode"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:129
+msgid ""
+"Step-3. Add any block of recent and you will find its relative options on "
+"the right end side."
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:63
+msgid ""
+"Step-3. If you need a Featured Post OR Trending/Popular Post plugin then try "
+"our plugins"
+msgstr ""
+
+#: wp-recent-post-slider.php:164
+#, php-format
+msgid "Thank you for activating %s"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:63
+msgid "Trending/Popular Post"
+msgstr ""
+
+#: includes/admin/class-wprps-admin.php:40
+msgid "Upgrade To Premium "
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:159
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: includes/admin/class-wprps-admin.php:40
+msgid "Upgrade To PRO - Responsive Recent Post Slider"
+msgstr ""
+
+#. Author of the plugin
+msgid "WP OnlineSupport, Essential Plugin"
+msgstr ""
+
+#. Name of the plugin
+#: includes/admin/settings/premium.php:15
+msgid "WP Responsive Recent Post Slider"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:174
+msgid "WP Templating Features"
+msgstr ""
+
+#: includes/admin/wprps-how-it-work.php:170
+msgid "WPBakery Page Builder Supports"
+msgstr ""

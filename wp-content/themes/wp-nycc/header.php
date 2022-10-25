@@ -45,7 +45,9 @@
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
     
     <?php wp_head(); ?>
-    <script>jQuery(document).ready(function(){jQuery('#archive .dismiss span').on('click',function(){jQuery('#archive').animate({'opacity': 0}, 300)})});</script>
+    <script>
+      jQuery(document).ready(function(){jQuery('#archive .dismiss span').on('click',function(){jQuery('#archive').animate({'opacity': 0}, 300)})});
+    </script>
   </head>
   
   <body <?php body_class(); ?>>
@@ -70,7 +72,16 @@
               <div class="columns small-8 large-12" style="background-color: #2F56A6; padding: .3rem 0" data-equalizer-watch>
                 <div style="display: flex; align-items: center;">
                   <div class="columns medium-12 large-7">
-                    <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-white.png"><div class="site-logo" style="display:inline;"><?php bloginfo('name'); ?></div></a></strong>
+                    <strong class="site-logo">
+                      <!-- <a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"> -->
+                      <a href="/">
+                      <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-white.png">
+                        <div class="site-logo" style="display:inline;">
+                          <!-- <?php bloginfo('name'); ?> -->
+                          New York City Council
+                        </div>
+                      </a>
+                    </strong>
                   </div>
                   
                   <div class="show-for-large columns large-5 nav-search-container" style="display: flex; justify-content: end; align-items: end;">
@@ -97,23 +108,23 @@
                           <a href="/budget/">Budget</a>
                         </li>
                         <li>
-                          <a href="/districts/">Districts</a>
-                        </li>
-                        <li>
                           <a href="/committees/">Committees</a>
                         </li>
                         <li>
                           <a href="/land-use/">Land Use</a>
                         </li>
                         <li>
-                          <a href="https://legistar.council.nyc.gov/Calendar.aspx">Upcoming Hearings</a>
+                          <a href="/#hearings">Upcoming Hearings</a>
                         </li>
-                        <li class="hide-for-large">
+                        <li>
+                          <a href="/districts/">Find My District <i style="margin-left: 0.35rem;" class="fa fa-search"></i></a>
+                        </li>
+                        <!-- <li class="hide-for-large"> -->
                           <!-- <label style="color: #FFF; float: left; max-width: 300px; width: 100%;">Find Your Representative
                             <input type="text" style="margin-bottom: 0" placeholder="Search here"/>
                             <input type="submit" class="button" style="background-color: #23417D;margin-left: 30px; margin-bottom: 0px;" value="Submit"/>
                           </label> -->
-                        </li>
+                        <!-- </li> -->
                         <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
                           <a href="#">About</a>
                           <ul class="menu">
