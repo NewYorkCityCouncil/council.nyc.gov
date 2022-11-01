@@ -1,11 +1,11 @@
 <?php get_header(); ?>
   <div class="row homepage-carousel-container">
     <div class="columns" style="padding: 0;">
-      <?php echo do_shortcode('[recent_post_slider design="design-4" limit="5" show_category_name="false" post_type="nycc_feature" dots="false" show_author="false" speed="3000" media_size="full"]'); ?>
+      <?php echo do_shortcode('[recent_post_slider design="design-4" limit="5" show_category_name="false" post_type="nycc_feature" dots="true" show_author="false" speed="3000" media_size="full"]'); ?>
       <!-- <a href=""> -->
     </div>
   </div>
-  <div class="row" style="background-color: #3758a1;max-width: 100vw;padding: 0.4rem 0;text-align: center;"><div class="columns"><a class="button" style="margin: 0" href="/past-featured-content/">View Past Featured Content</a></div></div>
+  <div class="row view-featured-container"><div class="columns"><a class="button" style="margin: 0" href="/past-featured-content/">View Past Featured Content</a></div></div>
   <a class="anchor" id="hearings"></a>
   <?php include 'hearings.php';?>
   <div class="container" style="background-color:#2F56A6; padding: 2rem 0;">

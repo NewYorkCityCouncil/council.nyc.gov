@@ -29,7 +29,7 @@ function nycc_feature_post_type() {
       'has_archive' => false,
       'capability_type' => 'page',
       'hierarchical' => false,
-      'supports' => array( 'title', 'thumbnail', 'page-attributes'),
+      'supports' => array( 'title', 'thumbnail', 'page-attributes', 'excerpt'),
       'register_meta_box_cb' => 'add_feature_metaboxes'
      )
   );

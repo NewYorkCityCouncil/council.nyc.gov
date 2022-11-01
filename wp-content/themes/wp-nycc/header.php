@@ -83,7 +83,6 @@
                       </a>
                     </strong>
                   </div>
-                  
                   <div class="show-for-large columns large-5 nav-search-container" style="display: flex; justify-content: end; align-items: end;">
                     <?php get_search_form(); ?>  
                     <!-- <label class="search">Find Your Representative
