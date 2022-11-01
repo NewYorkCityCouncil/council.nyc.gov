@@ -80,9 +80,9 @@
             </div>
             <p class="text-small text-center" style="color: #FFF;"><em>If videos streams are not active, <a href="http://legistar.nyccouncilstg.wpengine.com/Calendar.aspx?Mode=This%20Month" style="color: #FFF;">please check our calendar</a>.</em></p>
           </div>
-          <div class="columns medium-3">
+          <div class="columns medium-3 live-stream-tabs-column">
             <h4 class="sans-serif subheading">Select a stream:</h4>
-            <ul class="vertical tabs" style="max-height: 432px; overflow: auto;" data-tabs id="live-videos">
+            <ul class="vertical tabs" data-tabs id="live-videos">
               <li class="tabs-title is-active" style="text-align:center; padding: 0.7rem"><a href="#location-chambers" aria-selected="true"><strong>City Hall, Council Chambers</strong></a></li>
               <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#location-committee-room"><strong>City Hall, Committee Room</strong></a></li>
               <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#location-14th-floor"><strong>250 Broadway, 14th Fl<span class="show-for-xlarge">oor</span> Hearing Room</strong></a></li>
@@ -94,7 +94,7 @@
               <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#virtual-room-5"><strong>Virtual Room 5</strong></a></li>
               <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#virtual-room-6"><strong>Virtual Room 6</strong></a></li>
               <li class="tabs-title" style="text-align:center; padding: 0.7rem"><a href="#press-room"><strong>Press Room</strong></a></li>
-              <li><a class="button past-hearings small expanded" style="margin-bottom:0;" href="https://legistar.nyccouncilstg.wpengine.com/Calendar.aspx"><strong>Video archive of pasthearings</strong></a>
+              <li><a class="button past-hearings small expanded" style="margin-bottom:0;" href="https://legistar.nyccouncilstg.wpengine.com/Calendar.aspx"><strong>Video archive of past hearings</strong></a>
               </li>
             </ul>
           </div>
