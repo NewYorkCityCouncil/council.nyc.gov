@@ -47,7 +47,7 @@
 <script>
     jQuery(document).ready(function(){
         const event_name = <?php echo json_encode($ced_event_title); ?>;
-        const event_code = <?php echo json_encode($event_code); ?>;
+        const event_code = <?php echo json_encode($ced_event_code); ?>;
         const date_of_event = <?php echo json_encode($parsed_full_date); ?>;
         const doors_open = <?php echo json_encode($parsed_time_doors); ?>;
         const program_begins = <?php echo json_encode($parsed_time_start); ?>;
