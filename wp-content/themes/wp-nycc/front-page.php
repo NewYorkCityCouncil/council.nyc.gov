@@ -1,7 +1,7 @@
 <?php get_header(); ?>
   <div class="row homepage-carousel-container">
     <div class="columns" style="padding: 0;">
-      <?php echo do_shortcode('[recent_post_slider design="design-4" limit="5" show_category_name="false" post_type="nycc_feature" dots="true" show_author="false" speed="3000" media_size="full"]'); ?>
+      <?php echo do_shortcode('[recent_post_slider design="design-4" limit="5" show_category_name="false" post_type="nycc_feature" dots="true" show_author="false" speed="500" media_size="full"]'); ?>
       <!-- <a href=""> -->
     </div>
   </div>
