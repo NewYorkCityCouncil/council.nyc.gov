@@ -21,12 +21,6 @@
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
       <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
-
-        <div class="page-header">
-          <h1><?php the_title(); ?></h1>
-          <hr>
-        </div>
-
         <section class="page-content">
             <div class='row'>
                 <div class='columns small-12'>

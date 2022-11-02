@@ -39,30 +39,29 @@
 <div class="row">
     <div class="columns">
         <h1 id="rsvp-event-title">RSVP</h1>
-
         <hr style="margin: 20px 0px 10px;">
-
-        <a id="back-link" href="/events">Return to Upcoming Events</a>
-
-        <?php echo do_shortcode('[contact-form-7 id="182" title="Test RSVP Form"]') ?>
-        <script>
-            jQuery(document).ready(function(){
-                const event_name = <?php echo json_encode($ced_event_title); ?>;
-                const event_code = <?php echo json_encode($event_code); ?>;
-                const date_of_event = <?php echo json_encode($parsed_full_date); ?>;
-                const doors_open = <?php echo json_encode($parsed_time_doors); ?>;
-                const program_begins = <?php echo json_encode($parsed_time_start); ?>;
-                const program_location = <?php echo json_encode($ced_event_location); ?>;
-                jQuery("#event-name").html(`<option value="${event_code}">${event_name}</option>`);
-                jQuery("#full-event-name").val(event_name);
-                jQuery("#date-of-event").val(date_of_event);
-                jQuery("#doors-open").val(doors_open);
-                jQuery("#program-begins").val(program_begins);
-                jQuery("#program-location").val(program_location);
-            })
-        </script>
+        <p><strong style="text-decoration: underline;"><a id="back-link" href="/events">Return to Upcoming Events</a></strong></p>
     </div>
 </div>
+<?php echo do_shortcode('[contact-form-7 id="182" title="New CPT RSVP Form"]') ?>
+<script>
+    jQuery(document).ready(function(){
+        const event_name = <?php echo json_encode($ced_event_title); ?>;
+        const event_code = <?php echo json_encode($event_code); ?>;
+        const date_of_event = <?php echo json_encode($parsed_full_date); ?>;
+        const doors_open = <?php echo json_encode($parsed_time_doors); ?>;
+        const program_begins = <?php echo json_encode($parsed_time_start); ?>;
+        const program_location = <?php echo json_encode($ced_event_location); ?>;
+        if (event_code){
+            jQuery("#event-name").html(`<option value="${event_code}">${event_name}</option>`);
+            jQuery("#full-event-name").val(event_name);
+            jQuery("#date-of-event").val(date_of_event);
+            jQuery("#doors-open").val(doors_open);
+            jQuery("#program-begins").val(program_begins);
+            jQuery("#program-location").val(program_location);
+        };
+    })
+</script>
 
 <?php get_footer(); ?>
  
