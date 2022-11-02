@@ -36,7 +36,7 @@
                     </p>
                 </div>
                 <div class='columns small-12'>
-                    <p><a href="/events/past-events">Click here to see our past events!</a></p>
+                    <p><strong style="text-decoration: underline;"><a href="/events/past-events">Click here to see our past events</a></strong></p>
                 </div>
             </div>
             <br/>

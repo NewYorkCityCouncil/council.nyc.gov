@@ -26,9 +26,7 @@
                     <section class="page-content">
                         <div class='row'>
                             <div class='columns small-12'>
-                                <a id="back-link" href="/events">Return to Upcoming Events</a><br/><br/>
-                                The New York City Council is committed to ensuring its events are accessible to all members of the public.<br/>
-                                For general questions about accessibility, or about specific accommodations, you may contact us at <a href='mailto:accessibility@council.nyc.gov'>accessibility@council.nyc.gov.</a>
+                                <p><strong style="text-decoration: underline;"><a id="back-link" href="/events">Click here to see our upcoming events</a></strong></p>
                             </div>
                         </div>
                         <br/>
