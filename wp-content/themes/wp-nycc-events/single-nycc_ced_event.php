@@ -69,7 +69,7 @@
                                 </td>
                             </tr>
                             <?php if ($today < $ced_event_date){ ?>
-                                <tr><td colspan="2"><a href="/events/test-rsvp/?event=<?php echo $ced_event_code ?>" style="font-weight: bold;">RSVP FOR THIS EVENT</a></td></tr>
+                                <tr><td colspan="2"><a href="/events/rsvp/?event=<?php echo $ced_event_code ?>" style="font-weight: bold;">RSVP FOR THIS EVENT</a></td></tr>
                             <?php } ?>
                         </table>
                         <?php the_content(); ?>

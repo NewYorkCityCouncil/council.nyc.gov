@@ -109,7 +109,7 @@
                                     <?php  if ($ced_event_invite_cre){ ?>| <a href="<?php echo $ced_event_invite_cre?>">Creole</a> <?php } ?>
                                     <?php  if ($ced_event_invite_spa){ ?>| <a href="<?php echo $ced_event_invite_spa?>">Spanish</a> <?php } ?>
                                 </div>
-                                <a href="/events/test-rsvp/?event=<?php echo $ced_event_code ?>"><strong>RSVP FOR THIS EVENT</strong></a>
+                                <a href="/events/rsvp/?event=<?php echo $ced_event_code ?>"><strong>RSVP FOR THIS EVENT</strong></a>
                             </div>
                             <div class="event-image columns small-3">
                                 <a href=<?php the_permalink(); ?>>
