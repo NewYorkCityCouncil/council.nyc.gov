@@ -73,16 +73,6 @@ jQuery(document).ready(() => {
         let saturday = date.setDate(date.getDate() + 21);
         return new Date(saturday);
     }
-    // Handles organization dropdown change
-    jQuery("#organization-select").change(function(){
-        jQuery("#organization-select").val() === "Other" ? jQuery("#if-other").show() : jQuery("#if-other").hide();
-    });
-    jQuery("#testimony-type").change(function(e){
-        jQuery("#hearing-select").attr('disabled', 'disabled');
-        jQuery("#hearing-select").empty()
-        jQuery("#hearing-select").append('<option value="">---</option>')
-        jQuery("#testimony-type").val() === "Submitting written testimony" ? getHearings(true) : getHearings();
-    })
     const getHearings = (written=null) => {
         let addZero = function(n) {return (n < 10) ? ("0" + n) : n;}
         let date;
@@ -154,7 +144,7 @@ jQuery(document).ready(() => {
                             cutoff.setHours(meetingHour+7);
                             cutoff.setMinutes(meetingMinute);
                         }
-                        let jointHearingRegex = new RegExp(/^jointly(.*)\.$/gi)
+                        let jointHearingRegex = new RegExp(/^jointly.+\.$/i)
                         if (hearing.EventComment !== null){
                             if(hearing.EventComment.toLowerCase() === "vote"){
                                 return
@@ -163,8 +153,9 @@ jQuery(document).ready(() => {
                                 return
                             };
                             if (hearing.EventComment.toLowerCase().includes("jointly")){
-                                if(!jointHearingRegex.test(hearing.EventComment) ){
-                                        hearingName += " ("+hearing.EventComment+")";
+                                // Add hearing to the list if the comments begins with the word "Jointly" and ends with a period
+                                if(jointHearingRegex.test(hearing.EventComment) ){
+                                    hearingName += " ("+hearing.EventComment+")";
                                 } else {
                                     return
                                 };
