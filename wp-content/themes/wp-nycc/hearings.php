@@ -140,8 +140,8 @@
           jQuery(`#fp-${timeFrame}-hearings`).addClass("horizontal-grid");
         }
         if (hearings.length === 0){
-          // jQuery('.row-hearings.horizontal-grid').has('.no-hearings').css('grid-auto-columns','auto');
           jQuery(`#fp-${timeFrame}-hearings`).append(`<li class='column column-block no-hearings' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS ${noHearingMessage}</em></li>`);
+          jQuery('.row-hearings.horizontal-grid').css('grid-auto-columns','auto');
         } else {
           sortedHearings.forEach(function(hearing){
             let deferred = hearing.EventAgendaStatusName.toLowerCase() === "deferred"
