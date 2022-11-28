@@ -52,17 +52,10 @@
   
   <body <?php body_class(); ?>>
     <a style="position: absolute; top:0; left: -10000px;" id="skip-link-a" href="#main">Skip to main content</a>
-    <!-- <script>jQuery("#skip-link-a").focus(function(){jQuery("#skip-link-li").css("position","initial")}).focusout(function(){jQuery("#skip-link-li").css("position","absolute")});</script> -->
     <!-- Google Tag Manager (noscript)
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCN4XTT"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     End Google Tag Manager (noscript) -->
-    <!-- <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {} else { ?>
-    <div id="map-container" class="short" aria-hidden="true">
-      <div id="map"></div>
-      <button class="map-toggler" id="map-toggler">Expand Map</button>
-    </div>
-    <?php } ?> -->
 
     <div id="sticky-wrapper"> <!-- closing tag on line 16 ./footer.php -->
       <div data-sticky-container>
