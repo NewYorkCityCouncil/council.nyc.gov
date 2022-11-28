@@ -64,7 +64,7 @@
     </div>
     <?php } ?> -->
 
-    <div id="sticky-wrapper">
+    <div id="sticky-wrapper"> <!-- closing tag on line 16 ./footer.php -->
       <div data-sticky-container>
         <header class="site-header sticky" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
           <div class="top-bar">
@@ -73,11 +73,9 @@
                 <div style="display: flex; align-items: center;">
                   <div class="columns medium-12 large-7">
                     <strong class="site-logo">
-                      <!-- <a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"> -->
                       <a href="/">
-                      <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-white.png">
+                        <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-white.png">
                         <div class="site-logo" style="display:inline;">
-                          <!-- <?php bloginfo('name'); ?> -->
                           New York City Council
                         </div>
                       </a>
@@ -85,10 +83,6 @@
                   </div>
                   <div class="show-for-large columns large-5 nav-search-container" style="display: flex; justify-content: end; align-items: end;">
                     <?php get_search_form(); ?>  
-                    <!-- <label class="search">Find Your Representative
-                      <input type="text" style="margin-bottom: 0" placeholder="Search here"/>
-                    </label>
-                    <input type="submit" class="button" style="background-color: #23417D;margin-left: 30px; margin-bottom: 0px;" value="Submit"/> -->
                   </div>
                 </div>
               </div>
@@ -100,85 +94,14 @@
                     <div class="top-bar-center">
                       <!-- replace with hardcoded html-->
                       <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" style="text-align: -webkit-center;" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
-                        <li>
-                          <a href="/livestream/">Live Stream</a>
-                        </li>
-                        <li>
-                          <a href="/budget/">Budget</a>
-                        </li>
-                        <li>
-                          <a href="/committees/">Committees</a>
-                        </li>
-                        <li>
-                          <a href="/land-use/">Land Use</a>
-                        </li>
-                        <li>
-                          <a href="/#hearings">Upcoming Hearings</a>
-                        </li>
-                        <li>
-                          <a href="/districts/">Find My District <i style="margin-left: 0.35rem;" class="fa fa-search"></i></a>
-                        </li>
-                        <!-- <li class="hide-for-large"> -->
-                          <!-- <label style="color: #FFF; float: left; max-width: 300px; width: 100%;">Find Your Representative
-                            <input type="text" style="margin-bottom: 0" placeholder="Search here"/>
-                            <input type="submit" class="button" style="background-color: #23417D;margin-left: 30px; margin-bottom: 0px;" value="Submit"/>
-                          </label> -->
-                        <!-- </li> -->
-                        <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
-                          <a href="#">About</a>
-                          <ul class="menu">
-                            <li><a href="/visit-the-council/">Visit the Council</a></li>
-                            <li><a href="/events/">Events</a></li>
-                            <li><a href="/about/">What we do</a></li>
-                            <li><a href="/committees/">Committees</a></li>
-                            <li><a href="/caucuses/">Caucuses</a></li>
-                          </ul>
-                        </li> -->
-                        <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
-                          <a href="#">Districts</a>
-                          <ul class="menu">
-                            <li><a href="/districts/">Council Members &amp; Districts</a></li>
-                            <li><a href="/district-info/">District Info</a></li>
-                          </ul>
-                        </li> -->
-                        <!-- <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
-                          <a href="#">Legislation</a>
-                          <ul class="menu">
-                            <li><a href="/legislation/">Our legislative process</a></li>
-                            <li><a href="/testify">Register to Testify</a></li>
-                            <li><a href="/livestream/">Live Stream</a></li>
-                            <li><a href="/live/">Live video</a></li>
-                            <li><a href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
-                            <li><a href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
-                            <li><a href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>
-                            <li><a href="/legislation/api/">Legislative API</a></li>
-                            <li><a href="/data/">Data</a></li>
-                          </ul>
-                        </li> -->
-                        
-                        <!-- <li class="is-dropdown-submenu-parent opens-left">
-                          <a href="#">Press &amp; News</a>
-                          <ul class="menu">
-                            <li><a href="/foil-request/">Submit a "Freedom of Information Law" (FOIL) Request</a></li>
-                            <li><a href="/press/">Press Releases</a></li>
-                            <li><a href="/news/category/reports/">Reports</a></li>
-                            <li><a href="/press/press-photos/">Photos</a></li>
-                            <li><a href="/news/tag/video/">Videos</a></li>
-                          </ul>
-                        </li> -->
+                        <li><a href="/livestream/">Live Stream</a></li>
+                        <li><a href="/budget/">Budget</a></li>
+                        <li><a href="/committees/">Committees</a></li>
+                        <li><a href="/land-use/">Land Use</a></li>
+                        <li><a href="/#hearings">Upcoming Hearings</a></li>
+                        <li><a href="/districts/">Find My District <i style="margin-left: 0.35rem;" class="fa fa-search"></i></a></li>
                       </ul>                  
-                      <!--<#?php nycc_main_nav(); ?>-->
                       <script>
-                        // jQuery(".custom-dropdown-hover").mouseenter(function(){
-                        //   jQuery(this).children().first().attr("aria-expanded", "true");
-                        // }).focusin(function(){
-                        //   jQuery(this).children().first().attr("aria-expanded", "true");
-                        // });
-                        // jQuery(".custom-dropdown-hover").mouseleave(function(){
-                        //   jQuery(this).children().first().attr("aria-expanded", "false");
-                        // }).focusout(function(){
-                        //   jQuery(this).children().first().attr("aria-expanded", "false");
-                        // });
                         jQuery(document).ready(function(){
                           $("#translation-menu-dropdown").css("visibility","visible").hide();
                           jQuery("#translation-button").click(function(){
@@ -201,7 +124,7 @@
         </header>
       </div>
       <main id="main">
-        <div class="site-container">
+        <div class="site-container"> <!-- closing tag on line 1 ./footer.php -->
           <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) { $is_member_site = true; } else { $is_member_site = false; } ?>
           <div id="translation-menu" class="row column text-right<?php if ( $is_member_site == true ) { echo ' member'; } ?>">
             <button id="translation-button" class="button dashicons-before dashicons-translation">
