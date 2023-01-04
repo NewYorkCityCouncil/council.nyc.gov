@@ -13,6 +13,7 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
 
 <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
 <script>
+<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?>
   jQuery(document).ready(function(){
     var urlParams = new URLSearchParams(window.location.search);
     var address = urlParams.get("address") || ""
@@ -341,7 +342,6 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
     }<?php } ?>
   }
 
-<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?>
   /**
    * Districts list.js filter + address search
    */
