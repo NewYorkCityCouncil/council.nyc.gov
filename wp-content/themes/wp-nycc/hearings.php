@@ -123,7 +123,7 @@
         function dateTimeConverter(dateString, timeString){
           let fullDate = dateString.split("T")[0].split("-")
           let year = parseInt(fullDate[0])
-          let month = parseInt(fullDate[1])
+          let month = parseInt(fullDate[1])-1
           let date = parseInt(fullDate[2])
           let hr = parseInt(timeString.split(" ")[0].split(":")[0]);
           let min = parseInt(timeString.split(" ")[0].split(":")[1]);
