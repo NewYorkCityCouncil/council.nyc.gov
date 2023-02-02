@@ -288,23 +288,34 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
         "houseNumber": houseNum,
         "street": sanitizedTerms.replace(houseNum, "").trim(),
         "borough": boro,
+        "app_key": "M94XSCA5WY7G5GEF9",
+        "app_id": "nycc-website",
       };
     } catch(e) {
       badAddress( terms, error );
       return(console.log(e))
     }
+    let districtLookup = JSON.parse(jQuery.ajax({
+      async: false,
+      url: "https://council.nyc.gov/wp-content/themes/wp-nycc/assets/js/district_lookup.json",
+      dataType: "json",
+    }).responseText);
 
     $.ajax({
-      url: "https://api.nyc.gov/geo/geoclient/v1/address.json?" + $.param(params),
-      beforeSend: (xhrObj) => { xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","744d90c882ac4a72ad581670a273bced") },
-    })
+      url: "https://maps.nyc.gov/geoclient/v2/address.json?" + $.param(params) })
     .done((data) => {
       if ( (data.address.geosupportReturnCode === "00" || data.address.geosupportReturnCode === "01") &&
       (data.address.geosupportReturnCode2 === "00" || data.address.geosupportReturnCode2 === "01")) {
         let theLatitude = data.address.latitude,
           theLongitude = data.address.longitude,
           latlngPoint = new L.LatLng( theLatitude, theLongitude ),
-          CounDist = data.address.cityCouncilDistrict;
+          boroughCode = data.address.bblBoroughCode,
+          censusTractAndSuffix2022 = data.address.censusTract2020,
+          dynamicBlock = data.address.dynamicBlock,
+          finalId = `${boroughCode}${censusTractAndSuffix2022}${dynamicBlock}`.replace(/\s/g,"0"),
+          CounDist = districtLookup.filter(zone => String(zone.zero_padded_id) === String(finalId))[0].district;
+
+        // use finalId to look up the csv for a district number
         map.setZoom(17, { animate: false })
         map.panTo(latlngPoint, { animate: false })
         var popup = L.popup()
@@ -315,7 +326,6 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
         <?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?>
           CounDist = parseInt(CounDist, 10);
           var listMember = popupData['Member' + CounDist];
-          // var listMember = CounDist;
           districtsList.search(listMember);
         <?php } ?>
       } else {
@@ -333,6 +343,7 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
   function badAddress( terms, error ) {
     if ( error == true ) {
       var errorMessage = '<div class="callout alert text-small text-center"><strong>Please enter a valid street address and borough separated by a comma.</strong></div>';
+      // var errorMessage = '<div class="callout alert text-small text-center"><strong>This feature is currently down and is under maintenance. Please try again later. <br/>Alternatively, you may use <a href="https://zola.planning.nyc.gov/about?layer-groups=%5B%22nyc-council-districts%22%2C%22street-centerlines%22%5D" target="_blank">DCP\'s Zoning & Land Use Map</a> to search addresses.</strong></div>';
       jQuery('#addresslookup-error').html(errorMessage);
     }<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?> else {
       districtsList.search(terms);

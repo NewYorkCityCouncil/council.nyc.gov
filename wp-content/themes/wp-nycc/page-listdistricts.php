@@ -173,6 +173,12 @@
               </script>
               <div id="list-search-error" class="callout alert text-center hide">
                 <p class="text-small">No results match your search terms.</p>
+                <!-- <p>
+                  <strong>
+                    If you're searching an address, this feature is currently down and is under maintenance. Please try again later.<br/>
+                    Alternatively, you may use <a href="https://zola.planning.nyc.gov/about?layer-groups=%5B%22nyc-council-districts%22%2C%22street-centerlines%22%5D" target="_blank">DCP's Zoning & Land Use Map</a> to search addresses.
+                  </strong>
+                </p> -->
                 <p><strong>If you're searching an address, be sure to separate the address and borough with a comma.</strong></p>
               </div>
             </div>
