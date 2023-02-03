@@ -1,4 +1,20 @@
 @charset "UTF-8";
+@font-face { font-family: "Gotham-Black"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Black.otf");}
+@font-face { font-family: "Gotham-BlackItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-BlackItalic.otf");}
+@font-face { font-family: "Gotham-Bold"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Bold.otf");}
+@font-face { font-family: "Gotham-BoldItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-BoldItalic.otf");}
+@font-face { font-family: "Gotham-Book"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Book.otf");}
+@font-face { font-family: "Gotham-BookItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-BookItalic.otf");}
+@font-face { font-family: "Gotham-Light"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Light.otf");}
+@font-face { font-family: "Gotham-LightItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-LightItalic.otf");}
+@font-face { font-family: "Gotham-Medium"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Medium.otf");}
+@font-face { font-family: "Gotham-MediumItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-MediumItalic.otf");}
+@font-face { font-family: "Gotham-Thin"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Thin.otf");}
+@font-face { font-family: "Gotham-ThinItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-ThinItalic.otf");}
+@font-face { font-family: "Gotham-Ultra"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Ultra.otf");}
+@font-face { font-family: "Gotham-UltraItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-UltraItalic.otf");}
+@font-face { font-family: "Gotham-XLight"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-XLight.otf");}
+@font-face { font-family: "Gotham-XLightItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-XLightItalic.otf");}
 
 html,legend,select {
   box-sizing: border-box;
@@ -4367,6 +4383,7 @@ select[multiple] {
 @media screen and (min-width:64em) {
   .menu.large-horizontal>li {
     display: table-cell;
+    vertical-align: top;;
   }
 
   .menu.large-expanded {
@@ -4510,8 +4527,8 @@ select[multiple] {
   display: block;
   width: 100%;
   height: 2px;
-  background: #fff;
-  box-shadow: 0 7px 0 #fff,0 14px 0 #fff;
+  background: #414042;
+  box-shadow: 0 7px 0 #414042,0 14px 0 #414042;
   content: '';
 }
 
@@ -5791,7 +5808,12 @@ a.thumbnail image {
 }
 
 .top-bar ul a{
-  color: #FFF;
+  border-top: 1px #414042 solid;
+  color: #414042;
+  font-family: "Gotham-Light";
+  font-size: 16pt;
+  font-weight:bold;
+  text-transform: uppercase;
 }
 
 .tooltip::before {
@@ -5923,13 +5945,13 @@ a.thumbnail image {
   #menu-main-menu{
     position: absolute; 
     width: 100%; 
-    background-color: #23417d; 
+    background-color: #ffffff; 
     left: 0;
     text-align: left !important;
     top: 74px;
   }
   #mobile-nav-col{
-    background-color: #2f56a6 !important;
+    background-color: #ffff !important;
     padding-left: 0;
     padding-right: 1.4rem;
   }
@@ -6155,7 +6177,8 @@ a.thumbnail image {
 }
 
 .top-bar {
-  background-color: #2f56a6;
+  background-color: #fff;
+  padding-bottom: 20px;
   box-shadow: 0 .25rem 0 rgba(0,0,0,.1),0 -.125rem 0 rgba(0,0,0,.1);
 }
 
@@ -6165,7 +6188,7 @@ a.thumbnail image {
 }
 
 .site-logo {
-  color: #FFFFFF;
+  color: #38558b;
   display: block;
   font-family: Georgia,Cambria,"Times New Roman",Times,serif;
   font-weight: 400;
@@ -7555,10 +7578,12 @@ input::placeholder{
 .nav-search-container .search-form .search-field{
   margin-bottom: 0;
   width: 300px;
+  color: #58595B;
+  font-size: 14pt;
 }
 
 .nav-search-container .search-form .button{
-  background-color: #294279;
+  background-color: #FFFFFF;
   border: none;
   margin-bottom: 0;
 }
@@ -7570,15 +7595,15 @@ input::placeholder{
 /*--------------------------------------------------
   HOMEPAGE HEARINGS SECTION
 */
-
-.live-stream-homepage .tabs-title>a:focus,.tabs-title>a[aria-selected=true] {
-  color: #2f56a6;
-  outline-style: none !important;
+.live-stream-homepage .tabs-title a{
+  color: #3158A6;
+  font-family: "Gotham-Book";
+  font-size: 17pt !important;
 }
 
 .live-stream-homepage .tabs-title>a[aria-selected=true]{
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 22pt !important;
+  font-family: "Gotham-Bold";
   background: none !important;
   outline: none !important;
 }
@@ -7599,8 +7624,25 @@ a.anchor{
   top: -80px;
   visibility: hidden;
 }
-
-#hearings:before{
+.hearings-section h2{
+  color:#414042;
+  font-family: 'Gotham-Black';
+  font-size: 24pt;
+  letter-spacing: 2px;
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+#hearings{
+  background-image: url('/wp-content/themes/wp-nycc/assets/images/nyc-map-grey.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top:1.5px#58595B solid;
+  /* opacity: 0.75; */
+  padding-top: 30px;
+}
+/* #hearings:before{
   background-image: url('/wp-content/themes/wp-nycc/assets/images/nyc map.png');
   background-position: 50% 0;
   background-repeat: no-repeat;
@@ -7614,7 +7656,7 @@ a.anchor{
   top: 0;
   width: 100%;
   z-index: -1;
-}
+} */
 
 .tabs-panel.hearings{
   padding-left: 0;
@@ -7694,8 +7736,9 @@ a.anchor{
 
 .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
   color: #FFFFFF;
-  font-size: 42px;
-  line-height: 44px
+  font-family: "Gotham-Black";
+  font-size: 38pt;
+  line-height: 44px;
 }
 
 .homepage-carousel-container .wppsac-post-slider .wppsac-post-date::after{
@@ -7704,24 +7747,29 @@ a.anchor{
 
 .homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
   color: #FFFFFF;
+  font-family: "Gotham-Light";
+  font-size: 21pt;
 }
 
 .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{  
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 1rem;
-  padding: .85em 1em;
   -webkit-appearance: none;
+  background-color: #00aeef;
+  border-radius: 25px;
   border: 1px solid transparent;
-  border-radius: 0;
-  transition: background-color .25s ease-out,color .25s ease-out;
-  font-size: 1.05rem;
-  line-height: 1;
-  text-align: center;
-  cursor: pointer;
-  background-color: #12295d;
-  color: #FFFFFF !important;
   border: none !important;
+  color: #FFFFFF !important;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16pt;
+  font-family: "Gotham-Light";
+  font-weight: bolder;
+  letter-spacing: 2pt;
+  line-height: 1;
+  margin: 0 0 1rem;
+  padding: .85em 2em;
+  text-align: center;
+  transition: background-color .25s ease-out,color .25s ease-out;
+  vertical-align: middle;
 }
 
 .homepage-carousel-container .wppsac-post-slider.design-4 .wp-medium-5{
@@ -7730,6 +7778,8 @@ a.anchor{
 
 .homepage-carousel-container .wppsac-post-slider .wppsac-post-image-bg img{
   object-position: center center;
+  filter: grayscale(1);
+  opacity: .75;
 }
 
 .homepage-carousel-container .wppsac-post-slider.design-4 .slick-dots{
@@ -7748,7 +7798,8 @@ a.anchor{
 
 .homepage-carousel-container .wppsac-sub-content{
   color: #FFFFFF;
-  font-size: 1.2rem;
+  font-family: "Gotham-Book";
+  font-size: 20pt;
   padding-bottom: 2rem;
 }
 
@@ -7759,6 +7810,7 @@ a.anchor{
 
   .homepage-carousel-container .wp-medium-7.wpcolumns{
     align-content: center;
+    background-color: #22427e;
     display: grid;
     width: 45%;
   }
@@ -7766,6 +7818,37 @@ a.anchor{
   .homepage-carousel-container .wppsac-post-slider.design-4 .wppsac-post-image-bg, 
   .homepage-carousel-container .wp-medium-7.wpcolumns{
     height: 500px;
+  }
+}
+
+@media only screen and (max-width:1200px) and (min-width:1000px){
+  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
+    font-size: 32pt;
+  }
+  .homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
+    font-size: 19pt;
+  }
+  .homepage-carousel-container .wppsac-sub-content{
+    font-size: 14pt;
+  }
+  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{
+    font-size: 18pt;
+    padding: .85em 1.75em;
+  }
+}
+@media only screen and (max-width:1000px) and (min-width: 40.0625em){
+  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
+    font-size: 28pt;
+  }
+  .homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
+    font-size: 17pt;
+  }
+  .homepage-carousel-container .wppsac-sub-content{
+    font-size: 12pt;
+  }
+  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{
+    font-size: 14pt;
+    padding: .85em 1.5em;
   }
 }
 /*
