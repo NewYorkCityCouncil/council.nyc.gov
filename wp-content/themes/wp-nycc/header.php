@@ -62,12 +62,12 @@
         <header class="site-header sticky" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
           <div class="top-bar">
             <div class="row" style="max-width: 100%" data-equalizer>
-              <div class="columns small-8 large-12" style="background-color: #2F56A6; padding: .3rem 0" data-equalizer-watch>
+              <div class="columns small-8 large-12" style="background-color: #FFFFFF; padding: .3rem 0" data-equalizer-watch>
                 <div style="display: flex; align-items: center;">
                   <div class="columns medium-12 large-7">
                     <strong class="site-logo">
                       <a href="/">
-                        <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-white.png">
+                        <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">
                         <div class="site-logo" style="display:inline;">
                           New York City Council
                         </div>
@@ -79,7 +79,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row" style="background-color: #23417D">
+              <div style="background-color: #FFFFFF">
                 <div class="columns small-4 large-12" id="mobile-nav-col"  data-equalizer-watch>
                   <?php switch_to_blog(1); ?>
                   <span class="responsive-menu-toggle" style="line-height: none" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon" data-toggle></span></span>
@@ -87,12 +87,12 @@
                     <div class="top-bar-center">
                       <!-- replace with hardcoded html-->
                       <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" style="text-align: -webkit-center;" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
-                        <li><a href="/livestream/">Live Stream</a></li>
+                        <li><a href="/livestream/">Livestream</a></li>
                         <li><a href="/budget/">Budget</a></li>
                         <li><a href="/committees/">Committees</a></li>
                         <li><a href="/land-use/">Land Use</a></li>
                         <li><a href="/#hearings">Upcoming Hearings</a></li>
-                        <li><a href="/districts/">Find My District <i style="margin-left: 0.35rem;" class="fa fa-search"></i></a></li>
+                        <li><a href="/districts/">Find My District</a></li>
                       </ul>                  
                       <script>
                         jQuery(document).ready(function(){

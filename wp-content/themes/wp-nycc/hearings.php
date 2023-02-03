@@ -1,7 +1,9 @@
-<div class="container hearings-section" style="position: relative;padding: 6rem 0;" id="hearings">
-  <div class="row" style="">
+<div class="container hearings-section" style="position: relative;padding: 6rem 0;">
+  <div class="row">
+    <h2 class="columns">HEARINGS</h2>
+  </div>
+  <div class="row" id="hearings">
     <div class="columns" style="padding-right: 0; ">
-      <h2 style="max-width: 75rem; margin-right: auto; margin-left: auto;">Hearings</h2>
       <ul class="tabs live-stream-homepage" data-tabs id="collapsing-tabs" style="border: none; display: flex; align-items: center; background-color: transparent;">
         <li class="tabs-title is-active" onclick="getFrontPageHearings('todays')"><a href="#todays-hearings" aria-selected="true" data-text="title">Today</a></li>
         <li class="tabs-title" onclick="getFrontPageHearings('tomorrows')"><a href="#tomorrows-hearings" data-text="title">Tomorrow</a></li>
