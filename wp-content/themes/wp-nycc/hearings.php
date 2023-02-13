@@ -199,7 +199,7 @@
                     </div>
                   </div>
                   <p style="margin-bottom: 0;" class="card-section hearing-body"><a href='${agendaLink}' target='_blank'>${hearingName}</a></h5>
-                  <p class="card-section hearing-stream-link" style="line-heigh:1"><a href="https://council.nyc.gov/livestream/#${livestreamLocation.toLowerCase().replace(/[^\w\s\-]/gi, '').split(" ").join("-")}">${livestreamLocation}</a></p>
+                  <p class="card-section hearing-stream-link" style="line-height:1"><a href="https://council.nyc.gov/livestream/#${livestreamLocation.toLowerCase().replace(/[^\w\s\-]/gi, '').split(" ").join("-")}">${livestreamLocation}</a></p>
                 </div>
               </li>
             `);
