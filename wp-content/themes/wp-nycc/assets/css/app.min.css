@@ -3128,8 +3128,8 @@ kbd {
 
 /* For selecting live video feed section */
 .subheading{
-  text-align: center;
-  color: white;
+  /* text-align: center;
+  color: white; */
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -6148,8 +6148,62 @@ a.thumbnail image {
 }
 
 .site-footer {
+  background-color: #22427e;
   padding: 3rem 0 4rem;
-  box-shadow: inset 0 .25rem 0 rgba(0,0,0,.1);
+}
+.site-footer .widget-title{
+  color: #FFFFFF;
+  font-family: "Gotham-Black";
+  font-size: 14pt;
+  text-transform: uppercase;
+}
+.site-footer .bold-link{
+  color: #9CDBF4;
+  font-family: "Gotham-Bold";
+  font-size: 13pt;
+  text-decoration: underline;
+}
+.site-footer p, .site-footer a{
+  color:#FFFFFF;
+  font-family: "Gotham-Book";
+  font-size: 13pt;
+}
+.site-footer .social-buttons a{
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  display: inline-flex !important;
+  height: 55px;
+  justify-content: center;
+  width: 55px;
+}
+.site-footer .social-buttons a i{
+  margin-right: 0;
+}
+.site-footer .social-buttons a i::before{
+  vertical-align: middle;
+}
+.site-footer #copyright{
+  color: #FFFFFF;
+  font-family: "Gotham-Bold";
+  font-size: 10pt;
+}
+@media only screen and (max-width:1000px){
+  .site-footer .widget-title{
+    font-size: 14pt !important;
+  }
+  .site-footer .bold-link{
+    font-size: 12pt !important;
+  }
+  .site-footer p, .site-footer a{
+    font-size: 12pt !important;
+  }
+  .site-footer .social-buttons a{
+    font-size: 1.875rem !important;
+  }
+  .site-footer #copyright{
+    font-size: 8pt !important;
+  }
 }
 
 .scrollable {
@@ -7624,7 +7678,12 @@ a.anchor{
   top: -80px;
   visibility: hidden;
 }
-.hearings-section h2{
+.hearings-section{
+  padding: 4rem 0 2rem;
+  position: relative; 
+}
+
+.hearings-section h2, .livestream-section h2{
   color:#414042;
   font-family: 'Gotham-Black';
   font-size: 24pt;
@@ -7639,24 +7698,8 @@ a.anchor{
   background-repeat: no-repeat;
   background-size: cover;
   border-top:1.5px#58595B solid;
-  /* opacity: 0.75; */
   padding-top: 30px;
 }
-/* #hearings:before{
-  background-image: url('/wp-content/themes/wp-nycc/assets/images/nyc map.png');
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  content: ' ';
-  display: block;
-  height: 100%;
-  left: 0;
-  opacity: 0.15;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
-} */
 
 .tabs-panel.hearings{
   padding-left: 0;
@@ -7676,42 +7719,88 @@ a.anchor{
   grid-template-rows: auto !important;
 }
 
-.hearing-card:hover, 
-.hearing-card:hover .card-divider, 
-.hearing-card:hover .card-section{
-  background-color:#2f56a6;
-  color: #FFFFFF;
-}
-
 .hearing-card{
-  background: #e6e6e6;
+  background-image: url('/wp-content/themes/wp-nycc/assets/images/cityhall-blue-treatment.png');
+  background-size: cover;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   min-width: 290px;
   max-width: 290px;
+  position: relative;
   width: 100%;
 }
 
-.hearing-card:hover{
-  background-color:#2f56a6;
-  color: #FFFFFF;
+.hearing-date-tab{
+  background-color: white;
+  border-top: 10px solid #00AEEF;
+  padding: 5px 10px;
+  width: fit-content;
 }
 
-.hearing-card h4, 
-.hearing-card .hearing-time{
-  color: #2f56a6;
+.hearing-date span{
+  color: #23417D;
+  font-family: "Gotham-Black";
+  font-size: 18pt;
+  line-height: 1.3;
 }
 
-.hearing-time{
+.hearing-date span.hearing-time{
+  color: #00AEEF !important;
+  font-family: "Gotham-Bold";
+  font-size: 11pt;
   padding: 0;
 }
 
-.hearing-card:hover h5, 
-.hearing-card:hover h4, 
-.hearing-card:hover p,
-.hearing-card:hover a,
-.hearing-card:hover .hearing-time{
+.hearing-body{
+  font-family: "Gotham-Ultra";
+  font-size: 20pt;
+  height: 100%;
+  line-height: 1;
+  word-break: break-word;
+}
+
+.hearing-body a{
+  color: #FFFFFF !important;
+}
+
+.hearing-stream-link a{
+  bottom: 0;
   color: #FFFFFF;
+  font-family: "Gotham-Medium";
+  font-size: 13pt;
+}
+
+.hearings-links a{
+  color: #6D6E71;
+  font-family: "Gotham-Black";
+  font-size: 14pt;
+  text-transform: uppercase;
+}
+.hearing-links-arrow{
+  color: #00AEEF !important;
+  font-size: .6em !important;
+  vertical-align: middle;
+}
+@media only screen and (max-width:1000px){
+  .hearing-date span{
+    font-size: 15pt;
+  }
+  
+  .hearing-date span.hearing-time{
+    font-size: 9pt;
+  }
+  .hearing-body{
+    font-size: 17pt;
+  }
+  .hearing-stream-link a{
+    font-size: 11pt;
+  }
+  
+  .hearings-links a{
+    font-size: 11pt;
+  }
 }
 /*
   HOMEPAGE HEARINGS SECTION END
@@ -7886,7 +7975,34 @@ a.anchor{
 /*--------------------------------------------------
   LIVE VIDEO STREAM COLUMN - HOMEPAGE
 */
-.live-stream-tabs-column ul{
+#live-videos-tabs{
+  text-transform: uppercase;
+}
+
+#live-videos-tabs .tabs-title a span,
+#live-videos-tabs .tabs-title a strong{
+  color: #23417D;
+  font-size: 14pt;
+}
+
+#live-videos-tabs .tabs-title a span{
+  font-family: "Gotham-Bold";
+}
+
+#live-videos-tabs .tabs-title a strong{
+  font-family: "Gotham-Black";
+}
+
+#live-videos-tabs .tabs-title.is-active a span,
+#live-videos-tabs .tabs-title.is-active a strong{
+  color: #FFFFFF;
+  font-size: 14pt;
+}
+#live-videos-tabs .tabs-title.is-active{
+  background-color: #23417D;
+}
+
+/* .live-stream-tabs-column ul{
   overflow: auto;
 }
 
@@ -7904,30 +8020,7 @@ a.anchor{
 
 .live-stream-tabs-column .vertical.tabs li:hover a{
   color: #FFFFFF;
-}
-
-@media screen and (min-width: 40em){
-  .live-stream-tabs-column{
-    padding-left: 0;
-  }
-  .live-stream-tabs-column ul{
-    padding-left: 0;
-    height: 36vw;
-  }
-}
-
-@media screen and (max-width: 39.99em){
-  .live-stream-tabs-column ul{
-    height: 205px;
-  }
-}
-
-@media screen and (min-width: 75em){
-  .live-stream-tabs-column ul{
-    padding-left: 0;
-    height: 434px;
-  }
-}
+} */
 
 /*
   LIVE VIDEO STREAM COLUMN - HOMEPAGE END

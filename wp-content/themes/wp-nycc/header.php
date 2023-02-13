@@ -64,7 +64,7 @@
             <div class="row" style="max-width: 100%" data-equalizer>
               <div class="columns small-8 large-12" style="background-color: #FFFFFF; padding: .3rem 0" data-equalizer-watch>
                 <div style="display: flex; align-items: center;">
-                  <div class="columns medium-12 large-7">
+                  <div class="columns large-6 xlarge-7 xlarge-offset-1">
                     <strong class="site-logo">
                       <a href="/">
                         <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">
@@ -74,7 +74,7 @@
                       </a>
                     </strong>
                   </div>
-                  <div class="show-for-large columns large-5 nav-search-container" style="display: flex; justify-content: end; align-items: end;">
+                  <div class="show-for-large columns large-6 xlarge-3 nav-search-container" style="display: flex; justify-content: end; align-items: end;">
                     <?php get_search_form(); ?>  
                   </div>
                 </div>

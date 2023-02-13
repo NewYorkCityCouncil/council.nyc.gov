@@ -1,4 +1,4 @@
-<div class="container hearings-section" style="position: relative;padding: 6rem 0;">
+<div class="container hearings-section">
   <div class="row">
     <h2 class="columns">HEARINGS</h2>
   </div>
@@ -27,9 +27,9 @@
         </div>
       </div>
     </div>
-    <div class="columns" style="max-width: 75rem; margin-right: auto; margin-left: auto;">
-      <a href="https://legistar.council.nyc.gov/Calendar.aspx" target="_blank" rel="noopener noreferrer" style="display:block;"><strong><i class="fa fa-play"></i> View the hearing calendar and video archive here.</strong></a>
-      <a style="display:block;" href="/testify" target="_blank" rel="noopener"><strong>Register to testify at one of our upcoming hearings</strong></a>
+    <div class="columns hearings-links">
+      <a href="https://legistar.council.nyc.gov/Calendar.aspx" target="_blank" rel="noopener noreferrer" style="display:block;"><strong><i class="fa fa-play hearing-links-arrow"></i> View the hearing calendar and video archive here</strong></a>
+      <a style="display:block;" href="/testify" target="_blank" rel="noopener"><strong><i class="fa fa-play hearing-links-arrow"></i> Register to testify at one of our upcoming hearings</strong></a>
     </div>
   </div>
 </div>
@@ -157,11 +157,25 @@
               livestreamLocation = hearing.EventLocation;
             }
             meetingDate = meetingDateFormat.toDateString().split(" ")
-            monthOnly = meetingDate[1]
-            dayNum = meetingDate[2]
-            meetingDate.pop()
-            meetingDate[0] = meetingDate[0] + ","
-            meetingDate = meetingDate.join(" ")
+            let monthOnly = meetingDate[1]
+            let dayNum = meetingDate[2]
+            let suffix;
+            switch(dayNum.slice(-1)){
+              case "1":
+                suffix = "ST"
+                break;
+              case "2":
+                suffix = "ND"
+                break;
+              case "3":
+                suffix = "RD"
+                break;
+              default:
+                suffix = "TH"
+            }
+            // meetingDate.pop()
+            // meetingDate[0] = meetingDate[0] + ","
+            // meetingDate = meetingDate.join(" ")
             midDay = hearing.EventTime.split(" ")[1];
             meetingHour = parseInt(hearing.EventTime.split(" ")[0].split(":")[0]);
             meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
@@ -177,19 +191,15 @@
             jQuery(`#fp-${timeFrame}-hearings`).append(`
               <li class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
                 <div class="card hearing-card" style="border: none;">
-                  <div class="card-divider" style="margin-bottom: 2em;">
-                    
-                      <div class="columns small-6" style="padding: 0;">
-                        <h4 style="margin-bottom: 0; line-height: 0.8em; text-transform: uppercase;">${monthOnly}</h4>
-                        <h4 style="margin-bottom: 0; line-height: 0.8em; font-size: 2.3rem;">${dayNum}</h4>
-                      </div>
-                      <div class="columns small-6 hearing-time" style="text-align: right;">${hearing.EventTime}</div>
-                    
+                  <div class="card-divider hearing-date" style="background-color:transparent;">
+                    <div class="hearing-date-tab">
+                      <span>${monthOnly.toUpperCase()}</span><br/>
+                      <span>${dayNum}<sup><small>${suffix}</small></sup></span><br/>
+                      <span class="hearing-time" style="text-align: right;">${hearing.EventTime}</span>
+                    </div>
                   </div>
-                  <div class="card-section">
-                    <h5 style="margin-bottom: 0; font-size: 1rem; line-height: 1.5em;"><a href='${agendaLink}' target='_blank'>${hearingName}</a></h5>
-                    <p><a href='https://council.nyc.gov/livestream/#"+livestreamLocation.toLowerCase().replace(/[^\w\s\-]/gi, '').split(" ").join("-")+"'>${livestreamLocation}</a></p>
-                  </div>
+                  <p style="margin-bottom: 0;" class="card-section hearing-body"><a href='${agendaLink}' target='_blank'>${hearingName}</a></h5>
+                  <p class="card-section hearing-stream-link" style="line-heigh:1"><a href="https://council.nyc.gov/livestream/#${livestreamLocation.toLowerCase().replace(/[^\w\s\-]/gi, '').split(" ").join("-")}">${livestreamLocation}</a></p>
                 </div>
               </li>
             `);
