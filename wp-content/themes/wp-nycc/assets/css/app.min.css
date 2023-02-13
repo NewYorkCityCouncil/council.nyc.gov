@@ -7775,7 +7775,7 @@ a.anchor{
 .hearings-links a{
   color: #6D6E71;
   font-family: "Gotham-Black";
-  font-size: 14pt;
+  font-size: 12pt;
   text-transform: uppercase;
 }
 .hearing-links-arrow{
@@ -7982,7 +7982,7 @@ a.anchor{
 #live-videos-tabs .tabs-title a span,
 #live-videos-tabs .tabs-title a strong{
   color: #23417D;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 
 #live-videos-tabs .tabs-title a span{
@@ -7996,7 +7996,7 @@ a.anchor{
 #live-videos-tabs .tabs-title.is-active a span,
 #live-videos-tabs .tabs-title.is-active a strong{
   color: #FFFFFF;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 #live-videos-tabs .tabs-title.is-active{
   background-color: #23417D;
