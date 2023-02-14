@@ -7755,7 +7755,8 @@ a.anchor{
 
 .hearing-body{
   font-family: "Gotham-Ultra";
-  font-size: 20pt;
+  /* font-size: 20pt; */
+  font-size: 1.75vw;
   height: 100%;
   line-height: 1;
   word-break: break-word;
@@ -7783,6 +7784,16 @@ a.anchor{
   font-size: .6em !important;
   vertical-align: middle;
 }
+@media only screen and (min-width: 641px) and (max-width: 1000px){
+  .hearing-body{
+    font-size: 2.75vw
+  }
+}
+@media only screen and (max-width: 640px){
+  .hearing-body{
+    font-size: 3.5vw
+  }
+}
 @media only screen and (max-width:1000px){
   .hearing-date span{
     font-size: 15pt;
@@ -7791,9 +7802,9 @@ a.anchor{
   .hearing-date span.hearing-time{
     font-size: 9pt;
   }
-  .hearing-body{
+  /* .hearing-body{
     font-size: 17pt;
-  }
+  } */
   .hearing-stream-link a{
     font-size: 11pt;
   }

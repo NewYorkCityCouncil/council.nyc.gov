@@ -63,8 +63,8 @@
           <div class="top-bar">
             <div class="row" style="max-width: 100%" data-equalizer>
               <div class="columns small-8 large-12" style="background-color: #FFFFFF; padding: .3rem 0" data-equalizer-watch>
-                <div style="display: flex; align-items: center;">
-                  <div class="columns large-6 xlarge-7 xlarge-offset-1">
+                <div style="display: flex; align-items: center; max-width: 1350px; justify-content: center; margin: 0 auto;">
+                  <div class="columns large-6 xlarge-7">
                     <strong class="site-logo">
                       <a href="/">
                         <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">

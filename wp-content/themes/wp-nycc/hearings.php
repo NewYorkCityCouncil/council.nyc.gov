@@ -34,7 +34,7 @@
   </div>
 </div>
 
-<script>
+<!--<script>
   /*--------------------------------------------------
     Upcoming Stated Meetings jQuery
   --------------------------------------------------*/
@@ -57,7 +57,7 @@
       };
     }
   });
-</script>
+</script>-->
 <script>
   /*-----------------------------------------------------------------------------------
     Upcoming Council Hearings jQuery - VIRTUAL + IN-PERSON HEARING 1 WEEK IN ADVANCE
@@ -66,23 +66,22 @@
     let jan = new Date(this.getFullYear(), 0, 1);
     let jul = new Date(this.getFullYear(), 6, 1);
     return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
-  }
+  };
   Date.prototype.dst = function() {
     // Accounts for daylight savings 1 hour offset
     return this.getTimezoneOffset() < this.stdTimezoneOffset();
-  }
+  };
   Date.prototype.getWeek = function() {
     let date = new Date(this.valueOf())
-    // let date = new Date('October, 06 2022')
-    date.setHours(0)
-    date.setMinutes(0)
-    date.setSeconds(0)
-    date.setMilliseconds(0)
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
     let sunday = date.setDate(date.getDate() - date.getDay());
-    date.setHours(23)
-    date.setMinutes(59)
-    date.setSeconds(59)
-    date.setMilliseconds(999)
+    date.setHours(23);
+    date.setMinutes(59);
+    date.setSeconds(59);
+    date.setMilliseconds(999);
     let saturday = date.setDate(date.getDate() + 6);
     return [new Date(sunday), new Date(saturday)];
   }
@@ -113,9 +112,9 @@
       endDate = saturday.getFullYear()+"-"+addZero(saturday.getMonth()+1)+"-"+addZero(saturday.getDate());
       noHearingMessage = "THIS WEEK";
     }
-    const bodydExclusions = ["5264"]
-    let exclusions = []
-    for (id of bodydExclusions){exclusions.push(`EventBodyId+ne+${id}`)}
+    const bodydExclusions = ["5264"];
+    let exclusions = [];
+    for (id of bodydExclusions){exclusions.push(`EventBodyId+ne+${id}`)};
 
     jQuery.ajax({
       type:"GET",
@@ -123,15 +122,15 @@
       url:"https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventDate+ge+datetime%27"+startDate+"%27+and+EventDate+le+datetime%27"+endDate+"%27+and+"+exclusions.join("+and+")+"+and+tolower(EventAgendaStatusName)+eq+'final'&$orderby=EventTime+asc",
       success:function(hearings){
         function dateTimeConverter(dateString, timeString){
-          let fullDate = dateString.split("T")[0].split("-")
-          let year = parseInt(fullDate[0])
-          let month = parseInt(fullDate[1])-1
-          let date = parseInt(fullDate[2])
+          let fullDate = dateString.split("T")[0].split("-");
+          let year = parseInt(fullDate[0]);
+          let month = parseInt(fullDate[1])-1;
+          let date = parseInt(fullDate[2]);
           let hr = parseInt(timeString.split(" ")[0].split(":")[0]);
           let min = parseInt(timeString.split(" ")[0].split(":")[1]);
           let ampm = timeString.split(" ")[1];
-          ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr : hr = (hr+12) ;
-          return new Date(year, month, date, hr, min, 00)
+          ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr : hr = (hr+12);
+          return new Date(year, month, date, hr, min, 00);
         };
         let sortedHearings = hearings.sort(function(a,b){
           return dateTimeConverter(a.EventDate, a.EventTime).getTime() - dateTimeConverter(b.EventDate, b.EventTime).getTime();
@@ -146,36 +145,33 @@
           jQuery('.row-hearings.horizontal-grid').css('grid-auto-columns','auto');
         } else {
           sortedHearings.forEach(function(hearing){
-            let deferred = hearing.EventAgendaStatusName.toLowerCase() === "deferred"
-            let hearingName = "<strong>"+hearing.EventBodyName+"</strong><br>"
+            let deferred = hearing.EventAgendaStatusName.toLowerCase() === "deferred";
+            let hearingName = "<strong>"+hearing.EventBodyName+"</strong><br>";
             let meetingDate = hearing.EventDate.split("T")[0];
-            let meetingDateFormat = new Date(meetingDate.split("-")[0], parseInt(meetingDate.split("-")[1])-1, meetingDate.split("-")[2])
-            let livestreamLocation = hearing.EventLocation.match(/\(([^)]+)\)/)
+            let meetingDateFormat = new Date(meetingDate.split("-")[0], parseInt(meetingDate.split("-")[1])-1, meetingDate.split("-")[2]);
+            let livestreamLocation = hearing.EventLocation.match(/\(([^)]+)\)/);
             if(livestreamLocation) {
               livestreamLocation = livestreamLocation[1];
             } else {
               livestreamLocation = hearing.EventLocation;
-            }
-            meetingDate = meetingDateFormat.toDateString().split(" ")
-            let monthOnly = meetingDate[1]
-            let dayNum = meetingDate[2]
+            };
+            meetingDate = meetingDateFormat.toDateString().split(" ");
+            let monthOnly = meetingDate[1];
+            let dayNum = meetingDate[2];
             let suffix;
             switch(dayNum.slice(-1)){
               case "1":
-                suffix = "ST"
+                suffix = "ST";
                 break;
               case "2":
-                suffix = "ND"
+                suffix = "ND";
                 break;
               case "3":
-                suffix = "RD"
+                suffix = "RD";
                 break;
               default:
-                suffix = "TH"
-            }
-            // meetingDate.pop()
-            // meetingDate[0] = meetingDate[0] + ","
-            // meetingDate = meetingDate.join(" ")
+                suffix = "TH";
+            };
             midDay = hearing.EventTime.split(" ")[1];
             meetingHour = parseInt(hearing.EventTime.split(" ")[0].split(":")[0]);
             meetingMinute = parseInt(hearing.EventTime.split(" ")[0].split(":")[1]);
@@ -184,14 +180,13 @@
             if (hearing.EventComment !== null){
               if(hearing.EventComment.toLowerCase().includes("jointly") && !hearing.EventLocation.toLowerCase().includes("-")){
                   hearingName += "<small><em>("+hearing.EventComment+")</em></small><br>"
-              }
-            }
-            // For deferred hearings use the new deferred variable set above in a ternary statement
-            // For example if the strikethrough style was a class: ${deferred ? "class-for-strikethrough" : ""}
+              };
+            };
             jQuery(`#fp-${timeFrame}-hearings`).append(`
-              <li class="columns" style="padding: .5em; display:flex;" aria-label='deferred hearing'>
+              <li class="columns" style="padding: .5em; display:flex; ${deferred ? "text-decoration: line-through;" : ""}">
                 <div class="card hearing-card" style="border: none;">
                   <div class="card-divider hearing-date" style="background-color:transparent;">
+                    ${deferred ? "<p style='position: absolute;right: 16px;top: 16px;font-size: 18pt;font-family: Gotham-Black;color: #FFF;text-decoration: none !important;'>DEFERRED</p>" : ""}
                     <div class="hearing-date-tab">
                       <span>${monthOnly.toUpperCase()}</span><br/>
                       <span>${dayNum}<sup><small>${suffix}</small></sup></span><br/>
@@ -207,7 +202,7 @@
         };
       }
     });
-  }
+  };
   jQuery(document).ready(() => {
     let hash = window.location.hash;
     if (hash === "#todays-hearings" || hash === ""){
