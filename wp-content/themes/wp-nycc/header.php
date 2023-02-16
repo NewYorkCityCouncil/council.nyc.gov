@@ -61,10 +61,10 @@
       <div data-sticky-container>
         <header class="site-header sticky" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
           <div class="top-bar">
-            <div class="row" style="max-width: 100%" data-equalizer>
+            <div class="row" data-equalizer>
               <div class="columns small-8 large-12" style="background-color: #FFFFFF; padding: .3rem 0" data-equalizer-watch>
                 <div style="display: flex; align-items: center; max-width: 1350px; justify-content: center; margin: 0 auto;">
-                  <div class="columns large-6 xlarge-7">
+                  <div class="columns large-6">
                     <strong class="site-logo">
                       <a href="/">
                         <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">
@@ -74,13 +74,13 @@
                       </a>
                     </strong>
                   </div>
-                  <div class="show-for-large columns large-6 xlarge-3 nav-search-container" style="display: flex; justify-content: end; align-items: end;">
+                  <div class="show-for-large columns large-6 nav-search-container" style="display: flex; justify-content: end; align-items: end;">
                     <?php get_search_form(); ?>  
                   </div>
                 </div>
               </div>
-              <div style="background-color: #FFFFFF">
-                <div class="columns small-4 large-12" id="mobile-nav-col"  data-equalizer-watch>
+              <div class="columns small-4 large-12" id="nav-menu">
+                <div id="mobile-nav-col"  data-equalizer-watch>
                   <?php switch_to_blog(1); ?>
                   <span class="responsive-menu-toggle" style="line-height: none" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon" data-toggle></span></span>
                   <div role="navigation" id="responsive-menu">

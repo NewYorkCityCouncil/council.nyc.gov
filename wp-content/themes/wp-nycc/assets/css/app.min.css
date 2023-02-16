@@ -5808,11 +5808,12 @@ a.thumbnail image {
 }
 
 .top-bar ul a{
-  border-top: 1px #414042 solid;
+  /* border-top: 1px #414042 solid; */
   color: #414042;
   font-family: "Gotham-Light";
-  font-size: 16pt;
+  font-size: 1rem;
   font-weight:bold;
+  letter-spacing: 0.159rem;
   text-transform: uppercase;
 }
 
@@ -6154,28 +6155,34 @@ a.thumbnail image {
 .site-footer .widget-title{
   color: #FFFFFF;
   font-family: "Gotham-Black";
-  font-size: 14pt;
+  /* font-size: 14pt; */
+  font-size: 1rem;
   text-transform: uppercase;
 }
 .site-footer .bold-link{
   color: #9CDBF4;
   font-family: "Gotham-Bold";
-  font-size: 13pt;
+  /* font-size: 13pt; */
+  font-size: 0.89rem;
   text-decoration: underline;
 }
 .site-footer p, .site-footer a{
   color:#FFFFFF;
   font-family: "Gotham-Book";
-  font-size: 13pt;
+  /* font-size: 13pt; */
+  font-size: 0.89rem;
+  line-height: 1.2rem;
+}
+.site-footer .social-buttons li{
+  margin-right: 0!important;
 }
 .site-footer .social-buttons a{
   align-items: center;
   background-color: transparent;
-  border: 1px solid #FFFFFF;
   display: inline-flex !important;
-  height: 55px;
+  height: 50px;
   justify-content: center;
-  width: 55px;
+  width: 50px;
 }
 .site-footer .social-buttons a i{
   margin-right: 0;
@@ -6189,15 +6196,6 @@ a.thumbnail image {
   font-size: 10pt;
 }
 @media only screen and (max-width:1000px){
-  .site-footer .widget-title{
-    font-size: 14pt !important;
-  }
-  .site-footer .bold-link{
-    font-size: 12pt !important;
-  }
-  .site-footer p, .site-footer a{
-    font-size: 12pt !important;
-  }
   .site-footer .social-buttons a{
     font-size: 1.875rem !important;
   }
@@ -6818,6 +6816,10 @@ figure {
 
 .social-buttons img {
   margin: .2em!important;
+}
+
+.social-buttons li {
+  margin-right: 0;
 }
 
 .social-buttons li+li {
@@ -7632,8 +7634,8 @@ input::placeholder{
 .nav-search-container .search-form .search-field{
   margin-bottom: 0;
   width: 300px;
+  height: 28.5px;
   color: #58595B;
-  font-size: 14pt;
 }
 
 .nav-search-container .search-form .button{
@@ -7642,6 +7644,13 @@ input::placeholder{
   margin-bottom: 0;
 }
 
+#nav-menu{
+  background-color: #FFFFFF;
+  border-top: none;
+}
+@media screen and (min-width: 1024px) {
+  #nav-menu{border-top: 1.5px #58595B solid;}
+}
 /*
   SEARCHBAR IN NAVIGAGTION END
 --------------------------------------------------*/
@@ -7652,7 +7661,8 @@ input::placeholder{
 .live-stream-homepage .tabs-title a{
   color: #3158A6;
   font-family: "Gotham-Book";
-  font-size: 17pt !important;
+  font-size: 1.2rem !important;
+  /* font-size: 17pt !important; */
 }
 
 .live-stream-homepage .tabs-title>a[aria-selected=true]{
@@ -7686,7 +7696,8 @@ a.anchor{
 .hearings-section h2, .livestream-section h2{
   color:#414042;
   font-family: 'Gotham-Black';
-  font-size: 24pt;
+  /* font-size: 24pt; */
+  font-size: 1.3rem;
   letter-spacing: 2px;
   max-width: 75rem;
   margin-right: auto;
@@ -7711,6 +7722,7 @@ a.anchor{
   grid-auto-flow: column;
   grid-template-rows: auto auto;
   margin: 0;
+  max-width: 68rem;
   overflow-x: scroll;
 }
 
@@ -7720,16 +7732,22 @@ a.anchor{
 }
 
 .hearing-card{
-  background-image: url('/wp-content/themes/wp-nycc/assets/images/cityhall-blue-treatment.png');
-  background-size: cover;
+  /* background-image: url('/wp-content/themes/wp-nycc/assets/images/cityhall-blue-treatment.png'); */
+  /* background-size: cover;
   background-position: 0% 50%;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color:#254585;
   display: flex;
   flex-direction: column;
+  min-height: 315px;
   min-width: 290px;
+  max-height: 315px;
   max-width: 290px;
   position: relative;
   width: 100%;
+}
+.hearing-card .card-divider, .hearing-card .card-section{
+  padding: .65rem;
 }
 
 .hearing-date-tab{
@@ -7743,7 +7761,7 @@ a.anchor{
   color: #23417D;
   font-family: "Gotham-Black";
   font-size: 18pt;
-  line-height: 1.3;
+  line-height: 1.19;
 }
 
 .hearing-date span.hearing-time{
@@ -7754,11 +7772,12 @@ a.anchor{
 }
 
 .hearing-body{
-  font-family: "Gotham-Ultra";
+  font-family: "Gotham-Black";
   /* font-size: 20pt; */
   font-size: 1.75vw;
   height: 100%;
   line-height: 1;
+  overflow-y: auto;
   word-break: break-word;
 }
 
@@ -7770,7 +7789,8 @@ a.anchor{
   bottom: 0;
   color: #FFFFFF;
   font-family: "Gotham-Medium";
-  font-size: 13pt;
+  /* font-size: 13pt; */
+  font-size: .88rem;
 }
 
 .hearings-links a{
@@ -7786,12 +7806,12 @@ a.anchor{
 }
 @media only screen and (min-width: 641px) and (max-width: 1000px){
   .hearing-body{
-    font-size: 2.75vw
+    font-size: 2.5vw;
   }
 }
 @media only screen and (max-width: 640px){
   .hearing-body{
-    font-size: 3.5vw
+    font-size: 3.5vw;
   }
 }
 @media only screen and (max-width:1000px){
@@ -7805,9 +7825,9 @@ a.anchor{
   /* .hearing-body{
     font-size: 17pt;
   } */
-  .hearing-stream-link a{
+  /* .hearing-stream-link a{
     font-size: 11pt;
-  }
+  } */
   
   .hearings-links a{
     font-size: 11pt;
@@ -7837,7 +7857,8 @@ a.anchor{
 .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
   color: #FFFFFF;
   font-family: "Gotham-Black";
-  font-size: 38pt;
+  /* font-size: 38pt; */
+  font-size: 2rem;
   line-height: 44px;
 }
 
@@ -7848,7 +7869,8 @@ a.anchor{
 .homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
   color: #FFFFFF;
   font-family: "Gotham-Light";
-  font-size: 21pt;
+  /* font-size: 21pt; */
+  font-size: 1.1rem;
 }
 
 .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{  
@@ -7860,7 +7882,8 @@ a.anchor{
   color: #FFFFFF !important;
   cursor: pointer;
   display: inline-block;
-  font-size: 16pt;
+  /* font-size: 16pt; */
+  font-size: 0.8rem;
   font-family: "Gotham-Light";
   font-weight: bolder;
   letter-spacing: 2pt;
@@ -7899,7 +7922,8 @@ a.anchor{
 .homepage-carousel-container .wppsac-sub-content{
   color: #FFFFFF;
   font-family: "Gotham-Book";
-  font-size: 20pt;
+  /* font-size: 20pt; */
+  font-size: 1.2rem;
   padding-bottom: 2rem;
 }
 
@@ -7923,16 +7947,16 @@ a.anchor{
 
 @media only screen and (max-width:1200px) and (min-width:1000px){
   .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
-    font-size: 32pt;
+    /* font-size: 32pt; */
   }
   .homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
-    font-size: 19pt;
+    /* font-size: 19pt; */
   }
   .homepage-carousel-container .wppsac-sub-content{
-    font-size: 14pt;
+    /* font-size: 14pt; */
   }
   .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{
-    font-size: 18pt;
+    /* font-size: 18pt; */
     padding: .85em 1.75em;
   }
 }
@@ -7993,7 +8017,8 @@ a.anchor{
 #live-videos-tabs .tabs-title a span,
 #live-videos-tabs .tabs-title a strong{
   color: #23417D;
-  font-size: 12pt;
+  font-size: 0.78rem;
+  /* font-size: 12pt; */
 }
 
 #live-videos-tabs .tabs-title a span{
@@ -8007,7 +8032,8 @@ a.anchor{
 #live-videos-tabs .tabs-title.is-active a span,
 #live-videos-tabs .tabs-title.is-active a strong{
   color: #FFFFFF;
-  font-size: 12pt;
+  font-size: 0.9rem;
+  /* font-size: 12pt; */
 }
 #live-videos-tabs .tabs-title.is-active{
   background-color: #23417D;
