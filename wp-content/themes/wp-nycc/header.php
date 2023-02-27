@@ -88,15 +88,26 @@
                     <div class="top-bar-center">
                       <!-- replace with hardcoded html-->
                       <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" style="text-align: -webkit-center;" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
-                        <li><a href="/livestream/">Livestream</a></li>
-                        <li><a href="/budget/">Budget</a></li>
-                        <li><a href="/committees/">Committees</a></li>
-                        <li><a href="/land-use/">Land Use</a></li>
-                        <li><a href="/#hearings">Upcoming Hearings</a></li>
-                        <li><a href="/districts/">Find My District</a></li>
+                        <li id="livestream-nav"><a href="/livestream/">Livestream</a></li>
+                        <li id="budget-nav"><a href="/budget/">Budget</a></li>
+                        <li id="committees-nav"><a href="/committees/">Committees</a></li>
+                        <li id="land-use-nav"><a href="/land-use/">Land Use</a></li>
+                        <li id="hearings-nav"><a href="/#hearings">Upcoming Hearings</a></li>
+                        <li id="districts-nav"><a href="/districts/">Find My District</a></li>
                       </ul>                  
                       <script>
                         jQuery(document).ready(function(){
+                          if(window.location.pathname.startsWith("/livestream/")){
+                            document.getElementById("livestream-nav").className += "active-page";
+                          } else if (window.location.pathname.startsWith("/budget/")){
+                            document.getElementById("budget-nav").className += "active-page";
+                          } else if (window.location.pathname.startsWith("/committees/")){
+                            document.getElementById("committees-nav").className += "active-page";
+                          } else if (window.location.pathname.startsWith("/land-use")){
+                            document.getElementById("land-use-nav").className += "active-page";
+                          } else if (window.location.pathname.startsWith("/districts/")){
+                            document.getElementById("districts-nav").className += "active-page";
+                          };
                           $("#translation-menu-dropdown").css("visibility","visible").hide();
                           jQuery("#translation-button").click(function(){
                             if(jQuery("#translation-menu-dropdown").css("display") === "none"){

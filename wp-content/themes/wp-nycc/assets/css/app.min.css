@@ -5932,9 +5932,10 @@ a.thumbnail image {
 
 .top-bar-center ul li:hover{
   background-color: #e6e6e6;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
 }
 
-.top-bar-center ul li:active{
+.top-bar-center ul li:active,.top-bar-center ul li.active-page{
   background-color: #cccccc;
 }
 
@@ -7566,6 +7567,10 @@ figure {
 /*--------------------------------------------------
   Custom CSS from JC
 --------------------------------------------------*/
+#menu-main-menu{
+  align-items: center;
+  justify-content: space-between;
+}
 #menu-main-menu .submenu {
   margin-left: 25px;
 }
@@ -7620,6 +7625,11 @@ input::placeholder{
     columns: 1;
     -webkit-columns: 1;
     -moz-columns: 1;
+  }
+}
+@media only screen and (min-width: 1023px) {
+  #menu-main-menu{
+    display:flex;
   }
 }
 
