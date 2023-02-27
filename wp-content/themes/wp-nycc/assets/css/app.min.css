@@ -7646,10 +7646,6 @@ input::placeholder{
 
 #nav-menu{
   background-color: #FFFFFF;
-  border-top: none;
-}
-@media screen and (min-width: 1024px) {
-  #nav-menu{border-top: 1.5px #58595B solid;}
 }
 /*
   SEARCHBAR IN NAVIGAGTION END
@@ -7708,8 +7704,6 @@ a.anchor{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-top:1.5px#58595B solid;
-  padding-top: 30px;
 }
 
 .tabs-panel.hearings{

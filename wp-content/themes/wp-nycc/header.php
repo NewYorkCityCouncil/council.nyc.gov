@@ -80,6 +80,7 @@
                 </div>
               </div>
               <div class="columns small-4 large-12" id="nav-menu">
+              <hr style="border-bottom: 1px solid #58595B; margin: 0;" class="show-for-large">
                 <div id="mobile-nav-col"  data-equalizer-watch>
                   <?php switch_to_blog(1); ?>
                   <span class="responsive-menu-toggle" style="line-height: none" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon" data-toggle></span></span>

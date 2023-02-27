@@ -1,6 +1,11 @@
 <div class="container hearings-section">
   <div class="row">
-    <h2 class="columns">HEARINGS</h2>
+    <div class="columns">
+      <h2>
+        HEARINGS
+        <hr style="border-bottom: 1px solid #58595B; margin: 30px 0;"/>
+      </h2>
+    </div>
   </div>
   <div class="row" id="hearings">
     <div class="columns" style="padding-right: 0; ">
