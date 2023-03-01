@@ -5809,9 +5809,8 @@ a.thumbnail image {
 }
 
 .top-bar ul a{
-  /* border-top: 1px #414042 solid; */
   color: #414042;
-  font-family: "Gotham-Light";
+  font-family: "Gotham-Book";
   font-size: 1rem;
   font-weight:bold;
   letter-spacing: 0.159rem;
@@ -5864,10 +5863,6 @@ a.thumbnail image {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-}
-
-.top-bar {
-  padding: 0;
 }
 
 .top-bar::after,
@@ -5932,17 +5927,19 @@ a.thumbnail image {
 }
 
 .top-bar-center ul li:hover{
-  background-color: #e6e6e6;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  /* background-color: #e6e6e6; */
+  opacity: .7;
+  transition: opacity 0.25s ease-out;
 }
 
-.top-bar-center ul li:active,.top-bar-center ul li.active-page{
-  background-color: #cccccc;
+.top-bar-center ul li:active,.top-bar-center ul li.active-page a{
+  /* background-color: #cccccc; */
+  font-family: "Gotham-Medium";
 }
 
-.top-bar-center ul li:hover a{
-  color: #23417D;
-}
+/* .top-bar-center ul li:hover a{
+  color: #414042;
+} */
 
 @media screen and (max-width: 63.9375em){
   #menu-main-menu{
@@ -6157,21 +6154,18 @@ a.thumbnail image {
 .site-footer .widget-title{
   color: #FFFFFF;
   font-family: "Gotham-Black";
-  /* font-size: 14pt; */
   font-size: 1rem;
   text-transform: uppercase;
 }
 .site-footer .bold-link{
   color: #9CDBF4;
   font-family: "Gotham-Bold";
-  /* font-size: 13pt; */
   font-size: 0.89rem;
   text-decoration: underline;
 }
 .site-footer p, .site-footer a{
   color:#FFFFFF;
   font-family: "Gotham-Book";
-  /* font-size: 13pt; */
   font-size: 0.89rem;
   line-height: 1.2rem;
 }
@@ -6235,6 +6229,11 @@ a.thumbnail image {
   padding-bottom: 20px;
   box-shadow: 0 .25rem 0 rgba(0,0,0,.1),0 -.125rem 0 rgba(0,0,0,.1);
 }
+@media screen and (max-width: 63.9375em){
+  .top-bar {
+    padding-bottom: 0;
+  }
+}
 
 .top-bar span.float-right {
   line-height: 2.25;
@@ -6246,24 +6245,17 @@ a.thumbnail image {
   display: block;
   font-family: Georgia,Cambria,"Times New Roman",Times,serif;
   font-weight: 400;
-  font-size: .875rem;
+  font-size: 1.125rem; 
   line-height: 2.25rem;
   letter-spacing: -.03rem;
 }
 
 @media print,screen and (min-width:40em) {
   .site-logo {
-    /* font-size: 1.125rem; */
     font-size: 1.575rem;
     letter-spacing: 0;
   }
 }
-
-/* @media screen and (min-width:75em) {
-  .site-logo {
-    font-size: 1.375rem;
-  }
-} */
 
 .site-logo a {
   display: inline-block;
@@ -7669,11 +7661,10 @@ input::placeholder{
   color: #3158A6;
   font-family: "Gotham-Book";
   font-size: 1.2rem !important;
-  /* font-size: 17pt !important; */
 }
 
 .live-stream-homepage .tabs-title>a[aria-selected=true]{
-  font-size: 22pt !important;
+  font-size: 1.4rem !important;
   font-family: "Gotham-Bold";
   background: none !important;
   outline: none !important;
@@ -7703,7 +7694,6 @@ a.anchor{
 .hearings-section h2, .livestream-section h2{
   color:#414042;
   font-family: 'Gotham-Black';
-  /* font-size: 24pt; */
   font-size: 1.3rem;
   letter-spacing: 2px;
   max-width: 75rem;
@@ -7744,10 +7734,10 @@ a.anchor{
   background-color:#254585;
   display: flex;
   flex-direction: column;
-  min-height: 315px;
-  min-width: 290px;
-  max-height: 315px;
-  max-width: 290px;
+  min-height: 250px;
+  min-width: 225px;
+  max-height: 250px;
+  max-width: 225px;
   position: relative;
   width: 100%;
 }
@@ -7758,6 +7748,7 @@ a.anchor{
 .hearing-date-tab{
   background-color: white;
   border-top: 10px solid #00AEEF;
+  line-height: 1;
   padding: 5px 10px;
   width: fit-content;
 }
@@ -7765,23 +7756,22 @@ a.anchor{
 .hearing-date span{
   color: #23417D;
   font-family: "Gotham-Black";
-  font-size: 18pt;
+  font-size: 1.5rem;
   line-height: 1.19;
 }
 
 .hearing-date span.hearing-time{
   color: #00AEEF !important;
   font-family: "Gotham-Bold";
-  font-size: 11pt;
+  font-size: 1rem;
   padding: 0;
 }
 
 .hearing-body{
   font-family: "Gotham-Black";
-  /* font-size: 20pt; */
-  font-size: 1.75vw;
+  font-size: 1.35vw;
   height: 100%;
-  line-height: 1;
+  line-height: 1.05;
   overflow-y: auto;
   word-break: break-word;
 }
@@ -7794,14 +7784,13 @@ a.anchor{
   bottom: 0;
   color: #FFFFFF;
   font-family: "Gotham-Medium";
-  /* font-size: 13pt; */
   font-size: .88rem;
 }
 
 .hearings-links a{
   color: #6D6E71;
   font-family: "Gotham-Black";
-  font-size: 12pt;
+  font-size: 1rem;
   text-transform: uppercase;
 }
 .hearing-links-arrow{
@@ -7818,26 +7807,11 @@ a.anchor{
   .hearing-body{
     font-size: 3.5vw;
   }
-}
-@media only screen and (max-width:1000px){
-  .hearing-date span{
-    font-size: 15pt;
-  }
-  
-  .hearing-date span.hearing-time{
-    font-size: 9pt;
-  }
-  /* .hearing-body{
-    font-size: 17pt;
-  } */
-  /* .hearing-stream-link a{
-    font-size: 11pt;
-  } */
-  
   .hearings-links a{
-    font-size: 11pt;
+    font-size: .75rem;
   }
 }
+
 /*
   HOMEPAGE HEARINGS SECTION END
 --------------------------------------------------*/
@@ -7862,7 +7836,6 @@ a.anchor{
 .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
   color: #FFFFFF;
   font-family: "Gotham-Black";
-  /* font-size: 38pt; */
   font-size: 2rem;
   line-height: 44px;
 }
@@ -7874,7 +7847,6 @@ a.anchor{
 .homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
   color: #FFFFFF;
   font-family: "Gotham-Light";
-  /* font-size: 21pt; */
   font-size: 1.1rem;
 }
 
@@ -7887,7 +7859,6 @@ a.anchor{
   color: #FFFFFF !important;
   cursor: pointer;
   display: inline-block;
-  /* font-size: 16pt; */
   font-size: 0.8rem;
   font-family: "Gotham-Light";
   font-weight: bolder;
@@ -7927,7 +7898,6 @@ a.anchor{
 .homepage-carousel-container .wppsac-sub-content{
   color: #FFFFFF;
   font-family: "Gotham-Book";
-  /* font-size: 20pt; */
   font-size: 1.2rem;
   padding-bottom: 2rem;
 }
@@ -7951,17 +7921,7 @@ a.anchor{
 }
 
 @media only screen and (max-width:1200px) and (min-width:1000px){
-  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
-    /* font-size: 32pt; */
-  }
-  .homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
-    /* font-size: 19pt; */
-  }
-  .homepage-carousel-container .wppsac-sub-content{
-    /* font-size: 14pt; */
-  }
   .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{
-    /* font-size: 18pt; */
     padding: .85em 1.75em;
   }
 }
@@ -8038,7 +7998,6 @@ a.anchor{
 #live-videos-tabs .tabs-title.is-active a strong{
   color: #FFFFFF;
   font-size: 0.9rem;
-  /* font-size: 12pt; */
 }
 #live-videos-tabs .tabs-title.is-active{
   background-color: #23417D;

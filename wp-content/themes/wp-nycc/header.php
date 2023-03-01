@@ -62,24 +62,24 @@
         <header class="site-header sticky" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
           <div class="top-bar">
             <div class="row" data-equalizer>
-              <div class="columns small-8 large-12" style="background-color: #FFFFFF; padding: .3rem 0" data-equalizer-watch>
+              <div class="columns small-10 large-12" style="background-color: #FFFFFF; padding: .3rem 0" data-equalizer-watch>
                 <div style="display: flex; align-items: center; max-width: 1350px; justify-content: center; margin: 0 auto;">
-                  <div class="columns large-6">
+                  <div class="columns">
                     <strong class="site-logo">
                       <a href="/">
                         <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">
-                        <div class="site-logo" style="display:inline;">
+                        <div style="display:inline;">
                           New York City Council
                         </div>
                       </a>
                     </strong>
                   </div>
-                  <div class="show-for-large columns large-6 nav-search-container" style="display: flex; justify-content: end; align-items: end;">
+                  <div class="show-for-large columns nav-search-container" style="display: flex; justify-content: end; align-items: end;">
                     <?php get_search_form(); ?>  
                   </div>
                 </div>
               </div>
-              <div class="columns small-4 large-12" id="nav-menu">
+              <div class="columns small-2 large-12" id="nav-menu">
               <hr style="border-bottom: 1px solid #58595B; margin: 0;" class="show-for-large">
                 <div id="mobile-nav-col"  data-equalizer-watch>
                   <?php switch_to_blog(1); ?>
@@ -92,8 +92,9 @@
                         <li id="budget-nav"><a href="/budget/">Budget</a></li>
                         <li id="committees-nav"><a href="/committees/">Committees</a></li>
                         <li id="land-use-nav"><a href="/land-use/">Land Use</a></li>
-                        <li id="hearings-nav"><a href="/#hearings">Upcoming Hearings</a></li>
+                        <!-- <li id="hearings-nav"><a href="/#hearings">Upcoming Hearings</a></li> -->
                         <li id="districts-nav"><a href="/districts/">Find My District</a></li>
+                        <li id="events-nav"><a href="/events/">Events</a></li>
                       </ul>                  
                       <script>
                         jQuery(document).ready(function(){
@@ -107,6 +108,8 @@
                             document.getElementById("land-use-nav").className += "active-page";
                           } else if (window.location.pathname.startsWith("/districts/")){
                             document.getElementById("districts-nav").className += "active-page";
+                          } else if (window.location.pathname.startsWith("/events/")){
+                            document.getElementById("events-nav").className += "active-page";
                           };
                           $("#translation-menu-dropdown").css("visibility","visible").hide();
                           jQuery("#translation-button").click(function(){
