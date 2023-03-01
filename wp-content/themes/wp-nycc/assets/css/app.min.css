@@ -5953,7 +5953,6 @@ a.thumbnail image {
   #mobile-nav-col{
     background-color: #ffff !important;
     padding-left: 0;
-    padding-right: 1.4rem;
   }
   #menu-main-menu label{
     padding: 0.9125rem 1rem;
@@ -7664,7 +7663,7 @@ input::placeholder{
 }
 
 .live-stream-homepage .tabs-title>a[aria-selected=true]{
-  font-size: 1.4rem !important;
+  /* font-size: 1.4rem !important; */
   font-family: "Gotham-Bold";
   background: none !important;
   outline: none !important;

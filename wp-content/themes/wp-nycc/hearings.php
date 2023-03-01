@@ -164,6 +164,7 @@
             let monthOnly = meetingDate[1];
             let dayNum = meetingDate[2];
             let suffix;
+
             switch(dayNum.slice(-1)){
               case "1":
                 suffix = "ST";
@@ -194,7 +195,7 @@
                     ${deferred ? "<p style='position: absolute;right: 16px;top: 16px;font-size: 18pt;font-family: Gotham-Black;color: #FFF;text-decoration: none !important;'>DEFERRED</p>" : ""}
                     <div class="hearing-date-tab">
                       <span>${monthOnly.toUpperCase()}</span><br/>
-                      <span>${dayNum}<sup><small>${suffix}</small></sup></span><br/>
+                      <span>${parseInt(dayNum,10).toString()}<sup><small>${suffix}</small></sup></span><br/>
                       <span class="hearing-time" style="text-align: right;">${hearing.EventTime}</span>
                     </div>
                   </div>
