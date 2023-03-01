@@ -2936,7 +2936,8 @@ b,strong {
 }
 
 .header-large,.header-medium,.header-small,.header-tiny,.header-xlarge,.header-xxlarge,.widget-title,h1,h2,h3,h4,h5,h6 {
-  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  /* font-family: Georgia,Cambria,"Times New Roman",Times,serif; */
+  font-family: "Gotham-Bold";
   font-style: normal;
   font-weight: 400;
   color: inherit;
