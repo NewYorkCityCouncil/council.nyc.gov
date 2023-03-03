@@ -83,7 +83,7 @@
               <hr style="border-bottom: 1px solid #58595B; margin: 0;" class="show-for-large">
                 <div id="mobile-nav-col"  data-equalizer-watch>
                   <?php switch_to_blog(1); ?>
-                  <span class="responsive-menu-toggle" style="line-height: none" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon" data-toggle></span></span>
+                  <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon" data-toggle></span></span>
                   <div role="navigation" id="responsive-menu">
                     <div class="top-bar-center">
                       <!-- replace with hardcoded html-->
@@ -94,7 +94,6 @@
                         <li id="land-use-nav"><a href="/land-use/">Land Use</a></li>
                         <li id="hearings-nav"><a href="https://legistar.council.nyc.gov/Calendar.aspx">Upcoming Hearings</a></li>
                         <li id="districts-nav"><a href="/districts/">Find My District</a></li>
-                        <li id="events-nav"><a href="/events/">Events</a></li>
                       </ul>                  
                       <script>
                         jQuery(document).ready(function(){
@@ -108,8 +107,6 @@
                             document.getElementById("land-use-nav").className += "active-page";
                           } else if (window.location.pathname.startsWith("/districts/")){
                             document.getElementById("districts-nav").className += "active-page";
-                          } else if (window.location.pathname.startsWith("/events/")){
-                            document.getElementById("events-nav").className += "active-page";
                           };
                           $("#translation-menu-dropdown").css("visibility","visible").hide();
                           jQuery("#translation-button").click(function(){

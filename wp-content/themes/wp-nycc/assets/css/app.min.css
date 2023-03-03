@@ -7164,7 +7164,7 @@ figure {
 
   #translation-menu.member {
     max-width: 100%!important;
-    right: 41.66667%;
+    /* right: 41.66667%; */
   }
 }
 
@@ -7712,7 +7712,7 @@ a.anchor{
 }
 
 .row-hearings{
-  display: grid;
+  display: inline-grid;
   grid-auto-flow: column;
   grid-template-rows: auto auto;
   margin: 0;
@@ -7726,17 +7726,14 @@ a.anchor{
 }
 
 .hearing-card{
-  /* background-image: url('/wp-content/themes/wp-nycc/assets/images/cityhall-blue-treatment.png'); */
-  /* background-size: cover;
-  background-position: 0% 50%;
-  background-repeat: no-repeat; */
   background-color:#254585;
   display: flex;
   flex-direction: column;
-  min-height: 250px;
-  min-width: 225px;
-  max-height: 250px;
-  max-width: 225px;
+  margin-bottom: 0;
+  min-height: 280px;
+  min-width: 280px;
+  max-height: 280px;
+  max-width: 280px;
   position: relative;
   width: 100%;
 }
@@ -7804,7 +7801,7 @@ a.anchor{
 }
 @media only screen and (max-width: 640px){
   .hearing-body{
-    font-size: 3.5vw;
+    font-size: 4.25vw;
   }
   .hearings-links a{
     font-size: .75rem;
