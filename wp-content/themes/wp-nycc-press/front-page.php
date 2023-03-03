@@ -1,7 +1,3 @@
-<head>
-  <title>Press Releases - <?php bloginfo( $show = 'name' )?></title>
-</head>
-
 <?php get_header(); ?>
 
   <div class="row">
