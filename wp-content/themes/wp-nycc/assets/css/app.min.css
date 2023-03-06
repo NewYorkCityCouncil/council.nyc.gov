@@ -7707,6 +7707,7 @@ a.anchor{
 }
 
 .tabs-panel.hearings{
+  overflow-x: auto;
   padding-left: 0;
   padding-right: 0;
 }
@@ -7717,7 +7718,6 @@ a.anchor{
   grid-template-rows: auto auto;
   margin: 0;
   max-width: 68rem;
-  overflow-x: scroll;
 }
 
 .row-hearings.horizontal-grid{
