@@ -7873,8 +7873,8 @@ a.anchor{
 
 .homepage-carousel-container .wppsac-post-slider .wppsac-post-image-bg img{
   object-position: center center;
-  filter: grayscale(1);
-  opacity: .75;
+  /* filter: grayscale(1); */
+  /* opacity: .75; */
 }
 
 .homepage-carousel-container .wppsac-post-slider.design-4 .slick-dots{
