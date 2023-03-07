@@ -1,4 +1,20 @@
 @charset "UTF-8";
+@font-face { font-family: "Gotham-Black"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Black.otf");}
+@font-face { font-family: "Gotham-BlackItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-BlackItalic.otf");}
+@font-face { font-family: "Gotham-Bold"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Bold.otf");}
+@font-face { font-family: "Gotham-BoldItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-BoldItalic.otf");}
+@font-face { font-family: "Gotham-Book"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Book.otf");}
+@font-face { font-family: "Gotham-BookItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-BookItalic.otf");}
+@font-face { font-family: "Gotham-Light"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Light.otf");}
+@font-face { font-family: "Gotham-LightItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-LightItalic.otf");}
+@font-face { font-family: "Gotham-Medium"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Medium.otf");}
+@font-face { font-family: "Gotham-MediumItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-MediumItalic.otf");}
+@font-face { font-family: "Gotham-Thin"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Thin.otf");}
+@font-face { font-family: "Gotham-ThinItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-ThinItalic.otf");}
+@font-face { font-family: "Gotham-Ultra"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-Ultra.otf");}
+@font-face { font-family: "Gotham-UltraItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-UltraItalic.otf");}
+@font-face { font-family: "Gotham-XLight"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-XLight.otf");}
+@font-face { font-family: "Gotham-XLightItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-XLightItalic.otf");}
 
 html,legend,select {
   box-sizing: border-box;
@@ -2920,7 +2936,8 @@ b,strong {
 }
 
 .header-large,.header-medium,.header-small,.header-tiny,.header-xlarge,.header-xxlarge,.widget-title,h1,h2,h3,h4,h5,h6 {
-  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  /* font-family: Georgia,Cambria,"Times New Roman",Times,serif; */
+  font-family: "Gotham-Bold";
   font-style: normal;
   font-weight: 400;
   color: inherit;
@@ -3112,8 +3129,8 @@ kbd {
 
 /* For selecting live video feed section */
 .subheading{
-  text-align: center;
-  color: white;
+  /* text-align: center;
+  color: white; */
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -4367,6 +4384,7 @@ select[multiple] {
 @media screen and (min-width:64em) {
   .menu.large-horizontal>li {
     display: table-cell;
+    vertical-align: top;;
   }
 
   .menu.large-expanded {
@@ -4510,8 +4528,8 @@ select[multiple] {
   display: block;
   width: 100%;
   height: 2px;
-  background: #fff;
-  box-shadow: 0 7px 0 #fff,0 14px 0 #fff;
+  background: #414042;
+  box-shadow: 0 7px 0 #414042,0 14px 0 #414042;
   content: '';
 }
 
@@ -5791,7 +5809,12 @@ a.thumbnail image {
 }
 
 .top-bar ul a{
-  color: #FFF;
+  color: #414042;
+  font-family: "Gotham-Book";
+  font-size: 1rem;
+  font-weight:bold;
+  letter-spacing: 0.159rem;
+  text-transform: uppercase;
 }
 
 .tooltip::before {
@@ -5840,10 +5863,6 @@ a.thumbnail image {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-}
-
-.top-bar {
-  padding: 0;
 }
 
 .top-bar::after,
@@ -5908,30 +5927,32 @@ a.thumbnail image {
 }
 
 .top-bar-center ul li:hover{
-  background-color: #e6e6e6;
+  /* background-color: #e6e6e6; */
+  opacity: .7;
+  transition: opacity 0.25s ease-out;
 }
 
-.top-bar-center ul li:active{
-  background-color: #cccccc;
+.top-bar-center ul li:active,.top-bar-center ul li.active-page a{
+  /* background-color: #cccccc; */
+  font-family: "Gotham-Medium";
 }
 
-.top-bar-center ul li:hover a{
-  color: #23417D;
-}
+/* .top-bar-center ul li:hover a{
+  color: #414042;
+} */
 
 @media screen and (max-width: 63.9375em){
   #menu-main-menu{
     position: absolute; 
     width: 100%; 
-    background-color: #23417d; 
+    background-color: #ffffff; 
     left: 0;
     text-align: left !important;
     top: 74px;
   }
   #mobile-nav-col{
-    background-color: #2f56a6 !important;
+    background-color: #ffff !important;
     padding-left: 0;
-    padding-right: 1.4rem;
   }
   #menu-main-menu label{
     padding: 0.9125rem 1rem;
@@ -6126,8 +6147,56 @@ a.thumbnail image {
 }
 
 .site-footer {
+  background-color: #22427e;
   padding: 3rem 0 4rem;
-  box-shadow: inset 0 .25rem 0 rgba(0,0,0,.1);
+}
+.site-footer .widget-title{
+  color: #FFFFFF;
+  font-family: "Gotham-Black";
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.site-footer .bold-link{
+  color: #9CDBF4;
+  font-family: "Gotham-Bold";
+  font-size: 0.89rem;
+  text-decoration: underline;
+}
+.site-footer p, .site-footer a{
+  color:#FFFFFF;
+  font-family: "Gotham-Book";
+  font-size: 0.89rem;
+  line-height: 1.2rem;
+}
+.site-footer .social-buttons li{
+  margin-right: 0!important;
+}
+.site-footer .social-buttons a{
+  align-items: center;
+  background-color: transparent;
+  display: inline-flex !important;
+  height: 50px;
+  justify-content: center;
+  width: 50px;
+}
+.site-footer .social-buttons a i{
+  margin-right: 0;
+}
+.site-footer .social-buttons a i::before{
+  vertical-align: middle;
+}
+.site-footer #copyright{
+  color: #FFFFFF;
+  font-family: "Gotham-Bold";
+  font-size: 10pt;
+}
+@media only screen and (max-width:1000px){
+  .site-footer .social-buttons a{
+    font-size: 1.875rem !important;
+  }
+  .site-footer #copyright{
+    font-size: 8pt !important;
+  }
 }
 
 .scrollable {
@@ -6155,8 +6224,14 @@ a.thumbnail image {
 }
 
 .top-bar {
-  background-color: #2f56a6;
+  background-color: #fff;
+  padding-bottom: 20px;
   box-shadow: 0 .25rem 0 rgba(0,0,0,.1),0 -.125rem 0 rgba(0,0,0,.1);
+}
+@media screen and (max-width: 63.9375em){
+  .top-bar {
+    padding-bottom: 0;
+  }
 }
 
 .top-bar span.float-right {
@@ -6165,28 +6240,21 @@ a.thumbnail image {
 }
 
 .site-logo {
-  color: #FFFFFF;
+  color: #38558b;
   display: block;
   font-family: Georgia,Cambria,"Times New Roman",Times,serif;
   font-weight: 400;
-  font-size: .875rem;
+  font-size: 1.125rem; 
   line-height: 2.25rem;
   letter-spacing: -.03rem;
 }
 
 @media print,screen and (min-width:40em) {
   .site-logo {
-    /* font-size: 1.125rem; */
     font-size: 1.575rem;
     letter-spacing: 0;
   }
 }
-
-/* @media screen and (min-width:75em) {
-  .site-logo {
-    font-size: 1.375rem;
-  }
-} */
 
 .site-logo a {
   display: inline-block;
@@ -6743,6 +6811,10 @@ figure {
   margin: .2em!important;
 }
 
+.social-buttons li {
+  margin-right: 0;
+}
+
 .social-buttons li+li {
   margin-top: 0;
 }
@@ -7092,7 +7164,7 @@ figure {
 
   #translation-menu.member {
     max-width: 100%!important;
-    right: 41.66667%;
+    /* right: 41.66667%; */
   }
 }
 
@@ -7487,6 +7559,10 @@ figure {
 /*--------------------------------------------------
   Custom CSS from JC
 --------------------------------------------------*/
+#menu-main-menu{
+  align-items: center;
+  justify-content: space-between;
+}
 #menu-main-menu .submenu {
   margin-left: 25px;
 }
@@ -7543,6 +7619,11 @@ input::placeholder{
     -moz-columns: 1;
   }
 }
+@media only screen and (min-width: 1023px) {
+  #menu-main-menu{
+    display:flex;
+  }
+}
 
 /*--------------------------------------------------
   SEARCHBAR IN NAVIGAGTION
@@ -7555,14 +7636,19 @@ input::placeholder{
 .nav-search-container .search-form .search-field{
   margin-bottom: 0;
   width: 300px;
+  height: 28.5px;
+  color: #58595B;
 }
 
 .nav-search-container .search-form .button{
-  background-color: #294279;
+  background-color: #FFFFFF;
   border: none;
   margin-bottom: 0;
 }
 
+#nav-menu{
+  background-color: #FFFFFF;
+}
 /*
   SEARCHBAR IN NAVIGAGTION END
 --------------------------------------------------*/
@@ -7570,15 +7656,15 @@ input::placeholder{
 /*--------------------------------------------------
   HOMEPAGE HEARINGS SECTION
 */
-
-.live-stream-homepage .tabs-title>a:focus,.tabs-title>a[aria-selected=true] {
-  color: #2f56a6;
-  outline-style: none !important;
+.live-stream-homepage .tabs-title a{
+  color: #3158A6;
+  font-family: "Gotham-Book";
+  font-size: 1.2rem !important;
 }
 
 .live-stream-homepage .tabs-title>a[aria-selected=true]{
-  font-size: 1.5rem;
-  font-weight: 600;
+  /* font-size: 1.4rem !important; */
+  font-family: "Gotham-Bold";
   background: none !important;
   outline: none !important;
 }
@@ -7599,34 +7685,39 @@ a.anchor{
   top: -80px;
   visibility: hidden;
 }
+.hearings-section{
+  padding: 4rem 0 2rem;
+  position: relative; 
+}
 
-#hearings:before{
-  background-image: url('/wp-content/themes/wp-nycc/assets/images/nyc map.png');
-  background-position: 50% 0;
+.hearings-section h2, .livestream-section h2{
+  color:#414042;
+  font-family: 'Gotham-Black';
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+#hearings{
+  background-image: url('/wp-content/themes/wp-nycc/assets/images/nyc-map-grey.svg');
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  content: ' ';
-  display: block;
-  height: 100%;
-  left: 0;
-  opacity: 0.15;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
 }
 
 .tabs-panel.hearings{
+  overflow-x: auto;
   padding-left: 0;
   padding-right: 0;
 }
 
 .row-hearings{
-  display: grid;
+  display: inline-grid;
   grid-auto-flow: column;
   grid-template-rows: auto auto;
   margin: 0;
-  overflow-x: scroll;
+  max-width: 68rem;
 }
 
 .row-hearings.horizontal-grid{
@@ -7634,43 +7725,89 @@ a.anchor{
   grid-template-rows: auto !important;
 }
 
-.hearing-card:hover, 
-.hearing-card:hover .card-divider, 
-.hearing-card:hover .card-section{
-  background-color:#2f56a6;
-  color: #FFFFFF;
-}
-
 .hearing-card{
-  background: #e6e6e6;
+  background-color:#254585;
   display: flex;
   flex-direction: column;
-  min-width: 290px;
-  max-width: 290px;
+  margin-bottom: 0;
+  min-height: 280px;
+  min-width: 280px;
+  max-height: 280px;
+  max-width: 280px;
+  position: relative;
   width: 100%;
 }
-
-.hearing-card:hover{
-  background-color:#2f56a6;
-  color: #FFFFFF;
+.hearing-card .card-divider, .hearing-card .card-section{
+  padding: .65rem;
 }
 
-.hearing-card h4, 
-.hearing-card .hearing-time{
-  color: #2f56a6;
+.hearing-date-tab{
+  background-color: white;
+  border-top: 10px solid #00AEEF;
+  line-height: 1;
+  padding: 5px 10px;
+  width: fit-content;
 }
 
-.hearing-time{
+.hearing-date span{
+  color: #23417D;
+  font-family: "Gotham-Black";
+  font-size: 1.5rem;
+  line-height: 1.19;
+}
+
+.hearing-date span.hearing-time{
+  color: #00AEEF !important;
+  font-family: "Gotham-Bold";
+  font-size: 1rem;
   padding: 0;
 }
 
-.hearing-card:hover h5, 
-.hearing-card:hover h4, 
-.hearing-card:hover p,
-.hearing-card:hover a,
-.hearing-card:hover .hearing-time{
-  color: #FFFFFF;
+.hearing-body{
+  font-family: "Gotham-Black";
+  font-size: 1.35vw;
+  height: 100%;
+  line-height: 1.05;
+  overflow-y: auto;
+  word-break: break-word;
 }
+
+.hearing-body a{
+  color: #FFFFFF !important;
+}
+
+.hearing-stream-link a{
+  bottom: 0;
+  color: #FFFFFF;
+  font-family: "Gotham-Medium";
+  font-size: .88rem;
+}
+
+.hearings-links a{
+  color: #6D6E71;
+  font-family: "Gotham-Black";
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.hearing-links-arrow{
+  color: #00AEEF !important;
+  font-size: .6em !important;
+  vertical-align: middle;
+}
+@media only screen and (min-width: 641px) and (max-width: 1000px){
+  .hearing-body{
+    font-size: 2.5vw;
+  }
+}
+@media only screen and (max-width: 640px){
+  .hearing-body{
+    font-size: 4.25vw;
+  }
+  .hearings-links a{
+    font-size: .75rem;
+  }
+}
+
 /*
   HOMEPAGE HEARINGS SECTION END
 --------------------------------------------------*/
@@ -7694,8 +7831,9 @@ a.anchor{
 
 .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
   color: #FFFFFF;
-  font-size: 42px;
-  line-height: 44px
+  font-family: "Gotham-Black";
+  font-size: 2rem;
+  line-height: 44px;
 }
 
 .homepage-carousel-container .wppsac-post-slider .wppsac-post-date::after{
@@ -7704,24 +7842,29 @@ a.anchor{
 
 .homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
   color: #FFFFFF;
+  font-family: "Gotham-Light";
+  font-size: 1.1rem;
 }
 
 .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{  
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 1rem;
-  padding: .85em 1em;
   -webkit-appearance: none;
+  background-color: #00aeef;
+  border-radius: 25px;
   border: 1px solid transparent;
-  border-radius: 0;
-  transition: background-color .25s ease-out,color .25s ease-out;
-  font-size: 1.05rem;
-  line-height: 1;
-  text-align: center;
-  cursor: pointer;
-  background-color: #12295d;
-  color: #FFFFFF !important;
   border: none !important;
+  color: #FFFFFF !important;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.8rem;
+  font-family: "Gotham-Light";
+  font-weight: bolder;
+  letter-spacing: 2pt;
+  line-height: 1;
+  margin: 0 0 1rem;
+  padding: .85em 2em;
+  text-align: center;
+  transition: background-color .25s ease-out,color .25s ease-out;
+  vertical-align: middle;
 }
 
 .homepage-carousel-container .wppsac-post-slider.design-4 .wp-medium-5{
@@ -7730,6 +7873,8 @@ a.anchor{
 
 .homepage-carousel-container .wppsac-post-slider .wppsac-post-image-bg img{
   object-position: center center;
+  /* filter: grayscale(1); */
+  /* opacity: .75; */
 }
 
 .homepage-carousel-container .wppsac-post-slider.design-4 .slick-dots{
@@ -7748,6 +7893,7 @@ a.anchor{
 
 .homepage-carousel-container .wppsac-sub-content{
   color: #FFFFFF;
+  font-family: "Gotham-Book";
   font-size: 1.2rem;
   padding-bottom: 2rem;
 }
@@ -7759,6 +7905,7 @@ a.anchor{
 
   .homepage-carousel-container .wp-medium-7.wpcolumns{
     align-content: center;
+    background-color: #22427e;
     display: grid;
     width: 45%;
   }
@@ -7766,6 +7913,27 @@ a.anchor{
   .homepage-carousel-container .wppsac-post-slider.design-4 .wppsac-post-image-bg, 
   .homepage-carousel-container .wp-medium-7.wpcolumns{
     height: 500px;
+  }
+}
+
+@media only screen and (max-width:1200px) and (min-width:1000px){
+  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{
+    padding: .85em 1.75em;
+  }
+}
+@media only screen and (max-width:1000px) and (min-width: 40.0625em){
+  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
+    font-size: 28pt;
+  }
+  .homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
+    font-size: 17pt;
+  }
+  .homepage-carousel-container .wppsac-sub-content{
+    font-size: 12pt;
+  }
+  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{
+    font-size: 14pt;
+    padding: .85em 1.5em;
   }
 }
 /*
@@ -7803,7 +7971,35 @@ a.anchor{
 /*--------------------------------------------------
   LIVE VIDEO STREAM COLUMN - HOMEPAGE
 */
-.live-stream-tabs-column ul{
+#live-videos-tabs{
+  text-transform: uppercase;
+}
+
+#live-videos-tabs .tabs-title a span,
+#live-videos-tabs .tabs-title a strong{
+  color: #23417D;
+  font-size: 0.78rem;
+  /* font-size: 12pt; */
+}
+
+#live-videos-tabs .tabs-title a span{
+  font-family: "Gotham-Bold";
+}
+
+#live-videos-tabs .tabs-title a strong{
+  font-family: "Gotham-Black";
+}
+
+#live-videos-tabs .tabs-title.is-active a span,
+#live-videos-tabs .tabs-title.is-active a strong{
+  color: #FFFFFF;
+  font-size: 0.9rem;
+}
+#live-videos-tabs .tabs-title.is-active{
+  background-color: #23417D;
+}
+
+/* .live-stream-tabs-column ul{
   overflow: auto;
 }
 
@@ -7821,30 +8017,7 @@ a.anchor{
 
 .live-stream-tabs-column .vertical.tabs li:hover a{
   color: #FFFFFF;
-}
-
-@media screen and (min-width: 40em){
-  .live-stream-tabs-column{
-    padding-left: 0;
-  }
-  .live-stream-tabs-column ul{
-    padding-left: 0;
-    height: 36vw;
-  }
-}
-
-@media screen and (max-width: 39.99em){
-  .live-stream-tabs-column ul{
-    height: 205px;
-  }
-}
-
-@media screen and (min-width: 75em){
-  .live-stream-tabs-column ul{
-    padding-left: 0;
-    height: 434px;
-  }
-}
+} */
 
 /*
   LIVE VIDEO STREAM COLUMN - HOMEPAGE END
