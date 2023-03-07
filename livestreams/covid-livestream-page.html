@@ -8,18 +8,18 @@
             <div class="columns large-3">
                 <h2>Live video</h2>
                 <h3 class="sans-serif subheader">Select a stream:</h3>
-                <ul class="tabs vertical" data-tabs="" id="live-videos">
+                <ul class="tabs vertical" data-tabs="" id="live-videos" data-auto-focus="true">
                     <li class="tabs-title is-active" style="text-align:center"><a href="#location-chambers" aria-selected="true"><strong>City Hall, Council Chambers</strong></a></li>
+                    <li id="vr-1" class="tabs-title" style="text-align:center; display: none; visibility: hidden;"><a href="#virtual-room-1"><strong>Virtual Room 1</strong></a></li>
+                    <li id="vr-2" class="tabs-title" style="text-align:center; display: none; visibility: hidden;"><a href="#virtual-room-2"><strong>Virtual Room 2</strong></a></li>
+                    <li id="vr-3" class="tabs-title" style="text-align:center; display: none; visibility: hidden;"><a href="#virtual-room-3"><strong>Virtual Room 3</strong></a></li>
+                    <li id="vr-4" class="tabs-title" style="text-align:center; display: none; visibility: hidden;"><a href="#virtual-room-4"><strong>Virtual Room 4</strong></a></li>
                     <li class="tabs-title" style="text-align:center"><a href="#location-committee-room"><strong>City Hall, Committee Room</strong></a></li>
                     <li class="tabs-title" style="text-align:center"><a href="#location-14th-floor"><strong>250 Broadway, 14th Fl<span class="show-for-xlarge">oor</span> Hearing Room</strong></a></li>
                     <li class="tabs-title" style="text-align:center"><a href="#location-16th-floor"><strong>250 Broadway, 16th Fl<span class="show-for-xlarge">oor</span> Hearing Room</strong></a></li>
-                    <li class="tabs-title" style="text-align:center"><a href="#virtual-room-1"><strong>Virtual Room 1</strong></a></li>
-                    <li class="tabs-title" style="text-align:center"><a href="#virtual-room-2"><strong>Virtual Room 2</strong></a></li>
-                    <li class="tabs-title" style="text-align:center"><a href="#virtual-room-3"><strong>Virtual Room 3</strong></a></li>
-                    <li class="tabs-title" style="text-align:center"><a href="#virtual-room-4"><strong>Virtual Room 4</strong></a></li>
-                    <li class="tabs-title" style="text-align:center"><a href="#virtual-room-5"><strong>Virtual Room 5</strong></a></li>
-                    <li class="tabs-title" style="text-align:center"><a href="#virtual-room-6"><strong>Virtual Room 6</strong></a></li>
-                    <li class="tabs-title" style="text-align:center"><a href="#press-room"><strong>Press Room</strong></a></li>
+                    <li id="vr-5" class="tabs-title" style="text-align:center; display: none; visibility: hidden;"><a href="#virtual-room-5"><strong>Virtual Room 5</strong></a></li>
+                    <li id="vr-6" class="tabs-title" style="text-align:center; display: none; visibility: hidden;"><a href="#virtual-room-6"><strong>Virtual Room 6</strong></a></li>
+                    <li id="vr-pr" class="tabs-title" style="text-align:center"><a href="#press-room"><strong>Press Room</strong></a></li>
                     <li><a class="button small expanded" style="margin-bottom:0;" href="https://legistar.council.nyc.gov/Calendar.aspx"><strong>Video archive of past hearings</strong></a></li>
                 </ul>
             </div>
@@ -65,7 +65,7 @@
                     </div>
                     <div data-auto-focus="true" class="tabs-panel" id="virtual-room-4" style="padding:0;">
                         <div class="flex-video widescreen" style="margin-bottom:0;">
-                            <iframe title="Virtual Room 3 (Español) Livestream Video" id="ls_embed_1591112206" src="https://livestream.com/accounts/17376047/events/9152927/player?width=960&amp;height=540&amp;enableInfoAndActivity=true&amp;defaultDrawer=feed&amp;autoPlay=false&amp;mute=false" width="960" height="540" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
+                            <iframe title="Virtual Room 4 Livestream Video" id="ls_embed_1591112206" src="https://livestream.com/accounts/17376047/events/9152927/player?width=960&amp;height=540&amp;enableInfoAndActivity=true&amp;defaultDrawer=feed&amp;autoPlay=false&amp;mute=false" width="960" height="540" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
                             <script type="text/javascript" data-embed_id="ls_embed_1591112206" src="https://livestream.com/assets/plugins/referrer_tracking.js"></script>
                         </div>
                     </div>
@@ -93,3 +93,48 @@
         </div>
     </div>
 </div>
+
+<script>
+jQuery(".tabs-title").on('click', (e) => {jQuery(e.target.getAttribute("href").focus())});
+										  
+const triggerStream = (month, day, stream, newRoom, streamText=[]) => {
+	/*
+		month + day: date of hearing 
+		valid stream: vr-1 to vr-6 (these are the ids of the li tabs)
+		newRoom: the new label to replace "Virtual Room 1"
+		streamText: used when a hearing requires the StreamText link only for original and ASL streams
+	*/ 
+	let today = new Date(), triggerMonth = month-1, triggerDate = day; // triggerMonth has -1 offset, 0 == Jan									  
+	if (today.getDate() === triggerDate && today.getMonth() === triggerMonth){
+		document.getElementById(stream).style.display = "block";
+		document.getElementById(stream).style.visibility = "visible";
+		document.getElementById(stream).children[0].children[0].innerHTML = newRoom
+		if (streamText.length > 0) {
+			for (let stream of streamText){
+				document.getElementById(stream).innerHTML += `<div class="flex-video widescreen stream-text-container"><iframe src="https://www.streamtext.net/player?event=NYC_Council"></iframe></div>`
+			}
+		}
+										  
+	};
+};
+triggerStream(3,8,"vr-1", "City Hall, Council Chambers (ASL)", ["location-chambers", "virtual-room-1"]);
+triggerStream(3,8,"vr-2", "Alcaldía, Cámara del Concejo Municipal");
+triggerStream(3,8,"vr-3", "市政府议会厅");
+triggerStream(3,8,"vr-4", "সিটি হল, কাউন্সিল চেম্বারস");
+
+/*
+Room Translations
+Spanish:
+    City Hall, Council Chambers             |   Alcaldía, Cámara del Concejo Municipal
+    City Hall, Committee Room               |   Alcaldía, Sala del Comité
+    250 Broadway, 14th Floor Hearing Room   |   250 Broadway,  Sala de audiencia, Piso 14
+    250 Broadway, 16th Floor Hearing Room   |   250 Broadway, Sala de audiencia, Piso 16
+    Press Room                              |   Sala de Prensa 
+Simplified Chinese: 
+    City Hall, Council Chambers             |   市政府议会厅
+Arabic: 
+    City Hall, Council Chambers             |   مجلس المدينة، قاعات المجلس 
+Bangla: 
+    City Hall, Council Chambers             |   সিটি হল, কাউন্সিল চেম্বারস
+*/
+</script>

@@ -1,6 +1,5 @@
 <div class="row collapse expanded">
-  <div class="columns medium-7 xxlarge-12">
-
+  <div class="columns">
     <?php
     $frontpage_id = get_option( 'page_on_front' );
     $frontpage_query = new WP_Query( 'page_id=' . $frontpage_id );
@@ -19,11 +18,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="columns medium-5 xxlarge-12">
-    <div id="map-container" class="district" aria-hidden="true">
-      <div id="map"></div>
     </div>
   </div>
 </div>

@@ -45,120 +45,91 @@
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
     
     <?php wp_head(); ?>
-    <script>jQuery(document).ready(function(){jQuery('#archive .dismiss span').on('click',function(){jQuery('#archive').animate({'opacity': 0}, 300)})});</script>
+    <script>
+      jQuery(document).ready(function(){jQuery('#archive .dismiss span').on('click',function(){jQuery('#archive').animate({'opacity': 0}, 300)})});
+    </script>
   </head>
   
   <body <?php body_class(); ?>>
     <a style="position: absolute; top:0; left: -10000px;" id="skip-link-a" href="#main">Skip to main content</a>
-    <!-- <script>jQuery("#skip-link-a").focus(function(){jQuery("#skip-link-li").css("position","initial")}).focusout(function(){jQuery("#skip-link-li").css("position","absolute")});</script> -->
     <!-- Google Tag Manager (noscript)
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCN4XTT"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     End Google Tag Manager (noscript) -->
-    <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) {} else { ?>
-    <div id="map-container" class="short" aria-hidden="true">
-      <div id="map"></div>
-      <button class="map-toggler" id="map-toggler">Expand Map</button>
-    </div>
-    <?php } ?>
 
-    <div id="sticky-wrapper">
+    <div id="sticky-wrapper"> <!-- closing tag on line 16 ./footer.php -->
       <div data-sticky-container>
         <header class="site-header sticky" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
           <div class="top-bar">
-            <div class="row">
-              <div class="columns">
-                <?php switch_to_blog(1); ?>
-                <div class="top-bar-title">
-                  <strong class="site-logo"><a href="<?php echo esc_url( home_url( '/', 'http' ) ); ?>"><img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png"><div class="site-logo" style="display:inline;"><?php bloginfo('name'); ?></div></a></strong>
-                </div>
-                <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon dark" data-toggle></span></span>
-                <div role="navigation" id="responsive-menu">
-                  <div class="top-bar-right">
-                    <!-- replace with hardcoded html-->
-                    <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
-                      <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
-                        <a href="#">About</a>
-                        <ul class="menu">
-                          <li><a href="/visit-the-council/">Visit the Council</a></li>
-                          <li><a href="/events/">Events</a></li>
-                          <li><a href="/about/">What we do</a></li>
-                          <li><a href="/committees/">Committees</a></li>
-                          <li><a href="/caucuses/">Caucuses</a></li>
-                        </ul>
-                      </li>
-                      <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
-                        <a href="#">Districts</a>
-                        <ul class="menu">
-                          <li><a href="/districts/">Council Members &amp; Districts</a></li>
-                          <li><a href="/district-info/">District Info</a></li>
-                        </ul>
-                      </li>
-                      <li class="custom-dropdown-hover is-dropdown-submenu-parent opens-left">
-                        <a href="#">Legislation</a>
-                        <ul class="menu">
-                          <li><a href="/legislation/">Our legislative process</a></li>
-                          <li><a href="/testify">Register to Testify</a></li>
-                          <!-- <li><a href="/livestream/">Live Stream</a></li> -->
-                          <li><a href="/live/">Live video</a></li>
-                          <li><a href="http://legistar.council.nyc.gov/Calendar.aspx">Hearings Calendar and Video Archive</a></li>
-                          <li><a href="http://legistar.council.nyc.gov/Legislation.aspx">Search legislation</a></li>
-                          <!--<li><a href="http://laws.council.nyc.gov">Search legislation via Councilmatic (beta)</a></li>-->
-                          <li><a href="/legislation/api/">Legislative API</a></li>
-                          <li><a href="/data/">Data</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="/budget/">Budget</a>
-                      </li>
-                      <li>
-                        <a href="/land-use/">Land Use</a>
-                      </li>
-                      <li class="is-dropdown-submenu-parent opens-left">
-                        <a href="#">Press &amp; News</a>
-                        <ul class="menu">
-                          <li><a href="/foil-request/">Submit a "Freedom of Information Law" (FOIL) Request</a></li>
-                          <li><a href="/press/">Press Releases</a></li>
-                          <li><a href="/news/category/reports/">Reports</a></li>
-                          <li><a href="/press/press-photos/">Photos</a></li>
-                          <li><a href="/news/tag/video/">Videos</a></li>
-                        </ul>
-                      </li>
-                    </ul>                  
-                    <!--<#?php nycc_main_nav(); ?>-->
-                    <script>
-                      // jQuery(".custom-dropdown-hover").mouseenter(function(){
-                      //   jQuery(this).children().first().attr("aria-expanded", "true");
-                      // }).focusin(function(){
-                      //   jQuery(this).children().first().attr("aria-expanded", "true");
-                      // });
-                      // jQuery(".custom-dropdown-hover").mouseleave(function(){
-                      //   jQuery(this).children().first().attr("aria-expanded", "false");
-                      // }).focusout(function(){
-                      //   jQuery(this).children().first().attr("aria-expanded", "false");
-                      // });
-                      jQuery(document).ready(function(){
-                        jQuery("#translation-menu-dropdown").css("visibility","visible").hide();
-                        jQuery("#translation-button").click(function(){
-                          if(jQuery("#translation-menu-dropdown").css("display") === "none"){
-                            jQuery("#translation-menu-dropdown").show();
-                          } else{
-                            jQuery("#translation-menu-dropdown").hide();
-                          }
-                        });
-                        jQuery("#close-menu").click(function(){jQuery("#translation-menu-dropdown").hide();});
-                      });
-                    </script>
+            <div class="row" data-equalizer>
+              <div class="columns small-10 large-12" style="background-color: #FFFFFF; padding: .3rem 0" data-equalizer-watch>
+                <div style="display: flex; align-items: center; max-width: 1350px; justify-content: center; margin: 0 auto;">
+                  <div class="columns">
+                    <strong class="site-logo">
+                      <a href="/">
+                        <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">
+                        <div style="display:inline;">
+                          New York City Council
+                        </div>
+                      </a>
+                    </strong>
+                  </div>
+                  <div class="show-for-large columns nav-search-container" style="display: flex; justify-content: end; align-items: end;">
+                    <?php get_search_form(); ?>  
                   </div>
                 </div>
-                <?php restore_current_blog(); ?>
+              </div>
+              <div class="columns small-2 large-12" id="nav-menu">
+              <hr style="border-bottom: 1px solid #58595B; margin: 0;" class="show-for-large">
+                <div id="mobile-nav-col"  data-equalizer-watch>
+                  <?php switch_to_blog(1); ?>
+                  <span class="responsive-menu-toggle" data-responsive-toggle="responsive-menu" data-hide-for="large"><span class="menu-icon" data-toggle></span></span>
+                  <div role="navigation" id="responsive-menu">
+                    <div class="top-bar-center">
+                      <!-- replace with hardcoded html-->
+                      <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" style="text-align: -webkit-center;" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
+                        <li id="livestream-nav"><a href="/livestream/">Livestream</a></li>
+                        <li id="budget-nav"><a href="/budget/">Budget</a></li>
+                        <li id="committees-nav"><a href="/committees/">Committees</a></li>
+                        <li id="land-use-nav"><a href="/land-use/">Land Use</a></li>
+                        <li id="hearings-nav"><a href="https://legistar.council.nyc.gov/Calendar.aspx">Upcoming Hearings</a></li>
+                        <li id="districts-nav"><a href="/districts/">Find My District</a></li>
+                      </ul>                  
+                      <script>
+                        jQuery(document).ready(function(){
+                          if(window.location.pathname.startsWith("/livestream/")){
+                            document.getElementById("livestream-nav").className += "active-page";
+                          } else if (window.location.pathname.startsWith("/budget/")){
+                            document.getElementById("budget-nav").className += "active-page";
+                          } else if (window.location.pathname.startsWith("/committees/")){
+                            document.getElementById("committees-nav").className += "active-page";
+                          } else if (window.location.pathname.startsWith("/land-use")){
+                            document.getElementById("land-use-nav").className += "active-page";
+                          } else if (window.location.pathname.startsWith("/districts/")){
+                            document.getElementById("districts-nav").className += "active-page";
+                          };
+                          $("#translation-menu-dropdown").css("visibility","visible").hide();
+                          jQuery("#translation-button").click(function(){
+                            if(jQuery("#translation-menu-dropdown").css("display") === "none"){
+                              jQuery("#translation-menu-dropdown").show();
+                            } else{
+                              jQuery("#translation-menu-dropdown").hide();
+                            }
+                          });
+                          jQuery("#close-menu").click(function(){jQuery("#translation-menu-dropdown").hide();});
+                        });
+                      </script>
+                    </div>
+                  </div>
+                  <?php restore_current_blog(); ?>
+                </div>
               </div>
             </div>
           </div>
         </header>
       </div>
       <main id="main">
-        <div class="site-container">
+        <div class="site-container"> <!-- closing tag on line 1 ./footer.php -->
           <?php if ( wp_get_theme()->get('Name') == 'NYCC Member' ) { $is_member_site = true; } else { $is_member_site = false; } ?>
           <div id="translation-menu" class="row column text-right<?php if ( $is_member_site == true ) { echo ' member'; } ?>">
             <button id="translation-button" class="button dashicons-before dashicons-translation">

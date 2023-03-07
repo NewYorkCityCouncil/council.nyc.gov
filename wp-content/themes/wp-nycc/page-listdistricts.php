@@ -12,7 +12,13 @@
         <div class="page-header">
           <h1 id="for-table-caption" class="header-xxlarge"><?php the_title(); ?></h1>
         </div>
-
+        <div class="row" style="visibility: hidden;">
+          <div class="columns">
+            <div id="map-container" class="district" aria-hidden="true" style="display:none;">
+              <div id="map"></div>
+            </div>
+          </div>
+        </div>
         <div id="districts-list">
 
           <div class="row">
@@ -24,7 +30,7 @@
             <div class="columns large-8 xxlarge-12 scrollable">
               <input type="text" aria-hidden="true" style="right:1000%;position:absolute;" value="" id="clipboard-copy">
               <form role="search" id="list-search" style="position:relative;">
-                <input type="text" aria-label="Search for your district and council member" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Address &amp; Borough | Member | Neighborhood" />
+                <input type="text" aria-label="Search for your district and council member" id="list-search-input" class="-no-margin -search -search--no-submit" placeholder="Address, Borough | Member | Neighborhood" />
                 <span class="district-submit" onClick="jQuery('#list-search').submit();" style="color: #666; cursor: pointer; position: absolute; top: 7px; right: 10px;"><i class="fa fa-search" aria-hidden="true"></i></span>
               </form>
               <div style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;" role="alert" aria-live="assertive" id="assertive-message"></div>
@@ -167,6 +173,12 @@
               </script>
               <div id="list-search-error" class="callout alert text-center hide">
                 <p class="text-small">No results match your search terms.</p>
+                <!-- <p>
+                  <strong>
+                    If you're searching an address, this feature is currently down and is under maintenance. Please try again later.<br/>
+                    Alternatively, you may use <a href="https://zola.planning.nyc.gov/about?layer-groups=%5B%22nyc-council-districts%22%2C%22street-centerlines%22%5D" target="_blank">DCP's Zoning & Land Use Map</a> to search addresses.
+                  </strong>
+                </p> -->
                 <p><strong>If you're searching an address, be sure to separate the address and borough with a comma.</strong></p>
               </div>
             </div>

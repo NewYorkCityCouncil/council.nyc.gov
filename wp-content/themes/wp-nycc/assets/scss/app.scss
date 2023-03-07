@@ -713,9 +713,9 @@ $map-height-tall:   rem-calc(400);
 
 // XXL two-column layout (map on side)
 @include breakpoint(xxlarge) {
-  #sticky-wrapper {
-    width: 72%;
-  }
+  // #sticky-wrapper {
+  //   width: 72%;
+  // }
   #map-container {
     width: 28%;
     position: fixed !important;
