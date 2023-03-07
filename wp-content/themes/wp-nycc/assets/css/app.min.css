@@ -5703,6 +5703,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 
 .tabs-title>a {
   display: block;
+  padding: 1.25rem 1.5rem;	 
   font-size: 0.85rem;
   line-height: 1;
   color: #2f56a6;
@@ -7973,6 +7974,9 @@ a.anchor{
 */
 #live-videos-tabs{
   text-transform: uppercase;
+}
+#live-videos-tabs .tabs-title>a{
+  padding: 0;
 }
 
 #live-videos-tabs .tabs-title a span,
