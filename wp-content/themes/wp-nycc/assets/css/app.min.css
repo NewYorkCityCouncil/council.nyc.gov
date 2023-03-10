@@ -7661,6 +7661,7 @@ input::placeholder{
   color: #3158A6;
   font-family: "Gotham-Book";
   font-size: 1.2rem !important;
+  padding: 0;
 }
 
 .live-stream-homepage .tabs-title>a[aria-selected=true]{

@@ -61,7 +61,7 @@
                                 <script type="text/javascript" data-embed_id="ls_embed_1591232136" src="https://livestream.com/assets/plugins/referrer_tracking.js"></script></div>
                         </div> -->
                     </div>
-                    <!-- <p class="text-small text-center" style="color: #FFF;"><em>If videos streams are not active, <a href="http://legistar.nyccouncilstg.wpengine.com/Calendar.aspx?Mode=This%20Month" style="color: #FFF;">please check our calendar</a>.</em></p> -->
+                    <!-- <p class="text-small text-center" style="color: #FFF;"><em>If videos streams are not active, <a href="http://legistar.council.nyc.gov/Calendar.aspx?Mode=This%20Month" style="color: #FFF;">please check our calendar</a>.</em></p> -->
                 </div>
                 <div class="columns live-stream-tabs-column">
                     <h4 class="sans-serif subheading">Select a stream:</h4>
@@ -78,7 +78,7 @@
                             <!--<li class="tabs-title" style="text-align:center; padding: 0.7rem; flex-grow:1;"><a href="#virtual-room-5"><strong>Virtual Room 5</strong></a></li>-->
                             <!--<li class="tabs-title" style="text-align:center; padding: 0.7rem; flex-grow:1;"><a href="#virtual-room-6"><strong>Virtual Room 6</strong></a></li>-->
                             <!--<li class="tabs-title" style="text-align:center; padding: 0.7rem; flex-grow:1;"><a href="#press-room"><strong>Press Room</strong></a></li>-->
- 	                        <!-- <li style="bottom: 0; position: absolute; width: 100%;"><a class="button past-hearings small expanded" style="margin-bottom:0;" href="https://legistar.nyccouncilstg.wpengine.com/Calendar.aspx"><strong>Video archive of past hearings</strong></a></li> -->
+ 	                        <!-- <li style="bottom: 0; position: absolute; width: 100%;"><a class="button past-hearings small expanded" style="margin-bottom:0;" href="https://legistar.council.nyc.gov/Calendar.aspx"><strong>Video archive of past hearings</strong></a></li> -->
                         </ul>
                     </div>
                 </div>
