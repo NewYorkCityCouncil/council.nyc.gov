@@ -7,7 +7,7 @@
     <h2>Home</h2>
     <ul>
       <?php
-        $sites = get_sites(array("site__in"=>array(1)));
+        $sites = get_sites(array("site__in"=>array(1), 'number' => 1000000));
         foreach ( $sites as $site ) {
           $ID = $site->blog_id;
           echo "<li class='members'><strong style='text-decoration:underline;'><a href='https://" . $site->domain . $site->path . "'>NYC Council (Homepage)</a></strong></li><ul style='list-style-type:none;'><li><strong>Pages:</strong></li><ul style='list-style-type:square;'>";
@@ -34,7 +34,7 @@
     <h2>Active Council Members</h2>
     <ul>
       <?php
-        $sites = get_sites(array("site__not_in"=>array(1,53,54,55,56,57,58,72,3,5,9,14,19,22,29,31,42,44,45)));
+        $sites = get_sites(array("site__not_in"=>array(1,53,54,55,56,57,58,72,3,5,9,14,19,22,29,31,42,44,45),'number' => 1000000));
         foreach ( $sites as $site ) {
           $ID = $site->blog_id;
           $pretty = substr($site->path, 1, -1);
@@ -64,7 +64,7 @@
     <h2>Past Council Members</h2>
     <ul>
       <?php
-        $sites = get_sites(array("site__in"=>array(3,5,9,14,19,22,29,31,42,44,45)));
+        $sites = get_sites(array("site__in"=>array(3,5,9,14,19,22,29,31,42,44,45),'number' => 1000000));
         foreach ( $sites as $site ) {
           $ID = $site->blog_id;
           $pretty = substr($site->path, 1, -1);
@@ -94,7 +94,7 @@
     <h2>Divisions</h2>
     <ul>
       <?php
-        $sites = get_sites(array("site__in"=>array(53,54,55,56,57,58,72)));
+        $sites = get_sites(array("site__in"=>array(53,54,55,56,57,58,72), 'number' => 1000000));
         foreach ( $sites as $site ) {
           $ID = $site->blog_id;
           if ($site->blog_id == "58") {
