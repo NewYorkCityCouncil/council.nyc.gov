@@ -7687,12 +7687,12 @@ a.anchor{
   top: -80px;
   visibility: hidden;
 }
-.hearings-section{
-  padding: 4rem 0 2rem;
+#hearings-section{
+  padding: 2rem 0;
   position: relative; 
 }
 
-.hearings-section h2, .livestream-section h2{
+#featured-section h2, #hearings-section h2, #livestream-section h2{
   color:#414042;
   font-family: 'Gotham-Black';
   font-size: 1.3rem;
@@ -7813,138 +7813,38 @@ a.anchor{
 /*
   HOMEPAGE HEARINGS SECTION END
 --------------------------------------------------*/
-
 /*--------------------------------------------------
-  STYLES FOR WP RECENT POST SLIDER PLUGIN
+  CURRENT FEATURED CONTENT SECTION
 */
-.homepage-carousel-container{
-  margin-top: -55px;
-  max-width: 100%;
+#featured-section {
+  padding: 2rem 0;
+  position: relative;
 }
-
-.homepage-carousel-container .wppsac-wrap,
-.homepage-carousel-container .wp-medium-7.wpcolumns{
-  background-color: #2F56A6;
+.featured-content-img{
+  background-position: center center;
+  background-size: cover;
+  border: 1px solid grey;
+  height: 200px;
+  width: 100%;
 }
-
-.homepage-carousel-container .wppsac-post-slider.design-4 .wppsac-post-list-content .wp-medium-7{
-  padding-left: 55px;
+.featured-content-header,.featured-content-text{
+  margin-bottom: 0px;
 }
-
-.homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
-  color: #FFFFFF;
-  font-family: "Gotham-Black";
-  font-size: 2rem;
-  line-height: 44px;
-}
-
-.homepage-carousel-container .wppsac-post-slider .wppsac-post-date::after{
-  background-color: #d6d6d6;
-}
-
-.homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
-  color: #FFFFFF;
-  font-family: "Gotham-Light";
-  font-size: 1.1rem;
-}
-
-.homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{  
-  -webkit-appearance: none;
-  background-color: #00aeef;
-  border-radius: 25px;
-  border: 1px solid transparent;
-  border: none !important;
-  color: #FFFFFF !important;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 0.8rem;
-  font-family: "Gotham-Light";
-  font-weight: bolder;
-  letter-spacing: 2pt;
-  line-height: 1;
-  margin: 0 0 1rem;
-  padding: .85em 2em;
-  text-align: center;
-  transition: background-color .25s ease-out,color .25s ease-out;
-  vertical-align: middle;
-}
-
-.homepage-carousel-container .wppsac-post-slider.design-4 .wp-medium-5{
-  padding: 0;
-}
-
-.homepage-carousel-container .wppsac-post-slider .wppsac-post-image-bg img{
-  object-position: center center;
-  /* filter: grayscale(1); */
-  /* opacity: .75; */
-}
-
-.homepage-carousel-container .wppsac-post-slider.design-4 .slick-dots{
-  bottom: -34px;
-}
-
-.homepage-carousel-container .wppsac-post-slider .slick-dots li button, 
-.homepage-carousel-container .wppsac-post-carousel .slick-dots li button{
-  border: none !important;
-}
-
-.homepage-carousel-container .wppsac-post-slider .slick-dots li.slick-active button, 
-.homepage-carousel-container .wppsac-post-carousel .slick-dots li.slick-active button{
-  background-color: #12295d !important;
-}
-
-.homepage-carousel-container .wppsac-sub-content{
-  color: #FFFFFF;
-  font-family: "Gotham-Book";
-  font-size: 1.2rem;
-  padding-bottom: 2rem;
-}
-
-@media only screen and (min-width: 40.0625em){
-  .homepage-carousel-container .wp-medium-5.wpcolumns{
-    width: 55%;
-  }
-
-  .homepage-carousel-container .wp-medium-7.wpcolumns{
-    align-content: center;
-    background-color: #22427e;
-    display: grid;
-    width: 45%;
-  }
-
-  .homepage-carousel-container .wppsac-post-slider.design-4 .wppsac-post-image-bg, 
-  .homepage-carousel-container .wp-medium-7.wpcolumns{
-    height: 500px;
-  }
-}
-
-@media only screen and (max-width:1200px) and (min-width:1000px){
-  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{
-    padding: .85em 1.75em;
-  }
-}
-@media only screen and (max-width:1000px) and (min-width: 40.0625em){
-  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-post-title a{
-    font-size: 28pt;
-  }
-  .homepage-carousel-container .wppsac-post-slider .wppsac-post-date{
-    font-size: 17pt;
-  }
-  .homepage-carousel-container .wppsac-sub-content{
-    font-size: 12pt;
-  }
-  .homepage-carousel-container .wp-medium-7.wpcolumns .wppsac-readmorebtn{
-    font-size: 14pt;
-    padding: .85em 1.5em;
-  }
-}
+.featured-content-header{}
+.featured-content-text{}
 /*
-  STYLES FOR WP RECENT POST SLIDER PLUGIN END
+  CURRENT FEATURED CONTENT SECTION END
 --------------------------------------------------*/
-
 /*--------------------------------------------------
   PAST FEATURED CONTENT PAGE - PAGINATION
 */
+#past-featured-container a{
+  color: #6D6E71;
+  font-family: "Gotham-Black";
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
 .pagination{
   margin-bottom: 2rem;
   text-align: center;
@@ -8003,38 +7903,6 @@ a.anchor{
 #live-videos-tabs .tabs-title.is-active{
   background-color: #23417D;
 }
-
-/* .live-stream-tabs-column ul{
-  overflow: auto;
-}
-
-.live-stream-tabs-column .vertical.tabs li{
-  border-bottom: 1px solid #d8dde8;
-}
-
-.live-stream-tabs-column .vertical.tabs li:nth-last-of-type(-n+2){
-  border-bottom: none;
-}
-
-.live-stream-tabs-column .vertical.tabs li:hover{
-  background-color: #23417D;
-}
-
-.live-stream-tabs-column .vertical.tabs li:hover a{
-  color: #FFFFFF;
-} */
-
 /*
   LIVE VIDEO STREAM COLUMN - HOMEPAGE END
 --------------------------------------------------*/
-
-.view-featured-container{
-  background-color: #23417D;
-  max-width: 100vw;
-  padding: 2rem 0 0.4rem 0;
-  text-align: center;
-}
-
-.view-featured-container a{
-  background-color: #23417D;
-}

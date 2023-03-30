@@ -1,4 +1,4 @@
-<div class="container hearings-section">
+<div id="hearings-section">
   <div class="row">
     <div class="columns">
       <h2>
