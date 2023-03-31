@@ -7701,13 +7701,10 @@ a.anchor{
   margin-right: auto;
   margin-left: auto;
 }
-#hearings{
-  background-image: url('/wp-content/themes/wp-nycc/assets/images/nyc-map-grey.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+#hearings-section ol.hearings-lists{
+  list-style: none;
+  margin: 0;
 }
-
 .tabs-panel.hearings{
   overflow-x: auto;
   padding-left: 0;
