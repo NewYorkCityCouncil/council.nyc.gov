@@ -7807,6 +7807,17 @@ a.anchor{
   }
 }
 
+.daterangepicker table caption,
+.daterangepicker table thead td,
+.daterangepicker table thead th,
+.daterangepicker table tbody td,
+.daterangepicker table tbody th,
+.daterangepicker table tfoot td,
+.daterangepicker table tfoot th{
+  border-radius: 0px !important;
+  padding: 0 !important;
+}
+
 /*
   HOMEPAGE HEARINGS SECTION END
 --------------------------------------------------*/

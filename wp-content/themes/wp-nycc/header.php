@@ -45,9 +45,9 @@
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
     
     <?php wp_head(); ?>
-    <script>
-      jQuery(document).ready(function(){jQuery('#archive .dismiss span').on('click',function(){jQuery('#archive').animate({'opacity': 0}, 300)})});
-    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   </head>
   
   <body <?php body_class(); ?>>
