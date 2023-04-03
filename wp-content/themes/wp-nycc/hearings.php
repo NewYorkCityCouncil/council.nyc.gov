@@ -3,7 +3,6 @@
     <div class="columns">
       <h2 style="position: relative;">
         UPCOMING LEGISLATIVE HEARINGS
-        <span style="position: absolute; right: 0; top: 0;"><a href="/testify/" class="button large">SIGN UP TO TESTIFY</a></span>
         <hr style="border-bottom: 1px solid #58595B; margin: 30px 0;"/>
       </h2>
     </div>
