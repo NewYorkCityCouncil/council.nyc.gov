@@ -28,7 +28,7 @@
       </select>
     </div>
     <div class="columns medium-6 large-3">
-      <input type="text" class="hearing-filter" id="date-filter" name="daterange" style="cursor:initial; background-color:white;"/>
+      <input type="text" class="hearing-filter" id="date-filter" name="daterange" style="cursor:initial; background-color:white;" readOnly />
     </div>
   </div>
   <ol id="hearings" class="hearings-lists">
@@ -90,12 +90,11 @@
     date.setMilliseconds(999);
     let saturday = date.setDate(date.getDate() + 6);
     return [new Date(sunday), new Date(saturday)];
-  }
+  };
   const dateFormatter = (date) => {
     let splitDate = date.split("/");
     return `${splitDate[2]}-${splitDate[0]}-${splitDate[1]}`
-  }
-
+  };
   const addZero = (num) => {return (num < 10) ? ("0" + num) : num;};
 
   const getFrontPageHearings = (startDate, endDate, type="", committee="", location="") => {
@@ -109,9 +108,8 @@
 
     let additionalFilters = ``;
     if (type !== "") additionalFilters += type;
-    if (committee !== "") additionalFilters += `+and+EventBodyId+eq+${committee}`
-    if (location !== "") additionalFilters += `+and+EventLocation+eq+${location}`
-    console.log(`https://webapi.legistar.com/v1/nyc/events?token=Uvxb0j9syjm3aI8h46DhQvnX5skN4aSUL0x_Ee3ty9M.ew0KICAiVmVyc2lvbiI6IDEsDQogICJOYW1lIjogIk5ZQyByZWFkIHRva2VuIDIwMTcxMDI2IiwNCiAgIkRhdGUiOiAiMjAxNy0xMC0yNlQxNjoyNjo1Mi42ODM0MDYtMDU6MDAiLA0KICAiV3JpdGUiOiBmYWxzZQ0KfQ&$filter=EventDate+ge+datetime%27${startDate}%27+and+EventDate+le+datetime%27${endDate}%27+and+tolower(EventAgendaStatusName)+eq+'final'${additionalFilters}&$orderby=EventTime+asc`)
+    if (committee !== "") additionalFilters += `+and+EventBodyId+eq+${committee}`;
+    if (location !== "") additionalFilters += `+and+EventLocation+eq+'${location}'`;
    
     jQuery.ajax({
       type:"GET",
@@ -133,6 +131,7 @@
         let sortedHearings = dataHearings.sort(function(a,b){
           return dateTimeConverter(a.EventDate, a.EventTime).getTime() - dateTimeConverter(b.EventDate, b.EventTime).getTime();
         });
+        
         sortedHearings = sortedHearings.filter(hearing => hearing.EventComment === null || (hearing.EventComment?.startsWith("Jointly") && hearing.EventComment?.endsWith(".")))
         hearingListElement.empty();
 
@@ -151,7 +150,7 @@
                   orgTimes[time] = filteredHearings;
               };
               orgDates[date] = orgTimes;
-          }
+          };
           // Sort weekly hearings into the pre-built data structure
           let olHearings = "";
           for (let date of dates){
@@ -184,7 +183,7 @@
                       <h5>${hearing.EventBodyId === 1 ? "Stated Meeting" : hearing.EventBodyName}${jointly}<br/><small>${hearing.EventLocation}</small></h5>
                     </li>
                   `;
-                }
+                };
                 htmlHearingTimes += `
                   <li>
                     <h4>${time}</h4>
@@ -194,9 +193,9 @@
                     <hr/>
                   </li>
                 `;
-              }
+              };
               htmlAllHearings = `<ol id="${longDate.toLowerCase().replace(" ","-")}-hearings" class="column medium-9 hearings-lists">${htmlHearingTimes}</ol>`;
-            }
+            };
             hearingListElement.append(`
               <li class="row" id="${longDate.toLowerCase().replace(" ","-")}-row">
                 <div id="${longDate.toLowerCase().replace(" ","-")}-date" class="column medium-3">
@@ -210,6 +209,7 @@
       }
     });
   };
+
   jQuery("document").ready(() => {
     let date = new Date().dst() ? new Date(new Date().getTime() - 4 * 3600 * 1000) : new Date(new Date().getTime() - 5 * 3600 * 1000);
     let sunday = date.getWeek()[0];
@@ -217,20 +217,18 @@
     let startDate = sunday.getFullYear()+"-"+addZero(sunday.getMonth()+1)+"-"+addZero(sunday.getDate());
     let endDate = saturday.getFullYear()+"-"+addZero(saturday.getMonth()+1)+"-"+addZero(saturday.getDate());
     const datePicker = jQuery("#date-filter");
-    datePicker.val(`${addZero(sunday.getMonth()+1)}/${addZero(sunday.getDate())}/${sunday.getFullYear()} - ${addZero(saturday.getMonth()+1)}/${addZero(saturday.getDate())}/${saturday.getFullYear()}`)
+    datePicker.val(`${addZero(sunday.getMonth()+1)}/${addZero(sunday.getDate())}/${sunday.getFullYear()} - ${addZero(saturday.getMonth()+1)}/${addZero(saturday.getDate())}/${saturday.getFullYear()}`);
     
-    datePicker.daterangepicker({ opens: 'left' }, (start, end, label) => {
-      console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-    })
-
+    datePicker.daterangepicker({ opens: 'left' });
     getFrontPageHearings(startDate, endDate);
+
     jQuery(".hearing-filter").on("change", (e) => {
-      let type = jQuery("#hearing-type-filter").val()  // +and+EventBodyId+eq+1 || +and+EventBodyId+ne+1
-      let comm = jQuery("#committee-filter").val()     // 342
-      let loc = jQuery("#location-filter").val()       // Council Chambers - City Hall
-      let date = jQuery("#date-filter").val()          // 05/12/2023 - 05/23/2023
-      let startRangeDate = dateFormatter(date.split(" - ")[0])
-      let endRangeDate = dateFormatter(date.split(" - ")[1])
+      let type = jQuery("#hearing-type-filter").val();  // +and+EventBodyId+eq+1 || +and+EventBodyId+ne+1
+      let comm = jQuery("#committee-filter").val();     // 342
+      let loc = jQuery("#location-filter").val();      // Council Chambers - City Hall
+      let date = jQuery("#date-filter").val();          // 05/12/2023 - 05/23/2023
+      let startRangeDate = dateFormatter(date.split(" - ")[0]);
+      let endRangeDate = dateFormatter(date.split(" - ")[1]);
       getFrontPageHearings(startRangeDate, endRangeDate, type, comm, loc);
     })
   });
