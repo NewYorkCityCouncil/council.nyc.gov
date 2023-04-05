@@ -10,17 +10,17 @@
   <div class="row">
     <div class="columns medium-6 large-3">
       <select class="hearing-filter" id="hearing-type-filter">
-        <option value="">--- Filter by Type ---</option>
+        <option value="">Event Category</option>
         <option value="+and+EventBodyId+eq+1">Stated Meeting</option>
         <option value="+and+EventBodyId+ne+1">Committee Hearing</option>
       </select>
     </div>
     <div class="columns medium-6 large-3">
-      <select class="hearing-filter" id="committee-filter"><option value="">--- Filter by Committee ---</option></select>
+      <select class="hearing-filter" id="committee-filter"><option value="">Committee</option></select>
     </div>
     <div class="columns medium-6 large-3">
       <select class="hearing-filter" id="location-filter">
-        <option value="">--- Filter by Location ---</option>
+        <option value="">Location</option>
         <option value="Council Chambers - City Hall">Council Chambers - City Hall</option>
         <option value="Committee Room - City Hall">Committee Room - City Hall</option>
         <option value="250 Broadway - Committee Room, 14th Floor">250 Broadway - Committee Room, 14th Floor</option>
@@ -28,7 +28,7 @@
       </select>
     </div>
     <div class="columns medium-6 large-3">
-      <input type="text" class="hearing-filter" id="date-filter" name="daterange" style="cursor:initial; background-color:white;" readOnly />
+      <input placeholder="Date Range" type="text" class="hearing-filter" id="date-filter" name="daterange" style="cursor:initial; background-color:white;" readOnly />
     </div>
   </div>
   <ol id="hearings" class="hearings-lists">
@@ -131,7 +131,7 @@
         let sortedHearings = dataHearings.sort(function(a,b){
           return dateTimeConverter(a.EventDate, a.EventTime).getTime() - dateTimeConverter(b.EventDate, b.EventTime).getTime();
         });
-        
+
         sortedHearings = sortedHearings.filter(hearing => hearing.EventComment === null || (hearing.EventComment?.startsWith("Jointly") && hearing.EventComment?.endsWith(".")))
         hearingListElement.empty();
 
@@ -180,13 +180,13 @@
                   };
                   htmlIndividualHearings += `
                     <li>
-                      <h5>${hearing.EventBodyId === 1 ? "Stated Meeting" : hearing.EventBodyName}${jointly}<br/><small>${hearing.EventLocation}</small></h5>
+                      <h5 class="hearing-committee">${hearing.EventBodyId === 1 ? "Stated Meeting" : hearing.EventBodyName}${jointly}<br/><small class="hearing-location">${hearing.EventLocation}</small></h5>
                     </li>
                   `;
                 };
                 htmlHearingTimes += `
                   <li>
-                    <h4>${time}</h4>
+                    <h4 class="hearing-time">${time}</h4>
                       <ol id="${longDate.toLowerCase().replace(" ","-")}-hearings-at-${time}" class="hearings-lists">
                         ${htmlIndividualHearings}
                       </ol>
@@ -199,7 +199,7 @@
             hearingListElement.append(`
               <li class="row" id="${longDate.toLowerCase().replace(" ","-")}-row">
                 <div id="${longDate.toLowerCase().replace(" ","-")}-date" class="column medium-3">
-                  <h3>${longDate}</h3>
+                  <h3 class="hearing-date">${longDate}</h3>
                 </div>
                 ${htmlAllHearings}
               </li>
@@ -217,12 +217,7 @@
     let startDate = sunday.getFullYear()+"-"+addZero(sunday.getMonth()+1)+"-"+addZero(sunday.getDate());
     let endDate = saturday.getFullYear()+"-"+addZero(saturday.getMonth()+1)+"-"+addZero(saturday.getDate());
     const datePicker = jQuery("#date-filter");
-    datePicker.val(`${addZero(sunday.getMonth()+1)}/${addZero(sunday.getDate())}/${sunday.getFullYear()} - ${addZero(saturday.getMonth()+1)}/${addZero(saturday.getDate())}/${saturday.getFullYear()}`);
-    
-    datePicker.daterangepicker({ opens: 'left' });
-    getFrontPageHearings(startDate, endDate);
-
-    jQuery(".hearing-filter").on("change", (e) => {
+    const filterChangeUpdate = () => {
       let type = jQuery("#hearing-type-filter").val();  // +and+EventBodyId+eq+1 || +and+EventBodyId+ne+1
       let comm = jQuery("#committee-filter").val();     // 342
       let loc = jQuery("#location-filter").val();      // Council Chambers - City Hall
@@ -230,6 +225,13 @@
       let startRangeDate = dateFormatter(date.split(" - ")[0]);
       let endRangeDate = dateFormatter(date.split(" - ")[1]);
       getFrontPageHearings(startRangeDate, endRangeDate, type, comm, loc);
-    })
+    };
+    datePicker.daterangepicker({ opens: 'left',autoUpdateInput: false, });
+    datePicker.on('apply.daterangepicker', function(e, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        filterChangeUpdate();
+    });
+    jQuery(".hearing-filter").on("change", filterChangeUpdate)
+    getFrontPageHearings(startDate, endDate);
   });
 </script>

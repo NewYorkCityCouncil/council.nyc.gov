@@ -7626,6 +7626,15 @@ input::placeholder{
   }
 }
 
+#featured-section h2, #hearings-section h2, #livestream-section h2{
+  color:#414042;
+  font-family: 'Gotham-Black';
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
 /*--------------------------------------------------
   SEARCHBAR IN NAVIGAGTION
 */
@@ -7653,135 +7662,34 @@ input::placeholder{
 /*
   SEARCHBAR IN NAVIGAGTION END
 --------------------------------------------------*/
-
 /*--------------------------------------------------
   HOMEPAGE HEARINGS SECTION
 */
-.live-stream-homepage .tabs-title a{
-  color: #3158A6;
-  font-family: "Gotham-Book";
-  font-size: 1.2rem !important;
-  padding: 0;
-}
-
-.live-stream-homepage .tabs-title>a[aria-selected=true]{
-  /* font-size: 1.4rem !important; */
-  font-family: "Gotham-Bold";
-  background: none !important;
-  outline: none !important;
-}
-
-.live-stream-homepage .tabs-title>a::after{
-  content: attr(data-text);
-  content: attr(data-text) / "";
-  height: 0;
-  visibility: hidden;
-  overflow: hidden;
-  user-select: none;
-  pointer-events: none;
-}
-
-a.anchor{
-  display: block;
-  position: relative;
-  top: -80px;
-  visibility: hidden;
-}
 #hearings-section{
   padding: 2rem 0;
   position: relative; 
-}
-
-#featured-section h2, #hearings-section h2, #livestream-section h2{
-  color:#414042;
-  font-family: 'Gotham-Black';
-  font-size: 1.3rem;
-  letter-spacing: 2px;
-  max-width: 75rem;
-  margin-right: auto;
-  margin-left: auto;
 }
 #hearings-section ol.hearings-lists{
   list-style: none;
   margin: 0;
 }
-.tabs-panel.hearings{
-  overflow-x: auto;
-  padding-left: 0;
-  padding-right: 0;
+.hearing-filter{
+  color: #424142;
 }
-
-.row-hearings{
-  display: inline-grid;
-  grid-auto-flow: column;
-  grid-template-rows: auto auto;
-  margin: 0;
-  max-width: 68rem;
-}
-
-.row-hearings.horizontal-grid{
-  grid-auto-columns: .23fr;
-  grid-template-rows: auto !important;
-}
-
-.hearing-card{
-  background-color:#254585;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0;
-  min-height: 280px;
-  min-width: 280px;
-  max-height: 280px;
-  max-width: 280px;
-  position: relative;
-  width: 100%;
-}
-.hearing-card .card-divider, .hearing-card .card-section{
-  padding: .65rem;
-}
-
-.hearing-date-tab{
-  background-color: white;
-  border-top: 10px solid #00AEEF;
-  line-height: 1;
-  padding: 5px 10px;
-  width: fit-content;
-}
-
-.hearing-date span{
+.hearing-date{
   color: #23417D;
-  font-family: "Gotham-Black";
-  font-size: 1.5rem;
-  line-height: 1.19;
+  font-family: 'Gotham-Black';
+  font-size: 1.75rem;
 }
-
-.hearing-date span.hearing-time{
-  color: #00AEEF !important;
-  font-family: "Gotham-Bold";
-  font-size: 1rem;
-  padding: 0;
+.hearing-time{
+  color: #0982C2;
+  font-family: 'Gotham-Bold';
+  font-size: 1.3rem;
 }
-
-.hearing-body{
-  font-family: "Gotham-Black";
-  font-size: 1.35vw;
-  height: 100%;
-  line-height: 1.05;
-  overflow-y: auto;
-  word-break: break-word;
+.hearing-committee{
+  color: #424142;
+  font-size: 1.3125rem;
 }
-
-.hearing-body a{
-  color: #FFFFFF !important;
-}
-
-.hearing-stream-link a{
-  bottom: 0;
-  color: #FFFFFF;
-  font-family: "Gotham-Medium";
-  font-size: .88rem;
-}
-
 .hearings-links a{
   color: #6D6E71;
   font-family: "Gotham-Black";

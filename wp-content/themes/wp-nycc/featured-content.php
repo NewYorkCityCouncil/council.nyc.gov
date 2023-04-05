@@ -30,7 +30,7 @@
                             the_excerpt();
                             if( has_excerpt() ){
                         ?>
-                            <p><strong><small><a href="<?php the_permalink(); ?>">CLICK HERE TO READ MORE</a></small></strong></p>
+                            <p><strong><small><a href="<?php the_permalink(); ?>">READ MORE</a></small></strong></p>
                         <?php
                            }
                         ?>
