@@ -42,13 +42,12 @@
         width: 100%;
       }
 
-      header.map-widget-header {
+      .map-widget-header {
         padding: 0 1rem;
         height: 4rem;
-        background-color: white;
+        background-color: #fff;
         z-index: 2;
         position: relative;
-        background-color: #2F56A6;
         box-shadow: 0 0.125rem 0 rgba(0,0,0,0.1);
       }
       h1.site-logo {
@@ -81,7 +80,7 @@
   <body <?php body_class(); ?>>
 
     <div class="map-widget-header">
-      <h1 class="site-logo"><a href="<?php echo esc_url( home_url( '/districts/', 'http' ) ); ?>" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-white.png">New York City Council <span class="map-widget-title sans-serif"><em>Find My District</em></span></a></h1>
+      <h1 class="site-logo"><a href="<?php echo esc_url( home_url( '/districts/', 'http' ) ); ?>" target="_blank" style="color: #3057A6;"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">New York City Council <span class="map-widget-title sans-serif"><em>Find My District</em></span></a></h1>
     </div>
 
     <div id="map-container" aria-hidden="true"><div id="map"></div></div>
