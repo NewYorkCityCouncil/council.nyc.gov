@@ -297,7 +297,7 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
     }
     let districtLookup = JSON.parse(jQuery.ajax({
       async: false,
-      url: "https://nyccouncilstg.wpengine.com/wp-content/themes/wp-nycc/assets/js/district_lookup.json",
+      url: "https://council.nyc.gov/wp-content/themes/wp-nycc/assets/js/district_lookup.json",
       dataType: "json",
     }).responseText);
 
