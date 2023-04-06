@@ -7673,12 +7673,12 @@ input::placeholder{
 .hearing-date{
   color: #23417D;
   font-family: 'Gotham-Black';
-  font-size: 1.75rem;
+  font-size: 1.3rem;
 }
 .hearing-time{
   color: #0982C2;
   font-family: 'Gotham-Bold';
-  font-size: 1.3rem;
+  font-size: 1.25rem;
 }
 .hearing-committee{
   color: #424142;
@@ -7687,7 +7687,7 @@ input::placeholder{
 .hearings-links a{
   color: #6D6E71;
   font-family: "Gotham-Black";
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
 }
 .hearing-links-arrow{
@@ -7739,7 +7739,13 @@ input::placeholder{
 .featured-content-header,.featured-content-text{
   margin-bottom: 0px;
 }
-.featured-content-header{}
+.featured-content-header{
+  font-size: 1.3rem;
+  line-height: 1.3;
+ 	padding-top: 1rem;
+  padding-bottom: 0.5rem;
+
+}
 .featured-content-text{}
 /*
   CURRENT FEATURED CONTENT SECTION END
@@ -7750,7 +7756,7 @@ input::placeholder{
 #past-featured-container a{
   color: #6D6E71;
   font-family: "Gotham-Black";
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
 }
 
