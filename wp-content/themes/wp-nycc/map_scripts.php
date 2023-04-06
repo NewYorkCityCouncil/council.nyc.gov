@@ -13,7 +13,7 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
 
 <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
 <script>
-<?php if ( is_page_template( 'page-listdistricts.php' ) ) { ?>
+
   jQuery(document).ready(function(){
     var urlParams = new URLSearchParams(window.location.search);
     var address = urlParams.get("address") || ""
@@ -134,7 +134,7 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
   // Add the map
   var map = L.map('map', {
     scrollWheelZoom: false,
-    minZoom: 9,
+    minZoom: 10,
     maxZoom: 17,
     layers: [
         L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
@@ -143,10 +143,10 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
         }),
         L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png', {
           maxZoom: 12,
-          minZoom: 9
+          minZoom: 10
         })
     ]
-  }).setView([40.727760, -73.987218], <?php if ( is_page_template( 'page-widget-map.php' ) ){ ?>10<?php } else {?>11<?php } ?>);
+  }).setView([40.727760, -73.987218], 11 );
 
   // Add the Districts layer
   var layerSource = {
@@ -297,7 +297,7 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
     }
     let districtLookup = JSON.parse(jQuery.ajax({
       async: false,
-      url: "https://council.nyc.gov/wp-content/themes/wp-nycc/assets/js/district_lookup.json",
+      url: "https://nyccouncilstg.wpengine.com/wp-content/themes/wp-nycc/assets/js/district_lookup.json",
       dataType: "json",
     }).responseText);
 
@@ -397,5 +397,5 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
     jQuery('#list-search-input, #mapAddress').not(this).val('');
   });
 
-<?php } ?>
+
 </script>
