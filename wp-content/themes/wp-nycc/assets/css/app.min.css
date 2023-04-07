@@ -5927,7 +5927,7 @@ a.thumbnail image {
   min-width: 200px;
 }
 
-.top-bar-center ul li:hover{
+.top-bar-center ul li:hover a{
   color: #7A797A;
   transition: color 0.25s ease-out;
 }
