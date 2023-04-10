@@ -4,10 +4,10 @@
   <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>> <?php the_content(); ?> </article>
 <?php endwhile; endif; ?>
 
-<!-- Hearings Content -->
-<?php include 'hearings.php';?>
-
 <!-- Featured Content -->
 <?php include 'featured-content.php';?>
+
+<!-- Hearings Content -->
+<?php include 'hearings.php';?>
 
 <?php get_footer(); ?>

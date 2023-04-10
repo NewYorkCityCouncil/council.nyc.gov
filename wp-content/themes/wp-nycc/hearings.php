@@ -127,11 +127,12 @@
           ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr : hr = (hr+12);
           return new Date(year, month, date, hr, min, 00);
         };
-
+        // Properly sort hearings by date and time as endpoint can't sort by 2 columns for some reason
         let sortedHearings = dataHearings.sort(function(a,b){
           return dateTimeConverter(a.EventDate, a.EventTime).getTime() - dateTimeConverter(b.EventDate, b.EventTime).getTime();
         });
-
+        
+        // Filter out joint hearings where the committee is NOT leading
         sortedHearings = sortedHearings.filter(hearing => hearing.EventComment === null || (hearing.EventComment?.startsWith("Jointly") && hearing.EventComment?.endsWith(".")))
         hearingListElement.empty();
 
