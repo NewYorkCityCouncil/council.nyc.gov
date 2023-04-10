@@ -127,12 +127,11 @@
           ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr : hr = (hr+12);
           return new Date(year, month, date, hr, min, 00);
         };
-        // Properly sort hearings by date and time as endpoint can't sort by 2 columns for some reason
+
         let sortedHearings = dataHearings.sort(function(a,b){
           return dateTimeConverter(a.EventDate, a.EventTime).getTime() - dateTimeConverter(b.EventDate, b.EventTime).getTime();
         });
-        
-        // Filter out joint hearings where the committee is NOT leading
+
         sortedHearings = sortedHearings.filter(hearing => hearing.EventComment === null || (hearing.EventComment?.startsWith("Jointly") && hearing.EventComment?.endsWith(".")))
         hearingListElement.empty();
 
@@ -155,7 +154,7 @@
           // Sort weekly hearings into the pre-built data structure
           let olHearings = "";
           for (let date of dates){
-            let htmlHearingTimes = "", htmlAllHearings = "", longDate = new Date(date).toLocaleDateString("default",{"day":"numeric","month":"long"}); // March 29
+            let htmlHearingTimes = "", htmlAllHearings = "", longDate = new Date(date).toLocaleDateString("en-US",{"day":"numeric","month":"long"}); // March 29
             numberDate = parseInt(longDate.slice(-2))
             if([1,21,31].includes(numberDate)){
               suffix = "st";
@@ -213,6 +212,7 @@
 
   jQuery("document").ready(() => {
     let date = new Date().dst() ? new Date(new Date().getTime() - 4 * 3600 * 1000) : new Date(new Date().getTime() - 5 * 3600 * 1000);
+    debugger
     let sunday = date.getWeek()[0];
     let saturday = date.getWeek()[1];
     let startDate = sunday.getFullYear()+"-"+addZero(sunday.getMonth()+1)+"-"+addZero(sunday.getDate());
@@ -222,14 +222,14 @@
       let type = jQuery("#hearing-type-filter").val();  // +and+EventBodyId+eq+1 || +and+EventBodyId+ne+1
       let comm = jQuery("#committee-filter").val();     // 342
       let loc = jQuery("#location-filter").val();      // Council Chambers - City Hall
-      let date = jQuery("#date-filter").val();          // 05/12/2023 - 05/23/2023
+      let date = jQuery("#date-filter").val() || `${sunday.toLocaleDateString("en-US", {year: "numeric",month: "2-digit",day: "2-digit",})} - ${saturday.toLocaleDateString("en-US", {year: "numeric",month: "2-digit",day: "2-digit",})}`;          // 05/12/2023 - 05/23/2023
       let startRangeDate = dateFormatter(date.split(" - ")[0]);
       let endRangeDate = dateFormatter(date.split(" - ")[1]);
       getFrontPageHearings(startRangeDate, endRangeDate, type, comm, loc);
     };
     datePicker.daterangepicker({ opens: 'left',autoUpdateInput: false, });
     datePicker.on('apply.daterangepicker', function(e, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        $(this).val(`${picker.startDate.format('MM/DD/YYYY')} - ${picker.endDate.format('MM/DD/YYYY')}`);
         filterChangeUpdate();
     });
     jQuery(".hearing-filter").on("change", filterChangeUpdate)
