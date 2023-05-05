@@ -97,7 +97,7 @@
                         <li id="budget-nav"><a href="/budget/">Budget</a></li>
                         <li id="committees-nav"><a href="/committees/">Committees</a></li>
                         <li id="land-use-nav"><a href="/land-use/">Land Use</a></li>
-                        <li id="hearings-nav"><a href="https://legistar.council.nyc.gov/Calendar.aspx">Upcoming Hearings</a></li>
+                        <li id="hearings-nav"><a href="https://legistar.council.nyc.gov/Legislation.aspx">Legislation</a></li>
                         <li id="press-nav"><a href="/press/">Press Releases</a></li>
                       </ul>                  
                       <script>
