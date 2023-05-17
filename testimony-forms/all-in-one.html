@@ -160,6 +160,11 @@ jQuery(document).ready(() => {
                                     return
                                 };
                             };
+                        } else {
+                            // Omit Finance hearings that's NOT flagged for public testimony
+                            if (hearing.EventBodyId === 11){
+                                return
+                            };
                         }
                         let valueTitle = ""
                         if (!written){
