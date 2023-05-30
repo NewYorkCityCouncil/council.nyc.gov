@@ -7689,8 +7689,10 @@ input::placeholder{
   font-size: 1.25rem;
 }
 .hearing-committee{
-  color: #424142;
   font-size: 1.3125rem;
+}
+.hearing-committee, .hearing-committee a{
+  color: #424142;
 }
 .hearings-links a{
   color: #6D6E71;

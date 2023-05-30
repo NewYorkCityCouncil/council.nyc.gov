@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="columns medium-6 large-3">
+    <div class="columns medium-6 large-3" style="margin-bottom:14px;">
       <select class="hearing-filter" id="hearing-type-filter">
         <option value="">Event Category</option>
         <option value="+and+EventBodyId+eq+1">Stated Meeting</option>
@@ -181,7 +181,7 @@
                   };
                   htmlIndividualHearings += `
                     <li>
-                      <h5 class="hearing-committee">${hearing.EventBodyId === 1 ? "Stated Meeting" : hearing.EventBodyName}${jointly}<br/><small class="hearing-location">${hearing.EventLocation}</small></h5>
+                      <h5 class="hearing-committee"><a href="${hearing.EventAgendaFile !== null ? hearing.EventAgendaFile : "#"}">${hearing.EventBodyId === 1 ? "Stated Meeting" : hearing.EventBodyName}</a>${jointly}<br/><small class="hearing-location">${hearing.EventLocation}</small></h5>
                     </li>
                   `;
                 };
