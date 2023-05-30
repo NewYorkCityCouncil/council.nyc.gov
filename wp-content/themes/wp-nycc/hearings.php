@@ -10,17 +10,17 @@
   <div class="row">
     <div class="columns medium-6 large-3" style="margin-bottom:14px;">
       <select class="hearing-filter" id="hearing-type-filter">
-        <option value="">Event Category</option>
+        <option value="">All Event Categories</option>
         <option value="+and+EventBodyId+eq+1">Stated Meeting</option>
         <option value="+and+EventBodyId+ne+1">Committee Hearing</option>
       </select>
     </div>
     <div class="columns medium-6 large-3">
-      <select class="hearing-filter" id="committee-filter"><option value="">Committee</option></select>
+      <select class="hearing-filter" id="committee-filter"><option value="">All Committees</option></select>
     </div>
     <div class="columns medium-6 large-3">
       <select class="hearing-filter" id="location-filter">
-        <option value="">Location</option>
+        <option value="">All Locations</option>
         <option value="Council Chambers - City Hall">Council Chambers - City Hall</option>
         <option value="Committee Room - City Hall">Committee Room - City Hall</option>
         <option value="250 Broadway - Committee Room, 14th Floor">250 Broadway - Committee Room, 14th Floor</option>
