@@ -45,9 +45,9 @@
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
     
     <?php wp_head(); ?>
-    <script>
-      jQuery(document).ready(function(){jQuery('#archive .dismiss span').on('click',function(){jQuery('#archive').animate({'opacity': 0}, 300)})});
-    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   </head>
   
   <body <?php body_class(); ?>>
@@ -88,12 +88,17 @@
                     <div class="top-bar-center">
                       <!-- replace with hardcoded html-->
                       <ul id="menu-main-menu" class="vertical large-horizontal menu dropdown" style="text-align: -webkit-center;" data-disable-hover="true" data-click-open="true" data-dropdown-menu>
-                        <li id="livestream-nav"><a href="/livestream/">Livestream</a></li>
+                        <li id="districts-nav">
+                          <a href="/districts/">Find My District</a>
+                          <!-- <ul class="menu" style="margin: 0; width: 100%">
+                            <li><a href="/map-widget/" target="_blank">Interactive Map</a></li>
+                          </ul> -->
+                        </li>
                         <li id="budget-nav"><a href="/budget/">Budget</a></li>
                         <li id="committees-nav"><a href="/committees/">Committees</a></li>
                         <li id="land-use-nav"><a href="/land-use/">Land Use</a></li>
-                        <li id="hearings-nav"><a href="https://legistar.council.nyc.gov/Calendar.aspx">Upcoming Hearings</a></li>
-                        <li id="districts-nav"><a href="/districts/">Find My District</a></li>
+                        <li id="hearings-nav"><a href="https://legistar.council.nyc.gov/Legislation.aspx">Legislation</a></li>
+                        <li id="press-nav"><a href="/press/">Press Releases</a></li>
                       </ul>                  
                       <script>
                         jQuery(document).ready(function(){

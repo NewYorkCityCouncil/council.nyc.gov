@@ -55,7 +55,7 @@ if ( ! function_exists( 'nycc_excerpt_custom_wp_trim_excerpt' ) ) :
 
             $nycc_excerpt = trim(force_balance_tags($excerptOutput));
 
-            $excerpt_end = '<br><br>...<br><br><strong><small><a href="'. esc_url( get_permalink() ) . '">CLICK HERE TO READ MORE</a></small></strong>';
+            $excerpt_end = '<br><br>...<br><br><strong><small><a href="'. esc_url( get_permalink() ) . '">READ MORE</a></small></strong>';
             $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end); // TODO: Can this line be nixed?
 
             $pos = strrpos($nycc_excerpt, '</');

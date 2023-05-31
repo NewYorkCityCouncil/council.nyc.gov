@@ -5927,20 +5927,14 @@ a.thumbnail image {
   min-width: 200px;
 }
 
-.top-bar-center ul li:hover{
-  /* background-color: #e6e6e6; */
-  opacity: .7;
-  transition: opacity 0.25s ease-out;
+.top-bar-center ul li:hover a{
+  color: #7A797A;
+  transition: color 0.25s ease-out;
 }
 
 .top-bar-center ul li:active,.top-bar-center ul li.active-page a{
-  /* background-color: #cccccc; */
   font-family: "Gotham-Medium";
 }
-
-/* .top-bar-center ul li:hover a{
-  color: #414042;
-} */
 
 @media screen and (max-width: 63.9375em){
   #menu-main-menu{
@@ -7626,8 +7620,25 @@ input::placeholder{
   }
 }
 
+#featured-section h2, #hearings-section h2, #livestream-section h2{
+  color:#414042;
+  font-family: 'Gotham-Black';
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#hearings-section, #livestream-section{
+  margin-top: 1rem;
+}
+
+#livestream-section{
+  padding: 0 0 2rem;
+}
 /*--------------------------------------------------
-  SEARCHBAR IN NAVIGAGTION
+  SEARCHBAR IN NAVIGATION
 */
 .nav-search-container .search-form{
   display: flex;
@@ -7651,144 +7662,45 @@ input::placeholder{
   background-color: #FFFFFF;
 }
 /*
-  SEARCHBAR IN NAVIGAGTION END
+  SEARCHBAR IN NAVIGATION END
 --------------------------------------------------*/
-
 /*--------------------------------------------------
   HOMEPAGE HEARINGS SECTION
 */
-.live-stream-homepage .tabs-title a{
-  color: #3158A6;
-  font-family: "Gotham-Book";
-  font-size: 1.2rem !important;
-  padding: 0;
-}
-
-.live-stream-homepage .tabs-title>a[aria-selected=true]{
-  /* font-size: 1.4rem !important; */
-  font-family: "Gotham-Bold";
-  background: none !important;
-  outline: none !important;
-}
-
-.live-stream-homepage .tabs-title>a::after{
-  content: attr(data-text);
-  content: attr(data-text) / "";
-  height: 0;
-  visibility: hidden;
-  overflow: hidden;
-  user-select: none;
-  pointer-events: none;
-}
-
-a.anchor{
-  display: block;
-  position: relative;
-  top: -80px;
-  visibility: hidden;
-}
-.hearings-section{
-  padding: 4rem 0 2rem;
+#hearings-section{
+  padding: 2rem 0;
   position: relative; 
 }
-
-.hearings-section h2, .livestream-section h2{
-  color:#414042;
+#hearings-section ol.hearings-lists{
+  list-style: none;
+  margin: 0;
+}
+.hearing-filter{
+  color: #424142;
+}
+.hearing-date{
+  color: #23417D;
   font-family: 'Gotham-Black';
   font-size: 1.3rem;
-  letter-spacing: 2px;
-  max-width: 75rem;
-  margin-right: auto;
-  margin-left: auto;
 }
-#hearings{
-  background-image: url('/wp-content/themes/wp-nycc/assets/images/nyc-map-grey.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.hearing-time{
+  color: #0982C2;
+  font-family: 'Gotham-Bold';
+  font-size: 1.25rem;
 }
-
-.tabs-panel.hearings{
-  overflow-x: auto;
-  padding-left: 0;
-  padding-right: 0;
+.hearing-splitter{
+  margin: 30px 0;
 }
-
-.row-hearings{
-  display: inline-grid;
-  grid-auto-flow: column;
-  grid-template-rows: auto auto;
-  margin: 0;
-  max-width: 68rem;
+.hearing-committee{
+  font-size: 1.3125rem;
 }
-
-.row-hearings.horizontal-grid{
-  grid-auto-columns: .23fr;
-  grid-template-rows: auto !important;
+.hearing-committee, .hearing-committee a{
+  color: #424142;
 }
-
-.hearing-card{
-  background-color:#254585;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0;
-  min-height: 280px;
-  min-width: 280px;
-  max-height: 280px;
-  max-width: 280px;
-  position: relative;
-  width: 100%;
-}
-.hearing-card .card-divider, .hearing-card .card-section{
-  padding: .65rem;
-}
-
-.hearing-date-tab{
-  background-color: white;
-  border-top: 10px solid #00AEEF;
-  line-height: 1;
-  padding: 5px 10px;
-  width: fit-content;
-}
-
-.hearing-date span{
-  color: #23417D;
-  font-family: "Gotham-Black";
-  font-size: 1.5rem;
-  line-height: 1.19;
-}
-
-.hearing-date span.hearing-time{
-  color: #00AEEF !important;
-  font-family: "Gotham-Bold";
-  font-size: 1rem;
-  padding: 0;
-}
-
-.hearing-body{
-  font-family: "Gotham-Black";
-  font-size: 1.35vw;
-  height: 100%;
-  line-height: 1.05;
-  overflow-y: auto;
-  word-break: break-word;
-}
-
-.hearing-body a{
-  color: #FFFFFF !important;
-}
-
-.hearing-stream-link a{
-  bottom: 0;
-  color: #FFFFFF;
-  font-family: "Gotham-Medium";
-  font-size: .88rem;
-}
-
 .hearings-links a{
   color: #6D6E71;
   font-family: "Gotham-Black";
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
 }
 .hearing-links-arrow{
@@ -7810,12 +7722,83 @@ a.anchor{
   }
 }
 
+.daterangepicker table caption,
+.daterangepicker table thead td,
+.daterangepicker table thead th,
+.daterangepicker table tbody td,
+.daterangepicker table tbody th,
+.daterangepicker table tfoot td,
+.daterangepicker table tfoot th{
+  border-radius: 0px !important;
+  padding: 0 !important;
+}
+
 /*
   HOMEPAGE HEARINGS SECTION END
 --------------------------------------------------*/
-
 /*--------------------------------------------------
-  STYLES FOR WP RECENT POST SLIDER PLUGIN
+  CURRENT FEATURED CONTENT SECTION
+*/
+#featured-section {
+  padding: 2rem 0;
+  position: relative;
+}
+.featured-content-img{
+  background-position: center center;
+  background-size: cover;
+  height: 200px;
+  width: 100%;
+}
+.featured-content-header,.featured-content-text{
+  margin-bottom: 0px;
+}
+.featured-content-header{
+  font-size: 1.3rem;
+  line-height: 1.3;
+ 	padding-top: 1rem;
+  padding-bottom: 0.5rem;
+
+}
+.featured-content-text{}
+/*
+  CURRENT FEATURED CONTENT SECTION END
+--------------------------------------------------*/
+/*--------------------------------------------------
+  PAST FEATURED CONTENT PAGE - PAGINATION
+*/
+#past-featured-container a{
+  color: #6D6E71;
+  font-family: "Gotham-Black";
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.pagination{
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.pagination .page-numbers {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 2px 0 0;
+  border: 1px solid #eee;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 40em){
+  .pagination{
+    margin-bottom: 2.5rem;
+  }
+}
+/*
+  PAST FEATURED CONTENT PAGE - PAGINATION END
+--------------------------------------------------*/
+/*--------------------------------------------------
+  FEATURED CONTENT CAROUSEL
 */
 .homepage-carousel-container{
   margin-top: -55px;
@@ -7875,8 +7858,6 @@ a.anchor{
 
 .homepage-carousel-container .wppsac-post-slider .wppsac-post-image-bg img{
   object-position: center center;
-  /* filter: grayscale(1); */
-  /* opacity: .75; */
 }
 
 .homepage-carousel-container .wppsac-post-slider.design-4 .slick-dots{
@@ -7939,37 +7920,8 @@ a.anchor{
   }
 }
 /*
-  STYLES FOR WP RECENT POST SLIDER PLUGIN END
+  FEATURED CONTENT CAROUSEL - END
 --------------------------------------------------*/
-
-/*--------------------------------------------------
-  PAST FEATURED CONTENT PAGE - PAGINATION
-*/
-.pagination{
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.pagination .page-numbers {
-  display: inline-block;
-  padding: 5px 10px;
-  margin: 0 2px 0 0;
-  border: 1px solid #eee;
-  line-height: 1;
-  text-decoration: none;
-  border-radius: 2px;
-  font-weight: 600;
-}
-
-@media screen and (max-width: 40em){
-  .pagination{
-    margin-bottom: 2.5rem;
-  }
-}
-/*
-  PAST FEATURED CONTENT PAGE - PAGINATION END
---------------------------------------------------*/
-
 /*--------------------------------------------------
   LIVE VIDEO STREAM COLUMN - HOMEPAGE
 */
@@ -8003,38 +7955,6 @@ a.anchor{
 #live-videos-tabs .tabs-title.is-active{
   background-color: #23417D;
 }
-
-/* .live-stream-tabs-column ul{
-  overflow: auto;
-}
-
-.live-stream-tabs-column .vertical.tabs li{
-  border-bottom: 1px solid #d8dde8;
-}
-
-.live-stream-tabs-column .vertical.tabs li:nth-last-of-type(-n+2){
-  border-bottom: none;
-}
-
-.live-stream-tabs-column .vertical.tabs li:hover{
-  background-color: #23417D;
-}
-
-.live-stream-tabs-column .vertical.tabs li:hover a{
-  color: #FFFFFF;
-} */
-
 /*
   LIVE VIDEO STREAM COLUMN - HOMEPAGE END
 --------------------------------------------------*/
-
-.view-featured-container{
-  background-color: #23417D;
-  max-width: 100vw;
-  padding: 2rem 0 0.4rem 0;
-  text-align: center;
-}
-
-.view-featured-container a{
-  background-color: #23417D;
-}
