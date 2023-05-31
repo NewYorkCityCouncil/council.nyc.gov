@@ -7688,6 +7688,9 @@ input::placeholder{
   font-family: 'Gotham-Bold';
   font-size: 1.25rem;
 }
+.hearing-splitter{
+  margin: 30px 0;
+}
 .hearing-committee{
   font-size: 1.3125rem;
 }

@@ -7,8 +7,8 @@
       </h2>
     </div>
   </div>
-  <div class="row">
-    <div class="columns medium-6 large-3" style="margin-bottom:14px;">
+  <div class="row" style="margin-bottom:14px;">
+    <div class="columns medium-6 large-3">
       <select class="hearing-filter" id="hearing-type-filter">
         <option value="">All Event Categories</option>
         <option value="+and+EventBodyId+eq+1">Stated Meeting</option>
@@ -191,7 +191,7 @@
                       <ol id="${longDate.toLowerCase().replace(" ","-")}-hearings-at-${time}" class="hearings-lists">
                         ${htmlIndividualHearings}
                       </ol>
-                    <hr/>
+                    <hr class="hearing-splitter"/>
                   </li>
                 `;
               };
