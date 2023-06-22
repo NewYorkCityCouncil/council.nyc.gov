@@ -7675,6 +7675,9 @@ input::placeholder{
   list-style: none;
   margin: 0;
 }
+#hearings-section ol.hearings-lists li:not(:last-child){
+  margin-bottom: 15px
+}
 .hearing-filter{
   color: #424142;
 }
@@ -7693,6 +7696,7 @@ input::placeholder{
 }
 .hearing-committee{
   font-size: 1.3125rem;
+  margin-bottom: 0;
 }
 .hearing-committee, .hearing-committee a{
   color: #424142;
