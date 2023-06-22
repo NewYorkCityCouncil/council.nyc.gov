@@ -133,7 +133,7 @@
         });
 
         // Filter out joint hearings that are NOT the lead committee
-        sortedHearings = sortedHearings.filter(hearing => hearing.EventComment === null || (hearing.EventComment?.startsWith("Jointly") && hearing.EventComment?.endsWith(".")))
+        sortedHearings = sortedHearings.filter(hearing => !(hearing.EventComment?.startsWith("Jointly") && hearing.EventComment?.endsWith(".")))
         hearingListElement.empty();
 
         if (sortedHearings.length === 0){
@@ -181,7 +181,7 @@
                   };
                   htmlIndividualHearings += `
                     <li>
-                      <h5 class="hearing-committee"><a href="${hearing.EventAgendaFile !== null ? hearing.EventAgendaFile : "#"}">${hearing.EventBodyId === 1 ? "Stated Meeting" : hearing.EventBodyName}</a>${jointly}<br/><small class="hearing-location">${hearing.EventLocation}</small></h5>
+                      <h5 class="hearing-committee"><a href="${hearing.EventAgendaFile !== null ? hearing.EventAgendaFile : "#"}">${hearing.EventBodyId === 1 ? "Stated Meeting" : hearing.EventBodyName}</a>${jointly}<br/><small class="hearing-location">${hearing.EventLocation}</small></h5><a href=${hearing.EventInSiteURL}>See more details</a>
                     </li>
                   `;
                 };
