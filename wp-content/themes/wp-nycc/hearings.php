@@ -133,7 +133,7 @@
         });
 
         // Filter out joint hearings that are NOT the lead committee
-        sortedHearings = sortedHearings.filter(hearing => !(hearing.EventComment?.startsWith("Jointly") && hearing.EventComment?.endsWith(".")))
+        sortedHearings = sortedHearings.filter(hearing => {return hearing.EventComment?.startsWith("Jointly") && !hearing.EventComment?.endsWith(".") ? null : hearing})
         hearingListElement.empty();
 
         if (sortedHearings.length === 0){
