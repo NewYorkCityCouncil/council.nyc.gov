@@ -36,9 +36,11 @@ function nycc_page_navi($before = '', $after = '') {
     $first_page_text = __( 'First Page', 'jointswp' );
     echo '<li><a href="'.get_pagenum_link().'" title="'.$first_page_text.'">'.$first_page_text.'</a></li>';
   }
-  echo '<li>';
-  previous_posts_link( __('Previous Page', 'jointswp') );
-  echo '</li>';
+  if (get_previous_posts_link( __('Previous Page', 'jointswp') )){
+    echo '<li>';
+    previous_posts_link( __('Previous Page', 'jointswp') );
+    echo '</li>';
+  }
   for($i = $start_page; $i  <= $end_page; $i++) {
     if($i == $paged) {
       echo '<li class="current"> Page '.$i.' </li>';
@@ -46,9 +48,11 @@ function nycc_page_navi($before = '', $after = '') {
       echo '<li><a href="'.get_pagenum_link($i).'"> Page '.$i.' </a></li>';
     }
   }
-  echo '<li>';
-  next_posts_link( __('Next Page', 'jointswp'), 0 );
-  echo '</li>';
+  if(get_next_posts_link( __('Next Page', 'jointswp'), 0 )){
+    echo '<li>';
+    next_posts_link( __('Next Page', 'jointswp'), 0 );
+    echo '</li>';
+  }
   if ($end_page < $max_page) {
     $last_page_text = __( 'Last Page', 'jointswp' );
     echo '<li><a href="'.get_pagenum_link($max_page).'" title="'.$last_page_text.'">'.$last_page_text.'</a></li>';
