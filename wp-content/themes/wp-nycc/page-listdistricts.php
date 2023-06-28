@@ -12,7 +12,7 @@
         <div class="page-header">
           <h1 id="for-table-caption" class="header-xxlarge"><?php the_title(); ?></h1>
         </div>
-        <div class="row" style="visibility: hidden;">
+        <div class="row" style="visibility: hidden; display: none;">
           <div class="columns">
             <div id="map-container" class="district" aria-hidden="true" style="display:none;">
               <div id="map"></div>

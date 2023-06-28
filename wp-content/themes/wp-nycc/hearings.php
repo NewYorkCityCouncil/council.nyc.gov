@@ -35,8 +35,10 @@
   </ol>
   <div class="row">
     <div class="columns hearings-links">
-      <a href="https://legistar.council.nyc.gov/Calendar.aspx" target="_blank" rel="noopener noreferrer" style="display:block;"><strong><i class="fa fa-play hearing-links-arrow"></i> View the hearing calendar and video archive here</strong></a>
-      <a style="display:block;" href="/testify" target="_blank" rel="noopener"><strong><i class="fa fa-play hearing-links-arrow"></i> Register to testify at one of our upcoming hearings</strong></a>
+      <ul style="margin: 0; list-style:none;">
+        <li><a href="https://legistar.council.nyc.gov/Calendar.aspx" target="_blank" rel="noopener noreferrer" style="display:block;"><strong><i class="fa fa-play hearing-links-arrow"></i> View the hearing calendar and video archive here</strong></a></li>
+        <li><a style="display:block;" href="/testify" target="_blank" rel="noopener"><strong><i class="fa fa-play hearing-links-arrow"></i> Register to testify at one of our upcoming hearings</strong></a></li>
+      </ul>
     </div>
   </div>
 </div>

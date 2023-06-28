@@ -59,20 +59,20 @@
 
     <div id="sticky-wrapper"> <!-- closing tag on line 16 ./footer.php -->
       <div data-sticky-container>
-        <header class="site-header sticky" role="header" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
+        <header class="site-header sticky" role="banner" data-sticky data-margin-top="0" data-sticky-on="small" data-anchor="sticky-wrapper">
           <div class="top-bar">
             <div class="row" data-equalizer>
               <div class="columns small-10 large-12" style="background-color: #FFFFFF; padding: .3rem 0" data-equalizer-watch>
                 <div style="display: flex; align-items: center; max-width: 1350px; justify-content: center; margin: 0 auto;">
                   <div class="columns">
-                    <strong class="site-logo">
+                    <h1 class="site-logo">
                       <a href="/">
                         <img alt="NYC Council Seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/nyc-seal-blue.png">
                         <div style="display:inline;">
                           New York City Council
                         </div>
                       </a>
-                    </strong>
+                    </h1>
                   </div>
                   <div class="show-for-large columns nav-search-container" style="display: flex; justify-content: end; align-items: end;">
                     <?php get_search_form(); ?>  

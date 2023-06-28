@@ -18,7 +18,7 @@
         </article>
 
       <?php endwhile; else : ?>
-        <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+        <p  role="status" aria-live="polite"><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
       <?php endif; ?>
 
       <?php nycc_page_navi(); ?>

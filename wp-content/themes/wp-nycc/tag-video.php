@@ -15,7 +15,7 @@
       <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
           <?php get_template_part( 'loop', 'video' ); ?>
       <?php endwhile; else : ?>
-        <p class="columns"><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+        <p class="columns" role="status" aria-live="polite"><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
       <?php endif; ?>
 
       <?php nycc_page_navi(); ?>
