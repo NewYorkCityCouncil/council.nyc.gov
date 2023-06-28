@@ -3109,7 +3109,7 @@ abbr {
 
 code {
   padding: .125rem .3125rem .0625rem;
-  border: 1px solid #cacaca;
+  border: 1px solid #545454;
 }
 
 kbd {
@@ -3334,7 +3334,7 @@ kbd {
   height: 2.4375rem;
   margin: 0 0 1rem;
   padding: .5rem;
-  border: 1px solid #cacaca;
+  border: 1px solid #545454;
   border-radius: 0;
   background-color: #fff;
   box-shadow: inset 0 1px 2px rgba(34,34,34,.1);
@@ -3456,7 +3456,7 @@ label.middle {
 
 .input-group-label {
   padding: 0 1rem;
-  border: 1px solid #cacaca;
+  border: 1px solid #545454;
   background: #e6e6e6;
   color: #222;
   white-space: nowrap;
@@ -3478,7 +3478,7 @@ label.middle {
 }
 
 .fieldset,select {
-  border: 1px solid #cacaca;
+  border: 1px solid #545454;
 }
 
 .input-group-button {
@@ -4574,7 +4574,7 @@ select[multiple] {
   padding: 1rem;
   display: none;
   right: 2%;
-  border: 1px solid #cacaca;
+  border: 1px solid #545454;
   border-radius: 0;
   background-color: #e6e6e6;
   font-size: 1rem;
@@ -5324,7 +5324,7 @@ html.is-reveal-open,html.is-reveal-open body {
   backface-visibility: hidden;
   display: none;
   padding: 1rem;
-  border: 1px solid #cacaca;
+  border: 1px solid #545454;
   border-radius: 0;
   background-color: #fff;
   position: relative;
@@ -6163,6 +6163,10 @@ a.thumbnail image {
   font-size: 0.89rem;
   line-height: 1.2rem;
 }
+.site-footer a:focus{
+  outline-style: solid;
+  outline-color: #fff !important;
+}
 .site-footer .social-buttons li{
   margin-right: 0!important;
 }
@@ -6242,6 +6246,7 @@ a.thumbnail image {
   font-size: 1.125rem; 
   line-height: 2.25rem;
   letter-spacing: -.03rem;
+  margin-bottom: 0;
 }
 
 @media print,screen and (min-width:40em) {

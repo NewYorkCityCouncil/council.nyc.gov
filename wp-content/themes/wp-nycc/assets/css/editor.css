@@ -1896,7 +1896,7 @@ figure {
 
 code {
   padding: 0.125rem 0.3125rem 0.0625rem;
-  border: 1px solid #cacaca;
+  border: 1px solid #545454;
   background-color: #e6e6e6;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   font-weight: normal;
@@ -2048,7 +2048,7 @@ textarea {
   height: 2.4375rem;
   margin: 0 0 1rem;
   padding: 0.5rem;
-  border: 1px solid #cacaca;
+  border: 1px solid #545454;
   border-radius: 0;
   background-color: #fff;
   box-shadow: inset 0 1px 2px rgba(34, 34, 34, 0.1);
@@ -2165,7 +2165,7 @@ label {
 
 .input-group-label {
   padding: 0 1rem;
-  border: 1px solid #cacaca;
+  border: 1px solid #545454;
   background: #e6e6e6;
   color: #222;
   text-align: center;
@@ -2211,7 +2211,7 @@ legend {
 .fieldset {
   margin: 1.125rem 0;
   padding: 1.25rem;
-  border: 1px solid #cacaca; }
+  border: 1px solid #545454; }
   .fieldset legend {
     margin: 0;
     margin-left: -0.1875rem;
@@ -2225,7 +2225,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 1px solid #cacaca;
+  border: 1px solid #545454;
   border-radius: 0;
   background-color: #fff;
   font-family: inherit;
