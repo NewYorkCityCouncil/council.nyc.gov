@@ -17,7 +17,7 @@
               <?php the_content(); ?>
               <?php wp_link_pages(); ?>
             </section>
-            <ul class="row block-grid" style="list-style: none;">
+            <ul class="row block-grid" style="list-style: none;" id="content-list">
               <?php
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 $list_features = new WP_Query('post_type=nycc_feature&orderby=menu_order&order=ASC&posts_per_page=10&paged='. $paged);
