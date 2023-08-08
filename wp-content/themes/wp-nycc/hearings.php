@@ -129,30 +129,41 @@
           ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr : hr = (hr+12);
           return new Date(year, month, date, hr, min, 00);
         };
+        // Filter out joint hearings that are NOT the lead committee
+        let sortedHearings = dataHearings.filter(hearing => {return hearing.EventComment?.startsWith("Jointly") && !hearing.EventComment?.endsWith(".") ? null : hearing});
         // Sort all hearings by date then time as endpoint can't do both
-        let sortedHearings = dataHearings.sort(function(a,b){
+        sortedHearings = sortedHearings.sort(function(a,b){
           return dateTimeConverter(a.EventDate, a.EventTime).getTime() - dateTimeConverter(b.EventDate, b.EventTime).getTime();
         });
 
-        // Filter out joint hearings that are NOT the lead committee
-        sortedHearings = sortedHearings.filter(hearing => {return hearing.EventComment?.startsWith("Jointly") && !hearing.EventComment?.endsWith(".") ? null : hearing})
         hearingListElement.empty();
 
         if (sortedHearings.length === 0){
           hearingListElement.append(`<li class='column column-block no-hearings' style='float:none;margin:20px 0;text-align:center;width:100%;'><em>NO SCHEDULED HEARINGS THIS WEEK</em></li>`);
         } else {
           // Creating the "skeleton" data structure for organizing hearings into time and dates
+          let exampleDate = startDate.split("-");
           let orgDates = {};
-          let allTimes = Array.from(new Set(sortedHearings.map(hearing => hearing.EventTime))), dates = Array.from(new Set(sortedHearings.map(hearing => hearing.EventDate)));
+          // Need to sort the times as a date object because the string were out of order (also using the startDate for additional params to create the Date object)
+          let allTimes = Array.from(new Set(sortedHearings.map(hearing => hearing.EventTime))).sort((timeA,timeB) => {
+            if (new Date(`${exampleDate[1]},${exampleDate[2]},${exampleDate[0]},${timeA}`) < new Date(`${exampleDate[1]},${exampleDate[2]},${exampleDate[0]},${timeB}`)) {
+                return -1;
+              }
+              if (new Date(`${exampleDate[1]},${exampleDate[2]},${exampleDate[0]},${timeA}`) > new Date(`${exampleDate[1]},${exampleDate[2]},${exampleDate[0]},${timeB}`)) {
+                return 1;
+              }
+              return 0;
+            })
+          let dates = Array.from(new Set(sortedHearings.map(hearing => hearing.EventDate)));
           for (let date of dates) { // date = 2023-03-27T00:00:00
-              let hearingsOnDate = sortedHearings.filter(hearing => hearing.EventDate === date);
-              times = Array.from(new Set(hearingsOnDate.map(hearing => hearing.EventTime)));
-              let orgTimes = {};
-              for (let time of times){
-                  let filteredHearings = hearingsOnDate.filter(hearing => hearing.EventTime === time);
-                  orgTimes[time] = filteredHearings;
-              };
-              orgDates[date] = orgTimes;
+            let hearingsOnDate = sortedHearings.filter(hearing => hearing.EventDate === date);
+            times = Array.from(new Set(hearingsOnDate.map(hearing => hearing.EventTime)));
+            let orgTimes = {};
+            for (let time of times){
+              let filteredHearings = hearingsOnDate.filter(hearing => hearing.EventTime === time);
+              orgTimes[time] = filteredHearings;
+            };
+            orgDates[date] = orgTimes;
           };
           // ---- Begin: Sorting weekly hearings into the pre-built data structure -----
           let olHearings = "";
