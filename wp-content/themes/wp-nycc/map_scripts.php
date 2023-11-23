@@ -139,11 +139,13 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
       layers: [
           L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
             minZoom: 13,
-            maxZoom: 17
+            maxZoom: 17,
+            attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, © <a href="https://carto.com/about-carto/">CARTO</a>',
           }),
           L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png', {
             maxZoom: 12,
-            minZoom: 10
+            minZoom: 10,
+            attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, © <a href="https://carto.com/about-carto/">CARTO</a>',
           })
       ]
     }).setView([40.727760, -73.987218], 11 );
