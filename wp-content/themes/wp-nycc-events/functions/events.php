@@ -46,7 +46,7 @@ function nycc_ced_event_meta() {
   echo '<input type="hidden" name="nycc_ced_event_meta_noncename" id="nycc_ced_event_meta_noncename" value="' . wp_create_nonce(plugin_basename(__FILE__)) . '" />';
 
   $ced_event_title = get_post_meta($post->ID, 'ced_event_title', true);
-  $ced_event_code = get_post_meta($post->ID, 'ced_event_code', true);
+  $ced_event_link = get_post_meta($post->ID, 'ced_event_link', true);
   $ced_event_date = get_post_meta($post->ID, 'ced_event_date', true);
   $ced_event_time_doors = get_post_meta($post->ID, 'ced_event_time_doors', true);
   $ced_event_time_start = get_post_meta($post->ID, 'ced_event_time_start', true);
@@ -70,9 +70,9 @@ function nycc_ced_event_meta() {
     </tr>
 
     <tr valign="top">
-      <th scope="row">Event Code*</th>
+      <th scope="row">RSVP Link*</th>
       <td>
-        <input required type="text" name="ced_event_code" value="<?php echo esc_attr( $ced_event_code ); ?>" class="regular-text" placeholder="HHM2022" />
+        <input required type="text" name="ced_event_link" value="<?php echo esc_attr( $ced_event_link ); ?>" class="regular-text" placeholder="https://..." />
       </td>
     </tr>
 
@@ -166,7 +166,7 @@ function save_nycc_ced_event_meta($post_id, $post) {
     if ( !current_user_can( 'edit_post', $post->ID ))
       return $post->ID;
     $ced_event_meta['ced_event_title'] = $_POST['ced_event_title'];
-    $ced_event_meta['ced_event_code'] = $_POST['ced_event_code'];
+    $ced_event_meta['ced_event_link'] = $_POST['ced_event_link'];
     $ced_event_meta['ced_event_date'] = $_POST['ced_event_date'];
     $ced_event_meta['ced_event_time_doors'] = $_POST['ced_event_time_doors'];
     $ced_event_meta['ced_event_time_start'] = $_POST['ced_event_time_start'];

@@ -4,7 +4,7 @@
             <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
                 $today = date("Y-m-d");
                 $event_id = get_the_ID();
-                $ced_event_code = get_post_meta($event_id, 'ced_event_code', true);
+                $ced_event_link = get_post_meta($event_id, 'ced_event_link', true);
                 $ced_event_date = get_post_meta($event_id, 'ced_event_date', true);
                 $parsed_date_month = date("F",strtotime($ced_event_date));
                 $parsed_date_day = date("j",strtotime($ced_event_date));
@@ -69,7 +69,7 @@
                                 </td>
                             </tr>
                             <?php if ($today < $ced_event_date){ ?>
-                                <tr><td colspan="2"><a href="/events/rsvp/?event=<?php echo $ced_event_code ?>" style="font-weight: bold;">RSVP FOR THIS EVENT</a></td></tr>
+                                <tr><td colspan="2"><a href="<?php echo $ced_event_link ?>" target="_blank" style="font-weight: bold;">RSVP FOR THIS EVENT</a></td></tr>
                             <?php } ?>
                         </table>
                         <?php the_content(); ?>

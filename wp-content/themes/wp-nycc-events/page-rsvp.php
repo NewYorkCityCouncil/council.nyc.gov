@@ -5,11 +5,11 @@
     $event_code = $_GET["event"];
     $args = array(
         'post_type' => 'nycc_ced_event',
-        // 'meta_key' => 'nycc_ced_event_ced_event_code',
+        // 'meta_key' => 'nycc_ced_event_ced_event_link',
         // 'meta_value' => $event_code
         'meta_query' => array(
             array(
-                'key'     => 'ced_event_code',
+                'key'     => 'ced_event_link',
                 'value'   => $event_code,
             )
         )   
@@ -19,7 +19,7 @@
         while ( $event->have_posts() ) : $event->the_post();
             $event_id = get_the_ID();
             $ced_event_title = get_post_meta($event_id, 'ced_event_title', true);
-            $ced_event_code = get_post_meta($event_id, 'ced_event_code', true);
+            $ced_event_link = get_post_meta($event_id, 'ced_event_link', true);
             $ced_event_date = get_post_meta($event_id, 'ced_event_date', true);
             $parsed_date_month = date("F",strtotime($ced_event_date));
             $parsed_date_day = date("j",strtotime($ced_event_date));
@@ -47,7 +47,7 @@
 <script>
     jQuery(document).ready(function(){
         const event_name = <?php echo json_encode($ced_event_title); ?>;
-        const event_code = <?php echo json_encode($ced_event_code); ?>;
+        const event_link = <?php echo json_encode($ced_event_link); ?>;
         const date_of_event = <?php echo json_encode($parsed_full_date); ?>;
         const doors_open = <?php echo json_encode($parsed_time_doors); ?>;
         const program_begins = <?php echo json_encode($parsed_time_start); ?>;
