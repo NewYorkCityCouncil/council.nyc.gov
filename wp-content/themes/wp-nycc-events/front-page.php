@@ -70,7 +70,7 @@
                     while ( $events->have_posts() ) : $events->the_post();
                         $event_id = get_the_ID();
                         $ced_event_title = get_post_meta($event_id, 'ced_event_title', true);
-                        $ced_event_code = get_post_meta($event_id, 'ced_event_code', true);
+                        $ced_event_link = get_post_meta($event_id, 'ced_event_link', true);
                         $ced_event_date = get_post_meta($event_id, 'ced_event_date', true);
                         $parsed_date_month = date("F",strtotime($ced_event_date));
                         $parsed_date_day = date("j",strtotime($ced_event_date));
@@ -109,7 +109,7 @@
                                     <?php  if ($ced_event_invite_cre){ ?>| <a href="<?php echo $ced_event_invite_cre?>">Creole</a> <?php } ?>
                                     <?php  if ($ced_event_invite_spa){ ?>| <a href="<?php echo $ced_event_invite_spa?>">Spanish</a> <?php } ?>
                                 </div>
-                                <a href="/events/rsvp/?event=<?php echo $ced_event_code ?>"><strong>RSVP FOR THIS EVENT</strong></a>
+                                <a href="<?php echo $ced_event_link ?>" target="_blank"><strong>RSVP FOR THIS EVENT</strong></a>
                             </div>
                             <div class="event-image columns small-3">
                                 <a href=<?php the_permalink(); ?>>
