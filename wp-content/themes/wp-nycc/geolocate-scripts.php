@@ -5,11 +5,11 @@ $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
 ?>
 
 <script type="text/javascript">
-    let districtLookup = JSON.parse(jQuery.ajax({
-        async: false,
-        url: "https://council.nyc.gov/wp-content/themes/wp-nycc/assets/js/district_lookup.json",
-        dataType: "json",
-      }).responseText);
+    // let districtLookup = JSON.parse(jQuery.ajax({
+    //     async: false,
+    //     url: "https://council.nyc.gov/wp-content/themes/wp-nycc/assets/js/district_lookup.json",
+    //     dataType: "json",
+    //   }).responseText);
   /*--------------------------------------------------
       Geolocate District
     --------------------------------------------------*/
@@ -44,7 +44,7 @@ $current_pb_cycle = get_post_custom_values( 'current_pb_cycle' )[0];
               censusTractAndSuffix2022 = data.address.censusTract2020,
               dynamicBlock = data.address.dynamicBlock,
               finalId = `${boroughCode}${censusTractAndSuffix2022}${dynamicBlock}`.replace(/\s/g,"0"),
-              CounDist = districtLookup.filter(zone => String(zone.zero_padded_id) === String(finalId))[0].district;
+              CounDist = data.address.cityCouncilDistrict;
 
             jQuery('#geolocate-district-result').html('') 
             console.log(CounDist)

@@ -295,11 +295,11 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
         badAddress( terms, error );
         return(console.log(e))
       }
-      let districtLookup = JSON.parse(jQuery.ajax({
-        async: false,
-        url: "https://council.nyc.gov/wp-content/themes/wp-nycc/assets/js/district_lookup.json",
-        dataType: "json",
-      }).responseText);
+      // let districtLookup = JSON.parse(jQuery.ajax({
+      //   async: false,
+      //   url: "https://council.nyc.gov/wp-content/themes/wp-nycc/assets/js/district_lookup.json",
+      //   dataType: "json",
+      // }).responseText);
 
       $.ajax({
         url: "https://maps.nyc.gov/geoclient/v2/address.json?" + $.param(params) })
@@ -313,7 +313,7 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
             censusTractAndSuffix2022 = data.address.censusTract2020,
             dynamicBlock = data.address.dynamicBlock,
             finalId = `${boroughCode}${censusTractAndSuffix2022}${dynamicBlock}`.replace(/\s/g,"0"),
-            CounDist = districtLookup.filter(zone => String(zone.zero_padded_id) === String(finalId))[0].district;
+            CounDist = data.address.cityCouncilDistrict;
 
           // use finalId to look up the csv for a district number
           map.setZoom(17, { animate: false })
