@@ -154,8 +154,8 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
       type: 'cartodb',
       sublayers: [
         {
-          sql: "SELECT * FROM nyc_city_council_dist_cm",
-          cartocss: "#nyc_city_council_dist_cm { polygon-fill: #2f56a6; polygon-opacity: 0; line-width: 1; line-color: #2f56a6; line-opacity: 0.5; polygon-comp-op: darken; } #layer::labels {text-name: [coundist]; text-face-name: 'Open Sans Bold'; text-size: 12; text-fill: #23417d; text-label-position-tolerance: 0; text-halo-radius: 2; text-halo-fill: #F9F9F9; text-dy: 0; text-allow-overlap: false; text-placement: point; text-placement-type: dummy; }",
+          sql: "SELECT * FROM council_districts_post_2024",
+          cartocss: "#council_districts_post_2024 { polygon-fill: #2f56a6; polygon-opacity: 0; line-width: 1; line-color: #2f56a6; line-opacity: 0.5; polygon-comp-op: darken; } #layer::labels {text-name: [coundist]; text-face-name: 'Open Sans Bold'; text-size: 12; text-fill: #23417d; text-label-position-tolerance: 0; text-halo-radius: 2; text-halo-fill: #F9F9F9; text-dy: 0; text-allow-overlap: false; text-placement: point; text-placement-type: dummy; }",
         }
       ],
       cartodb_logo: false,
@@ -181,7 +181,7 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
     // Add a layer for the current District
     var currentDistrictLayer = L.geoJson().addTo(map);
 
-    sql.execute("SELECT * FROM nyc_city_council_dist_cm WHERE dist=<?php echo $districtNumber ?>")
+    sql.execute("SELECT * FROM council_districts_post_2024 WHERE dist=<?php echo $districtNumber ?>")
         .done(function(geojson) {
 
           currentDistrictLayer.addData(geojson);
@@ -216,7 +216,7 @@ if ( is_page_template( 'page-district.php' ) || is_page_template( 'page-speakerd
 
       var sql = new cartodb.SQL({ user: 'nyc-council' });
 
-      sql.execute('SELECT * FROM nyc_city_council_dist_cm WHERE ST_Intersects(the_geom,CDB_' + e.latlng + ')')
+      sql.execute('SELECT * FROM council_districts_post_2024 WHERE ST_Intersects(the_geom,CDB_' + e.latlng + ')')
           .done(function(data) {
             if ( data.rows.length != 0 ) {
               var CounDist = data.rows[0]['dist'];
