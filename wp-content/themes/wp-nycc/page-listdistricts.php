@@ -40,7 +40,7 @@
                   <th colspan="2"><button onclick="declareAction('Sorted list based on council member name in A to Z order')" class="button sort small secondary expanded" aria-label="Sort by council member" data-sort="sort-member">Member</button></th>
                   <th><button onclick="declareAction('Sorted list based on borough in A to Z order')" class="button sort small secondary expanded" aria-label="Sort by borough" data-sort="sort-borough">Borough</button></th>
                   <th class="show-for-medium"><button onclick="declareAction('Sorted list based on political party in A to Z order')" class="button sort small secondary expanded" aria-label="Sort by political party" data-sort="sort-party">Party</button></th>
-                  <!-- <th class="show-for-medium" style="width:30%;"><button class="button disabled no-outline small secondary expanded" tabindex="-1" disabled>Neighborhoods</button></th> -->
+                  <th class="show-for-medium" style="width:30%;"><button class="button disabled no-outline small secondary expanded" tabindex="-1" disabled>Neighborhoods</button></th>
                   <th><button class="button disabled no-outline small secondary expanded" tabindex="-1" disabled>Email</button></th>
                 </thead>
                 <tbody class="list">
@@ -102,7 +102,7 @@
                           <?php endif; ?>
                           <td class="sort-borough"><?php echo $borough; ?></td>
                           <td class="sort-party show-for-medium"><?php echo $party; ?></td>
-                          <!-- <td class="sort-neighborhoods neighborhoods show-for-medium"><#?php echo $neighborhoods; ?></td> -->
+                          <td class="sort-neighborhoods neighborhoods show-for-medium"><?php echo $neighborhoods; ?></td>
                           <?php if ($email !== "") :  ?>
                             <td class="sort-email email" style="text-align:center;"><a aria-label="Send an email to Council Member <?php echo $name; ?>" href="mailto:<?php echo $email; ?>"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" aria-label="Click to copy Council Member <?php echo $name; ?>'s email address" onclick="copyToClipboard(jQuery(this))" data-email=<?php echo $email; ?>>Copy</span></td>
                           <?php else : ?>
@@ -132,7 +132,7 @@
                           <td><span style="opacity: 0%;">Blank</span></td>
                           <td class="sort-borough"><span style="opacity: 0%;">Blank</span></td>
                           <td class="sort-party show-for-medium"><span style="opacity: 0%;">Blank</span></td>
-                          <!-- <td class="sort-neighborhoods neighborhoods show-for-medium"><#?php echo $neighborhoods ?></td> -->
+                          <td class="sort-neighborhoods neighborhoods show-for-medium"><?php echo $neighborhoods ?></td>
                           <td class="sort-email email" style="text-align:center;"><a aria-label="Send an email to District <?php echo $number; ?>" href="mailto:District<?php echo $number; ?>@council.nyc.gov"><i class="fa fa-share" aria-hidden="true"></i><i class="fa fa-envelope-o" aria-hidden="true"></i></a><br><span style="cursor:pointer;" aria-label="Click to copy District <?php echo $number; ?>'s email address" onclick="copyToClipboard(jQuery(this))" data-email="District<?php echo $number; ?>@council.nyc.gov">Copy</span></td>
                         </tr>
                         <?php
