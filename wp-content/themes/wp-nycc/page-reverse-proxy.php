@@ -20,7 +20,7 @@ echo $external_content;
 ?>
 
 /*
-<?php /* Template Name: Reverse Proxy Template */
+<?php // Template Name: Reverse Proxy Template
     $uri = $_SERVER['REQUEST_URI'];
     $forward_uri = explode("forward_uri=", $uri);
     if (count($forward_uri) == 1){
