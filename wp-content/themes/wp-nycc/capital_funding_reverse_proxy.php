@@ -1,7 +1,15 @@
 <?php
 /* Template Name: Reverse Proxy Capital Funding Template */
 
-$external_url = "https://datateam.council.nyc.gov:8377/capital_funding/"
+$uri = $_SERVER['REQUEST_URI'];
+$forward_uri = explode("forward_uri=", $uri);
+
+if (count($forward_uri) == 1) {
+    $external_url = "https://datateam.council.nyc.gov:8377/expense_funding/";
+} else {
+    $external_url = "https://datateam.council.nyc.gov:8377/expense_funding/";
+}
+
 $external_content = file_get_contents($external_url);
 
 // Replace URLs in the fetched content
