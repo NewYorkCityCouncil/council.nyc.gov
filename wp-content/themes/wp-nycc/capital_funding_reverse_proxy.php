@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Reverse Proxy Template */
+/* Template Name: Reverse Proxy Capital Funding Template */
 
 $external_url = "https://datateam.council.nyc.gov:8377/capital_funding/"
 $external_content = file_get_contents($external_url);
