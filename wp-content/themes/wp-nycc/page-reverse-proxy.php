@@ -1,7 +1,6 @@
 <?php
 /* Template Name: Reverse Proxy Template */
 
-
 $URL = get_post_meta(get_the_ID(), 'URL', true);
 $external_content = file_get_contents($URL);
 
