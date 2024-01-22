@@ -1,21 +1,14 @@
 <?php
 /* Template Name: Reverse Proxy Template */
 
-$uri = $_SERVER['REQUEST_URI'];
-$forward_uri = explode("forward_uri=", $uri);
 
-if (count($forward_uri) == 1) {
-    $external_url = "https://council.nyc.gov/";
-} else {
-    $external_url = $forward_uri[1];
-}
-
-$external_content = file_get_contents($external_url);
+$URL = get_post_meta(get_the_ID(), 'URL', true);
+$external_content = file_get_contents($URL);
 
 // Replace URLs in the fetched content
-$external_content = str_replace('href="/', 'href="' . $external_url, $external_content);
-$external_content = str_replace('src="/', 'src="' . $external_url, $external_content);
-$external_content = str_replace('../../', 'https://datateam.council.nyc.gov:8377/expense_funding/', $external_content);
+$external_content = str_replace('href="/', 'href="' . $URL, $external_content);
+$external_content = str_replace('src="/', 'src="' . $URL, $external_content);
+$external_content = str_replace('../../', $URL, $external_content);
 
 echo $external_content;
 
