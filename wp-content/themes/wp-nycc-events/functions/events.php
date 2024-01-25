@@ -57,6 +57,7 @@ function nycc_ced_event_meta() {
   $ced_event_invite_ben = get_post_meta($post->ID, 'ced_event_invite_ben', true);
   $ced_event_invite_chi = get_post_meta($post->ID, 'ced_event_invite_chi', true);
   $ced_event_invite_cre = get_post_meta($post->ID, 'ced_event_invite_cre', true);
+  $ced_event_invite_krn = get_post_meta($post->ID, 'ced_event_invite_krn', true);
   $ced_event_invite_spa = get_post_meta($post->ID, 'ced_event_invite_spa', true);
   ?>
   <span>All fields are required.</span>
@@ -139,6 +140,13 @@ function nycc_ced_event_meta() {
     </tr>
 
     <tr valign="top">
+      <th scope="row">Event Flyer PDF (Korean)</th>
+      <td>
+        <input required type="text" name="ced_event_invite_krn" value="<?php echo esc_attr( $ced_event_invite_krn ); ?>" class="regular-text"  placeholder="http://..." />
+      </td>
+    </tr>
+
+    <tr valign="top">
       <th scope="row">Event Flyer PDF (Spanish)</th>
       <td>
         <input type="text" name="ced_event_invite_spa" value="<?php echo esc_attr( $ced_event_invite_spa ); ?>" class="regular-text" placeholder="http://..." />
@@ -177,6 +185,7 @@ function save_nycc_ced_event_meta($post_id, $post) {
     $ced_event_meta['ced_event_invite_ben'] = $_POST['ced_event_invite_ben'];
     $ced_event_meta['ced_event_invite_chi'] = $_POST['ced_event_invite_chi'];
     $ced_event_meta['ced_event_invite_cre'] = $_POST['ced_event_invite_cre'];
+    $ced_event_meta['ced_event_invite_krn'] = $_POST['ced_event_invite_krn'];
     $ced_event_meta['ced_event_invite_spa'] = $_POST['ced_event_invite_spa'];
 
     foreach ($ced_event_meta as $key => $value) { // Cycle through the $events_meta array!

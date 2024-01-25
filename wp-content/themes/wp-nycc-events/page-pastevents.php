@@ -82,6 +82,7 @@
                                     $ced_event_invite_ben = get_post_meta($event_id, 'ced_event_invite_ben', true);
                                     $ced_event_invite_chi = get_post_meta($event_id, 'ced_event_invite_chi', true);
                                     $ced_event_invite_cre = get_post_meta($event_id, 'ced_event_invite_cre', true);
+                                    $ced_event_invite_krn = get_post_meta($event_id, 'ced_event_invite_krn', true);
                                     $ced_event_invite_spa = get_post_meta($event_id, 'ced_event_invite_spa', true);
                         ?>
                                     <div class="row">

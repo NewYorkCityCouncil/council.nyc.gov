@@ -87,6 +87,7 @@
                         $ced_event_invite_ben = get_post_meta($event_id, 'ced_event_invite_ben', true);
                         $ced_event_invite_chi = get_post_meta($event_id, 'ced_event_invite_chi', true);
                         $ced_event_invite_cre = get_post_meta($event_id, 'ced_event_invite_cre', true);
+                        $ced_event_invite_krn = get_post_meta($event_id, 'ced_event_invite_krn', true);
                         $ced_event_invite_spa = get_post_meta($event_id, 'ced_event_invite_spa', true);
             ?>
                         <div class="row">
@@ -107,6 +108,7 @@
                                     <?php  if ($ced_event_invite_ben){ ?>| <a href="<?php echo $ced_event_invite_ben?>">Bengali</a> <?php } ?>
                                     <?php  if ($ced_event_invite_chi){ ?>| <a href="<?php echo $ced_event_invite_chi?>">Chinese</a> <?php } ?>
                                     <?php  if ($ced_event_invite_cre){ ?>| <a href="<?php echo $ced_event_invite_cre?>">Creole</a> <?php } ?>
+                                    <?php  if ($ced_event_invite_krn){ ?>| <a href="<?php echo $ced_event_invite_krn?>">Korean</a> <?php } ?>
                                     <?php  if ($ced_event_invite_spa){ ?>| <a href="<?php echo $ced_event_invite_spa?>">Spanish</a> <?php } ?>
                                 </div>
                                 <a href="<?php echo $ced_event_link ?>" target="_blank"><strong>RSVP FOR THIS EVENT</strong></a>

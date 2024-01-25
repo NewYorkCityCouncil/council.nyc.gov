@@ -21,6 +21,7 @@
                 $ced_event_invite_ben = get_post_meta($event_id, 'ced_event_invite_ben', true);
                 $ced_event_invite_chi = get_post_meta($event_id, 'ced_event_invite_chi', true);
                 $ced_event_invite_cre = get_post_meta($event_id, 'ced_event_invite_cre', true);
+                $ced_event_invite_krn = get_post_meta($event_id, 'ced_event_invite_krn', true);
                 $ced_event_invite_spa = get_post_meta($event_id, 'ced_event_invite_spa', true);
             ?>
             <article id="post-<?php $event_id ?>" <?php post_class(''); ?>>
@@ -64,6 +65,7 @@
                                         <?php if ($ced_event_invite_ben){ ?> <li><a href="<?php echo $ced_event_invite_ben?>">Bengali</a></li> <?php } ?>
                                         <?php if ($ced_event_invite_chi){ ?> <li><a href="<?php echo $ced_event_invite_chi?>">Chinese</a></li> <?php } ?>
                                         <?php if ($ced_event_invite_cre){ ?> <li><a href="<?php echo $ced_event_invite_cre?>">Creole</a></li> <?php } ?>
+                                        <?php if ($ced_event_invite_krn){ ?> <li><a href="<?php echo $ced_event_invite_krn?>">Korean</a></li> <?php } ?>
                                         <?php if ($ced_event_invite_spa){ ?> <li><a href="<?php echo $ced_event_invite_spa?>">Spanish</a></li> <?php } ?>
                                     </ul>
                                 </td>
