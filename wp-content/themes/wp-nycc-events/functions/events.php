@@ -142,7 +142,7 @@ function nycc_ced_event_meta() {
     <tr valign="top">
       <th scope="row">Event Flyer PDF (Korean)</th>
       <td>
-        <input required type="text" name="ced_event_invite_krn" value="<?php echo esc_attr( $ced_event_invite_krn ); ?>" class="regular-text"  placeholder="http://..." />
+        <input type="text" name="ced_event_invite_krn" value="<?php echo esc_attr( $ced_event_invite_krn ); ?>" class="regular-text"  placeholder="http://..." />
       </td>
     </tr>
 
