@@ -36,23 +36,12 @@
             </div>
             <?php 
                 $args = array(
-                    'post__not_in' => array(2,859),
+                    'exclude' => array(2,859),
                     'posts_per_page' => '-1',
                     'post_status' => 'publish',
                     'post_type' => 'page',
-                    'order'      => 'ASC',
-                    'meta_query'     => array(
-                        array(
-                            'key'     => '_wp_page_template',
-                            'value'   => 'front-page.php',
-                            'compare' => '!=',
-                        ),
-                        array(
-                            'key'     => '_wp_page_template',
-                            'value'   => 'page-job_search.php',
-                            'compare' => '!=',
-                        ),
-                    ),
+                    'sort_order' => 'ASC',
+                    'sort_column' => 'post_name'
                 );
                 $active_job_postings = get_pages($args);
             ?>
