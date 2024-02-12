@@ -73,6 +73,7 @@
                         $ced_event_link = get_post_meta($event_id, 'ced_event_link', true);
                         $ced_event_date = get_post_meta($event_id, 'ced_event_date', true);
                         $parsed_date_month = date("F",strtotime($ced_event_date));
+                        $parsed_date_abbrev_month = date("M",strtotime($ced_event_date));
                         $parsed_date_day = date("j",strtotime($ced_event_date));
                         $parsed_date_year = date("Y",strtotime($ced_event_date));
                         $parsed_full_date = $parsed_full_date = $parsed_date_month . " " . $parsed_date_day . ", " . $parsed_date_year;
@@ -94,7 +95,8 @@
                             <div class="event-date columns small-3">
                                 <div class="date">
                                     <?php echo $parsed_date_day ?><br/>
-                                    <?php echo $parsed_date_month ?>
+                                    <span class="show-for-medium"><?php echo $parsed_date_month ?></span>
+                                    <span class="show-for-small-only"><?php echo $parsed_date_abbrev_month ?></span>
                                 </div>
                             </div>
                             <div class="event-details columns small-6">
