@@ -15,6 +15,48 @@
 @font-face { font-family: "Gotham-UltraItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-UltraItalic.otf");}
 @font-face { font-family: "Gotham-XLight"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-XLight.otf");}
 @font-face { font-family: "Gotham-XLightItalic"; src: url("/wp-content/themes/wp-nycc/assets/fonts/Gotham-XLightItalic.otf");}
+@font-face {
+  font-family: 'Neue Kaine Light';
+  src: url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-Light.woff2') format('woff2'),
+      url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-Light.woff') format('woff');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Neue Kaine';
+  src: url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-Regular.woff2') format('woff2'),
+  url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-Regular.woff') format('woff');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Neue Kaine Med';
+  src: url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-Medium.woff2') format('woff2'),
+      url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-Medium.woff') format('woff');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Neue Kaine SemBd';
+  src: url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-SemiBold.woff2') format('woff2'),
+  url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-SemiBold.woff') format('woff');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Neue Kain Bold';
+  src: url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-Bold.woff2') format('woff2'),
+      url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-Bold.woff') format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Neue Kaine ExtBd';
+  src: url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-ExtraBold.woff2') format('woff2'),
+  url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-ExtraBold.woff') format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Neue Kaine Black';
+  src: url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-Black.woff2') format('woff2'),
+      url('/wp-content/themes/wp-nycc/assets/fonts/NeueKaine-Black.woff') format('woff');
+  font-weight: 900;
+}
 
 html,legend,select {
   box-sizing: border-box;
