@@ -32,7 +32,6 @@
                     <button id="search-submit" class="button">Apply Filters</button>
                     <button id="search-clear" class="button">Clear Filters</button>
                 </div>
-                </div>
             </div>
             <?php 
                 $args = array(

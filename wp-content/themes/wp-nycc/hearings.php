@@ -127,7 +127,7 @@
           let min = parseInt(timeString.split(" ")[0].split(":")[1]);
           let ampm = timeString.split(" ")[1];
           ampm.toLowerCase() === "am" || (ampm.toLowerCase() === "pm" && hr === 12) ? hr = hr : hr = (hr+12);
-          return new Date(year, month, date, hr, min, 00);
+          return new Date(year, month, date, hr, min, 0);
         };
         // Filter out joint hearings that are NOT the lead committee
         let sortedHearings = dataHearings.filter(hearing => {return hearing.EventComment?.startsWith("Jointly") && !hearing.EventComment?.endsWith(".") ? null : hearing});
