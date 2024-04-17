@@ -113,7 +113,7 @@
                           } else if (window.location.pathname.startsWith("/districts/")){
                             document.getElementById("districts-nav").className += "active-page";
                           };
-                          $("#translation-menu-dropdown").css("visibility","visible").hide();
+                          jQuery("#translation-menu-dropdown").css("visibility","visible").hide();
                           jQuery("#translation-button").click(function(){
                             if(jQuery("#translation-menu-dropdown").css("display") === "none"){
                               jQuery("#translation-menu-dropdown").show();

@@ -24,7 +24,7 @@
                     <input placeholder="Department" type="text" id="department-search">
                 </div>
                 <div class="columns medium-12 large-4">
-                    <input placeholder="Salary range" type="text" id="salary-search">
+                    <input placeholder="Salary range" type="number" id="salary-search">
                 </div>
             </div>
             <div class="row">
@@ -43,6 +43,26 @@
                     'sort_column' => 'post_name'
                 );
                 $active_job_postings = get_pages($args);
+                foreach($active_job_postings as $page){
+                    $page_id = $page->ID;
+                    $salary_low = get_post_meta($page_id, 'salary_range_low', true);
+                    $salary_high = get_post_meta($page_id, 'salary_range_high', true);
+                    $page->salary_low = $salary_low;
+                    $page->salary_high = $salary_high;
+                    $departments = get_object_taxonomies($page, 'objects');
+                    foreach ($departments as $department) {
+                        // Get the terms associated with the page for the current department
+                        $terms = get_the_terms($page_id, $department->name);
+                        // Check if terms exist
+                        if ($terms && !is_wp_error($terms)) {
+                            // Loop through each term
+                            foreach ($terms as $term) {
+                                $page->department = $term->name;
+                            }
+                        }
+                    }
+                   
+                }
             ?>
             <small><em id="num-of-results">Showing <strong><?php echo count($active_job_postings); ?></strong> total results</em></small>
             <div id="job-table-container">
@@ -63,8 +83,23 @@
                     $jobAdArray = json_encode($active_job_postings);
                     echo "let jobAdArray = ". $jobAdArray . ";\n";
                 ?>
+                function moneyToInteger(money){
+                    let cleanMoney = money.replace(/[$,]/g, '');
+                    let amount = parseInt(cleanMoney, 10);
+                    return amount;
+                };
+                function searchWithinSalary(rangeLow=null, rangeHigh=null, search){
+                    if (!rangeLow || !rangeHigh) return false;
+                    let lowRange = moneyToInteger(rangeLow);
+                    let highRange  = moneyToInteger(rangeHigh);
+                    let cleanSearch = moneyToInteger(search);
+                    return (lowRange <= cleanSearch) && (cleanSearch <= highRange);
+                };
+                function numberWithCommas(x) {
+                    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                };
                 function viewJob (job) {
-                    window.open(`https://council.nyc.gov/jobs/${job}`)
+                    window.open(`https://council.nyc.gov/jobs/${job}`);
                 };
                 function resetJobTable(listOfJobs=jobAdArray){
                     jQuery("#job-table tbody").empty();
@@ -73,8 +108,8 @@
                         jQuery("#job-table tbody").append(`
                             <tr class='job-row' onclick='viewJob("${job.post_name}")'>
                                 <td>${job.post_title}</td>
-                                <td>${job.post_title}</td>
-                                <td>${job.post_title}</td>
+                                <td>${job.department ? job.department : '-'}</td>
+                                <td>${job.salary_low && job.salary_high ? '$'+numberWithCommas(job.salary_low)+' - $'+numberWithCommas(job.salary_high) : '-'}</td>
                             </tr>
                         `);
                     };
@@ -84,9 +119,9 @@
                     let searchDept = jQuery("#department-search").val().toLowerCase();
                     let searchSalary = jQuery("#salary-search").val().toLowerCase();
                     let jobAdArrayCopy = [...jobAdArray];
-                    if (searchTitle) jobAdArrayCopy = jobAdArrayCopy.filter((job) => job.post_title.toLowerCase().includes(searchTitle));
-                    if (searchDept) jobAdArrayCopy = jobAdArrayCopy.filter((job) => job.post_title.toLowerCase().includes(searchDept));
-                    if (searchSalary) jobAdArrayCopy = jobAdArrayCopy.filter((job) => job.post_title.toLowerCase().includes(searchSalary));
+                    if (searchTitle) jobAdArrayCopy = jobAdArrayCopy.filter((job) => job.post_title?.toLowerCase().includes(searchTitle));
+                    if (searchDept) jobAdArrayCopy = jobAdArrayCopy.filter((job) => job.department?.toLowerCase().includes(searchDept));
+                    if (searchSalary) jobAdArrayCopy = jobAdArrayCopy.filter((job) => searchWithinSalary(job.salary_low, job.salary_high, searchSalary));
                     resetJobTable(jobAdArrayCopy);
                 });
                 jQuery("#search-clear").on("click", () => {
