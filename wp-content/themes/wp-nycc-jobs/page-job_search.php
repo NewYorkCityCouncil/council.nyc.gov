@@ -16,6 +16,7 @@
                     </section>
                  </article>
             <?php endwhile; endif; ?>
+            <br/>
             <div class="row">
                 <div class="columns medium-12 large-4">
                     <input placeholder="Office title" type="text" id="office-title-search">
@@ -70,7 +71,7 @@
                     <thead>
                         <tr>
                             <th>Office Title</th>
-                            <th>Department</th>
+                            <th>Division</th>
                             <th>Salary Range</th>
                         </tr>
                     </thead>
