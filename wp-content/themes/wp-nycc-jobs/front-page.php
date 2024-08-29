@@ -25,7 +25,7 @@
                     <input placeholder="Department" type="text" id="department-search">
                 </div>
                 <div class="columns medium-12 large-4">
-                    <input placeholder="Salary range" type="number" id="salary-search">
+                    <input placeholder="Salary" type="number" id="salary-search">
                 </div>
             </div>
             <div class="row">
