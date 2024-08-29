@@ -29,8 +29,9 @@
                         For general questions about accessibility, or about specific accommodations, you may contact us at <a href='mailto:accessibility@council.nyc.gov'>accessibility@council.nyc.gov.</a>
                     </p>
                 </div>
-                <div class='columns small-12'>
+                <div class='columns small-12'>    
                     <p><strong style="text-decoration: underline;"><a href="/events/past-events">Click here to see our past events</a></strong></p>
+                    <p><strong style="text-decoration: underline;"><a href="/events/recurring-annual-events/">Click here to see a list of our recurring events</a></strong></p>
                 </div>
             </div>
             <br/>
