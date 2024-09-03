@@ -1,0 +1,462 @@
+/* Banner  */
+.hero-section {
+  background: url('/public/council+adams.jpg') 50% no-repeat;
+  background-size: cover;
+  border-radius: 1rem;
+  height: 60vh;
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.hero-section .hero-section-text {
+  color: #fefefe;
+  text-shadow: 1px 1px 2px #0a0a0a;
+}
+
+/* report button */
+
+.btn {
+
+  display: inline-block;
+  vertical-align: middle;
+  margin: 1rem 0 0 1rem;
+  padding: 0.85em 1em;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: #2f56a6;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #e6dcca;
+  color: black;
+}
+
+/* department dropdowns with chevron */
+.dept {
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #2f56a6;
+  color: white;
+  text-wrap:nowrap;
+}
+
+.dept:hover{
+  border-radius: 1rem;
+   background-color: #e6dcca;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}
+
+.chevron {
+    transition: transform 0.25s ease-in-out; /* Smooth transition for 0.5s */
+}
+
+.chevron.rotate {
+    transform: rotate(180deg); /* Rotates the icon 180 degrees */
+}
+
+
+/* test */
+
+.multilevel-accordion-menu .is-accordion-submenu a {
+  background: #35383d;
+}
+
+.multilevel-accordion-menu .sublevel-1 {
+  text-indent: 1rem;
+}
+
+.multilevel-accordion-menu .sublevel-2 {
+  text-indent: 2rem;
+}
+
+.multilevel-accordion-menu .sublevel-3 {
+  text-indent: 3rem;
+}
+
+.multilevel-accordion-menu .sublevel-4 {
+  text-indent: 4rem;
+}
+
+.multilevel-accordion-menu .sublevel-5 {
+  text-indent: 5rem;
+}
+
+.multilevel-accordion-menu .sublevel-6 {
+  text-indent: 6rem;
+}
+
+.multilevel-accordion-menu a {
+  color: #fefefe;
+}
+
+.multilevel-accordion-menu a::after {
+  border-color: #fefefe transparent transparent;
+}
+
+.multilevel-accordion-menu .menu > li:not(.menu-text) > a {
+  padding: 1.2rem 1rem;
+}
+
+
+.multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="true"] a::before {
+  content: "\f07c";
+  font-family: FontAwesome;
+  margin-right: 1rem;
+}
+
+.multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="false"] a::before {
+  content: "\f07b";
+  font-family: FontAwesome;
+  margin-right: 1rem;
+}
+
+
+/* image container for letter Grade and logo of depts */
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+
+
+/* modal */
+
+.mobile-ios-modal {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.mobile-ios-modal-inner {
+  padding: 0.5rem 0.5rem 1.5rem;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.mobile-ios-modal-options {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mobile-ios-modal-options .button {
+  -webkit-flex: 1 0 0;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  margin-bottom: 0;
+  color: #1779ba;
+  background: transparent;
+  border-color: #e6e6e6;
+  border-bottom: 0;
+}
+
+.mobile-ios-modal-options-stacked .button {
+  display: block;
+  width: 100%;
+  -webkit-flex: 1 0 0;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  margin-bottom: 0;
+  color: #1779ba;
+  background: transparent;
+  border-color: #e6e6e6;
+  border-bottom: 0;
+}
+
+
+
+
+
+/* miscellaneous */
+
+ h4 {
+ /* display: block; */
+ width: 75%;
+  padding-top: 1rem;
+  text-align: center;
+  height: 2rem;
+  font-size: 1.1rem;
+  line-height: .01rem;
+  color: #fff;
+  text-decoration: none;
+  background-color: #00a0c8;
+  border-radius: 1rem;
+  padding-bottom: 5px;
+  
+}
+
+h5 {
+  padding-left: 0px;
+  margin-left: 0px;
+  max-width: 475px;
+  font-weight: bolder;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}
+
+.pillars-container ul {
+  text-wrap: nowrap;
+  padding-left: 5rem;
+}
+
+.pillars-container button {
+  all: unset;
+}
+
+.pillars-container button::after{
+  all: unset;
+}
+
+.pillars-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pillars-container button {
+  border-radius: 1rem !important;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out !important;
+}
+
+.pillars-container button:hover {
+  cursor: pointer;
+  background-color: #2f56a6 !important;
+  color: white !important;
+}
+
+.pillars-container button:focus {
+  background-color: unset !important;
+  color: unset !important;
+}
+
+.wp-block-heading {
+    margin-left: 5rem;
+}
+
+
+
+
+img {
+width: 300px;
+height: auto;
+}
+
+
+
+.fix a {
+  max-width: 300px;
+}
+
+.reveal {
+width: 1200px !important;
+}
+
+.infographic-1 {
+width:600px;
+height: auto;
+}
+
+.reveal h5 {
+  margin: auto;
+  text-align: center;
+}
+
+.report {
+  width:750px;
+  height: auto;
+}
+
+
+
+
+/* MD tabs foundation */
+
+.md-tabs {
+  background-color: #2f56a6;
+}
+
+.md-tabs > .mobile-nav-bar {
+  background-color:#2f56a6;
+  margin-bottom: 15px;
+}
+
+.md-tabs > .mobile-nav-bar .title-bar-text {
+  font-size: 26px;
+}
+
+.md-tabs > .mobile-nav-bar a {
+  color: #fefefe;
+}
+
+.md-tabs > .tabs {
+  margin: 0;
+  border: 0;
+  background: #2f56a6;
+  list-style-type: none;
+  /* display: table; */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.md-tabs > .tabs > .tabs-title {
+  display: table-cell;
+  width: 25%;
+  text-align: center;
+  display: inline-block;
+}
+
+.md-tabs > .tabs > .tabs-title.is-active > a {
+  /* color: #3ADB76; */
+  background-color: transparent;
+  outline: none;
+}
+
+.md-tabs > .tabs > .tabs-title.is-active:nth-of-type(1) ~ .slide {
+  left: calc((100% / 4) * 0);
+}
+
+.md-tabs > .tabs > .tabs-title.is-active:nth-of-type(2) ~ .slide {
+  left: calc((100% / 4) * 1.11);
+}
+
+.md-tabs > .tabs > .tabs-title.is-active:nth-of-type(3) ~ .slide {
+  left: calc((100% / 4) * 2.22);
+}
+
+
+.md-tabs > .tabs > .tabs-title > a {
+  color: black;
+  font-size: 16px;
+}
+
+.md-tabs > .tabs > .tabs-title > a:hover, .md-tabs > .tabs > .tabs-title > a:focus {
+  background: transparent;
+}
+
+.slide {
+  background:#96d7e8;
+  width: calc(100% / 4);
+  height: 4px;
+  position: relative;
+  left: 0;
+  right:20px;
+  top: 460px;
+  transition: left 0.3s ease-out;
+}
+
+.tabs .card {
+  max-height: 27.5rem;
+  height:27.5rem;
+  border-radius: 1rem;
+}
+
+.is-active {
+ 
+}
+
+
+
+
+@media screen and (max-width: 39.9375em) {
+  .slide {
+    width: 0;
+    height: 0;
+  }
+  .md-tabs > .accordion {
+    margin-left: 0;
+    list-style-type: none;
+  }
+  .md-tabs > .accordion > .accordion-item > .accordion-title {
+    position: relative;
+    display: block;
+    padding: 1.25rem 1rem;
+    border: 0;
+    font-size: 0.75rem;
+    line-height: 1;
+    background: #1779BA;
+    color: #fefefe;
+    white-space: nowrap;
+  }
+  .md-tabs > .accordion > .accordion-item > .accordion-title:hover {
+    background-color: #1779BA;
+    color: #3ADB76;
+    outline: none;
+  }
+  .md-tabs > .accordion > .is-active.accordion-item > a.accordion-title {
+    border-bottom: 4px solid #3ADB76;
+    color: #3ADB76;
+  }
+  .md-tabs > .accordion > .accordion-item > .accordion-content {
+    display: none;
+    padding: 1rem;
+    border: 1px solid #e6e6e6;
+    border-top: 0px;
+    background-color: #fefefe;
+    color: #0a0a0a;
+  }
+
+  .accordion-title img {
+    
+  max-height: 60px;
+  max-width: 150px;
+  margin-left: 10px;
+  }
+
+.accordion-title .letter {
+  border-radius: 30%;
+  width: 50px;
+  height: 50px;
+}
+
+.accordion-title {
+  text-align:center;
+ 
+}
+  
+
+  .md-tabs > .accordion > .accordion-item > .accordion-title:focus {
+    background-color: #1779BA;
+    color: #3ADB76;
+    outline: none;
+  }
+}
+
+
