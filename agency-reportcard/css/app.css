@@ -111,6 +111,7 @@
 
 /* image logo of depts */
 .logo {
+  object-fit: contain;
   width: 150px !important;
   height: 100px !important;
 }
@@ -172,6 +173,21 @@
   border-bottom: 0;
 }
 
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+.close-button span {
+  font-weight: bold;
+  color: #000;
+}
+
+
 /* miscellaneous */
 
 h4 {
@@ -220,20 +236,19 @@ h5 {
 }
 
 .pillars-container button {
-  border-radius: 1rem !important;
+  /* border-radius: 1rem !important; */
   transition: background-color 0.25s ease-out, color 0.25s ease-out !important;
 }
 
 .pillars-container button:hover {
+  border-radius: 5px;
+  max-width: fit-content;
   cursor: pointer;
   background-color: #2f56a6 !important;
   color: white !important;
 }
 
-.pillars-container button:focus {
-  background-color: unset !important;
-  color: unset !important;
-}
+
 
 .wp-block-heading {
   margin-left: 5rem;
@@ -285,8 +300,9 @@ h5 {
   color: #fefefe;
 }
 
-.tabs {
-  border: unset;
+.tabs-container {
+  display: flex!important;
+max-height: 256px;
 }
 
 .md-tabs > .tabs > .tabs-title {
@@ -311,7 +327,7 @@ h5 {
 }
 
 .md-tabs > .tabs > .tabs-title.is-active:nth-of-type(3) ~ .slide {
-  left: calc((100% / 4) * 2.38);
+  left: calc((100% / 4) * 2.37);
 }
 
 .md-tabs > .tabs > .tabs-title > a {
@@ -321,16 +337,25 @@ h5 {
 
 .md-tabs > .tabs > .tabs-title > a:hover,
 .md-tabs > .tabs > .tabs-title > a:focus {
-  background: transparent;
+  /* background: transparent; */
 }
 
 .slide {
   display: none;
 }
 
+.letter {
+  width: 150px;
+  height: 150px;
+}
+
+.summary {
+  margin: auto;
+}
+
 .card.is-active ~ .slide {
   display: block;
-  background: #96d7e8;
+  background: #2f56a6;
   width: 23%;
   height: 4px;
   position: relative;
@@ -342,14 +367,18 @@ h5 {
 
 .tabs .card {
   margin: 1rem;
-  min-height: 23.125rem;
-  height: 23.125rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
   border-radius: 1rem;
   transition: transform 0.3s ease;
 }
 
+.tabs{
+  border: unset;
+}
+
 .is-active {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 2px solid #007bff;
   transform: translateY(-10px);
 }
 
