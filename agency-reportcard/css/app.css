@@ -236,28 +236,34 @@ h5 {
 }
 
 .pillars-container button {
-  /* border-radius: 1rem !important; */
+  background-size: cover;
+  border-radius: .2rem !important;
   transition: background-color 0.25s ease-out, color 0.25s ease-out !important;
 }
 
 .pillars-container button:hover {
-  border-radius: 5px;
   max-width: fit-content;
   cursor: pointer;
   background-color: #2f56a6 !important;
   color: white !important;
 }
-
-
+.callout {
+  background-color: #2f57a664;
+}
 
 .wp-block-heading {
   margin-left: 5rem;
 }
 
-
-
 .fix a {
   max-width: 300px;
+}
+
+.fix {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
 }
 
 .reveal {
@@ -278,31 +284,40 @@ h5 {
   margin: auto;
   object-fit: cover;
   width: 500px;
-  height: 500px;
+  height: 450px;
 }
+
+
+
 
 /* MD tabs foundation */
 
-.md-tabs {
-  background-color: #2f56a6;
-}
 
-.md-tabs > .mobile-nav-bar {
+/* .md-tabs > .mobile-nav-bar {
   background-color: #2f56a6;
   margin-bottom: 15px;
-}
+} */
 
-.md-tabs > .mobile-nav-bar .title-bar-text {
+/* .md-tabs > .mobile-nav-bar .title-bar-text {
   font-size: 26px;
 }
 
 .md-tabs > .mobile-nav-bar a {
   color: #fefefe;
-}
+} */
 
 .tabs-container {
   display: flex!important;
 max-height: 256px;
+}
+
+.tabs-title img {
+  /* height: auto;  */
+  margin: 0 auto;
+}
+
+.tabs-title {
+  overflow: visible; /* Ensure the content is fully visible */
 }
 
 .md-tabs > .tabs > .tabs-title {
@@ -310,6 +325,9 @@ max-height: 256px;
   width: 25%;
   text-align: center;
   display: inline-block;
+}
+.md-tabs > .tabs > .tabs-title:hover {
+  cursor: pointer;
 }
 
 .md-tabs > .tabs > .tabs-title.is-active > a {
@@ -337,7 +355,7 @@ max-height: 256px;
 
 .md-tabs > .tabs > .tabs-title > a:hover,
 .md-tabs > .tabs > .tabs-title > a:focus {
-  /* background: transparent; */
+  background: transparent;
 }
 
 .slide {
@@ -346,16 +364,27 @@ max-height: 256px;
 
 .letter {
   width: 150px;
-  height: 150px;
+  /* height: 150px; */
 }
 
 .summary {
   margin: auto;
 }
 
+.summary h2 {
+  width: fit-content;
+  border-bottom: #2f56a6 1px solid;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.summary .grid-x .large-6 p{
+ margin-top: 2rem;
+}
+
 .card.is-active ~ .slide {
   display: block;
-  background: #2f56a6;
+
   width: 23%;
   height: 4px;
   position: relative;
@@ -382,33 +411,40 @@ max-height: 256px;
   transform: translateY(-10px);
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
 @media screen and (max-width: 39.9375em) {
-  .slide {
-    width: 0;
-    height: 0;
+
+  .tabs-container {
+    display:unset !important;
   }
+
   .md-tabs > .accordion {
     margin-left: 0;
     list-style-type: none;
   }
+
+  .is-active {
+border:none !important;
+  }
+
   .md-tabs > .accordion > .accordion-item > .accordion-title {
     position: relative;
     display: block;
-    padding: 1.25rem 1rem;
+    /* padding: 1.25rem 1rem; */
     border: 0;
     font-size: 0.75rem;
     line-height: 1;
-    color: black;
+    color:  #2f56a6;
     white-space: nowrap;
   }
   .md-tabs > .accordion > .accordion-item > .accordion-title:hover {
     background-color: #2f56a6;
     color: white;
   }
-  .md-tabs > .accordion > .is-active.accordion-item > a.accordion-title {
-    border-bottom: 4px solid #00a0c8;
-    color: #00a0c8;
-  }
+ 
   .md-tabs > .accordion > .accordion-item > .accordion-content {
     display: none;
     padding: 1rem;
@@ -418,10 +454,7 @@ max-height: 256px;
     color: #0a0a0a;
   }
 
-  .accordion-title img {
-    max-height: 60px;
-    max-width: 150px;
-  }
+
 
   .accordion-title .letter {
     border-radius: 30%;
@@ -431,5 +464,19 @@ max-height: 256px;
 
   .accordion-title {
     text-align: center;
+  }
+}
+
+
+
+@media screen and (max-width: 1190px) {
+  .tabs-title img {
+    max-width: 100px; /* Reduce the size of images on smaller screens */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tabs-title img {
+   width:300px;
   }
 }

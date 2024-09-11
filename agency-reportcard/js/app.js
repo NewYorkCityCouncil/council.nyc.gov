@@ -29,27 +29,38 @@ cards.forEach(card => {
   card.addEventListener('click', function (event) {
     event.preventDefault(); // Prevent default anchor behavior (jumping to the href)
 
-    // Reset all cards and panels
-    resetActiveState();
-
-    // Add 'is-active' class to the clicked card
-    card.classList.add('is-active');
-
     // Get the href value of the clicked card (which corresponds to the tab panel ID)
     const panelId = card.querySelector('a').getAttribute('href');
+    const panelElement = document.querySelector(panelId); // Get the panel element
 
-    // Display the corresponding tab panel
-    document.querySelector(panelId).style.display = 'block';
+    // Check if the clicked card already has the 'is-active' class
+    if (card.classList.contains('is-active')) {
+
+      // If the card is already active, remove 'is-active' and hide the corresponding panel
+      card.classList.remove('is-active');
+      panelElement.style.display = 'none';
+
+    } else {
+      // If the card is not active, reset all cards and panels first
+      resetActiveState();
+
+      // Add 'is-active' class to the clicked card
+      card.classList.add('is-active');
+
+      // Display the corresponding tab panel
+      panelElement.style.display = 'block';
+
+      // Scroll the page to the 'callout' section (specific to the clicked panel)
+      const calloutSection = panelElement.querySelector('.callout');
+      if (calloutSection) {
+        calloutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
 
     // Prevent the event from propagating to the document click listener
     event.stopPropagation();
   });
 });
-
-// Function to detect if the click is inside an active tab panel
-function isClickInsideTabContent(event) {
-  return tabsContent.contains(event.target);
-}
 
 // Add a click event listener to the document (to detect clicks outside the card and tab content)
 document.addEventListener('click', function (event) {
@@ -74,7 +85,9 @@ tabsContent.addEventListener('click', function (event) {
   }
 });
 
-// --- UPDATED CODE: Prevent creating new modal instances and handle modal close properly ---
+
+
+// modals content
 
 // Select all modals
 const modals = document.querySelectorAll('.reveal');
@@ -109,3 +122,8 @@ document.addEventListener('click', function (event) {
     revealOverlay.style.display = 'none';
   }
 });
+
+
+
+
+
