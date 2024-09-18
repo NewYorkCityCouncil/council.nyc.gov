@@ -1,363 +1,431 @@
 /* specific for h4 tag title  'Learn More About' for pillars */
 #learn {
-    margin: auto;
-      width: 100%;
-      padding-top: 1rem;
-      text-align: center;
-      height: 2rem;
-      font-size: 1.1rem;
-      line-height: 0.01rem;
-      color: #fff;
-      text-decoration: none;
-      background-color:   #2f56a6;  
-      border-radius: 1rem;
-      padding-bottom: 5px;
+  margin: auto;
+    width: 100%;
+    padding-top: 1rem;
+    text-align: center;
+    height: 2rem;
+    font-size: 1.1rem;
+    line-height: 0.01rem;
+    color: #fff;
+    text-decoration: none;
+    background-color:   #2f56a6;  
+    border-radius: 1rem;
+    padding-bottom: 5px;
+  }
+  
+  /* hover effect for pillars */
+  .pillars-container button.button:hover{
+      font-weight: bolder;
+      transition: background-color 0.25s ease-out, color 0.25s ease-out;
     }
     
-    /* hover effect for pillars */
-    .pillars-container button.button:hover{
-        font-weight: bolder;
-        transition: background-color 0.25s ease-out, color 0.25s ease-out;
-      }
-      
-      .pillars-container button, .pillars-container button::after {
-        all: unset;
-      }
-      
-      .pillars-container button.button:hover {
-        max-width: fit-content;
-        cursor: pointer;
-        background-color: rgba(23, 121, 186, 0.8) !important; 
-        color: white !important;
-      }
-    
-    
-    /* default grading process link*/
-    
-    .image-hover-wrapper {
-      position: relative;
+    .pillars-container button, .pillars-container button::after {
+      all: unset;
     }
     
-    .image-hover-wrapper a {
-      display: inline-block;
-      letter-spacing: normal;
-      line-height: initial;
-      margin: 0;
-      padding: 0;
-      position: relative;
-    }
-    
-    .image-hover-wrapper a img {
-      float: left;
-      overflow: hidden;
-      width: 100%;
-    }
-    
-    .image-hover-wrapper a .image-hover-wrapper-reveal {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #fefefe;
-      display: inline;
-      height: 100%;
-      margin-left: -100%;
-      opacity: 0;
-      position: absolute;
-      width: 100%;
-      z-index: 80;
-      transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      transition-delay: 0.25s;
-    }
-    
-    .image-hover-wrapper a .image-hover-wrapper-reveal:hover {
-      opacity: 1;
-      transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-    
-    .image-hover-wrapper a .image-hover-wrapper-reveal:hover p {
-      opacity: 1;
-      -webkit-transform: translateY(-100%);
-          -ms-transform: translateY(-100%);
-              transform: translateY(-100%);
-      transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      transition-delay: 0.25s;
-    }
-    
-    .image-hover-wrapper a .image-hover-wrapper-reveal p {
-      bottom: 0;
-      display: block;
-      opacity: 0;
-      position: absolute;
-      text-align: center;
-      width: 100%;
-      transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-    
-    .image-hover-wrapper a .fa {
-      font-size: 24px;
-    }
-    
-    .image-hover-wrapper .image-hover-wrapper-banner {
-      background-color: rgba(23, 121, 186, 0.8);
-      color: #fefefe;
-      font-weight: 600;
-      left: 0;
-      padding: 0.5rem;
-      position: absolute;
-      top: 25%;
-      width: 75%;
-      z-index: 10;
-    }
-    
-    /* Rubric grading table */
-    
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    
-    th, td {
-      padding: 15px;
-      text-align: left;
-      border: 1px solid #dddddd;
-    }
-    
-    th {
-      background-color: #1E385B;
-      color: white;
-    }
-    
-    td ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    
-    td ul li {
-      margin-bottom: 8px;
-      padding-left: 10px;
-      text-indent: -10px;
-      position: relative;
-    }
-    
-    td ul li:before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: black;
-    }
-    
-    /* Styles for indicator levels */
-    
-    .leading {
-      background-color: #72B439;
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      vertical-align: top;
-    }
-    
-    .embedding {
-      background-color: #FFD966;
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      vertical-align: top;
-    }
-    
-    .developing {
-      background-color: #AF8439;
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      vertical-align: top;
-    }
-    
-    .weak {
-      background-color: #D54E4A;
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      vertical-align: top;
-    }
-    
-    .unable-to-rate {
-      background-color: #4F4F4F;
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      vertical-align: top;
-    }
-    
-    /* Modal styling */
-    
-    .mobile-ios-modal {
-      max-height: 80vh;
-      max-width: 100vh;
-      position: absolute;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      transform: translateX(-50%);
-    }
-    
-    .mobile-ios-modal-inner {
-      padding: 0.5rem 0.5rem 1.5rem;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      text-align: center;
-      -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-    }
-    
-    .reveal-overlay {
-      overflow: hidden;
-    }
-    
-    .mobile-ios-modal-options {
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-    }
-    
-    .mobile-ios-modal-options .button {
-      -webkit-flex: 1 0 0;
-      -ms-flex: 1 0 0px;
-      flex: 1 0 0;
-      margin-bottom: 0;
-      color: #1779ba;
-      background: transparent;
-      border-color: #e6e6e6;
-      border-bottom: 0;
-    }
-    
-    .mobile-ios-modal-options-stacked .button {
-      display: block;
-      width: 100%;
-      -webkit-flex: 1 0 0;
-      -ms-flex: 1 0 0px;
-      flex: 1 0 0;
-      margin-bottom: 0;
-      color: #1779ba;
-      background: transparent;
-      border-color: #e6e6e6;
-      border-bottom: 0;
-    }
-    
-    .close-button {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 24px;
+    .pillars-container button.button:hover {
+      max-width: fit-content;
       cursor: pointer;
+      background-color: rgba(23, 121, 186, 0.8) !important; 
+      color: white !important;
     }
-    
-    .close-button span {
-      font-weight: bold;
-      color: #000;
-    }
-    
-    /* image logo of depts and letters*/
-    .logo {
-      object-fit: contain;
-      width: 150px; /* Adjust to fit in card */
-      height: 150px;
-    }
-    
-    #youth {
-      width:100% !important;
-    }
-    
-    .letter {
-      width:125px;
-    }
-    
-    
-    /* MD tabs foundation */
-    
-    .tabs-container {
-      display: flex!important;
-      justify-content:space-evenly;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
-    
-    .tabs-container, .tabs-content {
-      border:unset !important;
-    }
-    
-    
-    .tabs-title {
-      overflow: hidden;
-      display: block;
-      width: 100%;
-    }
-    
-    .md-tabs > .tabs > .tabs-title {
-      display: table-cell;
-      width: 25%;
-      text-align: center;
-      display: inline-block;
-    }
-    
-    .md-tabs > .tabs > .tabs-title.is-active > a {
-      background-color: transparent;
-      outline: none;
-    }
-    
-    
-    .md-tabs > .tabs > .tabs-title > a:hover,
-    .md-tabs > .tabs > .tabs-title > a:focus {
-      background: transparent;
-    }
-    
-    /* Prevent overflow in the card component */
-    .tabs .card {
-      margin: 1rem;
-      border-radius: 1rem;
-      transition: transform 0.3s ease;
-      overflow: hidden; /* Ensure that content doesn't spill outside the card */
-    }
-    
-    .card.is-active ~ .slide {
-      display: block;
-      width: 23%;
-      height: 4px;
-      position: relative;
-      left: 0;
-      right: 20px;
-      top: 385px;
-      transition: left 0.3s ease-out;
-    }
-    
-    .is-active {
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-      border: 2px solid #2f56a6;
-      transform: translateY(-10px);
-    }
-    
-    /* Additional styling for summary sections */
-    .summary {
-      margin: auto;
-    }
-    
-    .summary h2 {
-      width: fit-content;
-      border-bottom: #2f56a6 1px solid;
-      margin: auto;
-      margin-bottom: 2rem;
-    }
-    
-    .summary .grid-x .large-6 p {
-      margin-top: 2rem;
-    }
-    
-    
+  
+  
+  /* default grading process link*/
+  
+  .image-hover-wrapper {
+    position: relative;
+  }
+  
+  .image-hover-wrapper a {
+    display: inline-block;
+    letter-spacing: normal;
+    line-height: initial;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  
+  .image-hover-wrapper a img {
+    float: left;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .image-hover-wrapper a .image-hover-wrapper-reveal {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fefefe;
+    display: inline;
+    height: 100%;
+    margin-left: -100%;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 80;
+    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition-delay: 0.25s;
+  }
+  
+  .image-hover-wrapper a .image-hover-wrapper-reveal:hover {
+    opacity: 1;
+    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .image-hover-wrapper a .image-hover-wrapper-reveal:hover p {
+    opacity: 1;
+    -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
+    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition-delay: 0.25s;
+  }
+  
+  .image-hover-wrapper a .image-hover-wrapper-reveal p {
+    bottom: 0;
+    display: block;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .image-hover-wrapper a .fa {
+    font-size: 24px;
+  }
+  
+  .image-hover-wrapper .image-hover-wrapper-banner {
+    background-color: rgba(23, 121, 186, 0.8);
+    color: #fefefe;
+    font-weight: 600;
+    left: 0;
+    padding: 0.5rem;
+    position: absolute;
+    top: 25%;
+    width: 75%;
+    z-index: 10;
+  }
+  
+  /* Rubric grading table */
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #dddddd;
+  }
+  
+  th {
+    background-color: #1E385B;
+    color: white;
+  }
+  
+  td ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  td ul li {
+    margin-bottom: 8px;
+    padding-left: 10px;
+    text-indent: -10px;
+    position: relative;
+  }
+  
+  td ul li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: black;
+  }
+  
+  /* Styles for indicator levels */
+  
+  .leading {
+    background-color: #72B439;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  .embedding {
+    background-color: #FFD966;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  .developing {
+    background-color: #AF8439;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  .weak {
+    background-color: #D54E4A;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  .unable-to-rate {
+    background-color: #4F4F4F;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  /* Modal styling */
+  
+  .mobile-ios-modal {
+    max-height: 80vh;
+    max-width: 100vh;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  
+  .mobile-ios-modal-inner {
+    padding: 0.5rem 0.5rem 1.5rem;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+  
+  .reveal-overlay {
+    overflow: hidden;
+  }
+  
+  .mobile-ios-modal-options {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .mobile-ios-modal-options .button {
+    -webkit-flex: 1 0 0;
+    -ms-flex: 1 0 0px;
+    flex: 1 0 0;
+    margin-bottom: 0;
+    color: #1779ba;
+    background: transparent;
+    border-color: #e6e6e6;
+    border-bottom: 0;
+  }
+  
+  .mobile-ios-modal-options-stacked .button {
+    display: block;
+    width: 100%;
+    -webkit-flex: 1 0 0;
+    -ms-flex: 1 0 0px;
+    flex: 1 0 0;
+    margin-bottom: 0;
+    color: #1779ba;
+    background: transparent;
+    border-color: #e6e6e6;
+    border-bottom: 0;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .close-button span {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  /* image logo of depts and letters*/
+  .logo {
+    object-fit: contain;
+    width: 150px; /* Adjust to fit in card */
+    height: 150px;
+  }
+  
+  #youth {
+    width:100% !important;
+  }
+  
+  .letter {
+    width:125px;
+  }
+  
+  
+  /* MD tabs foundation */
+  
+  .tabs-container {
+    display: flex!important;
+    justify-content:space-evenly;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .tabs-container, .tabs-content {
+    border:unset !important;
+  }
+  
+  
+  .tabs-title {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+  }
+  
+  .md-tabs > .tabs > .tabs-title {
+    display: table-cell;
+    width: 25%;
+    text-align: center;
+    display: inline-block;
+  }
+  
+  .md-tabs > .tabs > .tabs-title.is-active > a {
+    background-color: transparent;
+    outline: none;
+  }
+  
+  
+  .md-tabs > .tabs > .tabs-title > a:hover,
+  .md-tabs > .tabs > .tabs-title > a:focus {
+    background: transparent;
+  }
+  
+  /* Prevent overflow in the card component */
+  .tabs .card {
+    margin: 1rem;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+    overflow: hidden; /* Ensure that content doesn't spill outside the card */
+  }
+  
+  .card.is-active ~ .slide {
+    display: block;
+    width: 23%;
+    height: 4px;
+    position: relative;
+    left: 0;
+    right: 20px;
+    top: 385px;
+    transition: left 0.3s ease-out;
+  }
+  
+  .is-active {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 2px solid #2f56a6;
+    transform: translateY(-10px);
+  }
+  
+  /* Additional styling for summary sections */
+  .summary {
+    margin: auto;
+  }
+  
+  .summary h2 {
+    width: fit-content;
+    border-bottom: #2f56a6 1px solid;
+    margin: auto;
+    margin-bottom: 2rem;
+  }
+  
+  .summary .grid-x .large-6 p {
+    margin-top: 2rem;
+  }
+  
+
+/* compliance page & report button styling */ 
+.btn {
+display: inline-block;
+vertical-align: middle;
+margin: 1rem 0 0 1rem;
+padding: 0.85em 1em;
+border: 1px solid transparent;
+border-radius: 5px;
+transition: background-color 0.25s ease-out, color 0.25s ease-out;
+font-size: 0.9rem;
+line-height: 1;
+text-align: center;
+cursor: pointer;
+background-color: #2f56a6;
+color: #fff;
+}
+
+.btn:hover {
+background-color: #e6dcca;
+color: black;
+border-radius: 5px;
+}
+
+
+
+
+/* styling for Accordion */
+
+.accordion {
+  list-style-type: none;
+  padding: 0;
+}
+
+.accordion-item {
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.accordion-header {
+  padding: 10px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.accordion-header:hover {
+  background-color: #ddd;
+}
+
+.accordion-content {
+  padding: 10px;
+  background-color: #fafafa;
+  display: none;
+}
+
+.accordion-content h6 {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.content-div {
+  padding: 5px;
+  background-color: #eaeaea;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+  
