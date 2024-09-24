@@ -860,3 +860,12 @@ max-height: 256px;
   }
   
   
+
+
+.letter {
+max-width:25% !important;
+}
+  
+.dept {
+max-width:25% !important;
+}
