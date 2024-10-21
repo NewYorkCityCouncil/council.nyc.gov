@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.3.0/turf.min.js"></script>
+        <script src="<?php echo get_template_directory_uri(); ?>/assets/js/district-coordinates.js"></script>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" />
         <?php wp_head(); ?>
@@ -228,11 +229,11 @@
                                 fillOpacity: 0,
                             };
                         },
-                        onEachFeature: function (feature, layer) {
-                            // Calculate centroid
-                            let centroid = layer.getBounds().getCenter();
-                            let districtNumber = feature.properties.CounDist;
-                            L.marker(centroid, {
+                        let manualCoordinates = districtLabelCoordinates[districtNumber];
+                        let districtNumber = feature.properties.CounDist;
+
+                        if (manualCoordinates) {
+                            L.marker([manualCoordinates[0], manualCoordinates[1]], {
                                 icon: L.divIcon({
                                     className: 'district-tooltip',
                                     html: `<div>${districtNumber}</div>`,
